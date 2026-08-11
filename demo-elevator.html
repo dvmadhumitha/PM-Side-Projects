@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elevator Call Buttons, Fixed — Demo · Madhumitha D V</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#ffffff;--bg-alt:#f8fafc;
+    --brand:#4f46e5;--accent:#f97316;--good:#047857;--good-bg:#ecfdf5;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
+  .head-inner .miro{font-size:.85rem;color:var(--muted)}
+  .head-inner .miro a{color:var(--brand);font-weight:600}
+  .intro{padding:36px 0 8px}
+  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .intro h1{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:6px 0 10px}
+  .intro p{color:var(--ink-soft);max-width:640px}
+  .stage{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:28px 0 8px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+  .panel h3{font-size:1.05rem;margin-bottom:2px}
+  .panel .sub{font-size:.82rem;color:var(--muted);margin-bottom:16px}
+  .panel.bad h3::after{content:" · today";color:#c2410c;font-size:.8rem}
+  .panel.good h3::after{content:" · redesigned";color:var(--good);font-size:.8rem}
+  .lift-row{display:flex;gap:18px}
+  .shaft{width:54px;background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column-reverse;overflow:hidden}
+  .floor-cell{flex:1;border-top:1px solid var(--line);position:relative;min-height:34px}
+  .floor-cell span{position:absolute;left:6px;top:2px;font-size:.62rem;color:var(--muted)}
+  .car{position:absolute;left:8px;right:8px;height:28px;background:var(--brand);border-radius:6px;transition:bottom .6s linear;display:grid;place-items:center;color:#fff;font-size:.66rem;font-weight:700}
+  .shaft-outer{position:relative;height:280px}
+  .controls{flex:1}
+  .you{font-size:.8rem;color:var(--ink-soft);margin-bottom:10px}
+  .you select{font:inherit;font-size:.8rem;padding:2px 6px;border:1px solid var(--line);border-radius:6px}
+  .callbtns{display:flex;gap:10px;margin-bottom:14px}
+  .cb{width:54px;height:54px;border-radius:50%;border:2px solid var(--line);background:#fff;font-size:1.15rem;cursor:pointer;transition:.15s}
+  .cb:hover{border-color:var(--brand)}
+  .cb.lit{background:var(--brand);border-color:var(--brand);color:#fff}
+  .fb{min-height:86px;border:1px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.82rem;color:var(--ink-soft);background:var(--bg-alt)}
+  .fb b{color:var(--ink)}
+  .fb .eta{font-family:'Sora';font-size:1.35rem;color:var(--brand);font-weight:700}
+  .fb .row{display:flex;align-items:center;gap:8px;margin-top:4px}
+  .dir{display:inline-block;font-weight:700}
+  .qline{font-size:.74rem;color:var(--muted);margin-top:8px}
+  .confused{font-size:.78rem;color:#c2410c;margin-top:8px;min-height:20px}
+  .wall{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:22px auto 8px;box-shadow:var(--shadow)}
+  .wall h2{font-size:1.15rem;margin-bottom:2px}
+  .wall .wsub{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cluster h4{font:700 .72rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
+  .sticky{font-family:'Kalam',cursive;font-size:.92rem;line-height:1.4;color:#27272a;background:#fef08a;padding:12px 14px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:14px;transform:rotate(-1.2deg)}
+  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
+  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
+  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
+  .sticky.s5{background:#fed7aa;transform:rotate(-2deg)}
+  @media(max-width:760px){.wall-grid{grid-template-columns:1fr}}
+  .lesson{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:22px 0 22px;box-shadow:var(--shadow)}
+  .lesson h3{font-size:1rem;margin-bottom:6px}
+  .lesson p{font-size:.9rem;color:var(--ink-soft)}
+  .lesson b{color:var(--ink)}
+  .didgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+  .did{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+  .did h3{font-size:1rem;margin-bottom:10px}
+  .did h3 span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+  .did li{font-size:.88rem;color:var(--ink-soft);margin:0 0 9px 18px}
+  .did li b{color:var(--ink)}
+  .did ul{list-style:none}
+  .did ul li{position:relative;margin-left:22px}
+  .did ul li::before{content:"✓";position:absolute;left:-22px;color:#047857;font-weight:700}
+  .cta{text-align:center;font-size:.92rem;color:var(--ink-soft);margin:0 0 44px}
+  .cta a{color:var(--brand);font-weight:600}
+  @media(max-width:760px){.didgrid{grid-template-columns:1fr}}
+  @media(max-width:760px){.stage{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-inner">
+    <a class="back" href="index.html#projects">← Back to portfolio</a>
+    <span class="miro">Full exploration: <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612223165015" target="_blank" rel="noopener">Miro board ↗</a></span>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="tagline">Interactive demo</div>
+  <h1>Elevator call buttons, fixed</h1>
+  <p>Call buttons ask for your <em>direction</em>; people think they're <em>summoning the lift</em>. Try both panels below — same building, same lift logic, different interface. Press a call button and watch what each panel tells you.</p>
+</section>
+
+<div class="wrap wall">
+  <h2>The exploration wall</h2>
+  <div class="wsub">Distilled from the working Miro board — reference points → what we observed → how we converged.</div>
+  <div class="wall-grid">
+    <div class="cluster">
+      <h4>Reference points</h4>
+      <div class="sticky">The classic "elevator button conundrum" UX debate — direction buttons vs summon buttons</div>
+      <div class="sticky s2">Three very different homes for the same panel: high-rise apartments, multi-specialty hospitals, malls &amp; offices</div>
+      <div class="sticky s3">Watched real behaviour at the lobby: press both arrows, press again "to hurry it up", hover near the door</div>
+    </div>
+    <div class="cluster">
+      <h4>What we observed</h4>
+      <div class="sticky s4">Mental-model mismatch: the button asks your <b>direction</b>, people think they're <b>calling the lift</b></div>
+      <div class="sticky">Zero feedback after the press — is it coming? where is it? how long?</div>
+      <div class="sticky s5">Downtime is undesigned: what does a lit button even mean when the lift is parked?</div>
+      <div class="sticky s2">Multi-lift banks make it worse — which one answered <i>your</i> call?</div>
+    </div>
+    <div class="cluster">
+      <h4>Converging</h4>
+      <div class="sticky s3">Prerequisites locked first: position + static/moving + direction + tentative wait</div>
+      <div class="sticky s5">FIFO queue for the controller — fairness a lobby full of people can trust</div>
+      <div class="sticky">Feedback at every state: acknowledged → en route → arriving</div>
+      <div class="sticky s4">Parked for v2: music, games, countdown chatter; priority tokens kept for hospitals</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap stage">
+  <!-- TODAY -->
+  <div class="panel bad">
+    <h3>The usual panel</h3>
+    <div class="sub">Two arrows. No feedback. Good luck.</div>
+    <div class="lift-row">
+      <div class="shaft-outer">
+        <div class="shaft" id="shaftA" style="height:280px"></div>
+      </div>
+      <div class="controls">
+        <div class="you">You are on floor <select id="floorA"></select></div>
+        <div class="callbtns">
+          <button class="cb" id="upA">▲</button>
+          <button class="cb" id="dnA">▼</button>
+        </div>
+        <div class="fb" id="fbA">The button lights up. That's all you get.</div>
+        <div class="confused" id="confA"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REDESIGNED -->
+  <div class="panel good">
+    <h3>The rebuilt panel</h3>
+    <div class="sub">Position · direction · wait time · acknowledgment</div>
+    <div class="lift-row">
+      <div class="shaft-outer">
+        <div class="shaft" id="shaftB" style="height:280px"></div>
+      </div>
+      <div class="controls">
+        <div class="you">You are on floor <select id="floorB"></select></div>
+        <div class="callbtns">
+          <button class="cb" id="callB" style="width:auto;border-radius:14px;padding:0 18px;font-size:.9rem;font-weight:700">Call lift</button>
+        </div>
+        <div class="fb" id="fbB"><b>Lift status</b><div class="row"><span class="eta" id="etaB">–</span><span id="dirB" class="dir"></span></div><div id="posB">Idle at floor 0</div><div class="qline" id="qB">Queue: empty</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap lesson">
+  <h3>What this demonstrates</h3>
+  <p><b>Separate user intent from system control.</b> Riders don't want to declare a direction — they want to know <b>where the lift is, which way it's heading, and how long they'll wait</b>. The rebuilt panel acknowledges every request (FIFO queue), shows live position, and estimates arrival — the three prerequisites identified in the full exploration. Edge cases handled there: multi-lift dispatch, hospital priority, downtime defaults.</p>
+</div>
+
+<div class="wrap didgrid">
+  <div class="did">
+    <h3><span>Behind the scenes</span>What I actually did</h3>
+    <ol>
+      <li><b>Watched lobbies before touching a whiteboard</b> — collected the repeat behaviours: double-arrow presses, re-presses, the hover-near-door shuffle.</li>
+      <li><b>Reframed the problem</b> from "people press wrong" to "the interface asks a question users aren't answering" — a mental-model gap, not a user error.</li>
+      <li><b>Specced prerequisites before pixels</b>: what must the panel know and show — position, static/moving, direction, tentative wait — for both single- and multi-lift buildings.</li>
+      <li><b>Designed the states, then the algorithm</b>: acknowledged → en route → arriving, backed by a FIFO controller; wrote downtime and hospital-priority edge cases into the spec, and parked the delighters for v2.</li>
+    </ol>
+  </div>
+  <div class="did">
+    <h3><span>Take this with you</span>If your users "misuse" your product</h3>
+    <ul>
+      <li>Write down what the interface <b>asks</b> vs what users <b>think it does</b>. That gap is your real spec.</li>
+      <li>List what the system knows that the user can't see — then expose the one piece of state that kills the biggest doubt.</li>
+      <li>Give every action an acknowledgment. Silence reads as "broken".</li>
+      <li>Design the boring states first: downtime, queues, failure. Delight is a v2 problem.</li>
+    </ul>
+  </div>
+</div>
+<div class="wrap cta">Got an interface people keep "using wrong"? I enjoy these puzzles — <a href="mailto:dvmadhumitha2021@outlook.com">write to me</a> or <a href="index.html#projects">see the other explorations</a>.</div>
+
+<script>
+(function(){
+  const FLOORS=8, STEP=700;
+  function makeSim(shaftEl){
+    const cells=[];
+    for(let f=0;f<FLOORS;f++){
+      const c=document.createElement('div');c.className='floor-cell';
+      c.innerHTML='<span>'+f+'</span>';shaftEl.appendChild(c);cells.push(c);
+    }
+    const car=document.createElement('div');car.className='car';car.textContent='LIFT';
+    shaftEl.style.position='relative';shaftEl.appendChild(car);
+    const H=shaftEl.clientHeight/FLOORS;
+    const sim={floor:0,queue:[],moving:false,car,H,
+      draw(){car.style.bottom=(sim.floor*H+3)+'px';},
+      call(f,cb){ if(!sim.queue.includes(f)&&f!==null){sim.queue.push(f);} sim.tickCb=cb; if(!sim.moving)sim.step(); },
+      step(){
+        if(!sim.queue.length){sim.moving=false;sim.tickCb&&sim.tickCb(sim);return;}
+        sim.moving=true;
+        const target=sim.queue[0];
+        if(sim.floor===target){sim.queue.shift();sim.tickCb&&sim.tickCb(sim);setTimeout(sim.step,STEP);return;}
+        sim.floor+=Math.sign(target-sim.floor);
+        sim.draw();sim.tickCb&&sim.tickCb(sim);
+        setTimeout(sim.step,STEP);
+      }};
+    sim.draw();
+    return sim;
+  }
+
+  // fill selects
+  ['floorA','floorB'].forEach(id=>{
+    const s=document.getElementById(id);
+    for(let f=0;f<FLOORS;f++){const o=document.createElement('option');o.value=f;o.textContent=f;s.appendChild(o);}
+    s.value=3;
+  });
+
+  // ----- Panel A: today -----
+  const simA=makeSim(document.getElementById('shaftA'));
+  const fbA=document.getElementById('fbA'),confA=document.getElementById('confA');
+  const lines=["Is it coming? No idea.","You press it again. Nothing changes.","Someone presses the other arrow 'to make it faster'.","Still waiting…"];
+  let li=0;
+  function pressA(btn){
+    btn.classList.add('lit');
+    fbA.innerHTML='The button lights up. That\'s all you get.';
+    confA.textContent=lines[li++%lines.length];
+    simA.call(parseInt(document.getElementById('floorA').value),s=>{
+      if(!s.queue.length&&s.floor===parseInt(document.getElementById('floorA').value)){
+        btn.classList.remove('lit');confA.textContent='It arrived. Eventually. You never knew when.';
+      }
+    });
+  }
+  document.getElementById('upA').onclick=e=>pressA(e.target);
+  document.getElementById('dnA').onclick=e=>pressA(e.target);
+
+  // ----- Panel B: redesigned -----
+  const simB=makeSim(document.getElementById('shaftB'));
+  const etaB=document.getElementById('etaB'),posB=document.getElementById('posB'),dirB=document.getElementById('dirB'),qB=document.getElementById('qB');
+  function renderB(s){
+    const you=parseInt(document.getElementById('floorB').value);
+    posB.textContent=(s.moving?'Moving — now at floor ':'Idle at floor ')+s.floor;
+    dirB.textContent=s.queue.length? (s.queue[0]>s.floor?'▲ heading up':(s.queue[0]<s.floor?'▼ heading down':'· arriving')) : '';
+    const eta=s.queue.includes(you)? Math.abs(s.floor-you)*(STEP/1000):null;
+    etaB.textContent=eta!==null?('~'+Math.max(1,Math.round(eta))+'s'):'–';
+    qB.textContent='Queue: '+(s.queue.length?s.queue.map(f=>'fl '+f).join(' → '):'empty');
+    if(s.queue.length===0&&s.floor===you&&etaB.dataset.called){etaB.textContent='Here ✓';etaB.dataset.called='';}
+  }
+  document.getElementById('callB').onclick=()=>{
+    const you=parseInt(document.getElementById('floorB').value);
+    etaB.dataset.called='1';
+    simB.call(you,renderB);
+    renderB(simB);
+  };
+  renderB(simB);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rethinking the Boarding Pass — Madhumitha D V</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg-alt:#f8fafc;
+    --brand:#4f46e5;--accent:#f97316;--good:#047857;
+    --a:#047857;--a-bg:#ecfdf5;--a-br:#a7f3d0;
+    --b:#1d4ed8;--b-bg:#eff6ff;--b-br:#bfdbfe;
+    --c:#c2410c;--c-bg:#fff7ed;--c-br:#fed7aa;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+
+  /* one container owns all horizontal spacing */
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0;position:sticky;top:0;z-index:40}
+  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
+
+  .intro{padding:36px 0 4px}
+  .tagline{font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .intro h1{font-size:clamp(1.6rem,3.8vw,2.3rem);margin:6px 0 10px}
+  .intro p{color:var(--ink-soft);max-width:640px;font-size:1rem}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:20px}
+  .card h2{font-size:1.1rem;margin-bottom:2px}
+  .card .sub{font-size:.82rem;color:var(--muted);margin-bottom:15px}
+  .card p{font-size:.9rem;color:var(--ink-soft)}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .box{background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .box .k{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+  .box .v{font-size:.86rem;color:var(--ink-soft)}
+  .box .v b{color:var(--ink)}
+
+  ul.tight{list-style:none;font-size:.88rem;color:var(--ink-soft)}
+  ul.tight li{position:relative;padding-left:20px;margin-bottom:6px}
+  ul.tight li::before{content:"–";position:absolute;left:4px;color:var(--muted)}
+  ul.tight li b{color:var(--ink)}
+
+  /* STAKEHOLDERS */
+  .shrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .shrow span{font-size:.76rem;padding:4px 10px;border-radius:999px;background:var(--bg-alt);border:1px solid var(--line);color:var(--muted)}
+  .shrow span.pick{background:#eef2ff;border-color:#c7d2fe;color:var(--brand);font-weight:600}
+  .sh{border-left:3px solid var(--brand);padding:2px 0 2px 13px;margin-bottom:13px}
+  .sh h4{font-size:.92rem;margin-bottom:1px}
+  .sh .uc{font-size:.86rem;color:var(--ink-soft)}
+  .sh .uc b{color:var(--ink)}
+
+  /* TEAR */
+  .tear-stage{display:flex;justify-content:center;padding:4px 0}
+  .oldpass{display:flex;font-family:'IBM Plex Mono',monospace;filter:drop-shadow(0 8px 20px rgba(15,23,42,.13))}
+  .half{background:#fdf6e3;border:1px solid #e7d9b0;padding:13px 15px}
+  .half.keep{border-radius:10px 0 0 10px;width:196px}
+  .half.gone{border-radius:0 10px 10px 0;width:290px;border-left:2px dashed #c9b787;
+    transition:transform .7s cubic-bezier(.5,0,.2,1),opacity .7s}
+  .torn .half.gone{transform:translateX(44px) rotate(4deg);opacity:0}
+  .half .ln{font-size:.66rem;color:#5b5138;padding:1.5px 0;white-space:nowrap}
+  .half .big{font-family:'Sora',sans-serif;font-weight:800;font-size:1.05rem;color:#3b3524;margin-bottom:4px}
+  .half .cap{font-family:'Inter',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a08b52;margin-bottom:5px}
+  .tear-btn{display:block;margin:13px auto 2px;border:0;background:var(--ink);color:#fff;font:600 .84rem 'Inter',sans-serif;padding:9px 18px;border-radius:10px;cursor:pointer}
+  .tear-btn:hover{background:var(--brand)}
+  .tear-why{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;opacity:0;transition:opacity .5s .4s}
+  .torn .tear-why{opacity:1}
+  .tw{background:var(--bg-alt);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.78rem;color:var(--ink-soft)}
+  .tw b{display:block;color:var(--ink);font-size:.82rem;margin-bottom:1px}
+  .note{margin-top:14px;font-size:.88rem;color:var(--ink-soft);border-left:3px solid var(--accent);padding-left:13px}
+  .note b{color:var(--ink)}
+
+  /* SCRUBBER */
+  .ctlbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:14px}
+  .seg{display:inline-flex;background:var(--bg-alt);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+  .seg button{border:0;background:none;padding:7px 14px;font:600 .83rem 'Inter',sans-serif;cursor:pointer;color:var(--ink-soft)}
+  .seg button.on{background:var(--brand);color:#fff}
+  .ctlbar .lbl{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .scrub{display:flex;overflow-x:auto;padding:2px 0 10px}
+  .ph{flex:1;min-width:88px;border:0;background:none;cursor:pointer;padding:0;text-align:center;position:relative}
+  .ph .dot{width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--line);margin:0 auto 6px;position:relative;z-index:2;transition:.2s}
+  .ph::before{content:"";position:absolute;top:5px;left:0;right:50%;height:2.5px;background:var(--line)}
+  .ph::after{content:"";position:absolute;top:5px;left:50%;right:0;height:2.5px;background:var(--line)}
+  .ph:first-child::before,.ph:last-child::after{display:none}
+  .ph .nm{font-size:.7rem;font-weight:600;color:var(--muted);line-height:1.25;padding:0 3px;display:block}
+  .ph.on .dot{background:var(--brand);border-color:var(--brand);transform:scale(1.25)}
+  .ph.on .nm{color:var(--brand)}
+  .ph.done .dot{border-color:var(--brand);background:#c7d2fe}
+
+  .explore{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
+  .passwrap{background:var(--bg-alt);border:1px dashed var(--line);border-radius:14px;padding:16px;display:grid;place-items:center;position:relative}
+  .notyet{position:absolute;inset:16px;background:rgba(248,250,252,.95);border:1px dashed var(--line);border-radius:12px;display:none;place-items:center;text-align:center;padding:20px;z-index:5}
+  .notyet.show{display:grid}
+  .notyet div{font-size:.86rem;color:var(--ink-soft);max-width:270px}
+  .notyet b{display:block;color:var(--ink);font-family:'Sora',sans-serif;margin-bottom:5px}
+  .pass{width:100%;max-width:420px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .pass .bar{padding:8px 14px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .pass.old .bar{background:#f1f5f9;color:#475569}
+  .pass.new .bar{background:#ecfdf5;color:var(--good)}
+  .pbody{padding:14px}
+  .old .pbody{font-family:'IBM Plex Mono',monospace;font-size:.72rem}
+  .old .pbody [data-f]{padding:1.5px 0;color:#334155}
+  .np-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:9px}
+  .np-route{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;line-height:1.1}
+  .np-route small{font-family:'Inter';font-weight:500;color:var(--muted);font-size:.66rem;display:block;letter-spacing:0}
+  .np-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px 10px;margin-bottom:9px}
+  .cell{padding:5px 7px;border-radius:8px}
+  .cell .k{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .cell .v{font-weight:600;font-size:.84rem}
+  .cell.big .v{font-family:'Sora',sans-serif;font-size:1.14rem;font-weight:800}
+  .live::after{content:"LIVE";font-size:.46rem;font-weight:700;color:#fff;background:var(--accent);border-radius:3px;padding:1px 3px;margin-left:4px;vertical-align:middle}
+  .np-thru{background:var(--a-bg);border:1px solid var(--a-br);border-radius:8px;padding:6px 9px;margin-bottom:8px}
+  .np-thru .k{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--a)}
+  .np-thru .v{font-weight:700;font-size:.8rem;color:var(--a)}
+  .np-foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px dashed var(--line);padding-top:8px;gap:10px}
+  .np-note{font-size:.64rem;color:var(--muted);max-width:240px}
+  .qr{width:50px;height:50px;border-radius:6px;flex:none;background:
+    repeating-linear-gradient(0deg,#0f172a 0 3px,transparent 3px 6px),
+    repeating-linear-gradient(90deg,#0f172a 0 3px,#fff 3px 6px)}
+  [data-f]{transition:opacity .28s,background .28s,box-shadow .28s}
+  .dim [data-f]:not(.hit){opacity:.16}
+  .dim [data-f].hit{background:#eef2ff;box-shadow:0 0 0 2px #c7d2fe;border-radius:5px}
+  .actorbox{background:var(--bg-alt);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
+  .actorbox .who{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .actorbox h3{font-size:1rem;margin:2px 0 6px}
+  .actorbox p{font-size:.85rem;color:var(--ink-soft);margin-bottom:10px}
+  .needs{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .needchips{display:flex;flex-wrap:wrap;gap:5px}
+  .needchips span{font-size:.74rem;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+  .obs{font-size:.8rem;color:var(--ink-soft);margin-top:9px;min-height:17px}
+
+  /* SORTER */
+  .buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .bk{border-radius:14px;padding:14px;border:1px solid}
+  .bk.A{background:var(--a-bg);border-color:var(--a-br)}
+  .bk.B{background:var(--b-bg);border-color:var(--b-br)}
+  .bk.C{background:var(--c-bg);border-color:var(--c-br)}
+  .bk h4{font-size:.88rem;margin-bottom:2px}
+  .bk.A h4{color:var(--a)} .bk.B h4{color:var(--b)} .bk.C h4{color:var(--c)}
+  .bk .d{font-size:.72rem;color:var(--ink-soft);margin-bottom:10px;min-height:30px}
+  .fchip{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:.75rem;font-weight:600;margin:0 5px 5px 0;cursor:pointer;transition:.15s}
+  .fchip:hover{border-color:var(--brand);color:var(--brand)}
+  .fchip.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .whybox{background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:14px;font-size:.86rem;color:var(--ink-soft);min-height:56px}
+  .whybox b{color:var(--ink)}
+
+  table.arr{width:100%;border-collapse:collapse;font-size:.85rem}
+  table.arr th{text-align:left;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 10px 7px 0;font-weight:700}
+  table.arr td{padding:8px 10px 8px 0;border-top:1px solid var(--line);color:var(--ink-soft)}
+  table.arr td:first-child{color:var(--ink);font-weight:600}
+  .pill{font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .pill.A{background:var(--a-bg);color:var(--a);border:1px solid var(--a-br)}
+  .pill.B{background:var(--b-bg);color:var(--b);border:1px solid var(--b-br)}
+  .pill.no{background:#f1f5f9;color:#475569;border:1px solid var(--line)}
+  .pill.some{background:var(--c-bg);color:var(--c);border:1px solid var(--c-br)}
+
+  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .cluster h4{font:700 .7rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:11px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
+  .sticky{font-family:'Kalam',cursive;font-size:.88rem;line-height:1.4;color:#27272a;background:#fef08a;padding:10px 12px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:12px;transform:rotate(-1.2deg)}
+  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
+  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
+  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
+
+  .did h3{font-size:.98rem;margin-bottom:9px}
+  .did h3 span{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1px}
+  .did li{font-size:.87rem;color:var(--ink-soft);margin:0 0 8px 18px}
+  .did li b{color:var(--ink)}
+  .did ul{list-style:none}
+  .did ul li{position:relative;margin-left:22px}
+  .did ul li::before{content:"✓";position:absolute;left:-22px;color:var(--good);font-weight:700}
+
+  .ack{background:#fff;border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:0 14px 14px 0;padding:16px 20px;margin-bottom:20px}
+  .ack h3{font-size:.92rem;margin-bottom:4px}
+  .ack p{font-size:.88rem;color:var(--ink-soft)}
+  .nextup{font-size:.86rem;color:var(--muted);text-align:center;margin-bottom:18px}
+  .cta{text-align:center;font-size:.9rem;color:var(--ink-soft);padding-bottom:44px}
+  .cta a{color:var(--brand);font-weight:600}
+
+  @media(max-width:860px){
+    .explore,.grid2{grid-template-columns:1fr}
+    .grid3,.buckets,.wall-grid,.tear-why{grid-template-columns:1fr}
+    .oldpass{transform:scale(.8);transform-origin:center}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap"><a class="back" href="index.html#projects">← Back to portfolio</a></div>
+</header>
+
+<div class="wrap">
+  <section class="intro">
+    <div class="tagline">Product exploration</div>
+    <h1>Rethinking the boarding pass</h1>
+    <p>One document, several readers, and part of its information changes after it is printed. This is a teardown of what the pass carries, who reads it, and when.</p>
+  </section>
+
+  <!-- CONTEXT + ASSUMPTIONS -->
+  <div class="card">
+    <h2>Context and assumptions</h2>
+    <div class="sub">Scope fixed before any design work.</div>
+    <div class="grid2">
+      <div>
+        <p style="margin-bottom:10px"><b style="color:var(--ink)">The task:</b> deconstruct the boarding pass from the information out — classify every field by whether it was known when the pass was issued, then map which reader uses which field, and at what point in the journey.</p>
+        <p><b style="color:var(--ink)">The constraint:</b> the passenger carries one artifact from check-in to the exit. It has to work at every checkpoint along the way.</p>
+      </div>
+      <div>
+        <div class="box">
+          <div class="k">Assumptions</div>
+          <ul class="tight" style="margin-top:6px">
+            <li><b>Domestic travel within India</b>, single segment, no connection.</li>
+            <li>Example route: <b>BLR → DEL</b>, IndiGo 6E, 08:15 departure, 2h 45m.</li>
+            <li>Booking is confirmed and a <b>seat is assigned</b>; the pass is issued at check-in.</li>
+            <li>Before check-in the passenger holds <b>ticket details (PNR) and photo ID</b> — not a boarding pass.</li>
+            <li>One checked bag (<b>15 kg</b>) and one cabin bag (<b>7 kg</b>), per domestic allowance.</li>
+            <li>A <b>printed</b> pass, since the study is about one physical artifact.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAKEHOLDERS -->
+  <div class="card">
+    <h2>Stakeholders, and why three</h2>
+    <div class="sub">The journey map listed everyone who touches the trip. Three were taken forward.</div>
+    <div class="shrow">
+      <span class="pick">Passenger</span><span class="pick">Security officer</span><span class="pick">Gate agent</span>
+      <span>Terminal entry staff</span><span>Check-in / bag drop staff</span><span>Baggage handlers</span>
+      <span>Airline ops</span><span>Cabin crew</span><span>Lounge / retail</span><span>Marketing partners</span>
+    </div>
+    <p style="margin-bottom:14px"><b style="color:var(--ink)">Shortlisting rule:</b> keep the readers who make a decision about the passenger <b style="color:var(--ink)">using the pass itself</b>, at a defined moment. The others were set aside — airline ops and baggage handlers work from systems and bag tags rather than the pass; terminal entry checks the ticket and ID, since the pass may not exist yet; cabin crew, lounge and retail read it but nothing depends on the reading.</p>
+    <div class="sh">
+      <h4>Passenger</h4>
+      <div class="uc"><b>Use case:</b> orientation and wayfinding — where to go, by when, and where to sit. Reads the pass repeatedly across the journey.</div>
+    </div>
+    <div class="sh">
+      <h4>Security officer (pre-embarkation check)</h4>
+      <div class="uc"><b>Use case:</b> eligibility to enter the sterile area — confirming this person, today, is travelling on a real flight. One quick read, in a moving queue.</div>
+    </div>
+    <div class="sh">
+      <h4>Gate agent (pre-boarding)</h4>
+      <div class="uc"><b>Use case:</b> boarding authorisation and sequencing — whether this person boards this aircraft now, and in what order. A scan plus a glance.</div>
+    </div>
+  </div>
+
+  <!-- TEAR -->
+  <div class="card" id="tearCard">
+    <h2>The pass used to change during the journey</h2>
+    <div class="sub">Until about 2010 it came perforated. Tear it to see what the airline kept.</div>
+    <div class="tear-stage">
+      <div class="oldpass" id="oldpass">
+        <div class="half keep">
+          <div class="cap">Passenger stub</div>
+          <div class="big">SEAT 12A</div>
+          <div class="ln">MADHUMITHA / VENKATA</div>
+          <div class="ln">6E2134 · 24 SEP</div>
+          <div class="ln">BLR → DEL</div>
+        </div>
+        <div class="half gone">
+          <div class="cap">Airline gate coupon</div>
+          <div class="ln">MADHUMITHA / VENKATA &nbsp; SEQ 087</div>
+          <div class="ln">6E2134 &nbsp; 24 SEP &nbsp; BLR → DEL &nbsp; 12A</div>
+          <div class="ln">PNR KJ7P2Q &nbsp; ECONOMY &nbsp; GROUP C</div>
+          <div class="ln">BAG 15KG &nbsp; TERMINAL 1</div>
+          <div class="ln">— — — — — — — — — — — —</div>
+          <div class="ln">RETAINED BY CARRIER AT BOARDING</div>
+        </div>
+      </div>
+    </div>
+    <button class="tear-btn" id="tearBtn">✂️ Tear at the gate</button>
+    <div class="tear-why" id="tearWhy">
+      <div class="tw"><b>Headcount</b>Coupons counted against the system before door close.</div>
+      <div class="tw"><b>Bag matching</b>Evidence the passenger boarded, so the checked bag could stay on.</div>
+      <div class="tw"><b>Settlement</b>Proof of carriage, used to settle between carriers.</div>
+      <div class="tw"><b>Manifest</b>The coupons formed the flight's record.</div>
+    </div>
+    <div class="note">
+      Bar-coded passes became mandatory in 2010 (IATA Resolution 792), and a gate scan now records boarding directly.
+      The design point is what the tear did: the artifact changed at the moment the passenger's status changed, and what remained was a smaller field set for the phase after boarding.
+      In India the same idea existed as a security <b>stamp</b> — two of the three readers used to mark the pass. <b>Today the pass carries one fixed field set from issuance until it is discarded.</b>
+    </div>
+  </div>
+
+  <!-- EXPLORER -->
+  <div class="card">
+    <h2>Who reads what, and when</h2>
+    <div class="sub">Step through the journey. The pass dims to the fields that reader uses at that point.</div>
+    <div class="ctlbar">
+      <span class="lbl">Pass</span>
+      <div class="seg" id="passSeg">
+        <button data-pass="new" class="on">Rebuilt</button>
+        <button data-pass="old">Today's</button>
+      </div>
+    </div>
+    <div class="scrub" id="scrub"></div>
+    <div class="explore">
+      <div class="passwrap">
+        <div class="notyet" id="notyet"><div><b>No boarding pass yet</b>At terminal entry the passenger holds ticket details (PNR) and photo ID. The pass is issued at check-in, in the next step.</div></div>
+
+        <div class="pass new" id="passNew">
+          <div class="bar">Rebuilt — weighted by the next decision</div>
+          <div class="pbody">
+            <div class="np-top">
+              <div class="np-route" data-f="route">BLR → DEL<small>Bengaluru → Delhi · <span data-f="date" style="display:inline">24 SEP</span></small></div>
+              <div class="cell" data-f="name"><div class="k">Passenger</div><div class="v" style="font-size:.74rem">MADHUMITHA / VENKATA</div></div>
+            </div>
+            <div class="np-grid">
+              <div class="cell big" data-f="gate"><div class="k live">Gate</div><div class="v">22</div></div>
+              <div class="cell big" data-f="boarding"><div class="k live">Boarding</div><div class="v">07:40</div></div>
+              <div class="cell big" data-f="seat"><div class="k">Seat</div><div class="v">12A</div></div>
+              <div class="cell" data-f="gclose"><div class="k">Gate closes</div><div class="v">07:50</div></div>
+              <div class="cell" data-f="std"><div class="k live">Departs</div><div class="v">08:15</div></div>
+              <div class="cell" data-f="flight"><div class="k">Flight</div><div class="v">6E 2134</div></div>
+              <div class="cell" data-f="group"><div class="k">Group</div><div class="v">C</div></div>
+              <div class="cell" data-f="pnr"><div class="k">PNR</div><div class="v">KJ7P2Q</div></div>
+              <div class="cell" data-f="term"><div class="k">Terminal</div><div class="v">T1</div></div>
+            </div>
+            <div class="np-thru" data-f="tag"><div class="k">Baggage tag — needed at the exit check</div><div class="v">BLR 6E 128341 · 1 bag, 15 kg</div></div>
+            <div class="np-foot">
+              <div class="np-note" data-f="status">Fields that can change — gate, timings, belt number — are shown live behind the code.</div>
+              <div class="qr" data-f="code"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pass old" id="passOld" style="display:none">
+          <div class="bar">Today's pass</div>
+          <div class="pbody">
+            <div data-f="name">NAME: MADHUMITHA / VENKATA</div>
+            <div data-f="flight">FLIGHT: 6E2134 &nbsp; <span data-f="date" style="display:inline">DATE: 24 SEP</span></div>
+            <div data-f="route">FROM: BENGALURU BLR &nbsp; TO: DELHI DEL</div>
+            <div data-f="class">CLASS: ECONOMY &nbsp; <span data-f="seat" style="display:inline">SEAT: 12A</span></div>
+            <div data-f="gate">GATE: 22 &nbsp; <span data-f="boarding" style="display:inline">BOARDING: 07:40</span></div>
+            <div data-f="group">GROUP: C &nbsp; <span data-f="seq" style="display:inline">SEQ: 087</span></div>
+            <div data-f="pnr">PNR: KJ7P2Q &nbsp; <span data-f="term" style="display:inline">TERMINAL: 1</span></div>
+            <div data-f="bag">BAGGAGE: 15KG &nbsp; <span data-f="meal" style="display:inline">MEAL: PRE-BOOKED</span></div>
+            <div data-f="std">DEP: 08:15 &nbsp; <span data-f="gclose" style="display:inline">GATE CLOSES 25 MIN PRIOR</span></div>
+            <div data-f="ads">PARTNER OFFER: 20% OFF AT DUTY PLUS*</div>
+            <div data-f="code">|||| |||| ||| |||| || |||| ||| ||||</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="actorbox">
+          <div class="who" id="aWho">Reader</div>
+          <h3 id="aPhase">Phase</h3>
+          <p id="aNote"></p>
+          <div class="needs">Fields used here</div>
+          <div class="needchips" id="aChips"></div>
+        </div>
+        <div class="obs" id="obs"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SORTER -->
+  <div class="card">
+    <h2>Static and dynamic information</h2>
+    <div class="sub">One question sorts the pass: was this known when it was issued? Click a field for the reasoning.</div>
+    <div class="buckets">
+      <div class="bk A"><h4>A · Static</h4><div class="d">Known at issuance and unchanged afterwards.</div><div id="bkA"></div></div>
+      <div class="bk B"><h4>B · Dynamic</h4><div class="d">Not known at issuance. Set later, closer to the event.</div><div id="bkB"></div></div>
+      <div class="bk C"><h4>C · Static, then changes</h4><div class="d">Known at issuance and printed, but can change before departure.</div><div id="bkC"></div></div>
+    </div>
+    <div class="whybox" id="whybox"><b>Pick any field.</b> The third bucket is the reason for a three-way split — those fields print like static ones but behave like dynamic ones.</div>
+    <div class="note" style="margin-top:16px">
+      <b>What the sort shows.</b> The two fields the passenger reads most often — gate and boarding time — are also the two most likely to change after printing, and they carry the same visual weight as fields that never change.
+      Meanwhile some fields that are fixed at issuance and used after landing, such as the baggage tag reference, are attached as a separate sticker rather than designed into the pass.
+    </div>
+  </div>
+
+  <!-- AFTER LANDING -->
+  <div class="card">
+    <h2>After landing</h2>
+    <div class="sub">The passenger still holds the pass at the exit. Domestic arrivals in India include a baggage tag check against the bag.</div>
+    <table class="arr">
+      <tr><th>Needed after landing</th><th>Bucket</th><th>On today's pass</th></tr>
+      <tr><td>Baggage tag reference for the exit check</td><td><span class="pill A">A · static</span></td><td><span class="pill some">Stuck on as a separate sticker</span></td></tr>
+      <tr><td>Arrival terminal</td><td><span class="pill A">A / B</span></td><td><span class="pill some">Sometimes</span></td></tr>
+      <tr><td>Baggage belt number</td><td><span class="pill B">B · dynamic</span></td><td><span class="pill no">Not printed</span></td></tr>
+      <tr><td>Direction to exit or onward transport</td><td><span class="pill A">A · static</span></td><td><span class="pill no">Not printed</span></td></tr>
+    </table>
+    <div class="note" style="margin-top:14px">The baggage tag reference is known at check-in and is the one thing checked at the exit, yet it reaches the passenger as a sticker on the back of the pass rather than as part of it.</div>
+  </div>
+
+  <!-- WALL -->
+  <div class="card">
+    <h2>The working board</h2>
+    <div class="sub">How the analysis progressed.</div>
+    <div class="wall-grid">
+      <div class="cluster">
+        <h4>Reference points</h4>
+        <div class="sticky">Collected real passes — domestic, and connecting itineraries</div>
+        <div class="sticky s2">Listed every stakeholder in the journey, then shortlisted the three who read the pass to make a decision</div>
+      </div>
+      <div class="cluster">
+        <h4>Observations</h4>
+        <div class="sticky s4">Static and changeable info printed at the same weight</div>
+        <div class="sticky">PNR and gate set in the same size — no anchor for the eye</div>
+        <div class="sticky s3">Each reader uses a different subset; only name and flight are shared</div>
+      </div>
+      <div class="cluster">
+        <h4>Converging</h4>
+        <div class="sticky s2">Sorted every field: known at issuance vs not</div>
+        <div class="sticky s3">Type weight set by the next decision the reader makes</div>
+        <div class="sticky s4">Changeable fields moved behind a scannable live layer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card did">
+      <h3><span>Process</span>What I did</h3>
+      <ol>
+        <li><b>Mapped one route end to end</b> (BLR → DEL) and listed every point where the pass is read.</li>
+        <li><b>Listed all stakeholders, then shortlisted three</b> using a stated rule, and wrote the use case for each.</li>
+        <li><b>Classified every field three ways</b> — static, dynamic, and static-that-changes — against what was known at issuance.</li>
+        <li><b>Iterated layouts</b>, sizing each field by the decision the reader makes next, and moving changeable fields to a live layer.</li>
+      </ol>
+    </div>
+    <div class="card did">
+      <h3><span>Transferable</span>If one artifact serves several readers</h3>
+      <ul>
+        <li>List every reader, then write the <b>next decision</b> each one makes from it.</li>
+        <li>Separate what can change from what cannot, and give changeable fields a live channel.</li>
+        <li>Shortlist stakeholders with a <b>stated rule</b>, so the exclusions are defensible.</li>
+        <li>Ask what the artifact should say in the phase <b>after</b> the one it was designed for.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ack">
+    <h3>Acknowledgement</h3>
+    <p>This exercise started as a working session with a mentor, who followed it with an introduction to information hierarchy and UX fundamentals. That vocabulary is what turned a set of observations into a method — and it is the one I have used on every teardown since.</p>
+  </div>
+
+  <div class="nextup">International travel adds readers, documents and a connection — covered separately.</div>
+
+  <div class="cta">Work on something several audiences read differently? <a href="mailto:dvmadhumitha2021@outlook.com">Write to me</a> · <a href="index.html#projects">Other explorations</a></div>
+</div>
+
+<script>
+(function(){
+  const F={
+    flight:{k:'Flight',b:'A',why:'Assigned when the ticket is issued and unchanged for the journey.'},
+    name:{k:'Passenger name',b:'A',why:'Known at booking. The field security matches against photo ID.'},
+    date:{k:'Date',b:'A',why:'Known at issuance.'},
+    route:{k:'Origin → destination',b:'A',why:'Fixed at booking.'},
+    pnr:{k:'PNR',b:'A',why:'Created at booking; the reference that links every other record.'},
+    class:{k:'Class',b:'A',why:'Known at issuance; determines boarding priority.'},
+    group:{k:'Boarding group',b:'A',why:'Assigned at check-in. Used by the gate agent to sequence boarding.'},
+    seq:{k:'Sequence no.',b:'A',why:'Order of check-in, used by the gate for reconciliation. Not used by the passenger.'},
+    bag:{k:'Baggage allowance',b:'A',why:'Set by fare rules at issuance — 15 kg checked, 7 kg cabin on this domestic fare. Read once, at bag drop.'},
+    tag:{k:'Baggage tag ref.',b:'A',why:'Assigned at check-in and checked against the bag at the arrivals exit. Currently reaches the passenger as a sticker rather than as part of the pass.'},
+    meal:{k:'Meal',b:'A',why:'Known at issuance; pre-booked on this fare.'},
+    term:{k:'Departure terminal',b:'A',why:'Known at issuance. Changes are rare.'},
+    gclose:{k:'Gate closing time',b:'A',why:'A fixed rule — 25 minutes before departure on domestic flights. Known at issuance, and usually printed as small print rather than as a time.'},
+    code:{k:'Barcode',b:'A',why:'The scanned payload, which replaced the tear-off coupon in 2010.'},
+    ads:{k:'Partner offer',b:'A',why:'Known at issuance. The only field on the pass that none of the three readers uses.'},
+    gate:{k:'Gate',b:'B',why:'Often unassigned at check-in, particularly with early web check-in. Set closer to departure.'},
+    status:{k:'Flight status',b:'B',why:'Not known hours ahead. Suited to a live channel rather than print.'},
+    aterm:{k:'Arrival terminal',b:'B',why:'Often confirmed close to landing.'},
+    belt:{k:'Baggage belt',b:'B',why:'Assigned minutes before landing, and needed by every passenger with a checked bag.'},
+    std:{k:'Departure time',b:'C',why:'Printed as scheduled, then moved by any delay.'},
+    boarding:{k:'Boarding time',b:'C',why:'Printed at issuance, and shifts with the departure time it follows.'},
+    seat:{k:'Seat',b:'C',why:'Fixed at check-in, unless an aircraft change reassigns it afterwards.'}
+  };
+
+  const P={
+    entry:{nm:'Terminal entry',who:'Entry staff',note:'The passenger presents ticket details and photo ID. The boarding pass has not been issued yet.',f:[],none:1},
+    checkin:{nm:'Check-in / bag drop',who:'Airline staff',note:'The pass is issued here, the bag is tagged, and the tag reference is handed over.',f:['pnr','name','bag','tag']},
+    sec:{nm:'Security check',who:'Security officer',note:'Confirms this person, today, is travelling on a real flight. Seat, group and baggage fields are not used at this point.',f:['name','date','flight','route','code']},
+    wait:{nm:'Airside wait',who:'Passenger',note:'The longest phase, and where the pass is re-read most. Both fields checked here can change after printing.',f:['gate','boarding','std','gclose','status']},
+    gate:{nm:'Gate / pre-boarding',who:'Gate agent',note:'Decides whether this passenger boards now, and in what order. A scan plus a glance at the group.',f:['flight','group','seq','class','code','gate']},
+    board:{nm:'Boarding',who:'Passenger',note:'One field is in use.',f:['seat']},
+    flight:{nm:'In flight',who:'Passenger',note:'The pass has little left to do.',f:['seat','meal']},
+    arrive:{nm:'After landing',who:'Passenger',note:'The pass is still in hand at the belt and the exit check, where the baggage tag reference is verified against the bag.',f:['tag','aterm','belt']}
+  };
+  const SEQ=['entry','checkin','sec','wait','gate','board','flight','arrive'];
+
+  let passView='new', idx=0;
+  const scrub=document.getElementById('scrub'),
+        passNew=document.getElementById('passNew'), passOld=document.getElementById('passOld'),
+        notyet=document.getElementById('notyet');
+
+  function build(){
+    scrub.innerHTML='';
+    SEQ.forEach((id,i)=>{
+      const b=document.createElement('button');
+      b.className='ph'+(i===idx?' on':'')+(i<idx?' done':'');
+      b.innerHTML='<span class="dot"></span><span class="nm">'+P[id].nm+'</span>';
+      b.onclick=()=>{idx=i;render();};
+      scrub.appendChild(b);
+    });
+  }
+
+  function render(){
+    build();
+    const p=P[SEQ[idx]];
+    document.getElementById('aWho').textContent=p.who;
+    document.getElementById('aPhase').textContent=p.nm;
+    document.getElementById('aNote').textContent=p.note;
+    const chips=document.getElementById('aChips');
+    chips.innerHTML='';
+    p.f.forEach(f=>{ if(!F[f])return;
+      const s=document.createElement('span'); s.textContent=F[f].k; chips.appendChild(s); });
+    if(!p.f.length){const s=document.createElement('span');s.textContent='— none yet —';chips.appendChild(s);}
+
+    passNew.style.display=passView==='new'?'':'none';
+    passOld.style.display=passView==='old'?'':'none';
+    notyet.classList.toggle('show',!!p.none);
+
+    [passNew,passOld].forEach(pass=>{
+      pass.classList.add('dim');
+      pass.querySelectorAll('[data-f]').forEach(el=>{
+        el.classList.toggle('hit',p.f.indexOf(el.getAttribute('data-f'))!==-1);
+      });
+    });
+
+    const pass=passView==='new'?passNew:passOld;
+    const missing=p.f.filter(f=>!pass.querySelector('[data-f="'+f+'"]'));
+    const obs=document.getElementById('obs');
+    if(p.none){obs.textContent='';}
+    else if(missing.length){obs.textContent='Not on this pass: '+missing.map(f=>F[f]?F[f].k:f).join(', ')+'.';}
+    else if(passView==='old'&&p.f.length>2){obs.textContent='All fields present, each at the same visual weight.';}
+    else{obs.textContent='';}
+  }
+
+  document.getElementById('passSeg').onclick=e=>{
+    const b=e.target.closest('button'); if(!b)return;
+    document.querySelectorAll('#passSeg button').forEach(x=>x.classList.toggle('on',x===b));
+    passView=b.getAttribute('data-pass'); render();
+  };
+
+  const tb=document.getElementById('tearBtn'),card=document.getElementById('tearCard');
+  tb.onclick=()=>{ card.classList.toggle('torn');
+    tb.textContent=card.classList.contains('torn')?'↺ Put it back together':'✂️ Tear at the gate'; };
+
+  const whybox=document.getElementById('whybox');
+  const names={A:'Static — known at issuance',B:'Dynamic — not known at issuance',C:'Static, then changes'};
+  ['A','B','C'].forEach(bk=>{
+    const host=document.getElementById('bk'+bk);
+    Object.keys(F).forEach(k=>{
+      const f=F[k]; if(f.b!==bk)return;
+      const c=document.createElement('span');
+      c.className='fchip'; c.textContent=f.k;
+      c.onclick=()=>{
+        document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('sel'));
+        c.classList.add('sel');
+        whybox.innerHTML='<b>'+f.k+' · '+names[f.b]+'</b><br>'+f.why;
+      };
+      host.appendChild(c);
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

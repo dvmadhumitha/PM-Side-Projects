@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reimagining the ₹ Note — Demo · Madhumitha D V</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg-alt:#f8fafc;
+    --brand:#4f46e5;--accent:#f97316;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
+  .head-inner .miro{font-size:.85rem;color:var(--muted)}
+  .head-inner .miro a{color:var(--brand);font-weight:600}
+  .intro{padding:36px 0 8px}
+  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .intro h1{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:6px 0 10px}
+  .intro p{color:var(--ink-soft);max-width:640px}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:22px 0 14px}
+  .seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .seg button{border:0;background:none;padding:9px 16px;font:600 .85rem 'Inter',sans-serif;cursor:pointer;color:var(--ink-soft)}
+  .seg button.on{background:var(--brand);color:#fff}
+  .hintline{font-size:.8rem;color:var(--muted)}
+
+  .stage{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;padding-bottom:8px}
+  .note-holder{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow);display:grid;place-items:center}
+  svg.note{width:100%;max-width:520px;height:auto;display:block}
+  .hotspot{cursor:pointer}
+  .hotspot circle.ring{fill:#fff;stroke:var(--brand);stroke-width:2}
+  .hotspot text{font:700 11px 'Inter';fill:var(--brand)}
+  .hotspot.on circle.ring{fill:var(--brand)}
+  .hotspot.on text{fill:#fff}
+
+  .explain{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);min-height:200px}
+  .explain .cat{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:8px}
+  .cat.must{background:#ecfdf5;color:#047857}
+  .cat.good{background:#eef2ff;color:var(--brand)}
+  .cat.use{background:#fff7ed;color:#c2410c}
+  .explain h3{font-size:1.02rem;margin-bottom:6px}
+  .explain p{font-size:.88rem;color:var(--ink-soft)}
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .legend span{font-size:.7rem;padding:3px 9px;border-radius:999px}
+
+  .wall{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:22px auto 8px;box-shadow:var(--shadow)}
+  .wall h2{font-size:1.15rem;margin-bottom:2px}
+  .wall .wsub{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cluster h4{font:700 .72rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
+  .sticky{font-family:'Kalam',cursive;font-size:.92rem;line-height:1.4;color:#27272a;background:#fef08a;padding:12px 14px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:14px;transform:rotate(-1.2deg)}
+  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
+  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
+  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
+  .sticky.s5{background:#fed7aa;transform:rotate(-2deg)}
+  @media(max-width:760px){.wall-grid{grid-template-columns:1fr}}
+  .lesson{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:22px 0 22px;box-shadow:var(--shadow)}
+  .lesson h3{font-size:1rem;margin-bottom:6px}
+  .lesson p{font-size:.9rem;color:var(--ink-soft)}
+  .lesson b{color:var(--ink)}
+  .didgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+  .did{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+  .did h3{font-size:1rem;margin-bottom:10px}
+  .did h3 span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+  .did li{font-size:.88rem;color:var(--ink-soft);margin:0 0 9px 18px}
+  .did li b{color:var(--ink)}
+  .did ul{list-style:none}
+  .did ul li{position:relative;margin-left:22px}
+  .did ul li::before{content:"✓";position:absolute;left:-22px;color:#047857;font-weight:700}
+  .cta{text-align:center;font-size:.92rem;color:var(--ink-soft);margin:0 0 44px}
+  .cta a{color:var(--brand);font-weight:600}
+  @media(max-width:760px){.didgrid{grid-template-columns:1fr}}
+  @media(max-width:820px){.stage{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-inner">
+    <a class="back" href="index.html#projects">← Back to portfolio</a>
+    <span class="miro">Full exploration: <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612156829952" target="_blank" rel="noopener">Miro board ↗</a></span>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="tagline">Interactive demo</div>
+  <h1>Reimagining the ₹ note</h1>
+  <p>A currency note is a product for literally everyone — sighted or not, any language, human or machine. This concept draft applies the redesign principles from the full exploration. Switch denominations, then tap the numbered dots to see the reasoning behind each element.</p>
+</section>
+
+<div class="wrap wall">
+  <h2>The exploration wall</h2>
+  <div class="wsub">Distilled from the working Miro board — reference points → what we observed → how we converged.</div>
+  <div class="wall-grid">
+    <div class="cluster">
+      <h4>Reference points</h4>
+      <div class="sticky">Teardowns of 5 currencies: Euro, USD, UAE Dirham, Swiss Franc, Norwegian Krone</div>
+      <div class="sticky s2">ISO / IMF / IBNS standards — what a note <b>must</b> carry vs what's tradition</div>
+      <div class="sticky s3">Paper money since 618 AD China — which elements survived a millennium, and why</div>
+    </div>
+    <div class="cluster">
+      <h4>What we observed</h4>
+      <div class="sticky s4">Everything on today's note shouts at once — no information hierarchy</div>
+      <div class="sticky s5">Accessibility is bolted on: tactile marks wear off, colours fail colour-blind users</div>
+      <div class="sticky">One tiny canvas vs bilingual mandate + regional scripts + security features</div>
+      <div class="sticky s2">Real life eats notes: wallet folds, ATM rollers, counting machines, monsoons</div>
+    </div>
+    <div class="cluster">
+      <h4>Converging</h4>
+      <div class="sticky s3">Every element sorted: must-have / good-to-have / use-case-based</div>
+      <div class="sticky">Two structural approaches drafted; vertical orientation flagged as the emerging trend</div>
+      <div class="sticky s5">Colour per denomination (₹20 amber, ₹100 green), checked against colour-blindness</div>
+      <div class="sticky s4">7 typefaces tested — display faces for numerals, workhorses for scripts</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="toolbar">
+    <div class="seg" id="denomSeg">
+      <button data-d="10" class="on">₹10</button>
+      <button data-d="20">₹20</button>
+      <button data-d="100">₹100</button>
+    </div>
+    <span class="hintline">← colour-coded per denomination · tap the dots on the note</span>
+  </div>
+
+  <div class="stage">
+    <div class="note-holder">
+      <svg class="note" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" id="noteSvg">
+        <defs>
+          <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect id="noteBg" x="4" y="4" width="512" height="232" rx="14" fill="#8b5cf6"/>
+        <rect x="4" y="4" width="512" height="232" rx="14" fill="url(#sheen)"/>
+        <!-- security thread -->
+        <rect id="thread" x="150" y="4" width="8" height="232" fill="#0f172a" opacity=".55"/>
+        <!-- bilingual issuer -->
+        <text x="260" y="34" text-anchor="middle" font-family="Inter" font-weight="700" font-size="13" fill="#fff">भारतीय रिज़र्व बैंक · RESERVE BANK OF INDIA</text>
+        <!-- big numeral -->
+        <text id="bigNum" x="452" y="150" text-anchor="middle" font-family="Sora" font-weight="800" font-size="72" fill="#fff">10</text>
+        <!-- denomination words bilingual -->
+        <text id="wordsHi" x="40" y="120" font-family="Inter" font-weight="600" font-size="17" fill="#fff">दस रुपये</text>
+        <text id="wordsEn" x="40" y="142" font-family="Inter" font-weight="500" font-size="13" fill="#fff" opacity=".9">TEN RUPEES</text>
+        <!-- tactile mark -->
+        <g id="tactile" opacity=".95">
+          <circle cx="36" cy="204" r="7" fill="#fff"/>
+          <circle cx="56" cy="204" r="7" fill="#fff" opacity=".55"/>
+          <circle cx="76" cy="204" r="7" fill="#fff" opacity=".25"/>
+        </g>
+        <!-- serial -->
+        <text x="360" y="222" font-family="Inter" font-weight="600" font-size="11" fill="#fff" opacity=".9">4 MD 727272</text>
+        <!-- signature -->
+        <text x="260" y="70" text-anchor="middle" font-family="Inter" font-style="italic" font-size="10" fill="#fff" opacity=".85">Governor — गवर्नर</text>
+
+        <!-- hotspots -->
+        <g class="hotspot" data-h="0" transform="translate(452,96)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">1</text></g>
+        <g class="hotspot" data-h="1" transform="translate(120,131)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">2</text></g>
+        <g class="hotspot" data-h="2" transform="translate(56,180)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">3</text></g>
+        <g class="hotspot" data-h="3" transform="translate(154,28)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">4</text></g>
+        <g class="hotspot" data-h="4" transform="translate(414,216)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">5</text></g>
+      </svg>
+    </div>
+
+    <div class="explain" id="explain">
+      <span class="cat must" id="exCat">Must-have</span>
+      <h3 id="exTitle">Tap a numbered dot</h3>
+      <p id="exBody">Each element on the note earned its place through a must-have / good-to-have / use-case-based sort, benchmarked against the Euro, USD, Swiss Franc, Dirham and Krone.</p>
+      <div class="legend">
+        <span class="cat must">Must-have</span>
+        <span class="cat good">Good-to-have</span>
+        <span class="cat use">Use-case based</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap lesson">
+  <h3>What this demonstrates</h3>
+  <p><b>Designing under hard constraints.</b> Security, accessibility, bilingual mandate, machine-readability and cultural neutrality all compete for the same few square centimetres. The full exploration benchmarks five currencies against ISO/IMF/IBNS standards, tests seven typefaces, and iterates ₹10/₹20/₹100 drafts across two structural approaches — including vertical orientation, the emerging global trend.</p>
+</div>
+
+<div class="wrap didgrid">
+  <div class="did">
+    <h3><span>Behind the scenes</span>What I actually did</h3>
+    <ol>
+      <li><b>Benchmarked before designing</b>: tore down the Euro, USD, Swiss Franc, Dirham and Krone front-and-back — what every element does and for whom — against ISO/IMF/IBNS standards.</li>
+      <li><b>Built the information inventory</b>: every element on a note force-ranked into must-have / good-to-have / use-case-based, split by front and back.</li>
+      <li><b>Iterated ₹10/₹20/₹100 drafts</b> across two structural approaches — horizontal and vertical — testing seven typefaces and per-denomination colour coding.</li>
+      <li><b>Stress-tested against real life</b>: colour-blind palettes, tactile-mark wear, wallet folds, ATM rollers, counting machines — and kept demonetisation as the designed-for edge case.</li>
+    </ol>
+  </div>
+  <div class="did">
+    <h3><span>Take this with you</span>If your artifact is overcrowded</h3>
+    <ul>
+      <li>Inventory every element on the screen/document, then force-rank: must-have / good-to-have / use-case. Cut or layer everything below the line.</li>
+      <li>Benchmark 4–5 comparable products <b>element by element</b>, not vibe by vibe — you'll find what's convention vs what's necessary.</li>
+      <li>Design for the least-served user first (here: visually-impaired). Accessibility decisions raise the floor for everyone.</li>
+      <li>List the machines that read your artifact too — parsers, scanners, printers are users with zero patience.</li>
+    </ul>
+  </div>
+</div>
+<div class="wrap cta">Redesigning something everyone takes for granted? Compare notes with me — <a href="mailto:dvmadhumitha2021@outlook.com">write to me</a> or <a href="index.html#projects">see the other explorations</a>.</div>
+
+<script>
+(function(){
+  const denoms={
+    '10':{bg:'#8b5cf6',hi:'दस रुपये',en:'TEN RUPEES'},
+    '20':{bg:'#d97706',hi:'बीस रुपये',en:'TWENTY RUPEES'},
+    '100':{bg:'#047857',hi:'सौ रुपये',en:'ONE HUNDRED RUPEES'}
+  };
+  const seg=document.getElementById('denomSeg');
+  seg.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+    const d=b.getAttribute('data-d'),cfg=denoms[d];
+    document.getElementById('noteBg').setAttribute('fill',cfg.bg);
+    document.getElementById('bigNum').textContent=d;
+    document.getElementById('wordsHi').textContent=cfg.hi;
+    document.getElementById('wordsEn').textContent=cfg.en;
+  });
+
+  const hs=[
+    {cat:'must',cls:'must',t:'High-contrast denomination numeral',b:'The single most-read element — sized and contrasted first, verified against colour-blindness palettes. Distinct colour per denomination (₹20 amber, ₹100 green) so value reads before words do.'},
+    {cat:'must',cls:'must',t:'Bilingual denomination',b:'Hindi and English both carry the value, per the constitutional mandate — with a fixed type hierarchy so neither script crowds the other. Typeface shortlist tested: EB Garamond, PT Sans Narrow, Open Sans and four display faces.'},
+    {cat:'must',cls:'must',t:'Tactile identification mark',b:'Raised marks in a denomination-specific pattern let visually-impaired users identify value by touch — one of the accessibility requirements that anchored the whole redesign.'},
+    {cat:'must',cls:'must',t:'Security thread',b:'Anti-counterfeiting is non-negotiable: windowed thread plus latent features, positioned where wallet folds won\'t wear it. Polymer substrate considered for durability.'},
+    {cat:'use',cls:'use',t:'Serial number placement',b:'Standardised position across all denominations so counting machines and ATMs read every note the same way — a machine-user requirement most redesigns forget.'}
+  ];
+  const cat=document.getElementById('exCat'),ti=document.getElementById('exTitle'),bo=document.getElementById('exBody');
+  const names={must:'Must-have',good:'Good-to-have',use:'Use-case based'};
+  document.querySelectorAll('.hotspot').forEach(h=>{
+    h.addEventListener('click',()=>{
+      document.querySelectorAll('.hotspot').forEach(x=>x.classList.toggle('on',x===h));
+      const d=hs[parseInt(h.getAttribute('data-h'))];
+      cat.className='cat '+d.cls;cat.textContent=names[d.cat];
+      ti.textContent=d.t;bo.textContent=d.b;
+    });
+  });
+})();
+</script>
+</body>
+</html>

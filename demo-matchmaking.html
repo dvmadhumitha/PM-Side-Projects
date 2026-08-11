@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ride-Hailing Matchmaking — Demo · Madhumitha D V</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg-alt:#f8fafc;
+    --brand:#4f46e5;--accent:#f97316;--good:#047857;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
+  .head-inner .miro{font-size:.85rem;color:var(--muted)}
+  .head-inner .miro a{color:var(--brand);font-weight:600}
+  .intro{padding:36px 0 8px}
+  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .intro h1{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:6px 0 10px}
+  .intro p{color:var(--ink-soft);max-width:640px}
+
+  .stage{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:start;padding:22px 0 8px}
+  .mapbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+  canvas{width:100%;border-radius:12px;background:#f1f5f9;display:block}
+  .side{display:flex;flex-direction:column;gap:16px}
+  .ctrl,.metrics{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+  .ctrl h3,.metrics h3{font-size:.95rem;margin-bottom:10px}
+  .ctrl label{display:block;font-size:.8rem;font-weight:600;color:var(--ink-soft);margin:10px 0 2px}
+  .ctrl label span{color:var(--brand);font-weight:700}
+  .ctrl input[type=range]{width:100%;accent-color:var(--brand)}
+  .mrow{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .mrow:last-child{border-bottom:0}
+  .mrow .k{font-size:.8rem;color:var(--ink-soft)}
+  .mrow .v{font-family:'Sora';font-weight:700;font-size:1.05rem}
+  .v.warn{color:#c2410c}.v.ok{color:var(--good)}
+  .insight{font-size:.8rem;color:var(--ink-soft);background:var(--bg-alt);border:1px dashed var(--line);border-radius:10px;padding:9px 11px;margin-top:10px;min-height:56px}
+  .insight b{color:var(--ink)}
+
+  .wall{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:22px auto 8px;box-shadow:var(--shadow)}
+  .wall h2{font-size:1.15rem;margin-bottom:2px}
+  .wall .wsub{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cluster h4{font:700 .72rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
+  .sticky{font-family:'Kalam',cursive;font-size:.92rem;line-height:1.4;color:#27272a;background:#fef08a;padding:12px 14px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:14px;transform:rotate(-1.2deg)}
+  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
+  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
+  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
+  .sticky.s5{background:#fed7aa;transform:rotate(-2deg)}
+  @media(max-width:760px){.wall-grid{grid-template-columns:1fr}}
+  .lesson{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:22px 0 22px;box-shadow:var(--shadow)}
+  .lesson h3{font-size:1rem;margin-bottom:6px}
+  .lesson p{font-size:.9rem;color:var(--ink-soft)}
+  .lesson b{color:var(--ink)}
+  .didgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+  .did{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+  .did h3{font-size:1rem;margin-bottom:10px}
+  .did h3 span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+  .did li{font-size:.88rem;color:var(--ink-soft);margin:0 0 9px 18px}
+  .did li b{color:var(--ink)}
+  .did ul{list-style:none}
+  .did ul li{position:relative;margin-left:22px}
+  .did ul li::before{content:"✓";position:absolute;left:-22px;color:#047857;font-weight:700}
+  .cta{text-align:center;font-size:.92rem;color:var(--ink-soft);margin:0 0 44px}
+  .cta a{color:var(--brand);font-weight:600}
+  @media(max-width:760px){.didgrid{grid-template-columns:1fr}}
+  @media(max-width:820px){.stage{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-inner">
+    <a class="back" href="index.html#projects">← Back to portfolio</a>
+    <span class="miro">Full exploration: <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612155898722" target="_blank" rel="noopener">Miro board ↗</a></span>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="tagline">Interactive demo</div>
+  <h1>Ride-hailing matchmaking, live</h1>
+  <p>Matching a rider to a cab is a three-way trade-off: rider wait time vs driver earnings vs platform efficiency. This toy city runs the marketplace in real time — move the levers and watch who wins and who pays for it.</p>
+</section>
+
+<div class="wrap wall">
+  <h2>The exploration wall</h2>
+  <div class="wsub">Distilled from the working Miro board (Zola Cabs case study) — reference points → what we observed → how we converged.</div>
+  <div class="wall-grid">
+    <div class="cluster">
+      <h4>Reference points</h4>
+      <div class="sticky">Zola Cabs case: matchmaking dynamics in Indian cab markets</div>
+      <div class="sticky s2">How Ola/Uber-style matching actually behaves at peak vs off-peak</div>
+      <div class="sticky s3">What each side optimises: riders (wait), drivers (earnings/kms), platform (fill rate)</div>
+    </div>
+    <div class="cluster">
+      <h4>What we observed</h4>
+      <div class="sticky s4">Rider wait, driver earnings, platform efficiency — you can't max all three</div>
+      <div class="sticky">Tight matching radius: snappy for some riders, invisible for the rest</div>
+      <div class="sticky s5">Idle drivers don't complain — they quietly leave the platform</div>
+      <div class="sticky s2">Cancellations cluster where pickup distance stretches</div>
+    </div>
+    <div class="cluster">
+      <h4>Converging</h4>
+      <div class="sticky s3">Modelled the levers explicitly: supply, demand rate, matching radius</div>
+      <div class="sticky s5">Located where surge actually helps vs where it just taxes riders</div>
+      <div class="sticky">Packaged the reasoning as a full case-study deck — and this simulator</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap stage">
+  <div class="mapbox">
+    <canvas id="city" width="560" height="420"></canvas>
+  </div>
+  <div class="side">
+    <div class="ctrl">
+      <h3>The levers</h3>
+      <label>Drivers on the road · <span id="vSupply">12</span></label>
+      <input type="range" id="supply" min="3" max="30" value="12">
+      <label>Ride requests / min · <span id="vDemand">10</span></label>
+      <input type="range" id="demand" min="2" max="30" value="10">
+      <label>Matching radius · <span id="vRadius">medium</span></label>
+      <input type="range" id="radius" min="60" max="260" value="140">
+    </div>
+    <div class="metrics">
+      <h3>Who feels it</h3>
+      <div class="mrow"><span class="k">Avg rider wait</span><span class="v" id="mWait">–</span></div>
+      <div class="mrow"><span class="k">Driver utilisation</span><span class="v" id="mUtil">–</span></div>
+      <div class="mrow"><span class="k">Riders lost (gave up)</span><span class="v" id="mLost">–</span></div>
+      <div class="insight" id="insight"><b>Try it:</b> drop drivers to 5 and push demand up — watch waits explode and riders churn. Then widen the radius and see utilisation rise while pickup distances (empty kms) stretch.</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap lesson">
+  <h3>What this demonstrates</h3>
+  <p><b>Marketplace intuition, made visible.</b> There is no setting where everyone wins — every lever reallocates pain between riders, drivers and the platform. The full case study (Zola Cabs) works through these matchmaking dynamics for Indian cab markets: supply incentives, demand shaping, and where surge actually belongs.</p>
+</div>
+
+<div class="wrap didgrid">
+  <div class="did">
+    <h3><span>Behind the scenes</span>What I actually did</h3>
+    <ol>
+      <li><b>Framed the marketplace as levers, not features</b>: supply on the road, demand rate, matching radius — and wrote down what each side actually optimises for.</li>
+      <li><b>Worked the scenarios</b>: peak vs off-peak, under- vs over-supply, tight vs wide radius — tracing who wins and who quietly pays in each.</li>
+      <li><b>Located surge properly</b>: as the pressure valve for under-supply, not a revenue dial — and noted where it just taxes riders without adding cabs.</li>
+      <li><b>Packaged the reasoning twice</b>: a structured case-study deck (Zola Cabs), and this simulator so the trade-offs are something you can feel, not just read.</li>
+    </ol>
+  </div>
+  <div class="did">
+    <h3><span>Take this with you</span>If you run any matching system</h3>
+    <ul>
+      <li>Write the three-way trade-off explicitly — user wait vs supplier earnings vs platform efficiency. If you can't name all three, one is silently losing.</li>
+      <li>Decide which metric you'll <b>consciously</b> sacrifice at peak. Unconscious sacrifice is how supply churns.</li>
+      <li>Watch the users who never match — they don't appear in your averages, they just leave.</li>
+      <li>Simulate before you promise: even a toy model like this one exposes who pays for a policy change.</li>
+    </ul>
+  </div>
+</div>
+<div class="wrap cta">Balancing a two-sided market of your own? Let's talk levers — <a href="mailto:dvmadhumitha2021@outlook.com">write to me</a> or <a href="index.html#projects">see the other explorations</a>.</div>
+
+<script>
+(function(){
+  const cv=document.getElementById('city'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height;
+  let drivers=[],riders=[],lost=0,served=0,waitSum=0,waitN=0,busyTicks=0,totalTicks=0;
+  const P={supply:12,demand:10,radius:140};
+
+  function spawnDriver(){return{x:Math.random()*W,y:Math.random()*H,busy:null,tx:0,ty:0};}
+  function syncSupply(){
+    while(drivers.length<P.supply)drivers.push(spawnDriver());
+    if(drivers.length>P.supply)drivers=drivers.filter(d=>!d.busy).slice(0,Math.max(0,P.supply-drivers.filter(d=>d.busy).length)).concat(drivers.filter(d=>d.busy));
+  }
+  syncSupply();
+
+  const ids=['supply','demand','radius'];
+  ids.forEach(id=>{
+    document.getElementById(id).addEventListener('input',e=>{
+      P[id]=parseInt(e.target.value);
+      document.getElementById('vSupply').textContent=P.supply;
+      document.getElementById('vDemand').textContent=P.demand;
+      document.getElementById('vRadius').textContent=P.radius<110?'tight':(P.radius<190?'medium':'wide');
+      if(id==='supply')syncSupply();
+      updateInsight();
+    });
+  });
+
+  function updateInsight(){
+    const el=document.getElementById('insight');
+    const ratio=P.demand/P.supply;
+    if(ratio>1.4)el.innerHTML='<b>Under-supplied.</b> Demand outruns drivers — waits climb, riders churn. In the real market this is where surge pricing (or driver incentives) has to step in.';
+    else if(ratio<0.5)el.innerHTML='<b>Over-supplied.</b> Riders are happy, but drivers idle — utilisation and earnings sink, and supply quietly leaves the platform. Balance cuts both ways.';
+    else if(P.radius>=190)el.innerHTML='<b>Wide radius.</b> Almost every rider matches, utilisation rises — but pickups are far: empty kilometres the driver isn\'t paid for, and longer effective waits.';
+    else if(P.radius<110)el.innerHTML='<b>Tight radius.</b> Snappy nearby pickups, but riders outside the circle never match. Efficiency for some, invisibility for others.';
+    else el.innerHTML='<b>Balanced-ish.</b> No setting makes everyone win — each lever just chooses who pays: the rider (wait), the driver (empty kms), or the platform (subsidy).';
+  }
+
+  function tick(){
+    totalTicks++;
+    // spawn riders
+    if(Math.random()<P.demand/60)riders.push({x:Math.random()*W,y:Math.random()*H,wait:0,matched:null});
+    // age riders, give up after 300 ticks
+    riders.forEach(r=>{if(!r.matched)r.wait++;});
+    riders=riders.filter(r=>{
+      if(!r.matched&&r.wait>300){lost++;return false;}
+      return true;
+    });
+    // match
+    riders.filter(r=>!r.matched).forEach(r=>{
+      let best=null,bd=1e9;
+      drivers.filter(d=>!d.busy).forEach(d=>{
+        const dist=Math.hypot(d.x-r.x,d.y-r.y);
+        if(dist<bd){bd=dist;best=d;}
+      });
+      if(best&&bd<=P.radius){best.busy=r;r.matched=best;}
+    });
+    // move busy drivers toward rider; on arrival, complete
+    drivers.forEach(d=>{
+      if(d.busy){
+        const r=d.busy,sp=3.2;
+        const dx=r.x-d.x,dy=r.y-d.y,dist=Math.hypot(dx,dy);
+        busyTicks++;
+        if(dist<6){
+          waitSum+=r.wait;waitN++;served++;
+          riders=riders.filter(x=>x!==r);
+          d.busy=null;
+          d.x=Math.random()*W;d.y=Math.random()*H; // dropped off elsewhere
+        }else{d.x+=dx/dist*sp;d.y+=dy/dist*sp;}
+      }
+    });
+    draw();
+    if(totalTicks%30===0)metrics();
+    requestAnimationFrame(tick);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // grid streets
+    ctx.strokeStyle='#e2e8f0';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=56){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=56){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    // riders
+    riders.forEach(r=>{
+      ctx.beginPath();ctx.arc(r.x,r.y,5,0,7);
+      ctx.fillStyle=r.matched?'#a5b4fc':(r.wait>200?'#dc2626':'#f97316');
+      ctx.fill();
+      if(!r.matched){ctx.beginPath();ctx.arc(r.x,r.y,P.radius,0,7);ctx.strokeStyle='rgba(249,115,22,.08)';ctx.stroke();}
+    });
+    // drivers
+    drivers.forEach(d=>{
+      ctx.fillStyle=d.busy?'#4f46e5':'#047857';
+      ctx.fillRect(d.x-5,d.y-4,10,8);
+    });
+  }
+
+  function metrics(){
+    const wait=waitN?Math.round((waitSum/waitN)/30*10)/10:0; // ~ticks→sec
+    const util=totalTicks?Math.round(busyTicks/(totalTicks*Math.max(1,drivers.length))*100):0;
+    const lostPct=(served+lost)?Math.round(lost/(served+lost)*100):0;
+    const mW=document.getElementById('mWait'),mU=document.getElementById('mUtil'),mL=document.getElementById('mLost');
+    mW.textContent=wait+'s';mW.className='v '+(wait>6?'warn':'ok');
+    mU.textContent=util+'%';mU.className='v '+(util<25?'warn':'ok');
+    mL.textContent=lostPct+'%';mL.className='v '+(lostPct>15?'warn':'ok');
+  }
+
+  updateInsight();
+  tick();
+})();
+</script>
+</body>
+</html>

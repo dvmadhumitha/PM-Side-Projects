@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>City Planning Breakdown — Case study · Madhumitha D V</title>
+<meta name="description" content="Planning a city for 180,000 people, five times over — and what it taught me about grouping components on a screen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#ffffff;--bg-alt:#f8fafc;
+    --brand:#4f46e5;--brand-2:#7c3aed;--accent:#f97316;--accent-soft:#fff7ed;--chip:#eef2ff;
+    --good:#047857;--good-bg:#ecfdf5;--bad:#be123c;--bad-bg:#fff1f2;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.18}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0;position:sticky;top:0;z-index:40}
+  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
+  .head-inner .demo-link{font-size:.85rem;color:var(--muted)}
+  .head-inner .demo-link a{color:var(--brand);font-weight:600}
+
+  .intro{padding:44px 0 10px}
+  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .intro h1{font-size:clamp(1.8rem,4.2vw,2.8rem);margin:8px 0 14px;max-width:19ch}
+  .intro .lede{color:var(--ink-soft);max-width:660px;font-size:1.06rem}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .tag{border:1px solid var(--line);background:#fff;color:var(--ink-soft);font-size:.76rem;font-weight:500;padding:5px 11px;border-radius:999px}
+
+  section.blk{padding:46px 0 0}
+  .kicker{font-weight:700;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  section.blk > .wrap > h2{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:8px}
+  .sub{color:var(--ink-soft);max-width:640px;margin-bottom:22px}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .stat{padding:16px 16px 18px}
+  .stat b{display:block;font-family:'Sora';font-size:1.55rem;font-weight:700;letter-spacing:-.02em}
+  .stat i{display:block;font-style:normal;font-size:.82rem;font-weight:600;margin:2px 0 4px}
+  .stat>span{font-size:.78rem;color:var(--muted);line-height:1.45;display:block}
+  .stat b span{display:inline}
+
+  .flows{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:center;padding:20px;margin-top:14px}
+  .flows p{font-size:.94rem;color:var(--ink-soft);margin-bottom:9px}
+  .flows p:last-child{margin-bottom:0}
+
+  .targets{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
+  .targ{padding:14px 15px 16px;border-left:3px solid var(--brand)}
+  .targ b{display:block;font-family:'Sora';font-size:1.15rem;font-weight:700;color:var(--brand)}
+  .targ span{font-size:.78rem;color:var(--ink-soft);line-height:1.45;display:block;margin-top:3px}
+  .targ.warn{border-left-color:var(--accent)} .targ.warn b{color:var(--accent)}
+
+  /* ledger */
+  .ledger{display:flex;flex-direction:column;gap:0}
+  .lrow{display:grid;grid-template-columns:210px 1fr;gap:22px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+  .lrow:last-child{border-bottom:0}
+  .lrow svg{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
+  .lrow.adopted svg{border:2px solid var(--brand)}
+  .lhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .lnum{font-family:'Sora';font-size:.8rem;font-weight:700;color:var(--muted)}
+  .lhead h3{font-size:1.06rem}
+  .pill{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px}
+  .pill.no{background:var(--bad-bg);color:var(--bad)} .pill.yes{background:var(--chip);color:var(--brand)}
+  .lrow p{font-size:.92rem;color:var(--ink-soft);margin-top:5px}
+  .lrow p b{color:var(--ink)}
+
+  /* plan */
+  .plan{padding:0;overflow:hidden}
+  .plan svg{display:block;width:100%;height:auto}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;padding:13px 18px;border-top:1px solid var(--line);background:#fff}
+  .legend div{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--ink-soft);font-weight:500}
+  .legend svg{width:auto;height:16px}
+
+  /* programme */
+  .progwrap{display:grid;grid-template-columns:1fr;gap:16px}
+  .scatter{padding:18px 18px 12px}
+  .scatter svg{display:block;width:100%;height:auto}
+  .skey{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:11px;margin-top:8px}
+  .skey div{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--ink-soft);font-weight:500}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .rule{padding:16px 17px 18px}
+  .rule .rh{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+  .rule .rh span{width:9px;height:9px;border-radius:3px}
+  .rule h4{font-size:1rem}
+  .rule .where{font-size:.82rem;color:var(--muted);margin-bottom:9px}
+  .rule .list{font-size:.84rem;color:var(--ink-soft);line-height:1.65}
+  .rule .mirror{font-size:.87rem;color:var(--ink-soft);border-top:1px solid var(--line);margin-top:11px;padding-top:10px}
+  .rule .mirror b{color:var(--ink)}
+
+  /* mirror pairs */
+  .pair{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;gap:0;border-bottom:1px solid var(--line);padding:20px 0}
+  .pair:last-child{border-bottom:0}
+  .pair h4{font-size:1rem;margin-bottom:5px}
+  .pair p{font-size:.9rem;color:var(--ink-soft)}
+  .pair .mid{display:grid;place-items:center;color:#cbd5e1;font-size:1.1rem}
+  .pair .l{padding-right:20px} .pair .r{padding-left:20px}
+  .colhead{display:grid;grid-template-columns:1fr 40px 1fr;font-family:'Sora';font-size:.7rem;font-weight:700;letter-spacing:.12em;color:var(--muted);padding-bottom:6px;border-bottom:2px solid var(--ink)}
+  .colhead .r{padding-left:20px}
+
+  /* wall */
+  .wall{background:#fff;border-top:1px solid var(--line);margin-top:52px;padding:40px 0 46px}
+  .wall-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+  .cluster h4{font-size:.84rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+  .sticky{font-family:'Kalam',cursive;font-size:.94rem;background:#fef9c3;border-radius:3px;padding:11px 13px;margin-bottom:9px;box-shadow:0 1px 2px rgba(15,23,42,.08);transform:rotate(-.5deg)}
+  .sticky.s2{background:#dbeafe;transform:rotate(.6deg)} .sticky.s3{background:#dcfce7;transform:rotate(-.9deg)}
+  .sticky.s4{background:#fce7f3;transform:rotate(.4deg)} .sticky.s5{background:#ffedd5;transform:rotate(-.4deg)}
+
+  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:34px}
+  .cta h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
+  .cta p{font-size:.9rem;color:#94a3b8;max-width:460px}
+  .cta a{background:var(--brand);color:#fff;font-weight:600;font-size:.92rem;padding:12px 20px;border-radius:10px;white-space:nowrap}
+
+  .closer{border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin:34px 0 0}
+  .closer p{font-size:1.06rem;color:var(--ink);max-width:720px}
+
+  footer{padding:34px 0 60px;color:var(--muted);font-size:.85rem}
+  .note{font-size:.8rem;color:var(--muted);margin-top:12px;max-width:720px}
+
+  @media(max-width:860px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .targets{grid-template-columns:repeat(2,1fr)}
+    .rules{grid-template-columns:1fr}
+    .flows{grid-template-columns:1fr}
+    .lrow{grid-template-columns:1fr;gap:14px}
+    .lrow svg{max-width:280px}
+    .pair,.colhead{grid-template-columns:1fr}
+    .pair .mid{display:none}
+    .pair .l,.pair .r{padding:0}
+    .pair .r{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+    .colhead{display:none}
+    .wall-grid{grid-template-columns:1fr}
+    .cta{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-inner">
+    <a class="back" href="index.html#projects">← Back to portfolio</a>
+    <span class="demo-link">Build your own: <a href="demo-cityplanning.html">Zoning sandbox ↗</a></span>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="tagline">Case study · Systems thinking</div>
+  <h1>I planned a city five times before I understood grouping</h1>
+  <p class="lede">A brief I set myself: 180,000 people, 40 km², a satellite city 45 minutes by rail from the nearest metro. Where does the factory go, and the school, and the courts? I kept redrawing until the reasoning stopped falling apart — and found I'd been arguing about interfaces the whole time.</p>
+  <div class="tags">
+    <span class="tag">Information architecture</span>
+    <span class="tag">Constraint trade-offs</span>
+    <span class="tag">Systems thinking</span>
+    <span class="tag">Originally a Miro board</span>
+  </div>
+</section>
+
+<!-- ===== BRIEF ===== -->
+<section class="blk">
+  <div class="wrap">
+    <div class="kicker">01 · The brief</div>
+    <h2>You can't call a layout wrong without saying what it was for</h2>
+    <p class="sub">So I fixed the numbers first. Every draft below was rejected against these, not against taste.</p>
+
+    <div class="stats">
+      <div class="card stat"><b>180,000</b><i>people at full build-out</i><span>≈51,000 households. Big enough to need a plan, small enough to hold in your head.</span></div>
+      <div class="card stat"><b>40 km²</b><i>developable land</i><span>Roughly 8 × 5 km. Flat and greenfield — no terrain to blame.</span></div>
+      <div class="card stat"><b>4,500<span style="font-size:.8rem;color:var(--muted);font-weight:600">/km²</span></b><i>average density</i><span>Mid-rise, not towers. Between Portland and Amsterdam.</span></div>
+      <div class="card stat"><b>62,000</b><i>local jobs, 90,000 workers</i><span>The other 28,000 commute out — which makes the rail link load-bearing, not a nicety.</span></div>
+    </div>
+
+    <div class="card flows">
+      <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <rect x="46" y="18" width="220" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+        <rect x="46" y="18" width="18" height="150" fill="#e0f2fe"/>
+        <rect x="46" y="150" width="220" height="18" fill="#e0f2fe"/>
+        <path d="M55 60 l0 24 M51 80 l4 6 4 -6" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M150 159 l24 0 M168 155 l6 4 -6 4" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <text x="30" y="96" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle" transform="rotate(-90 30 96)">RIVER FLOWS S, THEN E</text>
+        <line x1="80" y1="36" x2="240" y2="36" stroke="#0f172a" stroke-width="1.8"/>
+        <path d="M240 36 l-8 -4 v8 z" fill="#0f172a"/>
+        <text x="160" y="30" font-family="Inter" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">WIND: WEST → EAST</text>
+        <circle cx="66" cy="40" r="7" fill="#0284c7"/>
+        <text x="78" y="52" font-family="Inter" font-size="8.5" font-weight="700" fill="#0284c7">INTAKE</text>
+        <rect x="222" y="112" width="34" height="26" rx="3" fill="#fed7aa" stroke="#ea580c" stroke-width="1.4"/>
+        <text x="239" y="108" font-family="Inter" font-size="8.5" font-weight="700" fill="#c2410c" text-anchor="middle">SEWAGE</text>
+        <path d="M239 138 L239 152" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <rect x="196" y="150" width="70" height="18" fill="none" stroke="#047857" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="222" y="182" font-family="Inter" font-size="8.5" font-weight="700" fill="#047857" text-anchor="middle">the only corner that works</text>
+      </svg>
+      <div>
+        <p><b style="color:var(--ink)">Two constraints have a direction, and they decide almost everything.</b> The prevailing wind runs west to east, so industry belongs on the east edge — anything upwind of housing means the whole city breathes it. The river enters at the north-west, runs south down the western boundary, then turns east below the city.</p>
+        <p>That second one is the interesting constraint. The water intake has to sit <b>upstream</b> and the sewage works <b>downstream</b> — but the works also has to be <b>downwind</b>. Only the south-east corner satisfies both, and once you see that, it isn't a preference any more. It's the answer.</p>
+        <p style="color:var(--ink)"><b>You cannot fix downstream what you got wrong upstream.</b> That sentence is doing a lot of work later in this page.</p>
+      </div>
+    </div>
+
+    <div class="targets">
+      <div class="card targ"><b>800 m</b><span>to a stop of some kind, for 80% of homes</span></div>
+      <div class="card targ"><b>400 m</b><span>to green space, for every home</span></div>
+      <div class="card targ"><b>1 km</b><span>to a primary school, crossing no arterial</span></div>
+      <div class="card targ warn"><b>800 m</b><span>clearance to industry, 450 m of it planted</span></div>
+      <div class="card targ"><b>60%</b><span>of trips on foot, bike or transit</span></div>
+    </div>
+    <p class="note">These figures are assumptions, not research — picked to be roughly plausible and, more importantly, specific enough to be wrong. A brief you can't fail isn't a brief.</p>
+  </div>
+</section>
+
+<!-- ===== LEDGER ===== -->
+<section class="blk">
+  <div class="wrap">
+    <div class="kicker">02 · The drafts</div>
+    <h2>Five layouts, four of them wrong</h2>
+    <p class="sub">Each one was defensible when I drew it. What killed them was the reasoning, written down beside the drawing where I couldn't dodge it.</p>
+
+    <div class="card" style="padding:4px 22px">
+      <div class="ledger">
+
+        <div class="lrow">
+          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="236" height="150" fill="#f8fafc"/>
+            <rect x="10" y="10" width="104" height="62" rx="3" fill="#eef2ff" stroke="#c7d2fe"/>
+            <rect x="122" y="10" width="104" height="62" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+            <rect x="10" y="80" width="104" height="60" rx="3" fill="#fff7ed" stroke="#fed7aa"/>
+            <rect x="122" y="80" width="104" height="60" rx="3" fill="#ecfdf5" stroke="#a7f3d0"/>
+            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
+              <path d="M22 40 L29 33 L36 40 V49 H22 Z"/><path d="M44 40 L51 33 L58 40 V49 H44 Z"/><path d="M66 40 L73 33 L80 40 V49 H66 Z"/><path d="M88 40 L95 33 L102 40 V49 H88 Z"/>
+              <path d="M33 58 L40 51 L47 58 V67 H33 Z"/><path d="M55 58 L62 51 L69 58 V67 H55 Z"/><path d="M77 58 L84 51 L91 58 V67 H77 Z"/>
+            </g>
+            <g fill="#334155"><rect x="136" y="28" width="12" height="38"/><rect x="154" y="20" width="12" height="46"/><rect x="172" y="34" width="12" height="32"/><rect x="190" y="24" width="12" height="42"/><rect x="208" y="38" width="11" height="28"/></g>
+            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M24 128 V110 L34 104 V110 L44 104 V110 L54 104 V128 Z"/><path d="M70 128 V110 L80 104 V110 L90 104 V110 L100 104 V128 Z"/></g>
+            <rect x="58" y="96" width="4" height="12" fill="#ea580c"/><rect x="104" y="96" width="4" height="12" fill="#ea580c"/>
+            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="142" cy="100" r="8"/><circle cx="166" cy="112" r="9"/><circle cx="192" cy="98" r="8"/><circle cx="212" cy="118" r="7"/><circle cx="150" cy="126" r="7"/><circle cx="186" cy="126" r="8"/></g>
+            <g font-family="Inter" font-size="8" font-weight="700" fill="#64748b"><text x="16" y="22">HOMES</text><text x="128" y="22">OFFICES</text><text x="16" y="92">INDUSTRY</text><text x="128" y="92">PARK</text></g>
+          </svg>
+          <div>
+            <div class="lhead"><span class="lnum">01</span><h3>Pure zoning — one use per quadrant</h3><span class="pill no">Rejected</span></div>
+            <p><b>Why I tried it:</b> it's the tidiest thing you can draw. Every type has its own place and nothing conflicts with anything.</p>
+            <p><b>Why it fails:</b> tidy on the plan, unlivable on the ground. Nobody can walk to anything, so every errand becomes a car trip and the whole city commutes in one direction at 9am and back at 6. Sorting by <em>what a thing is</em> ignored <em>what people are trying to do</em>.</p>
+          </div>
+        </div>
+
+        <div class="lrow">
+          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="236" height="150" fill="#f8fafc"/>
+            <circle cx="118" cy="75" r="48" fill="#d1fae5"/>
+            <g fill="#34d399" stroke="#047857" stroke-width="1.3"><circle cx="100" cy="64" r="11"/><circle cx="130" cy="76" r="13"/><circle cx="108" cy="94" r="9"/><circle cx="138" cy="52" r="8"/></g>
+            <text x="118" y="120" font-family="Inter" font-size="8" font-weight="700" fill="#047857" text-anchor="middle">ONE BIG PARK</text>
+            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
+              <path d="M14 26 L21 19 L28 26 V35 H14 Z"/><path d="M36 26 L43 19 L50 26 V35 H36 Z"/>
+              <path d="M14 118 L21 111 L28 118 V127 H14 Z"/><path d="M36 118 L43 111 L50 118 V127 H36 Z"/>
+            </g>
+            <g fill="#334155"><rect x="182" y="12" width="11" height="26"/><rect x="199" y="18" width="11" height="20"/><rect x="216" y="8" width="11" height="30"/></g>
+            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M182 136 V122 L191 117 V122 L200 117 V122 L209 117 V136 Z"/></g>
+            <rect x="213" y="110" width="4" height="26" fill="#ea580c"/>
+            <g stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" fill="none"><path d="M40 40 Q78 30 92 44"/><path d="M196 44 Q160 32 146 48"/><path d="M40 112 Q80 122 94 108"/><path d="M196 110 Q160 122 146 104"/></g>
+          </svg>
+          <div>
+            <div class="lhead"><span class="lnum">02</span><h3>One magnificent central park</h3><span class="pill no">Rejected</span></div>
+            <p><b>Why I tried it:</b> a single green mass is the most striking thing on the page, and it gives the city an obvious heart.</p>
+            <p><b>Why it fails:</b> the park is a wall. It severs the road grid, so trips that should be straight go around it, and only the people who can afford the ring around it are actually near green. Six small parks serve four times the households — and photograph worse.</p>
+          </div>
+        </div>
+
+        <div class="lrow">
+          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="236" height="150" fill="#f8fafc"/>
+            <circle cx="118" cy="75" r="62" fill="none" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="5 5"/>
+            <circle cx="118" cy="75" r="38" fill="none" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="5 5"/>
+            <line x1="118" y1="4" x2="118" y2="146" stroke="#e2e8f0" stroke-width="8"/>
+            <line x1="26" y1="75" x2="210" y2="75" stroke="#e2e8f0" stroke-width="8"/>
+            <circle cx="118" cy="75" r="30" fill="#be123c" opacity=".13"/>
+            <g fill="#334155"><rect x="106" y="58" width="9" height="24"/><rect x="118" y="52" width="9" height="30"/><rect x="130" y="62" width="8" height="20"/></g>
+            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
+              <path d="M100 20 L107 13 L114 20 V29 H100 Z"/><path d="M122 20 L129 13 L136 20 V29 H122 Z"/>
+              <path d="M100 126 L107 119 L114 126 V135 H100 Z"/><path d="M122 126 L129 119 L136 126 V135 H122 Z"/>
+            </g>
+            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M18 84 V70 L27 65 V70 L36 65 V84 Z"/></g>
+            <rect x="48" y="58" width="4" height="26" fill="#ea580c"/>
+            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="200" cy="68" r="9"/><circle cx="216" cy="82" r="7"/></g>
+            <path d="M107 34 Q112 56 118 70 Q140 74 176 76" fill="none" stroke="#be123c" stroke-width="2.2" stroke-dasharray="4 3"/>
+            <circle cx="107" cy="30" r="4" fill="#be123c"/><circle cx="176" cy="76" r="4" fill="#be123c"/>
+          </svg>
+          <div>
+            <div class="lhead"><span class="lnum">03</span><h3>Radial — everything reaches the centre</h3><span class="pill no">Rejected</span></div>
+            <p><b>Why I tried it:</b> perfect access. From any point on the ring you're one spoke away from the middle.</p>
+            <p><b>Why it fails:</b> a trip from one suburb to its <em>neighbour</em> also goes through the centre. The hub absorbs traffic it has no business carrying, and chokes. Optimising the shortest path to one place quietly made every other path worse.</p>
+          </div>
+        </div>
+
+        <div class="lrow">
+          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="236" height="150" fill="#f8fafc"/>
+            <line x1="6" y1="75" x2="230" y2="75" stroke="#0f172a" stroke-width="3"/>
+            <g stroke="#0f172a" stroke-width="1.8"><line x1="30" y1="70" x2="30" y2="80"/><line x1="60" y1="70" x2="60" y2="80"/><line x1="90" y1="70" x2="90" y2="80"/><line x1="150" y1="70" x2="150" y2="80"/><line x1="180" y1="70" x2="180" y2="80"/><line x1="210" y1="70" x2="210" y2="80"/></g>
+            <circle cx="120" cy="75" r="10" fill="#0f172a"/><rect x="115" y="70" width="10" height="7" rx="1.6" fill="#fff"/>
+            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.4" stroke-linejoin="round"><path d="M86 56 V32 L98 25 V32 L110 25 V32 L122 25 V56 Z"/></g>
+            <rect x="126" y="16" width="6" height="40" fill="#ea580c"/>
+            <path d="M129 15 q9 -5 14 2" fill="none" stroke="#fdba74" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
+              <path d="M158 34 L166 26 L174 34 V44 H158 Z"/><path d="M182 34 L190 26 L198 34 V44 H182 Z"/><path d="M206 34 L214 26 L222 34 V44 H206 Z"/>
+              <path d="M170 54 L178 46 L186 54 V64 H170 Z"/><path d="M194 54 L202 46 L210 54 V64 H194 Z"/>
+              <path d="M84 106 L92 98 L100 106 V116 H84 Z"/><path d="M108 106 L116 98 L124 106 V116 H108 Z"/><path d="M132 106 L140 98 L148 106 V116 H132 Z"/>
+            </g>
+            <g><line x1="136" y1="40" x2="152" y2="40" stroke="#be123c" stroke-width="2" stroke-dasharray="3 3"/><path d="M154 40 l-9 -5 v10 z" fill="#be123c"/></g>
+            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="30" cy="32" r="9"/><circle cx="50" cy="46" r="7"/></g>
+          </svg>
+          <div>
+            <div class="lhead"><span class="lnum">04</span><h3>Industry at the interchange</h3><span class="pill no">Rejected</span></div>
+            <p><b>Why I tried it:</b> factories need freight, freight needs rail, and the rail is already there. One piece of infrastructure, two jobs.</p>
+            <p><b>Why it fails:</b> that station is also how 30,000 people get to work, so freight and commuters fight over the same platforms. And the cheap land east of the works — directly downwind — is exactly where housing ends up. This is the draft where I noticed the cost always lands on whoever has the least choice.</p>
+          </div>
+        </div>
+
+        <div class="lrow adopted">
+          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="236" height="150" fill="#f8fafc"/>
+            <line x1="4" y1="74" x2="206" y2="74" stroke="#0f172a" stroke-width="3"/>
+            <g stroke="#0f172a" stroke-width="1.7"><line x1="24" y1="69" x2="24" y2="79"/><line x1="62" y1="69" x2="62" y2="79"/><line x1="94" y1="69" x2="94" y2="79"/><line x1="142" y1="69" x2="142" y2="79"/><line x1="172" y1="69" x2="172" y2="79"/></g>
+            <circle cx="44" cy="74" r="7" fill="#0f172a"/><rect x="40.5" y="70.5" width="7" height="5" rx="1.2" fill="#fff"/>
+            <circle cx="118" cy="74" r="9" fill="#0f172a"/><rect x="113.5" y="69.5" width="9" height="6" rx="1.4" fill="#fff"/>
+            <circle cx="190" cy="74" r="7" fill="#0f172a"/><rect x="186.5" y="70.5" width="7" height="5" rx="1.2" fill="#fff"/>
+            <g fill="#334155"><rect x="104" y="22" width="12" height="38"/><rect x="119" y="14" width="12" height="46"/><rect x="134" y="30" width="11" height="30"/><rect x="148" y="40" width="10" height="20"/></g>
+            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
+              <path d="M12 30 L19 23 L26 30 V39 H12 Z"/><path d="M32 30 L39 23 L46 30 V39 H32 Z"/><path d="M52 30 L59 23 L66 30 V39 H52 Z"/>
+              <path d="M164 30 L171 23 L178 30 V39 H164 Z"/><path d="M184 30 L191 23 L198 30 V39 H184 Z"/>
+            </g>
+            <g stroke="#7c3aed" stroke-width="1.3" stroke-linejoin="round">
+              <path d="M14 56 L23 48 L32 56" fill="none"/><rect x="17" y="55" width="12" height="9" fill="#ede9fe"/>
+              <path d="M166 56 L175 48 L184 56" fill="none"/><rect x="169" y="55" width="12" height="9" fill="#ede9fe"/>
+            </g>
+            <rect x="10" y="94" width="60" height="30" rx="5" fill="#d1fae5"/>
+            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="26" cy="108" r="8"/><circle cx="48" cy="112" r="7"/></g>
+            <rect x="160" y="94" width="52" height="30" rx="5" fill="#d1fae5"/>
+            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="176" cy="108" r="8"/><circle cx="196" cy="112" r="7"/></g>
+            <g><path d="M98 100 L110 93 L122 100 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2"/><rect x="100" y="100" width="20" height="2" fill="#0284c7"/><rect x="102" y="102" width="4" height="9" fill="#bae6fd" stroke="#0284c7" stroke-width=".9"/><rect x="114" y="102" width="4" height="9" fill="#bae6fd" stroke="#0284c7" stroke-width=".9"/></g>
+            <rect x="212" y="0" width="10" height="150" fill="#ecfdf5"/>
+            <g fill="#34d399" stroke="#047857" stroke-width="1"><circle cx="217" cy="24" r="4.5"/><circle cx="217" cy="60" r="4.5"/><circle cx="217" cy="104" r="4.5"/><circle cx="217" cy="136" r="4.5"/></g>
+            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M224 46 V30 L230 26 V30 L235 26 V46 Z"/></g>
+          </svg>
+          <div>
+            <div class="lhead"><span class="lnum">05</span><h3>Transit spine, walkable cells</h3><span class="pill yes">Adopted</span></div>
+            <p><b>What changed:</b> I stopped grouping by <em>type</em> and started grouping by <em>trip</em>. Each cell holds what one household needs in a normal week, within a ten-minute walk of its own station. Offices concentrate at the one interchange that can carry them. Industry sits downwind behind a planted belt, on its own freight spur.</p>
+            <p>Four of the five were defensible on paper. What separated this one is that its failure modes are ones I'd be willing to explain to the people who'd live with them.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE PLAN ===== -->
+<section class="blk">
+  <div class="wrap">
+    <div class="kicker">03 · Where it landed</div>
+    <h2>The plan I arrived at</h2>
+    <p class="sub">A <b>cell</b> is one neighbourhood unit — everything within an 800 m walk of a single station, about 90,000 people, with its own school, park, shops and community buildings. This city is two of them either side of the core. Everything is labelled where it sits, so you can argue with it without a key.</p>
+
+    <div class="card plan">
+      <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="wave" width="34" height="30" patternUnits="userSpaceOnUse">
+            <path d="M0 8 q8 -6 17 0 t17 0" fill="none" stroke="#7dd3fc" stroke-width="1.5"/>
+            <path d="M0 22 q8 -6 17 0 t17 0" fill="none" stroke="#7dd3fc" stroke-width="1.5"/>
+          </pattern>
+          <pattern id="field" width="16" height="16" patternUnits="userSpaceOnUse">
+            <path d="M0 16 L16 0" stroke="#bbf7d0" stroke-width="3"/>
+          </pattern>
+          <symbol id="h" viewBox="0 0 24 21">
+            <path d="M1.5 11 L12 2.5 L22.5 11" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="4" y="10.5" width="16" height="9.5" rx="1" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+            <rect x="10" y="14" width="4.5" height="6" fill="#4f46e5"/>
+          </symbol>
+          <symbol id="f" viewBox="0 0 22 27">
+            <rect x="2" y="4" width="18" height="22" rx="1.5" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+            <rect x="2" y="4" width="18" height="3.4" rx="1" fill="#4f46e5"/>
+            <rect x="5" y="10" width="3.2" height="3.2" fill="#4f46e5"/><rect x="9.4" y="10" width="3.2" height="3.2" fill="#4f46e5"/><rect x="13.8" y="10" width="3.2" height="3.2" fill="#4f46e5"/>
+            <rect x="5" y="15.4" width="3.2" height="3.2" fill="#4f46e5"/><rect x="9.4" y="15.4" width="3.2" height="3.2" fill="#4f46e5"/><rect x="13.8" y="15.4" width="3.2" height="3.2" fill="#4f46e5"/>
+          </symbol>
+          <symbol id="t" viewBox="0 0 20 60" preserveAspectRatio="none">
+            <rect x="2" y="7" width="16" height="52" fill="#334155" stroke="#0f172a" stroke-width="1.4"/>
+            <rect x="6" y="2" width="8" height="6" fill="#0f172a"/>
+            <rect x="4.5" y="14" width="11" height="2.4" fill="#94a3b8"/><rect x="4.5" y="24" width="11" height="2.4" fill="#94a3b8"/>
+            <rect x="4.5" y="34" width="11" height="2.4" fill="#94a3b8"/><rect x="4.5" y="44" width="11" height="2.4" fill="#94a3b8"/>
+          </symbol>
+          <symbol id="sc" viewBox="0 0 36 27">
+            <line x1="18" y1="6" x2="18" y2="0.8" stroke="#7c3aed" stroke-width="1.4"/>
+            <path d="M18 1.2 L25 3.2 L18 5.2 Z" fill="#7c3aed"/>
+            <path d="M4 13.5 L18 5.5 L32 13.5" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="6.5" y="13" width="23" height="12.5" rx="1" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+            <rect x="15.5" y="18" width="5.5" height="7.5" fill="#7c3aed"/>
+          </symbol>
+          <symbol id="cv" viewBox="0 0 30 25">
+            <path d="M1.5 9.5 L15 2 L28.5 9.5 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="3.5" y="9.5" width="23" height="2.2" fill="#0284c7"/>
+            <rect x="6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
+            <rect x="13.3" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
+            <rect x="20.6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
+            <rect x="2.5" y="21.5" width="25" height="2.6" fill="#0284c7"/>
+          </symbol>
+          <symbol id="tr" viewBox="0 0 16 19">
+            <rect x="7" y="10.5" width="2.2" height="7.5" rx="1" fill="#065f46"/>
+            <circle cx="8" cy="7.5" r="6.2" fill="#34d399" stroke="#047857" stroke-width="1.3"/>
+          </symbol>
+          <symbol id="fc" viewBox="0 0 54 31">
+            <path d="M2 29 V17 L11 11 V17 L20 11 V17 L29 11 V17 L38 11 V29 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="1.6" stroke-linejoin="round"/>
+            <rect x="6" y="22" width="5" height="7" fill="#ea580c"/><rect x="15" y="22" width="5" height="7" fill="#ea580c"/><rect x="24" y="22" width="5" height="7" fill="#ea580c"/>
+            <rect x="40" y="6" width="6" height="23" fill="#ea580c"/>
+            <path d="M43 5 q6 -3 9 1" fill="none" stroke="#fdba74" stroke-width="2.4" stroke-linecap="round"/>
+          </symbol>
+          <symbol id="st" viewBox="0 0 28 28">
+            <circle cx="14" cy="14" r="12.5" fill="#0f172a"/>
+            <rect x="8.5" y="7" width="11" height="10" rx="2.4" fill="#fff"/>
+            <rect x="10.2" y="8.8" width="7.6" height="4.2" rx="1" fill="#0f172a"/>
+            <circle cx="10.8" cy="19.4" r="1.7" fill="#fff"/><circle cx="17.2" cy="19.4" r="1.7" fill="#fff"/>
+          </symbol>
+        </defs>
+
+        <rect width="960" height="600" fill="#fbfdff"/>
+
+        <!-- RIVER: west edge then south edge -->
+        <rect x="0" y="0" width="36" height="600" fill="#e0f2fe"/><rect x="0" y="0" width="36" height="600" fill="url(#wave)"/>
+        <rect x="0" y="562" width="960" height="38" fill="#e0f2fe"/><rect x="0" y="562" width="960" height="38" fill="url(#wave)"/>
+        <path d="M18 200 v40 M12 232 l6 9 6 -9" stroke="#0284c7" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M470 581 h44 M506 573 l10 8 -10 8" stroke="#0284c7" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <text x="18" y="120" font-family="Inter" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle" transform="rotate(-90 18 120)">RIVER</text>
+
+        <!-- riverside park / flood plain -->
+        <rect x="36" y="0" width="42" height="562" fill="#ecfdf5"/>
+        <use href="#tr" x="48" y="300" width="18" height="22"/>
+        <use href="#tr" x="48" y="340" width="18" height="22"/><use href="#tr" x="48" y="450" width="18" height="22"/>
+        <text x="57" y="520" font-family="Inter" font-size="9.5" font-weight="700" fill="#047857" text-anchor="middle" transform="rotate(-90 57 520)">FLOOD PLAIN · LINEAR PARK</text>
+        <circle cx="57" cy="40" r="9" fill="#0284c7"/><rect x="51" y="49" width="12" height="4" fill="#0284c7"/>
+        <text x="57" y="200" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle" transform="rotate(-90 57 200)">WATER INTAKE — UPSTREAM</text>
+
+        <!-- arterials -->
+        <rect x="78" y="168" width="882" height="11" fill="#e2e8f0"/><line x1="84" y1="173.5" x2="954" y2="173.5" stroke="#fff" stroke-width="1.4" stroke-dasharray="9 7"/>
+        <rect x="78" y="438" width="882" height="11" fill="#e2e8f0"/><line x1="84" y1="443.5" x2="954" y2="443.5" stroke="#fff" stroke-width="1.4" stroke-dasharray="9 7"/>
+        <rect x="250" y="0" width="10" height="562" fill="#e2e8f0"/><rect x="518" y="0" width="10" height="562" fill="#e2e8f0"/>
+
+        <!-- rail spine -->
+        <line x1="78" y1="290" x2="800" y2="290" stroke="#0f172a" stroke-width="3.4"/>
+        <g stroke="#0f172a" stroke-width="2">
+          <line x1="100" y1="284" x2="100" y2="296"/><line x1="180" y1="284" x2="180" y2="296"/><line x1="220" y1="284" x2="220" y2="296"/>
+          <line x1="270" y1="284" x2="270" y2="296"/><line x1="360" y1="284" x2="360" y2="296"/><line x1="400" y1="284" x2="400" y2="296"/>
+          <line x1="500" y1="284" x2="500" y2="296"/><line x1="540" y1="284" x2="540" y2="296"/><line x1="650" y1="284" x2="650" y2="296"/>
+          <line x1="680" y1="284" x2="680" y2="296"/><line x1="760" y1="284" x2="760" y2="296"/>
+        </g>
+        <path d="M730 290 L800 290 L862 226" fill="none" stroke="#ea580c" stroke-width="2.6" stroke-dasharray="8 5"/>
+        <text x="806" y="302" font-family="Inter" font-size="9.5" font-weight="700" fill="#ea580c">FREIGHT SPUR</text>
+
+        <use href="#st" x="126" y="276" width="28" height="28"/>
+        <use href="#st" x="304" y="273" width="34" height="34"/>
+        <use href="#st" x="456" y="276" width="28" height="28"/>
+        <use href="#st" x="596" y="276" width="28" height="28"/>
+        <use href="#st" x="716" y="276" width="28" height="28"/>
+        <text x="321" y="322" font-family="Inter" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle">INTERCHANGE</text>
+        <circle cx="140" cy="290" r="96" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="7 7" opacity=".5"/>
+        <text x="140" y="424" font-family="Inter" font-size="9.5" font-weight="700" fill="#4f46e5" text-anchor="middle">800 m WALK — ONE CELL</text>
+
+        <!-- WEST CELL -->
+        <use href="#h" x="88" y="52" width="30" height="26"/><use href="#h" x="126" y="52" width="30" height="26"/><use href="#h" x="164" y="52" width="30" height="26"/><use href="#h" x="202" y="52" width="30" height="26"/>
+        <use href="#h" x="88" y="92" width="30" height="26"/><use href="#h" x="126" y="92" width="30" height="26"/><use href="#h" x="164" y="92" width="30" height="26"/><use href="#h" x="202" y="92" width="30" height="26"/>
+        <use href="#h" x="108" y="130" width="30" height="26"/><use href="#h" x="146" y="130" width="30" height="26"/><use href="#h" x="184" y="130" width="30" height="26"/>
+        <text x="160" y="40" font-family="Inter" font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="middle">WEST CELL · 92,000 PEOPLE</text>
+        <use href="#f" x="98" y="200" width="26" height="32"/><use href="#f" x="134" y="200" width="26" height="32"/><use href="#f" x="170" y="200" width="26" height="32"/>
+        <use href="#f" x="116" y="240" width="26" height="32"/><use href="#f" x="152" y="240" width="26" height="32"/>
+        <text x="147" y="194" font-family="Inter" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">denser within 800 m of the stop</text>
+        <use href="#sc" x="88" y="336" width="44" height="33"/>
+        <text x="108" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#6d28d9" text-anchor="middle">SCHOOL</text>
+        <use href="#cv" x="152" y="340" width="32" height="27"/>
+        <text x="172" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle">SHOPS</text>
+        <rect x="88" y="466" width="150" height="82" rx="9" fill="#d1fae5"/>
+        <use href="#tr" x="100" y="480" width="22" height="26"/><use href="#tr" x="128" y="492" width="26" height="30"/><use href="#tr" x="102" y="516" width="22" height="26"/><use href="#tr" x="190" y="484" width="24" height="28"/><use href="#tr" x="208" y="514" width="20" height="24"/>
+        <text x="163" y="544" font-family="Inter" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">PARK &amp; ALLOTMENTS</text>
+
+        <!-- CORE -->
+        <use href="#t" x="272" y="128" width="26" height="150"/>
+        <use href="#t" x="304" y="100" width="26" height="178"/>
+        <use href="#t" x="336" y="118" width="26" height="160"/>
+        <use href="#t" x="368" y="150" width="24" height="128"/>
+        <use href="#t" x="398" y="176" width="24" height="102"/>
+        <use href="#t" x="428" y="206" width="22" height="72"/>
+        <use href="#t" x="456" y="228" width="22" height="50"/>
+        <text x="350" y="88" font-family="Inter" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle">OFFICE CORE · 32,000 JOBS</text>
+        <use href="#cv" x="272" y="336" width="40" height="33"/>
+        <use href="#cv" x="326" y="340" width="34" height="28"/>
+        <use href="#cv" x="374" y="342" width="32" height="26"/>
+        <use href="#cv" x="420" y="342" width="32" height="26"/>
+        <text x="362" y="384" font-family="Inter" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle">CIVIC CLUSTER</text>
+        <text x="362" y="398" font-family="Inter" font-size="9" font-weight="600" fill="#0284c7" text-anchor="middle">town hall · courts · tax &amp; licensing · hospital · college · banks</text>
+        <text x="362" y="414" font-family="Inter" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">one trip, several errands — sited for the people with the least choice</text>
+        <rect x="272" y="466" width="200" height="60" rx="9" fill="#d1fae5"/>
+        <use href="#tr" x="286" y="478" width="22" height="26"/><use href="#tr" x="316" y="488" width="18" height="22"/><use href="#tr" x="424" y="480" width="22" height="26"/><use href="#tr" x="448" y="492" width="18" height="22"/>
+        <text x="372" y="512" font-family="Inter" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">CIVIC SQUARE · MARKET</text>
+
+        <!-- EAST CELL -->
+        <use href="#f" x="548" y="50" width="26" height="32"/><use href="#f" x="584" y="50" width="26" height="32"/><use href="#f" x="620" y="50" width="26" height="32"/><use href="#f" x="656" y="50" width="26" height="32"/>
+        <use href="#h" x="548" y="96" width="30" height="26"/><use href="#h" x="586" y="96" width="30" height="26"/><use href="#h" x="624" y="96" width="30" height="26"/><use href="#h" x="662" y="96" width="30" height="26"/>
+        <use href="#h" x="566" y="132" width="30" height="26"/><use href="#h" x="604" y="132" width="30" height="26"/><use href="#h" x="642" y="132" width="30" height="26"/>
+        <text x="606" y="38" font-family="Inter" font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="middle">EAST CELL · 88,000 PEOPLE</text>
+        <use href="#f" x="560" y="204" width="26" height="32"/><use href="#f" x="596" y="204" width="26" height="32"/><use href="#f" x="632" y="204" width="26" height="32"/>
+        <use href="#h" x="566" y="244" width="30" height="26"/><use href="#h" x="604" y="244" width="30" height="26"/><use href="#h" x="642" y="244" width="30" height="26"/>
+        <use href="#sc" x="548" y="336" width="44" height="33"/>
+        <text x="570" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#6d28d9" text-anchor="middle">SCHOOL</text>
+        <use href="#cv" x="614" y="340" width="32" height="27"/>
+        <text x="632" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle">SHOPS · CLINIC</text>
+        <rect x="548" y="466" width="146" height="82" rx="9" fill="#d1fae5"/>
+        <use href="#tr" x="560" y="480" width="24" height="28"/><use href="#tr" x="590" y="494" width="20" height="24"/><use href="#tr" x="562" y="518" width="22" height="26"/><use href="#tr" x="650" y="484" width="24" height="28"/><use href="#tr" x="666" y="516" width="20" height="24"/>
+        <text x="621" y="544" font-family="Inter" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">PARK &amp; SPORTS GROUND</text>
+
+        <!-- GREEN BELT -->
+        <rect x="716" y="0" width="46" height="562" fill="#ecfdf5"/>
+        <line x1="716" y1="0" x2="716" y2="562" stroke="#34d399" stroke-width="1.5" stroke-dasharray="7 6"/>
+        <line x1="762" y1="0" x2="762" y2="562" stroke="#34d399" stroke-width="1.5" stroke-dasharray="7 6"/>
+        <use href="#tr" x="722" y="30" width="18" height="22"/><use href="#tr" x="740" y="64" width="18" height="22"/><use href="#tr" x="722" y="100" width="18" height="22"/>
+        <use href="#tr" x="740" y="200" width="18" height="22"/><use href="#tr" x="722" y="238" width="18" height="22"/>
+        <use href="#tr" x="740" y="400" width="18" height="22"/><use href="#tr" x="722" y="470" width="18" height="22"/><use href="#tr" x="740" y="510" width="18" height="22"/>
+        <text x="739" y="160" font-family="Inter" font-size="9.5" font-weight="700" fill="#047857" text-anchor="middle" transform="rotate(-90 739 160)">GREEN BELT 450 M</text>
+
+        <!-- EAST EDGE -->
+        <line x1="800" y1="86" x2="930" y2="58" stroke="#94a3b8" stroke-width="11"/>
+        <line x1="804" y1="85" x2="926" y2="59" stroke="#fff" stroke-width="1.4" stroke-dasharray="9 7"/>
+        <text x="866" y="26" font-family="Inter" font-size="10.5" font-weight="700" fill="#64748b" text-anchor="middle">AIRFIELD</text>
+        <text x="866" y="40" font-family="Inter" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">approach over fields</text>
+
+        <use href="#fc" x="792" y="140" width="84" height="48"/>
+        <use href="#fc" x="792" y="204" width="72" height="41"/>
+        <text x="866" y="128" font-family="Inter" font-size="10.5" font-weight="700" fill="#c2410c" text-anchor="middle">INDUSTRY · 12,000 JOBS</text>
+        <text x="866" y="262" font-family="Inter" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">downwind, behind the belt,</text>
+        <text x="866" y="275" font-family="Inter" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">on its own freight spur</text>
+
+        <rect x="790" y="308" width="164" height="106" fill="url(#field)"/>
+        <rect x="790" y="308" width="164" height="106" fill="none" stroke="#86efac" stroke-width="1.5"/>
+        <text x="872" y="356" font-family="Inter" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">FARMLAND &amp;</text>
+        <text x="872" y="372" font-family="Inter" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">MARKET GARDENS</text>
+
+        <rect x="800" y="468" width="120" height="66" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <circle cx="830" cy="500" r="14" fill="none" stroke="#d97706" stroke-width="1.8"/>
+        <circle cx="866" cy="500" r="14" fill="none" stroke="#d97706" stroke-width="1.8"/>
+        <circle cx="902" cy="500" r="11" fill="none" stroke="#d97706" stroke-width="1.8"/>
+        <text x="860" y="460" font-family="Inter" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">SEWAGE WORKS</text>
+        <path d="M860 534 L860 562" stroke="#d97706" stroke-width="2.4" stroke-dasharray="5 4"/>
+        <text x="860" y="554" font-family="Inter" font-size="9" font-weight="700" fill="#b45309" text-anchor="middle">OUTFALL — DOWNSTREAM</text>
+
+        <!-- wind -->
+        <rect x="266" y="6" width="230" height="30" rx="12" fill="#fff" stroke="#e2e8f0"/>
+        <line x1="300" y1="16" x2="452" y2="16" stroke="#0f172a" stroke-width="1.8"/><path d="M452 16 l-9 -4.5 v9 z" fill="#0f172a"/>
+        <text x="381" y="30" font-family="Inter" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">PREVAILING WIND — WEST TO EAST</text>
+
+        <!-- scale + north -->
+        <line x1="100" y1="586" x2="220" y2="586" stroke="#0f172a" stroke-width="2"/>
+        <line x1="100" y1="580" x2="100" y2="592" stroke="#0f172a" stroke-width="2"/><line x1="220" y1="580" x2="220" y2="592" stroke="#0f172a" stroke-width="2"/>
+        <text x="160" y="578" font-family="Inter" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">1 km</text>
+        <circle cx="270" cy="586" r="12" fill="#fff" stroke="#0f172a" stroke-width="1.4"/>
+        <path d="M270 577 L274 586 L270 595 L266 586 Z" fill="#0f172a"/>
+        <text x="270" y="572" font-family="Inter" font-size="8.5" font-weight="700" fill="#0f172a" text-anchor="middle">N</text>
+      </svg>
+
+      <div class="legend">
+        <div><svg viewBox="0 0 24 21" xmlns="http://www.w3.org/2000/svg" style="width:18px"><path d="M1.5 11 L12 2.5 L22.5 11" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="10.5" width="16" height="9.5" rx="1" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/></svg>Houses</div>
+        <div><svg viewBox="0 0 22 27" xmlns="http://www.w3.org/2000/svg" style="width:13px"><rect x="2" y="4" width="18" height="22" rx="1.5" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/><rect x="2" y="4" width="18" height="3.4" fill="#4f46e5"/><rect x="5" y="10" width="3.2" height="3.2" fill="#4f46e5"/><rect x="13.8" y="10" width="3.2" height="3.2" fill="#4f46e5"/></svg>Flats</div>
+        <div><svg viewBox="0 0 20 44" xmlns="http://www.w3.org/2000/svg" style="width:8px"><rect x="2" y="6" width="16" height="37" fill="#334155" stroke="#0f172a" stroke-width="1.4"/><rect x="4.5" y="14" width="11" height="2.4" fill="#94a3b8"/><rect x="4.5" y="26" width="11" height="2.4" fill="#94a3b8"/></svg>Offices</div>
+        <div><svg viewBox="0 0 36 27" xmlns="http://www.w3.org/2000/svg" style="width:21px"><path d="M4 13.5 L18 5.5 L32 13.5" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round"/><rect x="6.5" y="13" width="23" height="12.5" rx="1" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><line x1="18" y1="6" x2="18" y2="1" stroke="#7c3aed" stroke-width="1.4"/><path d="M18 1.2 L25 3.2 L18 5.2 Z" fill="#7c3aed"/></svg>School</div>
+        <div><svg viewBox="0 0 30 25" xmlns="http://www.w3.org/2000/svg" style="width:18px"><path d="M1.5 9.5 L15 2 L28.5 9.5 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.4"/><rect x="6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/><rect x="13.3" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/><rect x="20.6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/><rect x="2.5" y="21.5" width="25" height="2.6" fill="#0284c7"/></svg>Civic &amp; shops</div>
+        <div><svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg" style="width:13px"><rect x="7" y="10.5" width="2.2" height="7.5" fill="#065f46"/><circle cx="8" cy="7.5" r="6.2" fill="#34d399" stroke="#047857" stroke-width="1.3"/></svg>Green</div>
+        <div><svg viewBox="0 0 54 31" xmlns="http://www.w3.org/2000/svg" style="width:26px"><path d="M2 29 V17 L11 11 V17 L20 11 V17 L29 11 V17 L38 11 V29 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="1.6" stroke-linejoin="round"/><rect x="40" y="6" width="6" height="23" fill="#ea580c"/></svg>Industry</div>
+        <div><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style="width:16px"><circle cx="14" cy="14" r="12.5" fill="#0f172a"/><rect x="8.5" y="7" width="11" height="10" rx="2.4" fill="#fff"/><rect x="10.2" y="8.8" width="7.6" height="4.2" fill="#0f172a"/></svg>Station</div>
+        <div><svg viewBox="0 0 40 12" xmlns="http://www.w3.org/2000/svg" style="width:26px"><line x1="0" y1="6" x2="40" y2="6" stroke="#0f172a" stroke-width="3"/><line x1="7" y1="1" x2="7" y2="11" stroke="#0f172a" stroke-width="2"/><line x1="20" y1="1" x2="20" y2="11" stroke="#0f172a" stroke-width="2"/><line x1="33" y1="1" x2="33" y2="11" stroke="#0f172a" stroke-width="2"/></svg>Rail</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAMME ===== -->
+<section class="blk">
+  <div class="wrap">
+    <div class="kicker">04 · The programme</div>
+    <h2>A city is about seventy things, not eight</h2>
+    <p class="sub">Once colleges, courts, banks, supermarkets and stadiums go in, "where does it belong" stops being answerable one building at a time. What worked was sorting every use by <b>how often a household goes</b> against <b>how much land it eats</b> — because those two questions, not the category name, decide the answer.</p>
+
+    <div class="progwrap">
+      <div class="card scatter">
+        <svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
+          <rect x="90" y="46" width="385" height="170" fill="#fff7ed"/>
+          <rect x="475" y="46" width="385" height="170" fill="#eef2ff"/>
+          <rect x="90" y="216" width="385" height="170" fill="#f8fafc"/>
+          <rect x="475" y="216" width="385" height="170" fill="#ecfdf5"/>
+          <text x="340" y="64" font-family="Sora" font-size="11" font-weight="700" fill="#c2410c">AT A STATION, OR ON THE EDGE</text>
+          <text x="846" y="64" font-family="Sora" font-size="11" font-weight="700" fill="#4338ca" text-anchor="end">THE SPINE ITSELF</text>
+          <text x="104" y="376" font-family="Sora" font-size="11" font-weight="700" fill="#64748b">ONE OF, ANYWHERE ACCESSIBLE</text>
+          <text x="492" y="376" font-family="Sora" font-size="11" font-weight="700" fill="#047857">INSIDE EVERY CELL</text>
+          <line x1="90" y1="386" x2="860" y2="386" stroke="#0f172a" stroke-width="1.6"/>
+          <line x1="90" y1="46" x2="90" y2="386" stroke="#0f172a" stroke-width="1.6"/>
+          <line x1="475" y1="46" x2="475" y2="386" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="5 5"/>
+          <line x1="90" y1="216" x2="860" y2="216" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="5 5"/>
+          <text x="475" y="422" font-family="Inter" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">HOW OFTEN A HOUSEHOLD GOES →</text>
+          <text x="104" y="414" font-family="Inter" font-size="10" font-weight="600" fill="#94a3b8">once a year</text>
+          <text x="846" y="414" font-family="Inter" font-size="10" font-weight="600" fill="#94a3b8" text-anchor="end">every day</text>
+          <text x="36" y="216" font-family="Inter" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle" transform="rotate(-90 36 216)">HOW MUCH LAND IT TAKES →</text>
+
+          <g fill="#f97316">
+            <circle cx="112" cy="60" r="6"/><circle cx="146" cy="76" r="6"/><circle cx="232" cy="94" r="6"/><circle cx="214" cy="128" r="6"/><circle cx="292" cy="142" r="6"/><circle cx="104" cy="160" r="6"/><circle cx="152" cy="182" r="6"/><circle cx="308" cy="196" r="6"/>
+          </g>
+          <g font-family="Inter" font-size="11" font-weight="600" fill="#7c2d12">
+            <text x="123" y="64">Airfield</text><text x="157" y="80">Stadium</text><text x="243" y="98">College</text><text x="225" y="132">Hospital</text>
+            <text x="303" y="146">Shopping complex</text><text x="115" y="164">Sewage works</text><text x="163" y="186">Cemetery</text><text x="319" y="200">Multiplex</text>
+          </g>
+          <g fill="#64748b"><circle cx="184" cy="316" r="5.5"/><circle cx="128" cy="296" r="5.5"/><circle cx="322" cy="338" r="5.5"/><circle cx="246" cy="272" r="5.5"/><circle cx="162" cy="350" r="5.5"/></g>
+          <g font-family="Inter" font-size="11" font-weight="600" fill="#475569">
+            <text x="194" y="320">Town hall</text><text x="138" y="300">Fire station</text><text x="332" y="342">Tax office</text><text x="256" y="276">Museum</text><text x="172" y="354">Courts</text>
+          </g>
+          <g fill="#7c3aed"><circle cx="504" cy="180" r="6"/><circle cx="428" cy="194" r="6"/><circle cx="368" cy="254" r="6"/><circle cx="596" cy="274" r="6"/><circle cx="536" cy="326" r="6"/><circle cx="490" cy="306" r="6"/><circle cx="452" cy="276" r="6"/></g>
+          <g font-family="Inter" font-size="11" font-weight="600" fill="#5b21b6">
+            <text x="515" y="184">Secondary school</text><text x="418" y="188" text-anchor="end">Sports ground</text><text x="358" y="258" text-anchor="end">Swimming pool</text>
+            <text x="607" y="278">Supermarket</text><text x="546" y="330">Bank branch</text><text x="500" y="310">Library</text><text x="442" y="280" text-anchor="end">Community hall</text>
+          </g>
+          <g fill="#4f46e5"><circle cx="704" cy="240" r="6.5"/><circle cx="750" cy="192" r="6.5"/><circle cx="782" cy="288" r="6.5"/></g>
+          <g font-family="Inter" font-size="11" font-weight="600" fill="#3730a3">
+            <text x="694" y="244" text-anchor="end">Primary school</text><text x="740" y="186" text-anchor="end">Neighbourhood park</text><text x="772" y="292" text-anchor="end">Rail station</text>
+          </g>
+          <g fill="#047857"><circle cx="796" cy="346" r="6.5"/><circle cx="774" cy="318" r="6.5"/><circle cx="736" cy="332" r="6.5"/><circle cx="804" cy="366" r="6.5"/><circle cx="688" cy="286" r="6.5"/></g>
+          <g font-family="Inter" font-size="11" font-weight="600" fill="#065f46">
+            <text x="786" y="350" text-anchor="end">Pharmacy</text><text x="764" y="314" text-anchor="end">Local shops</text><text x="726" y="336" text-anchor="end">Nursery</text>
+            <text x="794" y="370" text-anchor="end">Playground</text><text x="678" y="290" text-anchor="end">Place of worship</text>
+          </g>
+        </svg>
+        <div class="skey">
+          <div><span class="dot" style="background:#047857"></span>Daily, walk-to</div>
+          <div><span class="dot" style="background:#4f46e5"></span>Daily, land-hungry</div>
+          <div><span class="dot" style="background:#7c3aed"></span>Weekly, ride-to</div>
+          <div><span class="dot" style="background:#f97316"></span>Occasional, large</div>
+          <div><span class="dot" style="background:#64748b"></span>Occasional, small</div>
+        </div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:8px">The corners are poles, not bins — weekly things sit near the middle by design. Read the diagonal: the further top-left something sits, the more it has to borrow accessibility from the transit line rather than generating its own. A stadium and a pharmacy are opposite problems, and calling them both "amenities" hides that.</p>
+      </div>
+
+      <div class="rules">
+        <div class="card rule">
+          <div class="rh"><span style="background:#047857"></span><h4>Daily, walk-to</h4></div>
+          <div class="where">800 m from every front door, crossing no arterial</div>
+          <div class="list">Nursery · primary school · playground · corner shop · small supermarket · pharmacy · GP clinic · bakery &amp; café · place of worship · post box · ATM · bus stop · park · allotments · laundry</div>
+          <div class="mirror"><b>On a screen:</b> the tab bar. If someone does it daily, it doesn't go behind a menu.</div>
+        </div>
+        <div class="card rule">
+          <div class="rh"><span style="background:#7c3aed"></span><h4>Weekly, ride-to</h4></div>
+          <div class="where">One per cell or shared between two, sitting on a stop</div>
+          <div class="list">Secondary school · large supermarket · sports ground · swimming pool · gym · library · community hall · health centre · weekly market · bank branch · vet · dentist · petrol &amp; EV charging · repair shops · salon</div>
+          <div class="mirror"><b>On a screen:</b> one level down, and never more than one. Two taps is a catchment; three is a dead zone.</div>
+        </div>
+        <div class="card rule">
+          <div class="rh"><span style="background:#f97316"></span><h4>Occasional, city-wide</h4></div>
+          <div class="where">One only, at the single most accessible point</div>
+          <div class="list">District hospital · college · shopping complex · cinema · theatre · museum · town hall · <b>courts</b> · tax office · land registry · licensing &amp; passport office · employment office · main post office · police HQ · banks &amp; insurance · hotels · bus station</div>
+          <div class="mirror"><b>On a screen:</b> reached by search or a direct link, not by browsing. This is also the errand chain — the people who need a court date, a licence and a benefits office are disproportionately the people without a car, so these cluster at the interchange and open onto the same square.</div>
+        </div>
+        <div class="card rule">
+          <div class="rh"><span style="background:#0ea5e9"></span><h4>Placed by response time</h4></div>
+          <div class="where">The worst case, not the average — eight minutes to any address</div>
+          <div class="list">Fire station · ambulance depot · neighbourhood police posts · emergency department · blood bank</div>
+          <div class="mirror"><b>On a screen:</b> undo, error recovery, support, "cancel this payment". Frequency is the wrong metric — these are sized for the bad day.</div>
+        </div>
+        <div class="card rule">
+          <div class="rh"><span style="background:#be123c"></span><h4>Spiky — empty, then 18,000 people</h4></div>
+          <div class="where">Peak load, on transit, never on a residential street</div>
+          <div class="list">Stadium · multiplex · exhibition hall · festival ground · wholesale market · concert venue · places of worship at festival</div>
+          <div class="mirror"><b>On a screen:</b> the tax-season flow, year-end close, onboarding. Rare enough not to earn permanent prime space, urgent enough to reach in one move when it spikes.</div>
+        </div>
+        <div class="card rule" style="background:var(--bg-alt)">
+          <div class="rh"><span style="background:#334155"></span><h4>Necessary, unloved</h4></div>
+          <div class="where">Downwind, downstream, buffered — and never forgotten</div>
+          <div class="list">Sewage works · water treatment · reservoir &amp; intake · power substation · telecom exchange · bus depot · rail freight yard · warehousing &amp; cold storage · fuel depot · recycling centre · landfill · quarry · crematorium · cemetery · animal shelter</div>
+          <div class="mirror"><b>On a screen:</b> settings, logs, billing, data export, account deletion. Out of the way — and the ones that must never break.</div>
+        </div>
+      </div>
+
+      <div class="card rule" style="border-color:#a7f3d0;background:var(--good-bg)">
+        <div class="rh"><span style="background:#047857"></span><h4>And the land you deliberately don't build on</h4></div>
+        <div class="where">Beyond the belt, and along the water</div>
+        <div class="list">Farmland &amp; market gardens · orchards · woodland · the green belt itself · the flood plain, which becomes the linear park and the cycle route · a solar array on ground that floods · the airfield's noise contour · the quarry's haulage corridor</div>
+        <div class="mirror"><b>On a screen:</b> whitespace, rate limits, and the features you decided not to ship. Empty is a decision, and on a plan it's the decision that's hardest to defend in a meeting and cheapest to regret losing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EMERGENT ===== -->
+<section class="blk">
+  <div class="wrap">
+    <div class="kicker">05 · The limit</div>
+    <h2>Two things I found I couldn't place at all</h2>
+    <div class="rules" style="margin-top:18px">
+      <div class="card rule">
+        <div class="rh"><span style="background:var(--accent)"></span><h4>You can site a school. You cannot site a good restaurant.</h4></div>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:9px">Restaurants, cafés, salons, tuition centres, gyms, repair shops — none of these can be zoned into existence. What a plan can do is create the conditions: small cheap ground-floor units, footfall passing the door, and permission to change use without a fight. Then they appear, or they don't.</p>
+        <div class="mirror"><b>On a screen:</b> exactly the same split. You place navigation, settings and the primary flow. You cannot place community, habit or word of mouth — only make them likely, by lowering the cost of the first post and putting people past each other's work. Confusing the two is how you get a "Community" tab nobody opens.</div>
+      </div>
+      <div class="card rule">
+        <div class="rh"><span style="background:var(--brand)"></span><h4>Plan the container, not the contents</h4></div>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:9px">I sized a high street around bank branches. Bank branches are disappearing. A plan that specifies <em>twelve banks</em> ages into twelve empty units; a plan that specifies <em>flexible ground floor, 40–90 m², own entrance, changeable use</em> becomes banks, then cafés, then clinics, then whatever comes next.</p>
+        <div class="mirror"><b>On a screen:</b> build the slot, not the widget. A card system, a settings section that accepts new rows, an empty state that adapts — these outlive every specific feature you put in them. The most durable decisions I made were the ones that named a shape instead of a use.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCREEN HALF ===== -->
+<section class="blk">
+  <div class="wrap">
+    <div class="kicker">06 · The transfer</div>
+    <h2>Then I opened Figma and made the same four mistakes</h2>
+    <p class="sub">Every rule I ended up with was a rule I'd already been applying badly to screens.</p>
+
+    <div class="card" style="padding:8px 24px 18px">
+      <div class="colhead" style="padding-top:14px"><div>ON THE MAP</div><div></div><div class="r">ON THE SCREEN</div></div>
+
+      <div class="pair">
+        <div class="l"><h4>The school sits between the houses and the park</h4><p>Not because schools and parks are the same kind of thing — because a parent's Tuesday afternoon runs through both. Adjacency is a claim about what happens next, and people read it as one whether you meant it or not.</p></div>
+        <div class="mid">⇄</div>
+        <div class="r"><h4>"Export" belongs beside "Share", not beside "Delete"</h4><p>Group by the errand, not the object type. And the thing nobody should hit by accident gets its own block, the way industry gets its own edge of town — that 10px divider is a green belt.</p></div>
+      </div>
+
+      <div class="pair">
+        <div class="l"><h4>Height falls off as you leave the station</h4><p>The most accessible land carries the most people. Density that ignores access just moves congestion somewhere it can't be absorbed.</p></div>
+        <div class="mid">⇄</div>
+        <div class="r"><h4>One primary action owns the prime real estate</h4><p>Weight decays outward from it. Four buttons of equal prominence is four towers and no station.</p></div>
+      </div>
+
+      <div class="pair">
+        <div class="l"><h4>Don't route every trip through the centre</h4><p>Radial layouts look like great access until a trip between neighbours crosses the whole city. The hub carries traffic it was never meant to hold.</p></div>
+        <div class="mid">⇄</div>
+        <div class="r"><h4>Sibling screens need a door between them</h4><p>If the only way from one task to a related one is back out to home, the home screen becomes a junction instead of a place — and every flow inherits two wasted steps.</p></div>
+      </div>
+
+      <div class="pair">
+        <div class="l"><h4>Somebody lives downwind</h4><p>Every layout has a worst position. Deciding where the factory goes is deciding who breathes it — and the honest question isn't whether there's a cost, it's whether it lands on whoever had the least choice.</p></div>
+        <div class="mid">⇄</div>
+        <div class="r"><h4>Every layout has an edge case it punishes</h4><p>The grouping that reads cleanest for the median user is usually the one that strands somebody — the person with sixteen cards, the one on a small screen, the one who only came for the thing I demoted to the third tab. Naming who pays is the part of the work that doesn't render.</p></div>
+      </div>
+    </div>
+
+    <div class="closer">
+      <p>"Where does the factory go" is the same question as "which user do I make click twice." I just answered it more carefully when it was a city.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SANDBOX CTA ===== -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Build your own city</h3>
+      <p>Drag to paint a layout and watch three things residents actually notice — clean air, a walk to a station, somewhere to walk to — react as you go. Then see the same grid read back as an interface.</p>
+    </div>
+    <a href="demo-cityplanning.html">Open the sandbox →</a>
+  </div>
+</div>
+
+<!-- ===== WALL ===== -->
+<div class="wall">
+  <div class="wrap">
+    <h2 style="font-size:1.3rem">The working wall</h2>
+    <p style="color:var(--ink-soft);font-size:.94rem;margin-top:6px">Distilled from the original board — what I started from, what kept breaking, and where it converged.</p>
+    <div class="wall-grid">
+      <div class="cluster">
+        <h4>Started from</h4>
+        <div class="sticky">Eight zone types on a blank grid: homes, admin, schools, parks, factories, offices, stations, airport</div>
+        <div class="sticky s2">Perry's 1920s "neighbourhood unit" — size a district by how far a child walks to school. I swapped the school for the station.</div>
+        <div class="sticky s3">Rule I set early: write the reason beside every block, or it doesn't count as a decision</div>
+      </div>
+      <div class="cluster">
+        <h4>What kept breaking</h4>
+        <div class="sticky s4">Tidy plans were the worst plans. Every time it looked clean, someone couldn't walk anywhere.</div>
+        <div class="sticky">I drew the wind backwards and had the whole city breathing the factory. Caught it four drafts in.</div>
+        <div class="sticky s5">Kept planning for uses, not shapes — sized a high street around bank branches that are disappearing</div>
+      </div>
+      <div class="cluster">
+        <h4>Where it converged</h4>
+        <div class="sticky s2">Group by <b>trip</b>, not by <b>type</b>. That one swap fixed four separate problems.</div>
+        <div class="sticky s3">Two directional constraints — wind and water — intersect at exactly one corner. That's not a preference, it's an answer.</div>
+        <div class="sticky">Some things you place. Some things you can only make likely. Knowing which is which is the whole job.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="wrap">
+  <a class="back" href="index.html#projects">← Back to portfolio</a>
+  <p style="margin-top:8px">A side project by Madhumitha D V. Figures are self-set assumptions, chosen to be specific enough to be wrong.</p>
+</footer>
+
+</body>
+</html>

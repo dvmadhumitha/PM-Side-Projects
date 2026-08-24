@@ -1,0 +1,227 @@
+#route-stops-sidebar {
+  position: fixed;
+  top: 80px;
+  right: 16px;
+  width: 320px;
+  max-height: 75vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #222;
+}
+
+#route-stops-sidebar header {
+  padding: 14px 16px 10px;
+  border-bottom: none;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#route-stops-sidebar header span {
+  font-size: 11px;
+  font-weight: 400;
+  color: #888;
+}
+
+#rs-filters {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.rs-group {
+  padding: 6px 12px 4px;
+}
+
+.rs-diet-group {
+  border-top: 1px solid #f0f0f0;
+  margin-top: 2px;
+  padding-top: 8px;
+}
+
+.rs-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.rs-toggle-label {
+  font-size: 13px;
+  color: #333;
+}
+
+.rs-toggle {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.rs-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.rs-toggle-track {
+  display: block;
+  width: 36px;
+  height: 20px;
+  background: #ccc;
+  border-radius: 999px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.rs-toggle input:checked + .rs-toggle-track {
+  background: #2e7d32;
+}
+
+.rs-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.rs-toggle input:checked + .rs-toggle-track .rs-toggle-thumb {
+  transform: translateX(16px);
+}
+
+.rs-group-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.rs-pills-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 2px;
+}
+
+.rs-pills-row::-webkit-scrollbar { display: none; }
+
+.rs-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid #ccc;
+  background: #f5f5f5;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rs-pill:hover {
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+.rs-pill.active {
+  background: #2e7d32;
+  border-color: #2e7d32;
+  color: white;
+}
+
+.stop-card {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.stop-card:hover {
+  background: #f9f9f9;
+}
+
+.stop-card.selected {
+  background: #f0f7f0;
+  border-left: 3px solid #2e7d32;
+  padding-left: 13px;
+}
+
+.stop-card:last-child {
+  border-bottom: none;
+}
+
+.stop-card .stop-name {
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.stop-card .stop-type {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.stop-card .stop-distance {
+  font-size: 12px;
+  color: #2e7d32;
+}
+
+.stop-card .stop-hours,
+.stop-card .stop-extra {
+  font-size: 11px;
+  color: #888;
+  margin-top: 3px;
+}
+
+.stop-card .stop-extra a {
+  color: #1565c0;
+  text-decoration: none;
+}
+
+.stop-badge {
+  display: inline-block;
+  font-size: 10px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.stop-diet-badge {
+  font-size: 12px;
+  background: transparent;
+  padding: 0 2px;
+  margin-left: 3px;
+}
+
+#route-stops-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+}
+
+#route-stops-loading {
+  padding: 24px 16px;
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+}

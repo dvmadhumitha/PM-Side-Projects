@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Route Stops - Restaurants Along Your Route",
+  "version": "1.0",
+  "description": "Find vegetarian, vegan, cafes and restaurants along your route on any map.",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "https://*.overpass-api.de/*",
+    "https://overpass.kumi.systems/*",
+    "https://router.project-osrm.org/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.openstreetmap.org/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}

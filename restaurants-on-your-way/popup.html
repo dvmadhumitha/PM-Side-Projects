@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Route Stops</title>
+  <style>
+    body {
+      width: 260px;
+      font-family: sans-serif;
+      padding: 16px;
+      background: #fff;
+      color: #222;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1.5px solid #ccc;
+      background: #f5f5f5;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .pill:hover {
+      border-color: #2e7d32;
+      color: #2e7d32;
+    }
+
+    .pill.active {
+      background: #2e7d32;
+      border-color: #2e7d32;
+      color: white;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <h2>Route Stops</h2>
+  <p class="subtitle">Choose what to find along your route</p>
+
+  <div class="pills">
+    <div class="pill" data-filter="restaurant">🍽️ All Restaurants</div>
+    <div class="pill" data-filter="vegetarian">🥗 Vegetarian</div>
+    <div class="pill" data-filter="vegan">🌱 Vegan</div>
+    <div class="pill" data-filter="cafe">☕ Cafes</div>
+    <div class="pill" data-filter="fast_food">🍔 Fast Food</div>
+  </div>
+
+
+  <script src="popup.js"></script>
+</body>
+</html>

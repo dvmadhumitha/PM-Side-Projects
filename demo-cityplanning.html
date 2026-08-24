@@ -155,6 +155,7 @@
 
 <script>
 (function(){
+  function T(n,p){ if(window.PA&&window.PA.track) window.PA.track(n,p||{}); }
   var COLS=10, ROWS=5, RAIL=2, STATIONS={1:1,5:1,8:1};
   var PAL={
     res:{label:'Homes',    sw:'#4f46e5', fill:'#4f46e5'},
@@ -193,7 +194,7 @@
     var b=document.createElement('button');
     b.className='tool'; b.type='button'; b.dataset.id=id;
     b.innerHTML='<span class="sw" style="background:'+PAL[id].sw+'"></span>'+PAL[id].label;
-    b.onclick=function(){ tool=id; syncTools(); };
+    b.onclick=function(){ tool=id; syncTools(); T('sandbox_tool',{label:id||'clear'}); };
     toolsEl.appendChild(b);
   });
   function syncTools(){
@@ -225,10 +226,14 @@
     if(el && el.classList.contains('cell')) paint(+el.dataset.i);
   }
 
+  var painted=0;
   function paint(i){
     if(Math.floor(i/COLS)===RAIL) return;
     if(grid[i]===tool) return;
-    grid[i]=tool; render();
+    grid[i]=tool; painted++;
+    if(painted===1) T('sandbox_first_paint',{});
+    if(painted===25) T('sandbox_engaged',{});
+    render();
   }
 
   // ---- scoring ----
@@ -330,11 +335,12 @@
     }
   }
 
-  document.getElementById('adopted').onclick=function(){ grid=ADOPTED.slice(); render(); };
-  document.getElementById('clear').onclick=function(){ grid=grid.map(function(){return '';}); render(); };
+  document.getElementById('adopted').onclick=function(){ grid=ADOPTED.slice(); render(); T('sandbox_show_adopted',{}); };
+  document.getElementById('clear').onclick=function(){ grid=grid.map(function(){return '';}); render(); T('sandbox_clear',{}); };
 
   syncTools(); render();
 })();
 </script>
+<script src="analytics.js"></script>
 </body>
 </html>

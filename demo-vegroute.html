@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Veg Route — live demo · Madhumitha D V</title>
+<meta name="description" content="Find vegetarian and vegan places along a route, not near a point. The same engine as the Chrome extension, running in the page." />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#fff;--bg-alt:#f8fafc;
+    --brand:#4f46e5;--brand-soft:#eef2ff;--accent:#f97316;--accent-soft:#fff7ed;
+    --good:#047857;--good-bg:#ecfdf5;--bad:#be123c;--bad-bg:#fff1f2;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.2}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
+  .head-inner .src{font-size:.85rem;color:var(--muted)}
+  .head-inner .src a{color:var(--brand);font-weight:600}
+
+  .intro{padding:36px 0 6px}
+  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .intro h1{font-size:clamp(1.6rem,3.6vw,2.25rem);margin:7px 0 11px;max-width:22ch}
+  .intro p{color:var(--ink-soft);max-width:680px}
+
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+  .controls{padding:18px 20px;margin-top:24px}
+  .crow{display:grid;grid-template-columns:1fr 1fr auto;gap:11px;align-items:end}
+  label{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+  input,select{width:100%;font:inherit;font-size:.9rem;padding:10px 12px;border:1px solid var(--line);
+    border-radius:10px;background:#fff;color:var(--ink)}
+  input:focus,select:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
+  button{font:inherit;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:10px;border:1px solid var(--brand);
+    background:var(--brand);color:#fff;cursor:pointer;transition:.15s;white-space:nowrap}
+  button:hover:not(:disabled){background:#4338ca}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .presets{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  .presets span{font-size:.76rem;color:var(--muted);font-weight:500}
+  .pre{background:#fff;border:1px solid var(--line);color:var(--ink-soft);font-size:.79rem;font-weight:500;
+    padding:5px 11px;border-radius:999px;cursor:pointer}
+  .pre:hover{border-color:#c7d2fe;background:var(--brand-soft)}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .pill{background:#fff;border:1px solid var(--line);color:var(--ink-soft);font-size:.82rem;font-weight:600;
+    padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;font-family:inherit}
+  .pill:hover{border-color:#c7d2fe}
+  .pill.active{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+
+  .stage{display:grid;grid-template-columns:1fr 380px;gap:16px;margin-top:16px;align-items:start}
+  #map{height:520px;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);background:#e8edf4;z-index:1}
+  .results{max-height:520px;overflow-y:auto;padding:0}
+  .rhead{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;
+    justify-content:space-between;gap:10px;position:sticky;top:0;background:#fff;border-radius:18px 18px 0 0;z-index:2}
+  .rhead h3{font-size:.95rem}
+  .rhead span{font-size:.78rem;color:var(--muted);font-weight:600}
+  .stop{padding:13px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:.12s}
+  .stop:last-child{border-bottom:0}
+  .stop:hover{background:var(--bg-alt)}
+  .stop .n{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .stop .n b{font-size:.92rem;font-weight:600}
+  .stop .d{font-family:'Sora';font-size:.8rem;font-weight:700;color:var(--brand);white-space:nowrap}
+  .stop .t{font-size:.78rem;color:var(--muted);margin-top:1px}
+  .stop .x{font-size:.75rem;color:var(--ink-soft);margin-top:4px}
+  .msg{padding:40px 22px;text-align:center;color:var(--muted);font-size:.88rem}
+  .msg b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:5px}
+  .msg.err b{color:var(--bad)}
+  .spin{width:22px;height:22px;border:2.5px solid var(--line);border-top-color:var(--brand);border-radius:50%;
+    margin:0 auto 12px;animation:sp .8s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+
+  .how{background:#fff;border-top:1px solid var(--line);margin-top:44px;padding:36px 0 42px}
+  .how h2{font-size:1.25rem}
+  .how > .wrap > p{color:var(--ink-soft);font-size:.95rem;max-width:700px;margin-top:7px}
+  .hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+  .hcard{border:1px solid var(--line);border-radius:14px;padding:18px 19px}
+  .hcard h3{font-size:1rem;margin-bottom:7px}
+  .hcard p{font-size:.87rem;color:var(--ink-soft)}
+  .hcard code{background:var(--bg-alt);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:.79rem}
+  footer{padding:32px 0 60px;color:var(--muted);font-size:.84rem}
+  .leaflet-popup-content{font-family:'Inter',sans-serif;font-size:.85rem}
+
+  @media(max-width:900px){
+    .stage{grid-template-columns:1fr}
+    .crow{grid-template-columns:1fr}
+    #map{height:380px}
+    .results{max-height:none}
+    .hgrid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-inner">
+    <a class="back" href="index.html#projects">← Back to portfolio</a>
+    <span class="src">Chrome extension source: <a href="https://github.com/dvmadhumitha/PM-Side-Projects/tree/main/restaurants-on-your-way" target="_blank" rel="noopener">on GitHub ↗</a></span>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="tagline">Live demo · runs in this page</div>
+  <h1>Along the route, not near a point</h1>
+  <p>Every map app answers "vegetarian restaurants <em>near me</em>". The question I actually have when I'm travelling is "I'm going from here to there — where can I eat <em>without leaving the road</em>". That's a routing problem, not a search problem, and it needs a corridor rather than a radius. This runs the same engine as my Chrome extension: real routing, real OpenStreetMap data, live.</p>
+</section>
+
+<div class="wrap">
+  <div class="panel controls">
+    <div class="crow">
+      <div><label for="from">From</label><input id="from" placeholder="Milano, Italy" autocomplete="off" value="Milano, Italy"></div>
+      <div><label for="to">To</label><input id="to" placeholder="Como, Italy" autocomplete="off" value="Como, Italy"></div>
+      <div><button id="go">Find stops</button></div>
+    </div>
+    <div class="presets">
+      <span>Try:</span>
+      <button class="pre" data-f="Milano, Italy" data-t="Como, Italy">Milano → Como</button>
+      <button class="pre" data-f="Bologna, Italy" data-t="Firenze, Italy">Bologna → Firenze</button>
+      <button class="pre" data-f="Torino, Italy" data-t="Genova, Italy">Torino → Genova</button>
+      <button class="pre" data-f="Roma, Italy" data-t="Napoli, Italy">Roma → Napoli</button>
+    </div>
+    <div class="pills" id="pills">
+      <button class="pill active" data-filter="restaurant">🍽️ All restaurants</button>
+      <button class="pill" data-filter="vegetarian">🥗 Vegetarian</button>
+      <button class="pill" data-filter="vegan">🌱 Vegan</button>
+      <button class="pill" data-filter="cafe">☕ Cafés</button>
+      <button class="pill" data-filter="fast_food">🍔 Fast food</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div id="map"></div>
+    <div class="panel results">
+      <div class="rhead"><h3>Stops on the way</h3><span id="count"></span></div>
+      <div id="list"><div class="msg"><b>Pick a route</b>Choose a suggestion above or type any two places, then hit Find stops.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="how">
+  <div class="wrap">
+    <h2>How it works, and what I chose</h2>
+    <p>No API keys and no paid services — the whole thing runs on open data, which was a deliberate constraint rather than a limitation I worked around.</p>
+    <div class="hgrid">
+      <div class="hcard">
+        <h3>A corridor, not a radius</h3>
+        <p>The route geometry comes back from OSRM as a few thousand points. Every candidate place is measured to its <em>nearest point on the line</em>, and anything beyond <code>500 m</code> is dropped. A radius around the midpoint would surface places you'd have to drive twenty minutes off-route to reach.</p>
+      </div>
+      <div class="hcard">
+        <h3>Ask the map, not a brand</h3>
+        <p>Places come from OpenStreetMap via Overpass — restaurants, cafés, fast food, bars, ice cream and bakeries in the route's bounding box. Diet labels come from the <code>diet:vegetarian</code> and <code>diet:vegan</code> tags, which are contributed rather than advertised.</p>
+      </div>
+      <div class="hcard">
+        <h3>The label is the hard part</h3>
+        <p>In Italy a dish marked <em>vegetariano</em> can still arrive with something I don't eat. OSM's tags are sparse and inconsistent, so the honest version shows what the data actually claims and how far off-route it is — rather than inventing a confidence score the data can't support.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:.88rem">The extension does the same thing inside openstreetmap.org: draw a route there and a sidebar appears with the stops along it. This page is that logic lifted out and pointed at the same public APIs, so you can try it without installing anything.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <a class="back" href="index.html#projects">← Back to portfolio</a>
+  <p style="margin-top:8px">Routing by OSRM · places from OpenStreetMap via Overpass · geocoding by Nominatim. All free, all open, no keys.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  'use strict';
+  function T(n,p){ if(window.PA&&window.PA.track) window.PA.track(n,p||{}); }
+  var MAX_DIST_KM = 0.5;
+  /* Every network call gets a deadline. Without this a stalled request just
+     spins forever — which is exactly what happened. */
+  async function fetchT(url, opts, ms){
+    var c=new AbortController(), timer=setTimeout(function(){c.abort();}, ms);
+    try{ return await fetch(url, Object.assign({}, opts||{}, {signal:c.signal})); }
+    finally{ clearTimeout(timer); }
+  }                       // same corridor as the extension
+  var OVERPASS = [
+    "https://overpass.kumi.systems/api/interpreter",   // usually the least queued
+    "https://lz4.overpass-api.de/api/interpreter",
+    "https://overpass-api.de/api/interpreter",
+    "https://z.overpass-api.de/api/interpreter"
+  ];
+  /* Preset routes can ship with real, previously-captured results so the first
+     click is instant. Empty until captured from a live run — see the note at the
+     bottom of this file. Never hand-written: it is only ever real API output. */
+  var SEED = window.VEGROUTE_SEED || {};
+  /* City-centre coordinates for the presets. These are public geographic facts,
+     so baking them in is safe — and it removes two Nominatim calls (and their
+     1-req/sec rate limit) from the path almost every visitor takes. */
+  var PLACES_KNOWN = {
+    'milano,italy':[45.4642,9.1900], 'como,italy':[45.8081,9.0852],
+    'bologna,italy':[44.4949,11.3426], 'firenze,italy':[43.7696,11.2558],
+    'torino,italy':[45.0703,7.6869],  'genova,italy':[44.4056,8.9463],
+    'roma,italy':[41.9028,12.4964],   'napoli,italy':[40.8518,14.2681]
+  };
+  var CACHE_KEY='vegroute_cache_v1', CACHE_HOURS=24;
+  function cacheGet(k){
+    try{
+      var all=JSON.parse(localStorage.getItem(CACHE_KEY)||'{}'), e=all[k];
+      if(!e) return null;
+      if(Date.now()-e.t > CACHE_HOURS*3600e3) return null;
+      return e;
+    }catch(e){ return null; }
+  }
+  function cachePut(k,coords,places){
+    try{
+      var all=JSON.parse(localStorage.getItem(CACHE_KEY)||'{}');
+      all[k]={t:Date.now(),coords:coords,places:places};
+      var s=JSON.stringify(all);
+      if(s.length>1500000){ all={}; all[k]={t:Date.now(),coords:coords,places:places}; s=JSON.stringify(all); }
+      localStorage.setItem(CACHE_KEY,s);
+    }catch(e){ /* private mode, quota — not worth caring about */ }
+  }
+
+  var map = L.map('map', {scrollWheelZoom:false}).setView([45.6,9.1], 9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:19, attribution:'&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  map.on('click', function(){ map.scrollWheelZoom.enable(); });
+
+  var routeLayer=null, markerLayer=L.layerGroup().addTo(map);
+  var cache={places:null, coords:null};
+  var filters={restaurant:true};
+  var listEl=document.getElementById('list'), countEl=document.getElementById('count');
+
+  /* ---------- helpers ---------- */
+  function haversine(a1,o1,a2,o2){
+    var R=6371,d=Math.PI/180;
+    var dLa=(a2-a1)*d, dLo=(o2-o1)*d;
+    var x=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(a1*d)*Math.cos(a2*d)*Math.sin(dLo/2)*Math.sin(dLo/2);
+    return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+  }
+  function distToRoute(lat,lon,coords){
+    var min=Infinity;
+    for(var i=0;i<coords.length;i++){
+      var dd=haversine(lat,lon,coords[i][0],coords[i][1]);
+      if(dd<min) min=dd;
+    }
+    return min;
+  }
+  function fmt(km){ return km<1 ? Math.round(km*1000)+'m' : km.toFixed(1)+'km'; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function busy(t,s){ listEl.innerHTML='<div class="msg"><div class="spin"></div><b>'+esc(t)+'</b>'+esc(s||'')+'</div>'; countEl.textContent=''; }
+  function fail(t,s){ listEl.innerHTML='<div class="msg err"><b>'+esc(t)+'</b>'+esc(s||'')+'</div>'; countEl.textContent=''; }
+
+  /* ---------- data ---------- */
+  async function geocode(q){
+    var known = PLACES_KNOWN[q.toLowerCase().replace(/\s+/g,'')];
+    if(known) return known;                      // no round-trip for the presets
+    var r = await fetchT('https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(q), {}, 10000);
+    if(!r.ok) throw new Error('geocode');
+    var j = await r.json();
+    if(!j.length) throw new Error('notfound');
+    return [parseFloat(j[0].lat), parseFloat(j[0].lon)];
+  }
+  async function route(a,b){
+    var u='https://router.project-osrm.org/route/v1/driving/'+a[1]+','+a[0]+';'+b[1]+','+b[0]+'?overview=full&geometries=geojson';
+    var r=await fetchT(u, {}, 15000); var j=await r.json();
+    if(j.code!=='Ok'||!j.routes||!j.routes[0]) throw new Error('route');
+    return {
+      coords: j.routes[0].geometry.coordinates.map(function(c){return [c[1],c[0]];}),
+      km: j.routes[0].distance/1000,
+      min: j.routes[0].duration/60
+    };
+  }
+  function bbox(pts){
+    var pad=0.02;                                 // same ~2km padding as the extension
+    var la=pts.map(function(p){return p[0];}), lo=pts.map(function(p){return p[1];});
+    return [(Math.min.apply(null,la)-pad).toFixed(5),(Math.min.apply(null,lo)-pad).toFixed(5),
+            (Math.max.apply(null,la)+pad).toFixed(5),(Math.max.apply(null,lo)+pad).toFixed(5)].join(',');
+  }
+  /* Chop the route into chunks and give Overpass one small bbox per chunk.
+     A bbox lookup is indexed and fast; `around:` with hundreds of centres is
+     not. This keeps the search close to the line without the cost. */
+  function segmentBoxes(coords, km){
+    var n=Math.max(1, Math.min(10, Math.round(km/12)));
+    var per=Math.ceil(coords.length/n), pad=0.006;      // ~660 m, covers the 500 m corridor
+    var boxes=[];
+    for(var i=0;i<coords.length;i+=per){
+      var seg=coords.slice(i, Math.min(i+per+1, coords.length));
+      if(seg.length<2) continue;
+      var la=seg.map(function(p){return p[0];}), lo=seg.map(function(p){return p[1];});
+      boxes.push([(Math.min.apply(null,la)-pad).toFixed(4),(Math.min.apply(null,lo)-pad).toFixed(4),
+                  (Math.max.apply(null,la)+pad).toFixed(4),(Math.max.apply(null,lo)+pad).toFixed(4)].join(','));
+    }
+    return boxes;
+  }
+  var KINDS=['node["amenity"="restaurant"]','node["amenity"="cafe"]','node["amenity"="fast_food"]',
+             'node["amenity"="ice_cream"]','node["amenity"="bar"]','node["shop"="bakery"]'];
+  function query(boxes){
+    var body='';
+    boxes.forEach(function(b){ KINDS.forEach(function(k){ body += k+'('+b+');'; }); });
+    return '[out:json][timeout:25];('+body+');out body 400;';
+  }
+  var lastReason='';
+  async function tryEndpoint(url,q,useGet){
+    try{
+      var r = useGet
+        ? await fetchT(url+'?data='+encodeURIComponent(q), {}, 11000)
+        : await fetchT(url,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+                           body:'data='+encodeURIComponent(q)}, 11000);
+      if(!r.ok){ lastReason='HTTP '+r.status+' from '+new URL(url).host; return null; }
+      var t=await r.text();
+      if(!t){ lastReason='empty response from '+new URL(url).host; return null; }
+      if(t.trim().charAt(0)==='<'){
+        var m=t.match(/<p>([^<]{0,180})/);
+        lastReason=(m?m[1].trim():'error page')+' ('+new URL(url).host+')';
+        return null;
+      }
+      var j=JSON.parse(t);
+      if(j && j.remark){ lastReason=j.remark.slice(0,180); return null; }
+      return (j && j.elements) ? j.elements : null;
+    }catch(e){ lastReason=((e&&e.name==='AbortError')?'timed out after 11s':(e&&e.message)||'network error')+' ('+new URL(url).host+')'; return null; }
+  }
+  /* One mirror at a time. Firing all four at once looked clever but they
+     rate-limit by IP, so a parallel burst can get you throttled everywhere. */
+  async function overpass(q, onTry){
+    lastReason='';
+    var deadline = Date.now() + 40000;          // whole search gives up after 40s
+    for(var g=0;g<2;g++){
+      for(var i=0;i<OVERPASS.length;i++){
+        if(Date.now() > deadline){
+          if(!lastReason) lastReason='gave up after 40s';
+          return null;
+        }
+        if(onTry) onTry(new URL(OVERPASS[i]).host, g===1);
+        var res=await tryEndpoint(OVERPASS[i],q,g===1);
+        if(res!==null) return res;
+      }
+    }
+    return null;
+  }
+
+  /* ---------- classify ---------- */
+  function dietIcon(t){
+    if(t['diet:vegan']==='yes'||t['diet:vegan']==='only') return '🌱';
+    if(t['diet:vegetarian']==='yes'||t['diet:vegetarian']==='only') return '🥗';
+    return '';
+  }
+  function friendly(t){
+    if(t.amenity==='restaurant') return 'Restaurant';
+    if(t.amenity==='cafe') return 'Café';
+    if(t.amenity==='fast_food') return 'Fast food';
+    if(t.amenity==='bar') return 'Bar';
+    if(t.amenity==='ice_cream') return 'Ice cream';
+    if(t.shop==='bakery') return 'Bakery';
+    return 'Place';
+  }
+  /* Two independent axes, which is what people mean by these pills:
+       TYPE (restaurant / cafe / fast food) — pick any, OR'd together
+       DIET (vegetarian / vegan)            — a requirement, AND'd on top
+     The old version OR'd all five, so "All restaurants" (on by default) already
+     matched everything and ticking Vegetarian appeared to do nothing. */
+  function matches(p){
+    var t=p.tags||{};
+    var veg = t['diet:vegetarian']==='yes'||t['diet:vegetarian']==='only';
+    var vgn = t['diet:vegan']==='yes'||t['diet:vegan']==='only';
+
+    if(filters.vegetarian && filters.vegan){ if(!(veg||vgn)) return false; }
+    else if(filters.vegetarian){ if(!(veg||vgn)) return false; }   // vegan implies vegetarian
+    else if(filters.vegan){ if(!vgn) return false; }
+
+    var anyType = filters.restaurant||filters.cafe||filters.fast_food;
+    if(!anyType) return true;
+    if(filters.restaurant && t.amenity==='restaurant') return true;
+    if(filters.cafe && t.amenity==='cafe') return true;
+    if(filters.fast_food && t.amenity==='fast_food') return true;
+    return false;
+  }
+
+  /* ---------- render ---------- */
+  var markers=[];
+  function render(secs){
+    if(!cache.places){ return; }
+    markerLayer.clearLayers(); markers=[];
+    var near = cache.places.filter(matches)
+      .map(function(p){ return {p:p, d:distToRoute(p.lat,p.lon,cache.coords)}; })
+      .filter(function(x){ return x.d<=MAX_DIST_KM; })
+      .sort(function(a,b){ return a.d-b.d; });
+
+    countEl.textContent = near.length ? (near.length+' found'+(secs?' · '+secs+'s':'')) : '';
+    if(!near.length){
+      listEl.innerHTML='<div class="msg"><b>Nothing within 500 m</b>No place matching those filters sits close enough to this route. Try widening the filters, or a different route.</div>';
+      return;
+    }
+    var h='';
+    near.forEach(function(x,i){
+      var t=x.p.tags||{}, name=t.name||'Unnamed place';
+      var cui=t.cuisine?t.cuisine.replace(/;/g,', '):'';
+      var extra=[];
+      if(t.opening_hours) extra.push('🕐 '+t.opening_hours);
+      if(t.phone) extra.push('📞 '+t.phone);
+      h+='<div class="stop" data-i="'+i+'">'
+        + '<div class="n"><b>'+esc(dietIcon(t)+' '+name).trim()+'</b><span class="d">'+fmt(x.d)+'</span></div>'
+        + '<div class="t">'+esc(friendly(t)+(cui?' · '+cui:''))+'</div>'
+        + (extra.length?'<div class="x">'+esc(extra.join('  ·  '))+'</div>':'')
+        + '</div>';
+      var m=L.circleMarker([x.p.lat,x.p.lon],{radius:6,color:'#fff',weight:2,
+            fillColor:dietIcon(t)?'#047857':'#4f46e5',fillOpacity:1}).addTo(markerLayer);
+      m.bindPopup('<b>'+esc(name)+'</b><br>'+esc(friendly(t))+' · '+fmt(x.d)+' off route');
+      markers.push(m);
+    });
+    listEl.innerHTML=h;
+    listEl.querySelectorAll('.stop').forEach(function(el){
+      el.onclick=function(){
+        var m=markers[+el.dataset.i];
+        if(m){ map.setView(m.getLatLng(), 15); m.openPopup(); }
+      };
+    });
+  }
+
+  /* ---------- run ---------- */
+  var runToken=0;
+  async function run(){
+    var f=document.getElementById('from').value.trim(), t=document.getElementById('to').value.trim();
+    if(!f||!t) return;
+    var me=++runToken;                            // a newer click retires this one
+    var btn=document.getElementById('go'); btn.disabled=true;
+    T('vegroute_search',{label:f+' → '+t});
+    var key=(f+'|'+t).toLowerCase().replace(/\s+/g,'');
+    var hit=SEED[key]||cacheGet(key);
+    if(hit){
+      cache.coords=hit.coords; cache.places=hit.places;
+      if(routeLayer) map.removeLayer(routeLayer);
+      routeLayer=L.polyline(hit.coords,{color:'#4f46e5',weight:4,opacity:.85}).addTo(map);
+      map.fitBounds(routeLayer.getBounds(),{padding:[30,30]});
+      render('');
+      btn.disabled=false;
+      return;
+    }
+    try{
+      busy('Finding your route…','Locating start and destination');
+      var ends=await Promise.all([geocode(f),geocode(t)]);
+      var a=ends[0], b=ends[1];
+      busy('Finding your route…','Working out the driving route');
+      var r=await route(a,b);
+      cache.coords = r.coords.length>4000 ? r.coords.filter(function(_,i){return i%3===0;}) : r.coords;
+      if(routeLayer) map.removeLayer(routeLayer);
+      routeLayer=L.polyline(r.coords,{color:'#4f46e5',weight:4,opacity:.85}).addTo(map);
+      map.fitBounds(routeLayer.getBounds(),{padding:[30,30]});
+      var boxes=segmentBoxes(r.coords, r.km);
+      busy('Searching the route…', Math.round(r.km)+' km — looking for places within 500 m of the road');
+      var t0=Date.now();
+      var tries=0;
+      var places=await overpass(query(boxes), function(host,isGet){
+        tries++;
+        busy('Searching the route…', tries<=1
+          ? Math.round(r.km)+' km — looking for places within 500 m of the road'
+          : 'OpenStreetMap is busy — trying another server');
+      });
+      var secs=((Date.now()-t0)/1000).toFixed(1);
+      if(!places){ if(lastReason) console.warn('[veg-route] overpass:', lastReason);
+        fail('OpenStreetMap is busy right now','The free map service that powers this is shared with everyone. Give it a few seconds and try again.'); return; }
+      if(me!==runToken) return;
+      cache.places=places;
+      cachePut(key, cache.coords.map(function(c){return [+c[0].toFixed(5),+c[1].toFixed(5)];}), places);
+      render(secs);
+    }catch(e){
+      if(String(e.message)==='notfound') fail('Couldn’t find that place','Try adding the country, e.g. "Como, Italy".');
+      else if(String(e.message)==='route') fail('No driving route','OSRM couldn’t connect those two points by road.');
+      else fail('Something went wrong', 'Check your connection and try again.');
+    }finally{ btn.disabled=false; }
+  }
+
+  /* A background warm-up used to run here. It fired a second, competing search
+     on mouse-move — four Nominatim hits against a 1-req/sec service and two
+     Overpass queries from one IP. Removed: it made things slower, not faster. */
+
+  /* Ctrl+Shift+E — dump whatever real results this browser has cached, so the
+     presets can be shipped pre-loaded. Real API output only, never invented. */
+  document.addEventListener('keydown',function(e){
+    if(!(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='e')) return;
+    var raw=localStorage.getItem(CACHE_KEY);
+    if(!raw){ alert('Nothing cached yet — run the presets first.'); return; }
+    var out='window.VEGROUTE_SEED = '+raw+';';
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([out],{type:'application/javascript'}));
+    a.download='vegroute-seed.js'; a.click();
+  });
+
+  document.getElementById('go').onclick=run;
+  ['from','to'].forEach(function(id){
+    document.getElementById(id).addEventListener('keydown',function(e){ if(e.key==='Enter') run(); });
+  });
+  document.querySelectorAll('.pre').forEach(function(b){
+    b.onclick=function(){
+      document.getElementById('from').value=b.dataset.f;
+      document.getElementById('to').value=b.dataset.t;
+      run();
+    };
+  });
+  document.getElementById('pills').addEventListener('click',function(e){
+    var p=e.target.closest('.pill'); if(!p) return;
+    p.classList.toggle('active');
+    filters[p.dataset.filter]=p.classList.contains('active');
+    T('vegroute_filter',{label:p.dataset.filter});
+    render();
+  });
+})();
+</script>
+<script src="analytics.js"></script>
+</body>
+</html>

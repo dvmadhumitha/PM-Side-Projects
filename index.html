@@ -237,22 +237,23 @@
         </svg></div>
         <div class="pcard-top">
           <div class="pc-emoji">🥬</div>
-          <span class="status">In design</span>
+          <span class="status live">Live</span>
         </div>
         <h3>Veg Route</h3>
-        <p class="what">Enter where you're starting and where you're heading, and see the vegetarian and vegan places along the way — with the local labelling translated into what you can actually eat.</p>
-        <p class="built"><b>What I did:</b> Began it after moving to Italy, where a dish marked vegetarian can still arrive with something I don't eat. Mapping the gap between how food is labelled and what a newcomer can rely on.</p>
+        <p class="what">A Chrome extension that finds vegetarian and vegan places <b>along your route</b> rather than near a point — because the question on a journey is where you can eat without leaving the road.</p>
+        <p class="built"><b>What I did:</b> Built and shipped it after moving to Italy. Draw a route on OpenStreetMap and a sidebar lists every stop within 500 m of the line, sorted by how far off-route it is. Open data throughout — no API keys, no paid services.</p>
         <button class="case-toggle">Read the thinking ↓</button>
         <div class="case">
-          <p><b>Problem</b> — Existing filters answer "is there a vegetarian restaurant nearby". The question I actually have is "along this route, where can I eat, and can I trust the label".</p>
-          <p><b>Approach</b> — Treating it as a routing problem rather than a search problem, and building a confidence signal for labelling instead of a simple yes/no tag.</p>
-          <p><b>What it shows</b> — Starting from a real, repeated problem, and resisting the version that is easier to build than to use.</p>
+          <p><b>Problem</b> — Every map app answers "is there a vegetarian restaurant nearby". On a journey that is the wrong question: a radius around your midpoint surfaces places twenty minutes off the road.</p>
+          <p><b>Approach</b> — Treated it as a routing problem, not a search problem. Every candidate is measured to its nearest point on the route line and cut at 500 m — a corridor rather than a radius. Routing from OSRM, places from OpenStreetMap via Overpass.</p>
+          <p><b>What it shows</b> — Starting from a real, repeated problem, choosing the harder geometry because it matches the actual question, and being honest about sparse data instead of inventing a confidence score it cannot support.</p>
         </div>
         <div class="tags">
-          <span class="tag">Maps &amp; routing</span><span class="tag">Dietary data</span><span class="tag">New-in-country UX</span>
+          <span class="tag">Shipped &amp; live</span><span class="tag">Maps &amp; routing</span><span class="tag">Open data</span>
         </div>
         <div class="pc-links">
-          <span style="font-size:.86rem;color:var(--muted)">Write-up in progress</span>
+          <a href="demo-vegroute.html">▶ Try it live</a>
+          <a href="https://github.com/dvmadhumitha/PM-Side-Projects/tree/main/restaurants-on-your-way" target="_blank" rel="noopener">▶ Extension code</a>
         </div>
       </article>
 

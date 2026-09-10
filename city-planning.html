@@ -1,801 +1,1046 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>City Planning Breakdown — Case study · Madhumitha D V</title>
-<meta name="description" content="Planning a city for 180,000 people, five times over — and what it taught me about grouping components on a screen." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<meta name="description" content="A design-thinking exercise: planning a city for ten lakh people from a blank site, and what it taught me about grouping things on a screen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Karla:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
 <style>
-  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#ffffff;--bg-alt:#f8fafc;
-    --brand:#4f46e5;--brand-2:#7c3aed;--accent:#f97316;--accent-soft:#fff7ed;--chip:#eef2ff;
-    --good:#047857;--good-bg:#ecfdf5;--bad:#be123c;--bad-bg:#fff1f2;
-    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.18}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
-
-  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0;position:sticky;top:0;z-index:40}
-  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
-  .head-inner .demo-link{font-size:.85rem;color:var(--muted)}
-  .head-inner .demo-link a{color:var(--brand);font-weight:600}
-
-  .intro{padding:44px 0 10px}
-  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .intro h1{font-size:clamp(1.8rem,4.2vw,2.8rem);margin:8px 0 14px;max-width:19ch}
-  .intro .lede{color:var(--ink-soft);max-width:660px;font-size:1.06rem}
-  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-  .tag{border:1px solid var(--line);background:#fff;color:var(--ink-soft);font-size:.76rem;font-weight:500;padding:5px 11px;border-radius:999px}
-
-  section.blk{padding:46px 0 0}
-  .kicker{font-weight:700;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-  section.blk > .wrap > h2{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:8px}
-  .sub{color:var(--ink-soft);max-width:640px;margin-bottom:22px}
-
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-  .stat{padding:16px 16px 18px}
-  .stat b{display:block;font-family:'Sora';font-size:1.55rem;font-weight:700;letter-spacing:-.02em}
-  .stat i{display:block;font-style:normal;font-size:.82rem;font-weight:600;margin:2px 0 4px}
-  .stat>span{font-size:.78rem;color:var(--muted);line-height:1.45;display:block}
-  .stat b span{display:inline}
-
-  .flows{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:center;padding:20px;margin-top:14px}
-  .flows p{font-size:.94rem;color:var(--ink-soft);margin-bottom:9px}
-  .flows p:last-child{margin-bottom:0}
-
-  .targets{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
-  .targ{padding:14px 15px 16px;border-left:3px solid var(--brand)}
-  .targ b{display:block;font-family:'Sora';font-size:1.15rem;font-weight:700;color:var(--brand)}
-  .targ span{font-size:.78rem;color:var(--ink-soft);line-height:1.45;display:block;margin-top:3px}
-  .targ.warn{border-left-color:var(--accent)} .targ.warn b{color:var(--accent)}
-
-  /* ledger */
-  .ledger{display:flex;flex-direction:column;gap:0}
-  .lrow{display:grid;grid-template-columns:210px 1fr;gap:22px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
-  .lrow:last-child{border-bottom:0}
-  .lrow svg{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
-  .lrow.adopted svg{border:2px solid var(--brand)}
-  .lhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-  .lnum{font-family:'Sora';font-size:.8rem;font-weight:700;color:var(--muted)}
-  .lhead h3{font-size:1.06rem}
-  .pill{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px}
-  .pill.no{background:var(--bad-bg);color:var(--bad)} .pill.yes{background:var(--chip);color:var(--brand)}
-  .lrow p{font-size:.92rem;color:var(--ink-soft);margin-top:5px}
-  .lrow p b{color:var(--ink)}
-
-  /* plan */
-  .plan{padding:0;overflow:hidden}
-  .plan svg{display:block;width:100%;height:auto}
-  .legend{display:flex;gap:20px;flex-wrap:wrap;padding:13px 18px;border-top:1px solid var(--line);background:#fff}
-  .legend div{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--ink-soft);font-weight:500}
-  .legend svg{width:auto;height:16px}
-
-  /* programme */
-  .progwrap{display:grid;grid-template-columns:1fr;gap:16px}
-  .scatter{padding:18px 18px 12px}
-  .scatter svg{display:block;width:100%;height:auto}
-  .skey{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:11px;margin-top:8px}
-  .skey div{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--ink-soft);font-weight:500}
-  .dot{width:9px;height:9px;border-radius:50%}
-  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .rule{padding:16px 17px 18px}
-  .rule .rh{display:flex;align-items:center;gap:9px;margin-bottom:6px}
-  .rule .rh span{width:9px;height:9px;border-radius:3px}
-  .rule h4{font-size:1rem}
-  .rule .where{font-size:.82rem;color:var(--muted);margin-bottom:9px}
-  .rule .list{font-size:.84rem;color:var(--ink-soft);line-height:1.65}
-  .rule .mirror{font-size:.87rem;color:var(--ink-soft);border-top:1px solid var(--line);margin-top:11px;padding-top:10px}
-  .rule .mirror b{color:var(--ink)}
-
-  /* mirror pairs */
-  .pair{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;gap:0;border-bottom:1px solid var(--line);padding:20px 0}
-  .pair:last-child{border-bottom:0}
-  .pair h4{font-size:1rem;margin-bottom:5px}
-  .pair p{font-size:.9rem;color:var(--ink-soft)}
-  .pair .mid{display:grid;place-items:center;color:#cbd5e1;font-size:1.1rem}
-  .pair .l{padding-right:20px} .pair .r{padding-left:20px}
-  .colhead{display:grid;grid-template-columns:1fr 40px 1fr;font-family:'Sora';font-size:.7rem;font-weight:700;letter-spacing:.12em;color:var(--muted);padding-bottom:6px;border-bottom:2px solid var(--ink)}
-  .colhead .r{padding-left:20px}
-
-  /* wall */
-  .wall{background:#fff;border-top:1px solid var(--line);margin-top:52px;padding:40px 0 46px}
-  .wall-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-  .cluster h4{font-size:.84rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
-  .sticky{font-family:'Kalam',cursive;font-size:.94rem;background:#fef9c3;border-radius:3px;padding:11px 13px;margin-bottom:9px;box-shadow:0 1px 2px rgba(15,23,42,.08);transform:rotate(-.5deg)}
-  .sticky.s2{background:#dbeafe;transform:rotate(.6deg)} .sticky.s3{background:#dcfce7;transform:rotate(-.9deg)}
-  .sticky.s4{background:#fce7f3;transform:rotate(.4deg)} .sticky.s5{background:#ffedd5;transform:rotate(-.4deg)}
-
-  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:34px}
-  .cta h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
-  .cta p{font-size:.9rem;color:#94a3b8;max-width:460px}
-  .cta a{background:var(--brand);color:#fff;font-weight:600;font-size:.92rem;padding:12px 20px;border-radius:10px;white-space:nowrap}
-
-  .closer{border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin:34px 0 0}
-  .closer p{font-size:1.06rem;color:var(--ink);max-width:720px}
-
-  footer{padding:34px 0 60px;color:var(--muted);font-size:.85rem}
-  .note{font-size:.8rem;color:var(--muted);margin-top:12px;max-width:720px}
-
-  @media(max-width:860px){
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .targets{grid-template-columns:repeat(2,1fr)}
-    .rules{grid-template-columns:1fr}
-    .flows{grid-template-columns:1fr}
-    .lrow{grid-template-columns:1fr;gap:14px}
-    .lrow svg{max-width:280px}
-    .pair,.colhead{grid-template-columns:1fr}
-    .pair .mid{display:none}
-    .pair .l,.pair .r{padding:0}
-    .pair .r{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
-    .colhead{display:none}
-    .wall-grid{grid-template-columns:1fr}
-    .cta{flex-direction:column;align-items:flex-start}
+:root{
+  --ivory:#FBF8F2; --card:#FFFFFF; --sunk:#F4EFE5; --sunk2:#EBE3D4; --ink:#171310; --muted:#6B6459; --hair:#E0D7C5;
+  --cobalt:#3B2BE0; --coral:#F2451F; --butter:#FFC820; --leaf:#0B8A5F; --sky:#0E6FD6;
+  --shadow:0 24px 56px -34px rgba(23,19,16,.5);
+  --disp:"Newsreader",Georgia,serif; --body:"Karla","Helvetica Neue",Arial,sans-serif; --mono:"DM Mono",Menlo,monospace;
+  --e:cubic-bezier(.2,.8,.3,1); --ei:cubic-bezier(.7,0,.3,1); --es:cubic-bezier(.34,1.44,.5,1);
+  --gutter:clamp(1.1rem,3.5vw,2.4rem); --maxw:1200px;
+  --f-house:#EFE2C8; --f-work:#D5DBF7; --f-civic:#FAD3C6; --f-green:#CFE3C4; --f-ind:#C9C3B6; --f-water:#C3DCF3;
+  --ac:var(--sky);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ivory:#12100E; --card:#1B1815; --sunk:#1E1A16; --sunk2:#272118; --ink:#F5F0E6; --muted:#9E9587; --hair:#302A22;
+    --cobalt:#9C8BFF; --coral:#FF7A55; --butter:#FFD24A; --leaf:#3ED39C; --sky:#5CACFF;
+    --shadow:0 24px 56px -34px rgba(0,0,0,.9);
+    --f-house:#3A3125; --f-work:#26294A; --f-civic:#43291F; --f-green:#22321F; --f-ind:#2E2B25; --f-water:#1D2C3D;
   }
+}
+:root[data-theme="dark"]{
+  --ivory:#12100E; --card:#1B1815; --sunk:#1E1A16; --sunk2:#272118; --ink:#F5F0E6; --muted:#9E9587; --hair:#302A22;
+  --cobalt:#9C8BFF; --coral:#FF7A55; --butter:#FFD24A; --leaf:#3ED39C; --sky:#5CACFF;
+  --shadow:0 24px 56px -34px rgba(0,0,0,.9);
+  --f-house:#3A3125; --f-work:#26294A; --f-civic:#43291F; --f-green:#22321F; --f-ind:#2E2B25; --f-water:#1D2C3D;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--ivory); color:var(--ink); font-family:var(--body); font-size:16.5px;
+  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--cobalt); outline-offset:3px; border-radius:8px}
+.in{max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter)}
+
+/* ══════ NAV ══════ */
+.nav{position:sticky; top:0; z-index:60; background:color-mix(in srgb,var(--ivory) 90%,transparent);
+  backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:border-color 300ms var(--e)}
+.nav.stuck{border-bottom-color:var(--hair)}
+.r1{display:flex; align-items:baseline; gap:.75rem; padding:.7rem 0; flex-wrap:wrap}
+.mark{font-family:var(--disp); font-weight:500; font-size:1.12rem; letter-spacing:-.015em;
+  display:inline-flex; align-items:baseline; gap:.45rem; white-space:nowrap}
+.mark i{width:9px; height:9px; border-radius:50%; background:var(--coral); display:inline-block; align-self:center}
+.here{color:var(--muted); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.here b{color:var(--ink); font-weight:700}
+.navlnk{display:flex; gap:.5rem; align-items:center; margin-left:auto}
+.navlnk > a:not(.cta){font-size:.85rem; font-weight:600; color:var(--muted); padding:.3rem .5rem}
+.navlnk > a:not(.cta):hover{color:var(--ink)}
+.cta{border-radius:999px; padding:.5rem 1.25rem; font-size:.92rem; font-weight:700; white-space:nowrap;
+  background:var(--ink); color:var(--ivory); display:inline-flex; align-items:center; gap:.5rem;
+  border:2px solid var(--ink); box-shadow:0 4px 14px -6px rgba(0,0,0,.45);
+  transition:transform 130ms var(--e), background 200ms var(--e)}
+.cta i{width:7px; height:7px; border-radius:50%; background:var(--coral); display:block; flex:none}
+.cta::after{content:"\2192"; transition:transform 220ms var(--es)}
+.cta:hover{background:var(--coral); border-color:var(--coral); color:#fff; transform:translateY(-2px)}
+.cta:hover i{background:#fff}
+
+/* ══════ HERO ══════ */
+.hero{padding:2.4rem 0 2.9rem; position:relative; overflow:hidden}
+.hero .blob{position:absolute; inset:-16% -20% auto; height:420px; z-index:0; pointer-events:none; opacity:.5;
+  background:radial-gradient(closest-side, color-mix(in srgb,var(--sky) 40%,transparent), transparent)}
+.hi{position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+  gap:clamp(1.4rem,4vw,3rem); align-items:start}
+@media(max-width:940px){ .hi{grid-template-columns:1fr} }
+.eyebrow{display:inline-flex; align-items:center; gap:.5rem; border:1.5px solid var(--ink); background:var(--card);
+  border-radius:999px; padding:.3rem .8rem; font-size:.78rem; font-weight:700}
+.eyebrow i{width:7px; height:7px; border-radius:50%; background:var(--sky); display:block}
+.hero h1{font-family:var(--disp); font-weight:500; font-size:clamp(2.1rem,5.4vw,3.4rem);
+  letter-spacing:-.025em; line-height:1.02; margin:.9rem 0 .7rem}
+.hero .lede{font-size:1.06rem; max-width:52ch; margin:0 0 1rem; color:color-mix(in srgb,var(--ink) 88%,transparent)}
+.hl{background:linear-gradient(180deg,transparent 58%, color-mix(in srgb,var(--butter) 78%,transparent) 58%)}
+
+/* ══════ BANDS ══════ */
+.band{position:relative; scroll-margin-top:80px}
+.band.t2{background:var(--sunk)}
+.band.t2::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.55;
+  background-image:radial-gradient(var(--hair) 1.4px, transparent 1.4px); background-size:20px 20px}
+.band.t3::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background-image:repeating-linear-gradient(-45deg, var(--hair) 0 1.4px, transparent 1.4px 12px)}
+.band > *{position:relative}
+.sechead{padding:2.9rem 0 1.35rem; max-width:58ch}
+.sechead .k{font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--sk,var(--sky)); font-weight:500}
+.sechead h2{font-family:var(--disp); font-weight:500;
+  font-size:clamp(1.7rem,3.9vw,2.6rem); letter-spacing:-.018em; margin:.35rem 0 .35rem; line-height:1.03}
+.sechead p{margin:0; color:var(--muted); font-size:1rem}
+
+/* ══════ ROW ══════ */
+.row{border-top:2px solid var(--hair)}
+.row.alt{background:color-mix(in srgb,var(--card) 62%,transparent)}
+.pin{display:grid; grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:clamp(1.2rem,3.4vw,2.6rem);
+  align-items:start; padding:2.2rem 0}
+.row:nth-of-type(even) .demo{order:2}
+@media(max-width:900px){ .pin{grid-template-columns:1fr} .row:nth-of-type(even) .demo{order:0} }
+.txt{min-width:0}
+.txt h3{font-family:var(--disp); font-weight:500; font-size:clamp(1.35rem,2.7vw,1.85rem);
+  letter-spacing:-.015em; margin:0 0 .4rem; line-height:1.06}
+.stt{font-size:.64rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:999px;
+  padding:.2rem .6rem; background:var(--ac); color:#fff; display:inline-block; margin-bottom:.5rem}
+.stt.out{background:transparent; color:var(--muted); border:1.5px solid var(--hair)}
+.txt > p{margin:0 0 .8rem; font-size:.98rem}
+.tw{display:grid; gap:.5rem; margin:0 0 .9rem}
+.tw div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.6rem; align-items:baseline}
+.tw .k{font-family:var(--mono); font-size:.54rem; letter-spacing:.1em; text-transform:uppercase; color:#fff;
+  background:var(--ac); border-radius:999px; padding:.18rem .45rem; white-space:nowrap; min-width:5.4rem; text-align:center}
+.tw .k.g{background:transparent; color:var(--muted); border:1.5px solid var(--hair)}
+.tw p{margin:0; font-size:.94rem}
+.ledger{font-family:var(--mono); font-size:.64rem; letter-spacing:.06em; color:var(--muted);
+  border-top:1.5px dashed var(--hair); padding-top:.5rem; display:flex; gap:1rem; flex-wrap:wrap}
+.ledger b{color:var(--ink); font-weight:500}
+
+/* ══════ CARD ══════ */
+.demo{min-width:0}
+.dcard{background:var(--card); border:2px solid var(--ac); border-radius:22px; overflow:hidden;
+  box-shadow:var(--shadow); transition:transform 320ms var(--e)}
+.demo:hover .dcard{transform:translateY(-4px)}
+.dhead{display:flex; align-items:center; gap:.5rem; padding:.55rem .9rem; background:var(--ac); color:#fff}
+.dhead .lb{font-family:var(--mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase; font-weight:500}
+.dhead .rt{margin-left:auto; font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:#fff; color:var(--ac); border-radius:999px; padding:.16rem .55rem; font-weight:500}
+.dbody{padding:.85rem; background:linear-gradient(165deg, color-mix(in srgb,var(--ac) 6%,var(--card)), var(--sunk) 78%)}
+.dbody svg{width:100%; height:auto; display:block; border-radius:12px}
+.dfoot{font-size:.9rem; color:color-mix(in srgb,var(--ink) 80%,transparent); padding:.7rem .95rem .85rem; margin:0;
+  border-top:1px solid var(--hair); background:var(--card)}
+.dfoot b{color:var(--ink); font-weight:700}
+
+.tabs{display:flex; gap:.3rem; flex-wrap:wrap; margin-bottom:.6rem}
+.tabs button{border:1.5px solid var(--hair); background:var(--card); border-radius:999px; padding:.24rem .7rem;
+  font-size:.78rem; font-weight:700; cursor:pointer; transition:border-color 180ms var(--e), background 180ms var(--e), transform 120ms var(--e)}
+.tabs button:hover{border-color:var(--ac); transform:translateY(-1px)}
+.tabs button[aria-current="true"]{background:var(--ac); border-color:var(--ac); color:#fff}
+
+/* ══════ CLUSTER EXPLORER ══════ */
+.cx{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:.7rem}
+@media(max-width:560px){ .cx{grid-template-columns:1fr} }
+.cxl{display:grid; gap:.16rem; align-content:start}
+.cxb{display:grid; grid-template-columns:auto minmax(0,1fr); grid-template-areas:"i n" "b c";
+  gap:.1rem .4rem; align-items:center; border:1.5px solid transparent; background:transparent;
+  border-radius:9px; padding:.26rem .4rem; cursor:pointer; text-align:left;
+  transition:background 180ms var(--e), border-color 180ms var(--e)}
+.cxb:hover{background:var(--card)}
+.cxb[aria-current="true"]{background:var(--card); border-color:var(--gc)}
+.cxb .ci{grid-area:i; color:var(--gc); display:flex}
+.cxb .cn{grid-area:n; font-size:.8rem; font-weight:700; line-height:1.2}
+.cxb .cb{grid-area:b; grid-column:1/-1; height:5px; border-radius:99px; background:var(--hair); overflow:hidden; margin-top:.16rem}
+.cxb .cb i{display:block; height:100%; background:var(--gc)}
+.cxb .cc{display:none}
+.cxr{background:var(--card); border:1.5px solid var(--gc); border-radius:12px; padding:.6rem .7rem;
+  display:grid; gap:.4rem; align-content:start}
+.cxr .crule{font-size:.82rem; font-weight:700; line-height:1.35}
+.citems{display:flex; flex-wrap:wrap; gap:.22rem}
+.citems span{font-size:.72rem; font-weight:600; color:var(--muted); border:1.5px solid var(--hair);
+  border-radius:999px; padding:.1rem .45rem}
+.cxr .cui{font-size:.78rem; font-weight:700; color:var(--gc); border-top:1.5px dashed var(--hair); padding-top:.35rem}
+
+/* ══════ IDENTITY ══════ */
+.idw{display:grid; gap:.55rem}
+.idtabs{display:flex; gap:.28rem; flex-wrap:wrap}
+.idtabs button{border:1.5px solid var(--hair); background:var(--card); border-radius:999px; padding:.22rem .65rem;
+  font-size:.78rem; font-weight:700; cursor:pointer; transition:border-color 180ms var(--e), background 180ms var(--e)}
+.idtabs button[aria-current="true"]{background:var(--ac); border-color:var(--ac); color:#fff}
+.idbody{background:var(--card); border:1.5px solid var(--hair); border-radius:12px; padding:.65rem .75rem; display:grid; gap:.45rem}
+.idbody .kn{font-size:.82rem; line-height:1.4}
+.idbody .kn b{font-weight:700}
+.idmoves{display:grid; gap:.28rem}
+.idmoves div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.45rem; align-items:baseline}
+.idmoves em{font-style:normal; font-family:var(--mono); font-size:.6rem; letter-spacing:.06em;
+  background:var(--ac); border:1.5px solid var(--ac); color:var(--ink); border-radius:999px;
+  padding:.1rem .45rem; white-space:nowrap; min-width:5.4rem; text-align:center; font-weight:500}
+.idmoves span{font-size:.82rem; line-height:1.4}
+
+/* ══════ MOOD BOARD ══════ */
+.board{margin-bottom:2.2rem; background:var(--card); border:2px solid var(--ink); border-radius:22px; overflow:hidden; box-shadow:var(--shadow)}
+.bh{display:flex; align-items:center; gap:.5rem; padding:.55rem .9rem; background:var(--ink); color:var(--ivory)}
+.bh .lb{font-family:var(--mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase}
+.bb{padding:clamp(.9rem,2.4vw,1.4rem); display:grid; gap:1rem}
+.strip{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0;
+  border:1.5px solid var(--hair); border-radius:14px; overflow:hidden}
+@media(max-width:1000px){ .strip{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media(max-width:660px){ .strip{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.strip > div{padding:.6rem .7rem; border-right:1.5px solid var(--hair); border-bottom:1.5px solid var(--hair)}
+.strip > div:nth-child(5n){border-right:0}
+.strip > div:nth-child(n+6){border-bottom:0}
+@media(max-width:1000px){ .strip > div{border-right:1.5px solid var(--hair); border-bottom:1.5px solid var(--hair)}
+  .strip > div:nth-child(3n){border-right:0} .strip > div:nth-child(n+10){border-bottom:0} }
+.strip .why2{display:block; font-size:.78rem; color:var(--ink); font-weight:700; line-height:1.4; margin-top:.3rem;
+  border-top:1.5px dashed var(--hair); padding-top:.3rem}
+
+.strip .pop{display:block; font-family:var(--mono); font-size:.6rem; letter-spacing:.05em; color:var(--sky); margin:.1rem 0 .25rem}
+.strip .so{font-family:var(--mono); font-size:.55rem; letter-spacing:.11em; text-transform:uppercase; color:var(--coral); font-weight:500}
+.strip .th{display:block; margin-bottom:.45rem}
+.strip .th svg{display:block; width:100%; height:auto; border-radius:8px; border:1.5px solid var(--hair); background:var(--card)}
+.strip b{display:block; font-family:var(--disp); font-size:.98rem; font-weight:600; line-height:1.2}
+.strip span{display:block; font-size:.79rem; color:var(--muted); line-height:1.4; margin-top:.15rem}
+.bcols{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem}
+@media(max-width:760px){ .bcols{grid-template-columns:1fr} }
+.mlab{font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:.4rem}
+.chips{display:flex; flex-wrap:wrap; gap:.3rem}
+.chips span{font-size:.82rem; font-weight:600; border:1.5px solid var(--hair); border-radius:999px; padding:.2rem .65rem;
+  display:inline-flex; align-items:center; gap:.35rem}
+.chips svg{flex:none; color:var(--muted)}
+.chips span.new{border-color:var(--sky); color:var(--sky)}
+.facts{display:grid; gap:.35rem}
+.facts div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.6rem; align-items:baseline;
+  border-bottom:1.5px dashed var(--hair); padding-bottom:.3rem}
+.facts b{font-family:var(--disp); font-size:1.12rem; font-weight:600; white-space:nowrap}
+.facts span{font-size:.84rem; color:var(--muted); line-height:1.4}
+.keyline{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center}
+.keyline span{display:inline-flex; align-items:center; gap:.35rem; font-size:.76rem; font-weight:600; color:var(--muted)}
+.keyline i{width:13px; height:13px; border-radius:4px; border:1.5px solid var(--ink)}
+
+/* ══════ GROUP LIST ══════ */
+.groups{display:grid; gap:.1rem}
+.groups > div{display:grid; grid-template-columns:auto 7.4rem minmax(0,1fr); gap:.7rem; align-items:baseline;
+  padding:.55rem 0; border-bottom:1.5px dashed var(--hair)}
+@media(max-width:520px){ .groups > div{grid-template-columns:auto minmax(0,1fr)} .groups .gd{grid-column:1/-1} }
+.groups .gi{align-self:center; display:flex}
+.groups .gn2{font-weight:700; font-size:.9rem}
+.groups .gd{font-size:.88rem; color:var(--muted); line-height:1.45}
+
+/* ══════ GROWTH ══════ */
+.bars{display:grid; gap:.5rem}
+.bars .r{display:grid; grid-template-columns:4.6rem minmax(0,1fr) 4rem; gap:.6rem; align-items:center}
+.bars .yr{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; color:var(--muted)}
+.bars .bar{height:18px; border:2px solid var(--ink); border-radius:999px; overflow:hidden; background:var(--card)}
+.bars .bar i{display:block; height:100%; background:var(--ac); width:0; transition:width 1100ms var(--e)}
+.bars .pv{font-family:var(--mono); font-size:.72rem; font-weight:500; text-align:right}
+
+/* ══════ QUOTE ══════ */
+.qb{background:var(--ink); color:var(--ivory)}
+.qb .qi{padding:clamp(1.2rem,2.8vh,1.8rem) var(--gutter); display:grid; grid-template-columns:2rem minmax(0,1fr);
+  gap:.7rem; align-items:baseline; max-width:var(--maxw); margin:0 auto}
+@media(max-width:640px){ .qb .qi{grid-template-columns:1fr; gap:.1rem} }
+.qb .mrk{font-family:var(--disp); font-weight:400; font-size:2.2rem; line-height:.7; color:var(--butter)}
+.qb p{margin:0; font-family:var(--disp); font-weight:400; font-size:clamp(1.02rem,1.9vw,1.32rem); line-height:1.36}
+.qb .cap{display:block; margin-top:.35rem; font-family:var(--mono); font-size:.58rem; letter-spacing:.14em;
+  text-transform:uppercase; opacity:.7}
+.about{border-top:2px solid var(--ink); scroll-margin-top:80px; background:var(--ivory)}
+.about .ai{padding:2.9rem 0 2.9rem;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:clamp(1.4rem,4vw,3rem)}
+.about h3{font-family:var(--disp); font-weight:500; font-size:1.15rem; margin:0 0 .5rem; letter-spacing:-.015em}
+.about p{margin:0 0 .7rem; color:var(--muted); max-width:46ch; font-size:.95rem}
+.chipset{display:flex; flex-wrap:wrap; gap:.3rem}
+.chipset span{font-size:.76rem; font-weight:600; color:var(--muted); border:1.5px solid var(--hair); border-radius:999px; padding:.2rem .6rem}
+.mail{font-family:var(--disp); font-weight:500; font-size:clamp(1.1rem,2.3vw,1.45rem); letter-spacing:-.012em;
+  position:relative; display:inline-block; z-index:0}
+.mail::after{content:""; position:absolute; left:-.06em; right:-.06em; bottom:.04em; height:.32em; background:var(--butter);
+  z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 380ms var(--e)}
+.mail:hover::after{transform:scaleX(1)}
+.lk a{display:flex; justify-content:space-between; padding:.45rem 0; border-bottom:1.5px solid var(--hair); font-weight:700}
+.lk a s{text-decoration:none; display:inline-block; transition:transform 240ms var(--es)}
+.lk a:hover{color:var(--cobalt)} .lk a:hover s{transform:translateX(5px)}
+.sig2{border-top:1.5px solid var(--hair); font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); padding:1rem 0 2.4rem}
+.rv{opacity:0; transform:translateY(14px); transition:opacity 700ms var(--e), transform 700ms var(--e)}
+.rv.on{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){ .rv{opacity:1; transform:none; transition:none} }
+
+/* ══════ DERIVATION LADDER ══════ */
+.lad{display:grid; gap:.34rem}
+.lad .st{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.6rem; align-items:baseline}
+.lad .op{font-family:var(--mono); font-size:.66rem; color:var(--muted); min-width:3.4rem; text-align:right; padding-top:.2rem}
+.lad .bx{background:var(--card); border:1.5px solid var(--hair); border-radius:10px; padding:.36rem .6rem}
+.lad .bx.hit{border-color:var(--ac); border-width:2px}
+.lad .bv{font-family:var(--disp); font-weight:600; font-size:1.06rem; line-height:1.2; display:block}
+.lad .bw{font-size:.79rem; color:var(--muted); line-height:1.4; display:block; margin-top:.1rem}
+.lad .bw b{color:var(--ink); font-weight:700}
+
+/* ══════ KEY GLOSS ══════ */
+.keygrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.3rem .7rem; margin-top:.4rem}
+.keygrid div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.4rem; align-items:baseline}
+.keygrid i{width:13px; height:13px; border-radius:4px; border:1.5px solid var(--ink); align-self:center}
+.keygrid b{font-size:.78rem; font-weight:700; display:block}
+.keygrid span{font-size:.75rem; color:var(--muted); line-height:1.35; grid-column:2}
+
+/* ══════ NEW COMPONENTS ══════ */
+.newc{display:flex; flex-wrap:wrap; gap:.25rem; margin:.1rem 0 .5rem}
+.newc span{font-size:.72rem; font-weight:600; color:var(--ac); border:1.5px solid var(--ac);
+  border-radius:999px; padding:.1rem .5rem}
+.count{display:flex; align-items:center; gap:.45rem; font-family:var(--mono); font-size:.68rem; color:var(--muted)}
+.count b{color:var(--ink); font-weight:500}
+.count .track{flex:1; height:6px; border-radius:99px; background:var(--hair); overflow:hidden; min-width:60px}
+.count .track i{display:block; height:100%; background:var(--ac); width:0; transition:width 900ms var(--e)}
 </style>
 </head>
 <body>
+<nav class="nav" id="nav"><div class="in r1">
+  <a class="mark" href="index.html"><i></i>Madhumitha D V</a>
+  <span class="here">Senior Product Manager &middot; fintech &middot; Milan</span>
+  <span class="navlnk">
+    <a href="index.html">All work</a>
+    <a href="#about">About</a>
+    <a class="cta" href="mailto:dvmadhumitha2021@outlook.com"><i></i>Say hi</a>
+  </span>
+</div></nav>
 
-<header>
-  <div class="wrap head-inner">
-    <a class="back" href="index.html#projects">← Back to portfolio</a>
-    <span class="demo-link">Build your own: <a href="demo-cityplanning.html">Zoning sandbox ↗</a></span>
-  </div>
-</header>
-
-<section class="intro wrap">
-  <div class="tagline">Case study · Systems thinking</div>
-  <h1>I planned a city five times before I understood grouping</h1>
-  <p class="lede">A brief I set myself: 180,000 people, 40 km², a satellite city 45 minutes by rail from the nearest metro. Where does the factory go, and the school, and the courts? I kept redrawing until the reasoning stopped falling apart — and found I'd been arguing about interfaces the whole time.</p>
-  <div class="tags">
-    <span class="tag">Information architecture</span>
-    <span class="tag">Constraint trade-offs</span>
-    <span class="tag">Systems thinking</span>
-    <span class="tag">Originally a Miro board</span>
-  </div>
-</section>
-
-<!-- ===== BRIEF ===== -->
-<section class="blk">
-  <div class="wrap">
-    <div class="kicker">01 · The brief</div>
-    <h2>You can't call a layout wrong without saying what it was for</h2>
-    <p class="sub">So I fixed the numbers first. Every draft below was rejected against these, not against taste.</p>
-
-    <div class="stats">
-      <div class="card stat"><b>180,000</b><i>people at full build-out</i><span>≈51,000 households. Big enough to need a plan, small enough to hold in your head.</span></div>
-      <div class="card stat"><b>40 km²</b><i>developable land</i><span>Roughly 8 × 5 km. Flat and greenfield — no terrain to blame.</span></div>
-      <div class="card stat"><b>4,500<span style="font-size:.8rem;color:var(--muted);font-weight:600">/km²</span></b><i>average density</i><span>Mid-rise, not towers. Between Portland and Amsterdam.</span></div>
-      <div class="card stat"><b>62,000</b><i>local jobs, 90,000 workers</i><span>The other 28,000 commute out — which makes the rail link load-bearing, not a nicety.</span></div>
-    </div>
-
-    <div class="card flows">
-      <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-        <rect x="46" y="18" width="220" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
-        <rect x="46" y="18" width="18" height="150" fill="#e0f2fe"/>
-        <rect x="46" y="150" width="220" height="18" fill="#e0f2fe"/>
-        <path d="M55 60 l0 24 M51 80 l4 6 4 -6" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M150 159 l24 0 M168 155 l6 4 -6 4" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <text x="30" y="96" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle" transform="rotate(-90 30 96)">RIVER FLOWS S, THEN E</text>
-        <line x1="80" y1="36" x2="240" y2="36" stroke="#0f172a" stroke-width="1.8"/>
-        <path d="M240 36 l-8 -4 v8 z" fill="#0f172a"/>
-        <text x="160" y="30" font-family="Inter" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">WIND: WEST → EAST</text>
-        <circle cx="66" cy="40" r="7" fill="#0284c7"/>
-        <text x="78" y="52" font-family="Inter" font-size="8.5" font-weight="700" fill="#0284c7">INTAKE</text>
-        <rect x="222" y="112" width="34" height="26" rx="3" fill="#fed7aa" stroke="#ea580c" stroke-width="1.4"/>
-        <text x="239" y="108" font-family="Inter" font-size="8.5" font-weight="700" fill="#c2410c" text-anchor="middle">SEWAGE</text>
-        <path d="M239 138 L239 152" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="3 3"/>
-        <rect x="196" y="150" width="70" height="18" fill="none" stroke="#047857" stroke-width="2" stroke-dasharray="4 3"/>
-        <text x="222" y="182" font-family="Inter" font-size="8.5" font-weight="700" fill="#047857" text-anchor="middle">the only corner that works</text>
-      </svg>
-      <div>
-        <p><b style="color:var(--ink)">Two constraints have a direction, and they decide almost everything.</b> The prevailing wind runs west to east, so industry belongs on the east edge — anything upwind of housing means the whole city breathes it. The river enters at the north-west, runs south down the western boundary, then turns east below the city.</p>
-        <p>That second one is the interesting constraint. The water intake has to sit <b>upstream</b> and the sewage works <b>downstream</b> — but the works also has to be <b>downwind</b>. Only the south-east corner satisfies both, and once you see that, it isn't a preference any more. It's the answer.</p>
-        <p style="color:var(--ink)"><b>You cannot fix downstream what you got wrong upstream.</b> That sentence is doing a lot of work later in this page.</p>
-      </div>
-    </div>
-
-    <div class="targets">
-      <div class="card targ"><b>800 m</b><span>to a stop of some kind, for 80% of homes</span></div>
-      <div class="card targ"><b>400 m</b><span>to green space, for every home</span></div>
-      <div class="card targ"><b>1 km</b><span>to a primary school, crossing no arterial</span></div>
-      <div class="card targ warn"><b>800 m</b><span>clearance to industry, 450 m of it planted</span></div>
-      <div class="card targ"><b>60%</b><span>of trips on foot, bike or transit</span></div>
-    </div>
-    <p class="note">These figures are assumptions, not research — picked to be roughly plausible and, more importantly, specific enough to be wrong. A brief you can't fail isn't a brief.</p>
-  </div>
-</section>
-
-<!-- ===== LEDGER ===== -->
-<section class="blk">
-  <div class="wrap">
-    <div class="kicker">02 · The drafts</div>
-    <h2>Five layouts, four of them wrong</h2>
-    <p class="sub">Each one was defensible when I drew it. What killed them was the reasoning, written down beside the drawing where I couldn't dodge it.</p>
-
-    <div class="card" style="padding:4px 22px">
-      <div class="ledger">
-
-        <div class="lrow">
-          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
-            <rect width="236" height="150" fill="#f8fafc"/>
-            <rect x="10" y="10" width="104" height="62" rx="3" fill="#eef2ff" stroke="#c7d2fe"/>
-            <rect x="122" y="10" width="104" height="62" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
-            <rect x="10" y="80" width="104" height="60" rx="3" fill="#fff7ed" stroke="#fed7aa"/>
-            <rect x="122" y="80" width="104" height="60" rx="3" fill="#ecfdf5" stroke="#a7f3d0"/>
-            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
-              <path d="M22 40 L29 33 L36 40 V49 H22 Z"/><path d="M44 40 L51 33 L58 40 V49 H44 Z"/><path d="M66 40 L73 33 L80 40 V49 H66 Z"/><path d="M88 40 L95 33 L102 40 V49 H88 Z"/>
-              <path d="M33 58 L40 51 L47 58 V67 H33 Z"/><path d="M55 58 L62 51 L69 58 V67 H55 Z"/><path d="M77 58 L84 51 L91 58 V67 H77 Z"/>
-            </g>
-            <g fill="#334155"><rect x="136" y="28" width="12" height="38"/><rect x="154" y="20" width="12" height="46"/><rect x="172" y="34" width="12" height="32"/><rect x="190" y="24" width="12" height="42"/><rect x="208" y="38" width="11" height="28"/></g>
-            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M24 128 V110 L34 104 V110 L44 104 V110 L54 104 V128 Z"/><path d="M70 128 V110 L80 104 V110 L90 104 V110 L100 104 V128 Z"/></g>
-            <rect x="58" y="96" width="4" height="12" fill="#ea580c"/><rect x="104" y="96" width="4" height="12" fill="#ea580c"/>
-            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="142" cy="100" r="8"/><circle cx="166" cy="112" r="9"/><circle cx="192" cy="98" r="8"/><circle cx="212" cy="118" r="7"/><circle cx="150" cy="126" r="7"/><circle cx="186" cy="126" r="8"/></g>
-            <g font-family="Inter" font-size="8" font-weight="700" fill="#64748b"><text x="16" y="22">HOMES</text><text x="128" y="22">OFFICES</text><text x="16" y="92">INDUSTRY</text><text x="128" y="92">PARK</text></g>
-          </svg>
-          <div>
-            <div class="lhead"><span class="lnum">01</span><h3>Pure zoning — one use per quadrant</h3><span class="pill no">Rejected</span></div>
-            <p><b>Why I tried it:</b> it's the tidiest thing you can draw. Every type has its own place and nothing conflicts with anything.</p>
-            <p><b>Why it fails:</b> tidy on the plan, unlivable on the ground. Nobody can walk to anything, so every errand becomes a car trip and the whole city commutes in one direction at 9am and back at 6. Sorting by <em>what a thing is</em> ignored <em>what people are trying to do</em>.</p>
-          </div>
-        </div>
-
-        <div class="lrow">
-          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
-            <rect width="236" height="150" fill="#f8fafc"/>
-            <circle cx="118" cy="75" r="48" fill="#d1fae5"/>
-            <g fill="#34d399" stroke="#047857" stroke-width="1.3"><circle cx="100" cy="64" r="11"/><circle cx="130" cy="76" r="13"/><circle cx="108" cy="94" r="9"/><circle cx="138" cy="52" r="8"/></g>
-            <text x="118" y="120" font-family="Inter" font-size="8" font-weight="700" fill="#047857" text-anchor="middle">ONE BIG PARK</text>
-            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
-              <path d="M14 26 L21 19 L28 26 V35 H14 Z"/><path d="M36 26 L43 19 L50 26 V35 H36 Z"/>
-              <path d="M14 118 L21 111 L28 118 V127 H14 Z"/><path d="M36 118 L43 111 L50 118 V127 H36 Z"/>
-            </g>
-            <g fill="#334155"><rect x="182" y="12" width="11" height="26"/><rect x="199" y="18" width="11" height="20"/><rect x="216" y="8" width="11" height="30"/></g>
-            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M182 136 V122 L191 117 V122 L200 117 V122 L209 117 V136 Z"/></g>
-            <rect x="213" y="110" width="4" height="26" fill="#ea580c"/>
-            <g stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" fill="none"><path d="M40 40 Q78 30 92 44"/><path d="M196 44 Q160 32 146 48"/><path d="M40 112 Q80 122 94 108"/><path d="M196 110 Q160 122 146 104"/></g>
-          </svg>
-          <div>
-            <div class="lhead"><span class="lnum">02</span><h3>One magnificent central park</h3><span class="pill no">Rejected</span></div>
-            <p><b>Why I tried it:</b> a single green mass is the most striking thing on the page, and it gives the city an obvious heart.</p>
-            <p><b>Why it fails:</b> the park is a wall. It severs the road grid, so trips that should be straight go around it, and only the people who can afford the ring around it are actually near green. Six small parks serve four times the households — and photograph worse.</p>
-          </div>
-        </div>
-
-        <div class="lrow">
-          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
-            <rect width="236" height="150" fill="#f8fafc"/>
-            <circle cx="118" cy="75" r="62" fill="none" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="5 5"/>
-            <circle cx="118" cy="75" r="38" fill="none" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="5 5"/>
-            <line x1="118" y1="4" x2="118" y2="146" stroke="#e2e8f0" stroke-width="8"/>
-            <line x1="26" y1="75" x2="210" y2="75" stroke="#e2e8f0" stroke-width="8"/>
-            <circle cx="118" cy="75" r="30" fill="#be123c" opacity=".13"/>
-            <g fill="#334155"><rect x="106" y="58" width="9" height="24"/><rect x="118" y="52" width="9" height="30"/><rect x="130" y="62" width="8" height="20"/></g>
-            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
-              <path d="M100 20 L107 13 L114 20 V29 H100 Z"/><path d="M122 20 L129 13 L136 20 V29 H122 Z"/>
-              <path d="M100 126 L107 119 L114 126 V135 H100 Z"/><path d="M122 126 L129 119 L136 126 V135 H122 Z"/>
-            </g>
-            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M18 84 V70 L27 65 V70 L36 65 V84 Z"/></g>
-            <rect x="48" y="58" width="4" height="26" fill="#ea580c"/>
-            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="200" cy="68" r="9"/><circle cx="216" cy="82" r="7"/></g>
-            <path d="M107 34 Q112 56 118 70 Q140 74 176 76" fill="none" stroke="#be123c" stroke-width="2.2" stroke-dasharray="4 3"/>
-            <circle cx="107" cy="30" r="4" fill="#be123c"/><circle cx="176" cy="76" r="4" fill="#be123c"/>
-          </svg>
-          <div>
-            <div class="lhead"><span class="lnum">03</span><h3>Radial — everything reaches the centre</h3><span class="pill no">Rejected</span></div>
-            <p><b>Why I tried it:</b> perfect access. From any point on the ring you're one spoke away from the middle.</p>
-            <p><b>Why it fails:</b> a trip from one suburb to its <em>neighbour</em> also goes through the centre. The hub absorbs traffic it has no business carrying, and chokes. Optimising the shortest path to one place quietly made every other path worse.</p>
-          </div>
-        </div>
-
-        <div class="lrow">
-          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
-            <rect width="236" height="150" fill="#f8fafc"/>
-            <line x1="6" y1="75" x2="230" y2="75" stroke="#0f172a" stroke-width="3"/>
-            <g stroke="#0f172a" stroke-width="1.8"><line x1="30" y1="70" x2="30" y2="80"/><line x1="60" y1="70" x2="60" y2="80"/><line x1="90" y1="70" x2="90" y2="80"/><line x1="150" y1="70" x2="150" y2="80"/><line x1="180" y1="70" x2="180" y2="80"/><line x1="210" y1="70" x2="210" y2="80"/></g>
-            <circle cx="120" cy="75" r="10" fill="#0f172a"/><rect x="115" y="70" width="10" height="7" rx="1.6" fill="#fff"/>
-            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.4" stroke-linejoin="round"><path d="M86 56 V32 L98 25 V32 L110 25 V32 L122 25 V56 Z"/></g>
-            <rect x="126" y="16" width="6" height="40" fill="#ea580c"/>
-            <path d="M129 15 q9 -5 14 2" fill="none" stroke="#fdba74" stroke-width="3" stroke-linecap="round"/>
-            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
-              <path d="M158 34 L166 26 L174 34 V44 H158 Z"/><path d="M182 34 L190 26 L198 34 V44 H182 Z"/><path d="M206 34 L214 26 L222 34 V44 H206 Z"/>
-              <path d="M170 54 L178 46 L186 54 V64 H170 Z"/><path d="M194 54 L202 46 L210 54 V64 H194 Z"/>
-              <path d="M84 106 L92 98 L100 106 V116 H84 Z"/><path d="M108 106 L116 98 L124 106 V116 H108 Z"/><path d="M132 106 L140 98 L148 106 V116 H132 Z"/>
-            </g>
-            <g><line x1="136" y1="40" x2="152" y2="40" stroke="#be123c" stroke-width="2" stroke-dasharray="3 3"/><path d="M154 40 l-9 -5 v10 z" fill="#be123c"/></g>
-            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="30" cy="32" r="9"/><circle cx="50" cy="46" r="7"/></g>
-          </svg>
-          <div>
-            <div class="lhead"><span class="lnum">04</span><h3>Industry at the interchange</h3><span class="pill no">Rejected</span></div>
-            <p><b>Why I tried it:</b> factories need freight, freight needs rail, and the rail is already there. One piece of infrastructure, two jobs.</p>
-            <p><b>Why it fails:</b> that station is also how 30,000 people get to work, so freight and commuters fight over the same platforms. And the cheap land east of the works — directly downwind — is exactly where housing ends up. This is the draft where I noticed the cost always lands on whoever has the least choice.</p>
-          </div>
-        </div>
-
-        <div class="lrow adopted">
-          <svg viewBox="0 0 236 150" xmlns="http://www.w3.org/2000/svg">
-            <rect width="236" height="150" fill="#f8fafc"/>
-            <line x1="4" y1="74" x2="206" y2="74" stroke="#0f172a" stroke-width="3"/>
-            <g stroke="#0f172a" stroke-width="1.7"><line x1="24" y1="69" x2="24" y2="79"/><line x1="62" y1="69" x2="62" y2="79"/><line x1="94" y1="69" x2="94" y2="79"/><line x1="142" y1="69" x2="142" y2="79"/><line x1="172" y1="69" x2="172" y2="79"/></g>
-            <circle cx="44" cy="74" r="7" fill="#0f172a"/><rect x="40.5" y="70.5" width="7" height="5" rx="1.2" fill="#fff"/>
-            <circle cx="118" cy="74" r="9" fill="#0f172a"/><rect x="113.5" y="69.5" width="9" height="6" rx="1.4" fill="#fff"/>
-            <circle cx="190" cy="74" r="7" fill="#0f172a"/><rect x="186.5" y="70.5" width="7" height="5" rx="1.2" fill="#fff"/>
-            <g fill="#334155"><rect x="104" y="22" width="12" height="38"/><rect x="119" y="14" width="12" height="46"/><rect x="134" y="30" width="11" height="30"/><rect x="148" y="40" width="10" height="20"/></g>
-            <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3" stroke-linejoin="round">
-              <path d="M12 30 L19 23 L26 30 V39 H12 Z"/><path d="M32 30 L39 23 L46 30 V39 H32 Z"/><path d="M52 30 L59 23 L66 30 V39 H52 Z"/>
-              <path d="M164 30 L171 23 L178 30 V39 H164 Z"/><path d="M184 30 L191 23 L198 30 V39 H184 Z"/>
-            </g>
-            <g stroke="#7c3aed" stroke-width="1.3" stroke-linejoin="round">
-              <path d="M14 56 L23 48 L32 56" fill="none"/><rect x="17" y="55" width="12" height="9" fill="#ede9fe"/>
-              <path d="M166 56 L175 48 L184 56" fill="none"/><rect x="169" y="55" width="12" height="9" fill="#ede9fe"/>
-            </g>
-            <rect x="10" y="94" width="60" height="30" rx="5" fill="#d1fae5"/>
-            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="26" cy="108" r="8"/><circle cx="48" cy="112" r="7"/></g>
-            <rect x="160" y="94" width="52" height="30" rx="5" fill="#d1fae5"/>
-            <g fill="#34d399" stroke="#047857" stroke-width="1.2"><circle cx="176" cy="108" r="8"/><circle cx="196" cy="112" r="7"/></g>
-            <g><path d="M98 100 L110 93 L122 100 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2"/><rect x="100" y="100" width="20" height="2" fill="#0284c7"/><rect x="102" y="102" width="4" height="9" fill="#bae6fd" stroke="#0284c7" stroke-width=".9"/><rect x="114" y="102" width="4" height="9" fill="#bae6fd" stroke="#0284c7" stroke-width=".9"/></g>
-            <rect x="212" y="0" width="10" height="150" fill="#ecfdf5"/>
-            <g fill="#34d399" stroke="#047857" stroke-width="1"><circle cx="217" cy="24" r="4.5"/><circle cx="217" cy="60" r="4.5"/><circle cx="217" cy="104" r="4.5"/><circle cx="217" cy="136" r="4.5"/></g>
-            <g fill="#fed7aa" stroke="#ea580c" stroke-width="1.3" stroke-linejoin="round"><path d="M224 46 V30 L230 26 V30 L235 26 V46 Z"/></g>
-          </svg>
-          <div>
-            <div class="lhead"><span class="lnum">05</span><h3>Transit spine, walkable cells</h3><span class="pill yes">Adopted</span></div>
-            <p><b>What changed:</b> I stopped grouping by <em>type</em> and started grouping by <em>trip</em>. Each cell holds what one household needs in a normal week, within a ten-minute walk of its own station. Offices concentrate at the one interchange that can carry them. Industry sits downwind behind a planted belt, on its own freight spur.</p>
-            <p>Four of the five were defensible on paper. What separated this one is that its failure modes are ones I'd be willing to explain to the people who'd live with them.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== THE PLAN ===== -->
-<section class="blk">
-  <div class="wrap">
-    <div class="kicker">03 · Where it landed</div>
-    <h2>The plan I arrived at</h2>
-    <p class="sub">A <b>cell</b> is one neighbourhood unit — everything within an 800 m walk of a single station, about 90,000 people, with its own school, park, shops and community buildings. This city is two of them either side of the core. Everything is labelled where it sits, so you can argue with it without a key.</p>
-
-    <div class="card plan">
-      <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="wave" width="34" height="30" patternUnits="userSpaceOnUse">
-            <path d="M0 8 q8 -6 17 0 t17 0" fill="none" stroke="#7dd3fc" stroke-width="1.5"/>
-            <path d="M0 22 q8 -6 17 0 t17 0" fill="none" stroke="#7dd3fc" stroke-width="1.5"/>
-          </pattern>
-          <pattern id="field" width="16" height="16" patternUnits="userSpaceOnUse">
-            <path d="M0 16 L16 0" stroke="#bbf7d0" stroke-width="3"/>
-          </pattern>
-          <symbol id="h" viewBox="0 0 24 21">
-            <path d="M1.5 11 L12 2.5 L22.5 11" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-            <rect x="4" y="10.5" width="16" height="9.5" rx="1" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
-            <rect x="10" y="14" width="4.5" height="6" fill="#4f46e5"/>
-          </symbol>
-          <symbol id="f" viewBox="0 0 22 27">
-            <rect x="2" y="4" width="18" height="22" rx="1.5" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
-            <rect x="2" y="4" width="18" height="3.4" rx="1" fill="#4f46e5"/>
-            <rect x="5" y="10" width="3.2" height="3.2" fill="#4f46e5"/><rect x="9.4" y="10" width="3.2" height="3.2" fill="#4f46e5"/><rect x="13.8" y="10" width="3.2" height="3.2" fill="#4f46e5"/>
-            <rect x="5" y="15.4" width="3.2" height="3.2" fill="#4f46e5"/><rect x="9.4" y="15.4" width="3.2" height="3.2" fill="#4f46e5"/><rect x="13.8" y="15.4" width="3.2" height="3.2" fill="#4f46e5"/>
-          </symbol>
-          <symbol id="t" viewBox="0 0 20 60" preserveAspectRatio="none">
-            <rect x="2" y="7" width="16" height="52" fill="#334155" stroke="#0f172a" stroke-width="1.4"/>
-            <rect x="6" y="2" width="8" height="6" fill="#0f172a"/>
-            <rect x="4.5" y="14" width="11" height="2.4" fill="#94a3b8"/><rect x="4.5" y="24" width="11" height="2.4" fill="#94a3b8"/>
-            <rect x="4.5" y="34" width="11" height="2.4" fill="#94a3b8"/><rect x="4.5" y="44" width="11" height="2.4" fill="#94a3b8"/>
-          </symbol>
-          <symbol id="sc" viewBox="0 0 36 27">
-            <line x1="18" y1="6" x2="18" y2="0.8" stroke="#7c3aed" stroke-width="1.4"/>
-            <path d="M18 1.2 L25 3.2 L18 5.2 Z" fill="#7c3aed"/>
-            <path d="M4 13.5 L18 5.5 L32 13.5" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-            <rect x="6.5" y="13" width="23" height="12.5" rx="1" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
-            <rect x="15.5" y="18" width="5.5" height="7.5" fill="#7c3aed"/>
-          </symbol>
-          <symbol id="cv" viewBox="0 0 30 25">
-            <path d="M1.5 9.5 L15 2 L28.5 9.5 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.4" stroke-linejoin="round"/>
-            <rect x="3.5" y="9.5" width="23" height="2.2" fill="#0284c7"/>
-            <rect x="6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
-            <rect x="13.3" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
-            <rect x="20.6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
-            <rect x="2.5" y="21.5" width="25" height="2.6" fill="#0284c7"/>
-          </symbol>
-          <symbol id="tr" viewBox="0 0 16 19">
-            <rect x="7" y="10.5" width="2.2" height="7.5" rx="1" fill="#065f46"/>
-            <circle cx="8" cy="7.5" r="6.2" fill="#34d399" stroke="#047857" stroke-width="1.3"/>
-          </symbol>
-          <symbol id="fc" viewBox="0 0 54 31">
-            <path d="M2 29 V17 L11 11 V17 L20 11 V17 L29 11 V17 L38 11 V29 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="1.6" stroke-linejoin="round"/>
-            <rect x="6" y="22" width="5" height="7" fill="#ea580c"/><rect x="15" y="22" width="5" height="7" fill="#ea580c"/><rect x="24" y="22" width="5" height="7" fill="#ea580c"/>
-            <rect x="40" y="6" width="6" height="23" fill="#ea580c"/>
-            <path d="M43 5 q6 -3 9 1" fill="none" stroke="#fdba74" stroke-width="2.4" stroke-linecap="round"/>
-          </symbol>
-          <symbol id="st" viewBox="0 0 28 28">
-            <circle cx="14" cy="14" r="12.5" fill="#0f172a"/>
-            <rect x="8.5" y="7" width="11" height="10" rx="2.4" fill="#fff"/>
-            <rect x="10.2" y="8.8" width="7.6" height="4.2" rx="1" fill="#0f172a"/>
-            <circle cx="10.8" cy="19.4" r="1.7" fill="#fff"/><circle cx="17.2" cy="19.4" r="1.7" fill="#fff"/>
-          </symbol>
-        </defs>
-
-        <rect width="960" height="600" fill="#fbfdff"/>
-
-        <!-- RIVER: west edge then south edge -->
-        <rect x="0" y="0" width="36" height="600" fill="#e0f2fe"/><rect x="0" y="0" width="36" height="600" fill="url(#wave)"/>
-        <rect x="0" y="562" width="960" height="38" fill="#e0f2fe"/><rect x="0" y="562" width="960" height="38" fill="url(#wave)"/>
-        <path d="M18 200 v40 M12 232 l6 9 6 -9" stroke="#0284c7" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-        <path d="M470 581 h44 M506 573 l10 8 -10 8" stroke="#0284c7" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-        <text x="18" y="120" font-family="Inter" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle" transform="rotate(-90 18 120)">RIVER</text>
-
-        <!-- riverside park / flood plain -->
-        <rect x="36" y="0" width="42" height="562" fill="#ecfdf5"/>
-        <use href="#tr" x="48" y="300" width="18" height="22"/>
-        <use href="#tr" x="48" y="340" width="18" height="22"/><use href="#tr" x="48" y="450" width="18" height="22"/>
-        <text x="57" y="520" font-family="Inter" font-size="9.5" font-weight="700" fill="#047857" text-anchor="middle" transform="rotate(-90 57 520)">FLOOD PLAIN · LINEAR PARK</text>
-        <circle cx="57" cy="40" r="9" fill="#0284c7"/><rect x="51" y="49" width="12" height="4" fill="#0284c7"/>
-        <text x="57" y="200" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle" transform="rotate(-90 57 200)">WATER INTAKE — UPSTREAM</text>
-
-        <!-- arterials -->
-        <rect x="78" y="168" width="882" height="11" fill="#e2e8f0"/><line x1="84" y1="173.5" x2="954" y2="173.5" stroke="#fff" stroke-width="1.4" stroke-dasharray="9 7"/>
-        <rect x="78" y="438" width="882" height="11" fill="#e2e8f0"/><line x1="84" y1="443.5" x2="954" y2="443.5" stroke="#fff" stroke-width="1.4" stroke-dasharray="9 7"/>
-        <rect x="250" y="0" width="10" height="562" fill="#e2e8f0"/><rect x="518" y="0" width="10" height="562" fill="#e2e8f0"/>
-
-        <!-- rail spine -->
-        <line x1="78" y1="290" x2="800" y2="290" stroke="#0f172a" stroke-width="3.4"/>
-        <g stroke="#0f172a" stroke-width="2">
-          <line x1="100" y1="284" x2="100" y2="296"/><line x1="180" y1="284" x2="180" y2="296"/><line x1="220" y1="284" x2="220" y2="296"/>
-          <line x1="270" y1="284" x2="270" y2="296"/><line x1="360" y1="284" x2="360" y2="296"/><line x1="400" y1="284" x2="400" y2="296"/>
-          <line x1="500" y1="284" x2="500" y2="296"/><line x1="540" y1="284" x2="540" y2="296"/><line x1="650" y1="284" x2="650" y2="296"/>
-          <line x1="680" y1="284" x2="680" y2="296"/><line x1="760" y1="284" x2="760" y2="296"/>
-        </g>
-        <path d="M730 290 L800 290 L862 226" fill="none" stroke="#ea580c" stroke-width="2.6" stroke-dasharray="8 5"/>
-        <text x="806" y="302" font-family="Inter" font-size="9.5" font-weight="700" fill="#ea580c">FREIGHT SPUR</text>
-
-        <use href="#st" x="126" y="276" width="28" height="28"/>
-        <use href="#st" x="304" y="273" width="34" height="34"/>
-        <use href="#st" x="456" y="276" width="28" height="28"/>
-        <use href="#st" x="596" y="276" width="28" height="28"/>
-        <use href="#st" x="716" y="276" width="28" height="28"/>
-        <text x="321" y="322" font-family="Inter" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle">INTERCHANGE</text>
-        <circle cx="140" cy="290" r="96" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="7 7" opacity=".5"/>
-        <text x="140" y="424" font-family="Inter" font-size="9.5" font-weight="700" fill="#4f46e5" text-anchor="middle">800 m WALK — ONE CELL</text>
-
-        <!-- WEST CELL -->
-        <use href="#h" x="88" y="52" width="30" height="26"/><use href="#h" x="126" y="52" width="30" height="26"/><use href="#h" x="164" y="52" width="30" height="26"/><use href="#h" x="202" y="52" width="30" height="26"/>
-        <use href="#h" x="88" y="92" width="30" height="26"/><use href="#h" x="126" y="92" width="30" height="26"/><use href="#h" x="164" y="92" width="30" height="26"/><use href="#h" x="202" y="92" width="30" height="26"/>
-        <use href="#h" x="108" y="130" width="30" height="26"/><use href="#h" x="146" y="130" width="30" height="26"/><use href="#h" x="184" y="130" width="30" height="26"/>
-        <text x="160" y="40" font-family="Inter" font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="middle">WEST CELL · 92,000 PEOPLE</text>
-        <use href="#f" x="98" y="200" width="26" height="32"/><use href="#f" x="134" y="200" width="26" height="32"/><use href="#f" x="170" y="200" width="26" height="32"/>
-        <use href="#f" x="116" y="240" width="26" height="32"/><use href="#f" x="152" y="240" width="26" height="32"/>
-        <text x="147" y="194" font-family="Inter" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">denser within 800 m of the stop</text>
-        <use href="#sc" x="88" y="336" width="44" height="33"/>
-        <text x="108" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#6d28d9" text-anchor="middle">SCHOOL</text>
-        <use href="#cv" x="152" y="340" width="32" height="27"/>
-        <text x="172" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle">SHOPS</text>
-        <rect x="88" y="466" width="150" height="82" rx="9" fill="#d1fae5"/>
-        <use href="#tr" x="100" y="480" width="22" height="26"/><use href="#tr" x="128" y="492" width="26" height="30"/><use href="#tr" x="102" y="516" width="22" height="26"/><use href="#tr" x="190" y="484" width="24" height="28"/><use href="#tr" x="208" y="514" width="20" height="24"/>
-        <text x="163" y="544" font-family="Inter" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">PARK &amp; ALLOTMENTS</text>
-
-        <!-- CORE -->
-        <use href="#t" x="272" y="128" width="26" height="150"/>
-        <use href="#t" x="304" y="100" width="26" height="178"/>
-        <use href="#t" x="336" y="118" width="26" height="160"/>
-        <use href="#t" x="368" y="150" width="24" height="128"/>
-        <use href="#t" x="398" y="176" width="24" height="102"/>
-        <use href="#t" x="428" y="206" width="22" height="72"/>
-        <use href="#t" x="456" y="228" width="22" height="50"/>
-        <text x="350" y="88" font-family="Inter" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle">OFFICE CORE · 32,000 JOBS</text>
-        <use href="#cv" x="272" y="336" width="40" height="33"/>
-        <use href="#cv" x="326" y="340" width="34" height="28"/>
-        <use href="#cv" x="374" y="342" width="32" height="26"/>
-        <use href="#cv" x="420" y="342" width="32" height="26"/>
-        <text x="362" y="384" font-family="Inter" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle">CIVIC CLUSTER</text>
-        <text x="362" y="398" font-family="Inter" font-size="9" font-weight="600" fill="#0284c7" text-anchor="middle">town hall · courts · tax &amp; licensing · hospital · college · banks</text>
-        <text x="362" y="414" font-family="Inter" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">one trip, several errands — sited for the people with the least choice</text>
-        <rect x="272" y="466" width="200" height="60" rx="9" fill="#d1fae5"/>
-        <use href="#tr" x="286" y="478" width="22" height="26"/><use href="#tr" x="316" y="488" width="18" height="22"/><use href="#tr" x="424" y="480" width="22" height="26"/><use href="#tr" x="448" y="492" width="18" height="22"/>
-        <text x="372" y="512" font-family="Inter" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">CIVIC SQUARE · MARKET</text>
-
-        <!-- EAST CELL -->
-        <use href="#f" x="548" y="50" width="26" height="32"/><use href="#f" x="584" y="50" width="26" height="32"/><use href="#f" x="620" y="50" width="26" height="32"/><use href="#f" x="656" y="50" width="26" height="32"/>
-        <use href="#h" x="548" y="96" width="30" height="26"/><use href="#h" x="586" y="96" width="30" height="26"/><use href="#h" x="624" y="96" width="30" height="26"/><use href="#h" x="662" y="96" width="30" height="26"/>
-        <use href="#h" x="566" y="132" width="30" height="26"/><use href="#h" x="604" y="132" width="30" height="26"/><use href="#h" x="642" y="132" width="30" height="26"/>
-        <text x="606" y="38" font-family="Inter" font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="middle">EAST CELL · 88,000 PEOPLE</text>
-        <use href="#f" x="560" y="204" width="26" height="32"/><use href="#f" x="596" y="204" width="26" height="32"/><use href="#f" x="632" y="204" width="26" height="32"/>
-        <use href="#h" x="566" y="244" width="30" height="26"/><use href="#h" x="604" y="244" width="30" height="26"/><use href="#h" x="642" y="244" width="30" height="26"/>
-        <use href="#sc" x="548" y="336" width="44" height="33"/>
-        <text x="570" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#6d28d9" text-anchor="middle">SCHOOL</text>
-        <use href="#cv" x="614" y="340" width="32" height="27"/>
-        <text x="632" y="382" font-family="Inter" font-size="9.5" font-weight="700" fill="#0284c7" text-anchor="middle">SHOPS · CLINIC</text>
-        <rect x="548" y="466" width="146" height="82" rx="9" fill="#d1fae5"/>
-        <use href="#tr" x="560" y="480" width="24" height="28"/><use href="#tr" x="590" y="494" width="20" height="24"/><use href="#tr" x="562" y="518" width="22" height="26"/><use href="#tr" x="650" y="484" width="24" height="28"/><use href="#tr" x="666" y="516" width="20" height="24"/>
-        <text x="621" y="544" font-family="Inter" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">PARK &amp; SPORTS GROUND</text>
-
-        <!-- GREEN BELT -->
-        <rect x="716" y="0" width="46" height="562" fill="#ecfdf5"/>
-        <line x1="716" y1="0" x2="716" y2="562" stroke="#34d399" stroke-width="1.5" stroke-dasharray="7 6"/>
-        <line x1="762" y1="0" x2="762" y2="562" stroke="#34d399" stroke-width="1.5" stroke-dasharray="7 6"/>
-        <use href="#tr" x="722" y="30" width="18" height="22"/><use href="#tr" x="740" y="64" width="18" height="22"/><use href="#tr" x="722" y="100" width="18" height="22"/>
-        <use href="#tr" x="740" y="200" width="18" height="22"/><use href="#tr" x="722" y="238" width="18" height="22"/>
-        <use href="#tr" x="740" y="400" width="18" height="22"/><use href="#tr" x="722" y="470" width="18" height="22"/><use href="#tr" x="740" y="510" width="18" height="22"/>
-        <text x="739" y="160" font-family="Inter" font-size="9.5" font-weight="700" fill="#047857" text-anchor="middle" transform="rotate(-90 739 160)">GREEN BELT 450 M</text>
-
-        <!-- EAST EDGE -->
-        <line x1="800" y1="86" x2="930" y2="58" stroke="#94a3b8" stroke-width="11"/>
-        <line x1="804" y1="85" x2="926" y2="59" stroke="#fff" stroke-width="1.4" stroke-dasharray="9 7"/>
-        <text x="866" y="26" font-family="Inter" font-size="10.5" font-weight="700" fill="#64748b" text-anchor="middle">AIRFIELD</text>
-        <text x="866" y="40" font-family="Inter" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">approach over fields</text>
-
-        <use href="#fc" x="792" y="140" width="84" height="48"/>
-        <use href="#fc" x="792" y="204" width="72" height="41"/>
-        <text x="866" y="128" font-family="Inter" font-size="10.5" font-weight="700" fill="#c2410c" text-anchor="middle">INDUSTRY · 12,000 JOBS</text>
-        <text x="866" y="262" font-family="Inter" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">downwind, behind the belt,</text>
-        <text x="866" y="275" font-family="Inter" font-size="9" font-weight="600" fill="#94a3b8" text-anchor="middle">on its own freight spur</text>
-
-        <rect x="790" y="308" width="164" height="106" fill="url(#field)"/>
-        <rect x="790" y="308" width="164" height="106" fill="none" stroke="#86efac" stroke-width="1.5"/>
-        <text x="872" y="356" font-family="Inter" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">FARMLAND &amp;</text>
-        <text x="872" y="372" font-family="Inter" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">MARKET GARDENS</text>
-
-        <rect x="800" y="468" width="120" height="66" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-        <circle cx="830" cy="500" r="14" fill="none" stroke="#d97706" stroke-width="1.8"/>
-        <circle cx="866" cy="500" r="14" fill="none" stroke="#d97706" stroke-width="1.8"/>
-        <circle cx="902" cy="500" r="11" fill="none" stroke="#d97706" stroke-width="1.8"/>
-        <text x="860" y="460" font-family="Inter" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">SEWAGE WORKS</text>
-        <path d="M860 534 L860 562" stroke="#d97706" stroke-width="2.4" stroke-dasharray="5 4"/>
-        <text x="860" y="554" font-family="Inter" font-size="9" font-weight="700" fill="#b45309" text-anchor="middle">OUTFALL — DOWNSTREAM</text>
-
-        <!-- wind -->
-        <rect x="266" y="6" width="230" height="30" rx="12" fill="#fff" stroke="#e2e8f0"/>
-        <line x1="300" y1="16" x2="452" y2="16" stroke="#0f172a" stroke-width="1.8"/><path d="M452 16 l-9 -4.5 v9 z" fill="#0f172a"/>
-        <text x="381" y="30" font-family="Inter" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">PREVAILING WIND — WEST TO EAST</text>
-
-        <!-- scale + north -->
-        <line x1="100" y1="586" x2="220" y2="586" stroke="#0f172a" stroke-width="2"/>
-        <line x1="100" y1="580" x2="100" y2="592" stroke="#0f172a" stroke-width="2"/><line x1="220" y1="580" x2="220" y2="592" stroke="#0f172a" stroke-width="2"/>
-        <text x="160" y="578" font-family="Inter" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">1 km</text>
-        <circle cx="270" cy="586" r="12" fill="#fff" stroke="#0f172a" stroke-width="1.4"/>
-        <path d="M270 577 L274 586 L270 595 L266 586 Z" fill="#0f172a"/>
-        <text x="270" y="572" font-family="Inter" font-size="8.5" font-weight="700" fill="#0f172a" text-anchor="middle">N</text>
-      </svg>
-
-      <div class="legend">
-        <div><svg viewBox="0 0 24 21" xmlns="http://www.w3.org/2000/svg" style="width:18px"><path d="M1.5 11 L12 2.5 L22.5 11" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="10.5" width="16" height="9.5" rx="1" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/></svg>Houses</div>
-        <div><svg viewBox="0 0 22 27" xmlns="http://www.w3.org/2000/svg" style="width:13px"><rect x="2" y="4" width="18" height="22" rx="1.5" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/><rect x="2" y="4" width="18" height="3.4" fill="#4f46e5"/><rect x="5" y="10" width="3.2" height="3.2" fill="#4f46e5"/><rect x="13.8" y="10" width="3.2" height="3.2" fill="#4f46e5"/></svg>Flats</div>
-        <div><svg viewBox="0 0 20 44" xmlns="http://www.w3.org/2000/svg" style="width:8px"><rect x="2" y="6" width="16" height="37" fill="#334155" stroke="#0f172a" stroke-width="1.4"/><rect x="4.5" y="14" width="11" height="2.4" fill="#94a3b8"/><rect x="4.5" y="26" width="11" height="2.4" fill="#94a3b8"/></svg>Offices</div>
-        <div><svg viewBox="0 0 36 27" xmlns="http://www.w3.org/2000/svg" style="width:21px"><path d="M4 13.5 L18 5.5 L32 13.5" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round"/><rect x="6.5" y="13" width="23" height="12.5" rx="1" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><line x1="18" y1="6" x2="18" y2="1" stroke="#7c3aed" stroke-width="1.4"/><path d="M18 1.2 L25 3.2 L18 5.2 Z" fill="#7c3aed"/></svg>School</div>
-        <div><svg viewBox="0 0 30 25" xmlns="http://www.w3.org/2000/svg" style="width:18px"><path d="M1.5 9.5 L15 2 L28.5 9.5 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.4"/><rect x="6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/><rect x="13.3" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/><rect x="20.6" y="12" width="3.4" height="9.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/><rect x="2.5" y="21.5" width="25" height="2.6" fill="#0284c7"/></svg>Civic &amp; shops</div>
-        <div><svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg" style="width:13px"><rect x="7" y="10.5" width="2.2" height="7.5" fill="#065f46"/><circle cx="8" cy="7.5" r="6.2" fill="#34d399" stroke="#047857" stroke-width="1.3"/></svg>Green</div>
-        <div><svg viewBox="0 0 54 31" xmlns="http://www.w3.org/2000/svg" style="width:26px"><path d="M2 29 V17 L11 11 V17 L20 11 V17 L29 11 V17 L38 11 V29 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="1.6" stroke-linejoin="round"/><rect x="40" y="6" width="6" height="23" fill="#ea580c"/></svg>Industry</div>
-        <div><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style="width:16px"><circle cx="14" cy="14" r="12.5" fill="#0f172a"/><rect x="8.5" y="7" width="11" height="10" rx="2.4" fill="#fff"/><rect x="10.2" y="8.8" width="7.6" height="4.2" fill="#0f172a"/></svg>Station</div>
-        <div><svg viewBox="0 0 40 12" xmlns="http://www.w3.org/2000/svg" style="width:26px"><line x1="0" y1="6" x2="40" y2="6" stroke="#0f172a" stroke-width="3"/><line x1="7" y1="1" x2="7" y2="11" stroke="#0f172a" stroke-width="2"/><line x1="20" y1="1" x2="20" y2="11" stroke="#0f172a" stroke-width="2"/><line x1="33" y1="1" x2="33" y2="11" stroke="#0f172a" stroke-width="2"/></svg>Rail</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PROGRAMME ===== -->
-<section class="blk">
-  <div class="wrap">
-    <div class="kicker">04 · The programme</div>
-    <h2>A city is about seventy things, not eight</h2>
-    <p class="sub">Once colleges, courts, banks, supermarkets and stadiums go in, "where does it belong" stops being answerable one building at a time. What worked was sorting every use by <b>how often a household goes</b> against <b>how much land it eats</b> — because those two questions, not the category name, decide the answer.</p>
-
-    <div class="progwrap">
-      <div class="card scatter">
-        <svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
-          <rect x="90" y="46" width="385" height="170" fill="#fff7ed"/>
-          <rect x="475" y="46" width="385" height="170" fill="#eef2ff"/>
-          <rect x="90" y="216" width="385" height="170" fill="#f8fafc"/>
-          <rect x="475" y="216" width="385" height="170" fill="#ecfdf5"/>
-          <text x="340" y="64" font-family="Sora" font-size="11" font-weight="700" fill="#c2410c">AT A STATION, OR ON THE EDGE</text>
-          <text x="846" y="64" font-family="Sora" font-size="11" font-weight="700" fill="#4338ca" text-anchor="end">THE SPINE ITSELF</text>
-          <text x="104" y="376" font-family="Sora" font-size="11" font-weight="700" fill="#64748b">ONE OF, ANYWHERE ACCESSIBLE</text>
-          <text x="492" y="376" font-family="Sora" font-size="11" font-weight="700" fill="#047857">INSIDE EVERY CELL</text>
-          <line x1="90" y1="386" x2="860" y2="386" stroke="#0f172a" stroke-width="1.6"/>
-          <line x1="90" y1="46" x2="90" y2="386" stroke="#0f172a" stroke-width="1.6"/>
-          <line x1="475" y1="46" x2="475" y2="386" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="5 5"/>
-          <line x1="90" y1="216" x2="860" y2="216" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="5 5"/>
-          <text x="475" y="422" font-family="Inter" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">HOW OFTEN A HOUSEHOLD GOES →</text>
-          <text x="104" y="414" font-family="Inter" font-size="10" font-weight="600" fill="#94a3b8">once a year</text>
-          <text x="846" y="414" font-family="Inter" font-size="10" font-weight="600" fill="#94a3b8" text-anchor="end">every day</text>
-          <text x="36" y="216" font-family="Inter" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle" transform="rotate(-90 36 216)">HOW MUCH LAND IT TAKES →</text>
-
-          <g fill="#f97316">
-            <circle cx="112" cy="60" r="6"/><circle cx="146" cy="76" r="6"/><circle cx="232" cy="94" r="6"/><circle cx="214" cy="128" r="6"/><circle cx="292" cy="142" r="6"/><circle cx="104" cy="160" r="6"/><circle cx="152" cy="182" r="6"/><circle cx="308" cy="196" r="6"/>
-          </g>
-          <g font-family="Inter" font-size="11" font-weight="600" fill="#7c2d12">
-            <text x="123" y="64">Airfield</text><text x="157" y="80">Stadium</text><text x="243" y="98">College</text><text x="225" y="132">Hospital</text>
-            <text x="303" y="146">Shopping complex</text><text x="115" y="164">Sewage works</text><text x="163" y="186">Cemetery</text><text x="319" y="200">Multiplex</text>
-          </g>
-          <g fill="#64748b"><circle cx="184" cy="316" r="5.5"/><circle cx="128" cy="296" r="5.5"/><circle cx="322" cy="338" r="5.5"/><circle cx="246" cy="272" r="5.5"/><circle cx="162" cy="350" r="5.5"/></g>
-          <g font-family="Inter" font-size="11" font-weight="600" fill="#475569">
-            <text x="194" y="320">Town hall</text><text x="138" y="300">Fire station</text><text x="332" y="342">Tax office</text><text x="256" y="276">Museum</text><text x="172" y="354">Courts</text>
-          </g>
-          <g fill="#7c3aed"><circle cx="504" cy="180" r="6"/><circle cx="428" cy="194" r="6"/><circle cx="368" cy="254" r="6"/><circle cx="596" cy="274" r="6"/><circle cx="536" cy="326" r="6"/><circle cx="490" cy="306" r="6"/><circle cx="452" cy="276" r="6"/></g>
-          <g font-family="Inter" font-size="11" font-weight="600" fill="#5b21b6">
-            <text x="515" y="184">Secondary school</text><text x="418" y="188" text-anchor="end">Sports ground</text><text x="358" y="258" text-anchor="end">Swimming pool</text>
-            <text x="607" y="278">Supermarket</text><text x="546" y="330">Bank branch</text><text x="500" y="310">Library</text><text x="442" y="280" text-anchor="end">Community hall</text>
-          </g>
-          <g fill="#4f46e5"><circle cx="704" cy="240" r="6.5"/><circle cx="750" cy="192" r="6.5"/><circle cx="782" cy="288" r="6.5"/></g>
-          <g font-family="Inter" font-size="11" font-weight="600" fill="#3730a3">
-            <text x="694" y="244" text-anchor="end">Primary school</text><text x="740" y="186" text-anchor="end">Neighbourhood park</text><text x="772" y="292" text-anchor="end">Rail station</text>
-          </g>
-          <g fill="#047857"><circle cx="796" cy="346" r="6.5"/><circle cx="774" cy="318" r="6.5"/><circle cx="736" cy="332" r="6.5"/><circle cx="804" cy="366" r="6.5"/><circle cx="688" cy="286" r="6.5"/></g>
-          <g font-family="Inter" font-size="11" font-weight="600" fill="#065f46">
-            <text x="786" y="350" text-anchor="end">Pharmacy</text><text x="764" y="314" text-anchor="end">Local shops</text><text x="726" y="336" text-anchor="end">Nursery</text>
-            <text x="794" y="370" text-anchor="end">Playground</text><text x="678" y="290" text-anchor="end">Place of worship</text>
-          </g>
-        </svg>
-        <div class="skey">
-          <div><span class="dot" style="background:#047857"></span>Daily, walk-to</div>
-          <div><span class="dot" style="background:#4f46e5"></span>Daily, land-hungry</div>
-          <div><span class="dot" style="background:#7c3aed"></span>Weekly, ride-to</div>
-          <div><span class="dot" style="background:#f97316"></span>Occasional, large</div>
-          <div><span class="dot" style="background:#64748b"></span>Occasional, small</div>
-        </div>
-        <p style="font-size:.82rem;color:var(--muted);margin-top:8px">The corners are poles, not bins — weekly things sit near the middle by design. Read the diagonal: the further top-left something sits, the more it has to borrow accessibility from the transit line rather than generating its own. A stadium and a pharmacy are opposite problems, and calling them both "amenities" hides that.</p>
-      </div>
-
-      <div class="rules">
-        <div class="card rule">
-          <div class="rh"><span style="background:#047857"></span><h4>Daily, walk-to</h4></div>
-          <div class="where">800 m from every front door, crossing no arterial</div>
-          <div class="list">Nursery · primary school · playground · corner shop · small supermarket · pharmacy · GP clinic · bakery &amp; café · place of worship · post box · ATM · bus stop · park · allotments · laundry</div>
-          <div class="mirror"><b>On a screen:</b> the tab bar. If someone does it daily, it doesn't go behind a menu.</div>
-        </div>
-        <div class="card rule">
-          <div class="rh"><span style="background:#7c3aed"></span><h4>Weekly, ride-to</h4></div>
-          <div class="where">One per cell or shared between two, sitting on a stop</div>
-          <div class="list">Secondary school · large supermarket · sports ground · swimming pool · gym · library · community hall · health centre · weekly market · bank branch · vet · dentist · petrol &amp; EV charging · repair shops · salon</div>
-          <div class="mirror"><b>On a screen:</b> one level down, and never more than one. Two taps is a catchment; three is a dead zone.</div>
-        </div>
-        <div class="card rule">
-          <div class="rh"><span style="background:#f97316"></span><h4>Occasional, city-wide</h4></div>
-          <div class="where">One only, at the single most accessible point</div>
-          <div class="list">District hospital · college · shopping complex · cinema · theatre · museum · town hall · <b>courts</b> · tax office · land registry · licensing &amp; passport office · employment office · main post office · police HQ · banks &amp; insurance · hotels · bus station</div>
-          <div class="mirror"><b>On a screen:</b> reached by search or a direct link, not by browsing. This is also the errand chain — the people who need a court date, a licence and a benefits office are disproportionately the people without a car, so these cluster at the interchange and open onto the same square.</div>
-        </div>
-        <div class="card rule">
-          <div class="rh"><span style="background:#0ea5e9"></span><h4>Placed by response time</h4></div>
-          <div class="where">The worst case, not the average — eight minutes to any address</div>
-          <div class="list">Fire station · ambulance depot · neighbourhood police posts · emergency department · blood bank</div>
-          <div class="mirror"><b>On a screen:</b> undo, error recovery, support, "cancel this payment". Frequency is the wrong metric — these are sized for the bad day.</div>
-        </div>
-        <div class="card rule">
-          <div class="rh"><span style="background:#be123c"></span><h4>Spiky — empty, then 18,000 people</h4></div>
-          <div class="where">Peak load, on transit, never on a residential street</div>
-          <div class="list">Stadium · multiplex · exhibition hall · festival ground · wholesale market · concert venue · places of worship at festival</div>
-          <div class="mirror"><b>On a screen:</b> the tax-season flow, year-end close, onboarding. Rare enough not to earn permanent prime space, urgent enough to reach in one move when it spikes.</div>
-        </div>
-        <div class="card rule" style="background:var(--bg-alt)">
-          <div class="rh"><span style="background:#334155"></span><h4>Necessary, unloved</h4></div>
-          <div class="where">Downwind, downstream, buffered — and never forgotten</div>
-          <div class="list">Sewage works · water treatment · reservoir &amp; intake · power substation · telecom exchange · bus depot · rail freight yard · warehousing &amp; cold storage · fuel depot · recycling centre · landfill · quarry · crematorium · cemetery · animal shelter</div>
-          <div class="mirror"><b>On a screen:</b> settings, logs, billing, data export, account deletion. Out of the way — and the ones that must never break.</div>
-        </div>
-      </div>
-
-      <div class="card rule" style="border-color:#a7f3d0;background:var(--good-bg)">
-        <div class="rh"><span style="background:#047857"></span><h4>And the land you deliberately don't build on</h4></div>
-        <div class="where">Beyond the belt, and along the water</div>
-        <div class="list">Farmland &amp; market gardens · orchards · woodland · the green belt itself · the flood plain, which becomes the linear park and the cycle route · a solar array on ground that floods · the airfield's noise contour · the quarry's haulage corridor</div>
-        <div class="mirror"><b>On a screen:</b> whitespace, rate limits, and the features you decided not to ship. Empty is a decision, and on a plan it's the decision that's hardest to defend in a meeting and cheapest to regret losing.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== EMERGENT ===== -->
-<section class="blk">
-  <div class="wrap">
-    <div class="kicker">05 · The limit</div>
-    <h2>Two things I found I couldn't place at all</h2>
-    <div class="rules" style="margin-top:18px">
-      <div class="card rule">
-        <div class="rh"><span style="background:var(--accent)"></span><h4>You can site a school. You cannot site a good restaurant.</h4></div>
-        <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:9px">Restaurants, cafés, salons, tuition centres, gyms, repair shops — none of these can be zoned into existence. What a plan can do is create the conditions: small cheap ground-floor units, footfall passing the door, and permission to change use without a fight. Then they appear, or they don't.</p>
-        <div class="mirror"><b>On a screen:</b> exactly the same split. You place navigation, settings and the primary flow. You cannot place community, habit or word of mouth — only make them likely, by lowering the cost of the first post and putting people past each other's work. Confusing the two is how you get a "Community" tab nobody opens.</div>
-      </div>
-      <div class="card rule">
-        <div class="rh"><span style="background:var(--brand)"></span><h4>Plan the container, not the contents</h4></div>
-        <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:9px">I sized a high street around bank branches. Bank branches are disappearing. A plan that specifies <em>twelve banks</em> ages into twelve empty units; a plan that specifies <em>flexible ground floor, 40–90 m², own entrance, changeable use</em> becomes banks, then cafés, then clinics, then whatever comes next.</p>
-        <div class="mirror"><b>On a screen:</b> build the slot, not the widget. A card system, a settings section that accepts new rows, an empty state that adapts — these outlive every specific feature you put in them. The most durable decisions I made were the ones that named a shape instead of a use.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SCREEN HALF ===== -->
-<section class="blk">
-  <div class="wrap">
-    <div class="kicker">06 · The transfer</div>
-    <h2>Then I opened Figma and made the same four mistakes</h2>
-    <p class="sub">Every rule I ended up with was a rule I'd already been applying badly to screens.</p>
-
-    <div class="card" style="padding:8px 24px 18px">
-      <div class="colhead" style="padding-top:14px"><div>ON THE MAP</div><div></div><div class="r">ON THE SCREEN</div></div>
-
-      <div class="pair">
-        <div class="l"><h4>The school sits between the houses and the park</h4><p>Not because schools and parks are the same kind of thing — because a parent's Tuesday afternoon runs through both. Adjacency is a claim about what happens next, and people read it as one whether you meant it or not.</p></div>
-        <div class="mid">⇄</div>
-        <div class="r"><h4>"Export" belongs beside "Share", not beside "Delete"</h4><p>Group by the errand, not the object type. And the thing nobody should hit by accident gets its own block, the way industry gets its own edge of town — that 10px divider is a green belt.</p></div>
-      </div>
-
-      <div class="pair">
-        <div class="l"><h4>Height falls off as you leave the station</h4><p>The most accessible land carries the most people. Density that ignores access just moves congestion somewhere it can't be absorbed.</p></div>
-        <div class="mid">⇄</div>
-        <div class="r"><h4>One primary action owns the prime real estate</h4><p>Weight decays outward from it. Four buttons of equal prominence is four towers and no station.</p></div>
-      </div>
-
-      <div class="pair">
-        <div class="l"><h4>Don't route every trip through the centre</h4><p>Radial layouts look like great access until a trip between neighbours crosses the whole city. The hub carries traffic it was never meant to hold.</p></div>
-        <div class="mid">⇄</div>
-        <div class="r"><h4>Sibling screens need a door between them</h4><p>If the only way from one task to a related one is back out to home, the home screen becomes a junction instead of a place — and every flow inherits two wasted steps.</p></div>
-      </div>
-
-      <div class="pair">
-        <div class="l"><h4>Somebody lives downwind</h4><p>Every layout has a worst position. Deciding where the factory goes is deciding who breathes it — and the honest question isn't whether there's a cost, it's whether it lands on whoever had the least choice.</p></div>
-        <div class="mid">⇄</div>
-        <div class="r"><h4>Every layout has an edge case it punishes</h4><p>The grouping that reads cleanest for the median user is usually the one that strands somebody — the person with sixteen cards, the one on a small screen, the one who only came for the thing I demoted to the third tab. Naming who pays is the part of the work that doesn't render.</p></div>
-      </div>
-    </div>
-
-    <div class="closer">
-      <p>"Where does the factory go" is the same question as "which user do I make click twice." I just answered it more carefully when it was a city.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SANDBOX CTA ===== -->
-<div class="wrap">
-  <div class="cta">
+<header class="hero" id="top"><div class="in">
+  <div class="blob"></div>
+  <div class="hi">
     <div>
-      <h3>Build your own city</h3>
-      <p>Drag to paint a layout and watch three things residents actually notice — clean air, a walk to a station, somewhere to walk to — react as you go. Then see the same grid read back as an interface.</p>
+      <span class="eyebrow"><i></i>A design-thinking exercise</span>
+      <h1>Our mentor gave us a blank site <span class="hl">and asked us to plan a city</span></h1>
+      <p class="lede">An exercise, nothing more &mdash; no product, no users, no brief. It turned out to be far less about buildings than about how you group things, so I finished it properly at home.</p>
+      <div class="ledger" style="margin-top:.2rem"><span>The exercise &mdash; <b>plan a city for 10 lakh people, and decide where every one of its parts goes.</b></span></div>
     </div>
-    <a href="demo-cityplanning.html">Open the sandbox →</a>
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb">Where it started</span><span class="rt">Day one</span></div>
+      <div class="dbody" id="sketch"></div>
+      <p class="dfoot">The first attempt: everything important in the middle, homes around it. <b>No density, no distances, no groupings</b> &mdash; those had to be earned.</p>
+    </div></div>
+  </div>
+</div></header>
+
+<main>
+
+<!-- ═══ REFERENCE CITIES + IDENTITY ═══ -->
+<section class="band t2" id="cities"><div class="in">
+  <div class="sechead rv" style="--sk:var(--coral)">
+    <span class="k">Where I looked first</span>
+    <h2>Every city is known for something, and it shows up in the plan</h2>
+    <p>Ten places, each drawn as the thing it is known for &mdash; and what that thing did to its plan.</p>
+  </div>
+  <div class="board rv">
+    <div class="bh"><span class="lb">Reference board</span></div>
+    <div class="bb">
+      <div>
+        <span class="mlab">Read this first &mdash; the six fills every plan on this page uses</span>
+        <div class="keygrid" id="keygrid"></div>
+        <p style="font-size:.82rem; color:var(--muted); margin:.5rem 0 0; max-width:78ch">These are not zoning categories. Zoning sorts land by what sits on it; these came out of sorting by who uses a thing and how often they go.</p>
+      </div>
+      <div class="strip" id="refs"></div>
+    </div>
   </div>
 </div>
+</section>
 
-<!-- ===== WALL ===== -->
-<div class="wall">
-  <div class="wrap">
-    <h2 style="font-size:1.3rem">The working wall</h2>
-    <p style="color:var(--ink-soft);font-size:.94rem;margin-top:6px">Distilled from the original board — what I started from, what kept breaking, and where it converged.</p>
-    <div class="wall-grid">
-      <div class="cluster">
-        <h4>Started from</h4>
-        <div class="sticky">Eight zone types on a blank grid: homes, admin, schools, parks, factories, offices, stations, airport</div>
-        <div class="sticky s2">Perry's 1920s "neighbourhood unit" — size a district by how far a child walks to school. I swapped the school for the station.</div>
-        <div class="sticky s3">Rule I set early: write the reason beside every block, or it doesn't count as a decision</div>
-      </div>
-      <div class="cluster">
-        <h4>What kept breaking</h4>
-        <div class="sticky s4">Tidy plans were the worst plans. Every time it looked clean, someone couldn't walk anywhere.</div>
-        <div class="sticky">I drew the wind backwards and had the whole city breathing the factory. Caught it four drafts in.</div>
-        <div class="sticky s5">Kept planning for uses, not shapes — sized a high street around bank branches that are disappearing</div>
-      </div>
-      <div class="cluster">
-        <h4>Where it converged</h4>
-        <div class="sticky s2">Group by <b>trip</b>, not by <b>type</b>. That one swap fixed four separate problems.</div>
-        <div class="sticky s3">Two directional constraints — wind and water — intersect at exactly one corner. That's not a preference, it's an answer.</div>
-        <div class="sticky">Some things you place. Some things you can only make likely. Knowing which is which is the whole job.</div>
-      </div>
-    </div>
+<!-- ═══ THE NUMBERS ═══ -->
+<section class="band" id="brief"><div class="in">
+  <div class="sechead rv" style="--sk:var(--sky)">
+    <span class="k">The brief</span>
+    <h2>One number chosen, everything else derived from it</h2>
+    <p>I picked the population. Everything else follows from it, and every step is checked against a real city.
   </div>
 </div>
+  <div class="row alt"><div class="in pin rv" style="--ac:var(--sky)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb">How the brief was derived</span><span class="rt">Six steps</span></div>
+      <div class="dbody"><div class="lad" id="ladder"></div></div>
+      <p class="dfoot">Change the first box and every box below it moves. <b>That is the only reason to write it this way.</b></p>
+    </div></div>
+    <div class="txt">
+      <h3>So: where does a city put its hospital?</h3>
+      <p>India's public health standards size facilities by population, which turns the argument into arithmetic: a sub-centre per ten thousand, a primary health centre per fifty thousand, a community health centre per two lakh, a sub-divisional hospital per five to six lakh. A district hospital does not appear until ten lakh.</p>
+      <div class="tw">
+        <div><span class="k">At 10 lakh</span><p>One district hospital, two sub-divisional hospitals, five community health centres, twenty urban primary health centres and about a hundred sub-centres. A whole hierarchy, not a single building.</p></div>
+        <div><span class="k g">Which means</span><p>The answer is a threshold before it is a place &mdash; and it is five different answers at five different tiers. Where each one goes comes much later, and turns out to be the easy part.</p></div>
+      </div>
+      <div class="ledger"><span>Sources: <b>IPHS 2022 norms</b></span><span>Density check: <b>Berlin, Cambridge</b></span></div>
+    </div>
+  </div></div>
+</section>
 
-<footer class="wrap">
-  <a class="back" href="index.html#projects">← Back to portfolio</a>
-  <p style="margin-top:8px">A side project by Madhumitha D V. Figures are self-set assumptions, chosen to be specific enough to be wrong.</p>
-</footer>
+<!-- ═══ ITERATIONS ═══ -->
+<section class="band" id="drafts"><div class="in">
+  <div class="sechead rv" style="--sk:var(--cobalt)">
+    <span class="k">Working it out</span>
+    <h2>Each drawing asked a question, and left me with more to place</h2>
+    <p>Each failure forced me to name what was inside the thing that failed. Eight items became about seventy, and the groupings appeared along the way.</p>
+  </div>
+</div><div id="rows"></div></section>
 
+<!-- ═══ CLUSTERING ═══ -->
+<section class="band t2" id="clustering"><div class="in">
+  <div class="sechead rv" style="--sk:var(--coral)">
+    <span class="k">The method</span>
+    <h2>Seventy things is not a list you can place</h2>
+    <p>Six loose groupings that overlapped was not a plan. Sorting by behaviour rather than by category is what tidied them into eight.</p>
+  </div>
+</div>
+  <div class="row"><div class="in pin rv" style="--ac:var(--coral)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb">Affinity clustering</span><span class="rt">Tap a cluster</span></div>
+      <div class="dbody" id="clusterdiag"></div>
+      <p class="dfoot">Tap a cluster to see what is in it. Sorted by how often people go against how much room it takes &mdash; <b>not by what the thing is.</b></p>
+    </div></div>
+    <div class="txt">
+      <h3>The two questions that did the sorting</h3>
+      <p>Sorted by category, healthcare is one thing and gets one location. Sorted by how often people actually go, it is two: the hospital you visit twice in a decade, and the pharmacy you need on a Tuesday night.</p>
+      <div class="tw">
+        <div><span class="k">How often</span><p>Every day, every week, a few times a year, or once in a lifetime and never by choice.</p></div>
+        <div><span class="k">How much room</span><p>A shopfront, a block, or forty hectares with a buffer around it.</p></div>
+        <div><span class="k g">Result</span><p>Six loose groupings became eight clusters with one placement rule each. Eight rules is something you can draw.</p></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ FINAL ═══ -->
+<section class="band t3" id="final"><div class="in">
+  <div class="sechead rv" style="--sk:var(--leaf)">
+    <span class="k">The one I kept</span>
+    <h2>Two spines, seven districts, fifty-five cells</h2>
+    <p>Nothing placed by the drawing. Each cluster has one rule, and the rule survives the population changing.</p>
+  </div>
+</div>
+  <div class="row alt"><div class="in pin rv" style="--ac:var(--leaf)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb" id="planlb">Whole city</span><span class="rt">Zoom in</span></div>
+      <div class="dbody"><div class="tabs" id="clustertabs"></div><div id="finalplan"></div></div>
+      <p class="dfoot" id="plancap">Fifty-five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b></p>
+    </div></div>
+    <div class="txt" style="--ac:var(--leaf)">
+      <h3>Where each cluster goes, and why</h3>
+      <div class="groups" id="groups"></div>
+    </div>
+  </div></div>
+  <div class="row"><div class="in pin rv" style="--ac:var(--cobalt)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb">Inside one cell</span><span class="rt">800 m</span></div>
+      <div class="dbody" id="cellplan"></div>
+      <p class="dfoot">One cell at walking scale. <b>Everything named here, the community hall included, is reachable without crossing an arterial road.</b></p>
+    </div></div>
+    <div class="txt">
+      <h3>And the hospital, finally</h3>
+      <p>On the most reachable stop, next to the college and the courts. Not because a hospital deserves the centre, but because whoever needs one has the least choice about going.</p>
+      <div class="tw">
+        <div><span class="k">The cell</span><p>About eighteen thousand people &mdash; enough to keep a primary school, a GP and a few shops going without anyone driving.</p></div>
+        <div><span class="k g">Compared</span><p>V&auml;llingby was built for 20&ndash;25,000 and Bhubaneswar's units for rather fewer. Mine sits between them, which is reassuring rather than original.</p></div>
+        <div><span class="k g">And its identity</span><p>A satellite where most of the peak leaves in the morning. So co-working in every cell, the stadium at the far end to counter-flow the commute, and hotels modest but sat on the station.</p></div>
+        <div><span class="k g">Precedent</span><p>Stockholm strung its towns along the metro and put work inside each one. Bhubaneswar proved the unit works, and that it has to be sized for the city you become.</div>
+      </div>
+      <div class="ledger"><span>Brief: <b>13 assumptions</b></span><span>Components: <b>~70 in 8 clusters</b></span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ GROWTH ═══ -->
+<section class="band" id="growth"><div class="in">
+  <div class="sechead rv" style="--sk:var(--butter)">
+    <span class="k">Twenty years on</span>
+    <h2>A plan has to survive the next hundred thousand people</h2>
+    <p>Two per cent a year is deliberately conservative. Bhubaneswar was drawn for 40,000 and is past eight lakh, which is the more likely failure mode.</p>
+  </div>
+</div>
+  <div class="row alt"><div class="in pin rv" style="--ac:var(--butter)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead" style="color:var(--ink)"><span class="lb">At 2% a year</span><span class="rt" style="color:var(--ink)">Projection</span></div>
+      <div class="dbody" style="--ac:var(--butter)"><div class="bars" id="bars"></div></div>
+      <p class="dfoot">Densifying the cells nearest the line absorbs the first decade. <b>The second decade needs new cells, not a new plan.</b></p>
+    </div></div>
+    <div class="txt">
+      <h3>Three moves, in this order</h3>
+      <div class="tw">
+        <div><span class="k" style="color:var(--ink)">First</span><p>Densify the three districts nearest the interchange, from about 7,000 to 9,000 per km&sup2; &mdash; still below Chandigarh. Land that already has water, drains and a line. <b>Roughly 1.2 lakh people, no new ground.</b></p></div>
+        <div><span class="k" style="color:var(--ink)">Second</span><p>Extend both lines east, a district at a time, each hanging off stops the lines were always going to need. <b>About 1.45 lakh each.</b></p></div>
+        <div><span class="k" style="color:var(--ink)">Third</span><p>Only past roughly 16 lakh, a third line north. Expensive, and worth naming now so nobody reaches for it in year six.</p></div>
+      </div>
+      <p style="font-size:.94rem">What gives way first is never the street layout &mdash; it is the things there is only one of. The district hospital has headroom to about twenty-five lakh, so it is not the constraint. The works corner and the peak headway on the lines are: both need land and capacity reserved on day one. Gurugram is what happens when they are not.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ ON A SCREEN ═══ -->
+<section class="band t2" id="screen"><div class="in">
+  <div class="sechead rv" style="--sk:var(--cobalt)">
+    <span class="k">Back on a screen</span>
+    <h2>The same clustering, applied to a flow</h2>
+    <p>The part I took back to work: same two questions, different material.</p>
+  </div>
+</div>
+  <div class="row alt"><div class="in pin rv" style="--ac:var(--cobalt)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb">City cluster &rarr; screen</span></div>
+      <div class="dbody" id="mapping"></div>
+      <p class="dfoot">Same two questions, different material. <b>Frequency picks the level; footprint picks the container.</b></p>
+    </div></div>
+    <div class="txt">
+      <h3>What it changes in practice</h3>
+      <div class="tw">
+        <div><span class="k">Navigation</span><p>Daily things earn a permanent home. Weekly things sit one level down, never two. Occasional things are reached by search &mdash; not a demotion, just where people look.</p></div>
+        <div><span class="k">Flows</span><p>Error recovery is the emergency service of a product. Designed for the worst case, not the average.</p></div>
+        <div><span class="k">The unloved</span><p>Billing, logs, data export, deletion. Placed early, or they end up wherever there was room left.</p></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="qb"><div class="qi">
+  <span class="mrk">&ldquo;</span>
+  <div><p>I did not know most of the brief when I started. Each attempt is what told me which question I still owed an answer to.</p>
+  <span class="cap">On working it out in the open</span></div>
+</div></section>
+
+</main>
+
+<section class="about" id="about">
+  <div class="in ai">
+    <div>
+      <h3>A bit about me</h3>
+      <p>Senior Product Manager at a fintech startup, with corporate years before that &mdash; I've built for users in India and for global markets, and the job is the same everywhere: find the real problem before building for it.</p>
+      <p>Most things are the way they are for a reason, and I like finding out what the reason was and whether it still holds. This page is the after-hours version of that. Some of it is me solving something in my own life &mdash; Italian exams, finding a vegetarian meal in an unfamiliar city. The rest is curiosity about objects most of us stopped noticing. Redrawing one is the most honest way I know to find out what the original was solving for.</p>
+      <div class="chipset"><span>Miro</span><span>User research</span><span>Information architecture</span><span>Systems thinking</span><span>Figma</span><span>Prototyping</span></div>
+    </div>
+    <div class="lk">
+      <h3>Say hi</h3>
+      <p><a class="mail" href="mailto:dvmadhumitha2021@outlook.com">dvmadhumitha2021@outlook.com</a></p>
+      <a href="index.html">All work<s>&rarr;</s></a>
+      <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn<s>&rarr;</s></a>
+      <a href="https://github.com/dvmadhumitha/PM-Side-Projects">GitHub<s>&rarr;</s></a>
+    </div>
+  </div>
+  <div class="in sig2">Built off the clock &mdash; &copy; Madhumitha D V</div>
+</section>
+
+<script>
+(function(){
+"use strict";
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return [].slice.call((r||document).querySelectorAll(s));}
+
+/* ── icons ── */
+var IP={
+ Homes:'M2,9.5 L10,2.5 L18,9.5 M4,8.5 V17.5 H16 V8.5 M8,17.5 V12 h4 v5.5',
+ Schools:'M10,2.5 L18.5,7 L10,11.5 L1.5,7 Z M5,9.4 V15 c0,0 2,2 5,2 s5,-2 5,-2 V9.4',
+ Hospital:'M4,6 h12 v11.5 h-12 Z M10,8.6 v6 M7,11.6 h6',
+ Shops:'M3,7.5 h14 l-1,10 H4 Z M7,7.5 a3,3 0 0 1 6,0',
+ Offices:'M3.5,17.5 V4 h6 v13.5 M9.5,17.5 V8.5 h7 v9 M5.5,7 h2 M5.5,10.5 h2 M5.5,14 h2 M12.5,11.5 h2 M12.5,14.5 h2',
+ Park:'M10,17.5 V9 M10,11.5 c0,-4 3,-6.5 6.5,-6.5 0,4 -3,6.5 -6.5,6.5 M10,14 c0,-3 -2.5,-5 -5.5,-5 0,3 2.5,5 5.5,5',
+ Roads:'M5,17.5 L7.5,3 M15,17.5 L12.5,3 M10,4 v2.5 M10,9 v2.5 M10,14 v2.5',
+ Transit:'M5,3.5 h10 v9.5 h-10 Z M6.5,17.5 L8.5,13 M13.5,17.5 L11.5,13 M5,8.5 h10',
+ bus:'M3,5 h14 v8.5 h-14 Z M5.5,13.5 v3 M14.5,13.5 v3 M3,9.2 h14',
+ shield:'M10,2.5 l7,3 v4.5 c0,4 -3,6.5 -7,8 -4,-1.5 -7,-4 -7,-8 V5.5 Z M10,7.5 v5 M7.5,10 h5',
+ tent:'M2.5,16.5 c2,-8.5 5,-12.5 7.5,-12.5 s5.5,4 7.5,12.5 M2.5,16.5 h15',
+ depot:'M3,9 h14 v8.5 h-14 Z M6.5,9 V4.5 M13.5,9 V4.5',
+ leaf:'M10,17.5 V8 M10,11.5 c0,-4.5 3.5,-7.5 7.5,-7.5 0,4.5 -3.5,7.5 -7.5,7.5',
+ cross:'M10,3.5 v13 M3.5,10 h13',
+ bread:'M4,8.5 c0,-2.6 2.6,-4.2 6,-4.2 s6,1.6 6,4.2 v5.5 c0,1.4 -1,2 -2,2 H6 c-1,0 -2,-.6 -2,-2 Z M8,8.5 v7.5 M12,8.5 v7.5',
+ slide:'M3,17 L13,6 M13,6 h4.5 M3,17 h6 M9,17 V12.5',
+ pram:'M10,4.2 a3,3 0 1 1 .1,0 M4.5,17.5 c0,-4 2.5,-6.5 5.5,-6.5 s5.5,2.5 5.5,6.5 Z M6.5,17.5 v1.5 M13.5,17.5 v1.5'
+};
+function ICON(n,x,y,sz,c){ var d=IP[n]; if(!d) return '';
+  var k=(sz||16)/20;
+  return '<g transform="translate('+x+','+y+') scale('+k.toFixed(3)+')" fill="none" stroke="'+(c||'var(--ink)')+'" '+
+   'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity="'+(c?1:.82)+'"><path d="'+d+'"/></g>'; }
+function ICONHTML(n,c,px){ px=px||15;
+  return '<svg width="'+px+'" height="'+px+'" viewBox="0 0 20 20" fill="none" stroke="'+(c||'currentColor')+'" '+
+   'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+IP[n]+'"/></svg>'; }
+
+/* ── svg helpers ── */
+function R(x,y,w,h,f,o){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="var(--f-'+f+')"'+(o?' opacity="'+o+'"':'')+'/>'; }
+function T(x,y,t,o){ o=o||{};
+  return '<text x="'+x+'" y="'+y+'" font-family="DM Mono,monospace" font-size="'+(o.s||11)+'" '+
+  'letter-spacing="'+(o.ls||1)+'" font-weight="500" fill="'+(o.c||'var(--ink)')+'" '+
+  (o.a?'text-anchor="'+o.a+'" ':'')+'stroke="var(--card)" stroke-width="'+(o.s>10?3.4:2.6)+'" paint-order="stroke" opacity="'+(o.op||1)+'">'+t+'</text>'; }
+var RIVER='<path d="M0,26 C44,58 86,92 138,112 C206,138 322,150 420,154" fill="none" stroke="var(--f-water)" stroke-width="13" stroke-linecap="round"/>';
+var WIND='<g><path d="M266,13 L308,13" stroke="var(--ink)" stroke-width="2" opacity=".6"/>'+
+  '<path d="M304,9 L309,13 L304,17" fill="none" stroke="var(--ink)" stroke-width="2" opacity=".6"/>'+
+  T(309,7,'WIND W&#8594;E',{s:8,a:'end',op:.66})+'</g>';
+function SVG(land,over){ return '<svg viewBox="0 0 420 260" role="img" aria-label="City layout plan">'+
+  '<rect x="0" y="0" width="420" height="260" fill="var(--card)"/>'+(land||'')+RIVER+(over||'')+WIND+
+  '<rect x="1" y="1" width="418" height="258" fill="none" stroke="var(--hair)" stroke-width="2" rx="10"/></svg>'; }
+function ARROW(d,label,lx,ly){ return '<g><path d="'+d+'" fill="none" stroke="var(--coral)" stroke-width="2.2" stroke-dasharray="6 4"/>'+
+  T(lx,ly,label,{s:8.5,c:'var(--coral)'})+'</g>'; }
+
+/* ── day one ── */
+$('#sketch').innerHTML='<svg viewBox="0 0 420 260" role="img" aria-label="The first, naive plan">'+
+  '<rect x="0" y="0" width="420" height="260" fill="var(--card)"/>'+
+  R(0,0,420,260,'house')+
+  '<rect x="18" y="30" width="384" height="212" rx="10" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-dasharray="9 6" opacity=".8"/>'+
+  '<circle cx="216" cy="126" r="60" fill="var(--f-civic)" opacity=".85"/>'+
+  R(298,168,100,56,'ind')+R(30,38,86,40,'green')+
+  '<path d="M22,232 H398" stroke="var(--ink)" stroke-width="2.4" opacity=".5"/>'+
+  ICON('Hospital',182,96,17)+ICON('Schools',222,96,17)+ICON('Shops',182,134,16)+ICON('Offices',222,134,16)+
+  T(216,180,'EVERYTHING IN THE MIDDLE',{s:8.5,a:'middle',c:'var(--coral)'})+
+  ICON('Homes',44,92,17)+T(52,120,'HOMES',{s:8.5,a:'middle'})+
+  ICON('Homes',350,52,17)+T(358,80,'HOMES',{s:8.5,a:'middle'})+
+  ICON('Homes',126,182,17)+T(134,210,'HOMES',{s:8.5,a:'middle'})+
+  ICON('Park',42,44,16,'var(--leaf)')+T(64,56,'PARK',{s:8.5})+
+  ICON('depot',310,178,16)+T(332,190,'INDUSTRY',{s:8.5})+
+  ICON('Transit',24,210,15)+T(46,224,'ROAD',{s:8,op:.72})+
+  T(210,22,'AN EMPTY SITE, AND EIGHT THINGS A CITY NEEDS',{s:8.5,a:'middle',op:.72})+
+  T(210,254,'NO DENSITY, NO DISTANCES, NO GROUPING',{s:8,a:'middle',op:.62})+
+  '<rect x="1" y="1" width="418" height="258" fill="none" stroke="var(--hair)" stroke-width="2" rx="10"/></svg>';
+
+/* ── reference cities, all near a million: layout first, then what stands out ── */
+function cap(t){ return '<text x="60" y="69" text-anchor="middle" font-family="DM Mono,monospace" font-size="6.2" '+
+  'fill="var(--ink)" opacity=".82" stroke="var(--card)" stroke-width="2.6" paint-order="stroke">'+t+'</text>'; }
+function cell(x,y,w,h,f,st){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2.5" fill="var(--f-'+f+')" stroke="'+(st||'var(--hair)')+'" stroke-width="'+(st?1.6:1)+'"/>'; }
+var TH={
+ chandigarh:function(){ var g=R(0,0,120,74,'green',.35);
+   g+=cell(6,5,34,25,'house')+cell(43,5,34,25,'work','var(--cobalt)')+cell(80,5,34,25,'house')+
+      cell(6,33,34,25,'house')+cell(43,33,34,25,'house')+cell(80,33,34,25,'house');
+   g+=ICON('Homes',17,10,13)+ICON('bus',54,11,13,'var(--cobalt)')+ICON('Park',91,10,13,'var(--leaf)')+
+      ICON('Schools',17,38,13)+ICON('Shops',54,38,12)+ICON('Homes',91,38,13);
+   return g+cap('SECTORS, 800 &times; 1200 m'); },
+ bhubaneswar:function(){ var g=R(0,0,120,74,'green',.3);
+   var xs=[6,44,82], ys=[5,32];
+   ys.forEach(function(y){ xs.forEach(function(x){
+     g+=cell(x,y,32,24,'house')+ICON('Homes',x+4,y+3,12)+
+        '<circle cx="'+(x+25)+'" cy="'+(y+15)+'" r="4" fill="var(--f-civic)" stroke="var(--coral)" stroke-width="1.2"/>'; }); });
+   g+='<path d="M0,61 H120" stroke="var(--ink)" stroke-width="2.2" opacity=".6"/>';
+   return g+cap('SIX UNITS, ONE ROAD'); },
+ jamshedpur:function(){ var g=R(0,0,120,74,'house');
+   g+='<path d="M0,60 C30,54 70,58 120,50 L120,74 L0,74 Z" fill="var(--f-water)"/>';
+   g+='<rect x="4" y="6" width="44" height="34" rx="3" fill="var(--f-ind)" stroke="var(--ink)" stroke-width="1.4" opacity=".9"/>';
+   g+=ICON('depot',16,12,15);
+   g+=cell(56,6,26,18,'house')+cell(88,6,26,18,'house')+cell(56,30,26,18,'house')+cell(88,30,26,18,'house');
+   g+=ICON('Homes',63,9,12)+ICON('Homes',95,9,12)+ICON('Schools',63,33,12)+ICON('Homes',95,33,12);
+   return g+cap('THE WORKS CAME FIRST'); },
+ gurgaon:function(){ var g=R(0,0,120,74,'green',.25);
+   [[6,5,32,22],[46,3,30,24],[84,8,30,20],[8,34,30,22],[48,36,28,22],[86,32,28,24]].forEach(function(b){
+     g+='<rect x="'+b[0]+'" y="'+b[1]+'" width="'+b[2]+'" height="'+b[3]+'" rx="3" fill="var(--f-work)" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="3.5 2.5"/>'; });
+   g+=ICON('Homes',16,9,12)+ICON('Offices',55,8,12)+ICON('Homes',93,12,12)+ICON('Offices',17,39,12)+ICON('Homes',57,41,12)+ICON('Homes',95,38,12);
+   g+='<path d="M0,30 C24,32 40,29 44,31" fill="none" stroke="var(--f-water)" stroke-width="4"/>'+
+      '<path d="M50,26 L62,36 M62,26 L50,36" stroke="var(--coral)" stroke-width="2.2"/>';
+   return g+cap('ENCLAVES, NO NETWORK'); },
+ bhopal:function(){ var g=R(0,0,120,74,'green',.55);
+   g+='<ellipse cx="52" cy="28" rx="42" ry="19" fill="none" stroke="var(--leaf)" stroke-width="1.6" stroke-dasharray="4 3" opacity=".9"/>';
+   g+='<ellipse cx="50" cy="28" rx="31" ry="12" fill="var(--f-water)" transform="rotate(-8 50 28)"/>';
+   g+='<ellipse cx="90" cy="40" rx="13" ry="7" fill="var(--f-water)"/>';
+   g+=cell(4,45,38,17,'house')+cell(74,47,42,15,'house');
+   g+=ICON('Homes',17,47,12)+ICON('Hospital',89,48,12)+ICON('leaf',6,4,13,'var(--leaf)');
+   return g+cap('BUILT AROUND ITS WATER'); },
+ amsterdam:function(){ var g=R(0,0,120,74,'green',.5);
+   g+='<g fill="var(--f-house)" stroke="var(--hair)" stroke-width="1">'+
+     '<rect x="8" y="3" width="26" height="18" rx="3"/><rect x="47" y="3" width="26" height="18" rx="3"/>'+
+     '<rect x="86" y="3" width="26" height="18" rx="3"/></g>';
+   g+=ICON('Homes',15,5,13)+ICON('Homes',54,5,13)+ICON('Homes',93,5,13);
+   g+='<g fill="none" stroke="var(--f-water)" stroke-width="3.4">'+
+     '<path d="M44,54 A16,16 0 0 1 76,54"/><path d="M38,54 A22,22 0 0 1 82,54"/><path d="M32,54 A28,28 0 0 1 88,54"/></g>';
+   g+='<circle cx="60" cy="52" r="6" fill="var(--f-civic)" stroke="var(--coral)" stroke-width="1.3"/>';
+   return g+cap('BUILT LOBES, GREEN BETWEEN'); },
+ copenhagen:function(){ var g=R(0,0,120,74,'green',.55);
+   g+='<g stroke="var(--f-work)" stroke-width="10" stroke-linecap="round" fill="none">'+
+     '<path d="M16,50 L34,8"/><path d="M16,50 L64,6"/><path d="M16,50 L98,16"/><path d="M16,50 L112,40"/></g>';
+   g+='<circle cx="16" cy="50" r="9" fill="var(--f-civic)" stroke="var(--coral)" stroke-width="1.5"/>';
+   g+=ICON('Transit',56,14,12,'var(--cobalt)')+ICON('Homes',88,24,12,'var(--cobalt)');
+   return g+cap('GROWTH ON THE RAILS'); },
+ stockholm:function(){ var g=R(0,0,120,74,'green',.4);
+   g+='<path d="M10,58 L112,14" stroke="var(--ink)" stroke-width="2.4" opacity=".7"/>';
+   g+='<circle cx="12" cy="59" r="8" fill="var(--f-civic)" stroke="var(--coral)" stroke-width="1.4"/>';
+   [[42,45],[72,32],[102,19]].forEach(function(p){
+     g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="15" fill="var(--f-work)" opacity=".85" stroke="var(--cobalt)" stroke-width="1.3"/>'; });
+   g+=ICON('bus',36,39,12,'var(--cobalt)')+ICON('Offices',66,26,12,'var(--cobalt)')+ICON('Homes',96,13,12,'var(--cobalt)');
+   return g+cap('WORK, HOME, CENTRE &mdash; EACH'); },
+ barcelona:function(){ var g=R(0,0,120,74,'house');
+   for(var r=0;r<4;r++) for(var c=0;c<7;c++){
+     g+='<rect x="'+(6+c*16)+'" y="'+(4+r*13)+'" width="12" height="9" rx="3" fill="var(--f-work)" stroke="var(--hair)" stroke-width=".9"/>'; }
+   g+='<rect x="35" y="15" width="46" height="28" rx="4" fill="none" stroke="var(--coral)" stroke-width="1.8"/>';
+   g+=ICON('Homes',52,22,12,'var(--coral)');
+   return g+cap('NINE BLOCKS, ONE SUPERBLOCK'); },
+ milan:function(){ var g=R(0,0,120,74,'house');
+   g+='<g fill="none" stroke="var(--hair)" stroke-width="1.6"><circle cx="56" cy="30" r="26"/><circle cx="56" cy="30" r="15"/>'+
+     '<path d="M56,4 V56 M30,30 H82 M38,12 L74,48 M74,12 L38,48"/></g>';
+   g+='<circle cx="56" cy="30" r="10" fill="var(--f-civic)" stroke="var(--coral)" stroke-width="1.5"/>';
+   g+=ICON('Hospital',50,24,12,'var(--coral)')+ICON('tent',98,20,13,'var(--sky)');
+   return g+cap('RINGS, PLUS A FAIR'); }
+};
+$('#refs').innerHTML=[
+ ['chandigarh','Chandigarh','10.6 lakh &middot; 114 km&sup2;',
+  'A grid of sectors, each 800 by 1,200 metres, each holding its own school, market and green.',
+  'Planned complete before anyone moved in, and the unit is the sector rather than the street.',
+  'The self-sufficient unit. My cell, essentially.'],
+ ['bhubaneswar','Bhubaneswar','8.4 lakh &middot; 186 km&sup2;',
+  'Laid out in 1948 by Otto K&ouml;nigsberger as six neighbourhood units, each about 1.2 km across.',
+  'It was drawn for 40,000 people and has since passed eight lakh, which the original units were never sized for.',
+  'The unit works. Size it for the city you will become.'],
+ ['jamshedpur','Jamshedpur','6.3 lakh city &middot; 13.4 lakh around it',
+  'A company town: the steel works were sited first, in 1907, and the town was arranged around them.',
+  'Almost nowhere else was the least pleasant land use placed first, on purpose, with everything else fitted after.',
+  'Place the works before the pleasant things take the good ground.'],
+ ['gurgaon','Gurugram','8.8 lakh &middot; 333 km&sup2;',
+  'Built plot by plot by private developers, so it reads as a set of self-contained enclaves rather than one city.',
+  'The connective tissue &mdash; streets, drains, public space &mdash; was never drawn, so it largely does not exist.',
+  'Draw the network first. Let the plots fill in.'],
+ ['bhopal','Bhopal','18 lakh &middot; 463 km&sup2;',
+  'Wrapped around the Upper and Lower Lakes, old city on one side, newer city on the other.',
+  'The lake takes 36 km&sup2; and its catchment 361, so the natural asset is both the constraint and the reason to be there.',
+  'Draw the water, and what feeds it, before anything else.'],
+ ['amsterdam','Amsterdam','9.3 lakh &middot; 219 km&sup2;',
+  'A canal-ring core, then the 1935 expansion plan: built lobes reaching outwards with green wedges kept between them.',
+  'Van Eesteren planned it around light, air and space &mdash; the green was drawn at the same time as the housing, not after.',
+  'Green is a component, not the leftover.'],
+ ['copenhagen','Copenhagen','6.7 lakh city &middot; 14 lakh urban',
+  'A dense core with growth allowed only along the suburban rail lines, and green wedges kept between them.',
+  'The 1947 Finger Plan decided where the city may grow decades before it needed to.',
+  'Reserve the growth direction early.'],
+ ['stockholm','Stockholm','10 lakh &middot; 188 km&sup2;',
+  'Satellite towns strung along the metro, each holding work, housing and a centre &mdash; the ABC principle.',
+  'V&auml;llingby, the first of them, was built for 20&ndash;25,000 residents and about 10,000 jobs, so people need not leave.',
+  'Nearly the size of my cell. And put work in it.'],
+ ['barcelona','Barcelona','16.9 lakh &middot; 101 km&sup2;',
+  'A uniform nineteenth-century grid of chamfered blocks, still the base unit of the city.',
+  'Because the grid is regular, nine blocks regroup into a 400-metre superblock with traffic pushed to the edge.',
+  'The through-route and the street people stand in are different things.'],
+ ['milan','Milan','13.7 lakh &middot; 181 km&sup2;',
+  'Concentric rings around a historic core, inherited from the canals that once ran there.',
+  'A calendar of fairs and fashion weeks that adds a small city of visitors for a week at a time.',
+  'Plan for the spike, not the average Tuesday.']
+].map(function(r){
+  return '<div><span class="th"><svg viewBox="0 0 120 74" aria-hidden="true">'+TH[r[0]]()+'</svg></span>'+
+   '<b>'+r[1]+'</b><span class="pop">'+r[2]+'</span><span>'+r[3]+'</span>'+
+   '<span><span class="so">What stands out &middot; </span>'+r[4]+'</span>'+
+   '<span class="why2">'+r[5]+'</span></div>'; }).join('');
+
+$('#keygrid').innerHTML=[
+ ['house','Housing','Where people sleep. Everything else is measured as a distance from here.'],
+ ['work','Employment','Offices, light industry, and the co-working that keeps some trips from starting.'],
+ ['civic','Civic','The services there is exactly one of. Hospital, college, courts, town hall.'],
+ ['green','Green','Land kept unbuilt on purpose &mdash; belt, flood plain, playing fields.'],
+ ['ind','Works &amp; utilities','Sewage, water treatment, depots, substation, cemetery. Everyone needs them; nobody wants them next door.'],
+ ['water','Water','The river and its flood plain. The one thing on the site I did not choose.']
+].map(function(k){ return '<div><i style="background:var(--f-'+k[0]+')"></i><b>'+k[1]+'</b><span>'+k[2]+'</span></div>'; }).join('');
+
+/* ── the derivation ladder ── */
+$('#ladder').innerHTML=[
+ ['','10 lakh people','The point at which a city earns its own district hospital &mdash; India&rsquo;s public health standards put that catchment at ten to twenty-five lakh. Below it, a place borrows one.',1],
+ ['&divide;','7,000 per km&sup2;','Mid-rise and walkable without depending on towers. <b>Milan is 7,520, Copenhagen 7,411</b> &mdash; both five to eight storeys.',0],
+ ['=','~143 km&sup2;','Not a target, a consequence. <b>Chandigarh holds about the same people on 114 km&sup2;;</b> Barcelona holds more on 101.',0],
+ ['&rarr;','14 &times; 10 km','Two transit lines four kilometres apart, so nothing sits more than about 2.5 km from one. Fourteen kilometres is <b>forty minutes end to end by bike.</b>',0],
+ ['&divide;','800 m','The ten-minute pedestrian shed &mdash; twice the standard five-minute, 400 m one. A cell is <b>1.6 km across, about 2.6 km&sup2;.</b>',0],
+ ['=','55 cells','<b>About 18,000 people each,</b> grouped into <b>seven districts of roughly 1.45 lakh</b> &mdash; and about 2 lakh households at the Indian average of 4.9 per home.',1]
+].map(function(r){
+  return '<div class="st"><span class="op">'+r[0]+'</span><span class="bx'+(r[3]?' hit':'')+'">'+
+    '<span class="bv">'+r[1]+'</span><span class="bw">'+r[2]+'</span></span></div>'; }).join('');
+
+/* ── the iterations ── */
+function CBOX(x,y,w,h,label,col){ col=col||'var(--ink)';
+  return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="8" fill="none" stroke="'+col+'" '+
+   'stroke-width="1.8" stroke-dasharray="5 4" opacity=".7"/>'+
+   (label?T(x+8,y+h-7,label,{s:7.5,c:col,op:.85}):''); }
+
+var D=[
+{n:"Early iteration",t:"Pure zoning",ac:"--coral",
+ land:R(0,0,420,95,'house')+R(0,95,420,36,'civic')+R(0,131,420,54,'work')+R(0,185,420,75,'ind'),
+ over:T(16,54,'HOUSING')+T(16,118,'CIVIC')+T(16,163,'WORK')+T(16,228,'INDUSTRY')+
+   ICON('Homes',300,30,17)+ICON('Shops',300,100,16)+ICON('Offices',300,146,16)+ICON('depot',300,206,16)+
+   ARROW('M92,58 L92,112','1.9 km for a pint of milk',100,90),
+ cap:"Four bands. <b>Every daily errand crosses one.</b>",
+ what:"Homes, civic, work and industry in four bands. The layout you draw first, because it is the easiest to explain.",
+ learn:"Everything you need daily sits in a different band from where you sleep, and industry along the whole southern edge is upwind of somebody.",
+ add:"A density figure &mdash; 7,000 per km&sup2; &mdash; which fixed the land at about 143 km&sup2;.",
+ ref:"Chandigarh had already answered this with sectors rather than bands. I had not taken it seriously yet.",
+ from:8,to:18,newc:['Nursery','Corner shop','Pharmacy','Bus stop','Playground'],
+ br:5,cl:0,cn:"No groupings yet"},
+
+{n:"Early iteration",t:"One great central park",ac:"--leaf",
+ land:R(0,0,420,260,'house')+'<circle cx="216" cy="138" r="74" fill="var(--f-green)"/>',
+ over:T(216,142,'PARK',{a:'middle'})+
+   ARROW('M60,62 C130,26 300,26 366,62','detour',196,32)+
+   CBOX(18,86,148,66,'DAILY','var(--leaf)')+
+   ICON('Homes',32,98,17,'var(--leaf)')+ICON('Shops',74,98,16,'var(--leaf)')+ICON('pram',116,98,16,'var(--leaf)')+
+   ICON('Homes',364,96,17)+ICON('Homes',44,206,17)+ICON('Homes',364,206,17),
+ cap:"Lovely, and it splits the grid. <b>Most trips go around it.</b>",
+ what:"One large park in the middle, with the daily needs scattered through the blocks around it.",
+ learn:"Crossing the city means going around the park, and it mostly serves the ring of streets that face it.",
+ add:"Two distances rather than two areas: 800 m to daily needs, 400 m to green.",
+ ref:"Amsterdam drew its green wedges at the same time as its housing, and Copenhagen keeps its between the fingers. Neither of them has one big park in the middle.",
+ from:18,to:31,newc:['Pocket park','Playing field','Flood plain','Allotments','Community hall'],
+ br:7,cl:1,cn:"One grouping: the things you need daily"},
+
+{n:"Next iteration",t:"Radial",ac:"--butter",
+ land:R(0,0,420,260,'house'),
+ over:'<g fill="none" stroke="var(--hair)" stroke-width="2"><circle cx="210" cy="138" r="104"/>'+
+   '<path d="M210,26 V250 M100,138 H320 M132,60 L288,216 M288,60 L132,216"/></g>'+
+   '<circle cx="210" cy="138" r="42" fill="var(--f-civic)"/>'+
+   '<circle cx="210" cy="138" r="52" fill="none" stroke="var(--coral)" stroke-width="1.8" stroke-dasharray="5 4" opacity=".8"/>'+
+   ICON('Hospital',188,120,17)+ICON('Schools',216,120,17)+T(210,204,'CITY-WIDE',{s:7.5,a:'middle',c:'var(--coral)'})+
+   CBOX(288,40,118,52,'WEEKLY','var(--cobalt)')+ICON('bus',300,50,17,'var(--cobalt)')+ICON('Schools',340,50,17,'var(--cobalt)')+
+   CBOX(14,40,118,52,'DAILY','var(--leaf)')+ICON('Homes',26,50,17,'var(--leaf)')+ICON('Shops',66,50,16,'var(--leaf)')+
+   ARROW('M60,120 C130,168 290,168 360,120','next door, through the middle',132,112),
+ cap:"Excellent for the rare trip. <b>Punishing for the everyday one.</b>",
+ what:"A civic core at the centre, ring roads around it, housing in the wedges between.",
+ learn:"A trip to the neighbourhood next door routes through the centre, so the busiest place in the city fills with people who did not want to be there.",
+ add:"The health standards, and the cell that falls out of an 800 m walk: 1.6 km across, about 18,000 people, fifty-five of them.",
+ ref:"Milan is radial and it works, because the rings came first and the city grew into them. Mine had no such excuse.",
+ from:31,to:52,newc:['District courts','Tax office','Land registry','Emergency department','Blood bank'],
+ br:9,cl:3,cn:"Three groupings: daily, weekly, city-wide"},
+
+{n:"Later iteration",t:"Industry at the rail gate",ac:"--sky",
+ land:R(0,0,420,260,'house')+
+   '<path d="M104,70 L420,22 L420,214 L104,192 Z" fill="var(--f-ind)" opacity=".4"/>'+
+   R(0,52,96,116,'ind'),
+ over:'<path d="M0,130 H420" stroke="var(--ink)" stroke-width="3"/>'+
+   '<g fill="var(--card)" stroke="var(--ink)" stroke-width="2.8"><circle cx="44" cy="130" r="6.5"/><circle cx="230" cy="130" r="5.4"/><circle cx="340" cy="130" r="5.4"/></g>'+
+   ICON('depot',38,84,17)+T(48,124,'INDUSTRY',{s:8,a:'middle'})+T(48,140,'&amp; FREIGHT',{s:8,a:'middle'})+
+   T(250,44,'the wind carries it across everything',{s:8.5,a:'middle',c:'var(--coral)'})+
+   CBOX(112,56,92,48,'DAILY','var(--leaf)')+ICON('Homes',124,64,16,'var(--leaf)')+ICON('Shops',160,64,15,'var(--leaf)')+
+   CBOX(210,56,92,48,'WEEKLY','var(--cobalt)')+ICON('bus',222,64,16,'var(--cobalt)')+ICON('Schools',258,64,15,'var(--cobalt)')+
+   CBOX(308,56,100,48,'CITY-WIDE','var(--coral)')+ICON('Hospital',320,64,16,'var(--coral)')+ICON('Offices',358,64,15,'var(--coral)')+
+   CBOX(112,158,92,48,'RESPONSE','var(--coral)')+ICON('shield',146,166,16,'var(--coral)')+
+   CBOX(210,158,92,48,'SPIKY','var(--sky)')+ICON('tent',244,166,16,'var(--sky)')+
+   CBOX(308,158,100,48,'UNLOVED','var(--muted)')+ICON('depot',348,166,16,'var(--muted)'),
+ cap:"Cheapest place to move goods. <b>Upwind of the whole city.</b>",
+ what:"Everything placed at once for the first time, with industry and freight at the rail gate.",
+ learn:"The wind runs west to east, so the gate sits upwind of everything, and housing drifts east onto the cheaper &mdash; downwind &mdash; ground.",
+ add:"Wind west to east, river north-west turning east. They agree with each other in one corner only.",
+ ref:"Jamshedpur did the opposite and sited the works first, then arranged the town around them. Gurugram is the other half: buildings first, network never.",
+ from:52,to:70,newc:['Sewage works','Waste transfer','Hotels','Exhibition hall','Co-working'],
+ br:11,cl:6,cn:"Six groupings, and no rule for placing any of them"}
+];
+
+var host=$('#rows');
+D.forEach(function(d,i){
+  var s=document.createElement('div');
+  s.className='row'+(i%2?' alt':'');
+  s.innerHTML='<div class="in pin rv" style="--ac:var('+d.ac+')">'+
+    '<div class="demo"><div class="dcard">'+
+      '<div class="dhead"><span class="lb">'+d.n+' &middot; '+d.t+'</span><span class="rt">'+
+      (d.cl?d.cl+' grouping'+(d.cl>1?'s':''):'no groupings')+'</span></div>'+
+      '<div class="dbody">'+SVG(d.land,d.over)+'</div>'+
+      '<p class="dfoot">'+d.cap+'</p></div></div>'+
+    '<div class="txt">'+
+      '<h3>'+d.t+'</h3><p>'+d.what+'</p>'+
+      '<div class="tw"><div><span class="k">Learned</span><p>'+d.learn+'</p></div>'+
+      '<div><span class="k g">Added</span><p>'+d.add+'</p></div>'+
+      '<div><span class="k g">Precedent</span><p>'+d.ref+'</p></div></div>'+
+      '<span class="count"><span>Components <b>'+d.from+' &rarr; '+d.to+'</b></span>'+
+      '<span class="track"><i data-w="'+Math.round(d.to/70*100)+'"></i></span></span>'+
+      '<div class="newc">'+d.newc.map(function(c){ return '<span>'+c+'</span>'; }).join('')+'</div>'+
+      '<div class="ledger"><span>Brief: <b>'+d.br+'</b></span><span>Groupings: <b>'+d.cl+'</b> &mdash; '+d.cn+'</span></div>'+
+    '</div></div>';
+  host.appendChild(s);
+});
+
+/* ── clustering ── */
+var CLUS=[
+{k:'Homes',c:'leaf',n:'Daily, walk-to',
+ rule:'Within 800 m of every front door, crossing no arterial road.',
+ items:['Nursery','Primary school','Corner shop','Pharmacy','GP surgery','Bakery','Caf&eacute;','Playground','Pocket park','Bus stop','Post box','Laundrette'],
+ ui:'The tab bar.'},
+{k:'bus',c:'cobalt',n:'Weekly, ride-to',
+ rule:'On a transit stop. One per cell, or shared between two.',
+ items:['Secondary school','Supermarket','Library','Gym','Health centre','Bank branch','Place of worship','Sports ground','Community hall','Co-working','Vet'],
+ ui:'One level down. Never two.'},
+{k:'Hospital',c:'coral',n:'Occasional, city-wide',
+ rule:'Exactly one of each, at the most reachable point in the city.',
+ items:['Sub-divisional hospital','College','District courts','Tax office','Land registry','Town hall','Central library','Museum','Main station','Licence centre','Hotels'],
+ ui:'Reached by search.'},
+{k:'shield',c:'coral',n:'By response time',
+ rule:'Eight minutes to any address in the worst case, not the best average.',
+ items:['Fire station','Ambulance post','Police post','Emergency department','Blood bank','Civil defence depot'],
+ ui:'Undo, error recovery, support.'},
+{k:'tent',c:'sky',n:'Spiky',
+ rule:'Empty most days, then forty thousand at once. On transit, off residential streets.',
+ items:['Stadium','Multiplex','Exhibition hall','Wholesale market','Festival ground','Examination centre'],
+ ui:'Tax season, year-end close.'},
+{k:'depot',c:'muted',n:'Necessary, unloved',
+ rule:'Downwind, downstream, buffered &mdash; and placed before the pleasant things take the good ground.',
+ items:['Sewage works','Water treatment','Substation','Bus depot','Freight depot','Recycling centre','Cemetery','Crematorium','Waste transfer'],
+ ui:'Settings, logs, billing, data export.'},
+{k:'leaf',c:'leaf',n:'Deliberately not built on',
+ rule:'Land kept empty on purpose, and defended in writing so it stays that way.',
+ items:['Farmland','Orchards','Woodland','Green belt','Flood plain','Allotments','Wetland buffer'],
+ ui:'Whitespace, rate limits.'},
+{k:'Shops',c:'butter',n:'Cannot be placed',
+ rule:'Emergent. Set footfall, frontage, rent and parking, then wait and see what turns up.',
+ items:['Restaurants','Caf&eacute;s','Salons','Tuition centres','Repair shops','Small clinics','Corner offices','Street vendors'],
+ ui:'You plan the container, not the contents.'}
+];
+(function(){
+  var host=$('#clusterdiag');
+  host.innerHTML='<div class="cx"><div class="cxl" id="cxl"></div><div class="cxr" id="cxr"></div></div>';
+  var L=$('#cxl'), Rr=$('#cxr'), max=12;
+  CLUS.forEach(function(g,i){
+    var b=document.createElement('button'); b.type='button'; b.className='cxb';
+    b.style.setProperty('--gc','var(--'+g.c+')');
+    b.innerHTML='<span class="ci">'+ICONHTML(g.k,'currentColor',15)+'</span><span class="cn">'+g.n+'</span>'+
+      '<span class="cb"><i style="width:'+Math.round(g.items.length/max*100)+'%"></i></span>';
+    b.addEventListener('click',function(){ show(i); });
+    L.appendChild(b);
+  });
+  function show(i){ var g=CLUS[i];
+    Rr.style.setProperty('--gc','var(--'+g.c+')');
+    Rr.innerHTML='<span class="crule">'+g.rule+'</span>'+
+      '<div class="citems">'+g.items.map(function(t){ return '<span>'+t+'</span>'; }).join('')+'</div>'+
+      '<span class="cui">On a screen: '+g.ui+'</span>';
+    $$('.cxb',L).forEach(function(b,j){ b.setAttribute('aria-current',String(j===i)); }); }
+  show(0);
+})();
+
+/* ── the final layout, in four clusters ── */
+function cellbox(x,y,w,h){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="none" stroke="var(--hair)" stroke-width="1.8"/>'; }
+function block(x,y,w,h,f){ return R(x,y,w,h,f)+'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="none" stroke="var(--ink)" stroke-width="1.4" opacity=".28"/>'; }
+
+var FLAND=R(0,0,420,260,'house')+R(0,0,420,26,'green');
+var FOVER='<g fill="none" stroke="var(--hair)" stroke-width="1.8"><path d="M105,26 V260 M210,26 V260 M315,26 V260 M0,143 H420"/></g>'+
+  R(315,143,105,117,'ind')+
+  '<rect x="105" y="26" width="105" height="117" fill="var(--f-work)" opacity=".38"/>'+
+  R(218,110,88,60,'civic')+
+  '<g stroke="var(--ink)" stroke-width="3.2" fill="none"><path d="M0,84 H420"/><path d="M0,202 H420"/><path d="M262,84 V202"/></g>'+
+  '<g fill="var(--card)" stroke="var(--ink)" stroke-width="2.8">'+
+  '<circle cx="52" cy="84" r="6.5"/><circle cx="157" cy="84" r="6.5"/><circle cx="262" cy="84" r="6.5"/><circle cx="367" cy="84" r="6.5"/>'+
+  '<circle cx="52" cy="202" r="6.5"/><circle cx="157" cy="202" r="6.5"/><circle cx="262" cy="202" r="6.5"/></g>'+
+  ICON('leaf',10,3,14,'var(--leaf)')+T(30,17,'GREEN BELT',{s:8.5,op:.75})+
+  T(6,76,'LINE A',{s:8,op:.7})+T(6,196,'LINE B',{s:8,op:.7})+
+  ICON('Hospital',254,115,16)+T(262,145,'HOSPITAL',{s:8,a:'middle'})+T(262,161,'CITY SERVICES',{s:7.5,a:'middle'})+
+  ICON('depot',324,150,16)+T(414,240,'WORKS &amp; UTILITIES',{s:8,a:'end'})+
+  T(414,254,'downwind &amp; downstream',{s:7,a:'end',op:.72})+
+  ICON('shield',54,108,15,'var(--coral)')+T(72,120,'8 MIN',{s:7.5,op:.75})+
+  ICON('tent',350,34,15,'var(--sky)')+T(414,46,'STADIUM',{s:7.5,a:'end',op:.75})+
+  T(157,44,'ONE DISTRICT',{s:8.5,a:'middle',c:'var(--cobalt)'})+
+  T(157,136,'~1.45 LAKH &middot; 8 CELLS',{s:8,a:'middle',c:'var(--cobalt)'});
+
+var CL=[
+{id:'all',n:'Whole city',lb:'Whole city',
+ cap:'Fifty-five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b>',
+ land:FLAND,over:FOVER},
+
+{id:'district',n:'One district',lb:'One district',
+ cap:'Eight cells around one interchange. <b>Every district is the same recipe, and none of them needs the centre.</b>',
+ land:R(0,0,420,260,'house'),
+ over:'<g fill="none" stroke="var(--hair)" stroke-width="1.8"><path d="M105,0 V260 M210,0 V260 M315,0 V260 M0,130 H420"/></g>'+
+   ICON('Homes',44,46,17,'var(--leaf)')+T(52,76,'A CELL',{s:8,a:'middle'})+T(52,90,'~18,000',{s:8,a:'middle',c:'var(--cobalt)'})+
+   ICON('Homes',149,46,17,'var(--leaf)')+ICON('Homes',254,46,17,'var(--leaf)')+ICON('Homes',359,46,17,'var(--leaf)')+
+   ICON('Homes',44,200,17,'var(--leaf)')+ICON('Homes',149,200,17,'var(--leaf)')+
+   ICON('Homes',254,200,17,'var(--leaf)')+ICON('Homes',359,200,17,'var(--leaf)')+
+   R(150,100,120,58,'civic')+
+   '<path d="M0,130 H420" stroke="var(--ink)" stroke-width="3.2"/>'+
+   '<circle cx="210" cy="130" r="7.5" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/>'+
+   ICON('Hospital',158,104,15)+ICON('Schools',196,104,15)+ICON('bus',234,105,15)+
+   T(210,152,'DISTRICT CENTRE',{s:8,a:'middle'})+
+   T(210,176,'health centre &middot; secondary school &middot; supermarket',{s:7,a:'middle',op:.75})+
+   T(14,20,'EIGHT CELLS &middot; ABOUT 1.45 LAKH',{s:8.5})},
+
+{id:'civic',n:'Civic core',lb:'Civic core',
+ cap:'One of each, on the interchange where both lines meet. <b>Whoever needs these has the least choice about coming.</b>',
+ land:R(0,0,420,260,'house'),
+ over:'<path d="M0,132 H420" stroke="var(--ink)" stroke-width="3.2"/>'+
+   '<path d="M210,20 V244" stroke="var(--ink)" stroke-width="3.2"/>'+
+   '<circle cx="210" cy="132" r="9" fill="var(--card)" stroke="var(--ink)" stroke-width="3.2"/>'+
+   block(24,150,158,86,'civic')+block(206,150,190,86,'civic')+
+   block(48,24,134,74,'green')+block(206,24,190,74,'work')+
+   ICON('Hospital',38,164,16)+T(60,178,'DISTRICT HOSPITAL',{s:8.5})+
+   ICON('Schools',38,196,16)+T(60,210,'UNIVERSITY',{s:8.5})+
+   ICON('Offices',220,164,16)+T(242,178,'COURTS &middot; TAX OFFICE',{s:8.5})+
+   ICON('Offices',220,196,16)+T(242,210,'TOWN HALL &middot; REGISTRY',{s:8.5})+
+   ICON('Park',60,38,16,'var(--leaf)')+T(82,52,'CIVIC SQUARE',{s:8.5})+
+   T(60,80,'where all of it meets',{s:7.5,op:.7})+
+   ICON('Schools',220,38,16,'var(--cobalt)')+T(242,52,'COMMUNAL &amp; VISITOR',{s:8.5,c:'var(--cobalt)'})+
+   T(220,74,'central library, place of worship,',{s:7,op:.75})+
+   T(220,88,'hotels, exhibition hall',{s:7,op:.75})+
+   T(210,250,'BOTH LINES MEET HERE',{s:7.5,a:'middle',op:.7})},
+
+{id:'works',n:'Works',lb:'Works &amp; utilities',
+ cap:'Downwind and downstream, buffered by green, and placed before anything pleasant took the good ground. <b>The only corner where the wind and the river agree.</b>',
+ land:R(0,0,420,260,'house')+R(0,0,420,54,'green')+R(0,0,54,260,'green'),
+ over:T(14,30,'WIND AND WATER BOTH POINT HERE',{s:8,op:.72})+T(150,52,'RIVER',{s:8.5,op:.7})+
+   block(72,72,150,80,'ind')+block(238,72,166,80,'ind')+block(72,168,150,74,'ind')+block(238,168,166,74,'ind')+
+   ICON('depot',84,84,16)+T(106,98,'SEWAGE WORKS',{s:8.5})+T(84,122,'sized with room for a',{s:7.5,op:.72})+T(84,136,'second treatment train',{s:7.5,op:.72})+
+   ICON('depot',250,84,16)+T(272,98,'WATER TREATMENT',{s:8.5})+T(250,122,'&amp; the substation',{s:7.5,op:.72})+
+   ICON('Transit',84,180,16)+T(106,194,'BUS &amp; FREIGHT DEPOTS',{s:8.5})+T(84,218,'off the residential streets',{s:7.5,op:.72})+
+   ICON('Park',250,180,16,'var(--leaf)')+T(272,194,'RECYCLING &middot; CEMETERY',{s:8.5})+T(250,218,'green buffer on two sides',{s:7.5,op:.72})+
+   T(12,254,'GREEN BUFFER',{s:8,op:.7})}
+];
+(function(){
+  var tabs=$('#clustertabs'), host=$('#finalplan'), lb=$('#planlb'), cap=$('#plancap');
+  function show(i){ var c=CL[i];
+    host.innerHTML=SVG(c.land,c.over); lb.innerHTML=c.lb; cap.innerHTML=c.cap;
+    $$('button',tabs).forEach(function(b,j){ b.setAttribute('aria-current',String(j===i)); }); }
+  CL.forEach(function(c,i){ var b=document.createElement('button'); b.type='button'; b.textContent=c.n;
+    b.addEventListener('click',function(){ show(i); }); tabs.appendChild(b); });
+  show(0);
+})();
+
+/* ── inside one cell ── */
+$('#cellplan').innerHTML='<svg viewBox="0 0 420 260" role="img" aria-label="Inside one cell">'+
+  '<rect x="0" y="0" width="420" height="260" fill="var(--card)"/>'+R(0,0,420,260,'house')+
+  '<g stroke="var(--ink)" stroke-width="6" opacity=".2"><path d="M0,22 H420 M0,238 H420 M28,0 V260 M392,0 V260"/></g>'+
+  '<circle cx="210" cy="130" r="96" fill="var(--f-green)" opacity=".45" stroke="var(--cobalt)" stroke-width="2.2" stroke-dasharray="7 5"/>'+
+  ICON('bus',201,112,19,'var(--cobalt)')+
+  T(210,146,'STOP &middot; SHOPS &middot; HALL',{s:9.5,a:'middle',c:'var(--cobalt)'})+
+  ICON('pram',202,40,17)+T(210,74,'NURSERY',{s:9,a:'middle'})+
+  ICON('cross',290,74,17)+T(298,108,'GP',{s:9,a:'middle'})+
+  ICON('Hospital',284,132,17)+T(292,166,'PHARMACY',{s:9,a:'middle'})+
+  ICON('Schools',202,178,17)+T(210,212,'PRIMARY SCHOOL',{s:9,a:'middle'})+
+  ICON('slide',118,138,17)+T(126,172,'PLAYGROUND',{s:9,a:'middle'})+
+  ICON('bread',112,72,17)+T(120,106,'BAKERY',{s:9,a:'middle'})+
+  T(210,14,'ARTERIAL ROAD',{s:8,a:'middle',op:.6})+T(210,254,'ARTERIAL ROAD',{s:8,a:'middle',op:.6})+
+  T(414,130,'800 m',{s:9,a:'end',c:'var(--cobalt)'})+T(210,236,'ABOUT 18,000 PEOPLE',{s:8,a:'middle',op:.72})+
+  '<rect x="1" y="1" width="418" height="258" fill="none" stroke="var(--hair)" stroke-width="2" rx="10"/></svg>';
+
+/* ── the eight clusters, placed ── */
+var SHORT=['Daily','Weekly','City-wide','Response time','Spiky','Works &amp; utilities','Kept empty','Left to arrive'];
+$('#groups').innerHTML=CLUS.map(function(g,i){
+  var rules=['At the centre of a cell &mdash; 800 m from every front door, crossing no arterial road.',
+   'On a station. One per cell or shared between two; anywhere else quietly requires a car.',
+   'Clustered at the most reachable stop, hospital included. Whoever needs these has the least choice about going.',
+   'Three posts placed so eight minutes covers every address &mdash; not where you would put them to minimise the average.',
+   'On the spine, off residential streets. A stadium that fills once a month should empty onto a platform.',
+   'South-east, and placed first. The one corner that is both downwind and downstream.',
+   'A green belt and the flood plain, defended in writing, or they become the land that was available.',
+   'Set the frontage, the rent and the footfall, then wait. Cafes and repair shops cannot be zoned into existence.'];
+  return '<div><span class="gi" style="color:var(--'+g.c+')">'+ICONHTML(g.k,'currentColor',19)+'</span>'+
+    '<span class="gn2">'+SHORT[i]+'</span><span class="gd">'+rules[i]+'</span></div>'; }).join('');
+
+/* ── growth ── */
+$('#bars').innerHTML=[['Today',10.0],['Year 10',12.2],['Year 20',14.9]].map(function(y){
+  return '<div class="r"><span class="yr">'+y[0]+'</span><span class="bar"><i data-w="'+Math.round(y[1]/16.5*100)+'"></i></span>'+
+    '<span class="pv">'+y[1].toFixed(1)+' lakh</span></div>'; }).join('');
+
+/* ── cluster to screen ── */
+(function(){
+  var M=[['Homes','Daily, walk-to','The tab bar','leaf'],
+         ['bus','Weekly, ride-to','One level down, never two','cobalt'],
+         ['Hospital','Occasional, city-wide','Reached by search','coral'],
+         ['shield','By response time','Undo, error recovery, support','coral'],
+         ['tent','Spiky','Tax season, year-end close','sky'],
+         ['depot','Necessary, unloved','Settings, billing, data export','muted'],
+         ['leaf','Kept empty','Whitespace, rate limits','leaf'],
+         ['Shops','Cannot be placed','You plan the container','butter']];
+  var rows='';
+  M.forEach(function(m,i){ var y=18+i*30;
+    rows+=ICON(m[0],12,y,16,'var(--'+m[3]+')')+T(38,y+13,m[1],{s:8.5})+
+      '<path d="M186,'+(y+9)+' L204,'+(y+9)+'" stroke="var(--ink)" stroke-width="1.5" opacity=".45"/>'+
+      '<path d="M200,'+(y+5.5)+' L205,'+(y+9)+' L200,'+(y+12.5)+'" fill="none" stroke="var(--ink)" stroke-width="1.5" opacity=".45"/>'+
+      T(216,y+13,m[2],{s:8.5,c:'var(--'+m[3]+')'}); });
+  $('#mapping').innerHTML='<svg viewBox="0 0 420 260" role="img" aria-label="City cluster to screen">'+
+    '<rect x="0" y="0" width="420" height="260" fill="var(--card)"/>'+rows+
+    '<rect x="1" y="1" width="418" height="258" fill="none" stroke="var(--hair)" stroke-width="2" rx="10"/></svg>';
+})();
+
+/* ── reveals + nav ── */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(en){
+    if(!en.isIntersecting) return;
+    en.target.classList.add('on');
+    $$('.bars .bar i, .count .track i',en.target).forEach(function(b,j){
+      setTimeout(function(){ b.style.width=b.dataset.w+'%'; },RM?0:140+j*150); });
+    io.unobserve(en.target);
+  });
+},{rootMargin:'0px 0px -10% 0px',threshold:.08});
+$$('.rv').forEach(function(n){ io.observe(n); });
+addEventListener('scroll',function(){ $('#nav').classList.toggle('stuck',scrollY>8); },{passive:true});
+})();
+</script>
 <script src="analytics.js"></script>
 </body>
 </html>

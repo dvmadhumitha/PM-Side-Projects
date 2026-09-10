@@ -40,13 +40,15 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
 /* ══════ NAV ══════ */
 .nav{position:sticky; top:0; z-index:60; background:color-mix(in srgb,var(--ivory) 90%,transparent);
   backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:border-color 300ms var(--e)}
+.nav .navlnk button,.nav .navlnk a{text-transform:uppercase; letter-spacing:.07em; font-size:.76rem}
+
 .nav.stuck{border-bottom-color:var(--hair)}
 .r1{display:flex; align-items:baseline; gap:.75rem; padding:.7rem 0; flex-wrap:wrap}
-.mark{font-family:var(--disp); font-weight:500; font-size:1.12rem; letter-spacing:-.015em;
+.mark{font-family:var(--disp); font-weight:500; font-size:1.12rem; letter-spacing:.04em; text-transform:uppercase;
   display:inline-flex; align-items:baseline; gap:.45rem; white-space:nowrap}
 .mark i{width:9px; height:9px; border-radius:50%; background:var(--coral); display:inline-block; align-self:center; animation:blip 4.4s var(--ei) infinite}
 @keyframes blip{0%,80%,100%{transform:scale(1)}86%{transform:scale(1.55)}92%{transform:scale(1)}}
-.here{min-width:0; flex:0 1 auto; color:var(--muted); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.here{min-width:0; flex:0 1 auto; color:var(--muted); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem}
 .here b{color:var(--ink); font-weight:700}
 .navlnk{display:flex; gap:.5rem; align-items:center; margin-left:auto}
 .navlnk > a:not(.cta){font-size:.85rem; font-weight:600; color:var(--muted); padding:.3rem .5rem; transition:color 180ms var(--e)}
@@ -186,10 +188,10 @@ h1 .hl{background:linear-gradient(transparent 60%, var(--butter) 60%); padding:0
   background:#fff; color:var(--ac); border-radius:999px; padding:.16rem .55rem; font-weight:500}
 .demo.nudge .dhead .try{animation:nudge 1.5s var(--e) 2}
 @keyframes nudge{0%,100%{transform:none}30%{transform:translateY(-3px) rotate(-3deg)}60%{transform:none}}
-.dbody{position:relative; height:272px; padding:.9rem; overflow:hidden;
+.dbody{position:relative; height:330px; padding:.9rem; overflow:hidden;
   background:linear-gradient(165deg, color-mix(in srgb,var(--ac) 6%,var(--card)), var(--sunk) 78%)}
 .dcard.tall .dbody{height:424px}
-@media(max-width:900px){ .dcard.tall .dbody{height:452px} }
+@media(max-width:1100px){ .dbody{height:352px} .dcard.tall .dbody{height:486px} }
 .dbody > *{height:100%; display:grid; grid-template-rows:auto minmax(0,1fr) auto; gap:.55rem; min-height:0}
 .dbody .mid{min-height:0; display:grid; align-content:center; gap:.5rem}
 .dfoot{font-size:.9rem; color:color-mix(in srgb,var(--ink) 80%,transparent); padding:.7rem .95rem .85rem; min-height:3.2em; margin:0;
@@ -292,34 +294,38 @@ input[type=range].dr:active{cursor:grabbing}
 .dD .notewrap{position:relative; display:grid; place-items:center; height:100%}
 .dD .ghost1,.dD .ghost2{position:absolute; border:1.5px dashed var(--hair); border-radius:8px;
   transition:all 460ms var(--es); pointer-events:none}
-.dD .ghost1{width:136px; height:84px} .dD .ghost2{width:119px; height:78px}
+.dD .ghost1,.dD .ghost2{inset:0; margin:auto}
 .dD .note{position:relative; border-radius:9px; overflow:hidden; flex:none; z-index:1;
   background:linear-gradient(118deg, color-mix(in srgb,var(--dc,var(--sky)) 30%,var(--card)) 0%,
     color-mix(in srgb,var(--dc,var(--sky)) 12%,var(--card)) 46%, var(--card) 100%);
   border:2px solid color-mix(in srgb,var(--dc,var(--sky)) 72%,var(--hair));
   box-shadow:0 10px 26px -16px rgba(0,0,0,.45);
   transition:width 460ms var(--es), height 460ms var(--es), background 400ms var(--e), border-color 400ms var(--e)}
-.dD .nm{position:absolute; right:8px; top:1px; font-family:var(--disp); font-weight:500; font-size:36px;
+.dD .nm{position:absolute; z-index:2; right:8px; top:1px; font-family:var(--disp); font-weight:500; font-size:36px;
   letter-spacing:-.045em; color:var(--dc,var(--sky)); line-height:1.25}
-.dD .hi2{position:absolute; left:8px; top:7px; font-size:.68rem; font-weight:700}
-.dD .lo{position:absolute; left:8px; top:22px; font-size:.46rem; letter-spacing:.1em;
+.dD .hi2{position:absolute; z-index:2; left:8px; top:7px; font-size:.68rem; font-weight:700}
+.dD .lo{position:absolute; left:8px; top:25px; font-size:.46rem; letter-spacing:.1em;
   color:color-mix(in srgb,var(--ink) 62%,transparent)}
-.dD .auth{position:absolute; left:8px; bottom:8px; font-size:.42rem; letter-spacing:.11em;
+.dD .auth{position:absolute; z-index:2; left:8px; bottom:8px; font-size:.42rem; letter-spacing:.11em;
   color:color-mix(in srgb,var(--ink) 58%,transparent)}
-.dD .ser{position:absolute; right:8px; bottom:8px; font-family:var(--mono); font-size:.42rem;
+.dD .ser{position:absolute; z-index:2; right:8px; bottom:8px; font-family:var(--mono); font-size:.42rem;
   letter-spacing:.06em; color:color-mix(in srgb,var(--ink) 55%,transparent)}
-.dD .por{position:absolute; left:8px; top:36px; width:30px; height:34px; border-radius:50% 50% 46% 46%;
+.dD .por{position:absolute; left:8px; top:36px; width:24px; height:22px; border-radius:50% 50% 46% 46%;
   background:color-mix(in srgb,var(--dc,var(--sky)) 34%,transparent);
   border:1.5px solid color-mix(in srgb,var(--dc,var(--sky)) 55%,transparent)}
-.dD .thr{position:absolute; top:0; bottom:0; left:52%; width:3px;
+.dD .thr{position:absolute; z-index:0; top:0; bottom:0; left:56%; width:3px;
   background:repeating-linear-gradient(180deg, color-mix(in srgb,var(--dc,var(--sky)) 70%,transparent) 0 5px, transparent 5px 9px)}
-.dD .tact{position:absolute; right:8px; top:44px; display:grid; gap:3px; justify-items:end}
+.dD .tact{position:absolute; right:8px; top:51px; display:grid; gap:3px; justify-items:end}
 .dD .tact i{width:18px; height:5px; border-radius:2px; background:var(--dc,var(--sky)); display:block}
-.dD .note.vert .nm{right:6px; top:auto; bottom:4px; font-size:30px}
+.dD .note.vert .nm{right:7px; top:auto; bottom:2px; font-size:30px}
 .dD .note.vert .thr{left:auto; right:0; top:52%; bottom:auto; left:0; width:auto; height:3px;
   background:repeating-linear-gradient(90deg, color-mix(in srgb,var(--dc,var(--sky)) 70%,transparent) 0 5px, transparent 5px 9px)}
-.dD .note.vert .por{top:auto; bottom:44px}
-.dD .note.vert .tact{top:auto; bottom:10px; right:8px}
+.dD .note.vert .por{left:7px; top:78px; bottom:auto}
+.dD .note.vert .auth{bottom:44px; left:7px; right:7px; font-size:.36rem; letter-spacing:.06em; line-height:1.35}
+.dD .note.vert .ser{top:7px; bottom:auto; left:7px; right:auto; font-size:.36rem}
+.dD .note.vert .tact{top:22px; bottom:auto; right:7px}
+.dD .note.vert .hi2{top:42px; left:7px; font-size:.6rem}
+.dD .note.vert .lo{top:58px; left:7px; font-size:.4rem; letter-spacing:.07em}
 .dD .orient{border:2px solid var(--ink); background:var(--card); border-radius:999px; padding:.2rem .7rem;
   font-size:.75rem; font-weight:700; cursor:pointer; transition:background 180ms var(--e), color 180ms var(--e)}
 .dD .orient[aria-pressed="true"]{background:var(--ink); color:var(--ivory)}
@@ -606,14 +612,14 @@ var P=[
  demo:"A",lab:"The whole exam",cap:"Four sections, 90 minutes. <b>The clock never pauses and the audio plays twice.</b>",
  links:[["Demo",B+"demo-examsim.html"],["Live simulator",B+"cils-app/"]]},
 
-{id:"vegroute",g:"need",ac:"--leaf",title:"Veg Route",status:"Shipped & live",
+{id:"vegroute",g:"need",ac:"--leaf",tall:1,title:"Veg Route",status:"Shipped & live",
  desc:"Chrome extension finding vegetarian and vegan places along routes, using OpenStreetMap data.",
  q:"Everyone answers “what's near me”. Nobody answers “what's on my way”.",
  catch:"Clean paid data, or open data with real gaps in rural Italy.",
  so:"Took OSM and showed the gaps instead of hiding them.",
  tags:["Maps & routing","Open data"],
  demo:"B",lab:"Stops on the way",cap:"Only what is genuinely within 500 m of the road, and <b>the gaps in the data are shown rather than guessed.</b>",
- links:[["Live demo",B+"demo-vegroute.html"],["GitHub code",GH+"/tree/main/restaurants-on-your-way"]]},
+ links:[["Live demo",B+"demo-vegroute.html"],["How it is built",GH+"/tree/main/restaurants-on-your-way"]]},
 
 {id:"city",g:"curious",ac:"--sky",title:"City Planning Breakdown",status:"Case study",
  desc:"A city for ten lakh people on 143 km², planned from a blank site — then read back as a screen.",
@@ -633,7 +639,7 @@ var P=[
  demo:"C",lab:"Move the lever",cap:"Three levers, three numbers. <b>I could not find a setting where everyone wins.</b>",
  links:[["Run simulation",B+"demo-matchmaking.html"]]},
 
-{id:"currency",g:"curious",ac:"--sky",title:"Currency Design Breakdown",status:"Case study",
+{id:"currency",g:"curious",ac:"--sky",tall:1,title:"Currency Design Breakdown",status:"Case study",
  desc:"Research-led redesign of Indian ₹ notes — ₹10, ₹20 and ₹100.",
  q:"What does a note have to say before anyone properly looks at it?",
  catch:"Standardisation across denominations, or variation you can feel in a pocket. Both are defensible.",
@@ -839,13 +845,19 @@ D:{html:'<div class="dD">'+
    function draw(){
      var m=M[cur];
      note.style.setProperty("--dc",m.c);
-     note.style.width=(vert?m.w:m.h*1.7)+"px";
+     note.style.width=(vert?m.w*1.35:m.h*1.7)+"px";
      note.style.height=(vert?m.h*1.7:m.w*1.35)+"px";
      $(".nm",r).textContent=cur;
      $(".hi2",r).textContent=m.words;
      $(".lo",r).textContent=m.en;
      $(".tact",r).innerHTML=new Array(m.bars).fill("<i></i>").join("");
      note.classList.toggle("vert",vert);
+     var oth=[10,20,100].filter(function(x){ return x!==cur; });
+     [$(".ghost1",r),$(".ghost2",r)].forEach(function(g,i){
+       var mm=M[oth[i]];
+       g.style.width=(vert?mm.w*1.35:mm.h*1.7)+"px";
+       g.style.height=(vert?mm.h*1.7:mm.w*1.35)+"px";
+     });
      why.innerHTML = vert
        ? "<b>Vertical, like the eighth-series Swiss Franc.</b> More ergonomic for payment terminals — and people already hold notes this way."
        : "<b>Each denomination a different size</b> — the Euro does this, the dollar does not. It is how you tell them apart without looking.";
@@ -974,8 +986,8 @@ G:{html:'<div class="dG">'+
    '<div class="mid"><div class="pane p0 show"></div><div class="pane p1"></div><div class="pane p2"></div></div>'+
    '<span class="dsub gcap"></span></div>',
  init:function(r){
-   var BRIEF=[["Population","10 lakh"],["Land","143 km² · 14 × 10"],["Type","Two transit lines"],
-              ["Wind","West → east"],["River","In north-west, turns east"],["Density","7,000 / km²"]];
+   var BRIEF=[["Population","10 lakh"],["Size","14 × 10 km, an hour across on foot"],["Type","Two transit lines"],
+              ["Wind","West → east"],["River","In north-west, turns east"],["Density","Mid-rise, about like Milan"]];
    var TARGETS=["800 m to a stop","400 m to green","1 km to a school","clear downwind of industry","60% of trips non-car"];
    var GROUPS8=[
     {n:"Daily, walk-to", rule:"800 m from every front door, crossing no arterial road",

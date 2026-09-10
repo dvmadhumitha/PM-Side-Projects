@@ -43,12 +43,14 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
 /* ══════ NAV ══════ */
 .nav{position:sticky; top:0; z-index:60; background:color-mix(in srgb,var(--ivory) 90%,transparent);
   backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:border-color 300ms var(--e)}
+.nav .navlnk button,.nav .navlnk a{text-transform:uppercase; letter-spacing:.07em; font-size:.76rem}
+
 .nav.stuck{border-bottom-color:var(--hair)}
 .r1{display:flex; align-items:baseline; gap:.75rem; padding:.7rem 0; flex-wrap:wrap}
-.mark{font-family:var(--disp); font-weight:500; font-size:1.12rem; letter-spacing:-.015em;
+.mark{font-family:var(--disp); font-weight:500; font-size:1.12rem; letter-spacing:.04em; text-transform:uppercase;
   display:inline-flex; align-items:baseline; gap:.45rem; white-space:nowrap}
 .mark i{width:9px; height:9px; border-radius:50%; background:var(--coral); display:inline-block; align-self:center}
-.here{color:var(--muted); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.here{color:var(--muted); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem}
 .here b{color:var(--ink); font-weight:700}
 .navlnk{display:flex; gap:.5rem; align-items:center; margin-left:auto}
 .navlnk > a:not(.cta){font-size:.85rem; font-weight:600; color:var(--muted); padding:.3rem .5rem}
@@ -457,7 +459,7 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
     <div class="txt">
       <h3>Three moves, in this order</h3>
       <div class="tw">
-        <div><span class="k" style="color:var(--ink)">First</span><p>Densify the three districts nearest the interchange, from about 7,000 to 9,000 per km&sup2; &mdash; still below Chandigarh. Land that already has water, drains and a line. <b>Roughly 1.2 lakh people, no new ground.</b></p></div>
+        <div><span class="k" style="color:var(--ink)">First</span><p>Densify the three districts nearest the interchange, by about a third &mdash; still less dense than Chandigarh. Land that already has water, drains and a line. <b>Roughly 1.2 lakh people, no new ground.</b></p></div>
         <div><span class="k" style="color:var(--ink)">Second</span><p>Extend both lines east, a district at a time, each hanging off stops the lines were always going to need. <b>About 1.45 lakh each.</b></p></div>
         <div><span class="k" style="color:var(--ink)">Third</span><p>Only past roughly 16 lakh, a third line north. Expensive, and worth naming now so nobody reaches for it in year six.</p></div>
       </div>
@@ -722,9 +724,9 @@ $('#keygrid').innerHTML=[
 /* ── the derivation ladder ── */
 $('#ladder').innerHTML=[
  ['','10 lakh people','The point at which a city earns its own district hospital &mdash; India&rsquo;s public health standards put that catchment at ten to twenty-five lakh. Below it, a place borrows one.',1],
- ['&divide;','7,000 per km&sup2;','Mid-rise and walkable without depending on towers. <b>Milan is 7,520, Copenhagen 7,411</b> &mdash; both five to eight storeys.',0],
- ['=','~143 km&sup2;','Not a target, a consequence. <b>Chandigarh holds about the same people on 114 km&sup2;;</b> Barcelona holds more on 101.',0],
- ['&rarr;','14 &times; 10 km','Two transit lines four kilometres apart, so nothing sits more than about 2.5 km from one. Fourteen kilometres is <b>forty minutes end to end by bike.</b>',0],
+ ['&divide;','About as dense as Milan','Five to eight storeys, walkable, no towers &mdash; roughly <b>7,000 people per km&sup2;.</b> Copenhagen sits at almost exactly the same figure.',0],
+ ['=','A bit bigger than Chandigarh','About 143 km&sup2;. Not a target, a consequence &mdash; <b>Chandigarh fits roughly the same number of people into 114.</b>',0],
+ ['&rarr;','14 &times; 10 km','About <b>forty minutes end to end by bike,</b> or an hour on foot. Two transit lines four kilometres apart, so nothing sits more than about 2.5 km from one.',0],
  ['&divide;','800 m','The ten-minute pedestrian shed &mdash; twice the standard five-minute, 400 m one. A cell is <b>1.6 km across, about 2.6 km&sup2;.</b>',0],
  ['=','55 cells','<b>About 18,000 people each,</b> grouped into <b>seven districts of roughly 1.45 lakh</b> &mdash; and about 2 lakh households at the Indian average of 4.9 per home.',1]
 ].map(function(r){
@@ -746,7 +748,7 @@ var D=[
  cap:"Four bands. <b>Every daily errand crosses one.</b>",
  what:"Homes, civic, work and industry in four bands. The layout you draw first, because it is the easiest to explain.",
  learn:"Everything you need daily sits in a different band from where you sleep, and industry along the whole southern edge is upwind of somebody.",
- add:"A density figure &mdash; 7,000 per km&sup2; &mdash; which fixed the land at about 143 km&sup2;.",
+ add:"A density to build at &mdash; about Milan's, five to eight storeys &mdash; which settled the land at a little more than Chandigarh's.",
  ref:"Chandigarh had already answered this with sectors rather than bands. I had not taken it seriously yet.",
  from:8,to:18,newc:['Nursery','Corner shop','Pharmacy','Bus stop','Playground'],
  br:5,cl:0,cn:"No groupings yet"},

@@ -128,14 +128,19 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
   background:#fff; color:var(--ac); border-radius:999px; padding:.16rem .55rem; font-weight:500}
 .dbody{padding:.85rem; background:linear-gradient(165deg, color-mix(in srgb,var(--ac) 6%,var(--card)), var(--sunk) 78%)}
 .dbody svg{width:100%; height:auto; display:block; border-radius:12px}
-.dfoot{font-size:.9rem; color:color-mix(in srgb,var(--ink) 80%,transparent); padding:.7rem .95rem .85rem; margin:0;
+.tabs button svg{width:13px; height:13px; display:inline-block; border-radius:0; flex:none}
+.dfoot{font-size:.9rem; min-height:4.8em; color:color-mix(in srgb,var(--ink) 80%,transparent); padding:.7rem .95rem .85rem; margin:0;
   border-top:1px solid var(--hair); background:var(--card)}
 .dfoot b{color:var(--ink); font-weight:700}
+@media(max-width:560px){ .dfoot{min-height:6.7em} }
 
 .tabs{display:flex; gap:.3rem; flex-wrap:wrap; margin-bottom:.6rem}
-.tabs button{border:1.5px solid var(--hair); background:var(--card); border-radius:999px; padding:.24rem .7rem;
+.tabs button{display:inline-flex; align-items:center; gap:.3rem; line-height:1.6;
+  border:1.5px solid var(--hair); background:var(--card); border-radius:999px; padding:.24rem .72rem;
   font-size:.78rem; font-weight:700; cursor:pointer; transition:border-color 180ms var(--e), background 180ms var(--e), transform 120ms var(--e)}
 .tabs button:hover{border-color:var(--ac); transform:translateY(-1px)}
+.tabs button svg{flex:none; opacity:.65}
+.tabs button[aria-current="true"] svg{opacity:1}
 .tabs button[aria-current="true"]{background:var(--ac); border-color:var(--ac); color:#fff}
 
 /* ══════ CLUSTER EXPLORER ══════ */
@@ -154,7 +159,7 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
 .cxb .cb i{display:block; height:100%; background:var(--gc)}
 .cxb .cc{display:none}
 .cxr{background:var(--card); border:1.5px solid var(--gc); border-radius:12px; padding:.6rem .7rem;
-  display:grid; gap:.4rem; align-content:start}
+  display:grid; gap:.4rem; align-content:start; min-height:11.5em}
 .cxr .crule{font-size:.82rem; font-weight:700; line-height:1.35}
 .citems{display:flex; flex-wrap:wrap; gap:.22rem}
 .citems span{font-size:.72rem; font-weight:600; color:var(--muted); border:1.5px solid var(--hair);
@@ -912,11 +917,11 @@ var FOVER='<g fill="none" stroke="var(--hair)" stroke-width="1.8"><path d="M105,
   T(157,136,'~1.45 LAKH &middot; 8 CELLS',{s:8,a:'middle',c:'var(--cobalt)'});
 
 var CL=[
-{id:'all',n:'Whole city',lb:'Whole city',
+{id:'all',k:'Roads',n:'Whole city',lb:'Whole city',
  cap:'Fifty-five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b>',
  land:FLAND,over:FOVER},
 
-{id:'district',n:'One district',lb:'One district',
+{id:'district',k:'Homes',n:'One district',lb:'One district',
  cap:'Eight cells around one interchange. <b>Every district is the same recipe, and none of them needs the centre.</b>',
  land:R(0,0,420,260,'house'),
  over:'<g fill="none" stroke="var(--hair)" stroke-width="1.8"><path d="M105,0 V260 M210,0 V260 M315,0 V260 M0,130 H420"/></g>'+
@@ -932,7 +937,7 @@ var CL=[
    T(210,176,'health centre &middot; secondary school &middot; supermarket',{s:7,a:'middle',op:.75})+
    T(14,20,'EIGHT CELLS &middot; ABOUT 1.45 LAKH',{s:8.5})},
 
-{id:'civic',n:'Civic core',lb:'Civic core',
+{id:'civic',k:'Hospital',n:'Civic core',lb:'Civic core',
  cap:'One of each, on the interchange where both lines meet. <b>Whoever needs these has the least choice about coming.</b>',
  land:R(0,0,420,260,'house'),
  over:'<path d="M0,132 H420" stroke="var(--ink)" stroke-width="3.2"/>'+
@@ -951,8 +956,8 @@ var CL=[
    T(220,88,'hotels, exhibition hall',{s:7,op:.75})+
    T(210,250,'BOTH LINES MEET HERE',{s:7.5,a:'middle',op:.7})},
 
-{id:'works',n:'Works',lb:'Works &amp; utilities',
- cap:'Downwind and downstream, buffered by green, and placed before anything pleasant took the good ground. <b>The only corner where the wind and the river agree.</b>',
+{id:'works',k:'depot',n:'Works',lb:'Works &amp; utilities',
+ cap:'Downwind, downstream, and buffered by green. <b>The one corner where the wind and the river finally agree.</b>',
  land:R(0,0,420,260,'house')+R(0,0,420,54,'green')+R(0,0,54,260,'green'),
  over:T(14,30,'WIND AND WATER BOTH POINT HERE',{s:8,op:.72})+T(150,52,'RIVER',{s:8.5,op:.7})+
    block(72,72,150,80,'ind')+block(238,72,166,80,'ind')+block(72,168,150,74,'ind')+block(238,168,166,74,'ind')+
@@ -967,7 +972,8 @@ var CL=[
   function show(i){ var c=CL[i];
     host.innerHTML=SVG(c.land,c.over); lb.innerHTML=c.lb; cap.innerHTML=c.cap;
     $$('button',tabs).forEach(function(b,j){ b.setAttribute('aria-current',String(j===i)); }); }
-  CL.forEach(function(c,i){ var b=document.createElement('button'); b.type='button'; b.textContent=c.n;
+  CL.forEach(function(c,i){ var b=document.createElement('button'); b.type='button';
+    b.innerHTML=(c.k?ICONHTML(c.k,'currentColor',13):'')+'<span>'+c.n+'</span>';
     b.addEventListener('click',function(){ show(i); }); tabs.appendChild(b); });
   show(0);
 })();

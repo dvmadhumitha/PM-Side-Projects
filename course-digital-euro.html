@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The digital euro, and the machine under it · Madhumitha D V</title>
+<meta name="description" content="Europe is building a public payment rail to stand beside the card networks. Five lessons, drawn: three kinds of euro, thirteen of twenty one, the two calendars, whose revenue it removes, and the six pieces of engineering underneath. By Madhumitha D V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
+<style>
+.bench .tabs{margin-top:-6px}
+.d .sq{fill:none;stroke:var(--chalk);stroke-width:1.25}
+.d .sq.yes{fill:var(--chalk)}
+.d .cell{fill:rgba(231,236,240,.06);stroke:var(--edge);stroke-width:1}
+.d .cell.hot{fill:var(--signal-tint);stroke:var(--signal)}
+.d .piece{cursor:pointer}
+.d .piece rect.body{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.25;transition:fill .3s,stroke .3s}
+.d .piece:hover rect.body{fill:var(--navy-3)}
+.d .piece.on rect.body{fill:var(--signal-tint);stroke:var(--signal);stroke-width:1.75}
+.d .piece.on .t{fill:var(--signal)}
+.d .lvl{fill:var(--signal);opacity:.55;transition:height .5s var(--ease),y .5s var(--ease)}
+.d .lvl2{fill:var(--chalk);opacity:.35;transition:height .5s var(--ease),y .5s var(--ease)}
+.d .flow{fill:none;stroke:var(--signal);stroke-width:2;stroke-dasharray:6 6;opacity:0;transition:opacity .4s}
+.d .flow.on{opacity:1;animation:march 1.2s linear infinite}
+@keyframes march{to{stroke-dashoffset:-24}}
+html.static .d .flow.on{animation:none}
+.d .ev{cursor:default}
+.d .ev circle{fill:var(--navy);stroke:var(--chalk);stroke-width:1.5;transition:fill .3s}
+.d .ev.done circle{fill:var(--chalk)}
+.d .ev.next circle{fill:var(--signal);stroke:var(--signal)}
+.d .ev text{transition:fill .3s}
+.d .ev.dim text{fill:var(--chalk-3);opacity:.6}
+.check{border:1px solid var(--edge);padding:14px 16px;margin-top:4px}
+.check summary{cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);list-style:none}
+.check summary::-webkit-details-marker{display:none}
+.check p{margin-top:10px;font-size:15px;line-height:24px;color:var(--chalk-2)}
+
+/* ═══ ORIGINAL FIGURES · ported from ../course-digital-euro.html, scoped under .orig ═══ */
+.orig :where(:not(.orig-block)) > h2{font-family:var(--serif);font-weight:600;font-size:46px;line-height:1.08;letter-spacing:-.022em}
+.orig :where(:not(.orig-block)) > h3{font-family:var(--serif);font-weight:600;font-size:25px;line-height:32px;letter-spacing:-.01em}
+.orig :where(:not(.orig-block)) > p{font-size:19px;line-height:30px;max-width:var(--text)}
+.orig p + p{margin-top:var(--s4)}
+.orig table{font-family:var(--sans);font-weight:400;font-size:15px;line-height:22px}
+.orig th{font-family:var(--mono);font-weight:500;font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:719px){
+.orig :where(:not(.orig-block)) > h2{font-size:28px;line-height:34px}
+.orig :where(:not(.orig-block)) > h3{font-size:17px;line-height:26px}
+.orig :where(:not(.orig-block)) > p{font-size:17px;line-height:27px}
+}
+.orig a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.orig a:hover{color:var(--vermilion)}
+.orig a:focus-visible,.orig button:focus-visible,.orig [tabindex]:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+.orig figure{margin-block:var(--s6)}
+.orig figure svg{display:block;width:100%;height:auto}
+.orig figcaption{border-top:1px solid var(--rule);padding-top:var(--s4);margin-top:var(--s4);max-width:var(--text)}
+.orig .o-seg{display:flex;flex-wrap:wrap;max-width:720px}
+.orig .o-seg button{flex:1 1 0;min-width:0;text-align:center}
+.orig .o-seg button{height:40px;padding-inline:var(--s4);border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;font-size:15px;cursor:pointer;margin-right:-1px;transition:background 200ms,color 200ms}
+.orig .o-seg button:hover{background:var(--paper-2)}
+.orig .o-seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:719px){
+.orig .o-seg button{height:44px}
+}
+@keyframes ovin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes hx-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@keyframes gping{0%{transform:scale(.5);opacity:.55}
+  100%{transform:scale(2.8);opacity:0}}
+@keyframes gblink{50%{opacity:.25}}
+@media (max-width:1079px){
+.orig .shead{grid-template-columns:1fr}
+}
+.orig .shead{display:grid;align-items:start;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter);margin-bottom:40px}
+.orig .pmcol{grid-column:1 / span 7;min-width:0}
+.orig .indcol{grid-column:9 / span 4;min-width:0}
+.orig .lens-kick{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vermilion-text);margin-bottom:var(--s4)}
+.orig .pm-ask{margin:0 0 var(--s5);font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;line-height:40px;color:var(--ink);max-width:24ch}
+.orig .pm-ask cite{display:block;font-family:var(--mono);font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:var(--s3)}
+.orig .pm-steps{list-style:none;counter-reset:pm;margin:0 0 var(--s5);padding:0}
+.orig .pm-steps li{counter-increment:pm;display:grid;grid-template-columns:34px minmax(0,1fr);padding:var(--s4) 0;border-top:1px solid var(--rule)}
+.orig .pm-steps li::before{content:counter(pm);grid-column:1;font-family:var(--mono);font-size:12px;color:var(--ink-3);padding-top:6px}
+.orig .pm-steps b{grid-column:2;font-family:var(--serif);font-weight:600;font-size:19px;line-height:30px;color:var(--ink)}
+.orig .pm-steps span{grid-column:2;display:block;font-family:var(--serif);font-size:19px;line-height:30px;color:var(--ink-2)}
+.orig .pm-steps b::after{content:" —";font-weight:400;color:var(--ink-3)}
+.orig .pm-steps b + span{display:inline}
+.orig .pm-cost{margin:0 0 var(--s5);font-family:var(--serif);font-weight:600;font-size:19px;line-height:30px;color:var(--ink);border-top:1px solid var(--rule);padding-top:var(--s4)}
+.orig .pm-foot{margin:0;border-top:1px solid var(--rule);padding-top:var(--s4)}
+.orig .pm-foot > div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:var(--s4);padding:4px 0}
+.orig .pm-foot dt{grid-column:1;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.orig .pm-foot dd{grid-column:2;margin:0;font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2)}
+.orig .o-lens{position:relative;padding:var(--s7) var(--s7) var(--s6);isolation:isolate}
+.orig .lens-moves{grid-column:1/-1;margin-top:var(--s6);border-top:1px solid var(--rule);padding-top:var(--s5)}
+.orig .lens-moves .pm-lab{margin-bottom:var(--s4)}
+.orig .lens-moves .pm-steps{display:grid;gap:0 var(--s6);margin:0;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.orig .lens-moves .pm-steps > li{padding:0 var(--s5);border-top:none;border-left:1px solid var(--rule)}
+.orig .lens-moves .pm-steps > li:first-child{padding-left:0;border-left:none}
+.orig .lens-foot{grid-column:1/-1;margin-top:var(--s6);border-top:1px solid var(--rule);padding-top:var(--s5);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5) var(--s7);align-items:start}
+.orig .lens-foot .pm-lab-x{grid-column:1;margin:0 0 var(--s3);border-top:none;padding-top:0}
+.orig .lens-foot .pm-cost{grid-column:1;margin:0}
+.orig .lens-foot .pm-foot{grid-column:2;grid-row:1/span 2;margin:0;border-top:none;padding-top:0}
+@media (max-width:1079px){
+.orig .lens-moves .pm-steps{grid-template-columns:1fr}
+.orig .lens-moves .pm-steps > li{padding:var(--s4) 0 0;border-left:none;border-top:1px solid var(--rule)}
+.orig .lens-moves .pm-steps > li:first-child{padding-top:0;border-top:none}
+.orig .lens-foot{grid-template-columns:1fr;gap:var(--s5)}
+.orig .lens-foot .pm-lab-x,.orig .lens-foot .pm-cost,.orig .lens-foot .pm-foot{grid-column:1}
+.orig .lens-foot .pm-foot{grid-row:auto;border-top:1px solid var(--rule);padding-top:var(--s4)}
+}
+.orig .bk{position:absolute;width:28px;height:28px;pointer-events:none;z-index:2}
+.orig .bk-tl{top:0;left:0;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);transform-origin:top left}
+.orig .bk-tr{top:0;right:0;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform-origin:top right}
+.orig .bk-bl{bottom:0;left:0;border-bottom:1.5px solid var(--ink);border-left:1.5px solid var(--ink);transform-origin:bottom left}
+.orig .bk-br{bottom:0;right:0;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform-origin:bottom right}
+.orig .o-lens .lens-kick{display:flex;align-items:center;gap:var(--s2)}
+.orig .o-lens .lens-kick::before{content:"";flex:none;width:8px;height:8px;background:var(--vermilion)}
+.orig .pm-lab{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 var(--s3)}
+.orig .co-gloss{margin:0 0 var(--s5);padding-left:var(--s4);border-left:1px solid var(--rule);font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2);max-width:64ch}
+.orig .co-gloss b{font-weight:600;color:var(--ink)}
+.orig .mk[title]{cursor:help}
+.orig .ind-co .mk{align-items:flex-start;gap:7px}
+.orig .ind-co .mk > i{margin-top:2px}
+.orig .ind-co .mk-row{gap:var(--s4) var(--s5)}
+.orig .pm-lab-x{color:var(--vermilion-text);border-top:1px solid var(--rule);padding-top:var(--s4);margin-top:var(--s5)}
+@media (prefers-reduced-motion:no-preference){
+.orig .o-lens .bk{transform:scale(0);transition:transform 700ms cubic-bezier(.2,.75,.3,1)}
+.orig .o-lens.seen .bk{transform:scale(1)}
+.orig .o-lens .pm-ask{filter:blur(6px);opacity:.25;transition:filter 900ms ease-out 120ms,opacity 900ms ease-out 120ms}
+.orig .o-lens.seen .pm-ask{filter:blur(0);opacity:1}
+.orig .o-lens .pm-steps li{opacity:0;transform:translateY(10px);transition:opacity 520ms ease-out,transform 520ms ease-out}
+.orig .o-lens.seen .pm-steps li{opacity:1;transform:none}
+.orig .o-lens.seen .pm-steps li:nth-child(1){transition-delay:.42s}
+.orig .o-lens.seen .pm-steps li:nth-child(2){transition-delay:.62s}
+.orig .o-lens.seen .pm-steps li:nth-child(3){transition-delay:.82s}
+.orig .o-lens.seen .lens-kick::before{animation:lensblink 760ms steps(1,end) 2}
+}
+@keyframes lensblink{0%,49%{opacity:1}50%,99%{opacity:.18}}
+@media (max-width:1079px){
+.orig .o-lens{padding:var(--s6) var(--s6) var(--s5)}
+}
+@media (max-width:719px){
+.orig .o-lens{padding:var(--s5) var(--s5) var(--s4)}
+.orig .bk{width:20px;height:20px}
+}
+.orig .indcol .o-prose{font-size:19px;line-height:27px;max-width:none}
+.orig .ind-co{margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--rule);font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink)}
+.orig .ind-co > span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--s2)}
+@media (max-width:1079px){
+.orig .shead{grid-template-columns:1fr;gap:var(--s6)}
+.orig .pmcol,.orig .indcol{grid-column:1}
+}
+.orig table{width:100%;border-collapse:collapse;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink)}
+.orig thead th{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:left;vertical-align:bottom;padding:0 var(--s5) var(--s3) 0;border-bottom:1px solid var(--ink)}
+.orig tbody tr + tr{border-top:1px solid var(--rule)}
+.orig tbody th,.orig tbody td{text-align:left;vertical-align:top;padding:var(--s4) var(--s5) var(--s4) 0}
+.orig tbody th{font-family:var(--sans);font-weight:600;font-size:15px;line-height:22px;color:var(--ink)}
+.orig tbody td{font-family:var(--sans);font-weight:400;font-size:15px;line-height:22px;color:var(--ink-2)}
+.orig tbody th i,.orig tbody td i,.orig tbody th span,.orig tbody td > span{display:block;font-style:normal;font-family:var(--sans);font-weight:400;font-size:13px;line-height:20px;color:var(--ink-3);margin-top:3px}
+.orig tbody td b{font-weight:600;color:var(--ink)}
+.orig th:last-child,.orig td:last-child{padding-right:0}
+.orig .mk{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink);margin:0 14px 6px 0;white-space:nowrap}
+.orig .mk i{flex:none;width:24px;height:24px;border:1px solid var(--rule);border-radius:5px;background:#fff center/16px 16px no-repeat;font-style:normal;font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;align-items:center;justify-content:center}
+.orig .mk-x{color:var(--ink-2)}
+.orig .mk-x::before{content:"";flex:none;width:24px;height:24px;border:1px dashed var(--rule);border-radius:5px;margin-right:7px}
+.orig .ind-co .mk{font-size:13px}
+.orig tbody th .mk{font-weight:600}
+.orig .mk i{font-weight:600;letter-spacing:0}
+.orig .mk i[data-mk="stripe"]{background:#635BFF;color:#FFFFFF;border-color:#635BFF}
+.orig .mk i[data-mk="adyen"]{background:#0ABF53;color:#FFFFFF;border-color:#0ABF53}
+.orig .mk i[data-mk="paypal"]{background:#003087;color:#FFFFFF;border-color:#003087}
+.orig .mk i[data-mk="visa"]{background:#1A1F71;color:#FFFFFF;border-color:#1A1F71}
+.orig .mk i[data-mk="mastercard"]{background:#EB001B;color:#FFFFFF;border-color:#EB001B}
+.orig .mk i[data-mk="klarna"]{background:#FFB3C7;color:#18212C;border-color:#FFB3C7}
+.orig .mk i[data-mk="wise"]{background:#9FE870;color:#18212C;border-color:#9FE870}
+.orig .mk i[data-mk="revolut"]{background:#0666EB;color:#FFFFFF;border-color:#0666EB}
+.orig .mk i[data-mk="razorpay"]{background:#3395FF;color:#FFFFFF;border-color:#3395FF}
+.orig .mk i[data-mk="phonepe"]{background:#5F259F;color:#FFFFFF;border-color:#5F259F}
+.orig .mk i[data-mk="paytm"]{background:#00BAF2;color:#18212C;border-color:#00BAF2}
+.orig .mk i[data-mk="block"]{background:#000000;color:#FFFFFF;border-color:#000000}
+.orig .mk i[data-mk="cashapp"]{background:#00D632;color:#18212C;border-color:#00D632}
+.orig .mk i[data-mk="venmo"]{background:#3D95CE;color:#FFFFFF;border-color:#3D95CE}
+.orig .mk i[data-mk="amex"]{background:#006FCF;color:#FFFFFF;border-color:#006FCF}
+.orig .mk i[data-mk="discover"]{background:#FF6000;color:#FFFFFF;border-color:#FF6000}
+.orig .mk i[data-mk="chase"]{background:#117ACA;color:#FFFFFF;border-color:#117ACA}
+.orig .mk i[data-mk="mercadopago"]{background:#00B1EA;color:#18212C;border-color:#00B1EA}
+.orig .mk i[data-mk="fiserv"]{background:#FF6600;color:#FFFFFF;border-color:#FF6600}
+.orig .mk i[data-mk="satispay"]{background:#F94C43;color:#FFFFFF;border-color:#F94C43}
+.orig .mk i[data-mk="applepay"]{background:#000000;color:#FFFFFF;border-color:#000000}
+.orig .mk i[data-mk="nexi"]{background:#0083CA;color:#FFFFFF;border-color:#0083CA}
+.orig .mk i[data-mk="square"]{background:#3E4348;color:#FFFFFF;border-color:#3E4348}
+.orig .mk i:not([style]){transition:none}
+.orig .ind-co .mk-row{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:var(--s3)}
+.orig .ind-co .mk{margin:0;font-size:13px}
+.orig .ind-co .mk i{width:20px;height:20px;font-size:12px}
+.orig tbody th .mk{margin:0}
+.orig .mk i.has-logo{background:#FFFFFF!important;border-color:var(--rule)!important;padding:3px;font-size:0}
+.orig .mk i.has-logo svg{width:100%;height:100%;display:block}
+.orig tbody th,.orig tbody td{padding:var(--s5) var(--s5) var(--s5) 0;line-height:24px}
+.orig tbody th{position:sticky;left:0;background:var(--paper-2);padding-left:var(--s4);padding-right:var(--s4);border-right:1px solid var(--rule);min-width:150px}
+.orig thead th:first-child{padding-left:var(--s4)}
+.orig tbody tr + tr{border-top:1px solid var(--rule)}
+.orig tbody tr:hover > td{background:rgba(231,234,237,.45)}
+.orig tbody td{padding-left:var(--s4)}
+.orig tbody td + td{border-left:1px solid var(--rule)}
+.orig tbody th i,.orig tbody th span{color:var(--ink-2)}
+.orig thead th{padding-bottom:var(--s4);padding-left:var(--s4)}
+.orig thead th:last-child,.orig tbody td:last-child{padding-right:var(--s4)}
+.orig table{border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+@media (max-width:719px){
+.orig tbody th{min-width:120px;font-size:13px}
+.orig tbody th,.orig tbody td{padding:var(--s4) var(--s4)}
+}
+.orig .band{background:var(--paper-2);padding:var(--s6);margin:var(--s7) 0 0}
+.orig .band + .band{margin-top:var(--s5)}
+.orig .band svg{display:block;width:100%;height:auto}
+.orig .band figcaption{border-top:1px solid var(--rule);padding-top:var(--s4);margin-top:var(--s5);font-family:var(--sans);font-size:13px;line-height:19px;color:var(--ink-3);max-width:76ch}
+.orig .band figcaption b{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-right:var(--s2)}
+.orig .stat-k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-bottom:var(--s3);border-bottom:1px solid var(--ink)}
+.orig .stats{list-style:none;margin:0;padding:0}
+.orig .stats li{padding:var(--s4) 0;border-bottom:1px solid var(--rule)}
+.orig .stats b{display:block;font-family:var(--serif);font-weight:600;font-size:25px;line-height:30px;color:var(--ink)}
+.orig .stats li:nth-child(2) b{color:var(--vermilion-text)}
+.orig .stats span{display:block;font-family:var(--sans);font-size:13px;line-height:19px;color:var(--ink-3);margin-top:2px}
+.orig .o-check{margin:var(--s5) 0 0;border-top:1px solid var(--rule)}
+.orig .o-check > summary{list-style:none;cursor:pointer;padding:var(--s4) 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--vermilion-text);display:flex;align-items:baseline;gap:var(--s2)}
+.orig .o-check > summary::-webkit-details-marker{display:none}
+.orig .o-check > summary::before{content:"+";font-family:var(--mono);font-size:13px;color:var(--vermilion)}
+.orig .o-check[open] > summary::before{content:"\2212"}
+.orig .o-check > div{padding:var(--s4) 0 0;max-width:var(--measure)}
+.orig .o-check .o-q{margin:0;font-family:var(--serif);font-style:italic;font-size:19px;line-height:30px;color:var(--ink)}
+.orig .o-check .o-a{margin:var(--s3) 0 0;font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2)}
+.orig .o-fights{margin:var(--s7) 0 0;border-top:2px solid var(--vermilion);padding-top:var(--s4)}
+.orig .fights-k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--vermilion-text);margin-bottom:var(--s5)}
+.orig .o-fights ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:var(--s8)}
+.orig .o-fights li{display:flex;flex-direction:column;min-width:0}
+.orig .o-fights li > b{font-family:var(--serif);font-weight:600;font-size:25px;line-height:30px;color:var(--ink)}
+.orig .o-fights li > p{margin:var(--s3) 0 0;font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2);max-width:none}
+.orig .fights-w{display:block;margin-top:auto;padding-top:var(--s4);border-top:1px solid var(--rule);font-family:var(--mono);font-size:12px;line-height:17px;color:var(--ink-3)}
+.orig .fights-f{margin:var(--s6) 0 0;padding-top:var(--s4);border-top:1px solid var(--rule);font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2);max-width:none}
+@media (prefers-reduced-motion:no-preference){
+.orig .o-fights li{opacity:0;transform:translateY(8px);transition:opacity 480ms ease-out,transform 480ms ease-out}
+.orig .o-fights.seen li{opacity:1;transform:none}
+.orig .o-fights.seen li:nth-child(2){transition-delay:.12s}
+.orig .stats li{opacity:0;transition:opacity 460ms ease-out}
+.orig .stats.seen li{opacity:1}
+.orig .stats.seen li:nth-child(2){transition-delay:.1s}
+.orig .stats.seen li:nth-child(3){transition-delay:.2s}
+}
+.orig .mach{margin:var(--s7) 0 0}
+.orig .mach .o-seg{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s3);margin:0 0 var(--s5)}
+.orig .mach .o-seg button{appearance:none;-webkit-appearance:none;background:var(--paper);border:1px solid var(--rule);border-radius:0;padding:var(--s4);text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:var(--s3);min-height:118px;font:inherit;color:inherit;transition:background 200ms ease-out,border-color 200ms ease-out}
+.orig .mach .o-seg button b{font-family:var(--sans);font-weight:600;font-size:13px;line-height:19px;color:var(--ink-2)}
+.orig .mach .o-seg button svg{display:block;color:var(--ink-3)}
+.orig .mach .o-seg button:hover{border-color:var(--ink-3)}
+.orig .mach .o-seg button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
+.orig .mach .o-seg button[aria-pressed="true"] b{color:var(--paper)}
+.orig .mach .o-seg button[aria-pressed="true"] svg{color:var(--paper)}
+.orig .machbook{background:var(--paper);border:1px solid var(--rule);padding:var(--s6);display:grid;grid-template-columns:7fr 5fr;gap:var(--s5) var(--s8)}
+.orig .mb-l,.orig .mb-r{min-width:0}
+.orig .mb-n{display:block;font-family:var(--mono);font-size:12px;color:var(--vermilion-text);margin-bottom:var(--s2)}
+.orig .machbook h3{margin:0;font-family:var(--serif);font-weight:600;font-size:25px;line-height:30px;color:var(--ink)}
+.orig .mb-plain{margin:var(--s4) 0 0;font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2);min-height:110px}
+.orig .mb-term{margin:var(--s4) 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s3);padding-top:var(--s3);border-top:1px solid var(--rule)}
+.orig .mb-term span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.orig .mb-term b{font-family:var(--mono);font-size:13px;color:var(--ink)}
+.orig .mb-lab{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.orig .mb-break{margin:var(--s3) 0 var(--s5);font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2);min-height:88px}
+.orig .mb-own{margin:var(--s3) 0 0;font-family:var(--sans);font-size:13px;line-height:19px;color:var(--ink-3)}
+.orig .mb-pm{grid-column:1 / -1;border-top:1px solid var(--rule);padding-top:var(--s5);border-left:2px solid var(--vermilion);padding-left:var(--s5);margin-left:calc(var(--s5) * -1)}
+.orig .mb-lab-pm{color:var(--vermilion-text);display:flex;align-items:center;gap:var(--s2)}
+.orig .mb-lab-pm::before{content:"";width:8px;height:8px;background:var(--vermilion);flex:none}
+.orig .mb-q{margin:var(--s3) 0 0;font-family:var(--serif);font-style:italic;font-size:28px;line-height:38px;color:var(--ink);max-width:40ch;min-height:76px}
+.orig .mb-why{margin:var(--s3) 0 0;font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-3);max-width:68ch;min-height:44px}
+@media (prefers-reduced-motion:no-preference){
+.orig .machbook.turn .mb-l,.orig .machbook.turn .mb-r,.orig .machbook.turn .mb-pm{animation:mbin 420ms ease-out 1}
+@keyframes mbin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+.orig .o-surf{margin:var(--s7) 0 0}
+.orig .surf-k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-bottom:var(--s3);border-bottom:1px solid var(--ink)}
+.orig .surfcells{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
+.orig .surfcells li{display:flex;flex-direction:column;padding:var(--s5) var(--s3) 0;min-width:0}
+.orig .surfcells li:first-child{padding-left:0}
+.orig .surfcells li:last-child{padding-right:0}
+.orig .surfcells li + li{border-left:1px solid var(--rule)}
+.orig .surfcells b{font-family:var(--serif);font-weight:600;font-size:17px;line-height:25px;color:var(--ink)}
+.orig .surfcells span{font-family:var(--sans);font-size:13px;line-height:19px;color:var(--ink-3);margin-top:var(--s1);min-height:38px}
+.orig .surfcells em{font-style:normal;margin-top:auto;padding-top:var(--s3);min-height:44px;font-family:var(--mono);font-size:12px;line-height:16px;color:var(--vermilion-text)}
+.orig .surf-f{margin:var(--s5) 0 0;padding-top:var(--s4);border-top:1px solid var(--rule);font-family:var(--sans);font-size:15px;line-height:22px;color:var(--ink-2);max-width:none}
+@media (prefers-reduced-motion:no-preference){
+.orig .surfcells li{opacity:0;transform:translateY(6px);transition:opacity 420ms ease-out,transform 420ms ease-out}
+.orig .surfcells.seen li{opacity:1;transform:none}
+.orig .surfcells.seen li:nth-child(2){transition-delay:.07s}
+.orig .surfcells.seen li:nth-child(3){transition-delay:.14s}
+.orig .surfcells.seen li:nth-child(4){transition-delay:.21s}
+.orig .surfcells.seen li:nth-child(5){transition-delay:.28s}
+.orig .surfcells.seen li:nth-child(6){transition-delay:.35s}
+}
+@media (max-width:1079px){
+.orig .machbook{grid-template-columns:1fr}
+.orig .o-fights ol{grid-template-columns:1fr;gap:var(--s6)}
+.orig .fights-w{margin-top:var(--s4)}
+.orig .mach .o-seg{grid-template-columns:repeat(3,minmax(0,1fr))}
+.orig .surfcells{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5) 0}
+.orig .surfcells li:nth-child(3n+1){padding-left:0;border-left:none}
+.orig .surfcells span,.orig .mb-plain,.orig .mb-break{min-height:0}
+.orig .mb-pm{margin-left:0}
+}
+@media (max-width:719px){
+.orig .mach .o-seg{grid-template-columns:repeat(2,minmax(0,1fr))}
+.orig .surfcells{grid-template-columns:repeat(2,minmax(0,1fr))}
+.orig .surfcells li{padding:0 var(--s3);border-left:1px solid var(--rule)}
+.orig .surfcells li:nth-child(odd){padding-left:0;border-left:none}
+.orig .mb-q{font-size:19px;line-height:30px}
+}
+/* page: the picker icons keep their drawn size under Blueprint's svg{width:100%} */
+.orig .mach .o-seg button svg{width:22px;height:22px}
+/* page: the status list keeps the width of the column it came from */
+.orig .o-status{max-width:440px}
+/* page: the five lesson drawings are 1000 units wide; below 860 they scroll inside their band */
+@media (max-width:860px){.orig figure.band .orig-scroll>svg{min-width:720px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#lab">Skip to the drawing</a>
+
+<header class="top">
+  <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
+  <nav>
+    <a class="keep" href="index.html#work">Work</a>
+    <a href="index.html#method">Method</a>
+    <a href="index.html#about">About</a>
+    <a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a>
+  </nav>
+</header>
+
+<main>
+
+<header class="phead">
+  <div class="in">
+    <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Payments · A course, five lessons</span></div>
+    <h1 class="reveal" style="--d:.05s">The digital euro, and the machine under it</h1>
+    <p class="q reveal" style="--d:.1s">Europe is building a public payment rail to stand beside the card networks. Whose revenue does it remove?</p>
+    <p class="s reveal" style="--d:.15s">The law is in its last round of negotiation. The Eurosystem is already building. Five short lessons: pick a lesson, scrub the calendar, move money across the holding limit, and click each piece of the machine.</p>
+    <dl class="four reveal" style="--d:.2s">
+      <div><dt>Stopped at</dt><dd>Europe is building a public payment rail to stand beside the card networks.</dd></div>
+      <div><dt>Noticed</dt><dd>The waterfall and the reverse waterfall.</dd></div>
+      <div><dt>Tradeoff</dt><dd>Holding limits keep money in the banks, or they make the thing useful.</dd></div>
+      <div class="dec"><dt>Decided</dt><dd>Explain whose revenue it removes, and the six pieces of engineering underneath.</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ═══ THE MACHINE ═══ -->
+<section class="lab" id="lab" aria-label="Five lessons">
+  <div class="in"><div class="frame sheet reveal">
+    <div class="bench">
+      <span class="cap"><b>Fig. 1</b> · Five lessons, one drawing</span>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-tab="l1">01 · Three kinds of euro</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="l2">02 · Why Europe wants one</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="l3">03 · The dates</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="l4">04 · Who stops getting paid</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="l5">05 · The machine</button>
+      </div>
+
+      <!-- L1 -->
+      <div class="panel" id="l1">
+        <svg class="d go" viewBox="0 0 957 400" role="img" aria-label="One euro, three different promises: cash, the money in your account and a digital euro, compared by who owes you the money, whether it works offline, what it earns you and what limits it.">
+          <text class="tm" x="24" y="26">One euro · three different promises</text>
+          <g class="tm"><text x="200" y="66">Who owes you the money</text><text x="200" y="146">Works offline</text><text x="200" y="226">Earns you</text><text x="200" y="306">What limits it</text></g>
+          <g class="lt"><line x1="24" y1="82" x2="876" y2="82"/><line x1="24" y1="162" x2="876" y2="162"/><line x1="24" y1="242" x2="876" y2="242"/><line x1="24" y1="322" x2="876" y2="322"/></g>
+          <g><text class="t" x="24" y="52">01 · Cash</text><text class="t" x="24" y="132">02 · The money in your account</text><text class="t" x="24" y="212">03 · A digital euro</text></g>
+          <!-- row content laid as three columns per row -->
+          <g class="tb2" font-size="14">
+            <text x="400" y="66">The central bank</text><text x="400" y="146">Always. No power, no signal</text><text x="400" y="226">Nothing</text><text x="400" y="306">Where it is still accepted</text>
+          </g>
+          <g transform="translate(0 0)">
+            <rect class="cell" x="384" y="42" width="492" height="32"/><rect class="cell" x="384" y="122" width="492" height="32"/><rect class="cell" x="384" y="202" width="492" height="32"/><rect class="cell" x="384" y="282" width="492" height="32"/>
+          </g>
+          <text class="tm" x="24" y="366">Each row is one promise. Pick the row with the seg below the drawing.</text>
+          <path class="a dr" d="M384 42 L 384 74"/><text class="ta" x="392" y="392">The row that matters is the first one. Read down it and the rest of the course follows.</text>
+        </svg>
+        <div class="ctl-row" style="margin-top:14px"><div class="seg" role="group" aria-label="Which euro"><button type="button" data-euro="0" aria-pressed="true">Cash</button><button type="button" data-euro="1">Your account</button><button type="button" data-euro="2">Digital euro</button></div></div>
+      </div>
+
+      <!-- L2 -->
+      <div class="panel" id="l2" hidden>
+        <svg class="d go" viewBox="0 0 1030 400" role="img" aria-label="Twenty one squares for the euro area countries: thirteen with no card scheme of their own, eight with one. Below, a bar: sixty one per cent of card traffic runs on international schemes, thirty nine on national ones.">
+          <text class="tm" x="24" y="26">Euro area · 21 countries, one square each</text>
+          <g id="sq"></g>
+          <text class="th" x="24" y="226" style="font-size:44px">13</text><text class="t" x="80" y="212">have no card scheme</text><text class="t" x="80" y="226">of their own</text>
+          <text class="th" x="300" y="226" style="font-size:44px">8</text><text class="t" x="340" y="226">do</text>
+          <text class="tm" x="24" y="272">And the traffic itself · ECB, Feb 2025 · shares are 2022</text>
+          <rect class="f" x="24" y="284" width="852" height="26"/><rect class="at dr" x="24" y="284" width="520" height="26"/>
+          <text class="ta" x="34" y="302">61% international schemes</text><text class="t" x="866" y="302" text-anchor="end">39% national</text>
+          <text class="tm" x="24" y="344">Only 9 national card schemes are left in the whole EU, each working in a single country: Bancomat in Italy, Girocard in Germany, Cartes Bancaires in France.</text>
+          <text class="tm" x="24" y="364">Four processors carry the cross border card traffic, out of 80 in the EU. None of them is fully European owned.</text>
+        </svg>
+      </div>
+
+      <!-- L3 -->
+      <div class="panel" id="l3" hidden>
+        <div class="range"><span>Today</span><input type="range" id="scrub" min="2022" max="2029.9" step="0.1" value="2026.8"><output id="scrub-out">Oct 2026</output></div>
+        <svg class="d go" viewBox="0 0 900 420" role="img" aria-label="Two calendars from 2022 to 2029. Above the line, the law: proposed June 2023, Council position December 2025, Parliament position July 2026, adoption targeted for the end of 2026. Below the line, the build: investigation, preparation, the Governing Council starting to build in October 2025, the pilot from mid 2027, the earliest issuance in 2029.">
+          <text class="tm" x="24" y="26">Above the line · the law</text><text class="tm" x="24" y="404">Below the line · what the Eurosystem is building</text>
+          <!-- axis: 2022 at x=60, 2030 at x=860 → 100 px per year -->
+          <line class="l" x1="60" y1="210" x2="860" y2="210"/>
+          <g class="tm" text-anchor="middle"><text x="60" y="232">2022</text><text x="160" y="232">2023</text><text x="260" y="232">2024</text><text x="360" y="232">2025</text><text x="460" y="232">2026</text><text x="560" y="232">2027</text><text x="660" y="232">2028</text><text x="760" y="232">2029</text></g>
+          <line class="a" id="now" x1="540" y1="40" x2="540" y2="396" stroke-dasharray="4 4"/>
+          <!-- phases below -->
+          <rect class="f3" x="60" y="250" width="175" height="22"/><text class="t" x="68" y="265">Investigation</text>
+          <rect class="f3" x="243" y="250" width="200" height="22"/><text class="t" x="251" y="265">Preparation</text>
+          <rect class="at" x="443" y="250" width="417" height="22" stroke-dasharray="4 4"/><text class="ta" x="451" y="265">Building it, on the assumption the law lands</text>
+          <!-- law events above -->
+          <g class="ev" data-y="2023.49"><circle cx="209" cy="210" r="6"/><line class="lt" x1="209" y1="204" x2="209" y2="150"/><text class="t" x="209" y="140" text-anchor="middle">28 Jun 2023</text><text class="tm" x="209" y="126" text-anchor="middle">The Commission proposes it</text></g>
+          <g class="ev" data-y="2025.97"><circle cx="457" cy="210" r="6"/><line class="lt" x1="457" y1="204" x2="457" y2="96"/><text class="t" x="457" y="86" text-anchor="middle">19 Dec 2025</text><text class="tm" x="461" y="72" text-anchor="end">The Council agrees its position</text></g>
+          <g class="ev" data-y="2026.52"><circle cx="512" cy="210" r="6"/><line class="lt" x1="512" y1="204" x2="512" y2="150"/><text class="t" x="512" y="140" text-anchor="middle">9 Jul 2026</text><text class="tm" x="512" y="126" text-anchor="middle">Parliament, 416 to 169</text></g>
+          <g class="ev" data-y="2026.95"><circle cx="555" cy="210" r="6"/><line class="lt" x1="555" y1="204" x2="555" y2="96"/><text class="t" x="555" y="86" text-anchor="middle">end 2026</text><text class="tm" x="551" y="72" text-anchor="start">The target for adoption</text></g>
+          <text class="tm" x="24" y="46">3 trilogues</text>
+          <!-- build events below -->
+          <g class="ev" data-y="2025.83"><circle cx="443" cy="210" r="6"/><line class="lt" x1="443" y1="272" x2="443" y2="300"/><text class="t" x="443" y="316" text-anchor="middle">30 Oct 2025</text><text class="tm" x="447" y="330" text-anchor="end">The Governing Council starts building</text></g>
+          <g class="ev" data-y="2026.82"><circle cx="542" cy="210" r="6"/><line class="lt" x1="542" y1="272" x2="542" y2="340"/><text class="t" x="542" y="356" text-anchor="middle">27 Oct 2026</text><text class="tm" x="546" y="370" text-anchor="end">Merchants have until here to join the pilot</text></g>
+          <g class="ev" data-y="2027.5"><circle cx="610" cy="210" r="6"/><line class="lt" x1="610" y1="272" x2="610" y2="300"/><text class="t" x="610" y="316" text-anchor="middle">mid 2027</text><text class="tm" x="606" y="330" text-anchor="start">The pilot, and the first real transactions</text></g>
+          <g class="ev" data-y="2029.0"><circle cx="760" cy="210" r="6"/><line class="lt" x1="760" y1="272" x2="760" y2="340"/><text class="t" x="760" y="356" text-anchor="middle">2029</text><text class="tm" x="760" y="370" text-anchor="middle">The earliest it could be issued</text></g>
+          <text class="ta" x="860" y="46" text-anchor="end">The ECB will not decide to issue until the law is adopted.</text>
+        </svg>
+      </div>
+
+      <!-- L4 -->
+      <div class="panel" id="l4" hidden>
+        <div class="ctl-row">
+          <div class="range"><span>Wallet balance</span><input type="range" id="bal" min="0" max="5000" step="50" value="2400"><output id="bal-out">€ 2,400</output></div>
+          <div class="seg" role="group" aria-label="Pay"><button type="button" data-pay="0" aria-pressed="true">Hold</button><button type="button" data-pay="50">Pay €50</button><button type="button" data-pay="500">Pay €500</button><button type="button" data-pay="3500">Pay €3,500</button></div>
+        </div>
+        <svg class="d go" viewBox="0 0 986 420" role="img" aria-label="A digital euro wallet with a holding limit of three thousand euro beside a bank account. Money above the limit falls through to the account; a payment larger than the wallet pulls the rest through from the account.">
+          <text class="tm" x="24" y="26">Why there is a ceiling on it at all · around €3,000 tested, no number fixed</text>
+          <!-- wallet -->
+          <rect class="f" x="80" y="60" width="200" height="300"/>
+          <rect class="lvl" id="lvl-w" x="81" y="300" width="198" height="59"/>
+          <line class="a" x1="60" y1="180" x2="300" y2="180"/><text class="ta" x="60" y="170">The holding limit · €3,000</text>
+          <text class="t" x="80" y="52">Your digital euro wallet</text>
+          <text class="th" id="w-amt" x="180" y="390" text-anchor="middle" style="font-size:22px">€ 2,400</text>
+          <!-- bank -->
+          <path class="l" x="0" d="M560 60 L 680 20 L 800 60"/><rect class="f" x="560" y="60" width="240" height="300"/>
+          <rect class="lvl2" id="lvl-b" x="561" y="260" width="238" height="99"/>
+          <text class="t" x="560" y="52" style="fill:var(--chalk-3)">Your bank account · lent out</text>
+          <text class="th" id="b-amt" x="680" y="390" text-anchor="middle" style="font-size:22px">€ 1,260</text>
+          <!-- flows -->
+          <path class="flow" id="fl-down" d="M280 150 C 400 150, 420 120, 560 120"/><text class="ta" id="fl-down-t" x="420" y="108" text-anchor="middle" opacity="0">waterfall · above the ceiling, it moves out on its own</text>
+          <path class="flow" id="fl-up" d="M560 300 C 420 300, 400 330, 280 330"/><text class="ta" id="fl-up-t" x="420" y="352" text-anchor="middle" opacity="0">reverse waterfall · pay more than you hold, the rest is pulled through</text>
+          <text class="tm" x="24" y="412">Deposits are what funds lending. That is the whole argument. A shop holds nothing: its limit is zero, so what it is paid passes straight to its bank.</text>
+        </svg>
+        <div class="readout"><div><b id="ro-w">€ 2,400</b><small>in the wallet</small></div><div><b id="ro-b">€ 1,260</b><small>in the bank, lent out</small></div><div><b class="hot" id="ro-f">Holding</b><small id="ro-f-l">no flow</small></div></div>
+      </div>
+
+      <!-- L5 -->
+      <div class="panel" id="l5" hidden>
+        <svg class="d go" viewBox="0 0 900 440" role="img" aria-label="The six pieces of engineering that connect a bank to a public rail, drawn as an exploded stack: mutual TLS, payload signatures, a hardware security module, Kubernetes, an event queue and the double entry ledger with idempotency. Click one to read what it is for.">
+          <text class="tm" x="24" y="26">Connecting a bank to a public rail · six pieces · click one</text>
+          <g class="piece on" data-m="mtls"><rect class="body" x="40" y="60" width="250" height="88"/><text class="tm" x="52" y="80">01</text><text class="t" x="52" y="100">Both ends prove</text><text class="t" x="52" y="116">who they are</text><text class="tm" x="52" y="138">Mutual TLS</text></g>
+          <g class="piece" data-m="sign"><rect class="body" x="325" y="60" width="250" height="88"/><text class="tm" x="337" y="80">02</text><text class="t" x="337" y="100">The message is signed,</text><text class="t" x="337" y="116">not just the pipe</text><text class="tm" x="337" y="138">Payload signature</text></g>
+          <g class="piece" data-m="hsm"><rect class="body" x="610" y="60" width="250" height="88"/><text class="tm" x="622" y="80">03</text><text class="t" x="622" y="100">The keys live in a box</text><text class="t" x="622" y="116">that will not open</text><text class="tm" x="622" y="138">HSM + vault</text></g>
+          <g class="piece" data-m="k8s"><rect class="body" x="40" y="190" width="250" height="88"/><text class="tm" x="52" y="210">04</text><text class="t" x="52" y="230">It stays up without</text><text class="t" x="52" y="246">anyone watching</text><text class="tm" x="52" y="268">Kubernetes</text></g>
+          <g class="piece" data-m="kafka"><rect class="body" x="325" y="190" width="250" height="88"/><text class="tm" x="337" y="210">05</text><text class="t" x="337" y="230">Nothing is lost when</text><text class="t" x="337" y="246">something falls over</text><text class="tm" x="337" y="268">Event queue · Kafka</text></g>
+          <g class="piece" data-m="ledger"><rect class="body" x="610" y="190" width="250" height="88"/><text class="tm" x="622" y="210">06</text><text class="t" x="622" y="230">Pressing pay twice</text><text class="t" x="622" y="246">pays once</text><text class="tm" x="622" y="268">Double entry + idempotency</text></g>
+          <!-- the rail underneath -->
+          <g class="lt dash"><line x1="165" y1="148" x2="165" y2="190"/><line x1="450" y1="148" x2="450" y2="190"/><line x1="735" y1="148" x2="735" y2="190"/><line x1="165" y1="278" x2="165" y2="330"/><line x1="450" y1="278" x2="450" y2="330"/><line x1="735" y1="278" x2="735" y2="330"/></g>
+          <rect class="f2 dr" x="40" y="330" width="820" height="56"/><text class="t" x="52" y="352">The public rail · the Eurosystem's digital euro service platform</text><text class="tm" x="52" y="372">Message formats, the security model and identity checks are fixed. Anything priced is not.</text>
+          <text class="tm" x="24" y="424">None of this requires writing the code. It requires knowing what each piece is for, and what it costs you when it is missing.</text>
+        </svg>
+      </div>
+    </div>
+
+    <aside class="notes" id="notes">
+      <span class="n" id="n-k">Lesson 01 · Three kinds of euro</span>
+      <h2 id="n-h">Who owes you the money?</h2>
+      <p id="n-p">The euro in your hand, the euro in your bank app and a digital euro are not the same thing, and the difference is not technology. A banknote is a promise from the central bank. The balance in your account is a promise from your bank, which is why the state has to insure it. A digital euro is the first promise, in software.</p>
+      <p id="n-p2">It is not a cryptocurrency, not a new currency, and not a bank account. It is cash, in the place cash has stopped reaching.</p>
+      <details class="check" id="n-c"><summary>Check yourself</summary><p id="n-cq"><b>Your bank fails on a Friday night. Which of the three do you still have?</b></p><p id="n-ca">Cash and the digital euro. Both are a claim on the central bank, so there is nobody in between to fail. Your account balance is a claim on the bank: you get it back from the guarantee scheme, but you wait.</p></details>
+      <p class="dec"><b id="n-dk">Noticed</b><span id="n-d">It is cash, in the place cash has stopped reaching.</span></p>
+    </aside>
+  </div></div>
+</section>
+
+<!-- ═══ THE ORIGINAL FIGURES ═══ -->
+<section class="originals" id="originals"><div class="in">
+  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The five lessons, as first drawn</h2></div><p>Every figure, picker and check from the original course, in order: three kinds of euro, the squares, the two calendars, the ceiling, the fees, the six pieces and the lens.</p></div>
+  <div class="orig">
+    <div class="orig-block" id="o-status"><span class="k">Where it stands</span><h3>Where it stands today</h3><p>Europe is building a public payment rail to stand beside the card networks. The law is in its last round of negotiation. The Eurosystem is already building.</p>
+      <div class="o-status"><span class="stat-k">Where it stands today</span>
+      <ol class="stats">
+        <li><b>In trilogue</b><span>Council, Parliament and Commission are negotiating the final text now</span></li>
+        <li><b>27 Oct 2026</b><span>Merchants have until then to join the pilot</span></li>
+        <li><b>2029</b><span>The earliest the thing could actually be issued</span></li>
+      </ol></div>
+    </div>
+    <div class="orig-block" id="o-L1"><span class="k">Lesson 01 · Fig 1</span><h3>Three kinds of euro</h3><p>The euro in your hand, the euro in your bank app and a digital euro are not the same thing. The difference is <b>who owes you the money</b>. A banknote is a promise from the central bank. The balance in your account is a promise from your bank. A digital euro is the first promise, in software.</p>
+<figure class="band" id="F1">
+      <div class="orig-scroll"><svg viewBox="0 0 1000 368" role="img" aria-label="The three kinds of euro, and who owes you each one"><title>The three kinds of euro you can hold, and who owes you each one</title><defs><pattern id="hx" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#CBBFA6" stroke-width="1"/></pattern></defs><text x="20" y="22" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">ONE EURO, THREE DIFFERENT PROMISES</text><rect x="20" y="44" width="293.3" height="272" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.6"/><rect x="20" y="44" width="293.3" height="272" fill="url(#hx)" opacity=".55"/><g transform="translate(35,60)" color="#18212C" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="11" rx="1"/><circle cx="12" cy="12.5" r="3"/></g><text x="299.3" y="76" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="end">01</text><text x="35" y="112" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">Cash</text><line x1="35" y1="126" x2="298.3" y2="126" stroke="#D5DBE0" stroke-width="1"/><text x="35" y="150" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">WHO OWES YOU THE MONEY</text><rect x="35" y="160" width="11" height="11" fill="#18212C"/><text x="52" y="170" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">The central bank</text><text x="35" y="196" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">WORKS OFFLINE</text><text x="35" y="212" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Always. No power, no signal</text><text x="35" y="240" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">EARNS YOU</text><text x="35" y="256" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Nothing</text><text x="35" y="284" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">WHAT LIMITS IT</text><text x="35" y="300" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Where it is still accepted</text><rect x="353.3" y="44" width="293.3" height="272" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.6"/><g transform="translate(368.3,60)" color="#18212C" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3,9 L12,4 L21,9"/><path d="M6,9 V19 M12,9 V19 M18,9 V19"/><path d="M3,21 H21"/></g><text x="632.6" y="76" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="end">02</text><text x="368.3" y="112" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">The money in your account</text><line x1="368.3" y1="126" x2="631.6" y2="126" stroke="#D5DBE0" stroke-width="1"/><text x="368.3" y="150" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">WHO OWES YOU THE MONEY</text><rect x="368.3" y="160" width="11" height="11" fill="#9AA4AE"/><text x="385.3" y="170" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">Your bank</text><text x="368.3" y="196" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">WORKS OFFLINE</text><text x="368.3" y="212" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">No. It needs the bank to answer</text><text x="368.3" y="240" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">EARNS YOU</text><text x="368.3" y="256" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Interest, if the bank pays any</text><text x="368.3" y="284" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">WHAT LIMITS IT</text><text x="368.3" y="300" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">€100,000 guaranteed, per bank</text><rect x="686.7" y="44" width="293.3" height="272" rx="2" fill="#EFE6D2" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="5 3"/><g transform="translate(701.7,60)" color="#18212C" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10.5,18.5 h3"/></g><text x="966.0" y="76" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="end">03</text><text x="701.7" y="112" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">A digital euro</text><line x1="701.7" y1="126" x2="965.0" y2="126" stroke="#D5DBE0" stroke-width="1"/><text x="701.7" y="150" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">WHO OWES YOU THE MONEY</text><rect x="701.7" y="160" width="11" height="11" fill="#18212C"/><text x="718.7" y="170" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">The central bank</text><text x="701.7" y="196" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">WORKS OFFLINE</text><text x="701.7" y="212" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">By design, phone to phone</text><text x="701.7" y="240" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">EARNS YOU</text><text x="701.7" y="256" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Nothing, on purpose</text><text x="701.7" y="284" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9AA4AE" text-anchor="start" letter-spacing=".6">WHAT LIMITS IT</text><text x="701.7" y="300" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">A holding limit, not yet set</text><text x="20" y="338" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Two of the three are a claim on the central bank. The middle one is a claim on your bank</text><text x="20" y="354" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">which is why it alone needs a guarantee scheme behind it.</text></svg></div>
+      <figcaption><b>Fig 1</b> The row that matters is the first one. Read down it and the rest of the course follows.</figcaption>
+    </figure>
+
+    <details class="o-check"><summary>Check yourself</summary><div>
+      <p class="o-q">Your bank fails on a Friday night. Which of the three do you still have?</p>
+      <p class="o-a">Cash and the digital euro. Both are a claim on the central bank, so there is nobody in between to fail. Your account balance is a claim on the bank. You get it back from the guarantee scheme, but you wait.</p>
+    </div></details>
+    </div>
+    <div class="orig-block" id="o-L2"><span class="k">Lesson 02 · Fig 2</span><h3>Why Europe wants one</h3><p>The case is not that cards are expensive. It is that Europe does not own them. Thirteen of the twenty one euro area countries have <b>no card scheme of their own at all</b>: in those countries every card payment is routed, priced and ruled by a company headquartered somewhere else.</p>
+<figure class="band" id="F2">
+      <div class="orig-scroll"><svg viewBox="0 0 1000 300" role="img" aria-label="How many euro area countries have a card scheme of their own"><title>How many euro area countries have a card scheme of their own</title><text x="20" y="22" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">EURO AREA · 21 COUNTRIES, ONE SQUARE EACH</text><rect class="sq-i" x="20" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="92" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="164" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="236" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="308" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="380" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="452" y="46" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="20" y="118" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="92" y="118" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="164" y="118" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="236" y="118" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="308" y="118" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-i" x="380" y="118" width="60" height="60" rx="2" fill="#18212C" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="452" y="118" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="20" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="92" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="164" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="236" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="308" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="380" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect class="sq-n" x="452" y="190" width="60" height="60" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><rect x="20" y="266" width="12" height="12" fill="#18212C"/><text x="40" y="276" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">13</text><text x="62" y="276" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">have no card scheme of their own</text><rect x="300" y="266" width="12" height="12" fill="#F3F4F5" stroke="#18212C" stroke-width="1.4"/><text x="320" y="276" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">8</text><text x="336" y="276" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">do</text><text x="560" y="22" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">AND THE TRAFFIC ITSELF</text><rect x="560" y="46" width="256.2" height="30" fill="#18212C"/><rect x="816.2" y="46" width="163.8" height="30" fill="#F3F4F5" stroke="#18212C" stroke-width="1.2"/><text x="570" y="66" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#F3F4F5" text-anchor="start">61%</text><text x="826.2" y="66" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">39%</text><text x="560" y="96" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#6B7580" text-anchor="start">International schemes</text><text x="980" y="96" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#6B7580" text-anchor="end">National schemes</text><line x1="560" y1="118" x2="980" y2="118" stroke="#D5DBE0" stroke-width="1"/><text x="560" y="142" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Only 9 national card schemes are left in the whole EU,</text><text x="560" y="158" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">each one working in a single country: Bancomat in Italy,</text><text x="560" y="174" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Girocard in Germany, Cartes Bancaires in France.</text><line x1="560" y1="198" x2="980" y2="198" stroke="#D5DBE0" stroke-width="1"/><text x="560" y="224" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="25" font-weight="600" fill="#18212C" text-anchor="start">4</text><text x="594" y="218" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">processors carry the cross border card</text><text x="594" y="234" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">traffic, out of 80 in the EU.</text><text x="560" y="262" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#9E4532" text-anchor="start">None of them is fully European owned.</text><text x="560" y="286" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="start">ECB, Report on card schemes and processors, Feb 2025 · shares are 2022</text></svg></div>
+      <figcaption><b>Fig 2</b> The squares are countries. The bar is where the traffic actually goes.</figcaption>
+    </figure>
+
+    <details class="o-check"><summary>Check yourself</summary><div>
+      <p class="o-q">European law already caps card interchange. Why has that not solved the problem?</p>
+      <p class="o-a">Interchange is only one of the three cuts, and it is the one that stays inside Europe. It goes to the issuing bank. The scheme fee is not capped, and routing is not regulated at all. Capping interchange made cards cheaper without making them European.</p>
+    </div></details>
+    </div>
+    <div class="orig-block" id="o-L3"><span class="k">Lesson 03 · Fig 3</span><h3>The dates, and the two fights</h3><p>Two calendars are running at once. The law is in its final negotiation, with adoption targeted for the end of 2026. The Eurosystem is not waiting for it: it closed its preparation phase in October 2025 and is building now, on the assumption the law lands.</p>
+<figure class="band" id="F3">
+      <div class="orig-scroll"><svg viewBox="0 0 1000 428" role="img" aria-label="Two calendars: what the law is doing, and what the Eurosystem is building"><title>Two calendars: what the law is doing, and what the Eurosystem is building</title><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3E4853"/></marker></defs><text x="20" y="24" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">ABOVE THE LINE · THE LAW</text><text x="980" y="24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="end">The ECB will not decide to issue until the law is adopted.</text><line x1="60" y1="112" x2="975" y2="112" stroke="#3E4853" stroke-width="1.2" marker-end="url(#ah3)"/><line x1="122.94117647058823" y1="108" x2="122.94117647058823" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="122.94117647058823" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2022</text><line x1="228.8235294117647" y1="108" x2="228.8235294117647" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="228.8235294117647" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2023</text><line x1="334.70588235294116" y1="108" x2="334.70588235294116" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="334.70588235294116" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2024</text><line x1="440.5882352941176" y1="108" x2="440.5882352941176" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="440.5882352941176" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2025</text><line x1="546.4705882352941" y1="108" x2="546.4705882352941" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="546.4705882352941" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2026</text><line x1="652.3529411764705" y1="108" x2="652.3529411764705" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="652.3529411764705" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2027</text><line x1="758.2352941176471" y1="108" x2="758.2352941176471" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="758.2352941176471" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2028</text><line x1="864.1176470588234" y1="108" x2="864.1176470588234" y2="116" stroke="#D5DBE0" stroke-width="1"/><text x="864.1176470588234" y="132" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="middle">2029</text><line x1="280.7058823529421" y1="106" x2="280.7058823529421" y2="69" stroke="#D5DBE0" stroke-width="1"/><circle cx="280.7058823529421" cy="58" r="11" fill="#2B6F82"/><text x="280.7058823529421" y="62" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">1</text><line x1="542.2352941176509" y1="106" x2="542.2352941176509" y2="69" stroke="#D5DBE0" stroke-width="1"/><circle cx="542.2352941176509" cy="58" r="11" fill="#2B6F82"/><text x="542.2352941176509" y="62" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">2</text><line x1="601.5294117647039" y1="106" x2="601.5294117647039" y2="69" stroke="#D5DBE0" stroke-width="1"/><circle cx="601.5294117647039" cy="58" r="11" fill="#2B6F82"/><text x="601.5294117647039" y="62" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">3</text><line x1="652.3529411764705" y1="106" x2="652.3529411764705" y2="69" stroke="#D5DBE0" stroke-width="1"/><circle cx="652.3529411764705" cy="58" r="11" fill="#F3F4F5" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="3 2"/><text x="652.3529411764705" y="62" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#A07C2E" text-anchor="middle">4</text><path d="M602.5882352941147,86 H625.8823529411765" stroke="#18212C" stroke-width="2.5"/><text x="604.5882352941147" y="80" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#6B7580" text-anchor="start">3 trilogues</text><line x1="528.4705882352864" y1="138" x2="528.4705882352864" y2="155" stroke="#D5DBE0" stroke-width="1"/><circle cx="528.4705882352864" cy="166" r="11" fill="#2B6F82"/><text x="528.4705882352864" y="170" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">5</text><line x1="633.2941176470521" y1="138" x2="633.2941176470521" y2="155" stroke="#B4533F" stroke-width="1"/><circle cx="633.2941176470521" cy="166" r="11" fill="#B4533F"/><text x="633.2941176470521" y="170" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">6</text><line x1="705.2941176470588" y1="138" x2="705.2941176470588" y2="155" stroke="#D5DBE0" stroke-width="1"/><circle cx="705.2941176470588" cy="166" r="11" fill="#F3F4F5" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="3 2"/><text x="705.2941176470588" y="170" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#A07C2E" text-anchor="middle">7</text><line x1="864.1176470588234" y1="138" x2="864.1176470588234" y2="155" stroke="#D5DBE0" stroke-width="1"/><circle cx="864.1176470588234" cy="166" r="11" fill="#F3F4F5" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="3 2"/><text x="864.1176470588234" y="170" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#A07C2E" text-anchor="middle">8</text><rect x="96.47058823529412" y="190" width="211.76470588235296" height="9" fill="#CBBFA6"/><text x="102.47058823529412" y="212" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#6B7580" text-anchor="start">Investigation</text><rect x="316.7058823529335" y="190" width="211.76470588235293" height="9" fill="#6B7580"/><text x="322.7058823529335" y="212" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#6B7580" text-anchor="start">Preparation</text><rect x="528.4705882352864" y="190" width="399.1764705882333" height="9" fill="#EFE6D2" stroke="#A07C2E" stroke-width="1" stroke-dasharray="5 3"/><text x="534.4705882352864" y="212" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#A07C2E" text-anchor="start">Building it, on the assumption the law lands</text><text x="20" y="240" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">BELOW THE LINE · WHAT THE EUROSYSTEM IS BUILDING</text><line x1="20" y1="256" x2="980" y2="256" stroke="#18212C" stroke-width="1"/><text x="20" y="282" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">The law</text><circle cx="31" cy="306" r="11" fill="#2B6F82"/><text x="31" y="310" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">1</text><text x="52" y="310" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start">28 Jun 2023</text><text x="138" y="310" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">The Commission proposes it</text><circle cx="31" cy="332" r="11" fill="#2B6F82"/><text x="31" y="336" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">2</text><text x="52" y="336" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start">19 Dec 2025</text><text x="138" y="336" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">The Council agrees its position</text><circle cx="31" cy="358" r="11" fill="#2B6F82"/><text x="31" y="362" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">3</text><text x="52" y="362" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start">9 Jul 2026</text><text x="138" y="362" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">Parliament agrees its own, 416 to 169</text><circle cx="31" cy="384" r="11" fill="#F3F4F5" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="3 2"/><text x="31" y="388" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#A07C2E" text-anchor="middle">4</text><text x="52" y="388" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9E4532" text-anchor="start">end 2026</text><text x="138" y="388" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">The target for adoption</text><text x="520" y="282" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">The build</text><circle cx="531" cy="306" r="11" fill="#2B6F82"/><text x="531" y="310" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">5</text><text x="552" y="310" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start">30 Oct 2025</text><text x="638" y="310" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">The Governing Council starts building</text><circle cx="531" cy="332" r="11" fill="#B4533F"/><text x="531" y="336" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#F3F4F5" text-anchor="middle">6</text><text x="552" y="336" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9E4532" text-anchor="start">27 Oct 2026</text><text x="638" y="336" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">Merchants have until here to join the pilot</text><circle cx="531" cy="358" r="11" fill="#F3F4F5" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="3 2"/><text x="531" y="362" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#A07C2E" text-anchor="middle">7</text><text x="552" y="362" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9E4532" text-anchor="start">mid 2027</text><text x="638" y="362" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">The pilot, and the first real transactions</text><circle cx="531" cy="384" r="11" fill="#F3F4F5" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="3 2"/><text x="531" y="388" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="500" fill="#A07C2E" text-anchor="middle">8</text><text x="552" y="388" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9E4532" text-anchor="start">2029</text><text x="638" y="388" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">The earliest it could be issued</text></svg></div>
+      <figcaption><b>Fig 3</b> Solid is done. Dashed is conditional. The one date in red is the only one with a deadline you can miss this month.</figcaption>
+    </figure>
+
+    <div class="o-fights">
+      <span class="fights-k">Two things are still unsettled, and both are about money, not technology</span>
+      <ol>
+        <li>
+          <b>How much you may hold</b>
+          <p>Around <b>€3,000</b> has been modelled and found safe, but no number is fixed. Parliament wants the Commission to set it; the Council wants to set it itself, by reinforced majority. The ECB says it will be decided closer to launch, to fit the conditions of the day.</p>
+          <span class="fights-w">Why it is fought over: the ceiling is the maximum amount of deposits that can walk out of the banking system.</span>
+        </li>
+        <li>
+          <b>Who pays the banks that distribute it</b>
+          <p>The shape is agreed: issuing and acquiring banks pay <b>no scheme fee and no processing fee</b>, the merchant charge is capped, the fee between providers is capped, and for at least five years those caps sit near the average debit card fee. The level is not agreed. Italy proposed a <b>€0.02</b> cap under €10 in September 2026.</p>
+          <span class="fights-w">Why it is fought over: it decides whether distributing a digital euro is a business or a cost.</span>
+        </li>
+      </ol>
+      <p class="fights-f">This is worth noticing as a pattern. The EU's open finance file, FIDA, is stuck on the same question, what data holders are owed by data users. In European payments regulation, the technology is rarely the hard part. <b>Compensation is.</b></p>
+    </div>
+
+    <details class="o-check"><summary>Check yourself</summary><div>
+      <p class="o-q">The regulation passes in December. Your CEO asks when you can launch.</p>
+      <p class="o-a">You cannot. The ECB's Governing Council only decides on issuance after the law is adopted, the pilot runs from mid 2027, and the earliest issuance is 2029. Your 2027 roadmap is pilot integration. Anyone promising a launch date is reading a press release, not the calendar.</p>
+    </div></details>
+    </div>
+    <div class="orig-block" id="o-L4"><span class="k">Lesson 04 · Figs 4 and 5</span><h3>Who stops getting paid</h3><p>Two design choices carry almost all of the economics. A <b>ceiling</b> on what a person may hold, so money cannot drain out of the banks. And a fee model that removes the scheme fee entirely, which is the card networks’ revenue on every payment they carry.</p>
+<figure class="band" id="F4">
+      <div class="orig-scroll"><svg viewBox="0 0 1000 300" role="img" aria-label="A holding limit, and the two flows that carry money across it"><title>How a holding limit, a waterfall and a reverse waterfall keep money in the banks</title><defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3E4853"/></marker></defs><text x="20" y="22" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">WHY THERE IS A CEILING ON IT AT ALL</text><rect x="20" y="46" width="300" height="196" rx="2" fill="#EFE6D2" stroke="#A07C2E" stroke-width="1.6" stroke-dasharray="5 3"/><g transform="translate(35,60)" color="#18212C" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10.5,18.5 h3"/></g><text x="35" y="112" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">Your digital euro wallet</text><line x1="35" y1="150" x2="305" y2="150" stroke="#B4533F" stroke-width="1.6" stroke-dasharray="6 4"/><text x="305" y="142" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#9E4532" text-anchor="end">the holding limit</text><rect x="35" y="152" width="270" height="74" fill="#CBBFA6"/><text x="48" y="184" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="500" fill="#18212C" text-anchor="start">what you may keep here</text><text x="48" y="202" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#3E4853" text-anchor="start">around €3,000 has been tested</text><text x="48" y="216" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#3E4853" text-anchor="start">no number is fixed yet</text><rect x="560" y="46" width="300" height="196" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.6"/><g transform="translate(575,60)" color="#18212C" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3,9 L12,4 L21,9"/><path d="M6,9 V19 M12,9 V19 M18,9 V19"/><path d="M3,21 H21"/></g><text x="575" y="112" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="600" fill="#18212C" text-anchor="start">Your bank account</text><text x="575" y="142" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">everything above the ceiling lives here,</text><text x="575" y="158" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">and this is what the bank lends out</text><text x="575" y="196" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">Deposits are what funds lending.</text><text x="575" y="212" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">That is the whole argument.</text><path d="M336,102 H544" stroke="#3E4853" stroke-width="1.4" marker-end="url(#ah4)"/><text x="440.0" y="92" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="middle">reverse waterfall</text><text x="440.0" y="122" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="middle">anything that arrives above the ceiling</text><text x="440.0" y="138" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="middle">moves out on its own</text><path d="M544,196 H336" stroke="#3E4853" stroke-width="1.4" marker-end="url(#ah4)"/><text x="440.0" y="186" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="middle">waterfall</text><text x="440.0" y="216" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="middle">pay more than you hold and the rest</text><text x="440.0" y="232" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="middle">is pulled through from the account</text><line x1="20" y1="262" x2="980" y2="262" stroke="#D5DBE0" stroke-width="1"/><g transform="translate(20,274)" color="#18212C" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3,9 L5,4 L19,4 L21,9"/><path d="M5,9 V20 H19 V9"/><path d="M10,20 V14 H14 V20"/></g><text x="54" y="290" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">A shop holds nothing at all. Its limit is zero, so money it is paid passes straight through to its bank. Only people get a ceiling.</text></svg></div>
+      <figcaption><b>Fig 4</b> The ceiling, and the two flows that keep money moving across it in both directions.</figcaption>
+    </figure>
+
+    <figure class="band" id="F5">
+      <div class="orig-scroll"><svg viewBox="0 0 1000 372" role="img" aria-label="Which fees a digital euro payment removes, and which one is still being negotiated"><title>Which charges a digital euro payment removes, and which one is still being negotiated</title><text x="20" y="22" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" font-weight="400" fill="#6B7580" text-anchor="start" letter-spacing=".6">THE SAME PAYMENT, CHARGED TWO WAYS</text><text x="430" y="52" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">A card payment today</text><text x="710" y="52" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">A digital euro payment, as drafted</text><line x1="20" y1="64" x2="980" y2="64" stroke="#18212C" stroke-width="1.5"/><text x="20" y="110" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">Scheme fee</text><text x="20" y="126" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="start">to the card network, on every payment</text><rect x="430" y="96" width="252" height="28" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.2"/><text x="442" y="115" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">charged</text><rect x="710" y="96" width="252" height="28" rx="2" fill="#F3F4F5" stroke="#2B6F82" stroke-width="1.2"/><text x="722" y="115" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#2B6F82" text-anchor="start">none, by law</text><line x1="20" y1="138" x2="980" y2="138" stroke="#D5DBE0" stroke-width="1"/><text x="20" y="162" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">Processing fee</text><text x="20" y="178" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="start">for running the message through</text><rect x="430" y="148" width="252" height="28" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.2"/><text x="442" y="167" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">charged</text><rect x="710" y="148" width="252" height="28" rx="2" fill="#F3F4F5" stroke="#2B6F82" stroke-width="1.2"/><text x="722" y="167" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#2B6F82" text-anchor="start">none, by law</text><line x1="20" y1="190" x2="980" y2="190" stroke="#D5DBE0" stroke-width="1"/><text x="20" y="214" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">What the shop is charged</text><text x="20" y="230" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="start">the merchant service charge</text><rect x="430" y="200" width="252" height="28" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.2"/><text x="442" y="219" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">set by its acquirer</text><rect x="710" y="200" width="252" height="28" rx="2" fill="#EFE6D2" stroke="#A07C2E" stroke-width="1.2" stroke-dasharray="5 3"/><text x="722" y="219" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#9E4532" text-anchor="start">capped, level not set</text><line x1="20" y1="242" x2="980" y2="242" stroke="#D5DBE0" stroke-width="1"/><text x="20" y="266" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#18212C" text-anchor="start">Fee between providers</text><text x="20" y="282" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="400" fill="#9AA4AE" text-anchor="start">paid by one bank to the other</text><rect x="430" y="252" width="252" height="28" rx="2" fill="#F3F4F5" stroke="#18212C" stroke-width="1.2"/><text x="442" y="271" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#18212C" text-anchor="start">interchange, capped by law</text><rect x="710" y="252" width="252" height="28" rx="2" fill="#EFE6D2" stroke="#A07C2E" stroke-width="1.2" stroke-dasharray="5 3"/><text x="722" y="271" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#9E4532" text-anchor="start">capped, level not set</text><line x1="20" y1="294" x2="980" y2="294" stroke="#D5DBE0" stroke-width="1"/><text x="20" y="320" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">Two of the four simply stop existing. The two that remain are capped, and neither cap</text><text x="20" y="336" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Open Sans', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="400" fill="#3E4853" text-anchor="start">has a number in it yet. That is what the trilogue is arguing about.</text><text x="980" y="360" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" font-weight="400" fill="#9AA4AE" text-anchor="end">what a card actually costs, hop by hop, is on the payments teardown</text></svg></div>
+      <figcaption><b>Fig 5</b> Two of the three cuts disappear. The third one is the empty box, and that box is the whole negotiation.</figcaption>
+    </figure>
+
+    <details class="o-check"><summary>Check yourself</summary><div>
+      <p class="o-q">Why does a bank care so much about a number like €3,000?</p>
+      <p class="o-a">Because deposits fund lending. The holding limit is the legal ceiling on how much of a bank's deposit base can move to the central bank, and a bank's balance sheet is built on the assumption that most of it stays. A low ceiling makes the digital euro a wallet. A high one makes it a competitor.</p>
+    </div></details>
+    </div>
+    <div class="orig-block" id="o-L5"><span class="k">Lesson 05 · Six pieces</span><h3>The machine under it</h3><p>Connecting a bank to a public rail is six pieces of engineering, and a product manager who cannot name them will not be able to argue about the roadmap. It requires knowing what each piece is for, and what it costs you when it is missing. Pick one.</p>
+<div class="band mach">
+      <div class="o-seg" id="machseg" role="group" aria-label="Choose a piece">
+        <button type="button" data-m="mtls" aria-pressed="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3,7 L8,4 L13,7"/><path d="M3,7 V13 C3,16 5.5,18.5 8,19.5 C10.5,18.5 13,16 13,13 V7"/><path d="M11,17 L16,14 L21,17"/><path d="M11,17 V21"/><path d="M21,17 V21"/></svg><b>Both ends prove who they are</b></button>
+        <button type="button" data-m="sign" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4,20 L5,15.5 L16,4.5 L19.5,8 L8.5,19 Z"/><path d="M14,6.5 L17.5,10"/><path d="M3,22 H21"/></svg><b>The message is signed</b></button>
+        <button type="button" data-m="hsm" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M7,8 V5.5 A5,5 0 0 1 17,5.5 V8"/><circle cx="12" cy="14" r="2"/></svg><b>The keys live in a box</b></button>
+        <button type="button" data-m="k8s" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12,2.5 L20.5,7 V16 L12,20.5 L3.5,16 V7 Z"/><path d="M3.5,7 L12,11.5 L20.5,7 M12,11.5 V20.5"/></svg><b>It stays up on its own</b></button>
+        <button type="button" data-m="kafka" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3,7 H15 M12,4 L15,7 L12,10"/><path d="M21,17 H9 M12,14 L9,17 L12,20"/><path d="M3,12.5 H21"/></svg><b>Nothing is lost when it falls over</b></button>
+        <button type="button" data-m="ledger" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4,4 H11 A2,2 0 0 1 13,6 V20 A2,2 0 0 0 11,18 H4 Z"/><path d="M20,4 H13 V18 H20 Z"/><path d="M6.5,9 H10 M6.5,13 H10"/></svg><b>Pressing pay twice pays once</b></button>
+      </div>
+
+      <article class="machbook" id="machbook">
+        <div class="mb-l">
+          <span class="mb-n" id="m-n">01</span>
+          <h3 id="m-t">Both ends prove who they are</h3>
+          <p class="mb-plain" id="m-plain"></p>
+          <p class="mb-term"><span>The term for it</span><b id="m-term"></b></p>
+        </div>
+        <div class="mb-r">
+          <span class="mb-lab" id="m-breakl">What goes wrong without it</span>
+          <p class="mb-break" id="m-break"></p>
+          <span class="mb-lab">Who owns it</span>
+          <p class="mb-own" id="m-own"></p>
+        </div>
+        <div class="mb-pm">
+          <span class="mb-lab mb-lab-pm">The question a product manager asks</span>
+          <p class="mb-q" id="m-pm"></p>
+          <p class="mb-why" id="m-why"></p>
+        </div>
+      </article>
+    </div>
+
+    <div class="o-surf">
+      <span class="surf-k">And the surface it all plugs into, six places a core banking system has to be met</span>
+      <ol class="surfcells">
+        <li><b>The ledger</b><span>Who has what, and the proof of it</span><em>You own: what a reversal looks like</em></li>
+        <li><b>Person to person</b><span>Money between two people, instantly</span><em>You own: the limits and the fraud rules</em></li>
+        <li><b>Taking payments</b><span>Shops, terminals, acceptance</span><em>You own: what the shop is charged</em></li>
+        <li><b>Issuing</b><span>Handing out the instrument itself</span><em>You own: who is allowed one</em></li>
+        <li><b>Treasury</b><span>Where the bank's own money sits</span><em>You own: nothing, but you break it</em></li>
+        <li><b>Knowing the customer</b><span>Identity, sanctions, monitoring</span><em>You own: how long onboarding takes</em></li>
+      </ol>
+      <p class="surf-f">The last one is a deadline, not a feature. The EU's anti money laundering regulation applies from <b>10 July 2027</b>, and the new authority in Frankfurt starts supervising the largest firms directly from <b>2028</b>.</p>
+    </div>
+
+    <details class="o-check"><summary>Check yourself</summary><div>
+      <p class="o-q">A shop says one payment was taken from it twice. Which two pieces do you look at first?</p>
+      <p class="o-a">The ledger and the queue. Either the instruction arrived twice and the idempotency key did not catch it, or it arrived once and was processed twice downstream. Those are different bugs with different fixes, and the event log is what tells them apart.</p>
+    </div></details>
+    </div>
+    <div class="orig-block" id="o-lens"><span class="k">Through a PM’s lens</span><h3>Through a PM’s lens</h3><p>The deadline is real and the specification is not. The pilot has a date; the holding limit and the fee caps are still being voted on.</p>
+<div class="shead o-lens" data-lens="de">
+      <i class="bk bk-tl"></i><i class="bk bk-tr"></i><i class="bk bk-bl"></i><i class="bk bk-br"></i>
+      <div class="pmcol">
+        <span class="lens-kick">Through a PM’s lens</span>
+        <blockquote class="pm-ask">“The regulation passes in December. What do you build first?”<cite>Drawn from the Lead Architect (Payments) brief, Fabrick, Oct 2026</cite></blockquote>
+        <p class="co-gloss"><b>Fabrick</b> is the open finance company of Italy’s Sella banking group. It does not sell payments to shoppers. It sells banks the connection to things like this, which makes the integration itself the product. It is hiring an architect specifically to join banks to the digital euro.</p>
+      </div>
+      <div class="indcol">
+        <p class="o-prose">This is the awkward shape of a regulated build: <b>the deadline is real and the specification is not</b>. The pilot has a date. The holding limit and the fee caps are still being voted on.</p>
+        <p class="o-prose">So the job is to find the parts of the system that cannot change, the message formats, the security model, the identity checks, and get them finished while the parts that can change are still arguments.</p>
+        <p class="ind-co"><span>The same problem at</span><span class="mk-row"><span class="mk mk-x">Fabrick</span><span class="mk mk-x">Nexi</span><span class="mk mk-x">Intesa Sanpaolo</span><span class="mk mk-x">Satispay</span></span></p>
+      </div>
+      <div class="lens-moves"><span class="pm-lab">Three moves</span>
+        <ol class="pm-steps">
+          <li><b>Build to the rulebook, not the headlines</b><span>Sequence the work so nothing on the critical path depends on a number still in trilogue. Formats and cryptography are safe. Anything priced is not.</span></li>
+          <li><b>Make the pilot the deadline</b><span>Expressions of interest close on 27 October 2026 and the pilot runs from mid 2027. Those are dates on a calendar. 2029 is a hope, and you cannot run a team on it.</span></li>
+          <li><b>Sell the connection, not the transaction</b><span>You cannot quote a per payment price before the cap exists. Price the integration per bank, so your revenue line survives whichever way the vote goes.</span></li>
+        </ol></div>
+      <div class="lens-foot">
+        <span class="pm-lab pm-lab-x">If this goes wrong</span>
+        <p class="pm-cost">You ship a product whose unit economics are set by a committee you are not on. Price it on the payment alone and one vote in Brussels deletes the line. The same way a single regulator deleted the merchant fee on India’s biggest rail.</p>
+        <dl class="pm-foot">
+          <div><dt>Watch</dt><dd>Cost per connected bank · Time to first pilot transaction · Share of revenue that depends on a per payment fee</dd></div>
+          <div><dt>With</dt><dd>The bank’s security architect · Core banking · Compliance · The Eurosystem rulebook group</dd></div>
+        </dl>
+      </div>
+    </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═══ WHERE THIS GOES NEXT + SOURCES ═══ -->
+<section class="prose">
+  <div class="in"><div>
+    <div><span class="n">Where this goes next</span><h2>A rail Europe can set the price of.</h2></div>
+    <div>
+      <p>A digital euro does not replace cards, and nobody serious claims it will. What it does is give Europe a rail it can set the price of. Everything on this page is a consequence of that one sentence. The fee arithmetic underneath it, what a card payment costs today hop by hop, is on <a href="demo-payments.html">the payments page</a>.</p>
+      <p><b>Everything here is checkable.</b> ECB: digital euro FAQ, project timeline, and the Governing Council decision of 30 October 2025. ECB: Report on card schemes and processors, February 2025 (the 13 countries, the 9 schemes, the 4 processors). Council and Parliament: negotiating positions of 19 December 2025 and 9 July 2026, and the trilogues since. Regulation (EU) 2024/1624: the anti money laundering regulation, applying from 10 July 2027.</p>
+      <span class="source">Written October 2026, while the file was still in trilogue. The two unsettled numbers are marked as unsettled everywhere they appear. If you are reading this later, those are the two to check first.</span>
+    </div>
+  </div></div>
+</section>
+
+<section class="decided">
+  <div class="in"><div class="box sheet reveal">
+    <div><span class="k">Decided</span><h2>A digital euro does not replace cards. It gives Europe a rail it can set the price of.</h2></div>
+    <ol>
+      <li><b>Stop</b><span>Europe is building a public payment rail to stand beside the card networks.<i>Thirteen of twenty one euro area countries have no card scheme of their own.</i></span></li>
+      <li><b>Notice</b><span>The waterfall and the reverse waterfall.<i>Two flows keep money moving across a ceiling nobody has set yet.</i></span></li>
+      <li><b>Tradeoff</b><span>Holding limits keep money in the banks, or they make the thing useful.<i>A low ceiling is a wallet. A high one is a competitor.</i></span></li>
+      <li><b>Decide</b><span>Explain whose revenue it removes, and the six pieces of engineering underneath.<i>The fee table first; the machine second; the dates drawn as conditional.</i></span></li>
+    </ol>
+  </div></div>
+</section>
+
+<nav class="pn" aria-label="Previous and next">
+  <div class="in"><div>
+    <a href="demo-payments.html"><span>Previous</span><h3>A product manager's map of payments</h3></a>
+    <a class="next" href="guide-italy.html"><span>Next</span><h3>Italy, one app at a time</h3></a>
+  </div></div>
+</nav>
+
+</main>
+
+<footer class="foot sheet">
+  <div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div>
+</footer>
+
+<script src="analytics.js" defer></script>
+<script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
+  else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
+
+  var $ = function(id){ return document.getElementById(id); };
+  function notes(o){ $('n-k').textContent = o.k; $('n-h').textContent = o.h; $('n-p').textContent = o.p; $('n-p2').textContent = o.p2 || ''; $('n-p2').style.display = o.p2 ? '' : 'none';
+    if(o.cq){ $('n-c').style.display = ''; $('n-cq').innerHTML = '<b></b>'; $('n-cq').firstChild.textContent = o.cq; $('n-ca').textContent = o.ca; $('n-c').open = false; } else { $('n-c').style.display = 'none'; }
+    $('n-dk').textContent = o.dk || 'Decided'; $('n-d').textContent = o.d; }
+
+  /* ── lessons ── */
+  var L = {
+    l1: {k:'Lesson 01 · Three kinds of euro', h:'Who owes you the money?', p:'The euro in your hand, the euro in your bank app and a digital euro are not the same thing, and the difference is not technology. A banknote is a promise from the central bank. The balance in your account is a promise from your bank, which is why the state has to insure it. A digital euro is the first promise, in software.', p2:'It is not a cryptocurrency, not a new currency, and not a bank account. It is cash, in the place cash has stopped reaching.', cq:'Your bank fails on a Friday night. Which of the three do you still have?', ca:'Cash and the digital euro. Both are a claim on the central bank, so there is nobody in between to fail. Your account balance is a claim on the bank: you get it back from the guarantee scheme, but you wait.', dk:'Noticed', d:'It is cash, in the place cash has stopped reaching.'},
+    l2: {k:'Lesson 02 · Why Europe wants one', h:'Thirteen of twenty one have no card scheme of their own', p:'The case is not that cards are expensive. It is that Europe does not own them. In thirteen euro area countries every single card payment is routed, priced and ruled by a company headquartered somewhere else.', p2:'A regulator can cap a fee. It cannot cap a decision taken in another jurisdiction, and it cannot switch a rail back on once the domestic one is gone.', cq:'European law already caps card interchange. Why has that not solved the problem?', ca:'Interchange is only one of the three cuts, and it is the one that stays inside Europe: it goes to the issuing bank. The scheme fee is not capped, and routing is not regulated at all. Capping interchange made cards cheaper without making them European.', dk:'Noticed', d:'A regulator can cap a fee. It cannot cap a decision taken in another jurisdiction.'},
+    l3: {k:'Lesson 03 · The dates, and the two fights', h:'Two calendars are running at once', p:'The law is in its final negotiation, with adoption targeted for the end of 2026. The Eurosystem is not waiting for it: it closed its preparation phase in October 2025 and is building now, on the assumption the law lands.', p2:'Solid is done. Dashed is conditional. Scrub the calendar: the ECB will not decide to issue anything until the regulation is adopted, so everything after that date is drawn as conditional.', cq:'The regulation passes in December. Your CEO asks when you can launch.', ca:'You cannot. The Governing Council only decides on issuance after the law is adopted, the pilot runs from mid 2027, and the earliest issuance is 2029. Your 2027 roadmap is pilot integration. Anyone promising a launch date is reading a press release, not the calendar.', dk:'Decided', d:'Draw the dates as conditional, because they are.'},
+    l4: {k:'Lesson 04 · Who stops getting paid', h:'A holding limit, and two flows across it', p:'You may keep only so much in the wallet. Anything that arrives above the ceiling moves to your bank on its own. Pay more than you hold and the rest is pulled through from the account. Move the balance and the payments and watch both flows.', p2:'Two design choices carry almost all of the economics: the ceiling, so money cannot drain out of the banks, and a fee model that removes the scheme fee entirely, which is the card networks\' revenue on every payment they carry.', cq:'Why does a bank care so much about a number like €3,000?', ca:'Because deposits fund lending. The holding limit is the legal ceiling on how much of a bank\'s deposit base can move to the central bank, and a balance sheet is built on the assumption that most of it stays. A low ceiling makes the digital euro a wallet. A high one makes it a competitor.', dk:'Tradeoff', d:'Low, and it is a wallet. High, and it is a competitor to the banks.'},
+    l5: {k:'Lesson 05 · The machine under it', h:'Six pieces of engineering', p:'Connecting a bank to a public rail is six pieces of engineering, and a product manager who cannot name them will not be able to argue about the roadmap. Click a piece.', p2:'', cq:'A shop says one payment was taken from it twice. Which two pieces do you look at first?', ca:'The ledger and the queue. Either the instruction arrived twice and the idempotency key did not catch it, or it arrived once and was processed twice downstream. Those are different bugs with different fixes, and the event log is what tells them apart.', dk:'Decided', d:'Know what each piece is for, and what it costs you when it is missing.'}
+  };
+  var tabs = [].slice.call(document.querySelectorAll('.tabs [data-tab]'));
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ var id = t.getAttribute('data-tab'); tabs.forEach(function(x){ x.setAttribute('aria-selected', x===t ? 'true':'false'); }); [].slice.call(document.querySelectorAll('.panel')).forEach(function(p){ p.hidden = p.id !== id; }); notes(L[id]); if(id==='l3') scrub(); }); });
+
+  /* L1: pick a row */
+  var EU = [
+    {who:'The central bank', off:'Always. No power, no signal', earn:'Nothing', lim:'Where it is still accepted', y:[42,122,202,282]},
+    {who:'Your bank', off:'No. It needs the bank to answer', earn:'Interest, if the bank pays any', lim:'€100,000 guaranteed, per bank'},
+    {who:'The central bank', off:'By design, phone to phone', earn:'Nothing, on purpose', lim:'A holding limit, not yet set'}
+  ];
+  var l1texts = document.querySelectorAll('#l1 g.tb2 text'), l1cells = document.querySelectorAll('#l1 .cell');
+  [].slice.call(document.querySelectorAll('[data-euro]')).forEach(function(b){ b.addEventListener('click', function(){ var i = +b.getAttribute('data-euro'); [].slice.call(document.querySelectorAll('[data-euro]')).forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); }); var e = EU[i]; l1texts[0].textContent = e.who; l1texts[1].textContent = e.off; l1texts[2].textContent = e.earn; l1texts[3].textContent = e.lim; [].slice.call(l1cells).forEach(function(c, j){ c.classList.toggle('hot', i===1 && j===0); }); }); });
+
+  /* L2: the 21 squares */
+  (function(){ var g = $('sq'), s = ''; for(var i=0;i<21;i++){ var x = 24 + (i%11)*76, y = 44 + Math.floor(i/11)*60; s += '<rect class="sq'+(i<8?' yes':'')+'" x="'+x+'" y="'+y+'" width="56" height="44"/>'; } g.innerHTML = s; })();
+
+  /* L3: scrub the calendar */
+  var scrubEl = $('scrub'), scrubOut = $('scrub-out'), nowLine = $('now');
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function scrub(){ var y = parseFloat(scrubEl.value); var x = 60 + (y-2022)*100; nowLine.setAttribute('x1', x); nowLine.setAttribute('x2', x); scrubOut.textContent = MON[Math.min(11, Math.floor((y%1)*12))]+' '+Math.floor(y);
+    var evs = [].slice.call(document.querySelectorAll('#l3 .ev')); var next = null; evs.forEach(function(e){ var ey = parseFloat(e.getAttribute('data-y')); e.classList.toggle('done', ey <= y); e.classList.toggle('dim', ey > y); e.classList.remove('next'); if(ey > y && (!next || ey < parseFloat(next.getAttribute('data-y')))) next = e; }); if(next) next.classList.add('next'); }
+  scrubEl.addEventListener('input', scrub); scrub();
+
+  /* L4: the waterfall */
+  var LIMIT = 3000, TOTAL = 3660, bal = $('bal'), pay = 0;
+  function eur(n){ return '€ ' + Math.round(n).toLocaleString('en-GB'); }
+  function water(){
+    var want = +bal.value, wallet = Math.min(want, LIMIT), bank = TOTAL - wallet + Math.max(0, want - LIMIT) - Math.max(0, want - LIMIT); bank = Math.max(0, TOTAL - wallet);
+    var flowDown = want > LIMIT, flowUp = false, status = 'Holding', sl = 'no flow';
+    if(pay > 0){ if(pay > wallet){ flowUp = true; var pull = pay - wallet; bank = Math.max(0, bank - pull); wallet = 0; status = 'Reverse waterfall'; sl = eur(pull)+' pulled from the account'; } else { wallet -= pay; status = 'Paid from the wallet'; sl = eur(pay)+' · nothing moved'; } }
+    else if(flowDown){ status = 'Waterfall'; sl = eur(want - LIMIT)+' moved to the bank'; }
+    var hW = Math.round(wallet/5000*300), hB = Math.round(Math.min(bank,5000)/5000*300);
+    $('lvl-w').setAttribute('height', hW); $('lvl-w').setAttribute('y', 360 - hW);
+    $('lvl-b').setAttribute('height', hB); $('lvl-b').setAttribute('y', 360 - hB);
+    $('w-amt').textContent = eur(wallet); $('b-amt').textContent = eur(bank); $('bal-out').textContent = eur(want);
+    $('fl-down').classList.toggle('on', flowDown && pay===0); $('fl-down-t').setAttribute('opacity', flowDown && pay===0 ? 1 : 0);
+    $('fl-up').classList.toggle('on', flowUp); $('fl-up-t').setAttribute('opacity', flowUp ? 1 : 0);
+    $('ro-w').textContent = eur(wallet); $('ro-b').textContent = eur(bank); $('ro-f').textContent = status; $('ro-f-l').textContent = sl;
+  }
+  bal.addEventListener('input', function(){ pay = 0; [].slice.call(document.querySelectorAll('[data-pay]')).forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-pay')==='0'?'true':'false'); }); water(); });
+  [].slice.call(document.querySelectorAll('[data-pay]')).forEach(function(b){ b.addEventListener('click', function(){ pay = +b.getAttribute('data-pay'); [].slice.call(document.querySelectorAll('[data-pay]')).forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); }); water(); }); });
+  water();
+
+  /* L5: the six pieces */
+  var M = {
+    mtls:{n:'01',t:'Both ends prove who they are',plain:'Ordinary web security proves the shop is really the shop. This proves the customer too. Before a single byte of payment data moves, each end presents a certificate and the other checks it against a list it already trusts.',term:'Mutual TLS, mTLS',brk:'Anyone who finds the address can talk to it. The bank cannot tell your traffic from a stranger\'s, so the only thing between the two is that nobody has guessed the URL yet.',own:'Platform engineering, with the bank\'s security team holding the other end',pm:'Who holds the certificate, and what happens on the morning it expires?',why:'Certificates expire on a date somebody picked two years ago. An expiry nobody owns is an outage nobody predicted.'},
+    sign:{n:'02',t:'The message is signed, not just the pipe',plain:'The connection protects the instruction while it is moving. The signature protects it afterwards. The sender runs the message through a private key, and anyone with the matching public key can prove who sent it and that not one character changed.',term:'Payload digital signature',brk:'You cannot settle a dispute. A bank says it never sent the instruction, you say it did, and nothing you have can tell those two stories apart.',own:'Engineering builds it, but how long you keep the evidence is a compliance decision',pm:'Can we prove, eighteen months from now, that this instruction came from that bank?',why:'Disputes do not arrive the same week. A signature is worth something only if you still have it when the argument starts.'},
+    hsm:{n:'03',t:'The keys live in a box that will not open',plain:'The private key that signs payments is the most valuable object the company holds, so it is never a file. It sits inside a sealed appliance that signs things on request and will not hand the key over: not to an engineer, not to a backup, not to anyone.',term:'Hardware security module, with a vault for everything else',brk:'A leaked key is unlimited and silent. Someone signs payments as you for as long as it stays valid, and every signature verifies perfectly.',own:'Security engineering. Rotating a key is a release, not a configuration change.',pm:'Rotating a key needs a planned window. Who schedules it, and how often?',why:'Teams skip rotation because it hurts, and then meet the painful version of it during an incident instead.'},
+    k8s:{n:'04',t:'It stays up without anyone watching',plain:'The service runs as many identical copies across many machines. When one dies another takes the traffic; when a new version ships the old copies are drained rather than killed. Banks that cannot put customer data in someone else\'s data centre run exactly the same thing on their own hardware.',term:'Kubernetes, on your own metal or managed by a cloud',brk:'Every deployment becomes a maintenance window and every dead machine becomes an incident, so you ship at night and you ship rarely.',own:'Platform engineering',pm:'Can we ship on a Tuesday afternoon without telling anyone?',why:'If the answer is no, your release cadence is set by the infrastructure, and the roadmap you wrote is fiction.'},
+    kafka:{n:'05',t:'Nothing is lost when something falls over',plain:'A payment is not one request, it is a sequence of events: authorised, cleared, settled, reversed. They go onto a durable log that keeps them in order and keeps them until every reader has caught up. The ledger being down then delays payments instead of losing them.',term:'Event driven architecture, on a queue like Kafka',brk:'An outage in one service becomes missing money in another, and the reconciliation that follows is done by people, by hand, on a spreadsheet.',own:'Engineering, with Finance saying which events may never be dropped',pm:'What happens to payments in flight when the ledger goes down?',why:'The honest answer tells you whether your next incident is a delay or an apology.'},
+    ledger:{n:'06',t:'Pressing pay twice pays once',plain:'Every movement is written twice, out of one place and into another, so the books prove themselves. And every instruction carries a key the system remembers, so a retry after a timeout is recognised as the same payment rather than a second one.',term:'Double entry, and idempotency',brk:'The classic one: a customer taps twice on a slow connection and is charged twice. After that the balance you show and the money you hold stop agreeing, and only one of them is right.',own:'Engineering and Finance together, or it will be wrong',pm:'What is our idempotency key, and how long do we remember it?',why:'Both halves matter. A key you forget after an hour does nothing for the retry that arrives the next morning.'}
+  };
+  var pieces = [].slice.call(document.querySelectorAll('.piece'));
+  pieces.forEach(function(p){ p.addEventListener('click', function(){ pieces.forEach(function(x){ x.classList.toggle('on', x===p); }); var m = M[p.getAttribute('data-m')];
+    notes({k:'Piece '+m.n+' · '+m.term, h:m.t, p:m.plain, p2:'Without it: '+m.brk+' Who owns it: '+m.own, cq:'The question a product manager asks', ca:m.pm+' '+m.why, dk:'Ask', d:m.pm}); }); p.setAttribute('tabindex','0'); p.setAttribute('role','button'); p.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); p.click(); } }); });
+})();
+</script>
+<script>
+/* ═══ ORIGINAL FIGURES · behaviour, ported verbatim from ../course-digital-euro.html ═══ */
+/* ══════════════════════════════════════════════════════════════════
+   THE DIGITAL EURO COURSE — behaviour
+   Two things only: the six-piece picker, and one shared reveal that
+   every figure uses. Nothing here is required to read the page; with
+   motion turned off, or with script off entirely, every figure is
+   already whole.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+var STATIC = document.documentElement.classList.contains('static');
+var calm = STATIC || (window.matchMedia
+  ? matchMedia('(prefers reduced motion: reduce)').matches : false);
+
+/* ── fires once each time a thing arrives on screen, with a cooldown
+      checked BEFORE anything is touched. A real observer re-fires on
+      every threshold crossing while you scroll; clearing timers after
+      setting opacity:0 is how a figure gets stranded invisible. ── */
+function whenSeen(el, fn){
+  if(STATIC || !('IntersectionObserver' in window)){ fn(); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) fn(); });
+  },{threshold:.25});
+  io.observe(el);
+}
+
+/* ══ the shared reveal ═══════════════════════════════════════════
+   Everything in a figure is bucketed by how far along it sits, and
+   the buckets arrive left to right. It is the same motion in all
+   five figures on purpose — they are one set, not five ideas.      */
+var REVEAL = (function(){
+  var runs = {};                       /* per figure: last start, timers */
+
+  function state(id){
+    if(!runs[id]) runs[id] = {last:0, timers:[], floor:null};
+    return runs[id];
+  }
+
+  function settle(svg, st){
+    st.timers.forEach(clearTimeout); st.timers = [];
+    clearTimeout(st.floor);
+    Array.prototype.forEach.call(svg.querySelectorAll('*'), function(el){
+      el.style.opacity = '';
+      el.style.transition = '';
+      el.style.strokeDasharray = '';
+      el.style.strokeDashoffset = '';
+    });
+  }
+
+  function run(svg, id){
+    if(calm) return;
+    var st = state(id), now = Date.now();
+    if(now - st.last < 4200) return;        /* check first, touch nothing */
+    st.last = now;
+    settle(svg, st);
+
+    var vb = (svg.getAttribute('viewBox')||'0 0 1000 300').split(/\s+/).map(Number);
+    var W = vb[2] || 1000;
+
+    /* where does this element sit along the width? */
+    function at(el){
+      var v = el.getAttribute('x');
+      if(v === null) v = el.getAttribute('x1');
+      if(v === null) v = el.getAttribute('cx');
+      if(v === null){
+        var tr = el.getAttribute('transform');
+        var m = tr && tr.match(/translate\(\s*(-?[\d.]+)/);
+        if(m) v = m[1];
+      }
+      if(v === null){
+        var d = el.getAttribute('d');
+        var md = d && d.match(/-?[\d.]+/);
+        if(md) v = md[0];
+      }
+      return v === null ? 0 : parseFloat(v) || 0;
+    }
+
+    var BANDS = 9, each = W / BANDS, STEP = 85;
+    var kids = Array.prototype.slice.call(
+      svg.querySelectorAll('rect,circle,text,line,path,g[transform]'));
+
+    kids.forEach(function(el){
+      if(el.parentNode && el.parentNode.tagName === 'defs') return;
+      if(el.closest && el.closest('defs')) return;
+      /* An element carrying a transform ATTRIBUTE is thrown to 0,0 at
+         full scale the moment a CSS transform touches it, because CSS
+         wins. Those fade and nothing else. Everything here fades only,
+         which is also why this cannot break a layout. */
+      var band = Math.max(0, Math.min(BANDS - 1, Math.floor(at(el) / each)));
+      el.style.opacity = 0;
+      el.style.transition = 'opacity 420ms ease-out';
+      st.timers.push(setTimeout(function(){ el.style.opacity = 1; },
+                                60 + band * STEP));
+    });
+
+    /* arrows and axes draw themselves rather than appearing */
+    Array.prototype.forEach.call(svg.querySelectorAll('line[marker-end]'),
+      function(l){
+        var L = Math.abs((+l.getAttribute('x2')) - (+l.getAttribute('x1'))) || 600;
+        l.style.strokeDasharray = L;
+        l.style.strokeDashoffset = L;
+        l.style.transition = 'opacity 300ms ease out, stroke dashoffset 900ms ease out';
+        st.timers.push(setTimeout(function(){ l.style.strokeDashoffset = 0; }, 140));
+      });
+
+    /* a hard floor: whatever the scroll does, the figure is whole again */
+    st.floor = setTimeout(function(){ settle(svg, st); },
+                          60 + BANDS * STEP + 1400);
+  }
+  return {run:run};
+})();
+
+Array.prototype.forEach.call(document.querySelectorAll('.orig figure.band'), function(fig){
+  var svg = fig.querySelector('svg');
+  if(!svg) return;
+  whenSeen(fig, function(){ REVEAL.run(svg, fig.id || 'f'); });
+});
+
+/* the lens draws its brackets and brings the question into focus */
+Array.prototype.forEach.call(document.querySelectorAll('.orig .o-lens'), function(l){
+  whenSeen(l, function(){ l.classList.add('seen'); });
+});
+Array.prototype.forEach.call(document.querySelectorAll('.orig .surfcells,.orig .stats,.orig .o-fights'),
+  function(l){ whenSeen(l, function(){ l.classList.add('seen'); }); });
+
+/* ══ Lesson 05 · the six pieces ═══════════════════════════════════
+   Plain words first, the term second. Nobody has ever understood
+   "mutual TLS" before understanding what problem it solves.         */
+var M = {
+  mtls: {
+    n:'01',
+    t:'Both ends prove who they are',
+    plain:'Ordinary web security proves the shop is really the shop. This proves the customer too. Before a single byte of payment data moves, each end presents a certificate and the other checks it against a list it already trusts.',
+    term:'Mutual TLS, mTLS',
+    brk:'Anyone who finds the address can talk to it. The bank cannot tell your traffic from a stranger’s, so the only thing between the two is that nobody has guessed the URL yet.',
+    own:'Platform engineering, with the bank’s security team holding the other end',
+    pm:'Who holds the certificate, and what happens on the morning it expires?',
+    why:'Certificates expire on a date somebody picked two years ago. An expiry nobody owns is an outage nobody predicted.'
+  },
+  sign: {
+    n:'02',
+    t:'The message is signed, not just the pipe',
+    plain:'The connection protects the instruction while it is moving. The signature protects it afterwards. The sender runs the message through a private key, and anyone with the matching public key can prove who sent it and that not one character changed.',
+    term:'Payload digital signature',
+    brk:'You cannot settle a dispute. A bank says it never sent the instruction, you say it did, and nothing you have can tell those two stories apart.',
+    own:'Engineering builds it, but how long you keep the evidence is a compliance decision',
+    pm:'Can we prove, eighteen months from now, that this instruction came from that bank?',
+    why:'Disputes do not arrive the same week. A signature is worth something only if you still have it when the argument starts.'
+  },
+  hsm: {
+    n:'03',
+    t:'The keys live in a box that will not open',
+    plain:'The private key that signs payments is the most valuable object the company holds, so it is never a file. It sits inside a sealed appliance that signs things on request and will not hand the key over: not to an engineer, not to a backup, not to anyone.',
+    term:'Hardware security module, with a vault for everything else',
+    brk:'A leaked key is unlimited and silent. Someone signs payments as you for as long as it stays valid, and every signature verifies perfectly.',
+    own:'Security engineering. Rotating a key is a release, not a configuration change.',
+    pm:'Rotating a key needs a planned window. Who schedules it, and how often?',
+    why:'Teams skip rotation because it hurts, and then meet the painful version of it during an incident instead.'
+  },
+  k8s: {
+    n:'04',
+    t:'It stays up without anyone watching',
+    plain:'The service runs as many identical copies across many machines. When one dies another takes the traffic; when a new version ships the old copies are drained rather than killed. Banks that cannot put customer data in someone else’s data centre run exactly the same thing on their own hardware.',
+    term:'Kubernetes: on your own metal, or managed by a cloud',
+    brk:'Every deployment becomes a maintenance window and every dead machine becomes an incident, so you ship at night and you ship rarely.',
+    own:'Platform engineering',
+    pm:'Can we ship on a Tuesday afternoon without telling anyone?',
+    why:'If the answer is no, your release cadence is set by the infrastructure, and the roadmap you wrote is fiction.'
+  },
+  kafka: {
+    n:'05',
+    t:'Nothing is lost when something falls over',
+    plain:'A payment is not one request, it is a sequence of events: authorised, cleared, settled, reversed. They go onto a durable log that keeps them in order and keeps them until every reader has caught up. The ledger being down then delays payments instead of losing them.',
+    term:'Event driven architecture, on a queue like Kafka',
+    brk:'An outage in one service becomes missing money in another, and the reconciliation that follows is done by people, by hand, on a spreadsheet.',
+    own:'Engineering, with Finance saying which events may never be dropped',
+    pm:'What happens to payments in flight when the ledger goes down?',
+    why:'The honest answer tells you whether your next incident is a delay or an apology.'
+  },
+  ledger: {
+    n:'06',
+    t:'Pressing pay twice pays once',
+    plain:'Every movement is written twice, out of one place and into another, so the books prove themselves. And every instruction carries a key the system remembers, so a retry after a timeout is recognised as the same payment rather than a second one.',
+    term:'Double entry, and idempotency',
+    brk:'The classic one: a customer taps twice on a slow connection and is charged twice. After that the balance you show and the money you hold stop agreeing, and only one of them is right.',
+    own:'Engineering and Finance together, or it will be wrong',
+    pm:'What is our idempotency key, and how long do we remember it?',
+    why:'Both halves matter. A key you forget after an hour does nothing for the retry that arrives the next morning.'
+  }
+};
+
+var seg = document.getElementById('machseg');
+if(seg){
+  var ids = ['m-n','m-t','m-plain','m-term','m-break','m-own','m-pm','m-why'];
+  var el = {};
+  ids.forEach(function(i){ el[i] = document.getElementById(i); });
+
+  function show(k){
+    var d = M[k]; if(!d) return;
+    el['m-n'].textContent     = d.n;
+    el['m-t'].textContent     = d.t;
+    el['m-plain'].textContent = d.plain;
+    el['m-term'].textContent  = d.term;
+    el['m-break'].textContent = d.brk;
+    el['m-own'].textContent   = d.own;
+    el['m-pm'].textContent    = d.pm;
+    el['m-why'].textContent   = d.why;
+    var b = document.getElementById('machbook');
+    if(b && !calm){
+      b.classList.remove('turn');
+      void b.offsetWidth;                       /* restart the transition */
+      b.classList.add('turn');
+    }
+  }
+  seg.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function(x){
+      x.setAttribute('aria-pressed', String(x === b));
+    });
+    show(b.dataset.m);
+  });
+  show('mtls');
+}
+})();
+</script>
+</body>
+</html>

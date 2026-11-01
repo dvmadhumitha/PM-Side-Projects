@@ -1,165 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Reimagining the ₹ Note — Demo · Madhumitha D V</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Currency Design Breakdown · Madhumitha D V</title>
+<meta name="description" content="What does a note have to say before anyone properly looks at it? The ₹10, ₹20 and ₹100 drawn at real size, sized by value, flipped, rotated and benchmarked against five currencies. A case study by Madhumitha D V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
 <style>
-  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg-alt:#f8fafc;
-    --brand:#4f46e5;--accent:#f97316;
-    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
-  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
-  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
-  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
-  .head-inner .miro{font-size:.85rem;color:var(--muted)}
-  .head-inner .miro a{color:var(--brand);font-weight:600}
-  .intro{padding:36px 0 8px}
-  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .intro h1{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:6px 0 10px}
-  .intro p{color:var(--ink-soft);max-width:640px}
+/* the note bench */
+.bench .ctl-row+.ctl-row{margin-top:-6px}
+.note-f{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.5;transition:fill .5s var(--ease)}
+.note-f.c20{fill:rgba(140,199,214,.22)}
+.note-f.c100{fill:rgba(96,170,120,.22)}
+.note-f.c10{fill:rgba(231,236,240,.10)}
+.d .ghost{fill:none;stroke:var(--chalk-3);stroke-width:1;stroke-dasharray:3 3}
+.d .ghost2{fill:none;stroke:var(--signal);stroke-width:1.25;stroke-dasharray:3 3}
+.d .thread{stroke:var(--chalk);stroke-width:2;stroke-dasharray:6 3}
+.d .bar{fill:var(--chalk)}
+.d .bar.on{fill:var(--signal)}
+.d .motif{fill:url(#hatch2)}
+.d .tiny{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;fill:var(--chalk-3);text-transform:uppercase}
+.d .devan{font-family:var(--text);font-size:14px;fill:var(--chalk)}
+.d .numeral{font-family:var(--display);font-weight:600;fill:var(--chalk);letter-spacing:-.02em}
+.d .serial{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--chalk)}
+.d .lang{stroke:var(--chalk-3);stroke-width:1}
+.d g.scene{transition:opacity .4s var(--ease)}
+.hier td:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 
-  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:22px 0 14px}
-  .seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .seg button{border:0;background:none;padding:9px 16px;font:600 .85rem 'Inter',sans-serif;cursor:pointer;color:var(--ink-soft)}
-  .seg button.on{background:var(--brand);color:#fff}
-  .hintline{font-size:.8rem;color:var(--muted)}
-
-  .stage{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;padding-bottom:8px}
-  .note-holder{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow);display:grid;place-items:center}
-  svg.note{width:100%;max-width:520px;height:auto;display:block}
-  .hotspot{cursor:pointer}
-  .hotspot circle.ring{fill:#fff;stroke:var(--brand);stroke-width:2}
-  .hotspot text{font:700 11px 'Inter';fill:var(--brand)}
-  .hotspot.on circle.ring{fill:var(--brand)}
-  .hotspot.on text{fill:#fff}
-
-  .explain{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);min-height:200px}
-  .explain .cat{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:8px}
-  .cat.must{background:#ecfdf5;color:#047857}
-  .cat.good{background:#eef2ff;color:var(--brand)}
-  .cat.use{background:#fff7ed;color:#c2410c}
-  .explain h3{font-size:1.02rem;margin-bottom:6px}
-  .explain p{font-size:.88rem;color:var(--ink-soft)}
-  .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-  .legend span{font-size:.7rem;padding:3px 9px;border-radius:999px}
-
-  .wall{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:22px auto 8px;box-shadow:var(--shadow)}
-  .wall h2{font-size:1.15rem;margin-bottom:2px}
-  .wall .wsub{font-size:.8rem;color:var(--muted);margin-bottom:14px}
-  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .cluster h4{font:700 .72rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
-  .sticky{font-family:'Kalam',cursive;font-size:.92rem;line-height:1.4;color:#27272a;background:#fef08a;padding:12px 14px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:14px;transform:rotate(-1.2deg)}
-  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
-  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
-  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
-  .sticky.s5{background:#fed7aa;transform:rotate(-2deg)}
-  @media(max-width:760px){.wall-grid{grid-template-columns:1fr}}
-  .lesson{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:22px 0 22px;box-shadow:var(--shadow)}
-  .lesson h3{font-size:1rem;margin-bottom:6px}
-  .lesson p{font-size:.9rem;color:var(--ink-soft)}
-  .lesson b{color:var(--ink)}
-  .didgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
-  .did{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
-  .did h3{font-size:1rem;margin-bottom:10px}
-  .did h3 span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
-  .did li{font-size:.88rem;color:var(--ink-soft);margin:0 0 9px 18px}
-  .did li b{color:var(--ink)}
-  .did ul{list-style:none}
-  .did ul li{position:relative;margin-left:22px}
-  .did ul li::before{content:"✓";position:absolute;left:-22px;color:#047857;font-weight:700}
-  .cta{text-align:center;font-size:.92rem;color:var(--ink-soft);margin:0 0 44px}
-  .cta a{color:var(--brand);font-weight:600}
-  @media(max-width:760px){.didgrid{grid-template-columns:1fr}}
-  @media(max-width:820px){.stage{grid-template-columns:1fr}}
+/* ═══ ORIGINAL FIGURES (ported from ../demo-currency.html, scoped to .orig) ═══ */
+/* from the old shared stylesheet */
+.orig :where(h2:not(.orig-block > h2),h3:not(.orig-block > h3)){font-family:var(--serif);font-weight:600;letter-spacing:-.02em}
+.orig :where(p:not(.orig-block > p)){font-size:19px;line-height:30px;max-width:var(--text)}
+.orig :where(p + p:not(.orig-block > p)){margin-top:var(--s4)}
+.orig :where(figure){margin-block:var(--s6)}
+.orig :where(figure svg){display:block;width:100%;height:auto}
+.orig :where(figcaption){border-top:1px solid var(--rule);padding-top:var(--s4);margin-top:var(--s4);max-width:var(--text)}
+.orig .o-legend{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s5);margin-bottom:var(--s5)}
+.orig .o-seg{display:flex;flex-wrap:wrap;max-width:720px}
+.orig .o-seg button{flex:1 1 0;min-width:0;text-align:center;height:40px;padding-inline:var(--s4);border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;font-size:15px;cursor:pointer;margin-right:-1px;transition:background 200ms,color 200ms}
+.orig .o-seg button:hover{background:var(--paper-2)}
+@media (max-width:719px){.orig :where(p:not(.orig-block > p)){font-size:17px;line-height:27px}.orig .o-seg button{height:44px}}
+/* the original page's own styles */
+.orig .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:22px 0 14px}
+.orig .o-seg{display:inline-flex;background:var(--paper);border:1px solid var(--line);overflow:hidden}
+.orig .o-seg button{border:0;background:none;padding:9px 16px;font:600 .85rem var(--sans);cursor:pointer;color:var(--ink-soft)}
+.orig .o-seg button.on{background:var(--brand);color:var(--paper)}
+.orig .hintline{font-size:.8rem;color:var(--muted)}
+.orig .o-stage{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;padding-bottom:8px}
+.orig .note-holder{background:var(--paper);border:1px solid var(--line);padding:26px;display:grid;place-items:center}
+.orig svg.o-note{width:100%;max-width:520px;height:auto;display:block}
+.orig .hotspot{cursor:pointer}
+.orig .hotspot circle.ring{fill:var(--paper);stroke:var(--brand);stroke-width:2}
+.orig .hotspot text{font:600 11px var(--sans);fill:var(--brand)}
+.orig .hotspot.on circle.ring{fill:var(--brand)}
+.orig .hotspot.on text{fill:var(--paper)}
+.orig .explain{background:var(--paper);border:1px solid var(--line);padding:20px;min-height:200px}
+.orig .explain .cat{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;margin-bottom:8px}
+.orig .cat.must{background:var(--note-3);color:var(--teal)}
+.orig .cat.good{background:var(--paper-2);color:var(--brand)}
+.orig .cat.use{background:var(--ochre-tint);color:var(--ochre)}
+.orig .explain h3{font-size:1.02rem;margin-bottom:6px}
+.orig .explain p{font-size:.88rem;color:var(--ink-soft)}
+.orig .o-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.orig .o-legend span{font-size:.7rem;padding:3px 9px}
+.orig .figure{background:var(--paper);border:1px solid var(--line);padding:22px;margin:22px 0;min-width:0}
+.orig .figure svg{display:block;width:100%;height:auto;aspect-ratio:5/2}
+.orig .figure figcaption{margin-top:10px;font-size:.78rem;color:var(--muted);max-width:68ch}
+.orig .figure figcaption b{color:var(--ink)}
+.orig .figtitle{font:600 .68rem var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.orig .svg-lbl{font:600 14px var(--sans);fill:var(--ink)}
+.orig .svg-sub{font:400 11.5px var(--sans);fill:var(--ink-3)}
+.orig .svg-tag{font:600 10.5px var(--sans);letter-spacing:.06em}
+.orig .wall{background:var(--paper);border:1px solid var(--line);padding:22px;margin:22px auto 8px}
+.orig .wall-grid{background-image:radial-gradient(var(--rule) 1.3px,transparent 1.3px);background-size:22px 22px;padding:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;align-items:start}
+.orig .cluster{min-width:0}
+.orig .sticky b{font-weight:600}
+.orig .cluster h4{font:600 .72rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:var(--paper);display:inline-block;padding:3px 8px;border:1px solid var(--line)}
+.orig .sticky{font-family:var(--hand);font-size:1.15rem;line-height:1.3;color:var(--ink);background:var(--note-1);padding:12px 14px;margin-bottom:14px;transform:rotate(-1.2deg)}
+.orig .sticky.s2{background:var(--note-3);transform:rotate(1.3deg)}
+.orig .sticky.s3{background:var(--paper-2);transform:rotate(-.8deg)}
+.orig .sticky.s4{background:var(--note-2);transform:rotate(1.8deg)}
+.orig .sticky.s5{background:var(--ochre-tint);transform:rotate(-2deg)}
+@media (max-width:760px){.orig .wall-grid{grid-template-columns:1fr}}
+@media (max-width:820px){.orig .o-stage{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap head-inner">
-    <a class="back" href="index.html#projects">← Back to portfolio</a>
-    <span class="miro">Full exploration: <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612156829952" target="_blank" rel="noopener">Miro board ↗</a></span>
+<a class="skip" href="#lab">Skip to the drawing</a>
+
+<header class="top">
+  <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
+  <nav>
+    <a class="keep" href="index.html#work">Work</a>
+    <a href="index.html#method">Method</a>
+    <a href="index.html#about">About</a>
+    <a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a>
+  </nav>
+</header>
+
+<main>
+
+<header class="phead">
+  <div class="in">
+    <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Money · Case study</span></div>
+    <h1 class="reveal" style="--d:.05s">Currency Design Breakdown</h1>
+    <p class="q reveal" style="--d:.1s">What does a note have to say before anyone properly looks at it?</p>
+    <p class="s reveal" style="--d:.15s">A note is a product for everyone: sighted or not, any language, human or machine. Five currencies taken apart, then the ₹10, ₹20 and ₹100 redrawn. Here you can pick a note, flip it, turn it vertical, and lay it over the others at real size.</p>
+    <dl class="four reveal" style="--d:.2s">
+      <div><dt>Stopped at</dt><dd>Everything on today's note shouts at once.</dd></div>
+      <div><dt>Noticed</dt><dd>The Euro sizes by value. The dollar does not.</dd></div>
+      <div><dt>Tradeoff</dt><dd>One size for every note, or variation you can feel in a pocket.</dd></div>
+      <div class="dec"><dt>Decided</dt><dd>Sized by value, and a serious look at the vertical format.</dd></div>
+    </dl>
   </div>
 </header>
 
-<section class="intro wrap">
-  <div class="tagline">Interactive demo</div>
-  <h1>Reimagining the ₹ note</h1>
-  <p>A currency note is a product for literally everyone — sighted or not, any language, human or machine. This concept draft applies the redesign principles from the full exploration. Switch denominations, then tap the numbered dots to see the reasoning behind each element.</p>
+<!-- ═══ THE NOTE BENCH ═══ -->
+<section class="lab" id="lab" aria-label="The note bench">
+  <div class="in"><div class="frame sheet reveal">
+    <div class="bench">
+      <span class="cap"><b>Fig. 1</b> · The note bench · drawn at 3 px per mm</span>
+      <div class="ctl-row">
+        <div class="seg" role="group" aria-label="Denomination">
+          <button type="button" data-den="10">₹10</button>
+          <button type="button" data-den="20">₹20</button>
+          <button type="button" data-den="100" aria-pressed="true">₹100</button>
+        </div>
+        <div class="seg" role="group" aria-label="View">
+          <button type="button" id="flip" aria-pressed="false">Flip</button>
+          <button type="button" id="rot" aria-pressed="false">Rotate</button>
+        </div>
+      </div>
+      <div class="ctl-row">
+        <button type="button" class="tog" id="tsize" aria-pressed="false"><i></i>Size by value</button>
+        <button type="button" class="tog" id="ttac" aria-pressed="true"><i></i>Tactile marks</button>
+        <button type="button" class="tog" id="tcol" aria-pressed="true"><i></i>Colour by value</button>
+      </div>
+      <svg class="d go" id="bench" viewBox="0 0 900 480" role="img" aria-label="A rupee note drawn to its real proportions, which can be switched between ten, twenty and one hundred rupees, flipped, rotated to the vertical format, and compared at scale with Euro and dollar notes.">
+        <defs><pattern id="hatch2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#E7ECF0" stroke-width=".7" opacity=".35"/></pattern></defs>
+        <g id="scene"></g>
+      </svg>
+      <div class="readout" id="ro">
+        <div><b id="ro-size">142 × 66</b><small>mm · width × height</small></div>
+        <div><b id="ro-face">Front</b><small>face</small></div>
+        <div><b id="ro-fmt">Horizontal</b><small>format</small></div>
+        <div><b id="ro-grow">+27 mm</b><small id="ro-grow-l">₹10 → ₹500 · length only</small></div>
+      </div>
+    </div>
+    <aside class="notes" id="notes">
+      <span class="n" id="n-k">Sized by value</span>
+      <h2 id="n-h">You should be able to tell them apart without looking</h2>
+      <p id="n-p">The rupee already grows in length, by 27 mm from ₹10 to ₹500. Its height barely moves, so two notes in a wallet feel the same between finger and thumb. Grow both edges, and the difference is in the hand before it is in the eye.</p>
+      <p class="dec"><b>Decided</b><span id="n-d">Denomination specific sizing, on both axes.</span></p>
+    </aside>
+  </div></div>
 </section>
 
-<div class="wrap wall">
-  <h2>The exploration wall</h2>
-  <div class="wsub">Distilled from the working Miro board — reference points → what we observed → how we converged.</div>
+<!-- ═══ FROM THE ORIGINAL SHEET ═══ -->
+<section class="originals" id="originals"><div class="in">
+  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The chart, the wall and the first draft</h2></div><p>The benchmark that made the argument, the sticky notes it came from, and the first ₹ note with its reasoning behind numbered dots.</p></div>
+  <div class="orig">
+    <div class="orig-block"><span class="k">Fig. 2 · The benchmark</span><h3>This is the whole argument in one chart</h3><p>Every currency benchmarked varies note size with value, except the dollar. The Swiss franc varies in height, because it is printed vertically.</p>
+  <figure class="figure">
+    <div class="figtitle">Does note size vary with denomination? · span from smallest to largest, in millimetres</div>
+    <svg viewBox="0 0 1000 462" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Range chart showing how far note dimensions vary between the smallest and largest denomination of six currencies. The US dollar has no variation.">
+      <line x1="230.0" y1="58" x2="230.0" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
+      <text class="svg-sub" x="230.0" y="48" text-anchor="middle">110 mm</text>
+      <line x1="453.3" y1="58" x2="453.3" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
+      <text class="svg-sub" x="453.3" y="48" text-anchor="middle">130 mm</text>
+      <line x1="676.7" y1="58" x2="676.7" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
+      <text class="svg-sub" x="676.7" y="48" text-anchor="middle">150 mm</text>
+      <line x1="900.0" y1="58" x2="900.0" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
+      <text class="svg-sub" x="900.0" y="48" text-anchor="middle">170 mm</text>
+      <text class="svg-lbl" x="20" y="91">Euro</text>
+      <text class="svg-sub" x="20" y="109">€5 → €200</text>
+      <line x1="341.7" y1="86" x2="710.2" y2="86" stroke="var(--teal)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
+      <circle cx="341.7" cy="86" r="7" fill="var(--paper)" stroke="var(--teal)" stroke-width="3"/>
+      <circle cx="710.2" cy="86" r="7" fill="var(--teal)"/>
+      <text class="svg-tag" x="728.2" y="91" fill="var(--teal)">+33 mm</text>
+      <text class="svg-sub" x="20" y="127" opacity=".85">grows in both directions</text>
+      <text class="svg-lbl" x="20" y="148">US dollar</text>
+      <text class="svg-sub" x="20" y="166">$1 → $100</text>
+      <circle cx="743.7" cy="143" r="9" fill="var(--vermilion)"/>
+      <text class="svg-tag" x="763.7" y="148" fill="var(--vermilion)">0 mm. Every note the same size</text>
+      <text class="svg-sub" x="20" y="184" opacity=".85">no variation at all</text>
+      <text class="svg-lbl" x="20" y="205">Swiss franc</text>
+      <text class="svg-sub" x="20" y="223">10 → 1000 fr</text>
+      <line x1="375.2" y1="200" x2="766.0" y2="200" stroke="var(--teal)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
+      <circle cx="375.2" cy="200" r="7" fill="var(--paper)" stroke="var(--teal)" stroke-width="3"/>
+      <circle cx="766.0" cy="200" r="7" fill="var(--teal)"/>
+      <text class="svg-tag" x="784.0" y="205" fill="var(--teal)">+35 mm</text>
+      <text class="svg-sub" x="20" y="241" opacity=".85">vertical, grows in height</text>
+      <text class="svg-lbl" x="20" y="262">UAE dirham</text>
+      <text class="svg-sub" x="20" y="280">5 → 1000 AED</text>
+      <line x1="598.5" y1="257" x2="821.8" y2="257" stroke="var(--ochre)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
+      <circle cx="598.5" cy="257" r="7" fill="var(--paper)" stroke="var(--ochre)" stroke-width="3"/>
+      <circle cx="821.8" cy="257" r="7" fill="var(--ochre)"/>
+      <text class="svg-tag" x="839.8" y="262" fill="var(--ochre)">+20 mm</text>
+      <text class="svg-sub" x="20" y="298" opacity=".85">grows, and fully bilingual</text>
+      <text class="svg-lbl" x="20" y="319">Norwegian krone</text>
+      <text class="svg-sub" x="20" y="337">50 → 1000 kr</text>
+      <line x1="408.7" y1="314" x2="721.3" y2="314" stroke="var(--teal)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
+      <circle cx="408.7" cy="314" r="7" fill="var(--paper)" stroke="var(--teal)" stroke-width="3"/>
+      <circle cx="721.3" cy="314" r="7" fill="var(--teal)"/>
+      <text class="svg-tag" x="739.3" y="319" fill="var(--teal)">+28 mm</text>
+      <text class="svg-sub" x="20" y="355" opacity=".85">grows in length only</text>
+      <text class="svg-lbl" x="20" y="376">Indian rupee</text>
+      <text class="svg-sub" x="20" y="394">₹10 → ₹500</text>
+      <line x1="375.2" y1="371" x2="676.7" y2="371" stroke="var(--ink)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
+      <circle cx="375.2" cy="371" r="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+      <circle cx="676.7" cy="371" r="7" fill="var(--ink)"/>
+      <text class="svg-tag" x="694.7" y="376" fill="var(--ink)">+27 mm</text>
+      <text class="svg-sub" x="20" y="412" opacity=".85">grows, but height barely moves</text>
+      <text class="svg-tag" x="230" y="445" fill="var(--ink-3)">○ SMALLEST DENOMINATION　　● LARGEST　　LONGEST EDGE, PUBLISHED DIMENSIONS</text>
+      <rect x="20" y="426" width="190" height="30" rx="8" fill="var(--note-2)" stroke="var(--note-2)" stroke-width="1.5"/>
+      <text class="svg-tag" x="34" y="446" fill="var(--vermilion)">THE DOLLAR IS THE OUTLIER</text>
+    </svg>
+    <figcaption><b>This is the whole argument in one chart.</b> Every currency we benchmarked varies note size with value, except the dollar, which is why a US court found it failed blind and low vision users. The Swiss franc varies in <b>height</b> rather than length, because it is printed vertically: that is what made us take the rotation seriously rather than dismissing it.</figcaption>
+  </figure>
+    </div>
+    <div class="orig-block"><span class="k">Fig. 3 · The working board</span><h3>The exploration wall</h3><p>Distilled from the working Miro board: reference points → what each currency taught us → what we observed at home → how we converged.</p>
+  <div class="wall">
   <div class="wall-grid">
     <div class="cluster">
       <h4>Reference points</h4>
       <div class="sticky">Teardowns of 5 currencies: Euro, USD, UAE Dirham, Swiss Franc, Norwegian Krone</div>
-      <div class="sticky s2">ISO / IMF / IBNS standards — what a note <b>must</b> carry vs what's tradition</div>
-      <div class="sticky s3">Paper money since 618 AD China — which elements survived a millennium, and why</div>
+      <div class="sticky s2">ISO / IMF / IBNS standards, what a note <b>must</b> carry vs what's tradition</div>
+      <div class="sticky s3">Paper money since 618 AD China, which elements survived a millennium, and why</div>
+    </div>
+    <div class="cluster">
+      <h4>What each currency taught us</h4>
+      <div class="sticky s2"><b>Euro 🇪🇺</b>every denomination a different size, and it grows with value. Tactile ridges on the high notes. No real people on it: bridges and arches that belong to no single member state.</div>
+      <div class="sticky s4"><b>US dollar 🇺🇸</b>every note the same size, near enough the same colour. A US court found in 2008 this failed blind and low vision users. <b>The counter example, not the model.</b></div>
+      <div class="sticky s3"><b>Swiss franc 🇨🇭</b> · <b>vertical.</b> Same width, different height per denomination. Themes rather than portraits. The one that made us take the rotation seriously.</div>
+      <div class="sticky s5"><b>UAE dirham 🇦🇪</b>fully bilingual, Arabic and English, numerals in both systems on both faces. Closest parallel to India's two script mandate.</div>
+      <div class="sticky"><b>Norwegian krone 🇳🇴</b>abstract pixel mosaic reverse instead of a face. Proof a note can carry identity without a portrait.</div>
     </div>
     <div class="cluster">
       <h4>What we observed</h4>
-      <div class="sticky s4">Everything on today's note shouts at once — no information hierarchy</div>
-      <div class="sticky s5">Accessibility is bolted on: tactile marks wear off, colours fail colour-blind users</div>
+      <div class="sticky s4">Everything on today's note shouts at once, no information hierarchy</div>
+      <div class="sticky s5">Accessibility is bolted on: tactile marks wear off, colours fail colour blind users</div>
       <div class="sticky">One tiny canvas vs bilingual mandate + regional scripts + security features</div>
       <div class="sticky s2">Real life eats notes: wallet folds, ATM rollers, counting machines, monsoons</div>
     </div>
     <div class="cluster">
       <h4>Converging</h4>
-      <div class="sticky s3">Every element sorted: must-have / good-to-have / use-case-based</div>
+      <div class="sticky s3">Every element sorted: must have / good to have / use case based</div>
       <div class="sticky">Two structural approaches drafted; vertical orientation flagged as the emerging trend</div>
-      <div class="sticky s5">Colour per denomination (₹20 amber, ₹100 green), checked against colour-blindness</div>
-      <div class="sticky s4">7 typefaces tested — display faces for numerals, workhorses for scripts</div>
+      <div class="sticky s5">Colour per denomination (₹20 amber, ₹100 green), checked against colour blindness</div>
+      <div class="sticky s4">7 typefaces tested: display faces for numerals, workhorses for scripts</div>
     </div>
   </div>
-</div>
-
-<div class="wrap">
+  </div>
+    </div>
+    <div class="orig-block"><span class="k">Fig. 4 · Interactive demo</span><h3>Reimagining the ₹ note</h3><p>A concept draft that applies the redesign principles from the full exploration. Switch denominations, then tap the numbered dots to see the reasoning behind each element.</p>
   <div class="toolbar">
-    <div class="seg" id="denomSeg">
+    <div class="o-seg" id="denomSeg">
       <button data-d="10" class="on">₹10</button>
       <button data-d="20">₹20</button>
       <button data-d="100">₹100</button>
     </div>
-    <span class="hintline">← colour-coded per denomination · tap the dots on the note</span>
+    <span class="hintline">← colour coded per denomination · tap the dots on the note</span>
   </div>
 
-  <div class="stage">
+  <div class="o-stage">
     <div class="note-holder">
-      <svg class="note" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" id="noteSvg">
+      <svg class="o-note" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" id="noteSvg">
         <defs>
           <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff" stop-opacity=".35"/>
-            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="0" stop-color="var(--paper)" stop-opacity=".35"/>
+            <stop offset="1" stop-color="var(--paper)" stop-opacity="0"/>
           </linearGradient>
         </defs>
-        <rect id="noteBg" x="4" y="4" width="512" height="232" rx="14" fill="#8b5cf6"/>
+        <rect id="noteBg" x="4" y="4" width="512" height="232" rx="14" fill="var(--teal)"/>
         <rect x="4" y="4" width="512" height="232" rx="14" fill="url(#sheen)"/>
         <!-- security thread -->
-        <rect id="thread" x="150" y="4" width="8" height="232" fill="#0f172a" opacity=".55"/>
+        <rect id="thread" x="150" y="4" width="8" height="232" fill="var(--ink)" opacity=".55"/>
         <!-- bilingual issuer -->
-        <text x="260" y="34" text-anchor="middle" font-family="Inter" font-weight="700" font-size="13" fill="#fff">भारतीय रिज़र्व बैंक · RESERVE BANK OF INDIA</text>
+        <text x="260" y="34" text-anchor="middle" style="font-family:var(--sans)" font-weight="600" font-size="13" fill="var(--paper)">भारतीय रिज़र्व बैंक · RESERVE BANK OF INDIA</text>
         <!-- big numeral -->
-        <text id="bigNum" x="452" y="150" text-anchor="middle" font-family="Sora" font-weight="800" font-size="72" fill="#fff">10</text>
+        <text id="bigNum" x="452" y="150" text-anchor="middle" style="font-family:var(--serif)" font-weight="600" font-size="72" fill="var(--paper)">10</text>
         <!-- denomination words bilingual -->
-        <text id="wordsHi" x="40" y="120" font-family="Inter" font-weight="600" font-size="17" fill="#fff">दस रुपये</text>
-        <text id="wordsEn" x="40" y="142" font-family="Inter" font-weight="500" font-size="13" fill="#fff" opacity=".9">TEN RUPEES</text>
+        <text id="wordsHi" x="40" y="120" style="font-family:var(--sans)" font-weight="600" font-size="17" fill="var(--paper)">दस रुपये</text>
+        <text id="wordsEn" x="40" y="142" style="font-family:var(--sans)" font-weight="500" font-size="13" fill="var(--paper)" opacity=".9">TEN RUPEES</text>
         <!-- tactile mark -->
         <g id="tactile" opacity=".95">
-          <circle cx="36" cy="204" r="7" fill="#fff"/>
-          <circle cx="56" cy="204" r="7" fill="#fff" opacity=".55"/>
-          <circle cx="76" cy="204" r="7" fill="#fff" opacity=".25"/>
+          <circle cx="36" cy="204" r="7" fill="var(--paper)"/>
+          <circle cx="56" cy="204" r="7" fill="var(--paper)" opacity=".55"/>
+          <circle cx="76" cy="204" r="7" fill="var(--paper)" opacity=".25"/>
         </g>
         <!-- serial -->
-        <text x="360" y="222" font-family="Inter" font-weight="600" font-size="11" fill="#fff" opacity=".9">4 MD 727272</text>
+        <text x="360" y="222" style="font-family:var(--sans)" font-weight="600" font-size="11" fill="var(--paper)" opacity=".9">4 MD 727272</text>
         <!-- signature -->
-        <text x="260" y="70" text-anchor="middle" font-family="Inter" font-style="italic" font-size="10" fill="#fff" opacity=".85">Governor — गवर्नर</text>
+        <text x="260" y="70" text-anchor="middle" style="font-family:var(--sans)" font-style="italic" font-size="10" fill="var(--paper)" opacity=".85">Governor, गवर्नर</text>
 
         <!-- hotspots -->
         <g class="hotspot" data-h="0" transform="translate(452,96)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">1</text></g>
@@ -171,51 +307,216 @@
     </div>
 
     <div class="explain" id="explain">
-      <span class="cat must" id="exCat">Must-have</span>
+      <span class="cat must" id="exCat">Must have</span>
       <h3 id="exTitle">Tap a numbered dot</h3>
-      <p id="exBody">Each element on the note earned its place through a must-have / good-to-have / use-case-based sort, benchmarked against the Euro, USD, Swiss Franc, Dirham and Krone.</p>
-      <div class="legend">
-        <span class="cat must">Must-have</span>
-        <span class="cat good">Good-to-have</span>
-        <span class="cat use">Use-case based</span>
+      <p id="exBody">Each element on the note earned its place through a must have / good to have / use case based sort, benchmarked against the Euro, USD, Swiss Franc, Dirham and Krone.</p>
+      <div class="o-legend">
+        <span class="cat must">Must have</span>
+        <span class="cat good">Good to have</span>
+        <span class="cat use">Use case based</span>
       </div>
     </div>
   </div>
-</div>
+    </div>
+  </div>
+</div></section>
 
-<div class="wrap lesson">
-  <h3>What this demonstrates</h3>
-  <p><b>Designing under hard constraints.</b> Security, accessibility, bilingual mandate, machine-readability and cultural neutrality all compete for the same few square centimetres. The full exploration benchmarks five currencies against ISO/IMF/IBNS standards, tests seven typefaces, and iterates ₹10/₹20/₹100 drafts across two structural approaches — including vertical orientation, the emerging global trend.</p>
-</div>
 
-<div class="wrap didgrid">
-  <div class="did">
-    <h3><span>Behind the scenes</span>What I actually did</h3>
+<!-- ═══ THE HIERARCHY ═══ -->
+<section class="prose sheet" style="padding-block:var(--pad)">
+  <div class="in"><div>
+    <div><span class="n">01 · The sort</span><h2 style="color:var(--chalk)">Every element, ranked before it was drawn.</h2></div>
+    <div>
+      <p style="color:var(--chalk)">Security, accessibility, two scripts, machine readability and cultural neutrality all compete for a few square centimetres. The way through was not a better drawing. It was an inventory: every element on the note, force ranked, split by front and back.</p>
+      <table class="hier" style="color:var(--chalk)">
+        <thead><tr><th style="color:var(--chalk-3);border-color:var(--chalk)">Rank</th><th style="color:var(--chalk-3);border-color:var(--chalk)">Element</th><th style="color:var(--chalk-3);border-color:var(--chalk)">Why it is there</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The numeral</b></td><td style="border-color:var(--edge)">First, high contrast, checked against colour blind palettes. Value reads before words do.</td></tr>
+          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The value in both scripts</b></td><td style="border-color:var(--edge)">Per the constitutional mandate, in a fixed order so neither crowds the other.</td></tr>
+          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The tactile mark</b></td><td style="border-color:var(--edge)">One pattern per value, at the held edge, clear of the fold line and the ATM roller.</td></tr>
+          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The security thread</b></td><td style="border-color:var(--edge)">Not negotiable. Placed where folds will not wear it.</td></tr>
+          <tr><td style="color:var(--chalk-3)">Use case</td><td style="border-color:var(--edge)"><b>The serial</b></td><td style="border-color:var(--edge)">For machines. The same position on every denomination, because counting machines and ATMs are users too, and they have no patience.</td></tr>
+          <tr><td style="color:var(--chalk-3)">Good to have</td><td style="border-color:var(--edge)"><b>Portrait and motif</b></td><td style="border-color:var(--edge)">Moved off the face. Nothing stays on the front that is only good to have.</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--chalk-2)">Four must haves, one use case element. Seven typefaces were tested to get the numerals and the two scripts to sit together: display faces for the numerals, workhorses for the scripts.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ TAKE THIS WITH YOU ═══ -->
+<section class="prose">
+  <div class="in"><div>
+    <div><span class="n">02 · Take this with you</span><h2>The same sort works on a screen.</h2></div>
+    <div>
+      <ul><li>Design for the least served user first. Here that was the visually impaired. It raised the floor for everyone.</li><li>List the machines that read your artefact too. Parsers, scanners and printers are users with no patience.</li><li>Stress test against real life: wallet folds, rollers, monsoons, and the designed for edge case, demonetisation.</li></ul>
+      <p style="margin-top:28px">List everything on it. Rank it. Cut or layer everything below the line. Then benchmark four or five comparable products element by element, not vibe by vibe, and you find out what is convention and what is necessary.</p>
+    </div>
+  </div></div>
+</section>
+
+<section class="decided">
+  <div class="in"><div class="box sheet reveal">
+    <div><span class="k">Decided</span><h2>Sized by value, vertical, thumb first. The draft that survived the wallet, the roller and the monsoon.</h2></div>
     <ol>
-      <li><b>Benchmarked before designing</b>: tore down the Euro, USD, Swiss Franc, Dirham and Krone front-and-back — what every element does and for whom — against ISO/IMF/IBNS standards.</li>
-      <li><b>Built the information inventory</b>: every element on a note force-ranked into must-have / good-to-have / use-case-based, split by front and back.</li>
-      <li><b>Iterated ₹10/₹20/₹100 drafts</b> across two structural approaches — horizontal and vertical — testing seven typefaces and per-denomination colour coding.</li>
-      <li><b>Stress-tested against real life</b>: colour-blind palettes, tactile-mark wear, wallet folds, ATM rollers, counting machines — and kept demonetisation as the designed-for edge case.</li>
+      <li><b>Stop</b><span>What does a note have to say before anyone properly looks at it?<i>Three values, one size, one voice. Nothing leads.</i></span></li>
+      <li><b>Notice</b><span>The Euro sizes by value. The dollar does not.<i>And a court said so, in 2008.</i></span></li>
+      <li><b>Tradeoff</b><span>One size for every note, or variation you can feel in a pocket.<i>Standardisation is cheaper to print. Variation is cheaper to use.</i></span></li>
+      <li><b>Decide</b><span>Denomination specific sizing on both axes, and the vertical format.<i>What it cost: new dies for every denomination, and every ATM cassette recalibrated.</i></span></li>
     </ol>
-  </div>
-  <div class="did">
-    <h3><span>Take this with you</span>If your artifact is overcrowded</h3>
-    <ul>
-      <li>Inventory every element on the screen/document, then force-rank: must-have / good-to-have / use-case. Cut or layer everything below the line.</li>
-      <li>Benchmark 4–5 comparable products <b>element by element</b>, not vibe by vibe — you'll find what's convention vs what's necessary.</li>
-      <li>Design for the least-served user first (here: visually-impaired). Accessibility decisions raise the floor for everyone.</li>
-      <li>List the machines that read your artifact too — parsers, scanners, printers are users with zero patience.</li>
-    </ul>
-  </div>
-</div>
-<div class="wrap cta">Redesigning something everyone takes for granted? Compare notes with me — <a href="mailto:dvmadhumitha2021@outlook.com">write to me</a> or <a href="index.html#projects">see the other explorations</a>.</div>
+  </div></div>
+</section>
 
+<nav class="pn" aria-label="Previous and next">
+  <div class="in"><div>
+    <a href="city-planning.html"><span>Previous</span><h3>City Planning Breakdown</h3></a>
+    <a class="next" href="demo-boardingpass.html"><span>Next</span><h3>Boarding Pass Design Analysis</h3></a>
+  </div></div>
+</nav>
+
+</main>
+
+<footer class="foot sheet">
+  <div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div>
+</footer>
+
+<script src="analytics.js" defer></script>
 <script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
+  else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
+
+  /* ── the note bench ── */
+  var S = 3; /* px per mm */
+  var NOTES = {
+    10:  {w:123, h:63, hi:'दस रुपये', en:'TEN RUPEES',         bars:1, col:'c10', serial:'7AB 214596', colour:'not specified in the source'},
+    20:  {w:129, h:63, hi:'बीस रुपये', en:'TWENTY RUPEES',     bars:2, col:'c20', serial:'4MD 727272', colour:'amber'},
+    100: {w:142, h:66, hi:'सौ रुपये', en:'ONE HUNDRED RUPEES', bars:3, col:'c100', serial:'0RB 118219', colour:'green'}
+  };
+  var OTHERS = [
+    {k:'€5',  w:120, h:62}, {k:'€10', w:127, h:67}, {k:'€20', w:133, h:72},
+    {k:'$1',  w:156, h:66}, {k:'$10', w:156, h:66}, {k:'$100', w:156, h:66}
+  ];
+  var st = {den:100, back:false, vert:false, size:false, tac:true, col:true};
+  var scene = document.getElementById('scene');
+  var copy = {
+    front:  {k:'As printed, then sorted', h:'Three values, one size, one voice', p:'Issuer, numeral, two scripts, a portrait, a thread, a serial. All at the same weight, on the same canvas, for every denomination. The redraw starts from what has to be read first, not from what has to be on the note.', d:'Numeral first. Both scripts under it, in order. The thread where folds will not wear it.'},
+    back:   {k:'The back', h:'The face that can carry the good to haves', p:'The motif and the language panel move to the back. The value repeats in the same corner on every denomination, so a note face down is still a note you can count.', d:'Nothing on the front that is only good to have.'},
+    vert:   {k:'Rotate it', h:'The Swiss had a reason', p:'A vertical note keeps one width and changes height. It is right side up in the hand that holds it, the numeral sits at the top where a glance lands, and the tactile edge is the edge you hold. Two structural approaches were drafted. This one kept winning.', d:'Take the vertical format seriously rather than dismissing it as a trend.'},
+    size:   {k:'Sized by value', h:'You should be able to tell them apart without looking', p:'The rupee already grows in length, by 27 mm from ₹10 to ₹500. Its height barely moves, so two notes in a wallet feel the same between finger and thumb. The Euro grows on both edges. The dollar does not grow at all.', d:'Denomination specific sizing, on both axes.'},
+    tac:    {k:'Tactile marks', h:'Put the mark where the thumb already is', p:'Raised marks in a pattern per value let someone identify a note by touch. Today\'s wear off, because they sit where wallet folds and ATM rollers rub. Move them to the edge the thumb holds, and away from the fold line. One, two and three bars here are the proposal\'s pattern, not a specification.', d:'One pattern per value, at the held edge, clear of the fold.'},
+    col:    {k:'Colour, and the machines', h:'A colour per value, and one place for the serial', p:'₹20 amber, ₹100 green, checked for colour-blindness so value reads before words do. The ₹10 tint is left open; the source names only the two. The serial sits in the same position on every denomination, because counting machines and ATMs are users too.', d:'Colour per denomination. One serial position across the family.'}
+  };
+  function setNotes(key){
+    var c = copy[key]; document.getElementById('n-k').textContent = c.k; document.getElementById('n-h').textContent = c.h; document.getElementById('n-p').textContent = c.p; document.getElementById('n-d').textContent = c.d;
+  }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function barsSvg(n, x, y, vert, on){
+    var out = '';
+    for(var i=0;i<n;i++){
+      if(vert) out += '<rect class="bar'+(on?' on':'')+'" x="'+(x+i*10)+'" y="'+y+'" width="5" height="26"/>';
+      else out += '<rect class="bar'+(on?' on':'')+'" x="'+x+'" y="'+(y+i*10)+'" width="26" height="5"/>';
+    }
+    return out;
+  }
+  function noteSvg(d, x, y, opts){
+    var n = NOTES[d], vert = opts.vert, W = (vert?n.h:n.w)*S, H = (vert?n.w:n.h)*S;
+    var cls = 'note-f' + (opts.col ? ' '+n.col : '');
+    var s = '<g class="scene" transform="translate('+x+' '+y+')">';
+    s += '<rect class="'+cls+'" x="0" y="0" width="'+W+'" height="'+H+'"/>';
+    if(opts.back){
+      s += '<rect class="motif" x="'+(W*0.08)+'" y="'+(H*0.14)+'" width="'+(W*0.5)+'" height="'+(H*0.7)+'"/>';
+      s += '<rect class="ghost" x="'+(W*0.08)+'" y="'+(H*0.14)+'" width="'+(W*0.5)+'" height="'+(H*0.7)+'"/>';
+      s += '<text class="numeral" x="'+(W-16)+'" y="'+(H*0.14+30)+'" text-anchor="end" style="font-size:30px">'+d+'</text>';
+      for(var i=0;i<8;i++){ s += '<line class="lang" x1="'+(W*0.64)+'" y1="'+(H*0.42+i*9)+'" x2="'+(W-16)+'" y2="'+(H*0.42+i*9)+'"/>'; }
+      s += '<text class="tiny" x="'+(W*0.64)+'" y="'+(H*0.38)+'">Language panel · 15 scripts</text>';
+      s += '<text class="tiny" x="'+(W*0.08)+'" y="'+(H-10)+'">Motif · heritage, not a person</text>';
+    } else {
+      var thx = vert ? W*0.62 : W*0.58;
+      s += '<line class="thread" x1="'+thx+'" y1="6" x2="'+thx+'" y2="'+(H-6)+'"/>';
+      var nx = opts.tac ? 46 : 18;
+      if(vert){
+        s += '<text class="numeral" x="'+nx+'" y="64" style="font-size:56px">'+d+'</text>';
+        s += '<text class="devan" x="'+nx+'" y="92">'+n.hi+'</text><text class="tiny" x="'+nx+'" y="108">'+n.en+'</text>';
+        s += '<text class="tiny" x="'+nx+'" y="'+(H*0.5)+'">भारतीय रिज़र्व बैंक</text><text class="tiny" x="'+nx+'" y="'+(H*0.5+13)+'">Reserve Bank of India</text>';
+        s += '<rect class="motif" x="'+nx+'" y="'+(H*0.58)+'" width="'+(W-nx-16)+'" height="'+(H*0.26)+'"/><rect class="ghost" x="'+nx+'" y="'+(H*0.58)+'" width="'+(W-nx-16)+'" height="'+(H*0.26)+'"/>';
+        s += '<text class="serial" x="'+nx+'" y="'+(H-14)+'">'+n.serial+'</text>';
+        if(opts.tac) s += barsSvg(n.bars, 14, 22, false, true) + '<text class="tiny" x="14" y="'+(22+n.bars*10+14)+'">held edge</text>';
+      } else {
+        s += '<text class="numeral" x="'+nx+'" y="58" style="font-size:52px">'+d+'</text>';
+        s += '<text class="devan" x="'+nx+'" y="86">'+n.hi+'</text><text class="tiny" x="'+nx+'" y="102">'+n.en+'</text>';
+        s += '<text class="tiny" x="'+nx+'" y="'+(H-34)+'">भारतीय रिज़र्व बैंक · Reserve Bank of India</text>';
+        s += '<text class="serial" x="'+nx+'" y="'+(H-14)+'">'+n.serial+'</text>';
+        s += '<rect class="motif" x="'+(W*0.66)+'" y="18" width="'+(W*0.3)+'" height="'+(H-36)+'"/><rect class="ghost" x="'+(W*0.66)+'" y="18" width="'+(W*0.3)+'" height="'+(H-36)+'"/>';
+        if(opts.tac) s += barsSvg(n.bars, 14, 18, false, true) + '<text class="tiny" x="12" y="'+(18+n.bars*10+14)+'" transform="rotate(90 12 '+(18+n.bars*10+14)+')">held edge</text>';
+      }
+    }
+    s += '</g>';
+    /* dimension lines */
+    s += '<g class="scene" transform="translate('+x+' '+y+')"><line class="dim" x1="0" y1="'+(H+22)+'" x2="'+W+'" y2="'+(H+22)+'"/><line class="dim" x1="0" y1="'+(H+16)+'" x2="0" y2="'+(H+28)+'"/><line class="dim" x1="'+W+'" y1="'+(H+16)+'" x2="'+W+'" y2="'+(H+28)+'"/><text class="tm" x="'+(W/2)+'" y="'+(H+42)+'" text-anchor="middle">'+(vert?n.h:n.w)+' mm</text>';
+    s += '<line class="dim" x1="'+(W+22)+'" y1="0" x2="'+(W+22)+'" y2="'+H+'"/><line class="dim" x1="'+(W+16)+'" y1="0" x2="'+(W+28)+'" y2="0"/><line class="dim" x1="'+(W+16)+'" y1="'+H+'" x2="'+(W+28)+'" y2="'+H+'"/><text class="tm" x="'+(W+36)+'" y="'+(H/2+4)+'">'+(vert?n.w:n.h)+' mm</text></g>';
+    return s;
+  }
+  function sizeScene(){
+    /* the three rupee notes over each other, then the euro and dollar families, all at 3 px per mm */
+    var s = '', x0 = 30, y0 = 70;
+    s += '<text class="tm" x="30" y="30">Rupee · ₹10, ₹20, ₹100 · one corner shared</text>';
+    [100,20,10].forEach(function(d, i){
+      var n = NOTES[d], W = (st.vert?n.h:n.w)*S, H = (st.vert?n.w:n.h)*S;
+      var cls = 'note-f' + (st.col?' '+n.col:'');
+      s += '<g class="scene" transform="translate('+x0+' '+y0+')"><rect class="'+cls+'" x="0" y="0" width="'+W+'" height="'+H+'"/><text class="numeral" x="'+(W+8)+'" y="'+(H-6-i*28)+'" style="font-size:22px">'+d+'</text>'+(st.tac?barsSvg(n.bars,12,14,false,true):'')+'</g>';
+    });
+    var n100 = NOTES[100], W100 = (st.vert?n100.h:n100.w)*S, H100 = (st.vert?n100.w:n100.h)*S;
+    s += '<text class="ta" x="'+(x0)+'" y="'+(y0+H100+30)+'">+19 mm long, +3 mm tall from ₹10 to ₹100 · the proposal grows both edges</text>';
+    /* euro family */
+    var ex = 500, ey = 70;
+    s += '<text class="tm" x="'+ex+'" y="30">Euro · €5, €10, €20 · grows on both edges</text>';
+    OTHERS.slice(0,3).reverse().forEach(function(o){ s += '<g class="scene" transform="translate('+ex+' '+ey+')"><rect class="ghost" x="0" y="0" width="'+(o.w*S)+'" height="'+(o.h*S)+'"/><text class="tm" x="'+(o.w*S-6)+'" y="'+(o.h*S-8)+'" text-anchor="end">'+o.k+' · '+o.w+'×'+o.h+'</text></g>'; });
+    /* dollar family */
+    var dy = ey + 72*S + 60;
+    s += '<text class="tm" x="'+ex+'" y="'+(dy-22)+'">US dollar · $1, $10, $100 · the same 156 × 66 mm</text>';
+    s += '<g class="scene" transform="translate('+ex+' '+dy+')"><rect class="ghost2" x="0" y="0" width="'+(156*S)+'" height="'+(66*S)+'"/><rect class="ghost2" x="4" y="4" width="'+(156*S)+'" height="'+(66*S)+'"/><rect class="ghost2" x="8" y="8" width="'+(156*S)+'" height="'+(66*S)+'"/><text class="ta" x="'+(156*S-4)+'" y="'+(66*S-10)+'" text anchor="end">one size · failed blind users, 2008</text></g>';
+    return s;
+  }
+  function render(){
+    var n = NOTES[st.den];
+    if(st.size){ scene.innerHTML = sizeScene(); }
+    else {
+      var W = (st.vert?n.h:n.w)*S, H = (st.vert?n.w:n.h)*S;
+      var x = Math.round((900 - W - 60)/2), y = Math.round((480 - H - 50)/2);
+      scene.innerHTML = noteSvg(st.den, Math.max(30,x), Math.max(24,y), st);
+    }
+    /* keep everything inside the frame: grow the viewBox when a state needs more room, at the same 900:480 shape */
+    try {
+      var bb = scene.getBBox(), pad = 28;
+      var x0 = Math.min(0, bb.x - pad), y0 = Math.min(0, bb.y - pad);
+      var x1 = Math.max(900, bb.x + bb.width + pad), y1 = Math.max(480, bb.y + bb.height + pad);
+      var vw = Math.max(x1 - x0, (y1 - y0) * 900 / 480), vh = vw * 480 / 900;
+      x0 -= (vw - (x1 - x0)) / 2; y0 -= (vh - (y1 - y0)) / 2;
+      document.getElementById('bench').setAttribute('viewBox', [x0, y0, vw, vh].map(function(v){ return Math.round(v); }).join(' '));
+    } catch(e) {}
+    document.getElementById('ro-size').textContent = (st.vert?n.h:n.w)+' × '+(st.vert?n.w:n.h);
+    document.getElementById('ro-face').textContent = st.back ? 'Back' : 'Front';
+    document.getElementById('ro-fmt').textContent = st.vert ? 'Vertical' : 'Horizontal';
+    document.getElementById('ro-grow').textContent = st.size ? '5 of 6' : (st.col ? n.colour : '·');
+    document.getElementById('ro-grow-l').textContent = st.size ? 'currencies size by value' : 'colour for this value';
+  }
+  [].slice.call(document.querySelectorAll('[data-den]')).forEach(function(b){ b.addEventListener('click', function(){ st.den = +b.getAttribute('data-den'); [].slice.call(document.querySelectorAll('[data-den]')).forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); }); render(); }); });
+  function toggleBtn(id, key, note){ var b = document.getElementById(id); b.addEventListener('click', function(){ st[key] = !st[key]; b.setAttribute('aria-pressed', st[key]?'true':'false'); if(note) setNotes(st[key] ? note : (st.back?'back':(st.vert?'vert':'front'))); render(); }); }
+  toggleBtn('flip','back','back'); toggleBtn('rot','vert','vert'); toggleBtn('tsize','size','size'); toggleBtn('ttac','tac','tac'); toggleBtn('tcol','col','col');
+  render();
+})();
+</script>
+<script>
+/* ═══ the original sheet's note: pick a value, tap a numbered dot ═══ */
 (function(){
   const denoms={
-    '10':{bg:'#8b5cf6',hi:'दस रुपये',en:'TEN RUPEES'},
-    '20':{bg:'#d97706',hi:'बीस रुपये',en:'TWENTY RUPEES'},
-    '100':{bg:'#047857',hi:'सौ रुपये',en:'ONE HUNDRED RUPEES'}
+    '10':{bg:'var(--teal)',hi:'दस रुपये',en:'TEN RUPEES'},
+    '20':{bg:'var(--ochre)',hi:'बीस रुपये',en:'TWENTY RUPEES'},
+    '100':{bg:'var(--teal)',hi:'सौ रुपये',en:'ONE HUNDRED RUPEES'}
   };
   const seg=document.getElementById('denomSeg');
   seg.addEventListener('click',e=>{
@@ -229,14 +530,14 @@
   });
 
   const hs=[
-    {cat:'must',cls:'must',t:'High-contrast denomination numeral',b:'The single most-read element — sized and contrasted first, verified against colour-blindness palettes. Distinct colour per denomination (₹20 amber, ₹100 green) so value reads before words do.'},
-    {cat:'must',cls:'must',t:'Bilingual denomination',b:'Hindi and English both carry the value, per the constitutional mandate — with a fixed type hierarchy so neither script crowds the other. Typeface shortlist tested: EB Garamond, PT Sans Narrow, Open Sans and four display faces.'},
-    {cat:'must',cls:'must',t:'Tactile identification mark',b:'Raised marks in a denomination-specific pattern let visually-impaired users identify value by touch — one of the accessibility requirements that anchored the whole redesign.'},
-    {cat:'must',cls:'must',t:'Security thread',b:'Anti-counterfeiting is non-negotiable: windowed thread plus latent features, positioned where wallet folds won\'t wear it. Polymer substrate considered for durability.'},
-    {cat:'use',cls:'use',t:'Serial number placement',b:'Standardised position across all denominations so counting machines and ATMs read every note the same way — a machine-user requirement most redesigns forget.'}
+    {cat:'must',cls:'must',t:'High contrast denomination numeral',b:'The single most read element: sized and contrasted first, verified against colour blindness palettes. Distinct colour per denomination (₹20 amber, ₹100 green) so value reads before words do.'},
+    {cat:'must',cls:'must',t:'Bilingual denomination',b:'Hindi and English both carry the value, per the constitutional mandate, with a fixed type hierarchy so neither script crowds the other. Typeface shortlist tested: EB Garamond, PT Sans Narrow, Open Sans and four display faces.'},
+    {cat:'must',cls:'must',t:'Tactile identification mark',b:'Raised marks in a denomination specific pattern let visually impaired users identify value by touch. One of the accessibility requirements that anchored the whole redesign.'},
+    {cat:'must',cls:'must',t:'Security thread',b:'Anti counterfeiting is nonnegotiable: windowed thread plus latent features, positioned where wallet folds won\'t wear it. Polymer substrate considered for durability.'},
+    {cat:'use',cls:'use',t:'Serial number placement',b:'Standardised position across all denominations so counting machines and ATMs read every note the same way. A machine user requirement most redesigns forget.'}
   ];
   const cat=document.getElementById('exCat'),ti=document.getElementById('exTitle'),bo=document.getElementById('exBody');
-  const names={must:'Must-have',good:'Good-to-have',use:'Use-case based'};
+  const names={must:'Must have',good:'Good to have',use:'Use case based'};
   document.querySelectorAll('.hotspot').forEach(h=>{
     h.addEventListener('click',()=>{
       document.querySelectorAll('.hotspot').forEach(x=>x.classList.toggle('on',x===h));

@@ -3,359 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>City Planning Breakdown — Case study · Madhumitha D V</title>
-<meta name="description" content="A design-thinking exercise: planning a city for ten lakh people from a blank site, and what it taught me about grouping things on a screen.">
+<title>City Planning Breakdown · Madhumitha D V</title>
+<meta name="description" content="Group by what a thing is, or by how often someone actually goes there? A city for ten lakh people, drawn as one plan you can switch layer by layer. By Madhumitha D V.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Karla:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
 <style>
-:root{
-  --ivory:#FBF8F2; --card:#FFFFFF; --sunk:#F4EFE5; --sunk2:#EBE3D4; --ink:#171310; --muted:#6B6459; --hair:#E0D7C5;
-  --cobalt:#3B2BE0; --coral:#F2451F; --butter:#FFC820; --leaf:#0B8A5F; --sky:#0E6FD6;
-  --shadow:0 24px 56px -34px rgba(23,19,16,.5);
-  --disp:"Newsreader",Georgia,serif; --body:"Karla","Helvetica Neue",Arial,sans-serif; --mono:"DM Mono",Menlo,monospace;
-  --e:cubic-bezier(.2,.8,.3,1); --ei:cubic-bezier(.7,0,.3,1); --es:cubic-bezier(.34,1.44,.5,1);
-  --gutter:clamp(1.1rem,3.5vw,2.4rem); --maxw:1200px;
-  --f-house:#EFE2C8; --f-work:#D5DBF7; --f-civic:#FAD3C6; --f-green:#CFE3C4; --f-ind:#C9C3B6; --f-water:#C3DCF3;
-  --ac:var(--sky);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ivory:#12100E; --card:#1B1815; --sunk:#1E1A16; --sunk2:#272118; --ink:#F5F0E6; --muted:#9E9587; --hair:#302A22;
-    --cobalt:#9C8BFF; --coral:#FF7A55; --butter:#FFD24A; --leaf:#3ED39C; --sky:#5CACFF;
-    --shadow:0 24px 56px -34px rgba(0,0,0,.9);
-    --f-house:#3A3125; --f-work:#26294A; --f-civic:#43291F; --f-green:#22321F; --f-ind:#2E2B25; --f-water:#1D2C3D;
-  }
-}
-:root[data-theme="dark"]{
-  --ivory:#12100E; --card:#1B1815; --sunk:#1E1A16; --sunk2:#272118; --ink:#F5F0E6; --muted:#9E9587; --hair:#302A22;
-  --cobalt:#9C8BFF; --coral:#FF7A55; --butter:#FFD24A; --leaf:#3ED39C; --sky:#5CACFF;
-  --shadow:0 24px 56px -34px rgba(0,0,0,.9);
-  --f-house:#3A3125; --f-work:#26294A; --f-civic:#43291F; --f-green:#22321F; --f-ind:#2E2B25; --f-water:#1D2C3D;
-}
-*{box-sizing:border-box}
-body{margin:0; background:var(--ivory); color:var(--ink); font-family:var(--body); font-size:16.5px;
-  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
-a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
-:focus-visible{outline:3px solid var(--cobalt); outline-offset:3px; border-radius:8px}
-.in{max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter)}
+/* layers: a group shows when its toggle is on */
+.d .layer{opacity:0;transition:opacity .5s var(--ease)}
+.d .layer.on{opacity:1}
+.d .belt{fill:none;stroke:#7FB09A;stroke-width:10;opacity:.55}
+.d .cell{fill:rgba(231,236,240,.10);stroke:var(--chalk);stroke-width:1;vector-effect:non-scaling-stroke}
+.d .cell.new{fill:none;stroke:var(--signal);stroke-dasharray:3 3}
+.d .dense{fill:rgba(140,199,214,.22)}
+.d .river{fill:none;stroke:var(--chalk-2);stroke-width:5;opacity:.6;stroke-linecap:round}
+.d .wind{fill:none;stroke:var(--chalk-3);stroke-width:1.25;stroke-dasharray:6 5}
+.d .draft{opacity:0;transition:opacity .4s var(--ease)}
+.d .draft.on{opacity:1}
+.d .tint{fill:rgba(231,236,240,.08)}
+.d .bad{fill:rgba(140,199,214,.18);stroke:var(--signal);stroke-width:1.25;stroke-dasharray:4 3}
+.drafts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.drafts button{all:unset;cursor:pointer;border:1px solid var(--edge);padding:8px;display:block;color:var(--chalk-3);transition:border-color .25s,color .25s}
+.drafts button:hover{border-color:var(--chalk);color:var(--chalk)}
+.drafts button[aria-pressed="true"]{border-color:var(--signal);color:var(--chalk)}
+.drafts button span{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.drafts svg{aspect-ratio:4/3}
+.drafts[hidden]{display:none}
+.lab .bench .cap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:600px){.drafts{grid-template-columns:1fr 1fr}}
 
-/* ══════ NAV ══════ */
-.nav{position:sticky; top:0; z-index:60; background:color-mix(in srgb,var(--ivory) 90%,transparent);
-  backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:border-color 300ms var(--e)}
-.nav .navlnk button,.nav .navlnk a{text-transform:uppercase; letter-spacing:.07em; font-size:.76rem}
-
-.nav.stuck{border-bottom-color:var(--hair)}
-.r1{display:flex; align-items:baseline; gap:.75rem; padding:.7rem 0; flex-wrap:wrap}
-.mark{font-family:var(--disp); font-weight:500; font-size:1.12rem; letter-spacing:.04em; text-transform:uppercase;
-  display:inline-flex; align-items:baseline; gap:.45rem; white-space:nowrap}
-.mark i{width:9px; height:9px; border-radius:50%; background:var(--coral); display:inline-block; align-self:center}
-.here{color:var(--muted); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:uppercase; letter-spacing:.06em; font-size:.78rem}
-.here b{color:var(--ink); font-weight:700}
-.navlnk{display:flex; gap:.5rem; align-items:center; margin-left:auto}
-.navlnk > a:not(.cta){font-size:.85rem; font-weight:600; color:var(--muted); padding:.3rem .5rem}
-.navlnk > a:not(.cta):hover{color:var(--ink)}
-.cta{border-radius:999px; padding:.5rem 1.25rem; font-size:.92rem; font-weight:700; white-space:nowrap;
-  background:var(--ink); color:var(--ivory); display:inline-flex; align-items:center; gap:.5rem;
-  border:2px solid var(--ink); box-shadow:0 4px 14px -6px rgba(0,0,0,.45);
-  transition:transform 130ms var(--e), background 200ms var(--e)}
-.cta i{width:7px; height:7px; border-radius:50%; background:var(--coral); display:block; flex:none}
-.cta::after{content:"\2192"; transition:transform 220ms var(--es)}
-.cta:hover{background:var(--coral); border-color:var(--coral); color:#fff; transform:translateY(-2px)}
-.cta:hover i{background:#fff}
-
-/* ══════ HERO ══════ */
-.hero{padding:2.4rem 0 2.9rem; position:relative; overflow:hidden}
-.hero .blob{position:absolute; inset:-16% -20% auto; height:420px; z-index:0; pointer-events:none; opacity:.5;
-  background:radial-gradient(closest-side, color-mix(in srgb,var(--sky) 40%,transparent), transparent)}
-.hi{position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
-  gap:clamp(1.4rem,4vw,3rem); align-items:start}
-@media(max-width:940px){ .hi{grid-template-columns:1fr} }
-.eyebrow{display:inline-flex; align-items:center; gap:.5rem; border:1.5px solid var(--ink); background:var(--card);
-  border-radius:999px; padding:.3rem .8rem; font-size:.78rem; font-weight:700}
-.eyebrow i{width:7px; height:7px; border-radius:50%; background:var(--sky); display:block}
-.hero h1{font-family:var(--disp); font-weight:500; font-size:clamp(2.1rem,5.4vw,3.4rem);
-  letter-spacing:-.025em; line-height:1.02; margin:.9rem 0 .7rem}
-.hero .lede{font-size:1.06rem; max-width:52ch; margin:0 0 1rem; color:color-mix(in srgb,var(--ink) 88%,transparent)}
-.hl{background:linear-gradient(180deg,transparent 58%, color-mix(in srgb,var(--butter) 78%,transparent) 58%)}
-
-/* ══════ BANDS ══════ */
-.band{position:relative; scroll-margin-top:80px}
-.band.t2{background:var(--sunk)}
-.band.t2::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.55;
-  background-image:radial-gradient(var(--hair) 1.4px, transparent 1.4px); background-size:20px 20px}
-.band.t3::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
-  background-image:repeating-linear-gradient(-45deg, var(--hair) 0 1.4px, transparent 1.4px 12px)}
-.band > *{position:relative}
-.sechead{padding:2.9rem 0 1.35rem; max-width:58ch}
-.sechead .k{font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--sk,var(--sky)); font-weight:500}
-.sechead h2{font-family:var(--disp); font-weight:500;
-  font-size:clamp(1.7rem,3.9vw,2.6rem); letter-spacing:-.018em; margin:.35rem 0 .35rem; line-height:1.03}
-.sechead p{margin:0; color:var(--muted); font-size:1rem}
-
-/* ══════ ROW ══════ */
-.row{border-top:2px solid var(--hair)}
-.row.alt{background:color-mix(in srgb,var(--card) 62%,transparent)}
-.pin{display:grid; grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:clamp(1.2rem,3.4vw,2.6rem);
-  align-items:start; padding:2.2rem 0}
-.row:nth-of-type(even) .demo{order:2}
-@media(max-width:900px){ .pin{grid-template-columns:1fr} .row:nth-of-type(even) .demo{order:0} }
-.txt{min-width:0}
-.txt h3{font-family:var(--disp); font-weight:500; font-size:clamp(1.35rem,2.7vw,1.85rem);
-  letter-spacing:-.015em; margin:0 0 .4rem; line-height:1.06}
-.stt{font-size:.64rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:999px;
-  padding:.2rem .6rem; background:var(--ac); color:#fff; display:inline-block; margin-bottom:.5rem}
-.stt.out{background:transparent; color:var(--muted); border:1.5px solid var(--hair)}
-.txt > p{margin:0 0 .8rem; font-size:.98rem}
-.tw{display:grid; gap:.5rem; margin:0 0 .9rem}
-.tw div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.6rem; align-items:baseline}
-.tw .k{font-family:var(--mono); font-size:.54rem; letter-spacing:.1em; text-transform:uppercase; color:#fff;
-  background:var(--ac); border-radius:999px; padding:.18rem .45rem; white-space:nowrap; min-width:5.4rem; text-align:center}
-.tw .k.g{background:transparent; color:var(--muted); border:1.5px solid var(--hair)}
-.tw p{margin:0; font-size:.94rem}
-.ledger{font-family:var(--mono); font-size:.64rem; letter-spacing:.06em; color:var(--muted);
-  border-top:1.5px dashed var(--hair); padding-top:.5rem; display:flex; gap:1rem; flex-wrap:wrap}
-.ledger b{color:var(--ink); font-weight:500}
-
-/* ══════ CARD ══════ */
-.demo{min-width:0}
-.dcard{background:var(--card); border:2px solid var(--ac); border-radius:22px; overflow:hidden;
-  box-shadow:var(--shadow); transition:transform 320ms var(--e)}
-.demo:hover .dcard{transform:translateY(-4px)}
-.dhead{display:flex; align-items:center; gap:.5rem; padding:.55rem .9rem; background:var(--ac); color:#fff}
-.dhead .lb{font-family:var(--mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase; font-weight:500}
-.dhead .rt{margin-left:auto; font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
-  background:#fff; color:var(--ac); border-radius:999px; padding:.16rem .55rem; font-weight:500}
-.dbody{padding:.85rem; background:linear-gradient(165deg, color-mix(in srgb,var(--ac) 6%,var(--card)), var(--sunk) 78%)}
-.dbody svg{width:100%; height:auto; display:block; border-radius:12px}
-.tabs button svg{width:13px; height:13px; display:inline-block; border-radius:0; flex:none}
-.dfoot{font-size:.9rem; min-height:4.8em; color:color-mix(in srgb,var(--ink) 80%,transparent); padding:.7rem .95rem .85rem; margin:0;
-  border-top:1px solid var(--hair); background:var(--card)}
-.dfoot b{color:var(--ink); font-weight:700}
-@media(max-width:560px){ .dfoot{min-height:6.7em} }
-
-.tabs{display:flex; gap:.3rem; flex-wrap:wrap; margin-bottom:.6rem}
-.tabs button{display:inline-flex; align-items:center; gap:.3rem; line-height:1.6;
-  border:1.5px solid var(--hair); background:var(--card); border-radius:999px; padding:.24rem .72rem;
-  font-size:.78rem; font-weight:700; cursor:pointer; transition:border-color 180ms var(--e), background 180ms var(--e), transform 120ms var(--e)}
-.tabs button:hover{border-color:var(--ac); transform:translateY(-1px)}
-.tabs button svg{flex:none; opacity:.65}
-.tabs button[aria-current="true"] svg{opacity:1}
-.tabs button[aria-current="true"]{background:var(--ac); border-color:var(--ac); color:#fff}
-
-/* ══════ CLUSTER EXPLORER ══════ */
-.cx{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:.7rem}
-@media(max-width:560px){ .cx{grid-template-columns:1fr} }
-.cxl{display:grid; gap:.16rem; align-content:start}
-.cxb{display:grid; grid-template-columns:auto minmax(0,1fr); grid-template-areas:"i n" "b c";
-  gap:.1rem .4rem; align-items:center; border:1.5px solid transparent; background:transparent;
-  border-radius:9px; padding:.26rem .4rem; cursor:pointer; text-align:left;
-  transition:background 180ms var(--e), border-color 180ms var(--e)}
-.cxb:hover{background:var(--card)}
-.cxb[aria-current="true"]{background:var(--card); border-color:var(--gc)}
-.cxb .ci{grid-area:i; color:var(--gc); display:flex}
-.cxb .cn{grid-area:n; font-size:.8rem; font-weight:700; line-height:1.2}
-.cxb .cb{grid-area:b; grid-column:1/-1; height:5px; border-radius:99px; background:var(--hair); overflow:hidden; margin-top:.16rem}
-.cxb .cb i{display:block; height:100%; background:var(--gc)}
-.cxb .cc{display:none}
-.cxr{background:var(--card); border:1.5px solid var(--gc); border-radius:12px; padding:.6rem .7rem;
-  display:grid; gap:.4rem; align-content:start; min-height:11.5em}
-.cxr .crule{font-size:.82rem; font-weight:700; line-height:1.35}
-.citems{display:flex; flex-wrap:wrap; gap:.22rem}
-.citems span{font-size:.72rem; font-weight:600; color:var(--muted); border:1.5px solid var(--hair);
-  border-radius:999px; padding:.1rem .45rem}
-.cxr .cui{font-size:.78rem; font-weight:700; color:var(--gc); border-top:1.5px dashed var(--hair); padding-top:.35rem}
-
-/* ══════ IDENTITY ══════ */
-.idw{display:grid; gap:.55rem}
-.idtabs{display:flex; gap:.28rem; flex-wrap:wrap}
-.idtabs button{border:1.5px solid var(--hair); background:var(--card); border-radius:999px; padding:.22rem .65rem;
-  font-size:.78rem; font-weight:700; cursor:pointer; transition:border-color 180ms var(--e), background 180ms var(--e)}
-.idtabs button[aria-current="true"]{background:var(--ac); border-color:var(--ac); color:#fff}
-.idbody{background:var(--card); border:1.5px solid var(--hair); border-radius:12px; padding:.65rem .75rem; display:grid; gap:.45rem}
-.idbody .kn{font-size:.82rem; line-height:1.4}
-.idbody .kn b{font-weight:700}
-.idmoves{display:grid; gap:.28rem}
-.idmoves div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.45rem; align-items:baseline}
-.idmoves em{font-style:normal; font-family:var(--mono); font-size:.6rem; letter-spacing:.06em;
-  background:var(--ac); border:1.5px solid var(--ac); color:var(--ink); border-radius:999px;
-  padding:.1rem .45rem; white-space:nowrap; min-width:5.4rem; text-align:center; font-weight:500}
-.idmoves span{font-size:.82rem; line-height:1.4}
-
-/* ══════ MOOD BOARD ══════ */
-.board{margin-bottom:2.2rem; background:var(--card); border:2px solid var(--ink); border-radius:22px; overflow:hidden; box-shadow:var(--shadow)}
-.bh{display:flex; align-items:center; gap:.5rem; padding:.55rem .9rem; background:var(--ink); color:var(--ivory)}
-.bh .lb{font-family:var(--mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase}
-.bb{padding:clamp(.9rem,2.4vw,1.4rem); display:grid; gap:1rem}
-.strip{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0;
-  border:1.5px solid var(--hair); border-radius:14px; overflow:hidden}
-@media(max-width:1000px){ .strip{grid-template-columns:repeat(3,minmax(0,1fr))} }
-@media(max-width:660px){ .strip{grid-template-columns:repeat(2,minmax(0,1fr))} }
-.strip > div{padding:.6rem .7rem; border-right:1.5px solid var(--hair); border-bottom:1.5px solid var(--hair)}
-.strip > div:nth-child(5n){border-right:0}
-.strip > div:nth-child(n+6){border-bottom:0}
-@media(max-width:1000px){ .strip > div{border-right:1.5px solid var(--hair); border-bottom:1.5px solid var(--hair)}
-  .strip > div:nth-child(3n){border-right:0} .strip > div:nth-child(n+10){border-bottom:0} }
-.strip .why2{display:block; font-size:.78rem; color:var(--ink); font-weight:700; line-height:1.4; margin-top:.3rem;
-  border-top:1.5px dashed var(--hair); padding-top:.3rem}
-
-.strip .pop{display:block; font-family:var(--mono); font-size:.6rem; letter-spacing:.05em; color:var(--sky); margin:.1rem 0 .25rem}
-.strip .so{font-family:var(--mono); font-size:.55rem; letter-spacing:.11em; text-transform:uppercase; color:var(--coral); font-weight:500}
-.strip .th{display:block; margin-bottom:.45rem}
-.strip .th svg{display:block; width:100%; height:auto; border-radius:8px; border:1.5px solid var(--hair); background:var(--card)}
-.strip b{display:block; font-family:var(--disp); font-size:.98rem; font-weight:600; line-height:1.2}
-.strip span{display:block; font-size:.79rem; color:var(--muted); line-height:1.4; margin-top:.15rem}
-.bcols{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem}
-@media(max-width:760px){ .bcols{grid-template-columns:1fr} }
-.mlab{font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:.4rem}
-.chips{display:flex; flex-wrap:wrap; gap:.3rem}
-.chips span{font-size:.82rem; font-weight:600; border:1.5px solid var(--hair); border-radius:999px; padding:.2rem .65rem;
-  display:inline-flex; align-items:center; gap:.35rem}
-.chips svg{flex:none; color:var(--muted)}
-.chips span.new{border-color:var(--sky); color:var(--sky)}
-.facts{display:grid; gap:.35rem}
-.facts div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.6rem; align-items:baseline;
-  border-bottom:1.5px dashed var(--hair); padding-bottom:.3rem}
-.facts b{font-family:var(--disp); font-size:1.12rem; font-weight:600; white-space:nowrap}
-.facts span{font-size:.84rem; color:var(--muted); line-height:1.4}
-.keyline{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center}
-.keyline span{display:inline-flex; align-items:center; gap:.35rem; font-size:.76rem; font-weight:600; color:var(--muted)}
-.keyline i{width:13px; height:13px; border-radius:4px; border:1.5px solid var(--ink)}
-
-/* ══════ GROUP LIST ══════ */
-.groups{display:grid; gap:.1rem}
-.groups > div{display:grid; grid-template-columns:auto 7.4rem minmax(0,1fr); gap:.7rem; align-items:baseline;
-  padding:.55rem 0; border-bottom:1.5px dashed var(--hair)}
-@media(max-width:520px){ .groups > div{grid-template-columns:auto minmax(0,1fr)} .groups .gd{grid-column:1/-1} }
-.groups .gi{align-self:center; display:flex}
-.groups .gn2{font-weight:700; font-size:.9rem}
-.groups .gd{font-size:.88rem; color:var(--muted); line-height:1.45}
-
-/* ══════ GROWTH ══════ */
-.bars{display:grid; gap:.5rem}
-.bars .r{display:grid; grid-template-columns:4.6rem minmax(0,1fr) 4rem; gap:.6rem; align-items:center}
-.bars .yr{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; color:var(--muted)}
-.bars .bar{height:18px; border:2px solid var(--ink); border-radius:999px; overflow:hidden; background:var(--card)}
-.bars .bar i{display:block; height:100%; background:var(--ac); width:0; transition:width 1100ms var(--e)}
-.bars .pv{font-family:var(--mono); font-size:.72rem; font-weight:500; text-align:right}
-
-/* ══════ QUOTE ══════ */
-.qb{background:var(--ink); color:var(--ivory)}
-.qb .qi{padding:clamp(1.2rem,2.8vh,1.8rem) var(--gutter); display:grid; grid-template-columns:2rem minmax(0,1fr);
-  gap:.7rem; align-items:baseline; max-width:var(--maxw); margin:0 auto}
-@media(max-width:640px){ .qb .qi{grid-template-columns:1fr; gap:.1rem} }
-.qb .mrk{font-family:var(--disp); font-weight:400; font-size:2.2rem; line-height:.7; color:var(--butter)}
-.qb p{margin:0; font-family:var(--disp); font-weight:400; font-size:clamp(1.02rem,1.9vw,1.32rem); line-height:1.36}
-.qb .cap{display:block; margin-top:.35rem; font-family:var(--mono); font-size:.58rem; letter-spacing:.14em;
-  text-transform:uppercase; opacity:.7}
-.about{border-top:2px solid var(--ink); scroll-margin-top:80px; background:var(--ivory)}
-.about .ai{padding:2.9rem 0 2.9rem;
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:clamp(1.4rem,4vw,3rem)}
-.about h3{font-family:var(--disp); font-weight:500; font-size:1.15rem; margin:0 0 .5rem; letter-spacing:-.015em}
-.about p{margin:0 0 .7rem; color:var(--muted); max-width:46ch; font-size:.95rem}
-.chipset{display:flex; flex-wrap:wrap; gap:.3rem}
-.chipset span{font-size:.76rem; font-weight:600; color:var(--muted); border:1.5px solid var(--hair); border-radius:999px; padding:.2rem .6rem}
-.mail{font-family:var(--disp); font-weight:500; font-size:clamp(1.1rem,2.3vw,1.45rem); letter-spacing:-.012em;
-  position:relative; display:inline-block; z-index:0}
-.mail::after{content:""; position:absolute; left:-.06em; right:-.06em; bottom:.04em; height:.32em; background:var(--butter);
-  z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 380ms var(--e)}
-.mail:hover::after{transform:scaleX(1)}
-.lk a{display:flex; justify-content:space-between; padding:.45rem 0; border-bottom:1.5px solid var(--hair); font-weight:700}
-.lk a s{text-decoration:none; display:inline-block; transition:transform 240ms var(--es)}
-.lk a:hover{color:var(--cobalt)} .lk a:hover s{transform:translateX(5px)}
-.sig2{border-top:1.5px solid var(--hair); font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--muted); padding:1rem 0 2.4rem}
-.rv{opacity:0; transform:translateY(14px); transition:opacity 700ms var(--e), transform 700ms var(--e)}
-.rv.on{opacity:1; transform:none}
-@media (prefers-reduced-motion: reduce){ .rv{opacity:1; transform:none; transition:none} }
-
-/* ══════ DERIVATION LADDER ══════ */
-.lad{display:grid; gap:.34rem}
-.lad .st{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.6rem; align-items:baseline}
-.lad .op{font-family:var(--mono); font-size:.66rem; color:var(--muted); min-width:3.4rem; text-align:right; padding-top:.2rem}
-.lad .bx{background:var(--card); border:1.5px solid var(--hair); border-radius:10px; padding:.36rem .6rem}
-.lad .bx.hit{border-color:var(--ac); border-width:2px}
-.lad .bv{font-family:var(--disp); font-weight:600; font-size:1.06rem; line-height:1.2; display:block}
-.lad .bw{font-size:.79rem; color:var(--muted); line-height:1.4; display:block; margin-top:.1rem}
-.lad .bw b{color:var(--ink); font-weight:700}
-
-/* ══════ KEY GLOSS ══════ */
-.keygrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.3rem .7rem; margin-top:.4rem}
-.keygrid div{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.4rem; align-items:baseline}
-.keygrid i{width:13px; height:13px; border-radius:4px; border:1.5px solid var(--ink); align-self:center}
-.keygrid b{font-size:.78rem; font-weight:700; display:block}
-.keygrid span{font-size:.75rem; color:var(--muted); line-height:1.35; grid-column:2}
-
-/* ══════ NEW COMPONENTS ══════ */
-.newc{display:flex; flex-wrap:wrap; gap:.25rem; margin:.1rem 0 .5rem}
-.newc span{font-size:.72rem; font-weight:600; color:var(--ac); border:1.5px solid var(--ac);
-  border-radius:999px; padding:.1rem .5rem}
-.count{display:flex; align-items:center; gap:.45rem; font-family:var(--mono); font-size:.68rem; color:var(--muted)}
-.count b{color:var(--ink); font-weight:500}
-.count .track{flex:1; height:6px; border-radius:99px; background:var(--hair); overflow:hidden; min-width:60px}
-.count .track i{display:block; height:100%; background:var(--ac); width:0; transition:width 900ms var(--e)}
+/* ═══ ORIGINAL FIGURES (ported from ../city-planning.html, scoped to .orig) ═══ */
+/* from the old shared stylesheet */
+.orig :where(h3:not(.orig-block > h3)){font-family:var(--serif);font-weight:600;font-size:25px;line-height:32px;letter-spacing:-.01em}
+.orig :where(p:not(.orig-block > p)){font-size:19px;line-height:30px;max-width:var(--text)}
+.orig :where(p + p:not(.orig-block > p)){margin-top:var(--s4)}
+@media (max-width:719px){.orig :where(h3:not(.orig-block > h3)){font-size:17px;line-height:26px}.orig :where(p:not(.orig-block > p)){font-size:17px;line-height:27px}}
+/* the original page's own styles */
+.orig button{font:inherit;color:inherit}
+.orig :focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+.orig .row{border-top:2px solid var(--hair)}
+.orig .row.alt{background:color-mix(in srgb,var(--card) 62%,transparent)}
+.orig .pin{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(1.2rem,3.4vw,2.6rem);align-items:start;padding:2.2rem 0}
+.orig #rows > .row:nth-of-type(even) .demo,.orig .row.flip .demo{order:2}
+.orig .txt{min-width:0}
+.orig .txt h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.35rem,2.7vw,1.85rem);letter-spacing:-.015em;margin:0 0 .4rem;line-height:1.06}
+.orig .txt > p{margin:0 0 .8rem;font-size:.98rem}
+.orig .tw{display:grid;gap:.5rem;margin:0 0 .9rem}
+.orig .tw div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.6rem;align-items:baseline}
+.orig .tw .o-k{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);background:var(--ac);padding:.18rem .45rem;white-space:nowrap;min-width:5.4rem;text-align:center}
+.orig .tw .o-k.g{background:transparent;color:var(--muted);border:1.5px solid var(--hair)}
+.orig .tw p{margin:0;font-size:.94rem}
+.orig .ledger{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;color:var(--muted);border-top:1.5px dashed var(--hair);padding-top:.5rem;display:flex;gap:1rem;flex-wrap:wrap}
+.orig .ledger b{color:var(--ink);font-weight:500}
+.orig .demo{min-width:0}
+.orig .dcard{background:var(--card);border:2px solid var(--ac);overflow:hidden;transition:transform 320ms var(--e)}
+.orig .demo:hover .dcard{transform:translateY(-4px)}
+.orig .dhead{display:flex;align-items:center;gap:.5rem;padding:.55rem .9rem;background:var(--ac);color:var(--paper)}
+.orig .dhead .lb{font-family:var(--mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.orig .dhead .rt{margin-left:auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:var(--paper);color:var(--ac);padding:.16rem .55rem;font-weight:500}
+.orig .dbody{padding:.85rem;background:linear-gradient(165deg, color-mix(in srgb,var(--ac) 6%,var(--card)), var(--sunk) 78%)}
+.orig .dbody svg{width:100%;height:auto;display:block}
+.orig .o-tabs button svg{width:13px;height:13px;display:inline-block;border-radius:0;flex:none}
+.orig .dfoot{font-size:.9rem;min-height:4.8em;color:color-mix(in srgb,var(--ink) 80%,transparent);padding:.7rem .95rem .85rem;margin:0;border-top:1px solid var(--hair);background:var(--card)}
+.orig .dfoot b{color:var(--ink);font-weight:600}
+.orig .o-tabs{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.6rem}
+.orig .o-tabs button{display:inline-flex;align-items:center;gap:.3rem;line-height:1.6;border:1.5px solid var(--hair);background:var(--card);padding:.24rem .72rem;font-size:.78rem;font-weight:600;cursor:pointer;transition:border-color 180ms var(--e), background 180ms var(--e), transform 120ms var(--e)}
+.orig .o-tabs button:hover{border-color:var(--ac);transform:translateY(-1px)}
+.orig .o-tabs button svg{flex:none;opacity:.65}
+.orig .o-tabs button[aria-current="true"] svg{opacity:1}
+.orig .o-tabs button[aria-current="true"]{background:var(--ac);border-color:var(--ac);color:var(--paper)}
+.orig .cx{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:.7rem}
+.orig .cxl{display:grid;gap:.16rem;align-content:start}
+.orig .cxb{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"i n" "b c";gap:.1rem .4rem;align-items:center;border:1.5px solid transparent;background:transparent;padding:.26rem .4rem;cursor:pointer;text-align:left;transition:background 180ms var(--e), border-color 180ms var(--e)}
+.orig .cxb:hover{background:var(--card)}
+.orig .cxb[aria-current="true"]{background:var(--card);border-color:var(--gc)}
+.orig .cxb .ci{grid-area:i;color:var(--gc);display:flex}
+.orig .cxb .cn{grid-area:n;font-size:.8rem;font-weight:600;line-height:1.2}
+.orig .cxb .cb{grid-area:b;grid-column:1/-1;height:5px;background:var(--hair);overflow:hidden;margin-top:.16rem}
+.orig .cxb .cb i{display:block;height:100%;background:var(--gc)}
+.orig .cxb .cc{display:none}
+.orig .cxr{background:var(--card);border:1.5px solid var(--gc);padding:.6rem .7rem;display:grid;gap:.4rem;align-content:start;min-height:11.5em}
+.orig .cxr .crule{font-size:.82rem;font-weight:600;line-height:1.35}
+.orig .citems{display:flex;flex-wrap:wrap;gap:.22rem}
+.orig .citems span{font-size:.72rem;font-weight:600;color:var(--muted);border:1.5px solid var(--hair);padding:.1rem .45rem}
+.orig .cxr .cui{font-size:.78rem;font-weight:600;color:var(--gc);border-top:1.5px dashed var(--hair);padding-top:.35rem}
+.orig .board{margin-bottom:2.2rem;background:var(--card);border:2px solid var(--ink);overflow:hidden}
+.orig .bh{display:flex;align-items:center;gap:.5rem;padding:.55rem .9rem;background:var(--ink);color:var(--ivory)}
+.orig .bh .lb{font-family:var(--mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
+.orig .bb{padding:clamp(.9rem,2.4vw,1.4rem);display:grid;gap:1rem}
+.orig .strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1.5px solid var(--hair);overflow:hidden}
+.orig .strip > div{padding:.6rem .7rem;border-right:1.5px solid var(--hair);border-bottom:1.5px solid var(--hair)}
+.orig .strip > div:nth-child(5n){border-right:0}
+.orig .strip > div:nth-child(n+6){border-bottom:0}
+.orig .strip .why2{display:block;font-size:.78rem;color:var(--ink);font-weight:600;line-height:1.4;margin-top:.3rem;border-top:1.5px dashed var(--hair);padding-top:.3rem}
+.orig .strip .pop{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;color:var(--sky);margin:.1rem 0 .25rem}
+.orig .strip .so{font-family:var(--mono);font-size:.55rem;letter-spacing:.11em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.orig .strip .th{display:block;margin-bottom:.45rem}
+.orig .strip .th svg{display:block;width:100%;height:auto;border:1.5px solid var(--hair);background:var(--card)}
+.orig .strip b{display:block;font-family:var(--disp);font-size:.98rem;font-weight:600;line-height:1.2}
+.orig .strip span{display:block;font-size:.79rem;color:var(--muted);line-height:1.4;margin-top:.15rem}
+.orig .mlab{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.4rem}
+.orig .groups{display:grid;gap:.1rem}
+.orig .groups > div{display:grid;grid-template-columns:auto 7.4rem minmax(0,1fr);gap:.7rem;align-items:baseline;padding:.55rem 0;border-bottom:1.5px dashed var(--hair)}
+.orig .groups .gi{align-self:center;display:flex}
+.orig .groups .gn2{font-weight:600;font-size:.9rem}
+.orig .groups .gd{font-size:.88rem;color:var(--muted);line-height:1.45}
+.orig .bars{display:grid;gap:.5rem}
+.orig .bars .r{display:grid;grid-template-columns:4.6rem minmax(0,1fr) 4rem;gap:.6rem;align-items:center}
+.orig .bars .yr{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted)}
+.orig .bars .bar{height:18px;border:2px solid var(--ink);overflow:hidden;background:var(--card)}
+.orig .bars .bar i{display:block;height:100%;background:var(--ac);width:0;transition:width 1100ms var(--e)}
+.orig .bars .pv{font-family:var(--mono);font-size:.72rem;font-weight:500;text-align:right}
+.orig .rv{opacity:0;transform:translateY(14px);transition:opacity 700ms var(--e), transform 700ms var(--e)}
+.orig .rv.on{opacity:1;transform:none}
+.orig .lad{display:grid;gap:.34rem}
+.orig .lad .st{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.6rem;align-items:baseline}
+.orig .lad .op{font-family:var(--mono);font-size:.66rem;color:var(--muted);min-width:3.4rem;text-align:right;padding-top:.2rem}
+.orig .lad .bx{background:var(--card);border:1.5px solid var(--hair);padding:.36rem .6rem}
+.orig .lad .bx.hit{border-color:var(--ac);border-width:2px}
+.orig .lad .bv{font-family:var(--disp);font-weight:600;font-size:1.06rem;line-height:1.2;display:block}
+.orig .lad .bw{font-size:.79rem;color:var(--muted);line-height:1.4;display:block;margin-top:.1rem}
+.orig .lad .bw b{color:var(--ink);font-weight:600}
+.orig .keygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.3rem .7rem;margin-top:.4rem}
+.orig .keygrid div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4rem;align-items:baseline}
+.orig .keygrid i{width:13px;height:13px;border:1.5px solid var(--ink);align-self:center}
+.orig .keygrid b{font-size:.78rem;font-weight:600;display:block}
+.orig .keygrid span{font-size:.75rem;color:var(--muted);line-height:1.35;grid-column:2}
+.orig .newc{display:flex;flex-wrap:wrap;gap:.25rem;margin:.1rem 0 .5rem}
+.orig .newc span{font-size:.72rem;font-weight:600;color:var(--ac);border:1.5px solid var(--ac);padding:.1rem .5rem}
+.orig .count{display:flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.orig .count b{color:var(--ink);font-weight:500}
+.orig .count .track{flex:1;height:6px;background:var(--hair);overflow:hidden;min-width:60px}
+.orig .count .track i{display:block;height:100%;background:var(--ac);width:0;transition:width 900ms var(--e)}
+@media (max-width:900px){.orig .pin{grid-template-columns:1fr}.orig #rows > .row:nth-of-type(even) .demo,.orig .row.flip .demo{order:0}}
+@media (max-width:560px){.orig .dfoot{min-height:6.7em}.orig .cx{grid-template-columns:1fr}}
+@media (max-width:1000px){.orig .strip{grid-template-columns:repeat(3,minmax(0,1fr))}.orig .strip > div{border-right:1.5px solid var(--hair);border-bottom:1.5px solid var(--hair)}.orig .strip > div:nth-child(3n){border-right:0}.orig .strip > div:nth-child(n+10){border-bottom:0}}
+@media (max-width:660px){.orig .strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.orig .groups > div{grid-template-columns:auto minmax(0,1fr)}.orig .groups .gd{grid-column:1/-1}}
+@media (prefers-reduced-motion: reduce){.orig .rv{opacity:1;transform:none;transition:none}}
+/* port fix: ?static=1 shows the revealed end state */
+html.static .orig .rv{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<nav class="nav" id="nav"><div class="in r1">
-  <a class="mark" href="index.html"><i></i>Madhumitha D V</a>
-  <span class="here">Senior Product Manager &middot; fintech &middot; Milan</span>
-  <span class="navlnk">
-    <a href="index.html">All work</a>
-    <a href="#about">About</a>
-    <a class="cta" href="mailto:dvmadhumitha2021@outlook.com"><i></i>Say hi</a>
-  </span>
-</div></nav>
+<a class="skip" href="#lab">Skip to the drawing</a>
 
-<header class="hero" id="top"><div class="in">
-  <div class="blob"></div>
-  <div class="hi">
-    <div>
-      <span class="eyebrow"><i></i>A design-thinking exercise</span>
-      <h1>Our mentor gave us a blank site <span class="hl">and asked us to plan a city</span></h1>
-      <p class="lede">An exercise, nothing more &mdash; no product, no users, no brief. It turned out to be far less about buildings than about how you group things, so I finished it properly at home.</p>
-      <div class="ledger" style="margin-top:.2rem"><span>The exercise &mdash; <b>plan a city for 10 lakh people, and decide where every one of its parts goes.</b></span></div>
-    </div>
-    <div class="demo"><div class="dcard">
-      <div class="dhead"><span class="lb">Where it started</span><span class="rt">Day one</span></div>
-      <div class="dbody" id="sketch"></div>
-      <p class="dfoot">The first attempt: everything important in the middle, homes around it. <b>No density, no distances, no groupings</b> &mdash; those had to be earned.</p>
-    </div></div>
-  </div>
-</div></header>
+<header class="top">
+  <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
+  <nav>
+    <a class="keep" href="index.html#work">Work</a>
+    <a href="index.html#method">Method</a>
+    <a href="index.html#about">About</a>
+    <a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a>
+  </nav>
+</header>
 
 <main>
 
-<!-- ═══ REFERENCE CITIES + IDENTITY ═══ -->
-<section class="band t2" id="cities"><div class="in">
-  <div class="sechead rv" style="--sk:var(--coral)">
-    <span class="k">Where I looked first</span>
-    <h2>Every city is known for something, and it shows up in the plan</h2>
-    <p>Ten places, each drawn as the thing it is known for &mdash; and what that thing did to its plan.</p>
+<header class="phead">
+  <div class="in">
+    <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Cities · Case study</span></div>
+    <h1 class="reveal" style="--d:.05s">City Planning Breakdown</h1>
+    <p class="q reveal" style="--d:.1s">Group by what a thing is, or by how often someone actually goes there?</p>
+    <p class="s reveal" style="--d:.15s">A design thinking exercise with a mentor: an empty site, ten lakh people, and every part of a city to place. I finished it properly afterwards. The plan below is one drawing; switch its layers on and off to see what each decision added.</p>
+    <dl class="four reveal" style="--d:.2s">
+      <div><dt>Stopped at</dt><dd>A blank site, one number, and no way to tell a good plan from a bad one.</dd></div>
+      <div><dt>Noticed</dt><dd>Wind and water both point one way. They meet at one corner.</dd></div>
+      <div><dt>Tradeoff</dt><dd>Every layout is worse at something. Which edge case can you live with?</dd></div>
+      <div class="dec"><dt>Decided</dt><dd>Two lines, seven districts, fifty five cells. One placement rule each.</dd></div>
+    </dl>
   </div>
+</header>
+
+<!-- ═══ THE SHEET: layers ═══ -->
+<section class="lab" id="lab" aria-label="The plan, layer by layer">
+  <div class="in"><div class="frame sheet reveal">
+    <div class="bench">
+      <span class="cap"><b>Fig. 1</b> · The plan, layer by layer <span id="capn">· 3 of 7 layers on</span></span>
+      <div class="ctl-row" id="layers" role="group" aria-label="Layers">
+        <button class="tog" type="button" data-layer="forces" aria-pressed="true"><i></i>Site forces</button>
+        <button class="tog" type="button" data-layer="needs" aria-pressed="false"><i></i>Needs</button>
+        <button class="tog" type="button" data-layer="drafts" aria-pressed="false"><i></i>Drafts</button>
+        <button class="tog" type="button" data-layer="lines" aria-pressed="true"><i></i>Two lines</button>
+        <button class="tog" type="button" data-layer="districts" aria-pressed="true"><i></i>Districts</button>
+        <button class="tog" type="button" data-layer="civic" aria-pressed="false"><i></i>Civic core</button>
+        <button class="tog" type="button" data-layer="growth" aria-pressed="false"><i></i>Growth</button>
+      </div>
+      <div class="drafts" id="drafts" hidden role="group" aria-label="The four drafts, set aside">
+        <button type="button" data-draft="zoning"><svg class="d" viewBox="0 0 120 90" aria-hidden="true"><rect class="lt" x="6" y="6" width="108" height="78"/><rect class="tint" x="6" y="6" width="108" height="20"/><rect class="tint" x="6" y="46" width="108" height="20"/><text class="tm" x="10" y="20" style="font-size:7px">Homes</text><text class="tm" x="10" y="40" style="font-size:7px">Shops</text><text class="tm" x="10" y="60" style="font-size:7px">Work</text><text class="tm" x="10" y="80" style="font-size:7px">Works</text></svg><span>Pure zoning</span></button>
+        <button type="button" data-draft="park"><svg class="d" viewBox="0 0 120 90" aria-hidden="true"><rect class="lt" x="6" y="6" width="108" height="78"/><circle cx="60" cy="45" r="22" fill="#7FB09A" opacity=".5"/><path class="lt" d="M6 45 H38 M82 45 H114 M60 6 V23 M60 67 V84"/></svg><span>One central park</span></button>
+        <button type="button" data-draft="radial"><svg class="d" viewBox="0 0 120 90" aria-hidden="true"><rect class="lt" x="6" y="6" width="108" height="78"/><circle class="lt" cx="60" cy="45" r="14"/><circle class="lt" cx="60" cy="45" r="30"/><path class="lt" d="M60 6 V84 M6 45 H114 M22 14 L98 76 M98 14 L22 76"/></svg><span>Radial</span></button>
+        <button type="button" data-draft="hub"><svg class="d" viewBox="0 0 120 90" aria-hidden="true"><rect class="lt" x="6" y="6" width="108" height="78"/><rect class="bad" x="42" y="30" width="36" height="30"/><path class="lt" d="M6 45 H42 M78 45 H114"/><text class="tm" x="46" y="49" style="font-size:7px">Works</text></svg><span>Industry at the hub</span></button>
+      </div>
+
+      <svg class="d go" id="plan" viewBox="0 0 760 620" role="img" aria-label="A plan for a city of one million. Layers can be switched: the wind and the river meeting in the south east corner; a plot of land uses by how often people visit against how much land they take; four earlier drafts; two transit lines crossing once; seven districts of eight cells inside a green belt; the civic core with the hospital on the interchange; and the growth moves for the next twenty years.">
+        <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#E7ECF0" stroke-width=".8" opacity=".5"/></pattern></defs>
+        <!-- the site -->
+        <rect class="l" x="40" y="40" width="680" height="540"/>
+        <text class="tm" x="40" y="30">The site · 680 × 540 · north up</text>
+        <line class="dim" x1="40" y1="600" x2="720" y2="600"/><line class="dim" x1="40" y1="594" x2="40" y2="606"/><line class="dim" x1="720" y1="594" x2="720" y2="606"/>
+        <text class="tm" x="380" y="616" text-anchor="middle">about 11 km across · ten lakh people</text>
+        <!-- works corner, always drawn, because the site drew it -->
+        <rect class="hatch" x="604" y="486" width="92" height="74"/><rect class="lt" x="604" y="486" width="92" height="74"/>
+        <text class="tm" x="696" y="478" text-anchor="end">Works · downwind</text>
+
+        <!-- LAYER: forces -->
+        <g class="layer on" data-layer="forces">
+          <path class="river" d="M56 70 C 120 140, 200 260, 300 390 S 560 500, 704 510"/>
+          <text class="tm" x="64" y="62">River · in from the north west</text>
+          <g class="wind"><path d="M60 150 H180"/><path d="M60 190 H200"/><path d="M60 230 H180"/></g>
+          <path class="s3" d="M180 146 l10 4 -10 4 z"/><path class="s3" d="M200 186 l10 4 -10 4 z"/><path class="s3" d="M180 226 l10 4 -10 4 z"/>
+          <text class="tm" x="60" y="140">Wind · west → east</text>
+          <path class="a dr" d="M300 390 L 560 500 L 640 520"/>
+          <circle class="af" cx="650" cy="523" r="3.5"/>
+          <text class="ta" x="420" y="552">They agree in one corner.</text><text class="ta" x="420" y="566">The works go there first.</text>
+        </g>
+
+        <!-- LAYER: needs (inset plot) -->
+        <g class="layer" data-layer="needs">
+          <rect class="f" x="470" y="56" width="236" height="200"/>
+          <text class="tm" x="482" y="76">How often someone goes ↑</text>
+          <text class="tm" x="700" y="246" text-anchor="end">How much room it takes →</text>
+          <path class="lt" d="M494 232 V88 M494 232 H690"/>
+          <rect class="f3" x="500" y="92" width="44" height="14"/><text class="t" x="504" y="102" style="font-size:8px">Corner shop</text>
+          <rect class="f3" x="520" y="116" width="52" height="16"/><text class="t" x="524" y="127" style="font-size:8px">Metro stop</text>
+          <rect class="f3" x="548" y="142" width="58" height="20"/><text class="t" x="552" y="155" style="font-size:8px">School</text>
+          <rect class="f3" x="590" y="172" width="70" height="24"/><text class="t" x="594" y="187" style="font-size:8px">Park</text>
+          <rect class="at" x="612" y="196" width="40" height="26"/><text class="ta" x="616" y="212" style="font-size:8px">Hospital</text>
+          <rect class="f3" x="640" y="206" width="56" height="24"/><text class="t" x="644" y="221" style="font-size:8px">Stadium</text>
+          <text class="ta" x="482" y="262" style="font-size:9px">Daily and small, top left.</text><text class="ta" x="482" y="274" style="font-size:9px">Rare and large, bottom right.</text>
+        </g>
+
+        <!-- LAYER: drafts (each overlay toggled from the small multiples) -->
+        <g class="layer" data-layer="drafts">
+          <g class="draft" data-draft="zoning">
+            <rect class="tint" x="40" y="40" width="680" height="110"/><rect class="tint" x="40" y="260" width="680" height="110"/><rect class="tint" x="40" y="470" width="680" height="110"/>
+            <text class="tm" x="52" y="60">Homes</text><text class="tm" x="52" y="170">Shops · schools</text><text class="tm" x="52" y="280">Work</text><text class="tm" x="52" y="390">Parks</text>
+            <rect class="bad" x="52" y="404" width="300" height="20"/><text class="ta" x="58" y="418" style="font-size:9px">Every daily errand crosses a band</text>
+          </g>
+          <g class="draft" data-draft="park">
+            <circle cx="380" cy="310" r="130" fill="#7FB09A" opacity=".28"/><circle class="lt" cx="380" cy="310" r="130"/>
+            <path class="bad" d="M120 180 C 200 120, 560 120, 640 180" fill="none"/><text class="ta" x="300" y="130" style="font-size:9px">Most trips go round it</text>
+          </g>
+          <g class="draft" data-draft="radial">
+            <circle class="lt" cx="380" cy="310" r="90"/><circle class="lt" cx="380" cy="310" r="190"/>
+            <path class="lt" d="M380 40 V580 M40 310 H720 M140 90 L620 530 M620 90 L140 530"/>
+            <rect class="bad" x="356" y="286" width="48" height="48"/><text class="ta" x="300" y="420" style="font-size:9px">Next door, via the busiest point</text>
+          </g>
+          <g class="draft" data-draft="hub">
+            <rect class="bad" x="320" y="250" width="120" height="120"/><text class="ta" x="328" y="316" style="font-size:9px">Works at the rail gate</text>
+            <g class="wind"><path d="M460 290 H640"/><path d="M460 330 H640"/></g>
+            <text class="ta" x="470" y="280" style="font-size:9px">Upwind of everyone</text>
+          </g>
+        </g>
+
+        <!-- LAYER: lines -->
+        <g class="layer on" data-layer="lines">
+          <line class="l2 dr" x1="56" y1="310" x2="704" y2="310"/>
+          <line class="l2 dr d1" x1="380" y1="56" x2="380" y2="564"/>
+          <text class="t" x="60" y="302">Line A · with the wind</text>
+          <text class="t" x="388" y="70">Line B</text>
+          <g class="s"><circle cx="140" cy="310" r="3"/><circle cx="240" cy="310" r="3"/><circle cx="520" cy="310" r="3"/><circle cx="620" cy="310" r="3"/><circle cx="380" cy="150" r="3"/><circle cx="380" cy="470" r="3"/></g>
+          <circle class="l" cx="380" cy="310" r="7" style="fill:var(--navy)"/>
+          <text class="tm" x="392" y="328">Interchange · most reachable, most contested</text>
+        </g>
+
+        <!-- LAYER: districts -->
+        <g class="layer on" data-layer="districts">
+          <rect class="belt" x="56" y="56" width="648" height="508"/>
+          <text class="tm" x="64" y="580" style="fill:#7FB09A">Green belt · kept empty, in writing</text>
+          <g class="cells">
+            <!-- D1 above A, left of B -->
+            <rect class="cell" x="140" y="236" width="34" height="34"/><rect class="cell" x="180" y="236" width="34" height="34"/><rect class="cell" x="220" y="236" width="34" height="34"/><rect class="cell" x="260" y="236" width="34" height="34"/>
+            <rect class="cell" x="140" y="272" width="34" height="34"/><rect class="cell" x="180" y="272" width="34" height="34"/><rect class="cell" x="220" y="272" width="34" height="34"/><rect class="cell" x="260" y="272" width="34" height="34"/>
+            <!-- D2 above A, right of B -->
+            <rect class="cell" x="466" y="236" width="34" height="34"/><rect class="cell" x="506" y="236" width="34" height="34"/><rect class="cell" x="546" y="236" width="34" height="34"/><rect class="cell" x="586" y="236" width="34" height="34"/>
+            <rect class="cell" x="466" y="272" width="34" height="34"/><rect class="cell" x="506" y="272" width="34" height="34"/><rect class="cell" x="546" y="272" width="34" height="34"/><rect class="cell" x="586" y="272" width="34" height="34"/>
+            <!-- D3 below A, left -->
+            <rect class="cell" x="140" y="316" width="34" height="34"/><rect class="cell" x="180" y="316" width="34" height="34"/><rect class="cell" x="220" y="316" width="34" height="34"/><rect class="cell" x="260" y="316" width="34" height="34"/>
+            <rect class="cell" x="140" y="352" width="34" height="34"/><rect class="cell" x="180" y="352" width="34" height="34"/><rect class="cell" x="220" y="352" width="34" height="34"/><rect class="cell" x="260" y="352" width="34" height="34"/>
+            <!-- D4 below A, right -->
+            <rect class="cell" x="466" y="316" width="34" height="34"/><rect class="cell" x="506" y="316" width="34" height="34"/><rect class="cell" x="546" y="316" width="34" height="34"/><rect class="cell" x="586" y="316" width="34" height="34"/>
+            <rect class="cell" x="466" y="352" width="34" height="34"/><rect class="cell" x="506" y="352" width="34" height="34"/><rect class="cell" x="546" y="352" width="34" height="34"/><rect class="cell" x="586" y="352" width="34" height="34"/>
+            <!-- D5 left of B, top -->
+            <rect class="cell" x="304" y="70" width="34" height="34"/><rect class="cell" x="340" y="70" width="34" height="34"/>
+            <rect class="cell" x="304" y="110" width="34" height="34"/><rect class="cell" x="340" y="110" width="34" height="34"/>
+            <rect class="cell" x="304" y="150" width="34" height="34"/><rect class="cell" x="340" y="150" width="34" height="34"/>
+            <rect class="cell" x="304" y="190" width="34" height="34"/><rect class="cell" x="340" y="190" width="34" height="34"/>
+            <!-- D6 right of B, top -->
+            <rect class="cell" x="388" y="70" width="34" height="34"/><rect class="cell" x="424" y="70" width="34" height="34"/>
+            <rect class="cell" x="388" y="110" width="34" height="34"/><rect class="cell" x="424" y="110" width="34" height="34"/>
+            <rect class="cell" x="388" y="150" width="34" height="34"/><rect class="cell" x="424" y="150" width="34" height="34"/>
+            <rect class="cell" x="388" y="190" width="34" height="34"/><rect class="cell" x="424" y="190" width="34" height="34"/>
+            <!-- D7 left of B, bottom -->
+            <rect class="cell" x="304" y="400" width="34" height="34"/><rect class="cell" x="340" y="400" width="34" height="34"/>
+            <rect class="cell" x="304" y="440" width="34" height="34"/><rect class="cell" x="340" y="440" width="34" height="34"/>
+            <rect class="cell" x="304" y="480" width="34" height="34"/><rect class="cell" x="340" y="480" width="34" height="34"/>
+            <rect class="cell" x="304" y="520" width="34" height="34"/><rect class="cell" x="340" y="520" width="34" height="34"/>
+          </g>
+          <line class="dim" x1="140" y1="226" x2="174" y2="226"/><line class="dim" x1="140" y1="221" x2="140" y2="231"/><line class="dim" x1="174" y1="221" x2="174" y2="231"/>
+          <text class="tm" x="140" y="208">One cell · 1.6 km</text><text class="tm" x="140" y="222">about 18,000</text>
+          <text class="tm" x="466" y="398">One district · 8 cells</text><text class="tm" x="466" y="412">about 1.45 lakh</text>
+          <!-- stadium at the far end of line A -->
+          <rect class="f3" x="640" y="286" width="56" height="48"/><text class="tm" x="696" y="278" text-anchor="end">Stadium</text>
+        </g>
+
+        <!-- LAYER: civic core -->
+        <g class="layer" data-layer="civic">
+          <rect class="at" x="352" y="282" width="56" height="56"/>
+          <circle class="af" cx="380" cy="310" r="5"/>
+          <path class="a dr" d="M408 310 L 470 210 L 500 210"/>
+          <text class="ta" x="506" y="206">District hospital, on the interchange</text>
+          <text class="tm" x="506" y="222">with the university, the courts,</text>
+          <text class="tm" x="506" y="236">the hall, the registry, the library.</text><text class="tm" x="506" y="250">One of each.</text>
+          <g class="af"><circle cx="110" cy="130" r="3"/><circle cx="630" cy="130" r="3"/><circle cx="110" cy="500" r="3"/></g>
+          <text class="tm" x="118" y="496">Fire · ambulance · police</text><text class="tm" x="118" y="510">eight minutes to any address</text>
+        </g>
+
+        <!-- LAYER: growth -->
+        <g class="layer" data-layer="growth">
+          <rect class="dense" x="136" y="232" width="162" height="78"/><rect class="dense" x="462" y="232" width="162" height="78"/><rect class="dense" x="384" y="66" width="78" height="162"/>
+          <text class="ta" x="140" y="230" style="font-size:9px">1 · Densify by a third · +1.2 lakh</text>
+          <line class="l2" x1="704" y1="310" x2="752" y2="310" stroke-dasharray="8 6"/>
+          <g class="cells"><rect class="cell new" x="640" y="352" width="34" height="34"/><rect class="cell new" x="680" y="352" width="34" height="34"/><rect class="cell new" x="640" y="392" width="34" height="34"/><rect class="cell new" x="680" y="392" width="34" height="34"/></g>
+          <text class="ta" x="600" y="446" style="font-size:9px">2 · Extend both lines east,</text><text class="ta" x="600" y="457" style="font-size:9px">a district at a time</text>
+          <line class="lt dash" x1="200" y1="56" x2="200" y2="140"/><text class="tm" x="206" y="90">3 · Past 16 lakh,</text><text class="tm" x="206" y="104">a third line north</text>
+          <text class="ta" x="720" y="30" text-anchor="end">10.0 → 12.2 → 14.9 lakh · year 0, 10, 20 · at 2% a year</text>
+        </g>
+      </svg>
+
+      <div class="readout" id="readout">
+        <div><b id="r-people">10 lakh</b><small>People · <span id="r-year">year 0</span></small></div>
+        <div><b>2</b><small>Lines · crossing once</small></div>
+        <div><b id="r-districts">7</b><small>Districts · 8 cells each</small></div>
+        <div><b id="r-cells">55</b><small>Cells · 800 m to a stop</small></div>
+        <div><b class="hot">1</b><small>Hospital · on the interchange</small></div>
+      </div>
+    </div>
+
+    <aside class="notes" id="notes">
+      <span class="n" id="n-k">The plan</span>
+      <h2 id="n-h">Two lines, seven districts, fifty five cells.</h2>
+      <p id="n-p">Switch the layers to see what each decision added, and in what order. The site came first, the lines second, and everything people visit often sits a short walk from a stop.</p>
+      <p class="dec" id="n-d"><b>Decided</b>Transit first. The plan hangs off the lines, not the other way round.</p>
+    </aside>
+  </div></div>
+</section>
+
+<!-- ═══ FROM THE ORIGINAL SHEET ═══ -->
+<section class="originals" id="originals"><div class="in">
+  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The working drawings, as first drawn</h2></div><p>Ten reference cities, the derivation, the four drafts, the eight clusters, the plan that was kept, its growth, and what it changed on a screen. Tap a cluster; zoom into the plan.</p></div>
+  <div class="orig">
+    <div class="orig-block"><span class="k">Fig. 2 · Where I looked first</span><h3>Every city is known for something, and it shows up in the plan</h3><p>Ten places, each drawn as the thing it is known for, and what that thing did to its plan.</p>
   <div class="board rv">
     <div class="bh"><span class="lb">Reference board</span></div>
     <div class="bb">
       <div>
-        <span class="mlab">Read this first &mdash; the six fills every plan on this page uses</span>
+        <span class="mlab">Read this first. The six fills every plan on this page uses</span>
         <div class="keygrid" id="keygrid"></div>
         <p style="font-size:.82rem; color:var(--muted); margin:.5rem 0 0; max-width:78ch">These are not zoning categories. Zoning sorts land by what sits on it; these came out of sorting by who uses a thing and how often they go.</p>
       </div>
       <div class="strip" id="refs"></div>
     </div>
   </div>
-</div>
-</section>
-
-<!-- ═══ THE NUMBERS ═══ -->
-<section class="band" id="brief"><div class="in">
-  <div class="sechead rv" style="--sk:var(--sky)">
-    <span class="k">The brief</span>
-    <h2>One number chosen, everything else derived from it</h2>
-    <p>I picked the population. Everything else follows from it, and every step is checked against a real city.
-  </div>
-</div>
-  <div class="row alt"><div class="in pin rv" style="--ac:var(--sky)">
+    </div>
+    <div class="orig-block"><span class="k">Fig. 3 · The brief</span><h3>One number chosen, everything else derived from it</h3><p>I picked the population. Everything else follows from it, and every step is checked against a real city.</p>
+  <div class="row alt flip"><div class="pin rv" style="--ac:var(--sky)">
     <div class="demo"><div class="dcard">
       <div class="dhead"><span class="lb">How the brief was derived</span><span class="rt">Six steps</span></div>
       <div class="dbody"><div class="lad" id="ladder"></div></div>
@@ -363,71 +377,60 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
     </div></div>
     <div class="txt">
       <h3>So: where does a city put its hospital?</h3>
-      <p>India's public health standards size facilities by population, which turns the argument into arithmetic: a sub-centre per ten thousand, a primary health centre per fifty thousand, a community health centre per two lakh, a sub-divisional hospital per five to six lakh. A district hospital does not appear until ten lakh.</p>
+      <p>India's public health standards size facilities by population, which turns the argument into arithmetic: a subcentre per ten thousand, a primary health centre per fifty thousand, a community health centre per two lakh, a subdivisional hospital per five to six lakh. A district hospital does not appear until ten lakh.</p>
       <div class="tw">
-        <div><span class="k">At 10 lakh</span><p>One district hospital, two sub-divisional hospitals, five community health centres, twenty urban primary health centres and about a hundred sub-centres. A whole hierarchy, not a single building.</p></div>
-        <div><span class="k g">Which means</span><p>The answer is a threshold before it is a place &mdash; and it is five different answers at five different tiers. Where each one goes comes much later, and turns out to be the easy part.</p></div>
+        <div><span class="o-k">At 10 lakh</span><p>One district hospital, two subdivisional hospitals, five community health centres, twenty urban primary health centres and about a hundred subcentres. A whole hierarchy, not a single building.</p></div>
+        <div><span class="o-k g">Which means</span><p>The answer is a threshold before it is a place, and it is five different answers at five different tiers. Where each one goes comes much later, and turns out to be the easy part.</p></div>
       </div>
       <div class="ledger"><span>Sources: <b>IPHS 2022 norms</b></span><span>Density check: <b>Berlin, Cambridge</b></span></div>
     </div>
   </div></div>
-</section>
-
-<!-- ═══ ITERATIONS ═══ -->
-<section class="band" id="drafts"><div class="in">
-  <div class="sechead rv" style="--sk:var(--cobalt)">
-    <span class="k">Working it out</span>
-    <h2>Each drawing asked a question, and left me with more to place</h2>
-    <p>Each failure forced me to name what was inside the thing that failed. Eight items became about seventy, and the groupings appeared along the way.</p>
-  </div>
-</div><div id="rows"></div></section>
-
-<!-- ═══ CLUSTERING ═══ -->
-<section class="band t2" id="clustering"><div class="in">
-  <div class="sechead rv" style="--sk:var(--coral)">
-    <span class="k">The method</span>
-    <h2>Seventy things is not a list you can place</h2>
-    <p>Six loose groupings that overlapped was not a plan. Sorting by behaviour rather than by category is what tidied them into eight.</p>
-  </div>
-</div>
-  <div class="row"><div class="in pin rv" style="--ac:var(--coral)">
+    </div>
+    <div class="orig-block"><span class="k">Fig. 4 · Working it out</span><h3>Each drawing asked a question, and left me with more to place</h3><p>Each failure forced me to name what was inside the thing that failed. Eight items became about seventy, and the groupings appeared along the way.</p>
+  <div class="row flip"><div class="pin rv" style="--ac:var(--ink-2)">
+    <div class="demo"><div class="dcard">
+      <div class="dhead"><span class="lb">Day one &middot; Everything in the middle</span><span class="rt">no groupings</span></div>
+      <div class="dbody" id="sketch"></div>
+      <p class="dfoot">An empty site, and eight things a city needs. <b>No density, no distances, no grouping.</b></p>
+    </div></div>
+    <div class="txt">
+      <h3>Everything in the middle</h3>
+      <p>The first drawing: homes round the edge, a hospital, a school, shops and offices in one circle in the middle, a park in a corner, industry in another, one road along the bottom.</p>
+    </div>
+  </div></div>
+<div id="rows"></div>
+    </div>
+    <div class="orig-block"><span class="k">Fig. 5 · The method</span><h3>Seventy things is not a list you can place</h3><p>Six loose groupings that overlapped was not a plan. Sorting by behaviour rather than by category is what tidied them into eight.</p>
+  <div class="row flip"><div class="pin rv" style="--ac:var(--coral)">
     <div class="demo"><div class="dcard">
       <div class="dhead"><span class="lb">Affinity clustering</span><span class="rt">Tap a cluster</span></div>
       <div class="dbody" id="clusterdiag"></div>
-      <p class="dfoot">Tap a cluster to see what is in it. Sorted by how often people go against how much room it takes &mdash; <b>not by what the thing is.</b></p>
+      <p class="dfoot">Tap a cluster to see what is in it. Sorted by how often people go against how much room it takes<b>not by what the thing is.</b></p>
     </div></div>
     <div class="txt">
       <h3>The two questions that did the sorting</h3>
       <p>Sorted by category, healthcare is one thing and gets one location. Sorted by how often people actually go, it is two: the hospital you visit twice in a decade, and the pharmacy you need on a Tuesday night.</p>
       <div class="tw">
-        <div><span class="k">How often</span><p>Every day, every week, a few times a year, or once in a lifetime and never by choice.</p></div>
-        <div><span class="k">How much room</span><p>A shopfront, a block, or forty hectares with a buffer around it.</p></div>
-        <div><span class="k g">Result</span><p>Six loose groupings became eight clusters with one placement rule each. Eight rules is something you can draw.</p></div>
+        <div><span class="o-k">How often</span><p>Every day, every week, a few times a year, or once in a lifetime and never by choice.</p></div>
+        <div><span class="o-k">How much room</span><p>A shopfront, a block, or forty hectares with a buffer around it.</p></div>
+        <div><span class="o-k g">Result</span><p>Six loose groupings became eight clusters with one placement rule each. Eight rules is something you can draw.</p></div>
       </div>
     </div>
   </div></div>
-</section>
-
-<!-- ═══ FINAL ═══ -->
-<section class="band t3" id="final"><div class="in">
-  <div class="sechead rv" style="--sk:var(--leaf)">
-    <span class="k">The one I kept</span>
-    <h2>Two spines, seven districts, fifty-five cells</h2>
-    <p>Nothing placed by the drawing. Each cluster has one rule, and the rule survives the population changing.</p>
-  </div>
-</div>
-  <div class="row alt"><div class="in pin rv" style="--ac:var(--leaf)">
+    </div>
+    <div class="orig-block"><span class="k">Fig. 6 · The one I kept</span><h3>Two spines, seven districts, fifty five cells</h3><p>Nothing placed by the drawing. Each cluster has one rule, and the rule survives the population changing.</p>
+  <div class="row alt flip"><div class="pin rv" style="--ac:var(--leaf)">
     <div class="demo"><div class="dcard">
       <div class="dhead"><span class="lb" id="planlb">Whole city</span><span class="rt">Zoom in</span></div>
-      <div class="dbody"><div class="tabs" id="clustertabs"></div><div id="finalplan"></div></div>
-      <p class="dfoot" id="plancap">Fifty-five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b></p>
+      <div class="dbody"><div class="o-tabs" id="clustertabs"></div><div id="finalplan"></div></div>
+      <p class="dfoot" id="plancap">Fifty five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b></p>
     </div></div>
     <div class="txt" style="--ac:var(--leaf)">
       <h3>Where each cluster goes, and why</h3>
       <div class="groups" id="groups"></div>
     </div>
   </div></div>
-  <div class="row"><div class="in pin rv" style="--ac:var(--cobalt)">
+  <div class="row"><div class="pin rv" style="--ac:var(--cobalt)">
     <div class="demo"><div class="dcard">
       <div class="dhead"><span class="lb">Inside one cell</span><span class="rt">800 m</span></div>
       <div class="dbody" id="cellplan"></div>
@@ -437,25 +440,17 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
       <h3>And the hospital, finally</h3>
       <p>On the most reachable stop, next to the college and the courts. Not because a hospital deserves the centre, but because whoever needs one has the least choice about going.</p>
       <div class="tw">
-        <div><span class="k">The cell</span><p>About eighteen thousand people &mdash; enough to keep a primary school, a GP and a few shops going without anyone driving.</p></div>
-        <div><span class="k g">Compared</span><p>V&auml;llingby was built for 20&ndash;25,000 and Bhubaneswar's units for rather fewer. Mine sits between them, which is reassuring rather than original.</p></div>
-        <div><span class="k g">And its identity</span><p>A satellite where most of the peak leaves in the morning. So co-working in every cell, the stadium at the far end to counter-flow the commute, and hotels modest but sat on the station.</p></div>
-        <div><span class="k g">Precedent</span><p>Stockholm strung its towns along the metro and put work inside each one. Bhubaneswar proved the unit works, and that it has to be sized for the city you become.</div>
+        <div><span class="o-k">The cell</span><p>About eighteen thousand people, enough to keep a primary school, a GP and a few shops going without anyone driving.</p></div>
+        <div><span class="o-k g">Compared</span><p>V&auml;llingby was built for 20 to 25,000 and Bhubaneswar's units for rather fewer. Mine sits between them, which is reassuring rather than original.</p></div>
+        <div><span class="o-k g">And its identity</span><p>A satellite where most of the peak leaves in the morning. So co working in every cell, the stadium at the far end to counter flow the commute, and hotels modest but sat on the station.</p></div>
+        <div><span class="o-k g">Precedent</span><p>Stockholm strung its towns along the metro and put work inside each one. Bhubaneswar proved the unit works, and that it has to be sized for the city you become.</div>
       </div>
       <div class="ledger"><span>Brief: <b>13 assumptions</b></span><span>Components: <b>~70 in 8 clusters</b></span></div>
     </div>
   </div></div>
-</section>
-
-<!-- ═══ GROWTH ═══ -->
-<section class="band" id="growth"><div class="in">
-  <div class="sechead rv" style="--sk:var(--butter)">
-    <span class="k">Twenty years on</span>
-    <h2>A plan has to survive the next hundred thousand people</h2>
-    <p>Two per cent a year is deliberately conservative. Bhubaneswar was drawn for 40,000 and is past eight lakh, which is the more likely failure mode.</p>
-  </div>
-</div>
-  <div class="row alt"><div class="in pin rv" style="--ac:var(--butter)">
+    </div>
+    <div class="orig-block"><span class="k">Fig. 7 · Twenty years on</span><h3>A plan has to survive the next hundred thousand people</h3><p>Two per cent a year is deliberately conservative. Bhubaneswar was drawn for 40,000 and is past eight lakh, which is the more likely failure mode.</p>
+  <div class="row alt flip"><div class="pin rv" style="--ac:var(--butter)">
     <div class="demo"><div class="dcard">
       <div class="dhead" style="color:var(--ink)"><span class="lb">At 2% a year</span><span class="rt" style="color:var(--ink)">Projection</span></div>
       <div class="dbody" style="--ac:var(--butter)"><div class="bars" id="bars"></div></div>
@@ -464,24 +459,16 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
     <div class="txt">
       <h3>Three moves, in this order</h3>
       <div class="tw">
-        <div><span class="k" style="color:var(--ink)">First</span><p>Densify the three districts nearest the interchange, by about a third &mdash; still less dense than Chandigarh. Land that already has water, drains and a line. <b>Roughly 1.2 lakh people, no new ground.</b></p></div>
-        <div><span class="k" style="color:var(--ink)">Second</span><p>Extend both lines east, a district at a time, each hanging off stops the lines were always going to need. <b>About 1.45 lakh each.</b></p></div>
-        <div><span class="k" style="color:var(--ink)">Third</span><p>Only past roughly 16 lakh, a third line north. Expensive, and worth naming now so nobody reaches for it in year six.</p></div>
+        <div><span class="o-k" style="color:var(--ink)">First</span><p>Densify the three districts nearest the interchange, by about a third, still less dense than Chandigarh. Land that already has water, drains and a line. <b>Roughly 1.2 lakh people, no new ground.</b></p></div>
+        <div><span class="o-k" style="color:var(--ink)">Second</span><p>Extend both lines east, a district at a time, each hanging off stops the lines were always going to need. <b>About 1.45 lakh each.</b></p></div>
+        <div><span class="o-k" style="color:var(--ink)">Third</span><p>Only past roughly 16 lakh, a third line north. Expensive, and worth naming now so nobody reaches for it in year six.</p></div>
       </div>
-      <p style="font-size:.94rem">What gives way first is never the street layout &mdash; it is the things there is only one of. The district hospital has headroom to about twenty-five lakh, so it is not the constraint. The works corner and the peak headway on the lines are: both need land and capacity reserved on day one. Gurugram is what happens when they are not.</p>
+      <p style="font-size:.94rem">What gives way first is never the street layout. It is the things there is only one of. The district hospital has headroom to about twenty five lakh, so it is not the constraint. The works corner and the peak headway on the lines are: both need land and capacity reserved on day one. Gurugram is what happens when they are not.</p>
     </div>
   </div></div>
-</section>
-
-<!-- ═══ ON A SCREEN ═══ -->
-<section class="band t2" id="screen"><div class="in">
-  <div class="sechead rv" style="--sk:var(--cobalt)">
-    <span class="k">Back on a screen</span>
-    <h2>The same clustering, applied to a flow</h2>
-    <p>The part I took back to work: same two questions, different material.</p>
-  </div>
-</div>
-  <div class="row alt"><div class="in pin rv" style="--ac:var(--cobalt)">
+    </div>
+    <div class="orig-block"><span class="k">Fig. 8 · Back on a screen</span><h3>The same clustering, applied to a flow</h3><p>The part I took back to work: same two questions, different material.</p>
+  <div class="row alt flip"><div class="pin rv" style="--ac:var(--cobalt)">
     <div class="demo"><div class="dcard">
       <div class="dhead"><span class="lb">City cluster &rarr; screen</span></div>
       <div class="dbody" id="mapping"></div>
@@ -490,45 +477,93 @@ a{color:inherit; text-decoration:none} button{font:inherit; color:inherit}
     <div class="txt">
       <h3>What it changes in practice</h3>
       <div class="tw">
-        <div><span class="k">Navigation</span><p>Daily things earn a permanent home. Weekly things sit one level down, never two. Occasional things are reached by search &mdash; not a demotion, just where people look.</p></div>
-        <div><span class="k">Flows</span><p>Error recovery is the emergency service of a product. Designed for the worst case, not the average.</p></div>
-        <div><span class="k">The unloved</span><p>Billing, logs, data export, deletion. Placed early, or they end up wherever there was room left.</p></div>
+        <div><span class="o-k">Navigation</span><p>Daily things earn a permanent home. Weekly things sit one level down, never two. Occasional things are reached by search: not a demotion, just where people look.</p></div>
+        <div><span class="o-k">Flows</span><p>Error recovery is the emergency service of a product. Designed for the worst case, not the average.</p></div>
+        <div><span class="o-k">The unloved</span><p>Billing, logs, data export, deletion. Placed early, or they end up wherever there was room left.</p></div>
       </div>
     </div>
   </div></div>
+    </div>
+  </div>
+</div></section>
+
+
+<section class="decided">
+  <div class="in"><div class="box sheet reveal">
+    <div><span class="k">Decided</span><h2>Fix the brief first, so a layout can fail. Sort by trip, not by type. Let eight rules do the placing.</h2></div>
+    <ol>
+      <li><b>Stop</b><span>An empty site and a number, and no way to tell a good plan from a bad one.<i>Thirteen assumptions, written down before a line was drawn.</i></span></li>
+      <li><b>Notice</b><span>Wind and water had already placed the works.<i>The site wrote the first rule.</i></span></li>
+      <li><b>Tradeoff</b><span>Every layout is worse at something.<i>The choice is which edge case you can live with.</i></span></li>
+      <li><b>Decide</b><span>Two lines, seven districts, fifty five cells, and the hospital on the interchange.<i>What it cost: four drawings, and the idea of a centre with suburbs around it.</i></span></li>
+    </ol>
+  </div></div>
 </section>
 
-<section class="qb"><div class="qi">
-  <span class="mrk">&ldquo;</span>
-  <div><p>I did not know most of the brief when I started. Each attempt is what told me which question I still owed an answer to.</p>
-  <span class="cap">On working it out in the open</span></div>
-</div></section>
+<nav class="pn" aria-label="Previous and next">
+  <div class="in"><div>
+    <a href="demo-vegroute.html"><span>Previous</span><h3>Route Stops</h3></a>
+    <a class="next" href="demo-currency.html"><span>Next</span><h3>Currency Design Breakdown</h3></a>
+  </div></div>
+</nav>
 
 </main>
 
-<section class="about" id="about">
-  <div class="in ai">
-    <div>
-      <h3>A bit about me</h3>
-      <p>Senior Product Manager at a fintech startup, with corporate years before that &mdash; I've built for users in India and for global markets, and the job is the same everywhere: find the real problem before building for it.</p>
-      <p>Most things are the way they are for a reason, and I like finding out what the reason was and whether it still holds. This page is the after-hours version of that. Some of it is me solving something in my own life &mdash; Italian exams, finding a vegetarian meal in an unfamiliar city. The rest is curiosity about objects most of us stopped noticing. Redrawing one is the most honest way I know to find out what the original was solving for.</p>
-      <div class="chipset"><span>Miro</span><span>User research</span><span>Information architecture</span><span>Systems thinking</span><span>Figma</span><span>Prototyping</span></div>
-    </div>
-    <div class="lk">
-      <h3>Say hi</h3>
-      <p><a class="mail" href="mailto:dvmadhumitha2021@outlook.com">dvmadhumitha2021@outlook.com</a></p>
-      <a href="index.html">All work<s>&rarr;</s></a>
-      <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn<s>&rarr;</s></a>
-      <a href="https://github.com/dvmadhumitha/PM-Side-Projects">GitHub<s>&rarr;</s></a>
-    </div>
-  </div>
-  <div class="in sig2">Built off the clock &mdash; &copy; Madhumitha D V</div>
-</section>
+<footer class="foot sheet">
+  <div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div>
+</footer>
 
+<script src="analytics.js" defer></script>
 <script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
+  else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
+
+  /* layers */
+  var notes = {
+    plan:      {k:'The plan', h:'Two lines, seven districts, fifty five cells.', p:'Switch the layers to see what each decision added, and in what order. The site came first, the lines second, and everything people visit often sits a short walk from a stop.', d:'Transit first. The plan hangs off the lines, not the other way round.'},
+    forces:    {k:'Site forces', h:'Wind and water both point one way, and they meet in one corner', p:'Before anything is placed, the site has made two decisions. The wind runs west to east. The river comes in from the north west and turns east. They agree in the south east only. Whatever makes smoke or effluent goes there, downwind and downstream. You cannot fix downstream what you got wrong upstream.', d:'The first rule was not mine. The site wrote it.'},
+    needs:     {k:'Needs', h:'Seventy things is not a list you can place', p:'Two questions did the sorting. How often does someone go there: every day, every week, a few times a year, or once and never by choice? How much room does it take: a shopfront, a block, or forty hectares with a buffer? Daily and small sit top left; rare and large, bottom right. The hospital is rare, large, and unavoidable.', d:'Sort by trip, not by type. Eight rules is something you can draw.'},
+    drafts:    {k:'Four drafts', h:'Each drawing asked a question, and left me with more to place', p:'Pick one of the four below the switches to lay it over the plan. Pure zoning put every daily errand across a band. One great park split the grid. Radial sent a trip next door through the busiest point in the city. Industry at the rail gate was the cheapest place to move goods, and upwind of everyone.', d:'Four set aside. The groupings they surfaced were kept.'},
+    lines:     {k:'Two lines', h:'Two lines, crossing once', p:'One line runs with the wind, west to east. The other runs north to south. Everything people go to often sits a short walk from a stop. Everything they go to rarely sits where both lines reach it. The interchange is the most reachable point in the city, and the most contested. What goes there has to earn it.', d:'Transit first. The plan hangs off the lines, not the other way round.'},
+    districts: {k:'Districts and cells', h:'Two lines, seven districts, fifty five cells', p:'A cell is what falls out of an 800 m walk: 1.6 km across, about eighteen thousand people, enough to keep a primary school, a GP and a few shops going without anyone driving. Eight cells around one interchange make a district of about 1.45 lakh, with its health centre, secondary school and supermarket on the stop. Seven of them on two lines: a repeated unit, not a centre with suburbs.', d:'A repeated unit. Vällingby was built for 20–25,000 a unit; mine sits a little above it.'},
+    civic:     {k:'The civic core', h:'And the hospital, finally', p:'On the interchange, where both lines meet, next to the university and the courts. Not because a hospital deserves the centre, but because whoever needs one has the least choice about going. The district hospital, the town hall, the registry, the central library: exactly one of each, at the most reachable point. Fire, ambulance and police posts sit where eight minutes covers every address.', d:'The rare, unavoidable trips get the best connected ground.'},
+    growth:    {k:'Growth', h:'A plan has to survive the next hundred thousand people', p:'At two per cent a year, ten lakh becomes 12.2 in year ten and 14.9 in year twenty. Densify the three districts nearest the interchange by a third, on land that already has water, drains and a line. Extend both lines east, a district at a time. Only past sixteen lakh, a third line north. What gives way first is the works corner and peak headway, so both get land on day one.', d:'The second decade needs new cells, not a new plan.'}
+  };
+  var plan = document.getElementById('plan'), togs = [].slice.call(document.querySelectorAll('#layers .tog')), drafts = document.getElementById('drafts');
+  var nk = document.getElementById('n-k'), nh = document.getElementById('n-h'), np = document.getElementById('n-p'), nd = document.getElementById('n-d'), capn = document.getElementById('capn');
+  var rp = document.getElementById('r-people'), ry = document.getElementById('r-year'), rdz = document.getElementById('r-districts'), rc = document.getElementById('r-cells');
+  function note(key){ var n = notes[key]; nk.textContent = n.k; nh.textContent = n.h; np.textContent = n.p; nd.innerHTML = '<b>Decided</b>' + n.d; }
+  function count(){ var on = togs.filter(function(t){ return t.getAttribute('aria-pressed')==='true'; }).length; capn.textContent = '· ' + on + ' of 7 layers on'; }
+  togs.forEach(function(t){
+    t.addEventListener('click', function(){
+      var on = t.getAttribute('aria-pressed') !== 'true', key = t.getAttribute('data-layer');
+      t.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var g = plan.querySelector('.layer[data-layer="'+key+'"]'); if(g) g.classList.toggle('on', on);
+      if(key==='drafts'){ drafts.hidden = !on; if(!on){ plan.querySelectorAll('.draft').forEach(function(d){ d.classList.remove('on'); }); drafts.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed','false'); }); } }
+      if(key==='growth'){ rp.textContent = on ? '14.9 lakh' : '10 lakh'; ry.textContent = on ? 'year 20' : 'year 0'; rdz.textContent = on ? '7 + 1' : '7'; rc.textContent = on ? '55 + new' : '55'; }
+      note(on ? key : 'plan'); count();
+    });
+  });
+  drafts.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var key = b.getAttribute('data-draft'), was = b.getAttribute('aria-pressed')==='true';
+      drafts.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      plan.querySelectorAll('.draft').forEach(function(d){ d.classList.remove('on'); });
+      if(!was){ b.setAttribute('aria-pressed','true'); plan.querySelector('.draft[data-draft="'+key+'"]').classList.add('on'); }
+    });
+  });
+  count();
+})();
+</script>
+<script>
+/* ═══ the original sheet's figures: built from data, as before ═══ */
 (function(){
 "use strict";
-var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var RM=matchMedia('(prefers reduced motion: reduce)').matches||document.documentElement.classList.contains('static');
 function $(s,r){return (r||document).querySelector(s);}
 function $$(s,r){return [].slice.call((r||document).querySelectorAll(s));}
 
@@ -557,13 +592,13 @@ function ICON(n,x,y,sz,c){ var d=IP[n]; if(!d) return '';
   return '<g transform="translate('+x+','+y+') scale('+k.toFixed(3)+')" fill="none" stroke="'+(c||'var(--ink)')+'" '+
    'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity="'+(c?1:.82)+'"><path d="'+d+'"/></g>'; }
 function ICONHTML(n,c,px){ px=px||15;
-  return '<svg width="'+px+'" height="'+px+'" viewBox="0 0 20 20" fill="none" stroke="'+(c||'currentColor')+'" '+
-   'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+IP[n]+'"/></svg>'; }
+  return '<svg width="'+px+'" height="'+px+'" style="width:'+px+'px;height:'+px+'px" viewBox="0 0 20 20" fill="none" stroke="'+(c||'currentColor')+'" '+
+   'stroke width="1.9" stroke linecap="round" stroke linejoin="round" aria hidden="true"><path d="'+IP[n]+'"/></svg>'; }
 
 /* ── svg helpers ── */
 function R(x,y,w,h,f,o){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="var(--f-'+f+')"'+(o?' opacity="'+o+'"':'')+'/>'; }
 function T(x,y,t,o){ o=o||{};
-  return '<text x="'+x+'" y="'+y+'" font-family="DM Mono,monospace" font-size="'+(o.s||11)+'" '+
+  return '<text x="'+x+'" y="'+y+'" font-family="JetBrains Mono,ui-monospace,monospace" font-size="'+(o.s||11)+'" '+
   'letter-spacing="'+(o.ls||1)+'" font-weight="500" fill="'+(o.c||'var(--ink)')+'" '+
   (o.a?'text-anchor="'+o.a+'" ':'')+'stroke="var(--card)" stroke-width="'+(o.s>10?3.4:2.6)+'" paint-order="stroke" opacity="'+(o.op||1)+'">'+t+'</text>'; }
 var RIVER='<path d="M0,26 C44,58 86,92 138,112 C206,138 322,150 420,154" fill="none" stroke="var(--f-water)" stroke-width="13" stroke-linecap="round"/>';
@@ -597,7 +632,7 @@ $('#sketch').innerHTML='<svg viewBox="0 0 420 260" role="img" aria-label="The fi
   '<rect x="1" y="1" width="418" height="258" fill="none" stroke="var(--hair)" stroke-width="2" rx="10"/></svg>';
 
 /* ── reference cities, all near a million: layout first, then what stands out ── */
-function cap(t){ return '<text x="60" y="69" text-anchor="middle" font-family="DM Mono,monospace" font-size="6.2" '+
+function cap(t){ return '<text x="60" y="69" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,monospace" font-size="6.2" '+
   'fill="var(--ink)" opacity=".82" stroke="var(--card)" stroke-width="2.6" paint-order="stroke">'+t+'</text>'; }
 function cell(x,y,w,h,f,st){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2.5" fill="var(--f-'+f+')" stroke="'+(st||'var(--hair)')+'" stroke-width="'+(st?1.6:1)+'"/>'; }
 var TH={
@@ -656,7 +691,7 @@ var TH={
    [[42,45],[72,32],[102,19]].forEach(function(p){
      g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="15" fill="var(--f-work)" opacity=".85" stroke="var(--cobalt)" stroke-width="1.3"/>'; });
    g+=ICON('bus',36,39,12,'var(--cobalt)')+ICON('Offices',66,26,12,'var(--cobalt)')+ICON('Homes',96,13,12,'var(--cobalt)');
-   return g+cap('WORK, HOME, CENTRE &mdash; EACH'); },
+   return g+cap('WORK, HOME, CENTRE · EACH'); },
  barcelona:function(){ var g=R(0,0,120,74,'house');
    for(var r=0;r<4;r++) for(var c=0;c<7;c++){
      g+='<rect x="'+(6+c*16)+'" y="'+(4+r*13)+'" width="12" height="9" rx="3" fill="var(--f-work)" stroke="var(--hair)" stroke-width=".9"/>'; }
@@ -674,7 +709,7 @@ $('#refs').innerHTML=[
  ['chandigarh','Chandigarh','10.6 lakh &middot; 114 km&sup2;',
   'A grid of sectors, each 800 by 1,200 metres, each holding its own school, market and green.',
   'Planned complete before anyone moved in, and the unit is the sector rather than the street.',
-  'The self-sufficient unit. My cell, essentially.'],
+  'The self sufficient unit. My cell, essentially.'],
  ['bhubaneswar','Bhubaneswar','8.4 lakh &middot; 186 km&sup2;',
   'Laid out in 1948 by Otto K&ouml;nigsberger as six neighbourhood units, each about 1.2 km across.',
   'It was drawn for 40,000 people and has since passed eight lakh, which the original units were never sized for.',
@@ -684,29 +719,29 @@ $('#refs').innerHTML=[
   'Almost nowhere else was the least pleasant land use placed first, on purpose, with everything else fitted after.',
   'Place the works before the pleasant things take the good ground.'],
  ['gurgaon','Gurugram','8.8 lakh &middot; 333 km&sup2;',
-  'Built plot by plot by private developers, so it reads as a set of self-contained enclaves rather than one city.',
-  'The connective tissue &mdash; streets, drains, public space &mdash; was never drawn, so it largely does not exist.',
+  'Built plot by plot by private developers, so it reads as a set of self contained enclaves rather than one city.',
+  'The connective tissue of streets, drains and public space was never drawn, so it largely does not exist.',
   'Draw the network first. Let the plots fill in.'],
  ['bhopal','Bhopal','18 lakh &middot; 463 km&sup2;',
   'Wrapped around the Upper and Lower Lakes, old city on one side, newer city on the other.',
   'The lake takes 36 km&sup2; and its catchment 361, so the natural asset is both the constraint and the reason to be there.',
   'Draw the water, and what feeds it, before anything else.'],
  ['amsterdam','Amsterdam','9.3 lakh &middot; 219 km&sup2;',
-  'A canal-ring core, then the 1935 expansion plan: built lobes reaching outwards with green wedges kept between them.',
-  'Van Eesteren planned it around light, air and space &mdash; the green was drawn at the same time as the housing, not after.',
+  'A canal ring core, then the 1935 expansion plan: built lobes reaching outwards with green wedges kept between them.',
+  'Van Eesteren planned it around light, air and space. The green was drawn at the same time as the housing, not after.',
   'Green is a component, not the leftover.'],
  ['copenhagen','Copenhagen','6.7 lakh city &middot; 14 lakh urban',
   'A dense core with growth allowed only along the suburban rail lines, and green wedges kept between them.',
   'The 1947 Finger Plan decided where the city may grow decades before it needed to.',
   'Reserve the growth direction early.'],
  ['stockholm','Stockholm','10 lakh &middot; 188 km&sup2;',
-  'Satellite towns strung along the metro, each holding work, housing and a centre &mdash; the ABC principle.',
-  'V&auml;llingby, the first of them, was built for 20&ndash;25,000 residents and about 10,000 jobs, so people need not leave.',
+  'Satellite towns strung along the metro, each holding work, housing and a centre, the ABC principle.',
+  'V&auml;llingby, the first of them, was built for 20 to 25,000 residents and about 10,000 jobs, so people need not leave.',
   'Nearly the size of my cell. And put work in it.'],
  ['barcelona','Barcelona','16.9 lakh &middot; 101 km&sup2;',
-  'A uniform nineteenth-century grid of chamfered blocks, still the base unit of the city.',
-  'Because the grid is regular, nine blocks regroup into a 400-metre superblock with traffic pushed to the edge.',
-  'The through-route and the street people stand in are different things.'],
+  'A uniform nineteenth century grid of chamfered blocks, still the base unit of the city.',
+  'Because the grid is regular, nine blocks regroup into a 400 metre superblock with traffic pushed to the edge.',
+  'The through route and the street people stand in are different things.'],
  ['milan','Milan','13.7 lakh &middot; 181 km&sup2;',
   'Concentric rings around a historic core, inherited from the canals that once ran there.',
   'A calendar of fairs and fashion weeks that adds a small city of visitors for a week at a time.',
@@ -719,21 +754,21 @@ $('#refs').innerHTML=[
 
 $('#keygrid').innerHTML=[
  ['house','Housing','Where people sleep. Everything else is measured as a distance from here.'],
- ['work','Employment','Offices, light industry, and the co-working that keeps some trips from starting.'],
+ ['work','Employment','Offices, light industry, and the co working that keeps some trips from starting.'],
  ['civic','Civic','The services there is exactly one of. Hospital, college, courts, town hall.'],
- ['green','Green','Land kept unbuilt on purpose &mdash; belt, flood plain, playing fields.'],
+ ['green','Green','Land kept unbuilt on purpose: belt, flood plain, playing fields.'],
  ['ind','Works &amp; utilities','Sewage, water treatment, depots, substation, cemetery. Everyone needs them; nobody wants them next door.'],
  ['water','Water','The river and its flood plain. The one thing on the site I did not choose.']
 ].map(function(k){ return '<div><i style="background:var(--f-'+k[0]+')"></i><b>'+k[1]+'</b><span>'+k[2]+'</span></div>'; }).join('');
 
 /* ── the derivation ladder ── */
 $('#ladder').innerHTML=[
- ['','10 lakh people','The point at which a city earns its own district hospital &mdash; India&rsquo;s public health standards put that catchment at ten to twenty-five lakh. Below it, a place borrows one.',1],
- ['&divide;','About as dense as Milan','Five to eight storeys, walkable, no towers &mdash; roughly <b>7,000 people per km&sup2;.</b> Copenhagen sits at almost exactly the same figure.',0],
- ['=','A bit bigger than Chandigarh','About 143 km&sup2;. Not a target, a consequence &mdash; <b>Chandigarh fits roughly the same number of people into 114.</b>',0],
+ ['','10 lakh people','The point at which a city earns its own district hospital. India&rsquo;s public health standards put that catchment at ten to twenty five lakh. Below it, a place borrows one.',1],
+ ['&divide;','About as dense as Milan','Five to eight storeys, walkable, no towers, roughly <b>7,000 people per km&sup2;.</b> Copenhagen sits at almost exactly the same figure.',0],
+ ['=','A bit bigger than Chandigarh','About 143 km&sup2;. Not a target, a consequence<b>Chandigarh fits roughly the same number of people into 114.</b>',0],
  ['&rarr;','14 &times; 10 km','About <b>forty minutes end to end by bike,</b> or an hour on foot. Two transit lines four kilometres apart, so nothing sits more than about 2.5 km from one.',0],
- ['&divide;','800 m','The ten-minute pedestrian shed &mdash; twice the standard five-minute, 400 m one. A cell is <b>1.6 km across, about 2.6 km&sup2;.</b>',0],
- ['=','55 cells','<b>About 18,000 people each,</b> grouped into <b>seven districts of roughly 1.45 lakh</b> &mdash; and about 2 lakh households at the Indian average of 4.9 per home.',1]
+ ['&divide;','800 m','The ten minute pedestrian shed: twice the standard five minute, 400 m one. A cell is <b>1.6 km across, about 2.6 km&sup2;.</b>',0],
+ ['=','55 cells','<b>About 18,000 people each,</b> grouped into <b>seven districts of roughly 1.45 lakh</b>and about 2 lakh households at the Indian average of 4.9 per home.',1]
 ].map(function(r){
   return '<div class="st"><span class="op">'+r[0]+'</span><span class="bx'+(r[3]?' hit':'')+'">'+
     '<span class="bv">'+r[1]+'</span><span class="bw">'+r[2]+'</span></span></div>'; }).join('');
@@ -753,7 +788,7 @@ var D=[
  cap:"Four bands. <b>Every daily errand crosses one.</b>",
  what:"Homes, civic, work and industry in four bands. The layout you draw first, because it is the easiest to explain.",
  learn:"Everything you need daily sits in a different band from where you sleep, and industry along the whole southern edge is upwind of somebody.",
- add:"A density to build at &mdash; about Milan's, five to eight storeys &mdash; which settled the land at a little more than Chandigarh's.",
+ add:"A density to build at: about Milan's, five to eight storeys. That settled the land at a little more than Chandigarh's.",
  ref:"Chandigarh had already answered this with sectors rather than bands. I had not taken it seriously yet.",
  from:8,to:18,newc:['Nursery','Corner shop','Pharmacy','Bus stop','Playground'],
  br:5,cl:0,cn:"No groupings yet"},
@@ -779,17 +814,17 @@ var D=[
    '<path d="M210,26 V250 M100,138 H320 M132,60 L288,216 M288,60 L132,216"/></g>'+
    '<circle cx="210" cy="138" r="42" fill="var(--f-civic)"/>'+
    '<circle cx="210" cy="138" r="52" fill="none" stroke="var(--coral)" stroke-width="1.8" stroke-dasharray="5 4" opacity=".8"/>'+
-   ICON('Hospital',188,120,17)+ICON('Schools',216,120,17)+T(210,204,'CITY-WIDE',{s:7.5,a:'middle',c:'var(--coral)'})+
+   ICON('Hospital',188,120,17)+ICON('Schools',216,120,17)+T(210,204,'CITY WIDE',{s:7.5,a:'middle',c:'var(--coral)'})+
    CBOX(288,40,118,52,'WEEKLY','var(--cobalt)')+ICON('bus',300,50,17,'var(--cobalt)')+ICON('Schools',340,50,17,'var(--cobalt)')+
    CBOX(14,40,118,52,'DAILY','var(--leaf)')+ICON('Homes',26,50,17,'var(--leaf)')+ICON('Shops',66,50,16,'var(--leaf)')+
    ARROW('M60,120 C130,168 290,168 360,120','next door, through the middle',132,112),
  cap:"Excellent for the rare trip. <b>Punishing for the everyday one.</b>",
  what:"A civic core at the centre, ring roads around it, housing in the wedges between.",
  learn:"A trip to the neighbourhood next door routes through the centre, so the busiest place in the city fills with people who did not want to be there.",
- add:"The health standards, and the cell that falls out of an 800 m walk: 1.6 km across, about 18,000 people, fifty-five of them.",
+ add:"The health standards, and the cell that falls out of an 800 m walk: 1.6 km across, about 18,000 people, fifty five of them.",
  ref:"Milan is radial and it works, because the rings came first and the city grew into them. Mine had no such excuse.",
  from:31,to:52,newc:['District courts','Tax office','Land registry','Emergency department','Blood bank'],
- br:9,cl:3,cn:"Three groupings: daily, weekly, city-wide"},
+ br:9,cl:3,cn:"Three groupings: daily, weekly, city wide"},
 
 {n:"Later iteration",t:"Industry at the rail gate",ac:"--sky",
  land:R(0,0,420,260,'house')+
@@ -801,16 +836,16 @@ var D=[
    T(250,44,'the wind carries it across everything',{s:8.5,a:'middle',c:'var(--coral)'})+
    CBOX(112,56,92,48,'DAILY','var(--leaf)')+ICON('Homes',124,64,16,'var(--leaf)')+ICON('Shops',160,64,15,'var(--leaf)')+
    CBOX(210,56,92,48,'WEEKLY','var(--cobalt)')+ICON('bus',222,64,16,'var(--cobalt)')+ICON('Schools',258,64,15,'var(--cobalt)')+
-   CBOX(308,56,100,48,'CITY-WIDE','var(--coral)')+ICON('Hospital',320,64,16,'var(--coral)')+ICON('Offices',358,64,15,'var(--coral)')+
+   CBOX(308,56,100,48,'CITY WIDE','var(--coral)')+ICON('Hospital',320,64,16,'var(--coral)')+ICON('Offices',358,64,15,'var(--coral)')+
    CBOX(112,158,92,48,'RESPONSE','var(--coral)')+ICON('shield',146,166,16,'var(--coral)')+
    CBOX(210,158,92,48,'SPIKY','var(--sky)')+ICON('tent',244,166,16,'var(--sky)')+
    CBOX(308,158,100,48,'UNLOVED','var(--muted)')+ICON('depot',348,166,16,'var(--muted)'),
  cap:"Cheapest place to move goods. <b>Upwind of the whole city.</b>",
  what:"Everything placed at once for the first time, with industry and freight at the rail gate.",
- learn:"The wind runs west to east, so the gate sits upwind of everything, and housing drifts east onto the cheaper &mdash; downwind &mdash; ground.",
- add:"Wind west to east, river north-west turning east. They agree with each other in one corner only.",
+ learn:"The wind runs west to east, so the gate sits upwind of everything, and housing drifts east onto the cheaper, downwind, ground.",
+ add:"Wind west to east, river north west turning east. They agree with each other in one corner only.",
  ref:"Jamshedpur did the opposite and sited the works first, then arranged the town around them. Gurugram is the other half: buildings first, network never.",
- from:52,to:70,newc:['Sewage works','Waste transfer','Hotels','Exhibition hall','Co-working'],
+ from:52,to:70,newc:['Sewage works','Waste transfer','Hotels','Exhibition hall','Co working'],
  br:11,cl:6,cn:"Six groupings, and no rule for placing any of them"}
 ];
 
@@ -818,7 +853,7 @@ var host=$('#rows');
 D.forEach(function(d,i){
   var s=document.createElement('div');
   s.className='row'+(i%2?' alt':'');
-  s.innerHTML='<div class="in pin rv" style="--ac:var('+d.ac+')">'+
+  s.innerHTML='<div class="pin rv" style="--ac:var('+d.ac+')">'+
     '<div class="demo"><div class="dcard">'+
       '<div class="dhead"><span class="lb">'+d.n+' &middot; '+d.t+'</span><span class="rt">'+
       (d.cl?d.cl+' grouping'+(d.cl>1?'s':''):'no groupings')+'</span></div>'+
@@ -826,30 +861,30 @@ D.forEach(function(d,i){
       '<p class="dfoot">'+d.cap+'</p></div></div>'+
     '<div class="txt">'+
       '<h3>'+d.t+'</h3><p>'+d.what+'</p>'+
-      '<div class="tw"><div><span class="k">Learned</span><p>'+d.learn+'</p></div>'+
-      '<div><span class="k g">Added</span><p>'+d.add+'</p></div>'+
-      '<div><span class="k g">Precedent</span><p>'+d.ref+'</p></div></div>'+
+      '<div class="tw"><div><span class="o-k">Learned</span><p>'+d.learn+'</p></div>'+
+      '<div><span class="o-k g">Added</span><p>'+d.add+'</p></div>'+
+      '<div><span class="o-k g">Precedent</span><p>'+d.ref+'</p></div></div>'+
       '<span class="count"><span>Components <b>'+d.from+' &rarr; '+d.to+'</b></span>'+
       '<span class="track"><i data-w="'+Math.round(d.to/70*100)+'"></i></span></span>'+
       '<div class="newc">'+d.newc.map(function(c){ return '<span>'+c+'</span>'; }).join('')+'</div>'+
-      '<div class="ledger"><span>Brief: <b>'+d.br+'</b></span><span>Groupings: <b>'+d.cl+'</b> &mdash; '+d.cn+'</span></div>'+
+      '<div class="ledger"><span>Brief: <b>'+d.br+'</b></span><span>Groupings: <b>'+d.cl+'</b> · '+d.cn+'</span></div>'+
     '</div></div>';
   host.appendChild(s);
 });
 
 /* ── clustering ── */
 var CLUS=[
-{k:'Homes',c:'leaf',n:'Daily, walk-to',
+{k:'Homes',c:'leaf',n:'Daily, walk to',
  rule:'Within 800 m of every front door, crossing no arterial road.',
  items:['Nursery','Primary school','Corner shop','Pharmacy','GP surgery','Bakery','Caf&eacute;','Playground','Pocket park','Bus stop','Post box','Laundrette'],
  ui:'The tab bar.'},
-{k:'bus',c:'cobalt',n:'Weekly, ride-to',
+{k:'bus',c:'cobalt',n:'Weekly, ride to',
  rule:'On a transit stop. One per cell, or shared between two.',
- items:['Secondary school','Supermarket','Library','Gym','Health centre','Bank branch','Place of worship','Sports ground','Community hall','Co-working','Vet'],
+ items:['Secondary school','Supermarket','Library','Gym','Health centre','Bank branch','Place of worship','Sports ground','Community hall','Co working','Vet'],
  ui:'One level down. Never two.'},
-{k:'Hospital',c:'coral',n:'Occasional, city-wide',
+{k:'Hospital',c:'coral',n:'Occasional, city wide',
  rule:'Exactly one of each, at the most reachable point in the city.',
- items:['Sub-divisional hospital','College','District courts','Tax office','Land registry','Town hall','Central library','Museum','Main station','Licence centre','Hotels'],
+ items:['Subdivisional hospital','College','District courts','Tax office','Land registry','Town hall','Central library','Museum','Main station','Licence centre','Hotels'],
  ui:'Reached by search.'},
 {k:'shield',c:'coral',n:'By response time',
  rule:'Eight minutes to any address in the worst case, not the best average.',
@@ -858,9 +893,9 @@ var CLUS=[
 {k:'tent',c:'sky',n:'Spiky',
  rule:'Empty most days, then forty thousand at once. On transit, off residential streets.',
  items:['Stadium','Multiplex','Exhibition hall','Wholesale market','Festival ground','Examination centre'],
- ui:'Tax season, year-end close.'},
+ ui:'Tax season, year end close.'},
 {k:'depot',c:'muted',n:'Necessary, unloved',
- rule:'Downwind, downstream, buffered &mdash; and placed before the pleasant things take the good ground.',
+ rule:'Downwind, downstream, buffered, and placed before the pleasant things take the good ground.',
  items:['Sewage works','Water treatment','Substation','Bus depot','Freight depot','Recycling centre','Cemetery','Crematorium','Waste transfer'],
  ui:'Settings, logs, billing, data export.'},
 {k:'leaf',c:'leaf',n:'Deliberately not built on',
@@ -918,7 +953,7 @@ var FOVER='<g fill="none" stroke="var(--hair)" stroke-width="1.8"><path d="M105,
 
 var CL=[
 {id:'all',k:'Roads',n:'Whole city',lb:'Whole city',
- cap:'Fifty-five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b>',
+ cap:'Fifty five cells in seven districts, on two lines. <b>A repeated unit, not a centre with suburbs around it.</b>',
  land:FLAND,over:FOVER},
 
 {id:'district',k:'Homes',n:'One district',lb:'One district',
@@ -996,14 +1031,14 @@ $('#cellplan').innerHTML='<svg viewBox="0 0 420 260" role="img" aria-label="Insi
   '<rect x="1" y="1" width="418" height="258" fill="none" stroke="var(--hair)" stroke-width="2" rx="10"/></svg>';
 
 /* ── the eight clusters, placed ── */
-var SHORT=['Daily','Weekly','City-wide','Response time','Spiky','Works &amp; utilities','Kept empty','Left to arrive'];
+var SHORT=['Daily','Weekly','City wide','Response time','Spiky','Works &amp; utilities','Kept empty','Left to arrive'];
 $('#groups').innerHTML=CLUS.map(function(g,i){
-  var rules=['At the centre of a cell &mdash; 800 m from every front door, crossing no arterial road.',
+  var rules=['At the centre of a cell: 800 m from every front door, crossing no arterial road.',
    'On a station. One per cell or shared between two; anywhere else quietly requires a car.',
    'Clustered at the most reachable stop, hospital included. Whoever needs these has the least choice about going.',
-   'Three posts placed so eight minutes covers every address &mdash; not where you would put them to minimise the average.',
+   'Three posts placed so eight minutes covers every address, not where you would put them to minimise the average.',
    'On the spine, off residential streets. A stadium that fills once a month should empty onto a platform.',
-   'South-east, and placed first. The one corner that is both downwind and downstream.',
+   'South east, and placed first. The one corner that is both downwind and downstream.',
    'A green belt and the flood plain, defended in writing, or they become the land that was available.',
    'Set the frontage, the rent and the footfall, then wait. Cafes and repair shops cannot be zoned into existence.'];
   return '<div><span class="gi" style="color:var(--'+g.c+')">'+ICONHTML(g.k,'currentColor',19)+'</span>'+
@@ -1016,11 +1051,11 @@ $('#bars').innerHTML=[['Today',10.0],['Year 10',12.2],['Year 20',14.9]].map(func
 
 /* ── cluster to screen ── */
 (function(){
-  var M=[['Homes','Daily, walk-to','The tab bar','leaf'],
-         ['bus','Weekly, ride-to','One level down, never two','cobalt'],
-         ['Hospital','Occasional, city-wide','Reached by search','coral'],
+  var M=[['Homes','Daily, walk to','The tab bar','leaf'],
+         ['bus','Weekly, ride to','One level down, never two','cobalt'],
+         ['Hospital','Occasional, city wide','Reached by search','coral'],
          ['shield','By response time','Undo, error recovery, support','coral'],
-         ['tent','Spiky','Tax season, year-end close','sky'],
+         ['tent','Spiky','Tax season, year end close','sky'],
          ['depot','Necessary, unloved','Settings, billing, data export','muted'],
          ['leaf','Kept empty','Whitespace, rate limits','leaf'],
          ['Shops','Cannot be placed','You plan the container','butter']];
@@ -1036,19 +1071,23 @@ $('#bars').innerHTML=[['Today',10.0],['Year 10',12.2],['Year 20',14.9]].map(func
 })();
 
 /* ── reveals + nav ── */
-var io=new IntersectionObserver(function(es){
-  es.forEach(function(en){
-    if(!en.isIntersecting) return;
-    en.target.classList.add('on');
-    $$('.bars .bar i, .count .track i',en.target).forEach(function(b,j){
-      setTimeout(function(){ b.style.width=b.dataset.w+'%'; },RM?0:140+j*150); });
-    io.unobserve(en.target);
-  });
-},{rootMargin:'0px 0px -10% 0px',threshold:.08});
-$$('.rv').forEach(function(n){ io.observe(n); });
-addEventListener('scroll',function(){ $('#nav').classList.toggle('stuck',scrollY>8); },{passive:true});
+function reveal(t){
+  t.classList.add('on');
+  $$('.bars .bar i, .count .track i',t).forEach(function(b,j){
+    setTimeout(function(){ b.style.width=b.dataset.w+'%'; },RM?0:140+j*150); });
+}
+if(RM||!('IntersectionObserver' in window)){ $$('.orig .rv').forEach(reveal); }
+else {
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting) return;
+      reveal(en.target);
+      io.unobserve(en.target);
+    });
+  },{rootMargin:'0px 0px -10% 0px',threshold:0});
+  $$('.orig .rv').forEach(function(n){ io.observe(n); });
+}
 })();
 </script>
-<script src="analytics.js"></script>
 </body>
 </html>

@@ -1,193 +1,506 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Elevator Call Buttons, Fixed — Demo · Madhumitha D V</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevator Call Buttons, Fixed · Madhumitha D V</title>
+<meta name="description" content="The button asks your direction. People think they are calling the lift. Two panels on one drawn building: press either and watch what the rider is told. By Madhumitha D V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
 <style>
-  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#ffffff;--bg-alt:#f8fafc;
-    --brand:#4f46e5;--accent:#f97316;--good:#047857;--good-bg:#ecfdf5;
-    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
-  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
-  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
-  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
-  .head-inner .miro{font-size:.85rem;color:var(--muted)}
-  .head-inner .miro a{color:var(--brand);font-weight:600}
-  .intro{padding:36px 0 8px}
-  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .intro h1{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:6px 0 10px}
-  .intro p{color:var(--ink-soft);max-width:640px}
-  .stage{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:28px 0 8px}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
-  .panel h3{font-size:1.05rem;margin-bottom:2px}
-  .panel .sub{font-size:.82rem;color:var(--muted);margin-bottom:16px}
-  .panel.bad h3::after{content:" · today";color:#c2410c;font-size:.8rem}
-  .panel.good h3::after{content:" · redesigned";color:var(--good);font-size:.8rem}
-  .lift-row{display:flex;gap:18px}
-  .shaft{width:54px;background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column-reverse;overflow:hidden}
-  .floor-cell{flex:1;border-top:1px solid var(--line);position:relative;min-height:34px}
-  .floor-cell span{position:absolute;left:6px;top:2px;font-size:.62rem;color:var(--muted)}
-  .car{position:absolute;left:8px;right:8px;height:28px;background:var(--brand);border-radius:6px;transition:bottom .6s linear;display:grid;place-items:center;color:#fff;font-size:.66rem;font-weight:700}
-  .shaft-outer{position:relative;height:280px}
-  .controls{flex:1}
-  .you{font-size:.8rem;color:var(--ink-soft);margin-bottom:10px}
-  .you select{font:inherit;font-size:.8rem;padding:2px 6px;border:1px solid var(--line);border-radius:6px}
-  .callbtns{display:flex;gap:10px;margin-bottom:14px}
-  .cb{width:54px;height:54px;border-radius:50%;border:2px solid var(--line);background:#fff;font-size:1.15rem;cursor:pointer;transition:.15s}
-  .cb:hover{border-color:var(--brand)}
-  .cb.lit{background:var(--brand);border-color:var(--brand);color:#fff}
-  .fb{min-height:86px;border:1px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.82rem;color:var(--ink-soft);background:var(--bg-alt)}
-  .fb b{color:var(--ink)}
-  .fb .eta{font-family:'Sora';font-size:1.35rem;color:var(--brand);font-weight:700}
-  .fb .row{display:flex;align-items:center;gap:8px;margin-top:4px}
-  .dir{display:inline-block;font-weight:700}
-  .qline{font-size:.74rem;color:var(--muted);margin-top:8px}
-  .confused{font-size:.78rem;color:#c2410c;margin-top:8px;min-height:20px}
-  .wall{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:22px auto 8px;box-shadow:var(--shadow)}
-  .wall h2{font-size:1.15rem;margin-bottom:2px}
-  .wall .wsub{font-size:.8rem;color:var(--muted);margin-bottom:14px}
-  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .cluster h4{font:700 .72rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
-  .sticky{font-family:'Kalam',cursive;font-size:.92rem;line-height:1.4;color:#27272a;background:#fef08a;padding:12px 14px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:14px;transform:rotate(-1.2deg)}
-  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
-  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
-  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
-  .sticky.s5{background:#fed7aa;transform:rotate(-2deg)}
-  @media(max-width:760px){.wall-grid{grid-template-columns:1fr}}
-  .lesson{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:22px 0 22px;box-shadow:var(--shadow)}
-  .lesson h3{font-size:1rem;margin-bottom:6px}
-  .lesson p{font-size:.9rem;color:var(--ink-soft)}
-  .lesson b{color:var(--ink)}
-  .didgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
-  .did{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
-  .did h3{font-size:1rem;margin-bottom:10px}
-  .did h3 span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
-  .did li{font-size:.88rem;color:var(--ink-soft);margin:0 0 9px 18px}
-  .did li b{color:var(--ink)}
-  .did ul{list-style:none}
-  .did ul li{position:relative;margin-left:22px}
-  .did ul li::before{content:"✓";position:absolute;left:-22px;color:#047857;font-weight:700}
-  .cta{text-align:center;font-size:.92rem;color:var(--ink-soft);margin:0 0 44px}
-  .cta a{color:var(--brand);font-weight:600}
-  @media(max-width:760px){.didgrid{grid-template-columns:1fr}}
-  @media(max-width:760px){.stage{grid-template-columns:1fr}}
+.d .car{transition:transform .6s linear}
+.d .btn{cursor:pointer}
+.d .btn circle{transition:fill .25s,stroke .25s}
+.d .btn:hover circle.face{stroke:var(--signal)}
+.d .lamp{fill:var(--navy-2);transition:fill .25s}
+.d .lamp.on{fill:var(--signal)}
+.d .shaft{fill:none;stroke:var(--chalk-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.d .fl{fill:none;stroke:var(--grid-2);stroke-width:1}
+.d .you{fill:var(--signal)}
+.d .disp{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.25}
+.d .dt1{font-family:var(--mono);font-size:11px;letter-spacing:.08em;fill:var(--signal);text-transform:uppercase}
+.d .dt2{font-family:var(--display);font-weight:600;font-size:15px;fill:var(--chalk)}
+.d .key text{pointer-events:none}
+.d .key.on circle{fill:var(--signal)}
+.d .key.on text{fill:var(--navy)}
+.d .hidden{display:none}
+.lab .bench .cap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lab .notes ul{padding-left:18px;color:var(--chalk-2);font-size:15px;line-height:24px}
+.lab .notes li+li{margin-top:6px}
+.readout b small{display:inline;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--chalk-3);margin-left:6px}
+/* ═══ originals: ported from ../demo-elevator.html and the rules it used from ../styles.css, scoped under .orig ═══ */
+.orig :where(a){color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.orig :where(a:hover){color:var(--vermilion)}
+.orig a:focus-visible,.orig button:focus-visible,.orig [tabindex]:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+.orig :where(h3){font-family:var(--serif);font-weight:600;font-size:25px;line-height:32px;letter-spacing:-.01em}
+.orig :where(p:not(.orig-block > p)){font-size:19px;line-height:30px;max-width:var(--text)}
+.orig :where(p:not(.orig-block > p) + p:not(.orig-block > p)){margin-top:var(--s4)}
+@media (max-width:719px){
+  .orig :where(h3){font-size:17px;line-height:26px}
+  .orig :where(p:not(.orig-block > p)){font-size:17px;line-height:27px}
+}
+.orig .sub{margin-top:6px}
+.orig :where(h1),.orig :where(h2),.orig :where(h3){font-family:var(--serif);letter-spacing:-.02em}
+.orig :where(a){color:inherit;text-decoration:none}
+.orig .o-stage{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-block:28px 8px}
+.orig .panel{background:var(--paper);border:1px solid var(--line);padding:22px;}
+.orig .panel h3{font-size:1.05rem;margin-bottom:2px}
+.orig .panel .sub{font-size:.82rem;color:var(--muted);margin-bottom:16px}
+.orig .panel.bad h3::after{content:" · today";color:var(--ochre);font-size:.8rem}
+.orig .panel.good h3::after{content:" · redesigned";color:var(--good);font-size:.8rem}
+.orig .lift-row{display:flex;gap:18px}
+.orig .shaft{width:54px;background:var(--bg-alt);border:1px solid var(--line);display:flex;flex-direction:column-reverse;overflow:hidden}
+.orig .floor-cell{flex:1;border-top:1px solid var(--line);position:relative;min-height:34px}
+.orig .floor-cell span{position:absolute;left:6px;top:2px;font-size:.62rem;color:var(--muted)}
+.orig .car{position:absolute;left:8px;right:8px;height:28px;background:var(--brand);transition:bottom .6s linear;display:grid;place-items:center;color:var(--paper);font-size:.66rem;font-weight:600}
+.orig .shaft-outer{position:relative;height:280px}
+.orig .controls{flex:1}
+.orig .you{font-size:.8rem;color:var(--ink-soft);margin-bottom:10px}
+.orig .you select{font:inherit;font-size:.8rem;padding:2px 6px;border:1px solid var(--line);}
+.orig .callbtns{display:flex;gap:10px;margin-bottom:14px}
+.orig .cb{width:54px;height:54px;border:2px solid var(--line);background:var(--paper);font-size:1.15rem;cursor:pointer;transition:.15s}
+.orig .cb:hover{border-color:var(--brand)}
+.orig .cb.lit{background:var(--brand);border-color:var(--brand);color:var(--paper)}
+.orig .fb{min-height:86px;border:1px dashed var(--line);padding:10px 12px;font-size:.82rem;color:var(--ink-soft);background:var(--bg-alt)}
+.orig .fb b{color:var(--ink)}
+.orig .fb .eta{font-family:var(--serif);font-size:1.35rem;color:var(--brand);font-weight:600}
+.orig .fb .row{display:flex;align-items:center;gap:8px;margin-top:4px}
+.orig .dir{display:inline-block;font-weight:600}
+.orig .qline{font-size:.74rem;color:var(--muted);margin-top:8px}
+.orig .confused{font-size:.78rem;color:var(--ochre);margin-top:8px;min-height:20px}
+.orig .wall{background:var(--paper);border:1px solid var(--line);padding:22px;margin:22px auto 8px;}
+.orig .wall-grid{background-image:radial-gradient(var(--rule) 1.3px,transparent 1.3px);background-size:22px 22px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.orig .cluster h4{font:600 .72rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:var(--paper);display:inline-block;padding:3px 8px;border:1px solid var(--line);}
+.orig .sticky{font-family:var(--hand);font-size:.92rem;line-height:1.4;color:var(--ink);background:var(--note-1);padding:12px 14px;margin-bottom:14px;transform:rotate(-1.2deg)}
+.orig .sticky.s2{background:var(--note-3);transform:rotate(1.3deg)}
+.orig .sticky.s3{background:var(--paper-2);transform:rotate(-.8deg)}
+.orig .sticky.s4{background:var(--note-2);transform:rotate(1.8deg)}
+.orig .sticky.s5{background:var(--ochre-tint);transform:rotate(-2deg)}
+@media(max-width:760px){
+  .orig .wall-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .orig .o-stage{grid-template-columns:1fr}
+}
+.orig .o-stage > *,.orig .lift-row > *{min-width:0}
+@media (prefers-reduced-motion:reduce){.orig .car,.orig .cb{transition:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap head-inner">
-    <a class="back" href="index.html#projects">← Back to portfolio</a>
-    <span class="miro">Full exploration: <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612223165015" target="_blank" rel="noopener">Miro board ↗</a></span>
+<a class="skip" href="#lab">Skip to the drawing</a>
+
+<header class="top">
+  <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
+  <nav>
+    <a class="keep" href="index.html#work">Work</a>
+    <a href="index.html#method">Method</a>
+    <a href="index.html#about">About</a>
+    <a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a>
+  </nav>
+</header>
+
+<main>
+
+<header class="phead">
+  <div class="in">
+    <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Buildings · Case study</span></div>
+    <h1 class="reveal" style="--d:.05s">Elevator Call Buttons, Fixed</h1>
+    <p class="q reveal" style="--d:.1s">The button asks your direction. People think they are calling the lift.</p>
+    <p class="s reveal" style="--d:.15s">Same building, same lift logic, a different panel. Watched in lobbies first, then specified: what the panel must know and show before any pixel was drawn. Below, both panels are wired to one drawn building. Press either and watch what the rider is told.</p>
+    <dl class="four reveal" style="--d:.2s">
+      <div><dt>Stopped at</dt><dd>People press both arrows, then press again to hurry it up.</dd></div>
+      <div><dt>Noticed</dt><dd>Up or down is the system's question, not the rider's.</dd></div>
+      <div><dt>Tradeoff</dt><dd>The panel everyone knows, or one people have to learn.</dd></div>
+      <div class="dec"><dt>Decided</dt><dd>One call, then feedback at every state.</dd></div>
+    </dl>
   </div>
 </header>
 
-<section class="intro wrap">
-  <div class="tagline">Interactive demo</div>
-  <h1>Elevator call buttons, fixed</h1>
-  <p>Call buttons ask for your <em>direction</em>; people think they're <em>summoning the lift</em>. Try both panels below — same building, same lift logic, different interface. Press a call button and watch what each panel tells you.</p>
+<!-- ═══ THE SHEET: two panels, one building ═══ -->
+<section class="lab" id="lab" aria-label="Two panels, one building">
+  <div class="in"><div class="frame sheet reveal">
+    <div class="bench">
+      <span class="cap"><b>Fig. 1</b> · Two panels, one building <span id="capn">· you are on floor 3</span></span>
+      <div class="ctl-row">
+        <div class="seg" id="scen" role="group" aria-label="Scenario">
+          <button type="button" data-s="normal" aria-pressed="true">Quiet floor</button>
+          <button type="button" data-s="both" aria-pressed="false">Both pressed</button>
+          <button type="button" data-s="hurry" aria-pressed="false">Pressed again</button>
+          <button type="button" data-s="lobby" aria-pressed="false">Lobby at 9 am</button>
+          <button type="button" data-s="bank" aria-pressed="false">Bank of four</button>
+        </div>
+        <button class="tog" type="button" id="reset" aria-pressed="false" style="margin-left:auto"><i></i>Reset cars</button>
+      </div>
+
+      <svg class="d go" id="sim" viewBox="0 0 782 520" role="img" aria-label="A six floor building in section with two lift shafts, a rider waiting on floor 3, the usual up and down call plate on the left and the rebuilt panel with one call button, a destination keypad and a display on the right. Pressing either panel dispatches a car.">
+        <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#E7ECF0" stroke-width=".8" opacity=".5"/></pattern></defs>
+        <!-- building section -->
+        <rect class="l" x="236" y="52" width="372" height="424"/>
+        <text class="tm" x="236" y="42">Section · six floors · 3.4 m a floor</text>
+        <g class="fl"><line x1="236" y1="128" x2="608" y2="128"/><line x1="236" y1="196" x2="608" y2="196"/><line x1="236" y1="264" x2="608" y2="264"/><line x1="236" y1="332" x2="608" y2="332"/><line x1="236" y1="400" x2="608" y2="400"/></g>
+        <g class="tm"><text x="214" y="98" text-anchor="end">6</text><text x="214" y="166" text-anchor="end">5</text><text x="214" y="234" text-anchor="end">4</text><text x="214" y="302" text-anchor="end">3</text><text x="214" y="370" text-anchor="end">2</text><text x="214" y="438" text-anchor="end">1</text></g>
+        <!-- shafts -->
+        <g id="shafts">
+          <rect class="shaft" x="250" y="60" width="70" height="408"/><text class="tm" x="285" y="492" text-anchor="middle">Shaft A</text>
+          <rect class="shaft" x="340" y="60" width="70" height="408"/><text class="tm" x="375" y="492" text-anchor="middle">Shaft B</text>
+          <g class="bankonly hidden"><rect class="shaft" x="430" y="60" width="70" height="408"/><text class="tm" x="465" y="492" text-anchor="middle">Shaft C</text></g>
+          <g class="bankonly hidden"><rect class="shaft" x="520" y="60" width="70" height="408"/><text class="tm" x="555" y="492" text-anchor="middle">Shaft D</text></g>
+        </g>
+        <!-- cars: drawn at floor 1, moved with transform -->
+        <g class="car" data-car="A"><rect class="f2" x="257" y="406" width="56" height="56"/><text class="t" x="285" y="438" text-anchor="middle">A</text></g>
+        <g class="car" data-car="B"><rect class="f2" x="347" y="406" width="56" height="56"/><text class="t" x="375" y="438" text-anchor="middle">B</text></g>
+        <g class="car bankonly hidden" data-car="C"><rect class="f2" x="437" y="406" width="56" height="56"/><text class="t" x="465" y="438" text-anchor="middle">C</text></g>
+        <g class="car bankonly hidden" data-car="D"><rect class="f2" x="527" y="406" width="56" height="56"/><text class="t" x="555" y="438" text-anchor="middle">D</text></g>
+        <!-- the rider -->
+        <g id="rider" transform="translate(0,0)">
+          <circle class="you" cx="188" cy="288" r="6"/><path class="a" d="M188 294 V318 M188 300 L176 310 M188 300 L200 310 M188 318 L180 332 M188 318 L196 332"/>
+          <text class="ta" x="160" y="348">You</text>
+        </g>
+        <!-- usual plate -->
+        <g id="usual">
+          <text class="tm" x="40" y="42">The usual plate</text>
+          <rect class="f" x="40" y="52" width="110" height="200" rx="3"/>
+          <g class="btn" data-dir="up" role="button" tabindex="0" aria-label="Up"><circle class="face f2" cx="95" cy="112" r="26"/><circle class="lamp" id="lampU" cx="95" cy="112" r="16"/><path class="l" d="M95 100 L95 124 M85 110 L95 100 L105 110"/></g>
+          <g class="btn" data-dir="down" role="button" tabindex="0" aria-label="Down"><circle class="face f2" cx="95" cy="192" r="26"/><circle class="lamp" id="lampD" cx="95" cy="192" r="16"/><path class="l" d="M95 180 L95 204 M85 194 L95 204 L105 194"/></g>
+          <text class="tm" x="40" y="276">It asks which way.</text>
+          <text class="tm" x="40" y="290">It answers nothing.</text>
+          <text class="tm" x="40" y="318" id="usualMsg"></text>
+          <text class="tm" x="40" y="332" id="usualMsg2"></text>
+        </g>
+        <!-- rebuilt panel -->
+        <g id="rebuilt">
+          <text class="tm" x="630" y="42">The rebuilt panel</text>
+          <rect class="f" x="630" y="52" width="114" height="400" rx="3"/>
+          <rect class="disp" x="640" y="62" width="94" height="58"/>
+          <text class="dt1" id="d1" x="648" y="82">Ready</text>
+          <text class="dt2" id="d2" x="648" y="104">Press call</text>
+          <g class="btn" id="call" role="button" tabindex="0" aria-label="Call a lift"><circle class="face f2" cx="687" cy="160" r="26"/><text class="t" x="687" y="164" text-anchor="middle">Call</text></g>
+          <text class="tm" x="642" y="206">Then: where to?</text>
+          <g id="keys">
+            <g class="btn key" data-f="5" role="button" tabindex="0" aria-label="Floor 5"><circle class="face f2" cx="663" cy="232" r="16"/><text class="t" x="663" y="236" text-anchor="middle">5</text></g>
+            <g class="btn key" data-f="6" role="button" tabindex="0" aria-label="Floor 6"><circle class="face f2" cx="711" cy="232" r="16"/><text class="t" x="711" y="236" text-anchor="middle">6</text></g>
+            <g class="btn key" data-f="3" role="button" tabindex="0" aria-label="Floor 3"><circle class="face f2" cx="663" cy="276" r="16"/><text class="t" x="663" y="280" text-anchor="middle">3</text></g>
+            <g class="btn key" data-f="4" role="button" tabindex="0" aria-label="Floor 4"><circle class="face f2" cx="711" cy="276" r="16"/><text class="t" x="711" y="280" text-anchor="middle">4</text></g>
+            <g class="btn key" data-f="1" role="button" tabindex="0" aria-label="Floor 1"><circle class="face f2" cx="663" cy="320" r="16"/><text class="t" x="663" y="324" text-anchor="middle">1</text></g>
+            <g class="btn key" data-f="2" role="button" tabindex="0" aria-label="Floor 2"><circle class="face f2" cx="711" cy="320" r="16"/><text class="t" x="711" y="324" text-anchor="middle">2</text></g>
+          </g>
+          <text class="tm" x="642" y="372">Position · state ·</text>
+          <text class="tm" x="642" y="386">direction · wait,</text>
+          <text class="tm" x="642" y="400">on every landing.</text>
+        </g>
+        <text class="tm" x="236" y="512">Floors move at 600 ms in the drawing · times below are at 6 s a floor and 4 s a stop</text>
+      </svg>
+
+      <div class="readout" id="readout">
+        <div><b id="uWait">·</b><small>Usual plate · wait</small></div>
+        <div><b id="uWaste">·</b><small>Usual plate · wasted stops</small></div>
+        <div><b id="uFeed">none</b><small>Usual plate · what you were told</small></div>
+        <div><b id="rWait">·</b><small>Rebuilt · wait</small></div>
+        <div><b id="rWaste">·</b><small>Rebuilt · wasted stops</small></div>
+        <div><b class="hot" id="rFeed">3 states</b><small>Rebuilt · what you were told</small></div>
+      </div>
+    </div>
+
+    <aside class="notes" id="notes">
+      <span class="n" id="n-k">Quiet floor</span>
+      <h2 id="n-h">Press either panel. Same building, same cars, a different answer.</h2>
+      <p id="n-p">On the left, the plate everyone knows: two arrows, and a lamp that lights. On the right, one Call button, a display that tells you which car is coming and how far away it is, and a keypad for where you are going once it arrives.</p>
+      <ul id="n-l"><li>Car A is parked on 6, car B on 1. You are on 3.</li><li>Press an arrow, or press Call, and watch what each panel tells you.</li></ul>
+      <p class="dec" id="n-d"><b>Decided</b>Ask the rider for one thing. Tell them everything else.</p>
+    </aside>
+  </div></div>
 </section>
 
-<div class="wrap wall">
-  <h2>The exploration wall</h2>
-  <div class="wsub">Distilled from the working Miro board — reference points → what we observed → how we converged.</div>
-  <div class="wall-grid">
-    <div class="cluster">
-      <h4>Reference points</h4>
-      <div class="sticky">The classic "elevator button conundrum" UX debate — direction buttons vs summon buttons</div>
-      <div class="sticky s2">Three very different homes for the same panel: high-rise apartments, multi-specialty hospitals, malls &amp; offices</div>
-      <div class="sticky s3">Watched real behaviour at the lobby: press both arrows, press again "to hurry it up", hover near the door</div>
-    </div>
-    <div class="cluster">
-      <h4>What we observed</h4>
-      <div class="sticky s4">Mental-model mismatch: the button asks your <b>direction</b>, people think they're <b>calling the lift</b></div>
-      <div class="sticky">Zero feedback after the press — is it coming? where is it? how long?</div>
-      <div class="sticky s5">Downtime is undesigned: what does a lit button even mean when the lift is parked?</div>
-      <div class="sticky s2">Multi-lift banks make it worse — which one answered <i>your</i> call?</div>
-    </div>
-    <div class="cluster">
-      <h4>Converging</h4>
-      <div class="sticky s3">Prerequisites locked first: position + static/moving + direction + tentative wait</div>
-      <div class="sticky s5">FIFO queue for the controller — fairness a lobby full of people can trust</div>
-      <div class="sticky">Feedback at every state: acknowledged → en route → arriving</div>
-      <div class="sticky s4">Parked for v2: music, games, countdown chatter; priority tokens kept for hospitals</div>
-    </div>
-  </div>
-</div>
+<!-- ═══ from the original sheet ═══ -->
+<section class="originals" id="originals"><div class="in">
+  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The wall and the two panels, as first built</h2></div><p>The working board from the lobby visits, then the two panels side by side on the same lift logic. Press a call button on each.</p></div>
+  <div class="orig">
 
-<div class="wrap stage">
-  <!-- TODAY -->
-  <div class="panel bad">
-    <h3>The usual panel</h3>
-    <div class="sub">Two arrows. No feedback. Good luck.</div>
-    <div class="lift-row">
-      <div class="shaft-outer">
-        <div class="shaft" id="shaftA" style="height:280px"></div>
-      </div>
-      <div class="controls">
-        <div class="you">You are on floor <select id="floorA"></select></div>
-        <div class="callbtns">
-          <button class="cb" id="upA">▲</button>
-          <button class="cb" id="dnA">▼</button>
+    <div class="orig-block"><span class="k">Fig. 1</span><h3>The exploration wall</h3><p>Distilled from the working Miro board: reference points → what we observed → how we converged.</p>
+      <div class="wall">
+        <div class="wall-grid">
+          <div class="cluster">
+            <h4>Reference points</h4>
+            <div class="sticky">The classic "elevator button conundrum" UX debate, direction buttons vs summon buttons</div>
+            <div class="sticky s2">Three very different homes for the same panel: high rise apartments, multispecialty hospitals, malls &amp; offices</div>
+            <div class="sticky s3">Watched real behaviour at the lobby: press both arrows, press again "to hurry it up", hover near the door</div>
+          </div>
+          <div class="cluster">
+            <h4>What we observed</h4>
+            <div class="sticky s4">Mental model mismatch: the button asks your <b>direction</b>, people think they're <b>calling the lift</b></div>
+            <div class="sticky">Zero feedback after the press: is it coming? where is it? how long?</div>
+            <div class="sticky s5">Downtime is undesigned: what does a lit button even mean when the lift is parked?</div>
+            <div class="sticky s2">Multilift banks make it worse, which one answered <i>your</i> call?</div>
+          </div>
+          <div class="cluster">
+            <h4>Converging</h4>
+            <div class="sticky s3">Prerequisites locked first: position + static/moving + direction + tentative wait</div>
+            <div class="sticky s5">FIFO queue for the controller, fairness a lobby full of people can trust</div>
+            <div class="sticky">Feedback at every state: acknowledged → en route → arriving</div>
+            <div class="sticky s4">Parked for v2: music, games, countdown chatter; priority tokens kept for hospitals</div>
+          </div>
         </div>
-        <div class="fb" id="fbA">The button lights up. That's all you get.</div>
-        <div class="confused" id="confA"></div>
       </div>
     </div>
-  </div>
 
-  <!-- REDESIGNED -->
-  <div class="panel good">
-    <h3>The rebuilt panel</h3>
-    <div class="sub">Position · direction · wait time · acknowledgment</div>
-    <div class="lift-row">
-      <div class="shaft-outer">
-        <div class="shaft" id="shaftB" style="height:280px"></div>
-      </div>
-      <div class="controls">
-        <div class="you">You are on floor <select id="floorB"></select></div>
-        <div class="callbtns">
-          <button class="cb" id="callB" style="width:auto;border-radius:14px;padding:0 18px;font-size:.9rem;font-weight:700">Call lift</button>
+    <div class="orig-block"><span class="k">Fig. 2</span><h3>Elevator call buttons, fixed</h3><p>Call buttons ask for your <em>direction</em>; people think they're <em>summoning the lift</em>. Try both panels below: same building, same lift logic, different interface. Press a call button and watch what each panel tells you.</p>
+      <div class="o-stage">
+        <!-- TODAY -->
+        <div class="panel bad">
+          <h3>The usual panel</h3>
+          <div class="sub">Two arrows. No feedback. Good luck.</div>
+          <div class="lift-row">
+            <div class="shaft-outer">
+              <div class="shaft" id="shaftA" style="height:280px"></div>
+            </div>
+            <div class="controls">
+              <div class="you">You are on floor <select id="floorA"></select></div>
+              <div class="callbtns">
+                <button class="cb" id="upA">▲</button>
+                <button class="cb" id="dnA">▼</button>
+              </div>
+              <div class="fb" id="fbA">The button lights up. That's all you get.</div>
+              <div class="confused" id="confA"></div>
+            </div>
+          </div>
         </div>
-        <div class="fb" id="fbB"><b>Lift status</b><div class="row"><span class="eta" id="etaB">–</span><span id="dirB" class="dir"></span></div><div id="posB">Idle at floor 0</div><div class="qline" id="qB">Queue: empty</div></div>
+
+        <!-- REDESIGNED -->
+        <div class="panel good">
+          <h3>The rebuilt panel</h3>
+          <div class="sub">Position · direction · wait time · acknowledgment</div>
+          <div class="lift-row">
+            <div class="shaft-outer">
+              <div class="shaft" id="shaftB" style="height:280px"></div>
+            </div>
+            <div class="controls">
+              <div class="you">You are on floor <select id="floorB"></select></div>
+              <div class="callbtns">
+                <button class="cb" id="callB" style="width:auto;padding:0 18px;font-size:.9rem;font-weight:600">Call lift</button>
+              </div>
+              <div class="fb" id="fbB"><b>Lift status</b><div class="row"><span class="eta" id="etaB">·</span><span id="dirB" class="dir"></span></div><div id="posB">Idle at floor 0</div><div class="qline" id="qB">Queue: empty</div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
+</div></section>
 
-<div class="wrap lesson">
-  <h3>What this demonstrates</h3>
-  <p><b>Separate user intent from system control.</b> Riders don't want to declare a direction — they want to know <b>where the lift is, which way it's heading, and how long they'll wait</b>. The rebuilt panel acknowledges every request (FIFO queue), shows live position, and estimates arrival — the three prerequisites identified in the full exploration. Edge cases handled there: multi-lift dispatch, hospital priority, downtime defaults.</p>
-</div>
+<!-- ═══ PAPER ═══ -->
+<section class="prose">
+  <div class="in"><div>
+    <div class="reveal"><span class="n">01 · Where it breaks</span><h2>The edge cases are the everyday cases</h2></div>
+    <div class="reveal" style="--d:.1s">
+      <p>The same plate hangs in a high rise, a hospital and a mall. It asks one thing, which way you are going, and answers nothing: not whether the lift heard you, not where it is, not how long you will wait.</p>
+      <p>The rider means "come and get me" or "I want floor nine". The panel hears "up" or "down". The gap between the two is the whole problem. It is a mental model mismatch, not a user error, and reframing it that way changed what needed building: from "people press wrong" to "the interface asks the wrong question".</p>
+      <ul>
+        <li>Both arrows pressed, to be safe. Two hall calls, one rider, one wasted stop.</li>
+        <li>Pressed again, to hurry it up. Nothing changes, and the rider cannot tell.</li>
+        <li>A lit button while the lift is parked, meaning nothing. Downtime is undesigned.</li>
+        <li>A bank of four lifts, and no way to know which one answered your call.</li>
+        <li>Silence reads as broken.</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
 
-<div class="wrap didgrid">
-  <div class="did">
-    <h3><span>Behind the scenes</span>What I actually did</h3>
+<section class="prose" style="padding-top:0">
+  <div class="in"><div>
+    <div class="reveal"><span class="n">02 · The rebuilt panel</span><h2>One call, and four things the panel must know</h2></div>
+    <div class="reveal" style="--d:.1s">
+      <p>Before pixels, the prerequisites: the lift's position, whether it is static or moving, its direction, and a tentative wait. The panel shows those and takes one input, a call. Direction is the controller's job once it knows where you are.</p>
+      <p>Every press gets a state, and every state is visible: acknowledged, en route, arriving. A first in, first out queue sits behind it, because fairness a lobby full of people can see is fairness they trust. In a multilift bank, the display names the door.</p>
+      <table>
+        <thead><tr><th>The rider asks</th><th>The usual plate</th><th>The rebuilt panel</th></tr></thead>
+        <tbody>
+          <tr><td><b>Did it hear me?</b></td><td class="r">A lamp, which also lights for everyone else's press</td><td>Acknowledged, with the car named</td></tr>
+          <tr><td><b>Where is it?</b></td><td class="r">Nothing</td><td>Position and direction, on every landing</td></tr>
+          <tr><td><b>How long?</b></td><td class="r">Nothing</td><td>Floors away, and a tentative wait</td></tr>
+          <tr><td><b>Which door?</b></td><td class="r">Whichever opens</td><td>Named before it arrives</td></tr>
+          <tr><td><b>Am I next?</b></td><td class="r">Nothing</td><td>The queue, in order, visible to the lobby</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></div>
+</section>
+
+<section class="prose" style="padding-top:0">
+  <div class="in"><div>
+    <div class="reveal"><span class="n">03 · What it costs, what it fixes</span><h2>A display on every landing, and one button to learn</h2></div>
+    <div class="reveal" style="--d:.1s">
+      <p>It costs a display per landing, a controller that exposes its queue, and the habit of pressing arrows. In an existing building that is a retrofit, which is my inference rather than something the exercise priced. It removes the double press, the repress and the hover near the door.</p>
+      <p>Music, games and countdown chatter were parked for a second version. Priority tokens were kept for hospitals.</p>
+      <p>The same move works on any product people keep "using wrong". Write down what the interface asks and what users think it does. That gap is the real specification. List what the system knows that the user cannot see, then expose the one piece of state that kills the biggest doubt. Give every action an acknowledgement. Design the boring states first: downtime, queues, failure. Delight is a v2 problem.</p>
+      <span class="source">Watched in three homes for the same panel: high rise flats, multispeciality hospitals, malls and offices.</span>
+    </div>
+  </div></div>
+</section>
+
+<section class="decided">
+  <div class="in"><div class="box sheet reveal">
+    <div><span class="k">Decided</span><h2>Ask the rider for one thing. Tell them everything else.</h2></div>
     <ol>
-      <li><b>Watched lobbies before touching a whiteboard</b> — collected the repeat behaviours: double-arrow presses, re-presses, the hover-near-door shuffle.</li>
-      <li><b>Reframed the problem</b> from "people press wrong" to "the interface asks a question users aren't answering" — a mental-model gap, not a user error.</li>
-      <li><b>Specced prerequisites before pixels</b>: what must the panel know and show — position, static/moving, direction, tentative wait — for both single- and multi-lift buildings.</li>
-      <li><b>Designed the states, then the algorithm</b>: acknowledged → en route → arriving, backed by a FIFO controller; wrote downtime and hospital-priority edge cases into the spec, and parked the delighters for v2.</li>
+      <li><b>Stop</b><span>The button asks your direction. People think they are calling the lift.<i>Both arrows pressed, then pressed again.</i></span></li>
+      <li><b>Notice</b><span>Up or down is the system's question.<i>The rider's questions are where is it, which way, and how long. None of them are answered.</i></span></li>
+      <li><b>Tradeoff</b><span>The panel everyone already knows, or one people have to learn.<i>Familiar and silent, or new and honest.</i></span></li>
+      <li><b>Decide</b><span>One call button; position, direction and wait on every landing; a queue the lobby can see; three visible states.<i>What it cost: a display per landing, and a habit.</i></span></li>
     </ol>
-  </div>
-  <div class="did">
-    <h3><span>Take this with you</span>If your users "misuse" your product</h3>
-    <ul>
-      <li>Write down what the interface <b>asks</b> vs what users <b>think it does</b>. That gap is your real spec.</li>
-      <li>List what the system knows that the user can't see — then expose the one piece of state that kills the biggest doubt.</li>
-      <li>Give every action an acknowledgment. Silence reads as "broken".</li>
-      <li>Design the boring states first: downtime, queues, failure. Delight is a v2 problem.</li>
-    </ul>
-  </div>
-</div>
-<div class="wrap cta">Got an interface people keep "using wrong"? I enjoy these puzzles — <a href="mailto:dvmadhumitha2021@outlook.com">write to me</a> or <a href="index.html#projects">see the other explorations</a>.</div>
+  </div></div>
+</section>
 
+<nav class="pn" aria-label="Previous and next">
+  <div class="in"><div>
+    <a href="demo-boardingpass.html"><span>Previous</span><h3>Boarding Pass Design Analysis</h3></a>
+    <a class="next" href="demo-payments.html"><span>Next</span><h3>A product manager's map of payments</h3></a>
+  </div></div>
+</nav>
+
+</main>
+
+<footer class="foot sheet">
+  <div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div>
+</footer>
+
+<script src="analytics.js" defer></script>
 <script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
+  else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
+
+  /* ── the simulator ── */
+  var FLOOR = 68, STEP = reduce ? 0 : 600, SEC_FLOOR = 6, SEC_STOP = 4;
+  var svg = document.getElementById('sim');
+  var carEls = {}; [].slice.call(svg.querySelectorAll('.car')).forEach(function(g){ carEls[g.getAttribute('data-car')] = g; });
+  var rider = document.getElementById('rider'), d1 = document.getElementById('d1'), d2 = document.getElementById('d2');
+  var lampU = document.getElementById('lampU'), lampD = document.getElementById('lampD'), uMsg = document.getElementById('usualMsg'), uMsg2 = document.getElementById('usualMsg2');
+  var out = {uWait:0,uWaste:0,uFeed:0,rWait:0,rWaste:0,rFeed:0}; Object.keys(out).forEach(function(k){ out[k] = document.getElementById(k); });
+  var nk = document.getElementById('n-k'), nh = document.getElementById('n-h'), np = document.getElementById('n-p'), nl = document.getElementById('n-l'), capn = document.getElementById('capn');
+
+  var scenarios = {
+    normal:{ floor:3, cars:{A:6,B:1}, queue:[], bank:false,
+      k:'Quiet floor', h:'Press either panel. Same building, same cars, a different answer.',
+      p:'On the left, the plate everyone knows: two arrows, and a lamp that lights. On the right, one Call button, a display that tells you which car is coming and how far away it is, and a keypad for where you are going once it arrives.',
+      l:['Car A is parked on 6, car B on 1. You are on 3.','Press an arrow, or press Call, and watch what each panel tells you.'] },
+    both:{ floor:3, cars:{A:6,B:1}, queue:[], bank:false,
+      k:'Both pressed', h:'Two arrows pressed, to be safe. Two hall calls, one rider.',
+      p:'Press up, then down, on the usual plate. The controller hears two separate calls and may send two cars. One of them stops for nobody. On the rebuilt panel there is only one thing to press, so there is nothing to press twice.',
+      l:['Press both arrows on the left, then Call on the right.','Count the wasted stops in the readout.'] },
+    hurry:{ floor:3, cars:{A:6,B:1}, queue:[], bank:false,
+      k:'Pressed again', h:'Pressed again, to hurry it up. Nothing changes, and the rider cannot tell.',
+      p:'Press the same arrow three times. The lamp stays lit and the car does not come any faster. Press Call three times on the rebuilt panel and the display says so: already acknowledged, car named, floors away.',
+      l:['Press one arrow repeatedly on the left.','Press Call repeatedly on the right. Read the display.'] },
+    lobby:{ floor:1, cars:{A:6,B:5}, queue:[4,2], bank:false,
+      k:'Lobby at 9 am', h:'Two people pressed before you. Are you next?',
+      p:'You are in the lobby. Both cars are high up and two calls, from floors 4 and 2, are already in the queue. The car will stop for them first. The usual plate shows a lamp for all three of you. The rebuilt panel shows the queue, in order, so a lobby full of people can see the fairness.',
+      l:['Car A on 6, car B on 5. Calls waiting at 4 and 2. You are on 1.','Press either panel and watch the stops on the way down.'] },
+    bank:{ floor:3, cars:{A:6,B:1,C:4,D:5}, queue:[], bank:true,
+      k:'Bank of four', h:'Four lifts answered someone. Which one answered you?',
+      p:'With four shafts, the usual plate fails completely: the lamp lights, a car arrives somewhere along the wall, and the lobby shuffles toward whichever door opens. The rebuilt panel names the car and the door before it arrives. That is the one piece of state that kills the biggest doubt.',
+      l:['Cars on 6, 1, 4 and 5. You are on 3.','Press either panel, then look for which door the display names.'] }
+  };
+  var S = null, cars = {}, busy = false, calls = {up:false, down:false}, rCall = null, presses = 0;
+
+  function place(id, floor){ cars[id].floor = floor; carEls[id].style.transform = 'translateY(' + (-(floor-1)*FLOOR) + 'px)'; }
+  function setRider(floor){ rider.setAttribute('transform', 'translate(0,' + ((3-floor)*FLOOR) + ')'); capn.textContent = '· you are on floor ' + floor; }
+  function disp(a, b){ d1.textContent = a; d2.textContent = b; }
+  function notes(sc){ nk.textContent = sc.k; nh.textContent = sc.h; np.textContent = sc.p; nl.innerHTML = sc.l.map(function(x){ return '<li>'+x+'</li>'; }).join(''); }
+  function load(name){
+    S = scenarios[name]; busy = false; calls = {up:false,down:false}; rCall = null; presses = 0;
+    [].slice.call(svg.querySelectorAll('.bankonly')).forEach(function(e){ e.classList.toggle('hidden', !S.bank); });
+    cars = {}; Object.keys(S.cars).forEach(function(id){ cars[id] = {floor:S.cars[id], idle:true}; place(id, S.cars[id]); });
+    setRider(S.floor); lampU.classList.remove('on'); lampD.classList.remove('on'); uMsg.textContent = ''; uMsg2.textContent = '';
+    disp('Ready', 'Press call'); svg.querySelectorAll('.key').forEach(function(k){ k.classList.remove('on'); });
+    ['uWait','uWaste','rWait','rWaste'].forEach(function(k){ out[k].textContent = '·'; }); out.uFeed.textContent = 'none'; out.rFeed.textContent = '3 states';
+    notes(S);
+  }
+  function nearest(floor){ var best = null, bd = 99; Object.keys(cars).forEach(function(id){ var c = cars[id]; if(!c.idle) return; var d = Math.abs(c.floor - floor); if(d < bd){ bd = d; best = id; } }); return best; }
+  /* move a car to the rider, stopping at queued floors on the way; cb(seconds, stops, id) */
+  function send(id, to, stops, onStep, cb){
+    var c = cars[id]; c.idle = false; var secs = 0, made = 0;
+    var plan = []; var f = c.floor;
+    var dir = to > f ? 1 : -1;
+    var pending = stops.filter(function(s){ return (s - f) * dir > 0 && (to - s) * dir > 0; }).sort(function(a,b){ return (a-b)*dir; });
+    function step(){
+      if(f === to){ cb(secs, made, id); return; }
+      f += dir; place(id, f); secs += SEC_FLOOR;
+      var stop = pending.indexOf(f) > -1;
+      if(stop){ made++; secs += SEC_STOP; }
+      onStep(f, to, stop);
+      setTimeout(step, STEP + (stop ? STEP : 0));
+    }
+    setTimeout(step, STEP);
+  }
+  /* the usual plate */
+  function usual(dir){
+    var lamp = dir==='up' ? lampU : lampD;
+    lamp.classList.add('on'); presses++;
+    out.uFeed.textContent = 'a lamp';
+    if(calls[dir]){ uMsg.textContent = 'Pressed ' + presses + ' times.'; uMsg2.textContent = 'Nothing changed.'; return; }
+    calls[dir] = true;
+    var id = nearest(S.floor); if(!id){ uMsg.textContent = 'No car free.'; return; }
+    var other = (calls.up && calls.down);
+    uMsg.textContent = ''; uMsg2.textContent = '';
+    send(id, S.floor, S.queue, function(){}, function(secs, stops){
+      lamp.classList.remove('on'); cars[id].idle = true; calls[dir] = false;
+      out.uWait.textContent = secs + ' s';
+      var wasted = (other ? 1 : 0);
+      out.uWaste.textContent = S.bank ? (wasted + ' ') : String(wasted);
+      if(S.bank){ out.uWaste.innerHTML = wasted + '<small>which door?</small>'; uMsg.textContent = 'A door opened.'; uMsg2.textContent = 'Which one? You look.'; }
+      else if(S.name==='lobby' || S.queue.length){ uMsg.textContent = 'It stopped ' + stops + ' times.'; uMsg2.textContent = 'You did not know why.'; }
+      else { uMsg.textContent = 'A door opened.'; uMsg2.textContent = wasted ? 'Another car came too.' : ''; }
+    });
+  }
+  /* the rebuilt panel */
+  function call(){
+    if(rCall){ disp('Already acknowledged', 'Car ' + rCall.id + ' · ' + rCall.away + ' away'); return; }
+    var id = nearest(S.floor); if(!id){ disp('All cars busy', 'Queued · you are next'); return; }
+    var ahead = S.queue.length;
+    rCall = {id:id, away:Math.abs(cars[id].floor - S.floor)};
+    disp('Acknowledged', 'Car ' + id + ' · ' + rCall.away + (rCall.away===1?' floor':' floors') + (ahead ? ' · ' + ahead + ' ahead' : ''));
+    out.rFeed.textContent = 'acknowledged';
+    send(id, S.floor, S.queue, function(f, to, stop){
+      var away = Math.abs(to - f); rCall.away = away;
+      if(stop){ disp('Stopping · floor ' + f, 'Car ' + id + ' · ' + away + ' away · queue'); }
+      else if(away > 0){ disp('En route', 'Car ' + id + ' · ' + away + (away===1?' floor':' floors')); out.rFeed.textContent = 'en route'; }
+    }, function(secs, stops){
+      disp('Arriving', 'Car ' + id + ' · door ' + id + ' · where to?');
+      out.rFeed.textContent = 'arriving · door ' + id;
+      out.rWait.textContent = secs + ' s'; out.rWaste.textContent = '0';
+      rCall = {id:id, away:0, here:true};
+    });
+  }
+  function go(f){
+    if(!rCall || !rCall.here){ disp(rCall ? 'On its way' : 'Press call first', rCall ? 'Floor ' + f + ' noted' : 'Then choose a floor'); return; }
+    var id = rCall.id; svg.querySelectorAll('.key').forEach(function(k){ k.classList.toggle('on', k.getAttribute('data-f')==String(f)); });
+    if(f === S.floor){ disp('You are here', 'Floor ' + f); return; }
+    disp('Doors closing', 'Car ' + id + ' → floor ' + f);
+    setRider(f);
+    send(id, f, [], function(cur, to){ disp('Moving', 'Car ' + id + ' → ' + to + ' · ' + Math.abs(to-cur) + ' to go'); }, function(){
+      disp('Floor ' + f, 'Doors open'); cars[id].idle = true; S.floor = f; rCall = null;
+      setTimeout(function(){ disp('Ready', 'Press call'); svg.querySelectorAll('.key').forEach(function(k){ k.classList.remove('on'); }); }, 1400);
+    });
+  }
+  /* wiring */
+  function press(el, fn){ el.addEventListener('click', fn); el.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); fn(); } }); }
+  [].slice.call(svg.querySelectorAll('#usual .btn')).forEach(function(b){ press(b, function(){ usual(b.getAttribute('data-dir')); }); });
+  press(document.getElementById('call'), call);
+  [].slice.call(svg.querySelectorAll('.key')).forEach(function(k){ press(k, function(){ go(parseInt(k.getAttribute('data-f'),10)); }); });
+  var segs = [].slice.call(document.querySelectorAll('#scen button'));
+  segs.forEach(function(b){ b.addEventListener('click', function(){ segs.forEach(function(x){ x.setAttribute('aria-pressed','false'); }); b.setAttribute('aria-pressed','true'); var n = b.getAttribute('data-s'); scenarios[n].name = n; load(n); }); });
+  document.getElementById('reset').addEventListener('click', function(){ var cur = segs.filter(function(x){ return x.getAttribute('aria-pressed')==='true'; })[0]; load(cur ? cur.getAttribute('data-s') : 'normal'); });
+  Object.keys(scenarios).forEach(function(n){ scenarios[n].name = n; });
+  load('normal');
+})();
+</script>
+<script>
+/* originals: the two panels, ported from ../demo-elevator.html */
 (function(){
   const FLOORS=8, STEP=700;
   function makeSim(shaftEl){
@@ -245,10 +558,10 @@
   const etaB=document.getElementById('etaB'),posB=document.getElementById('posB'),dirB=document.getElementById('dirB'),qB=document.getElementById('qB');
   function renderB(s){
     const you=parseInt(document.getElementById('floorB').value);
-    posB.textContent=(s.moving?'Moving — now at floor ':'Idle at floor ')+s.floor;
+    posB.textContent=(s.moving?'Moving, now at floor ':'Idle at floor ')+s.floor;
     dirB.textContent=s.queue.length? (s.queue[0]>s.floor?'▲ heading up':(s.queue[0]<s.floor?'▼ heading down':'· arriving')) : '';
     const eta=s.queue.includes(you)? Math.abs(s.floor-you)*(STEP/1000):null;
-    etaB.textContent=eta!==null?('~'+Math.max(1,Math.round(eta))+'s'):'–';
+    etaB.textContent=eta!==null?('~'+Math.max(1,Math.round(eta))+'s'):'·';
     qB.textContent='Queue: '+(s.queue.length?s.queue.map(f=>'fl '+f).join(' → '):'empty');
     if(s.queue.length===0&&s.floor===you&&etaB.dataset.called){etaB.textContent='Here ✓';etaB.dataset.called='';}
   }

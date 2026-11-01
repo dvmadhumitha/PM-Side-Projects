@@ -1,173 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Veg Route — live demo · Madhumitha D V</title>
-<meta name="description" content="Find vegetarian and vegan places along a route, not near a point. The same engine as the Chrome extension, running in the page." />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Route Stops · Madhumitha D V</title>
+<meta name="description" content="Everyone answers what's near me. Nobody answers what's on my way. Route Stops, a Chrome extension that lists every place to eat within a corridor of your route, read live from OpenStreetMap. By Madhumitha D V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css?v=12">
 <style>
-  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#fff;--bg-alt:#f8fafc;
-    --brand:#4f46e5;--brand-soft:#eef2ff;--accent:#f97316;--accent-soft:#fff7ed;
-    --good:#047857;--good-bg:#ecfdf5;--bad:#be123c;--bad-bg:#fff1f2;
-    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.2}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
-  .head-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
-  .head-inner .src{font-size:.85rem;color:var(--muted)}
-  .head-inner .src a{color:var(--brand);font-weight:600}
-
-  .intro{padding:36px 0 6px}
-  .tagline{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .intro h1{font-size:clamp(1.6rem,3.6vw,2.25rem);margin:7px 0 11px;max-width:22ch}
-  .intro p{color:var(--ink-soft);max-width:680px}
-
-  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-  .controls{padding:18px 20px;margin-top:24px}
-  .crow{display:grid;grid-template-columns:1fr 1fr auto;gap:11px;align-items:end}
-  label{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-bottom:4px}
-  input,select{width:100%;font:inherit;font-size:.9rem;padding:10px 12px;border:1px solid var(--line);
-    border-radius:10px;background:#fff;color:var(--ink)}
-  input:focus,select:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
-  button{font:inherit;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:10px;border:1px solid var(--brand);
-    background:var(--brand);color:#fff;cursor:pointer;transition:.15s;white-space:nowrap}
-  button:hover:not(:disabled){background:#4338ca}
-  button:disabled{opacity:.5;cursor:not-allowed}
-  .presets{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;align-items:center}
-  .presets span{font-size:.76rem;color:var(--muted);font-weight:500}
-  .pre{background:#fff;border:1px solid var(--line);color:var(--ink-soft);font-size:.79rem;font-weight:500;
-    padding:5px 11px;border-radius:999px;cursor:pointer}
-  .pre:hover{border-color:#c7d2fe;background:var(--brand-soft)}
-  .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
-  .pill{background:#fff;border:1px solid var(--line);color:var(--ink-soft);font-size:.82rem;font-weight:600;
-    padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;font-family:inherit}
-  .pill:hover{border-color:#c7d2fe}
-  .pill.active{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
-
-  .stage{display:grid;grid-template-columns:1fr 380px;gap:16px;margin-top:16px;align-items:start}
-  #map{height:520px;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);background:#e8edf4;z-index:1}
-  .results{max-height:520px;overflow-y:auto;padding:0}
-  .rhead{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;
-    justify-content:space-between;gap:10px;position:sticky;top:0;background:#fff;border-radius:18px 18px 0 0;z-index:2}
-  .rhead h3{font-size:.95rem}
-  .rhead span{font-size:.78rem;color:var(--muted);font-weight:600}
-  .stop{padding:13px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:.12s}
-  .stop:last-child{border-bottom:0}
-  .stop:hover{background:var(--bg-alt)}
-  .stop .n{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-  .stop .n b{font-size:.92rem;font-weight:600}
-  .stop .d{font-family:'Sora';font-size:.8rem;font-weight:700;color:var(--brand);white-space:nowrap}
-  .stop .t{font-size:.78rem;color:var(--muted);margin-top:1px}
-  .stop .x{font-size:.75rem;color:var(--ink-soft);margin-top:4px}
-  .msg{padding:40px 22px;text-align:center;color:var(--muted);font-size:.88rem}
-  .msg b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:5px}
-  .msg.err b{color:var(--bad)}
-  .spin{width:22px;height:22px;border:2.5px solid var(--line);border-top-color:var(--brand);border-radius:50%;
+.phead .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.phead .btn{border-color:var(--ink);color:var(--ink)}
+.phead .btn:hover{background:var(--navy);color:var(--chalk);border-color:var(--navy)}
+.phead .btn.fill{background:var(--signal);border-color:var(--signal);color:var(--navy)}
+.phead .btn.fill:hover{background:var(--navy);border-color:var(--navy);color:var(--chalk)}
+.bench .ctl-row .lead{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--chalk-3);margin-right:4px}
+/* the corridor drawing */
+.rt .band{fill:none;stroke:rgba(231,236,240,.14);stroke-linecap:round;stroke-linejoin:round;transition:stroke-width .35s var(--ease)}
+.rt .road{fill:none;stroke:var(--chalk);stroke-width:2;stroke-linecap:round}
+.rt .stop{transition:opacity .35s var(--ease)}
+.rt .stop circle{fill:var(--signal);stroke:var(--navy);stroke-width:1.5;transition:fill .35s,r .35s}
+.rt .stop .nm{font-family:var(--display);font-weight:600;font-size:12px;fill:var(--chalk)}
+.rt .stop .tg{font-family:var(--mono);font-size:9px;letter-spacing:.06em;fill:var(--chalk-3);text-transform:uppercase}
+.rt .stop .ds{font-family:var(--mono);font-size:10px;letter-spacing:.06em;fill:var(--signal)}
+.rt .stop .tie{stroke:var(--chalk-3);stroke-width:1;stroke-dasharray:2 3}
+.rt .stop.out{opacity:.38}
+.rt .stop.out circle{fill:transparent;stroke:var(--chalk-3)}
+.rt .stop.out .ds{fill:var(--chalk-3)}
+.rt .stop.filt{opacity:.18}
+.rt .stop.gap circle{fill:transparent;stroke:var(--chalk-3);stroke-dasharray:2 2}
+.rt .stop.gap .ds{fill:var(--chalk-3)}
+.rt .stop.gap .nm{fill:var(--chalk-3)}
+.rt .cost{opacity:0;transition:opacity .35s}
+.rt .cost.on{opacity:1}
+.rt .gapnote{opacity:0;transition:opacity .35s}
+.rt .gapnote.on{opacity:1}
+.prose .how dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.prose .how dd{margin-top:4px;color:var(--ink-2)}
+.prose .how{max-width:60ch}
+/* ═══ originals: ported from ../demo-vegroute.html and the rules it used from ../styles.css, scoped under .orig ═══ */
+.orig :where(a){color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.orig :where(a:hover){color:var(--vermilion)}
+.orig a:focus-visible,.orig button:focus-visible,.orig [tabindex]:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+.orig :where(h3){font-family:var(--serif);font-weight:600;font-size:25px;line-height:32px;letter-spacing:-.01em}
+.orig :where(p:not(.orig-block > p)){font-size:19px;line-height:30px;max-width:var(--text)}
+.orig :where(p:not(.orig-block > p) + p:not(.orig-block > p)){margin-top:var(--s4)}
+.orig .source{font-family:var(--mono);font-weight:400;font-size:12px;line-height:18px;color:var(--ink-3)}
+@media (max-width:719px){
+  .orig :where(h3){font-size:17px;line-height:26px}
+  .orig :where(p:not(.orig-block > p)){font-size:17px;line-height:27px}
+}
+.orig :where(h1),.orig :where(h2),.orig :where(h3){font-family:var(--serif);letter-spacing:-.02em;line-height:1.2}
+.orig :where(a){color:inherit;text-decoration:none}
+.orig .panel{background:var(--paper);border:1px solid var(--line);}
+.orig .controls{padding:18px 20px;margin-top:24px}
+.orig .crow{display:grid;grid-template-columns:1fr 1fr auto;gap:11px;align-items:end}
+.orig label{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+.orig input,.orig select{width:100%;font:inherit;font-size:.9rem;padding:10px 12px;border:1px solid var(--line);
+    background:var(--paper);color:var(--ink)}
+.orig input:focus,.orig select:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
+.orig button{font:inherit;font-weight:600;font-size:.88rem;padding:10px 20px;border:1px solid var(--brand);
+    background:var(--brand);color:var(--paper);cursor:pointer;transition:.15s;white-space:nowrap}
+.orig button:hover:not(:disabled){background:var(--teal)}
+.orig button:disabled{opacity:.5;cursor:not-allowed}
+.orig .presets{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.orig .presets span{font-size:.76rem;color:var(--muted);font-weight:500}
+.orig .pre{background:var(--paper);border:1px solid var(--line);color:var(--ink-soft);font-size:.79rem;font-weight:500;
+    padding:5px 11px;cursor:pointer}
+.orig .pre:hover{border-color:var(--rule);background:var(--brand-soft)}
+.orig .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.orig .pill{background:var(--paper);border:1px solid var(--line);color:var(--ink-soft);font-size:.82rem;font-weight:600;
+    padding:7px 14px;cursor:pointer;transition:.15s;font-family:inherit}
+.orig .pill:hover{border-color:var(--rule)}
+.orig .pill.active{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+.orig .o-stage{display:grid;grid-template-columns:1fr 380px;gap:16px;margin-top:16px;align-items:start}
+.orig #map{height:520px;border:1px solid var(--line);background:var(--paper-2);z-index:1}
+.orig .results{max-height:520px;overflow-y:auto;padding:0}
+.orig .rhead{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;
+    justify-content:space-between;gap:10px;position:sticky;top:0;background:var(--paper);z-index:2}
+.orig .rhead h3{font-size:.95rem}
+.orig .rhead span{font-size:.78rem;color:var(--muted);font-weight:600}
+.orig .stop{padding:13px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:.12s}
+.orig .stop:last-child{border-bottom:0}
+.orig .stop:hover{background:var(--bg-alt)}
+.orig .stop .n{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.orig .stop .n b{font-size:.92rem;font-weight:600}
+.orig .stop .o-d{font-family:var(--serif);font-size:.8rem;font-weight:600;color:var(--brand);white-space:nowrap}
+.orig .stop .t{font-size:.78rem;color:var(--muted);margin-top:1px}
+.orig .stop .x{font-size:.75rem;color:var(--ink-soft);margin-top:4px}
+.orig .msg{padding:40px 22px;text-align:center;color:var(--muted);font-size:.88rem}
+.orig .msg b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:5px}
+.orig .msg.err b{color:var(--bad)}
+.orig .spin{width:22px;height:22px;border:2.5px solid var(--line);border-top-color:var(--brand);
     margin:0 auto 12px;animation:sp .8s linear infinite}
-  @keyframes sp{to{transform:rotate(360deg)}}
-
-  .how{background:#fff;border-top:1px solid var(--line);margin-top:44px;padding:36px 0 42px}
-  .how h2{font-size:1.25rem}
-  .how > .wrap > p{color:var(--ink-soft);font-size:.95rem;max-width:700px;margin-top:7px}
-  .hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-  .hcard{border:1px solid var(--line);border-radius:14px;padding:18px 19px}
-  .hcard h3{font-size:1rem;margin-bottom:7px}
-  .hcard p{font-size:.87rem;color:var(--ink-soft)}
-  .hcard code{background:var(--bg-alt);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:.79rem}
-  footer{padding:32px 0 60px;color:var(--muted);font-size:.84rem}
-  .leaflet-popup-content{font-family:'Inter',sans-serif;font-size:.85rem}
-
-  @media(max-width:900px){
-    .stage{grid-template-columns:1fr}
-    .crow{grid-template-columns:1fr}
-    #map{height:380px}
-    .results{max-height:none}
-    .hgrid{grid-template-columns:1fr}
-  }
+@keyframes sp{to{transform:rotate(360deg)}}
+.orig .how{background:var(--paper);border-top:1px solid var(--line);margin-top:44px;padding:36px 0 42px}
+.orig .hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.orig .hcard{border:1px solid var(--line);padding:18px 19px}
+.orig .hcard h3{font-size:1rem;margin-bottom:7px}
+.orig .hcard p{font-size:.87rem;color:var(--ink-soft)}
+.orig .hcard code{background:var(--bg-alt);border:1px solid var(--line);padding:1px 5px;font-size:.79rem}
+.orig .leaflet-popup-content{font-family:var(--sans);font-size:.85rem}
+@media(max-width:900px){
+  .orig .o-stage{grid-template-columns:1fr}
+  .orig .crow{grid-template-columns:1fr}
+  .orig #map{height:380px}
+  .orig .results{max-height:none}
+  .orig .hgrid{grid-template-columns:1fr}
+}
+.orig .o-stage > *{min-width:0}
+.orig .o-source{margin-top:14px}
+/* Leaflet draws its vectors in an <svg> sized by attributes; the site-wide svg{width:100%} must not resize it */
+.orig .leaflet-container svg{width:auto;height:auto;display:inline}
+@media (prefers-reduced-motion:reduce){.orig .spin{animation:none}.orig button,.orig .pill,.orig .stop{transition:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#lab">Skip to the drawing</a>
 
-<header>
-  <div class="wrap head-inner">
-    <a class="back" href="index.html#projects">← Back to portfolio</a>
-    <span class="src">Chrome extension source: <a href="https://github.com/dvmadhumitha/PM-Side-Projects/tree/main/restaurants-on-your-way" target="_blank" rel="noopener">on GitHub ↗</a></span>
+<header class="top">
+  <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
+  <nav>
+    <a class="keep" href="index.html#work">Work</a>
+    <a href="index.html#method">Method</a>
+    <a href="index.html#about">About</a>
+    <a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a>
+  </nav>
+</header>
+
+<main>
+
+<header class="phead">
+  <div class="in">
+    <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Maps · Shipped &amp; live</span></div>
+    <h1 class="reveal" style="--d:.05s">Route Stops</h1>
+    <p class="q reveal" style="--d:.1s">Everyone answers "what's near me". Nobody answers "what's on my way".</p>
+    <p class="s reveal" style="--d:.15s">A Chrome extension that sits over your route and lists every place to eat within 500 m of it, filtered by cuisine, by type, or by diet when you need that. Read live from OpenStreetMap. It started life as Veg Route. Below, the corridor as a drawing: widen it, filter it, and switch the data underneath.</p>
+    <div class="acts reveal" style="--d:.2s">
+      <a class="btn fill" href="https://github.com/dvmadhumitha/PM-Side-Projects">The extension on GitHub <i>↗</i></a>
+      <a class="btn" href="#lab">Draw the corridor <i>↓</i></a>
+    </div>
+    <dl class="four reveal" style="--d:.25s">
+      <div><dt>Stopped at</dt><dd>Going from here to there, and wanting to eat without leaving the road.</dd></div>
+      <div><dt>Noticed</dt><dd>A corridor of 500 m along the route, not a radius around a point.</dd></div>
+      <div><dt>Tradeoff</dt><dd>Clean paid data, or open data with real gaps in rural Italy.</dd></div>
+      <div class="dec"><dt>Decided</dt><dd>OpenStreetMap, and show the gaps instead of hiding them.</dd></div>
+    </dl>
   </div>
 </header>
 
-<section class="intro wrap">
-  <div class="tagline">Live demo · runs in this page</div>
-  <h1>Along the route, not near a point</h1>
-  <p>Every map app answers "vegetarian restaurants <em>near me</em>". The question I actually have when I'm travelling is "I'm going from here to there — where can I eat <em>without leaving the road</em>". That's a routing problem, not a search problem, and it needs a corridor rather than a radius. This runs the same engine as my Chrome extension: real routing, real OpenStreetMap data, live.</p>
+<!-- ═══ THE SHEET: the corridor ═══ -->
+<section class="lab" id="lab" aria-label="The corridor">
+  <div class="in"><div class="frame sheet reveal">
+    <div class="bench">
+      <span class="cap"><b>Fig. 1</b> · Milano → Como · every stop measured to the road, not to you</span>
+      <div class="ctl-row">
+        <label class="range"><span>Corridor</span><input type="range" id="width" min="100" max="1000" step="50" value="500" aria-label="Corridor width in metres"><output id="wout">500 m</output><span>either side</span></label>
+      </div>
+      <div class="ctl-row">
+        <span class="lead">Show</span>
+        <div class="seg" id="filt" role="group" aria-label="Filter">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="veg" aria-pressed="false">Vegetarian</button>
+          <button type="button" data-f="vegan" aria-pressed="false">Vegan</button>
+          <button type="button" data-f="none" aria-pressed="false">No tag</button>
+        </div>
+        <span class="lead">Data</span>
+        <div class="seg" id="src" role="group" aria-label="Data source">
+          <button type="button" data-s="osm" aria-pressed="true">OpenStreetMap</button>
+          <button type="button" data-s="paid" aria-pressed="false">Paid places API</button>
+        </div>
+      </div>
+
+      <svg class="d rt go" id="rt" viewBox="0 0 760 460" role="img" aria-label="A route from Milano to Como drawn as a line with a corridor either side. Ten places to eat sit at their distance from the road. Widening the corridor brings more inside it; the filters show only vegetarian, vegan or untagged places; switching from OpenStreetMap to a paid source fills the rural gaps and adds a cost line.">
+        <!-- the corridor band and the road -->
+        <path class="band" id="band" d="M60 400 C 180 380, 240 300, 330 250 S 520 150, 600 110 S 690 60, 700 50" stroke-width="88"/>
+        <path class="road" d="M60 400 C 180 380, 240 300, 330 250 S 520 150, 600 110 S 690 60, 700 50"/>
+        <circle class="s" cx="60" cy="400" r="5"/><text class="t" x="52" y="426">Milano</text>
+        <circle class="s" cx="700" cy="50" r="5"/><text class="t" x="664" y="36">Como</text>
+        <!-- scale -->
+        <line class="dim" x1="600" y1="380" x2="688" y2="380"/><line class="dim" x1="600" y1="374" x2="600" y2="386"/><line class="dim" x1="688" y1="374" x2="688" y2="386"/>
+        <text class="tm" x="600" y="400">1,000 m</text>
+        <text class="tm" x="40" y="60">Corridor drawn to scale · distance is to the nearest point of the road</text>
+        <!-- stops: placed by script from data -->
+        <g id="stops"></g>
+        <g class="gapnote" id="gapnote"><text class="tm" x="720" y="432" text-anchor="end">Dashed: a place that exists but is not in OpenStreetMap yet.</text><text class="tm" x="720" y="446" text-anchor="end">The list is shorter outside the cities, and the page says so.</text></g>
+        <g class="cost" id="cost"><rect class="at" x="400" y="412" width="320" height="36"/><text class="ta" x="412" y="434">Paid source · API key · metered per 1,000 requests</text></g>
+      </svg>
+
+      <div class="readout" aria-live="polite">
+        <div><b id="nin">0</b><small>inside the corridor</small></div>
+        <div><b id="nout">0</b><small>outside · dropped</small></div>
+        <div><b id="nnone">0</b><small>no diet tag</small></div>
+        <div><b class="hot" id="ngap">0</b><small>not in the data</small></div>
+      </div>
+    </div>
+    <aside class="notes">
+      <span class="n">How to read this</span>
+      <h2>A routing problem, not a search problem.</h2>
+      <p>Every map app answers "vegetarian restaurants near me". The question I have when travelling is different: I am going from here to there, where can I eat without leaving the road? A radius around a point cannot answer that. A corridor along a line can.</p>
+      <p>The route comes back from OSRM as a few thousand points. Every candidate place is measured to its nearest point on the line, and anything beyond the corridor is dropped. A radius around the midpoint would surface places twenty minutes off route.</p>
+      <p>Diet labels come from the <code>diet:vegetarian</code> and <code>diet:vegan</code> tags, which are contributed rather than advertised. Outside the cities they are sparse. The honest version shows what the data says and how far off the road it is, rather than inventing a confidence score.</p>
+      <p class="dec"><b>Decided</b>Measure to the road, label as contributed, no verdict.</p>
+    </aside>
+  </div></div>
 </section>
 
-<div class="wrap">
-  <div class="panel controls">
-    <div class="crow">
-      <div><label for="from">From</label><input id="from" placeholder="Milano, Italy" autocomplete="off" value="Milano, Italy"></div>
-      <div><label for="to">To</label><input id="to" placeholder="Como, Italy" autocomplete="off" value="Como, Italy"></div>
-      <div><button id="go">Find stops</button></div>
-    </div>
-    <div class="presets">
-      <span>Try:</span>
-      <button class="pre" data-f="Milano, Italy" data-t="Como, Italy">Milano → Como</button>
-      <button class="pre" data-f="Bologna, Italy" data-t="Firenze, Italy">Bologna → Firenze</button>
-      <button class="pre" data-f="Torino, Italy" data-t="Genova, Italy">Torino → Genova</button>
-      <button class="pre" data-f="Roma, Italy" data-t="Napoli, Italy">Roma → Napoli</button>
-    </div>
-    <div class="pills" id="pills">
-      <button class="pill active" data-filter="restaurant">🍽️ All restaurants</button>
-      <button class="pill" data-filter="vegetarian">🥗 Vegetarian</button>
-      <button class="pill" data-filter="vegan">🌱 Vegan</button>
-      <button class="pill" data-filter="cafe">☕ Cafés</button>
-      <button class="pill" data-filter="fast_food">🍔 Fast food</button>
-    </div>
-  </div>
+<!-- ═══ from the original sheet ═══ -->
+<section class="originals" id="originals"><div class="in">
+  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The live demo, as first shipped</h2></div><p>The extension's engine, running in this page against the same public OpenStreetMap services. Pick a route and it searches live.</p></div>
+  <div class="orig">
 
-  <div class="stage">
-    <div id="map"></div>
-    <div class="panel results">
-      <div class="rhead"><h3>Stops on the way</h3><span id="count"></span></div>
-      <div id="list"><div class="msg"><b>Pick a route</b>Choose a suggestion above or type any two places, then hit Find stops.</div></div>
-    </div>
-  </div>
-</div>
+    <div class="orig-block"><span class="k">Fig. 1</span><h3>Along the route, not near a point</h3><p>Every map app answers "vegetarian restaurants <em>near me</em>". The question I actually have when I'm travelling is "I'm going from here to there, where can I eat <em>without leaving the road</em>". That needs a corridor rather than a radius. This runs the same engine as my Chrome extension: real routing, real OpenStreetMap data, live.</p>
+      <div class="panel controls">
+        <div class="crow">
+          <div><label for="from">From</label><input id="from" placeholder="Milano, Italy" autocomplete="off" value="Milano, Italy"></div>
+          <div><label for="to">To</label><input id="to" placeholder="Como, Italy" autocomplete="off" value="Como, Italy"></div>
+          <div><button id="go">Find stops</button></div>
+        </div>
+        <div class="presets">
+          <span>Try:</span>
+          <button class="pre" data-f="Milano, Italy" data-t="Como, Italy">Milano → Como</button>
+          <button class="pre" data-f="Bologna, Italy" data-t="Firenze, Italy">Bologna → Firenze</button>
+          <button class="pre" data-f="Torino, Italy" data-t="Genova, Italy">Torino → Genova</button>
+          <button class="pre" data-f="Roma, Italy" data-t="Napoli, Italy">Roma → Napoli</button>
+        </div>
+        <div class="pills" id="pills">
+          <button class="pill active" data-filter="restaurant">🍽️ All restaurants</button>
+          <button class="pill" data-filter="vegetarian">🥗 Vegetarian</button>
+          <button class="pill" data-filter="vegan">🌱 Vegan</button>
+          <button class="pill" data-filter="cafe">☕ Cafés</button>
+          <button class="pill" data-filter="fast_food">🍔 Fast food</button>
+        </div>
+      </div>
 
-<div class="how">
-  <div class="wrap">
-    <h2>How it works, and what I chose</h2>
-    <p>No API keys and no paid services — the whole thing runs on open data, which was a deliberate constraint rather than a limitation I worked around.</p>
-    <div class="hgrid">
-      <div class="hcard">
-        <h3>A corridor, not a radius</h3>
-        <p>The route geometry comes back from OSRM as a few thousand points. Every candidate place is measured to its <em>nearest point on the line</em>, and anything beyond <code>500 m</code> is dropped. A radius around the midpoint would surface places you'd have to drive twenty minutes off-route to reach.</p>
+      <div class="o-stage">
+        <div id="map"></div>
+        <div class="panel results">
+          <div class="rhead"><h3>Stops on the way</h3><span id="count"></span></div>
+          <div id="list"><div class="msg"><b>Pick a route</b>Choose a suggestion above or type any two places, then hit Find stops.</div></div>
+        </div>
       </div>
-      <div class="hcard">
-        <h3>Ask the map, not a brand</h3>
-        <p>Places come from OpenStreetMap via Overpass — restaurants, cafés, fast food, bars, ice cream and bakeries in the route's bounding box. Diet labels come from the <code>diet:vegetarian</code> and <code>diet:vegan</code> tags, which are contributed rather than advertised.</p>
-      </div>
-      <div class="hcard">
-        <h3>The label is the hard part</h3>
-        <p>In Italy a dish marked <em>vegetariano</em> can still arrive with something I don't eat. OSM's tags are sparse and inconsistent, so the honest version shows what the data actually claims and how far off-route it is — rather than inventing a confidence score the data can't support.</p>
+      <p class="source o-source">Routing by OSRM · places from OpenStreetMap via Overpass · geocoding by Nominatim. All free, all open, no keys.</p>
+    </div>
+
+    <div class="orig-block"><span class="k">Fig. 2</span><h3>How it works, and what I chose</h3><p>No API keys and no paid services. The whole thing runs on open data, which was a deliberate constraint rather than a limitation I worked around.</p>
+      <div class="how">
+        <div class="hgrid">
+          <div class="hcard">
+            <h3>A corridor, not a radius</h3>
+            <p>The route geometry comes back from OSRM as a few thousand points. Every candidate place is measured to its <em>nearest point on the line</em>, and anything beyond <code>500 m</code> is dropped. A radius around the midpoint would surface places you'd have to drive twenty minutes off route to reach.</p>
+          </div>
+          <div class="hcard">
+            <h3>Ask the map, not a brand</h3>
+            <p>Places come from OpenStreetMap via Overpass: restaurants, cafés, fast food, bars, ice cream and bakeries in the route's bounding box. Diet labels come from the <code>diet:vegetarian</code> and <code>diet:vegan</code> tags, which are contributed rather than advertised.</p>
+          </div>
+          <div class="hcard">
+            <h3>The label is the hard part</h3>
+            <p>In Italy a dish marked <em>vegetariano</em> can still arrive with something I don't eat. OSM's tags are sparse and inconsistent, so the honest version shows what the data actually claims and how far off route it is, rather than inventing a confidence score the data can't support.</p>
+          </div>
+        </div>
+        <p style="margin-top:18px;font-size:.88rem">The extension does the same thing inside openstreetmap.org: draw a route there and a sidebar appears with the stops along it. This page is that logic lifted out and pointed at the same public APIs, so you can try it without installing anything.</p>
       </div>
     </div>
-    <p style="margin-top:18px;font-size:.88rem">The extension does the same thing inside openstreetmap.org: draw a route there and a sidebar appears with the stops along it. This page is that logic lifted out and pointed at the same public APIs, so you can try it without installing anything.</p>
-  </div>
-</div>
 
-<footer class="wrap">
-  <a class="back" href="index.html#projects">← Back to portfolio</a>
-  <p style="margin-top:8px">Routing by OSRM · places from OpenStreetMap via Overpass · geocoding by Nominatim. All free, all open, no keys.</p>
+  </div>
+</div></section>
+
+<section class="prose" style="padding-top:0">
+  <div class="in"><div>
+    <div><span class="n">The label is the hard part</span><h2>Show what the data claims, not a score it cannot support</h2></div>
+    <div>
+      <p>In Italy a dish marked <em>vegetariano</em> can still arrive with something I don't eat. The tags are sparse and inconsistent, especially outside the cities. So the panel shows three things per stop and nothing else: what the data says about it, how far it is from the road, and nothing that looks like a verdict.</p>
+      <p>Stops are drawn where the data puts them. Where the data is thin the list is short, and the page says so. That is the cost of the choice, and it is a cost I would pay again: a short honest list beats a long list with a made up score.</p>
+    </div>
+  </div></div>
+</section>
+
+<section class="decided">
+  <div class="in"><div class="box sheet reveal">
+    <div><span class="k">Decided</span><h2>A corridor, not a radius. Open data, and show the gaps instead of hiding them.</h2></div>
+    <ol>
+      <li><b>Stop</b><span>Going from here to there and wanting to eat without leaving the road.<i>What made me stop.</i></span></li>
+      <li><b>Notice</b><span>"Near me" is a search problem. "On my way" is a routing problem, and needs a corridor.<i>Where the obvious answer stopped working.</i></span></li>
+      <li><b>Tradeoff</b><span>Clean paid data, or open data with real gaps in rural Italy.<i>What could not be had both ways.</i></span></li>
+      <li><b>Decide</b><span>OpenStreetMap, measured to the road, labelled as contributed, no confidence score.<i>What it cost: a shorter list outside the cities.</i></span></li>
+    </ol>
+  </div></div>
+</section>
+
+<nav class="pn" aria-label="Previous and next">
+  <div class="in"><div>
+    <a href="demo-examsim.html"><span>Previous</span><h3>ASCOLTO: Language Exam Simulator</h3></a>
+    <a class="next" href="city-planning.html"><span>Next</span><h3>City Planning Breakdown</h3></a>
+  </div></div>
+</nav>
+
+</main>
+
+<footer class="foot sheet">
+  <div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div>
 </footer>
 
+<script src="analytics.js" defer></script>
+<script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
+  else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
+
+  /* ── the corridor ── */
+  var SCALE = 0.088; /* px per metre: 1,000 m = 88 px, as the scale bar */
+  /* illustrative stops: anchor on the road (ax, ay), a unit normal (nx, ny), distance to the road in metres, type, diet tag, and whether OSM has it */
+  var stops = [
+    {n:'Trattoria Nerina',  ax:150, ay:368, nx:-.25, ny:-.97, d:80,   type:'restaurant', diet:'veg',   osm:true},
+    {n:'Gelateria Lario',   ax:240, ay:306, nx:.9,  ny:.44,  d:150,  type:'ice cream',  diet:'none',  osm:true},
+    {n:'Bar Centrale',      ax:330, ay:250, nx:-.5, ny:-.87, d:210,  type:'café',       diet:'none',  osm:true},
+    {n:'Pizzeria da Gigi',  ax:420, ay:206, nx:-.55, ny:-.83, d:330,  type:'pizzeria',   diet:'vegan', osm:true},
+    {n:'Forno di Como',     ax:520, ay:154, nx:-.45, ny:-.89, d:440, type:'bakery',     diet:'none',  osm:true},
+    {n:'Osteria del Lago',  ax:600, ay:110, nx:.5,  ny:.87,  d:620,  type:'restaurant', diet:'veg',   osm:true},
+    {n:'Agriturismo Rovenna',ax:470, ay:176, nx:.2, ny:.98,  d:900,  type:'restaurant', diet:'veg',   osm:false},
+    {n:'Panificio Brunate', ax:650, ay:84,  nx:.7,  ny:.71,  d:760,  type:'bakery',     diet:'none',  osm:false},
+    {n:'Bar Sport Cernobbio',ax:680, ay:66, nx:-.8, ny:-.6,  d:60,   type:'café',       diet:'vegan', osm:true},
+    {n:'Ristorante Belvedere',ax:380, ay:226, nx:-.35, ny:-.94, d:2400, type:'restaurant', diet:'veg', osm:false}
+  ];
+  var g = document.getElementById('stops'), band = document.getElementById('band');
+  var width = 500, filt = 'all', src = 'osm';
+  var svgNS = 'http://www.w3.org/2000/svg';
+  function el(t, a){ var e = document.createElementNS(svgNS, t); for(var k in a) e.setAttribute(k, a[k]); return e; }
+  stops.forEach(function(s, i){
+    var px = s.ax + s.nx * Math.min(s.d, 2600) * SCALE, py = s.ay + s.ny * Math.min(s.d, 2600) * SCALE;
+    var grp = el('g', {'class':'stop', 'data-i':i});
+    grp.appendChild(el('line', {'class':'tie', x1:s.ax, y1:s.ay, x2:px, y2:py}));
+    grp.appendChild(el('circle', {cx:px, cy:py, r:5}));
+    var right = px > 560 ? false : (px < 200 ? true : s.nx >= 0); var tx = px + (right ? 10 : -10), anchor = right ? 'start' : 'end';
+    var nm = el('text', {'class':'nm', x:tx, y:py-2, 'text-anchor':anchor}); nm.textContent = s.n; grp.appendChild(nm);
+    var tg = el('text', {'class':'tg', x:tx, y:py+11, 'text-anchor':anchor}); tg.textContent = (s.d>=1000 ? (s.d/1000).toFixed(1)+' km' : s.d+' m') + ' · ' + (s.diet==='veg' ? 'vegetarian' : s.diet==='vegan' ? 'vegan' : 'no diet tag'); grp.appendChild(tg);
+    
+    g.appendChild(grp); s.el = grp;
+  });
+  function paint(){
+    band.setAttribute('stroke-width', Math.round(width * 2 * SCALE));
+    var nin=0, nout=0, nnone=0, ngap=0;
+    stops.forEach(function(s){
+      var missing = src==='osm' && !s.osm;
+      var matches = filt==='all' || (filt==='veg' && (s.diet==='veg')) || (filt==='vegan' && s.diet==='vegan') || (filt==='none' && s.diet==='none');
+      var inside = s.d <= width;
+      s.el.classList.toggle('gap', missing);
+      s.el.classList.toggle('out', !missing && !inside);
+      s.el.classList.toggle('filt', !matches);
+      if(!matches) return;
+      if(missing){ ngap++; return; }
+      if(inside){ nin++; if(s.diet==='none') nnone++; } else nout++;
+    });
+    document.getElementById('nin').textContent = nin; document.getElementById('nout').textContent = nout;
+    document.getElementById('nnone').textContent = nnone; document.getElementById('ngap').textContent = ngap;
+    document.getElementById('gapnote').classList.toggle('on', src==='osm');
+    document.getElementById('cost').classList.toggle('on', src==='paid');
+    document.getElementById('wout').textContent = width + ' m';
+  }
+  document.getElementById('width').addEventListener('input', function(e){ width = parseInt(e.target.value, 10); paint(); });
+  document.getElementById('filt').addEventListener('click', function(e){ var b = e.target.closest('button'); if(!b) return; filt = b.getAttribute('data-f'); [].slice.call(this.querySelectorAll('button')).forEach(function(x){ x.setAttribute('aria-pressed', x===b); }); paint(); });
+  document.getElementById('src').addEventListener('click', function(e){ var b = e.target.closest('button'); if(!b) return; src = b.getAttribute('data-s'); [].slice.call(this.querySelectorAll('button')).forEach(function(x){ x.setAttribute('aria-pressed', x===b); }); paint(); });
+  paint();
+})();
+</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+/* originals: the live route demo, ported from ../demo-vegroute.html (Leaflet, OSRM, Overpass, Nominatim) */
 (function(){
   'use strict';
   function T(n,p){ if(window.PA&&window.PA.track) window.PA.track(n,p||{}); }
@@ -303,7 +507,7 @@
     try{
       var r = useGet
         ? await fetchT(url+'?data='+encodeURIComponent(q), {}, 11000)
-        : await fetchT(url,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        : await fetchT(url,{method:'POST',headers:{'Content Type':'application/x-www-form-urlencoded'},
                            body:'data='+encodeURIComponent(q)}, 11000);
       if(!r.ok){ lastReason='HTTP '+r.status+' from '+new URL(url).host; return null; }
       var t=await r.text();
@@ -397,12 +601,12 @@
       if(t.opening_hours) extra.push('🕐 '+t.opening_hours);
       if(t.phone) extra.push('📞 '+t.phone);
       h+='<div class="stop" data-i="'+i+'">'
-        + '<div class="n"><b>'+esc(dietIcon(t)+' '+name).trim()+'</b><span class="d">'+fmt(x.d)+'</span></div>'
+        + '<div class="n"><b>'+esc(dietIcon(t)+' '+name).trim()+'</b><span class="o-d">'+fmt(x.d)+'</span></div>'
         + '<div class="t">'+esc(friendly(t)+(cui?' · '+cui:''))+'</div>'
         + (extra.length?'<div class="x">'+esc(extra.join('  ·  '))+'</div>':'')
         + '</div>';
-      var m=L.circleMarker([x.p.lat,x.p.lon],{radius:6,color:'#fff',weight:2,
-            fillColor:dietIcon(t)?'#047857':'#4f46e5',fillOpacity:1}).addTo(markerLayer);
+      var m=L.circleMarker([x.p.lat,x.p.lon],{radius:6,color:'var(--paper)',weight:2,
+            fillColor:dietIcon(t)?'var(--teal)':'var(--teal)',fillOpacity:1}).addTo(markerLayer);
       m.bindPopup('<b>'+esc(name)+'</b><br>'+esc(friendly(t))+' · '+fmt(x.d)+' off route');
       markers.push(m);
     });
@@ -428,7 +632,7 @@
     if(hit){
       cache.coords=hit.coords; cache.places=hit.places;
       if(routeLayer) map.removeLayer(routeLayer);
-      routeLayer=L.polyline(hit.coords,{color:'#4f46e5',weight:4,opacity:.85}).addTo(map);
+      routeLayer=L.polyline(hit.coords,{color:'var(--teal)',weight:4,opacity:.85}).addTo(map);
       map.fitBounds(routeLayer.getBounds(),{padding:[30,30]});
       render('');
       btn.disabled=false;
@@ -442,17 +646,17 @@
       var r=await route(a,b);
       cache.coords = r.coords.length>4000 ? r.coords.filter(function(_,i){return i%3===0;}) : r.coords;
       if(routeLayer) map.removeLayer(routeLayer);
-      routeLayer=L.polyline(r.coords,{color:'#4f46e5',weight:4,opacity:.85}).addTo(map);
+      routeLayer=L.polyline(r.coords,{color:'var(--teal)',weight:4,opacity:.85}).addTo(map);
       map.fitBounds(routeLayer.getBounds(),{padding:[30,30]});
       var boxes=segmentBoxes(r.coords, r.km);
-      busy('Searching the route…', Math.round(r.km)+' km — looking for places within 500 m of the road');
+      busy('Searching the route…', Math.round(r.km)+' km, looking for places within 500 m of the road');
       var t0=Date.now();
       var tries=0;
       var places=await overpass(query(boxes), function(host,isGet){
         tries++;
         busy('Searching the route…', tries<=1
-          ? Math.round(r.km)+' km — looking for places within 500 m of the road'
-          : 'OpenStreetMap is busy — trying another server');
+          ? Math.round(r.km)+' km, looking for places within 500 m of the road'
+          : 'OpenStreetMap is busy, trying another server');
       });
       var secs=((Date.now()-t0)/1000).toFixed(1);
       if(!places){ if(lastReason) console.warn('[veg-route] overpass:', lastReason);
@@ -477,7 +681,7 @@
   document.addEventListener('keydown',function(e){
     if(!(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='e')) return;
     var raw=localStorage.getItem(CACHE_KEY);
-    if(!raw){ alert('Nothing cached yet — run the presets first.'); return; }
+    if(!raw){ alert('Nothing cached yet, run the presets first.'); return; }
     var out='window.VEGROUTE_SEED = '+raw+';';
     var a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([out],{type:'application/javascript'}));
@@ -504,6 +708,5 @@
   });
 })();
 </script>
-<script src="analytics.js"></script>
 </body>
 </html>

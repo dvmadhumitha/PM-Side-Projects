@@ -1,450 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rethinking the Boarding Pass — Madhumitha D V</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boarding Pass Design Analysis · Madhumitha D V</title>
+<meta name="description" content="Who is a boarding pass actually written for? One printed artefact, three readers, and the fields that change after printing. A case study by Madhumitha D V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
 <style>
-  :root{--ink:#0f172a;--ink-soft:#475569;--muted:#64748b;--line:#e2e8f0;--bg-alt:#f8fafc;
-    --brand:#4f46e5;--accent:#f97316;--good:#047857;
-    --a:#047857;--a-bg:#ecfdf5;--a-br:#a7f3d0;
-    --b:#1d4ed8;--b-bg:#eff6ff;--b-br:#bfdbfe;
-    --c:#c2410c;--c-bg:#fff7ed;--c-br:#fed7aa;
-    --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.06);}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg-alt);line-height:1.6}
-  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
-  a{color:inherit;text-decoration:none}
-
-  /* one container owns all horizontal spacing */
-  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
-  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0;position:sticky;top:0;z-index:40}
-  .back{font-weight:600;font-size:.9rem;color:var(--brand)}
-
-  .intro{padding:36px 0 4px}
-  .tagline{font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .intro h1{font-size:clamp(1.6rem,3.8vw,2.3rem);margin:6px 0 10px}
-  .intro p{color:var(--ink-soft);max-width:640px;font-size:1rem}
-
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:20px}
-  .card h2{font-size:1.1rem;margin-bottom:2px}
-  .card .sub{font-size:.82rem;color:var(--muted);margin-bottom:15px}
-  .card p{font-size:.9rem;color:var(--ink-soft)}
-
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .box{background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-  .box .k{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
-  .box .v{font-size:.86rem;color:var(--ink-soft)}
-  .box .v b{color:var(--ink)}
-
-  ul.tight{list-style:none;font-size:.88rem;color:var(--ink-soft)}
-  ul.tight li{position:relative;padding-left:20px;margin-bottom:6px}
-  ul.tight li::before{content:"–";position:absolute;left:4px;color:var(--muted)}
-  ul.tight li b{color:var(--ink)}
-
-  /* STAKEHOLDERS */
-  .shrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-  .shrow span{font-size:.76rem;padding:4px 10px;border-radius:999px;background:var(--bg-alt);border:1px solid var(--line);color:var(--muted)}
-  .shrow span.pick{background:#eef2ff;border-color:#c7d2fe;color:var(--brand);font-weight:600}
-  .sh{border-left:3px solid var(--brand);padding:2px 0 2px 13px;margin-bottom:13px}
-  .sh h4{font-size:.92rem;margin-bottom:1px}
-  .sh .uc{font-size:.86rem;color:var(--ink-soft)}
-  .sh .uc b{color:var(--ink)}
-
-  /* TEAR */
-  .tear-stage{display:flex;justify-content:center;padding:4px 0}
-  .oldpass{display:flex;font-family:'IBM Plex Mono',monospace;filter:drop-shadow(0 8px 20px rgba(15,23,42,.13))}
-  .half{background:#fdf6e3;border:1px solid #e7d9b0;padding:13px 15px}
-  .half.keep{border-radius:10px 0 0 10px;width:196px}
-  .half.gone{border-radius:0 10px 10px 0;width:290px;border-left:2px dashed #c9b787;
+/* the pass, on a blue sheet */
+.fig .pp{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.25}
+.fig .band{fill:rgba(231,236,240,.10)}
+.fig .perf{fill:none;stroke:var(--chalk);stroke-width:1;stroke-dasharray:5 5}
+.fig .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--chalk-3);text-transform:uppercase}
+.fig .val{font-family:var(--display);font-weight:600;font-size:15px;fill:var(--chalk)}
+.fig .big{font-family:var(--display);font-weight:600;font-size:60px;fill:var(--chalk);letter-spacing:-.02em;}
+.fig .mid{font-family:var(--display);font-weight:600;font-size:24px;fill:var(--chalk)}
+.fig .cap{font-family:var(--mono);font-size:11px;letter-spacing:.1em;fill:var(--chalk-3);text-transform:uppercase}
+.fig .capk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;fill:var(--chalk);text-transform:uppercase}
+.fig .body{font-family:var(--text);font-size:13.5px;fill:var(--chalk-2)}
+.fig .call{font-family:var(--text);font-weight:600;font-size:15px;fill:var(--signal)}
+.fig .bars rect{fill:var(--chalk)}
+.fig .fr{fill:none;stroke:none;transition:stroke .45s var(--ease),fill .45s var(--ease),stroke-width .45s}
+.fig .ln{fill:none;stroke:var(--chalk);stroke-width:1.25}
+.fig .hl{fill:none;stroke:var(--chalk-3);stroke-width:1}
+.fig .dot{fill:var(--signal)}
+.fig .rl{fill:none;stroke:var(--signal);stroke-width:1.75}
+.fig .tag{fill:var(--chalk-3)}.fig .tagt{fill:var(--chalk)}
+.fig .strike{stroke:var(--signal);stroke-width:2}
+.fig .new{font-family:var(--display);font-weight:600;font-size:15px;fill:var(--signal)}
+.fig .cardb{fill:rgba(231,236,240,.06);stroke:var(--edge);stroke-width:1}
+.fig .sw{stroke:var(--chalk);stroke-width:1}
+.fig[data-state="1"] .f.all .fr{stroke:var(--signal);stroke-width:2}
+.fig[data-state="3"] .f.p .fr{stroke:var(--signal);stroke-width:2}
+.fig[data-state="3"] .f.s .fr{stroke:var(--chalk);stroke-width:1.5;stroke-dasharray:3 3}
+.fig[data-state="3"] .f.g .fr{stroke:var(--chalk-3);stroke-width:2}
+.fig[data-state="4"] .f.bB .fr{fill:rgba(231,236,240,.18)}
+.fig[data-state="4"] .f.bC .fr{fill:var(--signal-tint);stroke:var(--signal);stroke-width:1.25;stroke-dasharray:3 3}
+.fig[data-state="5"] .f.mv .fr{fill:var(--signal-tint)}
+.fig[data-state="5"] .f.mv .val{text-decoration:line-through;fill:var(--chalk-3)}
+/* ═══ originals: ported from ../demo-boardingpass.html and the rules it used from ../styles.css, scoped under .orig ═══ */
+.orig :where(a){color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.orig :where(a:hover){color:var(--vermilion)}
+.orig a:focus-visible,.orig button:focus-visible,.orig [tabindex]:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+.orig :where(h3){font-family:var(--serif);font-weight:600;font-size:25px;line-height:32px;letter-spacing:-.01em}
+.orig :where(p:not(.orig-block > p)){font-size:19px;line-height:30px;max-width:var(--text)}
+.orig :where(p:not(.orig-block > p) + p:not(.orig-block > p)){margin-top:var(--s4)}
+.orig table{font-family:var(--sans);font-weight:400;font-size:15px;line-height:22px}
+.orig th{font-family:var(--mono);font-weight:500;font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:719px){
+  .orig :where(h3){font-size:17px;line-height:26px}
+  .orig :where(p:not(.orig-block > p)){font-size:17px;line-height:27px}
+}
+.orig .o-seg{display:flex;flex-wrap:wrap;max-width:720px}
+.orig .o-seg button{flex:1 1 0;min-width:0;text-align:center}
+.orig .o-seg button{height:40px;padding-inline:var(--s4);border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;font-size:15px;cursor:pointer;margin-right:-1px;transition:background 200ms,color 200ms}
+.orig .o-seg button:hover{background:var(--paper-2)}
+.orig .o-seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:719px){
+  .orig .o-seg button{height:44px}
+}
+.orig .no{color:var(--vermilion);font-weight:600}
+.orig table{width:100%;border-collapse:collapse;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink)}
+.orig thead th{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:left;vertical-align:bottom;padding:0 var(--s5) var(--s3) 0;border-bottom:1px solid var(--ink)}
+.orig tbody tr + tr{border-top:1px solid var(--rule)}
+.orig tbody th,.orig tbody td{text-align:left;vertical-align:top;padding:var(--s4) var(--s5) var(--s4) 0}
+.orig tbody th{font-family:var(--sans);font-weight:600;font-size:15px;line-height:22px;color:var(--ink)}
+.orig tbody td{font-family:var(--sans);font-weight:400;font-size:15px;line-height:22px;color:var(--ink-2)}
+.orig tbody th i,.orig tbody td i,.orig tbody th span,.orig tbody td > span{display:block;font-style:normal;font-family:var(--sans);font-weight:400;font-size:13px;line-height:20px;color:var(--ink-3);margin-top:3px}
+.orig tbody td b{font-weight:600;color:var(--ink)}
+.orig th:last-child,.orig td:last-child{padding-right:0}
+.orig tbody th,.orig tbody td{padding:var(--s5) var(--s5) var(--s5) 0;line-height:24px}
+.orig tbody th{position:sticky;left:0;background:var(--paper-2);padding-left:var(--s4);padding-right:var(--s4);border-right:1px solid var(--rule);min-width:150px}
+.orig thead th:first-child{padding-left:var(--s4)}
+.orig tbody tr + tr{border-top:1px solid var(--rule)}
+.orig tbody tr:hover > td{background:rgba(231,234,237,.45)}
+.orig tbody td{padding-left:var(--s4)}
+.orig tbody td + td{border-left:1px solid var(--rule)}
+.orig tbody th i,.orig tbody th span{color:var(--ink-2)}
+.orig thead th{padding-bottom:var(--s4);padding-left:var(--s4)}
+.orig thead th:last-child,.orig tbody td:last-child{padding-right:var(--s4)}
+.orig table{border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+@media (max-width:719px){
+  .orig tbody th{min-width:120px;font-size:13px}
+  .orig tbody th,.orig tbody td{padding:var(--s4) var(--s4)}
+}
+.orig :where(h1),.orig :where(h2),.orig :where(h3){font-family:var(--serif);letter-spacing:-.02em}
+.orig :where(a){color:inherit;text-decoration:none}
+.orig .card{background:var(--paper);border:1px solid var(--line);padding:22px;margin-bottom:20px}
+.orig .card p{font-size:.9rem;color:var(--ink-soft)}
+.orig .shrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.orig .shrow span{font-size:.76rem;padding:4px 10px;background:var(--bg-alt);border:1px solid var(--line);color:var(--muted)}
+.orig .shrow span.pick{background:var(--paper-2);border-color:var(--rule);color:var(--brand);font-weight:600}
+.orig .sh{border-left:3px solid var(--brand);padding:2px 0 2px 13px;margin-bottom:13px}
+.orig .sh h4{font-size:.92rem;margin-bottom:1px}
+.orig .sh .uc{font-size:.86rem;color:var(--ink-soft)}
+.orig .sh .uc b{color:var(--ink)}
+.orig .tear-stage{display:flex;justify-content:center;padding:4px 0}
+.orig .oldpass{display:flex;font-family:var(--mono);filter:drop-shadow(0 8px 20px rgba(15,23,42,.13))}
+.orig .half{background:var(--paper);border:1px solid var(--rule);padding:13px 15px}
+.orig .half.keep{width:196px}
+.orig .half.gone{width:290px;border-left:2px dashed var(--muted);
     transition:transform .7s cubic-bezier(.5,0,.2,1),opacity .7s}
-  .torn .half.gone{transform:translateX(44px) rotate(4deg);opacity:0}
-  .half .ln{font-size:.66rem;color:#5b5138;padding:1.5px 0;white-space:nowrap}
-  .half .big{font-family:'Sora',sans-serif;font-weight:800;font-size:1.05rem;color:#3b3524;margin-bottom:4px}
-  .half .cap{font-family:'Inter',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a08b52;margin-bottom:5px}
-  .tear-btn{display:block;margin:13px auto 2px;border:0;background:var(--ink);color:#fff;font:600 .84rem 'Inter',sans-serif;padding:9px 18px;border-radius:10px;cursor:pointer}
-  .tear-btn:hover{background:var(--brand)}
-  .tear-why{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;opacity:0;transition:opacity .5s .4s}
-  .torn .tear-why{opacity:1}
-  .tw{background:var(--bg-alt);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.78rem;color:var(--ink-soft)}
-  .tw b{display:block;color:var(--ink);font-size:.82rem;margin-bottom:1px}
-  .note{margin-top:14px;font-size:.88rem;color:var(--ink-soft);border-left:3px solid var(--accent);padding-left:13px}
-  .note b{color:var(--ink)}
-
-  /* SCRUBBER */
-  .ctlbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:14px}
-  .seg{display:inline-flex;background:var(--bg-alt);border:1px solid var(--line);border-radius:11px;overflow:hidden}
-  .seg button{border:0;background:none;padding:7px 14px;font:600 .83rem 'Inter',sans-serif;cursor:pointer;color:var(--ink-soft)}
-  .seg button.on{background:var(--brand);color:#fff}
-  .ctlbar .lbl{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .scrub{display:flex;overflow-x:auto;padding:2px 0 10px}
-  .ph{flex:1;min-width:88px;border:0;background:none;cursor:pointer;padding:0;text-align:center;position:relative}
-  .ph .dot{width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--line);margin:0 auto 6px;position:relative;z-index:2;transition:.2s}
-  .ph::before{content:"";position:absolute;top:5px;left:0;right:50%;height:2.5px;background:var(--line)}
-  .ph::after{content:"";position:absolute;top:5px;left:50%;right:0;height:2.5px;background:var(--line)}
-  .ph:first-child::before,.ph:last-child::after{display:none}
-  .ph .nm{font-size:.7rem;font-weight:600;color:var(--muted);line-height:1.25;padding:0 3px;display:block}
-  .ph.on .dot{background:var(--brand);border-color:var(--brand);transform:scale(1.25)}
-  .ph.on .nm{color:var(--brand)}
-  .ph.done .dot{border-color:var(--brand);background:#c7d2fe}
-
-  .explore{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
-  .passwrap{background:var(--bg-alt);border:1px dashed var(--line);border-radius:14px;padding:16px;display:grid;place-items:center;position:relative}
-  .notyet{position:absolute;inset:16px;background:rgba(248,250,252,.95);border:1px dashed var(--line);border-radius:12px;display:none;place-items:center;text-align:center;padding:20px;z-index:5}
-  .notyet.show{display:grid}
-  .notyet div{font-size:.86rem;color:var(--ink-soft);max-width:270px}
-  .notyet b{display:block;color:var(--ink);font-family:'Sora',sans-serif;margin-bottom:5px}
-  .pass{width:100%;max-width:420px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
-  .pass .bar{padding:8px 14px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-  .pass.old .bar{background:#f1f5f9;color:#475569}
-  .pass.new .bar{background:#ecfdf5;color:var(--good)}
-  .pbody{padding:14px}
-  .old .pbody{font-family:'IBM Plex Mono',monospace;font-size:.72rem}
-  .old .pbody [data-f]{padding:1.5px 0;color:#334155}
-  .np-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:9px}
-  .np-route{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;line-height:1.1}
-  .np-route small{font-family:'Inter';font-weight:500;color:var(--muted);font-size:.66rem;display:block;letter-spacing:0}
-  .np-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px 10px;margin-bottom:9px}
-  .cell{padding:5px 7px;border-radius:8px}
-  .cell .k{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .cell .v{font-weight:600;font-size:.84rem}
-  .cell.big .v{font-family:'Sora',sans-serif;font-size:1.14rem;font-weight:800}
-  .live::after{content:"LIVE";font-size:.46rem;font-weight:700;color:#fff;background:var(--accent);border-radius:3px;padding:1px 3px;margin-left:4px;vertical-align:middle}
-  .np-thru{background:var(--a-bg);border:1px solid var(--a-br);border-radius:8px;padding:6px 9px;margin-bottom:8px}
-  .np-thru .k{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--a)}
-  .np-thru .v{font-weight:700;font-size:.8rem;color:var(--a)}
-  .np-foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px dashed var(--line);padding-top:8px;gap:10px}
-  .np-note{font-size:.64rem;color:var(--muted);max-width:240px}
-  .qr{width:50px;height:50px;border-radius:6px;flex:none;background:
-    repeating-linear-gradient(0deg,#0f172a 0 3px,transparent 3px 6px),
-    repeating-linear-gradient(90deg,#0f172a 0 3px,#fff 3px 6px)}
-  [data-f]{transition:opacity .28s,background .28s,box-shadow .28s}
-  .dim [data-f]:not(.hit){opacity:.16}
-  .dim [data-f].hit{background:#eef2ff;box-shadow:0 0 0 2px #c7d2fe;border-radius:5px}
-  .actorbox{background:var(--bg-alt);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
-  .actorbox .who{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-  .actorbox h3{font-size:1rem;margin:2px 0 6px}
-  .actorbox p{font-size:.85rem;color:var(--ink-soft);margin-bottom:10px}
-  .needs{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-  .needchips{display:flex;flex-wrap:wrap;gap:5px}
-  .needchips span{font-size:.74rem;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 9px}
-  .obs{font-size:.8rem;color:var(--ink-soft);margin-top:9px;min-height:17px}
-
-  /* SORTER */
-  .buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .bk{border-radius:14px;padding:14px;border:1px solid}
-  .bk.A{background:var(--a-bg);border-color:var(--a-br)}
-  .bk.B{background:var(--b-bg);border-color:var(--b-br)}
-  .bk.C{background:var(--c-bg);border-color:var(--c-br)}
-  .bk h4{font-size:.88rem;margin-bottom:2px}
-  .bk.A h4{color:var(--a)} .bk.B h4{color:var(--b)} .bk.C h4{color:var(--c)}
-  .bk .d{font-size:.72rem;color:var(--ink-soft);margin-bottom:10px;min-height:30px}
-  .fchip{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:.75rem;font-weight:600;margin:0 5px 5px 0;cursor:pointer;transition:.15s}
-  .fchip:hover{border-color:var(--brand);color:var(--brand)}
-  .fchip.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .whybox{background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:14px;font-size:.86rem;color:var(--ink-soft);min-height:56px}
-  .whybox b{color:var(--ink)}
-
-  table.arr{width:100%;border-collapse:collapse;font-size:.85rem}
-  table.arr th{text-align:left;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 10px 7px 0;font-weight:700}
-  table.arr td{padding:8px 10px 8px 0;border-top:1px solid var(--line);color:var(--ink-soft)}
-  table.arr td:first-child{color:var(--ink);font-weight:600}
-  .pill{font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
-  .pill.A{background:var(--a-bg);color:var(--a);border:1px solid var(--a-br)}
-  .pill.B{background:var(--b-bg);color:var(--b);border:1px solid var(--b-br)}
-  .pill.no{background:#f1f5f9;color:#475569;border:1px solid var(--line)}
-  .pill.some{background:var(--c-bg);color:var(--c);border:1px solid var(--c-br)}
-
-  .wall-grid{background-image:radial-gradient(#dbe2ea 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:12px;padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .cluster h4{font:700 .7rem 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:11px;background:#fff;display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:6px}
-  .sticky{font-family:'Kalam',cursive;font-size:.88rem;line-height:1.4;color:#27272a;background:#fef08a;padding:10px 12px;border-radius:2px;box-shadow:2px 4px 10px rgba(15,23,42,.13);margin-bottom:12px;transform:rotate(-1.2deg)}
-  .sticky.s2{background:#bbf7d0;transform:rotate(1.3deg)}
-  .sticky.s3{background:#bfdbfe;transform:rotate(-.8deg)}
-  .sticky.s4{background:#fbcfe8;transform:rotate(1.8deg)}
-
-  .did h3{font-size:.98rem;margin-bottom:9px}
-  .did h3 span{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1px}
-  .did li{font-size:.87rem;color:var(--ink-soft);margin:0 0 8px 18px}
-  .did li b{color:var(--ink)}
-  .did ul{list-style:none}
-  .did ul li{position:relative;margin-left:22px}
-  .did ul li::before{content:"✓";position:absolute;left:-22px;color:var(--good);font-weight:700}
-
-  .ack{background:#fff;border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:0 14px 14px 0;padding:16px 20px;margin-bottom:20px}
-  .ack h3{font-size:.92rem;margin-bottom:4px}
-  .ack p{font-size:.88rem;color:var(--ink-soft)}
-  .nextup{font-size:.86rem;color:var(--muted);text-align:center;margin-bottom:18px}
-  .cta{text-align:center;font-size:.9rem;color:var(--ink-soft);padding-bottom:44px}
-  .cta a{color:var(--brand);font-weight:600}
-
-  @media(max-width:860px){
-    .explore,.grid2{grid-template-columns:1fr}
-    .grid3,.buckets,.wall-grid,.tear-why{grid-template-columns:1fr}
-    .oldpass{transform:scale(.8);transform-origin:center}
-  }
+.orig .torn .half.gone{transform:translateX(44px) rotate(4deg);opacity:0}
+.orig .half .ln{font-size:.66rem;color:var(--ink-2);padding:1.5px 0;white-space:nowrap}
+.orig .half .big{font-family:var(--serif);font-weight:600;font-size:1.05rem;color:var(--ink);margin-bottom:4px}
+.orig .half .cap{font-family:var(--sans);font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre);margin-bottom:5px}
+.orig .tear-btn{display:block;margin:13px auto 2px;border:0;background:var(--ink);color:var(--paper);font:600 .84rem var(--sans);padding:9px 18px;cursor:pointer}
+.orig .tear-btn:hover{background:var(--brand)}
+.orig .tear-why{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;opacity:0;transition:opacity .5s .4s}
+.orig .torn .tear-why{opacity:1}
+.orig .tw{background:var(--bg-alt);border:1px solid var(--line);padding:10px 12px;font-size:.78rem;color:var(--ink-soft)}
+.orig .tw b{display:block;color:var(--ink);font-size:.82rem;margin-bottom:1px}
+.orig .o-note{margin-top:14px;font-size:.88rem;color:var(--ink-soft);border-left:3px solid var(--accent);padding-left:13px}
+.orig .o-note b{color:var(--ink)}
+.orig .ctlbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:14px}
+.orig .o-seg{display:inline-flex;background:var(--bg-alt);border:1px solid var(--line);overflow:hidden}
+.orig .o-seg button{border:0;background:none;padding:7px 14px;font:600 .83rem var(--sans);cursor:pointer;color:var(--ink-soft)}
+.orig .o-seg button.on{background:var(--brand);color:var(--paper)}
+.orig .ctlbar .lbl{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.orig .scrub{display:flex;overflow-x:auto;padding:2px 0 10px}
+.orig .ph{flex:1;min-width:88px;border:0;background:none;cursor:pointer;padding:0;text-align:center;position:relative}
+.orig .ph .dot{width:12px;height:12px;background:var(--paper);border:2.5px solid var(--line);margin:0 auto 6px;position:relative;z-index:2;transition:.2s}
+.orig .ph::before{content:"";position:absolute;top:5px;left:0;right:50%;height:2.5px;background:var(--line)}
+.orig .ph::after{content:"";position:absolute;top:5px;left:50%;right:0;height:2.5px;background:var(--line)}
+.orig .ph:first-child::before,.orig .ph:last-child::after{display:none}
+.orig .ph .nm{font-size:.7rem;font-weight:600;color:var(--muted);line-height:1.25;padding:0 3px;display:block}
+.orig .ph.on .dot{background:var(--brand);border-color:var(--brand);transform:scale(1.25)}
+.orig .ph.on .nm{color:var(--brand)}
+.orig .ph.done .dot{border-color:var(--brand);background:var(--rule)}
+.orig .explore{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
+.orig .passwrap{background:var(--bg-alt);border:1px dashed var(--line);padding:16px;display:grid;place-items:center;position:relative}
+.orig .notyet{position:absolute;inset:16px;background:rgba(248,250,252,.95);border:1px dashed var(--line);display:none;place-items:center;text-align:center;padding:20px;z-index:5}
+.orig .notyet.show{display:grid}
+.orig .notyet div{font-size:.86rem;color:var(--ink-soft);max-width:270px}
+.orig .notyet b{display:block;color:var(--ink);font-family:var(--serif);margin-bottom:5px}
+.orig .pass{width:100%;max-width:420px;background:var(--paper);border:1px solid var(--line);overflow:hidden}
+.orig .pass .bar{padding:8px 14px;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.orig .pass.old .bar{background:var(--paper-2);color:var(--ink-2)}
+.orig .pass.new .bar{background:var(--note-3);color:var(--good)}
+.orig .pbody{padding:14px}
+.orig .old .pbody{font-family:var(--mono);font-size:.72rem}
+.orig .old .pbody [data-f]{padding:1.5px 0;color:var(--ink-2)}
+.orig .np-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:9px}
+.orig .np-route{font-family:var(--serif);font-weight:600;font-size:1.3rem;line-height:1.1}
+.orig .np-route small{font-family:var(--sans);font-weight:500;color:var(--muted);font-size:.66rem;display:block;letter-spacing:0}
+.orig .np-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px 10px;margin-bottom:9px}
+.orig .cell{padding:5px 7px;}
+.orig .cell .o-k{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.orig .cell .v{font-weight:600;font-size:.84rem}
+.orig .cell.big .v{font-family:var(--serif);font-size:1.14rem;font-weight:600}
+.orig .live::after{content:"LIVE";font-size:.46rem;font-weight:600;color:var(--paper);background:var(--accent);padding:1px 3px;margin-left:4px;vertical-align:middle}
+.orig .np-thru{background:var(--a-bg);border:1px solid var(--a-br);padding:6px 9px;margin-bottom:8px}
+.orig .np-thru .o-k{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--a)}
+.orig .np-thru .v{font-weight:600;font-size:.8rem;color:var(--a)}
+.orig .np-foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px dashed var(--line);padding-top:8px;gap:10px}
+.orig .np-note{font-size:.64rem;color:var(--muted);max-width:240px}
+.orig .qr{width:50px;height:50px;flex:none;background:
+    repeating-linear-gradient(0deg,var(--ink) 0 3px,transparent 3px 6px),
+    repeating-linear-gradient(90deg,var(--ink) 0 3px,var(--paper) 3px 6px)}
+.orig [data-f]{transition:opacity .28s,background .28s}
+.orig .dim [data-f]:not(.hit){opacity:.16}
+.orig .dim [data-f].hit{background:var(--paper-2);}
+.orig .actorbox{background:var(--bg-alt);border:1px solid var(--line);padding:15px 17px}
+.orig .actorbox .who{font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.orig .actorbox h3{font-size:1rem;margin:2px 0 6px}
+.orig .actorbox p{font-size:.85rem;color:var(--ink-soft);margin-bottom:10px}
+.orig .needs{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.orig .needchips{display:flex;flex-wrap:wrap;gap:5px}
+.orig .needchips span{font-size:.74rem;font-weight:600;background:var(--paper);border:1px solid var(--line);padding:3px 9px}
+.orig .obs{font-size:.8rem;color:var(--ink-soft);margin-top:9px;min-height:17px}
+.orig .buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.orig .bk{padding:14px;border:1px solid}
+.orig .bk.A{background:var(--a-bg);border-color:var(--a-br)}
+.orig .bk.B{background:var(--b-bg);border-color:var(--b-br)}
+.orig .bk.C{background:var(--c-bg);border-color:var(--c-br)}
+.orig .bk h4{font-size:.88rem;margin-bottom:2px}
+.orig .bk.A h4{color:var(--a)}
+.orig .bk.B h4{color:var(--b)}
+.orig .bk.C h4{color:var(--c)}
+.orig .bk .o-d{font-size:.72rem;color:var(--ink-soft);margin-bottom:10px;min-height:30px}
+.orig .fchip{display:inline-block;background:var(--paper);border:1px solid var(--line);padding:4px 9px;font-size:.75rem;font-weight:600;margin:0 5px 5px 0;cursor:pointer;transition:.15s}
+.orig .fchip:hover{border-color:var(--brand);color:var(--brand)}
+.orig .fchip.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.orig .whybox{background:var(--bg-alt);border:1px solid var(--line);padding:13px 15px;margin-top:14px;font-size:.86rem;color:var(--ink-soft);min-height:56px}
+.orig .whybox b{color:var(--ink)}
+.orig table.arr{width:100%;border-collapse:collapse;font-size:.85rem}
+.orig table.arr th{text-align:left;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 10px 7px 0;font-weight:600}
+.orig table.arr td{padding:8px 10px 8px 0;border-top:1px solid var(--line);color:var(--ink-soft)}
+.orig table.arr td:first-child{color:var(--ink);font-weight:600}
+.orig .pill{font-size:.66rem;font-weight:600;padding:2px 8px;white-space:nowrap}
+.orig .pill.A{background:var(--a-bg);color:var(--a);border:1px solid var(--a-br)}
+.orig .pill.B{background:var(--b-bg);color:var(--b);border:1px solid var(--b-br)}
+.orig .pill.no{background:var(--paper-2);color:var(--ink-2);border:1px solid var(--line)}
+.orig .pill.some{background:var(--c-bg);color:var(--c);border:1px solid var(--c-br)}
+.orig .wall-grid{background-image:radial-gradient(var(--rule) 1.3px,transparent 1.3px);background-size:22px 22px;padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.orig .cluster h4{font:600 .7rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:11px;background:var(--paper);display:inline-block;padding:3px 8px;border:1px solid var(--line);}
+.orig .sticky{font-family:var(--hand);font-size:.88rem;line-height:1.4;color:var(--ink);background:var(--note-1);padding:10px 12px;margin-bottom:12px;transform:rotate(-1.2deg)}
+.orig .sticky.s2{background:var(--note-3);transform:rotate(1.3deg)}
+.orig .sticky.s3{background:var(--paper-2);transform:rotate(-.8deg)}
+.orig .sticky.s4{background:var(--note-2);transform:rotate(1.8deg)}
+@media(max-width:860px){
+  .orig .explore{grid-template-columns:1fr}
+  .orig .buckets,.orig .wall-grid,.orig .tear-why{grid-template-columns:1fr}
+  .orig .oldpass{transform:scale(.8);transform-origin:center}
+}
+.orig :where(h4){font-weight:600}
+.orig .explore > *{min-width:0}
+@media(min-width:861px){.orig .o-tearscroll{overflow:visible}}
+@media(max-width:860px){.orig .o-tearscroll .tear-stage{justify-content:flex-start;padding-bottom:28px}.orig .o-tearscroll .oldpass{transform-origin:left center}}
+@media (prefers-reduced-motion:reduce){.orig .half.gone,.orig .tear-why,.orig [data-f],.orig .ph .dot,.orig .fchip,.orig .o-seg button{transition:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap"><a class="back" href="index.html#projects">← Back to portfolio</a></div>
+<a class="skip" href="#stage">Skip to the walk</a>
+
+<header class="top">
+  <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
+  <nav>
+    <a class="keep" href="index.html#work">Work</a>
+    <a href="index.html#method">Method</a>
+    <a href="index.html#about">About</a>
+    <a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a>
+  </nav>
 </header>
 
-<div class="wrap">
-  <section class="intro">
-    <div class="tagline">Product exploration</div>
-    <h1>Rethinking the boarding pass</h1>
-    <p>One document, several readers, and part of its information changes after it is printed. This is a teardown of what the pass carries, who reads it, and when.</p>
-  </section>
+<main>
 
-  <!-- CONTEXT + ASSUMPTIONS -->
-  <div class="card">
-    <h2>Context and assumptions</h2>
-    <div class="sub">Scope fixed before any design work.</div>
-    <div class="grid2">
-      <div>
-        <p style="margin-bottom:10px"><b style="color:var(--ink)">The task:</b> deconstruct the boarding pass from the information out — classify every field by whether it was known when the pass was issued, then map which reader uses which field, and at what point in the journey.</p>
-        <p><b style="color:var(--ink)">The constraint:</b> the passenger carries one artifact from check-in to the exit. It has to work at every checkpoint along the way.</p>
-      </div>
-      <div>
-        <div class="box">
-          <div class="k">Assumptions</div>
-          <ul class="tight" style="margin-top:6px">
-            <li><b>Domestic travel within India</b>, single segment, no connection.</li>
-            <li>Example route: <b>BLR → DEL</b>, IndiGo 6E, 08:15 departure, 2h 45m.</li>
-            <li>Booking is confirmed and a <b>seat is assigned</b>; the pass is issued at check-in.</li>
-            <li>Before check-in the passenger holds <b>ticket details (PNR) and photo ID</b> — not a boarding pass.</li>
-            <li>One checked bag (<b>15 kg</b>) and one cabin bag (<b>7 kg</b>), per domestic allowance.</li>
-            <li>A <b>printed</b> pass, since the study is about one physical artifact.</li>
-          </ul>
-        </div>
-      </div>
+<header class="phead">
+  <div class="in">
+    <div class="crumb reveal">
+      <a href="index.html#work">← All work</a>
+      <span class="no">Travel · Case study</span>
     </div>
+    <h1 class="reveal" style="--d:.05s">Boarding Pass Design Analysis</h1>
+    <p class="q reveal" style="--d:.1s">Who is a boarding pass actually written for?</p>
+    <p class="s reveal" style="--d:.15s">One printed document, several readers, and part of its information changes after it is printed. A teardown of what the pass carries, who reads it, and when. Eight steps; the drawing redraws itself as you go.</p>
+  
+  <dl class="four reveal" style="--d:.2s">
+    <div><dt>Stopped at</dt><dd>One pass, three readers, the same ink for every field.</dd></div>
+    <div><dt>Noticed</dt><dd>Gate and boarding time change after printing, and look like fields that never do.</dd></div>
+    <div><dt>Tradeoff</dt><dd>One artefact for every reader, or a layout per reader.</dd></div>
+    <div class="dec"><dt>Decided</dt><dd>Split by static, dynamic and becomes dynamic. Then by who is reading.</dd></div>
+  </dl>
   </div>
+</header>
 
-  <!-- STAKEHOLDERS -->
-  <div class="card">
-    <h2>Stakeholders, and why three</h2>
-    <div class="sub">The journey map listed everyone who touches the trip. Three were taken forward.</div>
-    <div class="shrow">
-      <span class="pick">Passenger</span><span class="pick">Security officer</span><span class="pick">Gate agent</span>
-      <span>Terminal entry staff</span><span>Check-in / bag drop staff</span><span>Baggage handlers</span>
-      <span>Airline ops</span><span>Cabin crew</span><span>Lounge / retail</span><span>Marketing partners</span>
-    </div>
-    <p style="margin-bottom:14px"><b style="color:var(--ink)">Shortlisting rule:</b> keep the readers who make a decision about the passenger <b style="color:var(--ink)">using the pass itself</b>, at a defined moment. The others were set aside — airline ops and baggage handlers work from systems and bag tags rather than the pass; terminal entry checks the ticket and ID, since the pass may not exist yet; cabin crew, lounge and retail read it but nothing depends on the reading.</p>
-    <div class="sh">
-      <h4>Passenger</h4>
-      <div class="uc"><b>Use case:</b> orientation and wayfinding — where to go, by when, and where to sit. Reads the pass repeatedly across the journey.</div>
-    </div>
-    <div class="sh">
-      <h4>Security officer (pre-embarkation check)</h4>
-      <div class="uc"><b>Use case:</b> eligibility to enter the sterile area — confirming this person, today, is travelling on a real flight. One quick read, in a moving queue.</div>
-    </div>
-    <div class="sh">
-      <h4>Gate agent (pre-boarding)</h4>
-      <div class="uc"><b>Use case:</b> boarding authorisation and sequencing — whether this person boards this aircraft now, and in what order. A scan plus a glance.</div>
-    </div>
-  </div>
-
-  <!-- TEAR -->
-  <div class="card" id="tearCard">
-    <h2>The pass used to change during the journey</h2>
-    <div class="sub">Until about 2010 it came perforated. Tear it to see what the airline kept.</div>
-    <div class="tear-stage">
-      <div class="oldpass" id="oldpass">
-        <div class="half keep">
-          <div class="cap">Passenger stub</div>
-          <div class="big">SEAT 12A</div>
-          <div class="ln">MADHUMITHA / VENKATA</div>
-          <div class="ln">6E2134 · 24 SEP</div>
-          <div class="ln">BLR → DEL</div>
-        </div>
-        <div class="half gone">
-          <div class="cap">Airline gate coupon</div>
-          <div class="ln">MADHUMITHA / VENKATA &nbsp; SEQ 087</div>
-          <div class="ln">6E2134 &nbsp; 24 SEP &nbsp; BLR → DEL &nbsp; 12A</div>
-          <div class="ln">PNR KJ7P2Q &nbsp; ECONOMY &nbsp; GROUP C</div>
-          <div class="ln">BAG 15KG &nbsp; TERMINAL 1</div>
-          <div class="ln">— — — — — — — — — — — —</div>
-          <div class="ln">RETAINED BY CARRIER AT BOARDING</div>
-        </div>
-      </div>
-    </div>
-    <button class="tear-btn" id="tearBtn">✂️ Tear at the gate</button>
-    <div class="tear-why" id="tearWhy">
-      <div class="tw"><b>Headcount</b>Coupons counted against the system before door close.</div>
-      <div class="tw"><b>Bag matching</b>Evidence the passenger boarded, so the checked bag could stay on.</div>
-      <div class="tw"><b>Settlement</b>Proof of carriage, used to settle between carriers.</div>
-      <div class="tw"><b>Manifest</b>The coupons formed the flight's record.</div>
-    </div>
-    <div class="note">
-      Bar-coded passes became mandatory in 2010 (IATA Resolution 792), and a gate scan now records boarding directly.
-      The design point is what the tear did: the artifact changed at the moment the passenger's status changed, and what remained was a smaller field set for the phase after boarding.
-      In India the same idea existed as a security <b>stamp</b> — two of the three readers used to mark the pass. <b>Today the pass carries one fixed field set from issuance until it is discarded.</b>
-    </div>
-  </div>
-
-  <!-- EXPLORER -->
-  <div class="card">
-    <h2>Who reads what, and when</h2>
-    <div class="sub">Step through the journey. The pass dims to the fields that reader uses at that point.</div>
-    <div class="ctlbar">
-      <span class="lbl">Pass</span>
-      <div class="seg" id="passSeg">
-        <button data-pass="new" class="on">Rebuilt</button>
-        <button data-pass="old">Today's</button>
-      </div>
-    </div>
-    <div class="scrub" id="scrub"></div>
-    <div class="explore">
-      <div class="passwrap">
-        <div class="notyet" id="notyet"><div><b>No boarding pass yet</b>At terminal entry the passenger holds ticket details (PNR) and photo ID. The pass is issued at check-in, in the next step.</div></div>
-
-        <div class="pass new" id="passNew">
-          <div class="bar">Rebuilt — weighted by the next decision</div>
-          <div class="pbody">
-            <div class="np-top">
-              <div class="np-route" data-f="route">BLR → DEL<small>Bengaluru → Delhi · <span data-f="date" style="display:inline">24 SEP</span></small></div>
-              <div class="cell" data-f="name"><div class="k">Passenger</div><div class="v" style="font-size:.74rem">MADHUMITHA / VENKATA</div></div>
-            </div>
-            <div class="np-grid">
-              <div class="cell big" data-f="gate"><div class="k live">Gate</div><div class="v">22</div></div>
-              <div class="cell big" data-f="boarding"><div class="k live">Boarding</div><div class="v">07:40</div></div>
-              <div class="cell big" data-f="seat"><div class="k">Seat</div><div class="v">12A</div></div>
-              <div class="cell" data-f="gclose"><div class="k">Gate closes</div><div class="v">07:50</div></div>
-              <div class="cell" data-f="std"><div class="k live">Departs</div><div class="v">08:15</div></div>
-              <div class="cell" data-f="flight"><div class="k">Flight</div><div class="v">6E 2134</div></div>
-              <div class="cell" data-f="group"><div class="k">Group</div><div class="v">C</div></div>
-              <div class="cell" data-f="pnr"><div class="k">PNR</div><div class="v">KJ7P2Q</div></div>
-              <div class="cell" data-f="term"><div class="k">Terminal</div><div class="v">T1</div></div>
-            </div>
-            <div class="np-thru" data-f="tag"><div class="k">Baggage tag — needed at the exit check</div><div class="v">BLR 6E 128341 · 1 bag, 15 kg</div></div>
-            <div class="np-foot">
-              <div class="np-note" data-f="status">Fields that can change — gate, timings, belt number — are shown live behind the code.</div>
-              <div class="qr" data-f="code"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="pass old" id="passOld" style="display:none">
-          <div class="bar">Today's pass</div>
-          <div class="pbody">
-            <div data-f="name">NAME: MADHUMITHA / VENKATA</div>
-            <div data-f="flight">FLIGHT: 6E2134 &nbsp; <span data-f="date" style="display:inline">DATE: 24 SEP</span></div>
-            <div data-f="route">FROM: BENGALURU BLR &nbsp; TO: DELHI DEL</div>
-            <div data-f="class">CLASS: ECONOMY &nbsp; <span data-f="seat" style="display:inline">SEAT: 12A</span></div>
-            <div data-f="gate">GATE: 22 &nbsp; <span data-f="boarding" style="display:inline">BOARDING: 07:40</span></div>
-            <div data-f="group">GROUP: C &nbsp; <span data-f="seq" style="display:inline">SEQ: 087</span></div>
-            <div data-f="pnr">PNR: KJ7P2Q &nbsp; <span data-f="term" style="display:inline">TERMINAL: 1</span></div>
-            <div data-f="bag">BAGGAGE: 15KG &nbsp; <span data-f="meal" style="display:inline">MEAL: PRE-BOOKED</span></div>
-            <div data-f="std">DEP: 08:15 &nbsp; <span data-f="gclose" style="display:inline">GATE CLOSES 25 MIN PRIOR</span></div>
-            <div data-f="ads">PARTNER OFFER: 20% OFF AT DUTY PLUS*</div>
-            <div data-f="code">|||| |||| ||| |||| || |||| ||| ||||</div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="actorbox">
-          <div class="who" id="aWho">Reader</div>
-          <h3 id="aPhase">Phase</h3>
-          <p id="aNote"></p>
-          <div class="needs">Fields used here</div>
-          <div class="needchips" id="aChips"></div>
-        </div>
-        <div class="obs" id="obs"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SORTER -->
-  <div class="card">
-    <h2>Static and dynamic information</h2>
-    <div class="sub">One question sorts the pass: was this known when it was issued? Click a field for the reasoning.</div>
-    <div class="buckets">
-      <div class="bk A"><h4>A · Static</h4><div class="d">Known at issuance and unchanged afterwards.</div><div id="bkA"></div></div>
-      <div class="bk B"><h4>B · Dynamic</h4><div class="d">Not known at issuance. Set later, closer to the event.</div><div id="bkB"></div></div>
-      <div class="bk C"><h4>C · Static, then changes</h4><div class="d">Known at issuance and printed, but can change before departure.</div><div id="bkC"></div></div>
-    </div>
-    <div class="whybox" id="whybox"><b>Pick any field.</b> The third bucket is the reason for a three-way split — those fields print like static ones but behave like dynamic ones.</div>
-    <div class="note" style="margin-top:16px">
-      <b>What the sort shows.</b> The two fields the passenger reads most often — gate and boarding time — are also the two most likely to change after printing, and they carry the same visual weight as fields that never change.
-      Meanwhile some fields that are fixed at issuance and used after landing, such as the baggage tag reference, are attached as a separate sticker rather than designed into the pass.
-    </div>
-  </div>
-
-  <!-- AFTER LANDING -->
-  <div class="card">
-    <h2>After landing</h2>
-    <div class="sub">The passenger still holds the pass at the exit. Domestic arrivals in India include a baggage tag check against the bag.</div>
-    <table class="arr">
-      <tr><th>Needed after landing</th><th>Bucket</th><th>On today's pass</th></tr>
-      <tr><td>Baggage tag reference for the exit check</td><td><span class="pill A">A · static</span></td><td><span class="pill some">Stuck on as a separate sticker</span></td></tr>
-      <tr><td>Arrival terminal</td><td><span class="pill A">A / B</span></td><td><span class="pill some">Sometimes</span></td></tr>
-      <tr><td>Baggage belt number</td><td><span class="pill B">B · dynamic</span></td><td><span class="pill no">Not printed</span></td></tr>
-      <tr><td>Direction to exit or onward transport</td><td><span class="pill A">A · static</span></td><td><span class="pill no">Not printed</span></td></tr>
-    </table>
-    <div class="note" style="margin-top:14px">The baggage tag reference is known at check-in and is the one thing checked at the exit, yet it reaches the passenger as a sticker on the back of the pass rather than as part of it.</div>
-  </div>
-
-  <!-- WALL -->
-  <div class="card">
-    <h2>The working board</h2>
-    <div class="sub">How the analysis progressed.</div>
-    <div class="wall-grid">
-      <div class="cluster">
-        <h4>Reference points</h4>
-        <div class="sticky">Collected real passes — domestic, and connecting itineraries</div>
-        <div class="sticky s2">Listed every stakeholder in the journey, then shortlisted the three who read the pass to make a decision</div>
-      </div>
-      <div class="cluster">
-        <h4>Observations</h4>
-        <div class="sticky s4">Static and changeable info printed at the same weight</div>
-        <div class="sticky">PNR and gate set in the same size — no anchor for the eye</div>
-        <div class="sticky s3">Each reader uses a different subset; only name and flight are shared</div>
-      </div>
-      <div class="cluster">
-        <h4>Converging</h4>
-        <div class="sticky s2">Sorted every field: known at issuance vs not</div>
-        <div class="sticky s3">Type weight set by the next decision the reader makes</div>
-        <div class="sticky s4">Changeable fields moved behind a scannable live layer</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid2">
-    <div class="card did">
-      <h3><span>Process</span>What I did</h3>
-      <ol>
-        <li><b>Mapped one route end to end</b> (BLR → DEL) and listed every point where the pass is read.</li>
-        <li><b>Listed all stakeholders, then shortlisted three</b> using a stated rule, and wrote the use case for each.</li>
-        <li><b>Classified every field three ways</b> — static, dynamic, and static-that-changes — against what was known at issuance.</li>
-        <li><b>Iterated layouts</b>, sizing each field by the decision the reader makes next, and moving changeable fields to a live layer.</li>
+<!-- ═══ THE STAGE ═══ -->
+<section class="stage" id="stage" aria-label="The walk">
+  <div class="in"><div class="frame sheet reveal">
+    <div class="side">
+      <ol class="idx" id="idx">
+        <li><button type="button" data-go="0" aria-current="true"><b>01</b>The pass as printed</button></li>
+        <li><button type="button" data-go="1"><b>02</b>The readers</button></li>
+        <li><button type="button" data-go="2"><b>03</b>The journey</button></li>
+        <li><button type="button" data-go="3"><b>04</b>Who reads what</button></li>
+        <li><button type="button" data-go="4"><b>05</b>Known at issuance?</button></li>
+        <li><button type="button" data-go="5"><b>06</b>What moves after printing</button></li>
+        <li><button type="button" data-go="6"><b>07</b>Redrawn</button></li>
+        <li><button type="button" data-go="7"><b>08</b>On a phone</button></li>
       </ol>
+      <div class="text" id="text">
+        <article class="on" data-state="0">
+          <span class="n">01 · The pass as printed</span>
+          <h2>Nineteen fields, one weight</h2>
+          <p>A domestic single segment flight, BLR to DEL on IndiGo 6E, departing 08:15. The pass is issued at check in and carried to the exit.</p>
+          <p>Everything on it is printed at the same size. The PNR, the gate and a partner offer share one typeface and one weight, so nothing leads the eye.</p>
+          <p class="dec"><b>Decided</b>Start from the information, not the layout.</p>
+        </article>
+        <article data-state="1">
+          <span class="n">02 · The readers</span>
+          <h2>Ten people touch the trip. Three read the pass to decide something.</h2>
+          <p>One rule did the shortlisting: keep the readers who make a decision about the passenger from the pass itself, at a defined moment. Operations and handlers work from systems and bag tags. Terminal entry checks ticket and ID. Cabin crew read it, but nothing depends on the reading.</p>
+          <p class="dec"><b>Decided</b>Passenger, security officer, gate agent. Only name and flight are read by all three.</p>
+        </article>
+        <article data-state="2">
+          <span class="n">03 · The journey</span>
+          <h2>Six moments where the pass comes out</h2>
+          <p>Check in issues it. Security reads it once, in a moving queue. Between security and the gate the passenger reads it repeatedly, for wayfinding. The gate agent scans and glances. After landing it is still in hand: domestic arrivals in India check the baggage tag against the bag at the exit.</p>
+          <p>Until about 2010 the pass changed mid journey. The gate agent tore it, and the stub carried only what the next phase needed.</p>
+          <p class="dec"><b>Decided</b>Treat the phase after boarding as a phase.</p>
+        </article>
+        <article data-state="3">
+          <span class="n">04 · Who reads what</span>
+          <h2>Each reader uses a different subset</h2>
+          <p>Security reads name, flight and date, against a photo ID. The gate agent reads group and sequence, then the barcode. The passenger reads gate, boarding time and seat, over and over, between security and the aircraft door.</p>
+          <p>The fields the passenger reads most are printed no larger than the ones nobody reads. The partner offer is the only field none of the three uses.</p>
+          <p class="dec"><b>Decided</b>Size a field by the next decision its reader makes from it.</p>
+        </article>
+        <article data-state="4">
+          <span class="n">05 · Known at issuance?</span>
+          <h2>One question sorts every field</h2>
+          <p><b>A · Static.</b> Known when issued and unchanged: name, flight, date, route, PNR, class, group, sequence, baggage, terminal, barcode. <b>B · Dynamic.</b> Not known when issued: gate, arrival terminal, belt. <b>C · Static, then changes.</b> Printed as fact, can move: departure time, boarding time, seat.</p>
+          <p>Bucket C is why the split is three way. Those fields print like A and behave like B. A two way sort hides them.</p>
+          <p class="dec"><b>Decided</b>Three buckets, not two.</p>
+        </article>
+        <article data-state="5">
+          <span class="n">06 · What moves after printing</span>
+          <h2>The two most read fields are the two most likely to change</h2>
+          <p>A gate change or a delay rewrites gate and boarding time. On today's pass they carry the same ink as the PNR, which never changes. Meanwhile the baggage tag reference, fixed at check in and the one thing checked at the exit, arrives as a sticker on the back.</p>
+          <p class="dec"><b>Decided</b>Print what is fixed. Put what can change behind a live layer.</p>
+        </article>
+        <article data-state="6">
+          <span class="n">07 · Redrawn</span>
+          <h2>Split by reader, weighted by the next decision</h2>
+          <p>An identity strip on top for security: name, flight, date, one glance. The passenger's block large: route, gate, boarding time, seat, and gate close as a clock time rather than small print. Group, sequence and the code on the right for the gate agent. The baggage tag reference printed in, not stuck on.</p>
+          <p class="dec"><b>Decided</b>Same artefact, three zones, one reading order per reader.</p>
+        </article>
+        <article data-state="7">
+          <span class="n">08 · On a phone</span>
+          <h2>The same split, live by default</h2>
+          <p>On a mobile pass the live layer is the screen. Gate and boarding time update in place and say so. The identity strip and the gate agent's code keep their places, so the reading order survives the change of medium. Paper remains the fallback, and what is essential has to survive on paper alone.</p>
+          <p class="dec"><b>Decided</b>Design for the reading conditions: a moving queue, one hand busy, no time.</p>
+        </article>
+      </div>
+      <div class="ctl">
+        <button type="button" id="prev" disabled>← Prev</button>
+        <div class="bar" aria-hidden="true"><i id="bar" style="width:12.5%"></i></div>
+        <span class="pos" id="pos">01 / 08</span>
+        <button type="button" id="next">Next →</button>
+      </div>
     </div>
-    <div class="card did">
-      <h3><span>Transferable</span>If one artifact serves several readers</h3>
-      <ul>
-        <li>List every reader, then write the <b>next decision</b> each one makes from it.</li>
-        <li>Separate what can change from what cannot, and give changeable fields a live channel.</li>
-        <li>Shortlist stakeholders with a <b>stated rule</b>, so the exclusions are defensible.</li>
-        <li>Ask what the artifact should say in the phase <b>after</b> the one it was designed for.</li>
-      </ul>
+
+    <div class="art">
+      <span class="cap" id="cap"><b>Fig. 1 of 8</b> · The pass as printed</span>
+      <svg class="fig" id="fig" data-state="0" viewBox="0 0 900 620" role="img" aria-label="A boarding pass for BLR to DEL on 6E 2134, drawn to its real proportions with a tear off stub. As the steps advance it marks the three readers, the six moments of the journey, which fields each reader uses, the three buckets of static, dynamic and becomes dynamic fields, the two fields that change after printing, and finally the redrawn pass on paper and on a phone.">
+        <defs>
+          <filter id="sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#111110" flood-opacity=".16"/></filter>
+        </defs>
+
+        <!-- ═══ today's pass · states 0–5 ═══ -->
+        <g data-s="0 1 2 3 4 5">
+          <g filter="url(#sh)"><rect class="pp" x="60" y="40" width="780" height="290"/></g>
+          <rect class="band" x="61" y="41" width="778" height="40"/>
+          <text class="val" x="84" y="66" style="font-size:14px;letter-spacing:.14em">6E&nbsp;&nbsp;BOARDING PASS</text>
+          <text class="lab" x="596" y="66" text-anchor="end">Economy · 24 Sep</text>
+          <line class="perf" x1="625" y1="41" x2="625" y2="329"/>
+          <!-- passenger -->
+          <g class="f s all" data-f="name"><rect class="fr" x="76" y="94" width="220" height="40" rx="2"/><text class="lab" x="84" y="108">Passenger</text><text class="val" x="84" y="126">MADHUMITHA / D V</text></g>
+          <!-- route -->
+          <text class="big" x="84" y="208">BLR</text><text class="lab" x="86" y="232">Bengaluru · T1</text>
+          <text class="mid" x="212" y="196" style="font-size:30px">→</text>
+          <text class="big" x="256" y="208">DEL</text><text class="lab" x="258" y="232">Delhi</text>
+          <!-- fields grid -->
+          <g class="f s all" data-f="flight"><rect class="fr" x="392" y="94" width="92" height="40" rx="2"/><text class="lab" x="400" y="108">Flight</text><text class="val" x="400" y="126">6E 2134</text></g>
+          <g class="f s" data-f="date"><rect class="fr" x="492" y="94" width="92" height="40" rx="2"/><text class="lab" x="500" y="108">Date</text><text class="val" x="500" y="126">24 SEP</text></g>
+          <g class="f p bB mv" data-f="gate"><rect class="fr" x="392" y="138" width="92" height="40" rx="2"/><text class="lab" x="400" y="152">Gate</text><text class="val" x="400" y="170">22</text></g>
+          <g class="f p bC mv" data-f="boarding"><rect class="fr" x="492" y="138" width="92" height="40" rx="2"/><text class="lab" x="500" y="152">Boarding</text><text class="val" x="500" y="170">07:40</text></g>
+          <g class="f p bC" data-f="seat"><rect class="fr" x="392" y="182" width="92" height="40" rx="2"/><text class="lab" x="400" y="196">Seat</text><text class="val" x="400" y="214">12A</text></g>
+          <g class="f g" data-f="seq"><rect class="fr" x="492" y="182" width="92" height="40" rx="2"/><text class="lab" x="500" y="196">Seq</text><text class="val" x="500" y="214">087</text></g>
+          <g class="f g" data-f="group"><rect class="fr" x="392" y="226" width="92" height="40" rx="2"/><text class="lab" x="400" y="240">Group</text><text class="val" x="400" y="258">C</text></g>
+          <g class="f" data-f="pnr"><rect class="fr" x="492" y="226" width="92" height="40" rx="2"/><text class="lab" x="500" y="240">PNR</text><text class="val" x="500" y="258">KJ7P2Q</text></g>
+          <!-- bottom row -->
+          <g class="f bC" data-f="dep"><rect class="fr" x="76" y="236" width="300" height="22" rx="2"/><text class="lab" x="84" y="251">Dep 08:15 · Closes 25 min prior · 15 + 7 kg</text></g>
+          <text class="lab" x="84" y="272" style="fill:var(--chalk-3)">20% off at Duty Plus · partner offer</text>
+          <g class="f g bars" data-f="bar" transform="translate(84 286)"><rect class="fr" x="-8" y="-6" width="232" height="38" rx="2"/>
+            <rect x="0" width="3" height="26"/><rect x="5" width="1" height="26"/><rect x="8" width="4" height="26"/><rect x="14" width="1" height="26"/><rect x="17" width="2" height="26"/><rect x="21" width="3" height="26"/><rect x="26" width="1" height="26"/><rect x="29" width="4" height="26"/><rect x="35" width="2" height="26"/><rect x="39" width="1" height="26"/><rect x="42" width="3" height="26"/><rect x="47" width="2" height="26"/><rect x="51" width="4" height="26"/><rect x="57" width="1" height="26"/><rect x="60" width="3" height="26"/><rect x="65" width="2" height="26"/><rect x="69" width="1" height="26"/><rect x="72" width="4" height="26"/><rect x="78" width="2" height="26"/><rect x="82" width="3" height="26"/><rect x="87" width="1" height="26"/><rect x="90" width="4" height="26"/><rect x="96" width="2" height="26"/><rect x="100" width="3" height="26"/><rect x="105" width="1" height="26"/><rect x="108" width="2" height="26"/><rect x="112" width="4" height="26"/><rect x="118" width="1" height="26"/><rect x="121" width="3" height="26"/><rect x="126" width="2" height="26"/><rect x="130" width="4" height="26"/><rect x="136" width="1" height="26"/><rect x="139" width="3" height="26"/><rect x="144" width="2" height="26"/><rect x="148" width="1" height="26"/><rect x="151" width="4" height="26"/><rect x="157" width="2" height="26"/><rect x="161" width="3" height="26"/><rect x="166" width="1" height="26"/><rect x="169" width="4" height="26"/><rect x="175" width="2" height="26"/><rect x="179" width="3" height="26"/><rect x="184" width="1" height="26"/><rect x="187" width="2" height="26"/><rect x="191" width="4" height="26"/><rect x="197" width="1" height="26"/><rect x="200" width="3" height="26"/><rect x="205" width="2" height="26"/><rect x="209" width="4" height="26"/>
+          </g>
+          <!-- stub -->
+          <text class="lab" x="646" y="108">Boarding pass</text><text class="val" x="646" y="126" style="font-size:13px">MADHUMITHA / D V</text>
+          <text class="mid" x="646" y="176">BLR → DEL</text>
+          <text class="lab" x="646" y="200">6E 2134 · 24 Sep · Eco</text>
+          <text class="val" x="646" y="232">SEAT 12A</text><text class="val" x="740" y="232">SEQ 087</text>
+          <text class="lab" x="646" y="256">Group C · Gate 22 · Boarding 07:40</text>
+          <g class="bars" transform="translate(646 282)"><rect x="0" width="2" height="22"/><rect x="4" width="1" height="22"/><rect x="7" width="3" height="22"/><rect x="12" width="1" height="22"/><rect x="15" width="2" height="22"/><rect x="19" width="3" height="22"/><rect x="24" width="1" height="22"/><rect x="27" width="2" height="22"/><rect x="31" width="3" height="22"/><rect x="36" width="1" height="22"/><rect x="39" width="2" height="22"/><rect x="43" width="4" height="22"/><rect x="49" width="1" height="22"/><rect x="52" width="2" height="22"/><rect x="56" width="3" height="22"/><rect x="61" width="1" height="22"/><rect x="64" width="2" height="22"/><rect x="68" width="4" height="22"/><rect x="74" width="1" height="22"/><rect x="77" width="3" height="22"/><rect x="82" width="2" height="22"/><rect x="86" width="1" height="22"/><rect x="89" width="4" height="22"/><rect x="95" width="2" height="22"/><rect x="99" width="3" height="22"/><rect x="104" width="1" height="22"/><rect x="107" width="2" height="22"/><rect x="111" width="4" height="22"/><rect x="117" width="1" height="22"/><rect x="120" width="3" height="22"/><rect x="125" width="2" height="22"/><rect x="129" width="4" height="22"/><rect x="135" width="1" height="22"/><rect x="138" width="3" height="22"/><rect x="143" width="2" height="22"/><rect x="147" width="1" height="22"/><rect x="150" width="4" height="22"/><rect x="156" width="2" height="22"/><rect x="160" width="3" height="22"/><rect x="165" width="1" height="22"/></g>
+        </g>
+
+        <!-- state 0: one weight -->
+        <g data-s="0">
+          <text class="capk" x="60" y="378">19 fields · one typeface · one size</text>
+          <line class="hl" x1="60" y1="392" x2="840" y2="392"/>
+          <text class="capk" x="60" y="422">Read most</text><text class="body" x="240" y="422">Gate · Boarding · Seat</text>
+          <text class="capk" x="60" y="450">Read once</text><text class="body" x="240" y="450">Name · Flight · Date</text>
+          <text class="capk" x="60" y="478">Read by no one</text><text class="body" x="240" y="478">The partner offer</text>
+          <circle class="dot" cx="484" cy="158" r="4"/><path class="rl" d="M484 158 L 560 360 L 600 360"/>
+          <text class="call" x="606" y="365">Same weight as the PNR.</text>
+        </g>
+
+        <!-- state 1: readers -->
+        <g data-s="1">
+          <rect class="cardb" x="60" y="364" width="246" height="124"/><text class="capk" x="78" y="390">Passenger</text><text class="body" x="78" y="416">Where to go, by when,</text><text class="body" x="78" y="436">where to sit.</text><text class="cap" x="78" y="470" style="font-size:11px">Reads it repeatedly</text>
+          <rect class="cardb" x="327" y="364" width="246" height="124"/><text class="capk" x="345" y="390">Security officer</text><text class="body" x="345" y="416">This person, today,</text><text class="body" x="345" y="436">on a real flight.</text><text class="cap" x="345" y="470" style="font-size:11px">One read, moving queue</text>
+          <rect class="cardb" x="594" y="364" width="246" height="124"/><text class="capk" x="612" y="390">Gate agent</text><text class="body" x="612" y="416">Board now, and in</text><text class="body" x="612" y="436">what order.</text><text class="cap" x="612" y="470" style="font-size:11px">A scan plus a glance</text>
+          <text class="cap" x="60" y="528">Set aside</text>
+          <text class="body" x="60" y="552" style="fill:var(--chalk-3)">Terminal entry · check in · baggage handlers · airline operations · cabin crew · lounge and retail · partners.</text>
+          <text class="body" x="60" y="574" style="fill:var(--chalk-3)">They read the ticket, the bag tag or a system. No decision rests on the pass.</text>
+          <path class="rl" d="M296 114 L 340 114"/>
+          <circle class="dot" cx="392" cy="114" r="4"/><path class="rl" d="M392 114 L 392 22 L 420 22"/>
+          <text class="call" x="426" y="26">Name and flight: the only fields all three read.</text>
+        </g>
+
+        <!-- states 2–3: the journey -->
+        <g data-s="2 3">
+          <line class="ln" x1="90" y1="430" x2="810" y2="430"/>
+          <g class="pp"><circle cx="90" cy="430" r="8"/><circle cx="234" cy="430" r="8"/><circle cx="378" cy="430" r="8"/><circle cx="522" cy="430" r="8"/><circle cx="666" cy="430" r="8"/><circle cx="810" cy="430" r="8"/></g>
+          <g class="capk" text-anchor="middle" style="font-size:11px">
+            <text x="90" y="464">Check in</text><text x="234" y="464">Security</text><text x="378" y="464">To the gate</text><text x="522" y="464">At the gate</text><text x="666" y="464">Boarding</text><text x="810" y="464">After landing</text>
+          </g>
+          <g class="cap" text-anchor="middle" style="font-size:10px">
+            <text x="90" y="484">Issued</text><text x="234" y="484">Officer</text><text x="378" y="484">Passenger</text><text x="522" y="484">Passenger</text><text x="666" y="484">Gate agent</text><text x="810" y="484">Exit check</text>
+          </g>
+        </g>
+        <g data-s="2">
+          <text class="capk" x="60" y="378">The journey · the pass is read at six moments</text>
+          <line class="hl" x1="90" y1="520" x2="666" y2="520"/>
+          <text class="cap" x="378" y="544" text-anchor="middle" style="font-size:11px">Before 2010: torn here. The stub kept only what the next phase needed.</text>
+          <circle class="dot" cx="810" cy="430" r="4"/><path class="rl" d="M810 438 L 810 580 L 760 580"/>
+          <text class="call" x="754" y="585" text-anchor="end">Still in hand at the belt and the exit.</text>
+        </g>
+        <g data-s="3">
+          <text class="capk" x="60" y="378">Who reads what</text>
+          <path class="rl" d="M378 422 L 378 390 L 438 390 L 438 180"/>
+          <path class="rl" d="M522 422 L 522 390 L 538 390 L 538 180"/>
+          <path class="hl" d="M234 422 L 234 400 L 300 400 L 300 136" style="stroke:var(--chalk);stroke-width:1.5;stroke-dasharray:3 3"/>
+          <path class="hl" d="M666 422 L 666 400 L 546 400 L 546 224" style="stroke:var(--chalk-3);stroke-width:1.5"/>
+          <rect class="tag" x="60" y="512" width="12" height="12"/><text class="body" x="82" y="523">Security: name, flight, date</text>
+          <rect class="dot" x="300" y="512" width="12" height="12"/><text class="body" x="322" y="523">Passenger: gate, boarding, seat</text>
+          <rect class="tagt" x="560" y="512" width="12" height="12"/><text class="body" x="582" y="523">Gate agent: group, sequence, code</text>
+          <text class="call" x="60" y="572">Gate, boarding time, seat: read most, printed no larger.</text>
+        </g>
+
+        <!-- state 4: buckets -->
+        <g data-s="4">
+          <text class="capk" x="60" y="378">Was this known when the pass was issued?</text>
+          <rect class="cardb" x="60" y="398" width="18" height="18"/><text class="capk" x="90" y="412">A · Static</text><text class="body" x="90" y="434">Known, and stays. Fifteen fields.</text>
+          <rect x="327" y="398" width="18" height="18" fill="rgba(231,236,240,.18)" class="sw"/><text class="capk" x="357" y="412">B · Dynamic</text><text class="body" x="357" y="434">Gate · arrival terminal · belt</text>
+          <rect x="594" y="398" width="18" height="18" fill="var(--signal-tint)" stroke="var(--signal)" stroke-dasharray="3 3"/><text class="capk" x="624" y="412">C · Static, then changes</text><text class="body" x="624" y="434">Departure · boarding · seat</text>
+          <circle class="dot" cx="584" cy="158" r="4"/><path class="rl" d="M584 158 L 640 500 L 600 500"/>
+          <text class="call" x="594" y="505" text-anchor="end">Bucket C prints like A and behaves like B.</text>
+          <text class="body" x="60" y="560" style="fill:var(--chalk-3)">A two way sort hides these three fields entirely.</text>
+        </g>
+
+        <!-- state 5: what moves -->
+        <g data-s="5">
+          <text class="new" x="430" y="170">→ 18</text>
+          <text class="new" x="552" y="170">→ 08:05</text>
+          <g transform="rotate(-3 700 420)">
+            <rect class="pp" x="600" y="380" width="200" height="72" style="stroke:var(--chalk-3)"/>
+            <text class="lab" x="616" y="404">Bag tag · stuck on the back</text>
+            <text class="val" x="616" y="428">0176 234567 · 15 KG</text>
+            <g class="bars" transform="translate(616 436)"><rect x="0" width="2" height="8"/><rect x="4" width="1" height="8"/><rect x="7" width="3" height="8"/><rect x="12" width="1" height="8"/><rect x="15" width="2" height="8"/><rect x="19" width="3" height="8"/><rect x="24" width="1" height="8"/><rect x="27" width="2" height="8"/><rect x="31" width="3" height="8"/><rect x="36" width="1" height="8"/><rect x="39" width="2" height="8"/><rect x="43" width="4" height="8"/></g>
+          </g>
+          <text class="capk" x="60" y="378">What moves after printing</text>
+          <text class="body" x="60" y="408">A gate change rewrites the gate. A delay rewrites the boarding time.</text>
+          <text class="body" x="60" y="430">Both carry the same ink as the PNR, which never changes.</text>
+          <circle class="dot" cx="484" cy="178" r="4"/><path class="rl" d="M484 178 L 484 480 L 440 480"/>
+          <text class="call" x="434" y="485" text-anchor="end">The most read fields are the most likely to change.</text>
+          <text class="body" x="60" y="560" style="fill:var(--chalk-3)">The one field checked at the exit is the one that arrives as a sticker.</text>
+        </g>
+
+        <!-- ═══ state 6: redrawn ═══ -->
+        <g data-s="6">
+          <g filter="url(#sh)"><rect class="pp" x="60" y="40" width="780" height="330"/></g>
+          <!-- identity strip: security -->
+          <rect class="tag" x="61" y="41" width="778" height="46" opacity=".18"/>
+          <text class="lab" x="84" y="60">Identity · for security</text>
+          <text class="val" x="84" y="79" style="font-size:16px">MADHUMITHA / D V</text>
+          <text class="val" x="430" y="79" style="font-size:16px">6E 2134</text>
+          <text class="val" x="540" y="79" style="font-size:16px">24 SEP</text>
+          <!-- passenger block -->
+          <text class="lab" x="84" y="116">Route</text>
+          <text class="big" x="84" y="176">BLR → DEL</text>
+          <text class="lab" x="84" y="222">Gate</text><text class="big" x="84" y="286" style="font-size:66px">22</text>
+          <text class="lab" x="226" y="222">Boarding</text><text class="big" x="226" y="286" style="font-size:66px">07:40</text>
+          <text class="lab" x="440" y="222">Seat</text><text class="big" x="440" y="286" style="font-size:66px">12A</text>
+          <text class="lab" x="84" y="318">Gate closes</text><text class="val" x="84" y="340">07:50</text>
+          <text class="lab" x="226" y="318">Bag</text><text class="val" x="226" y="340">0176 234567 · 15 KG</text>
+          <text class="lab" x="440" y="318">PNR · Terminal</text><text class="val" x="440" y="340">KJ7P2Q · T1</text>
+          <!-- gate agent column -->
+          <rect class="tagt" x="640" y="87" width="199" height="282" opacity=".10"/>
+          <line class="perf" x1="640" y1="87" x2="640" y2="369"/>
+          <text class="lab" x="660" y="116">For the gate</text>
+          <text class="lab" x="660" y="150">Group</text><text class="big" x="660" y="196" style="font-size:44px">C</text>
+          <text class="lab" x="740" y="150">Seq</text><text class="big" x="740" y="196" style="font-size:44px">087</text>
+          <g class="bars" transform="translate(660 226)"><rect x="0" width="3" height="60"/><rect x="5" width="1" height="60"/><rect x="8" width="4" height="60"/><rect x="14" width="1" height="60"/><rect x="17" width="2" height="60"/><rect x="21" width="3" height="60"/><rect x="26" width="1" height="60"/><rect x="29" width="4" height="60"/><rect x="35" width="2" height="60"/><rect x="39" width="1" height="60"/><rect x="42" width="3" height="60"/><rect x="47" width="2" height="60"/><rect x="51" width="4" height="60"/><rect x="57" width="1" height="60"/><rect x="60" width="3" height="60"/><rect x="65" width="2" height="60"/><rect x="69" width="1" height="60"/><rect x="72" width="4" height="60"/><rect x="78" width="2" height="60"/><rect x="82" width="3" height="60"/><rect x="87" width="1" height="60"/><rect x="90" width="4" height="60"/><rect x="96" width="2" height="60"/><rect x="100" width="3" height="60"/><rect x="105" width="1" height="60"/><rect x="108" width="2" height="60"/><rect x="112" width="4" height="60"/><rect x="118" width="1" height="60"/><rect x="121" width="3" height="60"/><rect x="126" width="2" height="60"/><rect x="130" width="4" height="60"/><rect x="136" width="1" height="60"/><rect x="139" width="3" height="60"/><rect x="144" width="2" height="60"/><rect x="148" width="1" height="60"/><rect x="151" width="4" height="60"/></g>
+          <text class="lab" x="660" y="310">Gate · boarding · belt</text><text class="lab" x="660" y="326">update behind the code</text>
+          <!-- annotations -->
+          <rect class="tag" x="60" y="404" width="12" height="12"/><text class="body" x="82" y="415">One glance for security</text>
+          <rect class="dot" x="300" y="404" width="12" height="12"/><text class="body" x="322" y="415">Large, for the walk to the gate</text>
+          <rect class="tagt" x="600" y="404" width="12" height="12"/><text class="body" x="622" y="415">Scan and glance, for the gate</text>
+          <circle class="dot" cx="300" cy="286" r="4"/><path class="rl" d="M300 286 L 300 300 L 420 300 L 420 470 L 440 470"/>
+          <text class="call" x="446" y="475">Read on the move, so it reads from across the hall.</text>
+          <text class="body" x="60" y="530" style="fill:var(--chalk-3)">The bag reference is printed in. The partner offer is gone. Nothing arrives as a sticker.</text>
+        </g>
+
+        <!-- ═══ state 7: phone ═══ -->
+        <g data-s="7">
+          <g filter="url(#sh)"><rect class="pp" x="320" y="30" width="260" height="560" rx="34"/></g>
+          <rect class="band" x="334" y="44" width="232" height="532" rx="24" style="fill:var(--navy-3)"/>
+          <text class="lab" x="356" y="78">09:41</text><text class="lab" x="544" y="78" text-anchor="end">5G · 87%</text>
+          <rect class="tag" x="334" y="92" width="232" height="46" opacity=".18"/>
+          <text class="lab" x="356" y="110">Identity</text><text class="val" x="356" y="128" style="font-size:13px">MADHUMITHA · 6E 2134 · 24 SEP</text>
+          <text class="big" x="356" y="200" style="font-size:44px">BLR → DEL</text>
+          <text class="lab" x="356" y="232">Gate</text><text class="big" x="356" y="282" style="font-size:52px">18</text>
+          <text class="lab" x="470" y="232">Boarding</text><text class="big" x="470" y="282" style="font-size:52px">08:05</text>
+          <rect x="356" y="296" width="188" height="24" rx="12" fill="var(--signal-tint)"/><text class="lab" x="368" y="312" style="fill:var(--signal)">Gate 22 → 18 · 07:12</text>
+          <text class="lab" x="356" y="350">Seat</text><text class="big" x="356" y="398" style="font-size:44px">12A</text>
+          <text class="lab" x="470" y="350">Gate closes</text><text class="val" x="470" y="392" style="font-size:22px">08:15</text>
+          <rect class="tagt" x="334" y="420" width="232" height="156" opacity=".10"/>
+          <text class="lab" x="356" y="446">For the gate · C · 087</text>
+          <g class="bars" transform="translate(372 460)"><rect x="0" width="3" height="56"/><rect x="5" width="1" height="56"/><rect x="8" width="4" height="56"/><rect x="14" width="1" height="56"/><rect x="17" width="2" height="56"/><rect x="21" width="3" height="56"/><rect x="26" width="1" height="56"/><rect x="29" width="4" height="56"/><rect x="35" width="2" height="56"/><rect x="39" width="1" height="56"/><rect x="42" width="3" height="56"/><rect x="47" width="2" height="56"/><rect x="51" width="4" height="56"/><rect x="57" width="1" height="56"/><rect x="60" width="3" height="56"/><rect x="65" width="2" height="56"/><rect x="69" width="1" height="56"/><rect x="72" width="4" height="56"/><rect x="78" width="2" height="56"/><rect x="82" width="3" height="56"/><rect x="87" width="1" height="56"/><rect x="90" width="4" height="56"/><rect x="96" width="2" height="56"/><rect x="100" width="3" height="56"/><rect x="105" width="1" height="56"/><rect x="108" width="2" height="56"/><rect x="112" width="4" height="56"/><rect x="118" width="1" height="56"/><rect x="121" width="3" height="56"/><rect x="126" width="2" height="56"/><rect x="130" width="4" height="56"/><rect x="136" width="1" height="56"/><rect x="139" width="3" height="56"/><rect x="144" width="2" height="56"/><rect x="148" width="1" height="56"/><rect x="151" width="4" height="56"/></g>
+          <text class="lab" x="356" y="548">Bag 0176 234567 · belt on landing</text>
+          <circle class="dot" cx="544" cy="308" r="4"/><path class="rl" d="M544 308 L 640 308 L 640 240 L 660 240"/>
+          <text class="call" x="666" y="236">Live, and says so.</text>
+          <text class="body" x="666" y="262" style="fill:var(--chalk-3)">The live layer is the screen.</text>
+          <text class="capk" x="60" y="120">Same three zones</text>
+          <text class="body" x="60" y="146">Identity on top.</text><text class="body" x="60" y="168">Passenger block large.</text><text class="body" x="60" y="190">The code for the gate.</text>
+          <text class="capk" x="60" y="480">Paper stays the fallback</text>
+          <text class="body" x="60" y="506">What is essential has to</text><text class="body" x="60" y="528">survive on paper alone.</text>
+        </g>
+      </svg>
+      <span class="hint">← → keys move the drawing</span>
     </div>
+  </div></div>
+</section>
+
+<!-- ═══ from the original sheet ═══ -->
+<section class="originals" id="originals"><div class="in">
+  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The teardown, as first published</h2></div><p>The shortlist, the torn pass, the journey explorer, the three way sort, the exit check and the working board. Each still works.</p></div>
+  <div class="orig">
+
+    <div class="orig-block"><span class="k">Fig. 1</span><h3>Stakeholders, and why three</h3><p>The journey map listed everyone who touches the trip. Three were taken forward.</p>
+      <div class="card">
+        <div class="shrow">
+          <span class="pick">Passenger</span><span class="pick">Security officer</span><span class="pick">Gate agent</span>
+          <span>Terminal entry staff</span><span>Check in / bag drop staff</span><span>Baggage handlers</span>
+          <span>Airline ops</span><span>Cabin crew</span><span>Lounge / retail</span><span>Marketing partners</span>
+        </div>
+        <p style="margin-bottom:14px"><b style="color:var(--ink)">Shortlisting rule:</b> keep the readers who make a decision about the passenger <b style="color:var(--ink)">using the pass itself</b>, at a defined moment. Airline ops and baggage handlers work from systems and bag tags; terminal entry checks the ticket and ID, since the pass may not exist yet; cabin crew, lounge and retail read it but nothing depends on the reading.</p>
+        <div class="sh">
+          <h4>Passenger</h4>
+          <div class="uc"><b>Use case:</b> orientation and wayfinding: where to go, by when, and where to sit. Reads the pass repeatedly across the journey.</div>
+        </div>
+        <div class="sh">
+          <h4>Security officer (pre embarkation check)</h4>
+          <div class="uc"><b>Use case:</b> eligibility to enter the sterile area: confirming this person, today, is travelling on a real flight. One quick read, in a moving queue.</div>
+        </div>
+        <div class="sh">
+          <h4>Gate agent (pre boarding)</h4>
+          <div class="uc"><b>Use case:</b> boarding authorisation and sequencing: whether this person boards this aircraft now, and in what order. A scan plus a glance.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="orig-block"><span class="k">Fig. 2</span><h3>The pass used to change during the journey</h3><p>Until about 2010 it came perforated. Tear it to see what the airline kept.</p>
+      <div class="card" id="tearCard">
+        <div class="orig-scroll o-tearscroll">
+          <div class="tear-stage">
+            <div class="oldpass" id="oldpass">
+              <div class="half keep">
+                <div class="cap">Passenger stub</div>
+                <div class="big">SEAT 12A</div>
+                <div class="ln">MADHUMITHA / VENKATA</div>
+                <div class="ln">6E2134 · 24 SEP</div>
+                <div class="ln">BLR → DEL</div>
+              </div>
+              <div class="half gone">
+                <div class="cap">Airline gate coupon</div>
+                <div class="ln">MADHUMITHA / VENKATA &nbsp; SEQ 087</div>
+                <div class="ln">6E2134 &nbsp; 24 SEP &nbsp; BLR → DEL &nbsp; 12A</div>
+                <div class="ln">PNR KJ7P2Q &nbsp; ECONOMY &nbsp; GROUP C</div>
+                <div class="ln">BAG 15KG &nbsp; TERMINAL 1</div>
+                <div class="ln">,,,,,, </div>
+                <div class="ln">RETAINED BY CARRIER AT BOARDING</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="tear-btn" id="tearBtn">✂️ Tear at the gate</button>
+        <div class="tear-why" id="tearWhy">
+          <div class="tw"><b>Headcount</b>Coupons counted against the system before door close.</div>
+          <div class="tw"><b>Bag matching</b>Evidence the passenger boarded, so the checked bag could stay on.</div>
+          <div class="tw"><b>Settlement</b>Proof of carriage, used to settle between carriers.</div>
+          <div class="tw"><b>Manifest</b>The coupons formed the flight's record.</div>
+        </div>
+        <div class="o-note">
+            Bar coded passes became mandatory in 2010 (IATA Resolution 792), and a gate scan now records boarding directly.
+            The design point is what the tear did: the artifact changed at the moment the passenger's status changed.
+            In India the same idea existed as a security <b>stamp</b>. <b>Today the pass carries one fixed field set from issuance until it is discarded.</b>
+          </div>
+      </div>
+    </div>
+
+    <div class="orig-block"><span class="k">Fig. 3</span><h3>Who reads what, and when</h3><p>Step through the journey. The pass dims to the fields that reader uses at that point.</p>
+      <div class="card">
+        <div class="ctlbar">
+          <span class="lbl">Pass</span>
+          <div class="o-seg" id="passSeg">
+            <button data-pass="new" class="on">Rebuilt</button>
+            <button data-pass="old">Today's</button>
+          </div>
+        </div>
+        <div class="scrub" id="scrub"></div>
+        <div class="explore">
+          <div class="passwrap">
+            <div class="notyet" id="notyet"><div><b>No boarding pass yet</b>At terminal entry the passenger holds ticket details (PNR) and photo ID. The pass is issued at check in, in the next step.</div></div>
+
+            <div class="pass new" id="passNew">
+              <div class="bar">Rebuilt, weighted by the next decision</div>
+              <div class="pbody">
+                <div class="np-top">
+                  <div class="np-route" data-f="route">BLR → DEL<small>Bengaluru → Delhi · <span data-f="date" style="display:inline">24 SEP</span></small></div>
+                  <div class="cell" data-f="name"><div class="o-k">Passenger</div><div class="v" style="font-size:.74rem">MADHUMITHA / VENKATA</div></div>
+                </div>
+                <div class="np-grid">
+                  <div class="cell big" data-f="gate"><div class="o-k live">Gate</div><div class="v">22</div></div>
+                  <div class="cell big" data-f="boarding"><div class="o-k live">Boarding</div><div class="v">07:40</div></div>
+                  <div class="cell big" data-f="seat"><div class="o-k">Seat</div><div class="v">12A</div></div>
+                  <div class="cell" data-f="gclose"><div class="o-k">Gate closes</div><div class="v">07:50</div></div>
+                  <div class="cell" data-f="std"><div class="o-k live">Departs</div><div class="v">08:15</div></div>
+                  <div class="cell" data-f="flight"><div class="o-k">Flight</div><div class="v">6E 2134</div></div>
+                  <div class="cell" data-f="group"><div class="o-k">Group</div><div class="v">C</div></div>
+                  <div class="cell" data-f="pnr"><div class="o-k">PNR</div><div class="v">KJ7P2Q</div></div>
+                  <div class="cell" data-f="term"><div class="o-k">Terminal</div><div class="v">T1</div></div>
+                </div>
+                <div class="np-thru" data-f="tag"><div class="o-k">Baggage tag, needed at the exit check</div><div class="v">BLR 6E 128341 · 1 bag, 15 kg</div></div>
+                <div class="np-foot">
+                  <div class="np-note" data-f="status">Fields that can change, gate, timings, belt number, are shown live behind the code.</div>
+                  <div class="qr" data-f="code"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pass old" id="passOld" style="display:none">
+              <div class="bar">Today's pass</div>
+              <div class="pbody">
+                <div data-f="name">NAME: MADHUMITHA / VENKATA</div>
+                <div data-f="flight">FLIGHT: 6E2134 &nbsp; <span data-f="date" style="display:inline">DATE: 24 SEP</span></div>
+                <div data-f="route">FROM: BENGALURU BLR &nbsp; TO: DELHI DEL</div>
+                <div data-f="class">CLASS: ECONOMY &nbsp; <span data-f="seat" style="display:inline">SEAT: 12A</span></div>
+                <div data-f="gate">GATE: 22 &nbsp; <span data-f="boarding" style="display:inline">BOARDING: 07:40</span></div>
+                <div data-f="group">GROUP: C &nbsp; <span data-f="seq" style="display:inline">SEQ: 087</span></div>
+                <div data-f="pnr">PNR: KJ7P2Q &nbsp; <span data-f="term" style="display:inline">TERMINAL: 1</span></div>
+                <div data-f="bag">BAGGAGE: 15KG &nbsp; <span data-f="meal" style="display:inline">MEAL: PRE BOOKED</span></div>
+                <div data-f="std">DEP: 08:15 &nbsp; <span data-f="gclose" style="display:inline">GATE CLOSES 25 MIN PRIOR</span></div>
+                <div data-f="ads">PARTNER OFFER: 20% OFF AT DUTY PLUS*</div>
+                <div data-f="code">|||| |||| ||| |||| || |||| ||| ||||</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="actorbox">
+              <div class="who" id="aWho">Reader</div>
+              <h3 id="aPhase">Phase</h3>
+              <p id="aNote"></p>
+              <div class="needs">Fields used here</div>
+              <div class="needchips" id="aChips"></div>
+            </div>
+            <div class="obs" id="obs"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="orig-block"><span class="k">Fig. 4</span><h3>Static and dynamic information</h3><p>One question sorts the pass: was this known when it was issued? Click a field for the reasoning.</p>
+      <div class="card">
+        <div class="buckets">
+          <div class="bk A"><h4>A · Static</h4><div class="o-d">Known at issuance and unchanged afterwards.</div><div id="bkA"></div></div>
+          <div class="bk B"><h4>B · Dynamic</h4><div class="o-d">Not known at issuance. Set later, closer to the event.</div><div id="bkB"></div></div>
+          <div class="bk C"><h4>C · Static, then changes</h4><div class="o-d">Known at issuance and printed, but can change before departure.</div><div id="bkC"></div></div>
+        </div>
+        <div class="whybox" id="whybox"><b>Pick any field.</b> The third bucket is the reason for a three way split, those fields print like static ones but behave like dynamic ones.</div>
+        <div class="o-note" style="margin-top:16px">
+            <b>What the sort shows.</b> The two fields the passenger reads most often, gate and boarding time, are also the two most likely to change after printing, yet they carry the same visual weight as fields that never change.
+            The baggage tag reference, fixed at issuance and used after landing, is attached as a separate sticker.
+          </div>
+      </div>
+    </div>
+
+    <div class="orig-block"><span class="k">Fig. 5</span><h3>After landing</h3><p>The passenger still holds the pass at the exit. Domestic arrivals in India include a baggage tag check against the bag.</p>
+      <div class="card">
+        <div class="orig-scroll"><table class="arr">
+          <tr><th>Needed after landing</th><th>Bucket</th><th>On today's pass</th></tr>
+          <tr><td>Baggage tag reference for the exit check</td><td><span class="pill A">A · static</span></td><td><span class="pill some">Stuck on as a separate sticker</span></td></tr>
+          <tr><td>Arrival terminal</td><td><span class="pill A">A / B</span></td><td><span class="pill some">Sometimes</span></td></tr>
+          <tr><td>Baggage belt number</td><td><span class="pill B">B · dynamic</span></td><td><span class="pill no">Not printed</span></td></tr>
+          <tr><td>Direction to exit or onward transport</td><td><span class="pill A">A · static</span></td><td><span class="pill no">Not printed</span></td></tr>
+        </table></div>
+        <div class="o-note" style="margin-top:14px">The baggage tag reference is known at check in and is the one thing checked at the exit, yet it reaches the passenger as a sticker on the back of the pass rather than as part of it.</div>
+      </div>
+    </div>
+
+    <div class="orig-block"><span class="k">Fig. 6</span><h3>The working board</h3><p>How the analysis progressed.</p>
+      <div class="card">
+        <div class="wall-grid">
+          <div class="cluster">
+            <h4>Reference points</h4>
+            <div class="sticky">Collected real passes: domestic, and connecting itineraries</div>
+            <div class="sticky s2">Listed every stakeholder in the journey, then shortlisted the three who read the pass to make a decision</div>
+          </div>
+          <div class="cluster">
+            <h4>Observations</h4>
+            <div class="sticky s4">Static and changeable info printed at the same weight</div>
+            <div class="sticky">PNR and gate set in the same size. No anchor for the eye</div>
+            <div class="sticky s3">Each reader uses a different subset; only name and flight are shared</div>
+          </div>
+          <div class="cluster">
+            <h4>Converging</h4>
+            <div class="sticky s2">Sorted every field: known at issuance vs not</div>
+            <div class="sticky s3">Type weight set by the next decision the reader makes</div>
+            <div class="sticky s4">Changeable fields moved behind a scannable live layer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div></section>
 
-  <div class="ack">
-    <h3>Acknowledgement</h3>
-    <p>This exercise started as a working session with a mentor, who followed it with an introduction to information hierarchy and UX fundamentals. That vocabulary is what turned a set of observations into a method — and it is the one I have used on every teardown since.</p>
-  </div>
+<!-- ═══ AFTER ═══ -->
+<section class="after">
+  <div class="in"><div>
+    <div class="reveal">
+      <h2>What it changes <em>in practice</em></h2>
+      <p>The method is not about boarding passes. Any artefact several people read under time pressure sorts the same way: who reads it, when, to decide what, and which of its fields can change after it was made.</p>
+      <p>A payment receipt, a prescription, a delivery label and an order confirmation all have a bucket C. They print fixed, then change, and the reader finds out late.</p>
+    </div>
+    <div class="reveal" style="--d:.1s">
+      <table>
+        <thead><tr><th>Moment</th><th>Who reads</th><th>To decide</th><th>Today's pass</th></tr></thead>
+        <tbody>
+          <tr><td><b>Check in</b></td><td>Agent, then passenger</td><td>Issue; confirm name, flight, seat</td><td>Printed in full</td></tr>
+          <tr><td><b>Security</b></td><td>Officer</td><td>Name, flight, date against a photo ID</td><td>Same weight as everything else</td></tr>
+          <tr><td><b>To the gate</b></td><td>Passenger</td><td>Gate, boarding time</td><td class="r">Small, and may change</td></tr>
+          <tr><td><b>At the gate</b></td><td>Gate agent</td><td>Group, sequence, the barcode</td><td>Right hand cluster, fine</td></tr>
+          <tr><td><b>Boarding</b></td><td>Passenger</td><td>Seat</td><td>Fine</td></tr>
+          <tr><td><b>After landing</b></td><td>Passenger, exit check</td><td>Baggage tag reference</td><td class="r">A sticker on the back</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Assumptions: domestic travel within India, single segment, no connection. Example route BLR → DEL, IndiGo 6E, 08:15 departure. Booking confirmed and seat assigned at issuance. One checked bag of 15 kg and one cabin bag of 7 kg. Acknowledgement: the original teardown was done as a design exercise; the redrawn pass is a proposal, not an airline's.</p>
+    </div>
+  </div></div>
+</section>
 
-  <div class="nextup">International travel adds readers, documents and a connection — covered separately.</div>
+<section class="decided">
+  <div class="in"><div class="box sheet reveal">
+    <div><span class="k">Decided</span><h2>Same artefact, three zones, one reading order per reader.</h2></div>
+    <ol>
+      <li><b>Stop</b><span>Who is a boarding pass actually written for?<i>Three readers, at six moments, from one piece of paper.</i></span></li>
+      <li><b>Notice</b><span>The most read fields are the most likely to change.<i>And they are printed like the ones that never do.</i></span></li>
+      <li><b>Tradeoff</b><span>One artefact for every reader, or a layout per reader.<i>A layout per reader fails the moment one person has to hand it to another.</i></span></li>
+      <li><b>Decide</b><span>Three buckets, then three zones.<i>What it cost: a bigger pass, a smaller stub, and the partner offer.</i></span></li>
+    </ol>
+  </div></div>
+</section>
 
-  <div class="cta">Work on something several audiences read differently? <a href="mailto:dvmadhumitha2021@outlook.com">Write to me</a> · <a href="index.html#projects">Other explorations</a></div>
-</div>
+<nav class="pn" aria-label="Previous and next">
+  <div class="in"><div>
+    <a href="demo-currency.html"><span>Previous</span><h3>Currency Design Breakdown</h3></a>
+    <a class="next" href="demo-elevator.html"><span>Next</span><h3>Elevator Call Buttons, Fixed</h3></a>
+  </div></div>
+</nav>
 
+</main>
+
+<footer class="foot sheet">
+  <div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div>
+</footer>
+
+<script src="analytics.js" defer></script>
 <script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  /* reveal */
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
+  else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
+
+  /* the stage */
+  var names = ['The pass as printed','The readers','The journey','Who reads what','Known at issuance?','What moves after printing','Redrawn','On a phone'];
+  var fig = document.getElementById('fig'), cap = document.getElementById('cap'), bar = document.getElementById('bar'), pos = document.getElementById('pos');
+  var arts = [].slice.call(document.querySelectorAll('#text article'));
+  var btns = [].slice.call(document.querySelectorAll('#idx button'));
+  var groups = [].slice.call(fig.querySelectorAll('g[data-s]'));
+  var prev = document.getElementById('prev'), next = document.getElementById('next');
+  var N = names.length, cur = 0;
+  function pad(n){ return (n<9?'0':'')+(n+1); }
+  function set(i){
+    cur = Math.max(0, Math.min(N-1, i));
+    fig.setAttribute('data-state', cur);
+    groups.forEach(function(g){ var on = g.getAttribute('data-s').split(' ').indexOf(String(cur))>-1; g.classList.toggle('on', on); });
+    arts.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-state')==String(cur)); });
+    btns.forEach(function(b){ if(b.getAttribute('data-go')==String(cur)) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); });
+    cap.innerHTML = '<b>Fig. '+(cur+1)+' of '+N+'</b> · '+names[cur];
+    bar.style.width = ((cur+1)/N*100)+'%';
+    pos.textContent = pad(cur)+' / '+pad(N-1);
+    prev.disabled = cur===0; next.disabled = cur===N-1;
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ set(parseInt(b.getAttribute('data-go'),10)); }); });
+  prev.addEventListener('click', function(){ set(cur-1); });
+  next.addEventListener('click', function(){ set(cur+1); });
+  document.addEventListener('keydown', function(e){
+    if(e.target.closest('input,textarea')) return;
+    if(e.key==='ArrowRight'){ set(cur+1); } else if(e.key==='ArrowLeft'){ set(cur-1); }
+  });
+  /* swipe on the artwork */
+  var x0 = null, art = fig.parentElement;
+  art.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  art.addEventListener('touchend', function(e){ if(x0===null) return; var dx = e.changedTouches[0].clientX - x0; if(Math.abs(dx)>40) set(cur + (dx<0?1:-1)); x0 = null; }, {passive:true});
+  var qs = location.search.match(/[?&]step=(\d+)/); set(qs ? Math.max(0, parseInt(qs[1],10) - 1) : 0);
+})();
+</script>
+<script>
+/* originals: the journey explorer, the tear and the field sorter, ported from ../demo-boardingpass.html */
 (function(){
   const F={
     flight:{k:'Flight',b:'A',why:'Assigned when the ticket is issued and unchanged for the journey.'},
@@ -453,30 +815,30 @@
     route:{k:'Origin → destination',b:'A',why:'Fixed at booking.'},
     pnr:{k:'PNR',b:'A',why:'Created at booking; the reference that links every other record.'},
     class:{k:'Class',b:'A',why:'Known at issuance; determines boarding priority.'},
-    group:{k:'Boarding group',b:'A',why:'Assigned at check-in. Used by the gate agent to sequence boarding.'},
-    seq:{k:'Sequence no.',b:'A',why:'Order of check-in, used by the gate for reconciliation. Not used by the passenger.'},
-    bag:{k:'Baggage allowance',b:'A',why:'Set by fare rules at issuance — 15 kg checked, 7 kg cabin on this domestic fare. Read once, at bag drop.'},
-    tag:{k:'Baggage tag ref.',b:'A',why:'Assigned at check-in and checked against the bag at the arrivals exit. Currently reaches the passenger as a sticker rather than as part of the pass.'},
+    group:{k:'Boarding group',b:'A',why:'Assigned at check in. Used by the gate agent to sequence boarding.'},
+    seq:{k:'Sequence no.',b:'A',why:'Order of check in, used by the gate for reconciliation. Not used by the passenger.'},
+    bag:{k:'Baggage allowance',b:'A',why:'Set by fare rules at issuance: 15 kg checked, 7 kg cabin on this domestic fare. Read once, at bag drop.'},
+    tag:{k:'Baggage tag ref.',b:'A',why:'Assigned at check in and checked against the bag at the arrivals exit. Currently reaches the passenger as a sticker rather than as part of the pass.'},
     meal:{k:'Meal',b:'A',why:'Known at issuance; pre-booked on this fare.'},
     term:{k:'Departure terminal',b:'A',why:'Known at issuance. Changes are rare.'},
-    gclose:{k:'Gate closing time',b:'A',why:'A fixed rule — 25 minutes before departure on domestic flights. Known at issuance, and usually printed as small print rather than as a time.'},
-    code:{k:'Barcode',b:'A',why:'The scanned payload, which replaced the tear-off coupon in 2010.'},
+    gclose:{k:'Gate closing time',b:'A',why:'A fixed rule · 25 minutes before departure on domestic flights. Known at issuance, and usually printed as small print rather than as a time.'},
+    code:{k:'Barcode',b:'A',why:'The scanned payload, which replaced the tear off coupon in 2010.'},
     ads:{k:'Partner offer',b:'A',why:'Known at issuance. The only field on the pass that none of the three readers uses.'},
-    gate:{k:'Gate',b:'B',why:'Often unassigned at check-in, particularly with early web check-in. Set closer to departure.'},
+    gate:{k:'Gate',b:'B',why:'Often unassigned at check in, particularly with early web check in. Set closer to departure.'},
     status:{k:'Flight status',b:'B',why:'Not known hours ahead. Suited to a live channel rather than print.'},
     aterm:{k:'Arrival terminal',b:'B',why:'Often confirmed close to landing.'},
     belt:{k:'Baggage belt',b:'B',why:'Assigned minutes before landing, and needed by every passenger with a checked bag.'},
     std:{k:'Departure time',b:'C',why:'Printed as scheduled, then moved by any delay.'},
     boarding:{k:'Boarding time',b:'C',why:'Printed at issuance, and shifts with the departure time it follows.'},
-    seat:{k:'Seat',b:'C',why:'Fixed at check-in, unless an aircraft change reassigns it afterwards.'}
+    seat:{k:'Seat',b:'C',why:'Fixed at check in, unless an aircraft change reassigns it afterwards.'}
   };
 
   const P={
     entry:{nm:'Terminal entry',who:'Entry staff',note:'The passenger presents ticket details and photo ID. The boarding pass has not been issued yet.',f:[],none:1},
-    checkin:{nm:'Check-in / bag drop',who:'Airline staff',note:'The pass is issued here, the bag is tagged, and the tag reference is handed over.',f:['pnr','name','bag','tag']},
+    checkin:{nm:'Check in / bag drop',who:'Airline staff',note:'The pass is issued here, the bag is tagged, and the tag reference is handed over.',f:['pnr','name','bag','tag']},
     sec:{nm:'Security check',who:'Security officer',note:'Confirms this person, today, is travelling on a real flight. Seat, group and baggage fields are not used at this point.',f:['name','date','flight','route','code']},
-    wait:{nm:'Airside wait',who:'Passenger',note:'The longest phase, and where the pass is re-read most. Both fields checked here can change after printing.',f:['gate','boarding','std','gclose','status']},
-    gate:{nm:'Gate / pre-boarding',who:'Gate agent',note:'Decides whether this passenger boards now, and in what order. A scan plus a glance at the group.',f:['flight','group','seq','class','code','gate']},
+    wait:{nm:'Airside wait',who:'Passenger',note:'The longest phase, and where the pass is reread most. Both fields checked here can change after printing.',f:['gate','boarding','std','gclose','status']},
+    gate:{nm:'Gate / pre boarding',who:'Gate agent',note:'Decides whether this passenger boards now, and in what order. A scan plus a glance at the group.',f:['flight','group','seq','class','code','gate']},
     board:{nm:'Boarding',who:'Passenger',note:'One field is in use.',f:['seat']},
     flight:{nm:'In flight',who:'Passenger',note:'The pass has little left to do.',f:['seat','meal']},
     arrive:{nm:'After landing',who:'Passenger',note:'The pass is still in hand at the belt and the exit check, where the baggage tag reference is verified against the bag.',f:['tag','aterm','belt']}
@@ -509,7 +871,7 @@
     chips.innerHTML='';
     p.f.forEach(f=>{ if(!F[f])return;
       const s=document.createElement('span'); s.textContent=F[f].k; chips.appendChild(s); });
-    if(!p.f.length){const s=document.createElement('span');s.textContent='— none yet —';chips.appendChild(s);}
+    if(!p.f.length){const s=document.createElement('span');s.textContent='none yet, ';chips.appendChild(s);}
 
     passNew.style.display=passView==='new'?'':'none';
     passOld.style.display=passView==='old'?'':'none';
@@ -542,7 +904,7 @@
     tb.textContent=card.classList.contains('torn')?'↺ Put it back together':'✂️ Tear at the gate'; };
 
   const whybox=document.getElementById('whybox');
-  const names={A:'Static — known at issuance',B:'Dynamic — not known at issuance',C:'Static, then changes'};
+  const names={A:'Static, known at issuance',B:'Dynamic, not known at issuance',C:'Static, then changes'};
   ['A','B','C'].forEach(bk=>{
     const host=document.getElementById('bk'+bk);
     Object.keys(F).forEach(k=>{

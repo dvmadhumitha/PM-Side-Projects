@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why does a Milan tram wait at a red light? · Madhumitha D V</title>
+<meta name="description" content="A Milan style junction, simulated for an hour: the tram, the cars on both roads and the people crossing, and what each priority rule costs them. How Italian signals work, how Milan wired its lights, and the call a PM would make. By Madhumitha D V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
+<style>
+/* ═══ sheet 12 · a Milan junction, simulated ═══ */
+.lab .bench .capr{display:flex;justify-content:space-between;align-items:center;gap:10px 24px;flex-wrap:wrap}
+.rp{all:unset;cursor:pointer;display:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--edge);color:var(--chalk-2);transition:background .25s,color .25s}
+.js .rp{display:inline-block}
+.rp:hover{background:var(--chalk);color:var(--navy)}
+.rp:focus-visible,.seg button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.ctl{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.ctl .cg{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ctl .cl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.live{display:flex;justify-content:space-between;gap:4px 20px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3);min-height:18px;margin-bottom:-10px}
+.live b{font-weight:400;color:var(--chalk);font-variant-numeric:tabular-nums}
+.live .ev{color:var(--signal);text-align:right}
+
+/* the junction, drawn in plan */
+svg.jn{display:block;width:100%;height:auto;overflow:hidden}
+.jn .blk{fill:rgba(231,236,240,.02);stroke:var(--edge);stroke-width:1;vector-effect:non-scaling-stroke}
+.jn .road{fill:rgba(231,236,240,.045)}
+.jn .box{fill:rgba(231,236,240,.07)}
+.jn .curb{fill:none;stroke:var(--chalk-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.jn .mid{fill:none;stroke:var(--edge);stroke-width:1;stroke-dasharray:8 8;vector-effect:non-scaling-stroke}
+.jn .rail{fill:none;stroke:var(--chalk-3);stroke-width:.75;opacity:.75;vector-effect:non-scaling-stroke}
+.jn .zb{fill:none;stroke:rgba(231,236,240,.26);stroke-dasharray:3 3}
+.jn .sl{stroke:var(--chalk);stroke-width:3;transition:stroke .2s}
+.jn .sl.am{stroke:var(--chalk-3)}
+.jn .sl.go{stroke:var(--signal);stroke-width:1.5}
+.jn .car{fill:var(--navy-3);stroke:var(--chalk);stroke-width:1;vector-effect:non-scaling-stroke}
+.jn .tram .body{fill:var(--signal-tint);stroke:var(--signal);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.jn .tram .seam{stroke:var(--signal);stroke-width:1;opacity:.6;vector-effect:non-scaling-stroke}
+.jn .tram .nose{fill:var(--signal)}
+.jn .ped{fill:var(--chalk)}
+.jn .det{stroke:var(--signal);stroke-width:2}
+.jn .ctrl{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.25;vector-effect:non-scaling-stroke}
+.jn .ask{fill:none;stroke:var(--signal);stroke-width:1.25;stroke-dasharray:4 4;opacity:0;transition:opacity .25s;vector-effect:non-scaling-stroke}
+.jn .ask.on{opacity:1}
+.jn .ov{font-family:var(--mono);font-size:10px;letter-spacing:.04em;fill:var(--chalk)}
+
+/* lamp heads: one drawing, used live and in the key */
+.hd{display:block;overflow:visible}
+.hd .hh{fill:var(--navy);stroke:var(--chalk-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.hd .lp{fill:var(--navy-3);stroke:var(--chalk-3);stroke-width:.75;vector-effect:non-scaling-stroke;transition:fill .2s,stroke .2s}
+.hd .fig{fill:none;stroke:var(--navy);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .2s}
+.hd[data-st="2"] .l2,.hd[data-st="w"] .l2{fill:var(--chalk);stroke:var(--chalk)}
+.hd[data-st="1"] .l1,.hd[data-st="f"] .l1{fill:var(--chalk-3);stroke:var(--chalk-3)}
+.hd[data-st="0"] .l0{fill:var(--signal);stroke:var(--signal)}
+.hd[data-st="2"] .l2 + .fig,.hd[data-st="w"] .l2 + .fig,.hd[data-st="1"] .l1 + .fig,.hd[data-st="0"] .l0 + .fig{opacity:1}
+.hd.trh .bar{fill:var(--chalk);transform-box:fill-box;transform-origin:center;transition:transform .3s var(--ease),fill .2s,opacity .2s}
+.hd.trh .tri{fill:var(--chalk-3);opacity:0;transition:opacity .2s}
+.hd.trh[data-st="0"] .bar{transform:rotate(90deg);fill:var(--signal)}
+.hd.trh[data-st="t"] .bar{transform:rotate(-45deg);fill:var(--signal)}
+.hd.trh[data-st="1"] .bar{opacity:0}
+.hd.trh[data-st="1"] .tri{opacity:1}
+
+/* the plan over time */
+.tl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 16px}
+.tl-k .r{height:30px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-2);white-space:nowrap}
+.tl-k .hc{width:22px;display:flex;justify-content:center}
+.tl-k .car3,.tl-k .ped3{width:10.4px;height:26px}
+.tl-k .trh{width:20px;height:20px}
+.tl-p{position:relative;cursor:ew-resize;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.tl-s{display:block;width:100%;height:120px;overflow:visible}
+.tl-s .gd{stroke:var(--grid-2);stroke-width:1;vector-effect:non-scaling-stroke}
+.tl-s .st{stroke:var(--chalk-3);stroke-width:1;opacity:.55;vector-effect:non-scaling-stroke}
+.tl-s .go{fill:var(--signal)}
+.tl-s .am{fill:var(--chalk-3)}
+.tl-s .gx{fill:var(--signal)}
+.tl-s .gc{fill:none;stroke:var(--chalk-2);stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+.tl-s .tk{stroke:var(--chalk);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.tl-s .wt{stroke:var(--chalk);stroke-width:1;stroke-dasharray:2 2;vector-effect:non-scaling-stroke}
+.tl-s .ph{stroke:var(--chalk);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.tl-ax{position:relative;height:20px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--chalk-3);font-variant-numeric:tabular-nums}
+.tl-ax span{position:absolute;top:4px;transform:translateX(-50%);white-space:nowrap}
+.tl-ax span.e0,.wv-x span.e0{transform:none}
+.tl-ax span.e1,.wv-x span.e1{transform:translateX(-100%)}
+.tl-k .sh{display:none}
+.nw{white-space:nowrap}
+.tl-tg{position:absolute;left:0;top:0;right:0;height:120px;pointer-events:none}
+.tl-tg span{position:absolute;transform:translateY(-50%);padding:0 5px;background:var(--navy);font-family:var(--mono);font-size:10px;line-height:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk);white-space:nowrap}
+.tl-tg span.r{transform:translate(-100%,-50%)}
+.tl-kn{position:absolute;top:-7px;width:9px;height:9px;margin-left:-4.5px;background:var(--chalk);transform:rotate(45deg);pointer-events:none}
+.tl-lg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:-8px;font-family:var(--mono);font-size:10px;line-height:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.tl-lg span{display:inline-flex;align-items:center;gap:7px}
+.tl-lg span::before{content:"";flex:none;width:16px;height:7px;background:var(--signal)}
+.tl-lg .a::before{background:var(--chalk-3)}
+.tl-lg .x::before{height:13px}
+.tl-lg .c::before{background:none;width:14px;height:6px;border:1px dashed var(--chalk-2)}
+.tl-lg .w::before{background:none;height:0;border-top:1px dashed var(--chalk)}
+.lab .rh{font-family:var(--mono);font-size:10px;line-height:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3);margin-top:-12px}
+.lab .notes .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+.lab .notes .readout div{padding:13px 16px 12px}
+.lab .notes .readout small{margin-top:6px}
+.readout i{display:block;margin-top:6px;min-height:15px;font-style:normal;font-family:var(--mono);font-size:10px;line-height:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.readout i.dn{color:var(--signal)}
+.readout i.up{color:var(--chalk)}
+.lab .notes ul{padding-left:18px;color:var(--chalk-2);font-size:15px;line-height:24px}
+.lab .notes li+li{margin-top:8px}
+.lab .notes li b{font-weight:600;color:var(--chalk)}
+
+/* 01 · the lamps and what they say */
+.heads{padding:28px}
+.heads .hg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.heads .hc{display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;padding:0 24px;border-left:1px solid var(--edge);align-items:start}
+.heads .hc:first-child{padding-left:0;border-left:0}
+.heads .hc:last-child{padding-right:0}
+.heads .hc .hd{width:44px;justify-self:center}
+.heads .hc b{display:block;font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+.heads ul{list-style:none;padding:0;margin:0}
+.heads li{font-size:15px;line-height:22px;color:var(--chalk-2);padding:6px 0;border-top:1px solid var(--edge);cursor:default;transition:color .2s}
+.heads li em{font-style:normal;color:var(--chalk)}
+.heads li.on,.heads li:hover{color:var(--chalk)}
+.heads li.on em,.heads li:hover em{color:var(--signal)}
+
+/* 02 · who decides */
+.sys{padding:24px 28px 28px}
+.sys svg{display:block;width:100%;max-width:640px;height:auto;margin:0 auto}
+.sys .nd{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.25;vector-effect:non-scaling-stroke}
+.sys .nd.hub{stroke:var(--signal);stroke-width:1.75}
+.sys .gl{fill:none;stroke:var(--chalk);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.sys .hub + .gl,.sys .gl.hub{stroke:var(--signal)}
+.sys .nm{font-family:var(--mono);font-size:12px;letter-spacing:.03em;fill:var(--chalk);text-transform:uppercase}
+.sys .sp{fill:none;stroke:var(--chalk-3);stroke-width:1.25;vector-effect:non-scaling-stroke}
+.sys .sp.a{stroke:var(--signal)}
+.sys .pk{fill:var(--signal);opacity:0}
+.sys dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:22px;border-top:1px solid var(--edge)}
+.sys dl div{padding:12px 16px 0;border-left:1px solid var(--edge)}
+.sys dl div:first-child{padding-left:0;border-left:0}
+.sys dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:4px}
+.sys dd{font-size:14px;line-height:21px;color:var(--chalk-2)}
+
+/* 03 · one wave, one speed */
+.wv{padding:24px 28px 26px}
+.wv .capr{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;margin-bottom:18px}
+.wv .cap{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.wv .cap b{font-weight:400;color:var(--chalk)}
+.wv-p{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 12px}
+.wv-y{position:relative;width:86px;height:240px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-3)}
+.wv-y span{position:absolute;right:0;transform:translateY(-50%);white-space:nowrap;text-align:right;line-height:13px}
+.wv-y span b{font-weight:400;color:var(--chalk-2)}
+.wv-s{display:block;width:100%;height:240px;overflow:visible}
+.wv-s .gd{stroke:var(--grid-2);stroke-width:1;vector-effect:non-scaling-stroke}
+.wv-s .ax{stroke:var(--chalk-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.wv-s .rd{stroke:var(--chalk);stroke-width:6;opacity:.7}
+.wv-s .pc{fill:none;stroke:var(--chalk);stroke-width:1.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.wv-s .pt{fill:none;stroke:var(--signal);stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.wv-s .runs{clip-path:inset(0 0 0 0);transition:clip-path 2.6s linear}
+.wv-s.pre .runs{clip-path:inset(0 100% 0 0);transition:none}
+.wv-x{position:relative;height:20px;margin-left:98px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--chalk-3)}
+.wv-x span{position:absolute;top:5px;transform:translateX(-50%);white-space:nowrap}
+.wv-k{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:14px;padding-top:12px;border-top:1px solid var(--edge);font-family:var(--mono);font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.wv-k > span{display:block}
+.wv-k > span::before{content:"";display:inline-block;vertical-align:middle;margin:-3px 10px 0 0;width:22px;height:0;border-top:1.5px solid var(--chalk)}
+.wv-k .kt::before{border-top:2px solid var(--signal)}
+.wv-k .kr::before{border-top:6px solid rgba(231,236,240,.7);width:16px}
+.wv-k b{font-weight:400;color:var(--chalk)}
+.wv-k .kt b{color:var(--signal)}
+
+/* the PM lens, on paper, in its own frame */
+.pml{padding-block:16px 72px}
+.lens{position:relative;padding:48px 48px 40px}
+.lens .bk{position:absolute;width:28px;height:28px;pointer-events:none;transition:transform .7s cubic-bezier(.2,.75,.3,1)}
+.lens .bk.tl{top:0;left:0;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);transform-origin:top left}
+.lens .bk.tr{top:0;right:0;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform-origin:top right}
+.lens .bk.bl{bottom:0;left:0;border-bottom:1.5px solid var(--ink);border-left:1.5px solid var(--ink);transform-origin:bottom left}
+.lens .bk.br{bottom:0;right:0;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform-origin:bottom right}
+.lens .lhd{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:end}
+.lens .lhd>*,.lens .lft>*{min-width:0}
+.lens .kick{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:16px}
+.lens .kick::before{content:"";flex:none;width:8px;height:8px;background:var(--signal)}
+.lens .ask{font-family:var(--display);font-weight:600;font-size:clamp(26px,2.8vw,38px);line-height:1.18;letter-spacing:-.02em;color:var(--ink);max-width:30ch;transition:filter .9s ease-out .12s,opacity .9s ease-out .12s}
+.lens cite{display:block;margin-top:14px;font-family:var(--mono);font-style:normal;font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.lens cite a{color:inherit;text-decoration:none;border-bottom:1px solid var(--signal)}
+.lens .k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.lens .tests p{font-size:17px;line-height:27px;color:var(--ink-2)}
+.lens .moves{list-style:none;counter-reset:mv;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:36px;border-top:1px solid rgba(24,33,44,.25);padding-top:24px}
+.lens .moves li{counter-increment:mv;min-width:0;padding:0 24px;border-left:1px solid rgba(24,33,44,.25);transition:opacity .52s ease-out,transform .52s ease-out}
+.lens .moves li:first-child{padding-left:0;border-left:0}
+.lens .moves li:last-child{padding-right:0}
+.lens .moves li::before{content:counter(mv);display:block;font-family:var(--mono);font-size:12px;line-height:18px;color:var(--signal);margin-bottom:8px}
+.lens .moves b{display:block;font-family:var(--display);font-weight:600;font-size:19px;line-height:27px;color:var(--ink)}
+.lens .moves span{display:block;margin-top:6px;font-size:16px;line-height:25px;color:var(--ink-2)}
+.lens .lft{display:grid;grid-template-columns:7fr 5fr;gap:56px;margin-top:32px;border-top:1px solid rgba(24,33,44,.25);padding-top:24px;align-items:start}
+.lens .wrong p{font-family:var(--display);font-weight:600;font-size:19px;line-height:28px;color:var(--ink)}
+.lens dl div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:4px 0}
+.lens dt{font-family:var(--mono);font-size:12px;line-height:23px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.lens dd{font-size:15px;line-height:23px;color:var(--ink-2)}
+.lens.pre .bk{transform:scale(0)}
+.lens.pre .ask{filter:blur(6px);opacity:.25}
+.lens.pre .moves li{opacity:0;transform:translateY(10px)}
+.lens .moves li:nth-child(1){transition-delay:.42s}
+.lens .moves li:nth-child(2){transition-delay:.62s}
+.lens .moves li:nth-child(3){transition-delay:.82s}
+
+/* sources */
+.srcrow{padding-bottom:48px}
+.sr{border-top:1.5px solid var(--ink);padding-top:18px}
+.sr summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.sr summary::-webkit-details-marker{display:none}
+.sr summary::before{content:"›";display:inline-block;width:10px;color:var(--signal);transition:transform .25s var(--ease)}
+.sr details[open] summary::before{transform:rotate(90deg)}
+.sr summary span{color:var(--mute)}
+.sr summary:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+.sr ol{margin-top:16px;padding-left:20px;columns:2;column-gap:48px;font-size:15px;line-height:23px;color:var(--ink-2)}
+.sr li{break-inside:avoid;margin-bottom:8px}
+.sr li a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--signal)}
+.sr li a:hover{color:var(--signal)}
+.sr .jn{margin-top:8px;font-size:15px;line-height:23px;color:var(--mute);max-width:80ch}
+
+@media (max-width:1320px) and (min-width:1181px){
+  .lab .frame{grid-template-columns:7fr 5fr}
+}
+@media (max-width:1180px){
+  .sys dl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}
+  .sys dl div:nth-child(4){padding-left:0;border-left:0}
+}
+@media (max-width:860px){
+  .heads .hg{grid-template-columns:1fr;gap:20px}
+  .heads .hc{padding:20px 0 0;border-left:0;border-top:1px solid var(--edge)}
+  .heads .hc:first-child{padding-top:0;border-top:0}
+  .lens{padding:36px 24px 28px}
+  .lens .lhd,.lens .lft{grid-template-columns:1fr;gap:20px}
+  .lens .moves{grid-template-columns:1fr}
+  .lens .moves li{padding:16px 0 0;border-left:0;border-top:1px solid rgba(24,33,44,.25)}
+  .lens .moves li:first-child{padding-top:0;border-top:0}
+  .sr ol{columns:1}
+}
+@media (max-width:600px){
+  .heads,.sys,.wv{padding:18px 16px 20px}
+  .ctl{gap:12px 18px}
+  .ctl .cg{gap:6px 10px}
+  .tl{gap:0 10px}
+  .tl-k .lg{display:none}
+  .tl-k .sh{display:inline}
+  .live{margin-bottom:-6px}
+  .jn .lb{display:none}
+  .jn .ov{font-size:15px}
+  .sys dl{grid-template-columns:1fr 1fr}
+  .sys dl div{padding-left:0;border-left:0}
+  .sys dl div:nth-child(even){padding-left:14px;border-left:1px solid var(--edge)}
+  .sys .nm{font-size:13.5px;letter-spacing:0}
+  .wv-y{width:64px}
+  .wv-x{margin-left:76px}
+  .wv-x span:nth-child(even){display:none}
+  .pml{padding-block:8px 56px}
+}
+@media (prefers-reduced-motion:reduce){
+  .lens .bk,.lens .ask,.lens .moves li,.hd .lp,.hd .fig,.hd.trh .bar,.wv-s .runs{transition:none}
+}
+html.static .lens .bk,html.static .lens .ask,html.static .lens .moves li{transition:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#lab">Skip to the junction</a>
+<header class="top"><a class="mark" href="index.html"><i>M</i>Madhumitha D V</a><nav><a class="keep" href="index.html#work">Work</a><a href="index.html#method">Method</a><a href="index.html#about">About</a><a class="hi" href="mailto:dvmadhumitha2021@outlook.com">Say hi</a></nav></header>
+
+<main>
+<header class="phead"><div class="in">
+  <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Cities · Simulator</span></div>
+  <h1 class="reveal" style="--d:.05s">Why does a Milan tram wait at a red light?</h1>
+  <p class="q reveal" style="--d:.1s">At the 2024 morning peak, most of Milan’s trams ran at 9.5 to 11 km/h. Many European cities manage 13 to 15. Two things explain most of the gap: stops close together, and lights that rarely let a tram through.</p>
+  <p class="s reveal" style="--d:.15s">One Milan style junction, simulated for an hour: the tram, the cars on both roads and the people crossing, and what each priority rule costs them.</p>
+  <dl class="four reveal" style="--d:.2s">
+    <div><dt>Stopped at</dt><dd>A full tram held at a red light while the side street empties.</dd></div>
+    <div><dt>Noticed</dt><dd>Milan had wired 500 of its 700 lights to one system by 2011. They still rarely give way to a tram.</dd></div>
+    <div><dt>Tradeoff</dt><dd>Every second the tram gains comes out of the side street’s green, and the walk across the main road.</dd></div>
+    <div class="dec"><dt>Decided</dt><dd>Hold the green for every tram. Cut the red only when the side street can spare it.</dd></div>
+  </dl>
+</div></header>
+
+<section class="lab" id="lab" aria-label="A Milan junction, simulated"><div class="in"><div class="frame sheet reveal">
+  <div class="bench">
+    <div class="capr"><span class="cap"><b>Fig. 1</b> · The tram’s lamp is a white bar: flat means wait, upright means go.</span><button type="button" class="rp" id="rp">↻ Replay</button></div>
+    <div class="ctl">
+      <div class="cg"><span class="cl" id="l-pri">Tram priority</span><div class="seg" id="pri" role="group" aria-labelledby="l-pri"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="hold" aria-pressed="false">Hold the green</button><button type="button" data-v="cut" aria-pressed="false">Cut the red</button><button type="button" data-v="both" aria-pressed="false">Both</button></div></div>
+      <div class="cg"><span class="cl" id="l-cyc">Cycle</span><div class="seg" id="cyc" role="group" aria-labelledby="l-cyc"><button type="button" data-v="70" aria-pressed="false">70 s</button><button type="button" data-v="90" aria-pressed="true">90 s</button><button type="button" data-v="110" aria-pressed="false">110 s</button></div></div>
+      <div class="cg"><span class="cl" id="l-side">Side street</span><div class="seg" id="side" role="group" aria-labelledby="l-side"><button type="button" data-v="0" aria-pressed="false">Quiet</button><button type="button" data-v="1" aria-pressed="true">Busy</button></div></div>
+    </div>
+    <div class="live" aria-hidden="true"><b id="clk">8:00:00</b><span class="ev" id="ev"></span></div>
+    <svg class="d jn" id="jn" viewBox="0 0 782 300" role="img" aria-label="A main road with two tram tracks down the middle, crossed by a side street. Cars queue at red lights and leave on green; a tram approaches, passes a detector 12 seconds out, and either waits at its white bar lamp or goes through; people cross the main road when the side street has green.">
+<rect class="blk" x="0" y="0" width="361" height="104" rx="2"/>
+<rect class="blk" x="421" y="0" width="361" height="104" rx="2"/>
+<rect class="blk" x="0" y="196" width="361" height="104" rx="2"/>
+<rect class="blk" x="421" y="196" width="361" height="104" rx="2"/>
+<rect class="road" x="0" y="116" width="782" height="68"/>
+<rect class="road" x="373" y="0" width="36" height="116"/><rect class="road" x="373" y="184" width="36" height="116"/>
+<rect class="box" x="373" y="116" width="36" height="68"/>
+<path class="curb" d="M0 116 H373 M409 116 H782"/>
+<path class="curb" d="M0 184 H373 M409 184 H782"/>
+<path class="curb" d="M373 0 V116 M373 184 V300"/>
+<path class="curb" d="M409 0 V116 M409 184 V300"/>
+<path class="mid" d="M0 134 H355 M427 134 H782 M0 166 H355 M427 166 H782"/>
+<path class="mid" d="M391 0 V98 M391 202 V300"/>
+<line class="rail" x1="0" y1="137" x2="782" y2="137"/>
+<line class="rail" x1="0" y1="147" x2="782" y2="147"/>
+<line class="rail" x1="0" y1="153" x2="782" y2="153"/>
+<line class="rail" x1="0" y1="163" x2="782" y2="163"/>
+<line class="zb" x1="364" y1="117" x2="364" y2="183" stroke-width="12"/>
+<line class="zb" x1="418" y1="117" x2="418" y2="183" stroke-width="12"/>
+<line class="zb" x1="374" y1="107" x2="408" y2="107" stroke-width="12"/>
+<line class="zb" x1="374" y1="193" x2="408" y2="193" stroke-width="12"/>
+<line class="sl" id="sl-e" x1="355" y1="167" x2="355" y2="183"/>
+<line class="sl" id="sl-w" x1="427" y1="117" x2="427" y2="133"/>
+<line class="sl" id="sl-n" x1="374" y1="98" x2="390" y2="98"/>
+<line class="sl" id="sl-s" x1="392" y1="202" x2="408" y2="202"/>
+<line class="det" x1="145" y1="151" x2="145" y2="165"/><line class="det" x1="637" y1="135" x2="637" y2="149"/>
+<text class="tm lb" x="145" y="202" text-anchor="middle">Detector · 12 s out</text>
+<text class="tm lb" x="637" y="106" text-anchor="middle">Detector</text>
+<rect class="ctrl" x="334" y="80" width="18" height="13" rx="2"/><path class="lt" d="M338 84.5 h10 M338 88.5 h6"/>
+<text class="tm lb" x="328" y="90" text-anchor="end">Controller</text>
+<path class="ask" id="ask" d="M0 0"/>
+<g transform="translate(336 189) scale(.68)"><svg class="hd trh" width="22" height="22" viewBox="0 0 22 22" data-st="2" aria-hidden="true" id="th-e"><rect class="hh" x="0.5" y="0.5" width="21" height="21" rx="2"/><rect class="bar" x="4.5" y="9.5" width="13" height="3" rx="1"/><path class="tri" d="M11 5.5 L16.5 15.5 L5.5 15.5 Z"/></svg></g>
+<g transform="translate(431 96) scale(.68)"><svg class="hd trh" width="22" height="22" viewBox="0 0 22 22" data-st="2" aria-hidden="true" id="th-w"><rect class="hh" x="0.5" y="0.5" width="21" height="21" rx="2"/><rect class="bar" x="4.5" y="9.5" width="13" height="3" rx="1"/><path class="tri" d="M11 5.5 L16.5 15.5 L5.5 15.5 Z"/></svg></g>
+<text class="tm lb" x="16" y="108">Main road</text>
+<text class="tm lb" x="417" y="16">Side street</text>
+<g id="cars"></g><g id="peds"></g>
+<g class="tram" id="tr-e" style="display:none"><rect class="body" x="-88.4" y="-5.5" width="88.4" height="11" rx="2"/><line class="seam" x1="-75.8" y1="-4" x2="-75.8" y2="4"/><line class="seam" x1="-63.1" y1="-4" x2="-63.1" y2="4"/><line class="seam" x1="-50.5" y1="-4" x2="-50.5" y2="4"/><line class="seam" x1="-37.9" y1="-4" x2="-37.9" y2="4"/><line class="seam" x1="-25.2" y1="-4" x2="-25.2" y2="4"/><line class="seam" x1="-12.6" y1="-4" x2="-12.6" y2="4"/><rect class="nose" x="-3" y="-4" width="3" height="8" rx="1"/></g>
+<g class="tram" id="tr-w" style="display:none"><rect class="body" x="0" y="-5.5" width="88.4" height="11" rx="2"/><line class="seam" x1="12.6" y1="-4" x2="12.6" y2="4"/><line class="seam" x1="25.2" y1="-4" x2="25.2" y2="4"/><line class="seam" x1="37.9" y1="-4" x2="37.9" y2="4"/><line class="seam" x1="50.5" y1="-4" x2="50.5" y2="4"/><line class="seam" x1="63.1" y1="-4" x2="63.1" y2="4"/><line class="seam" x1="75.8" y1="-4" x2="75.8" y2="4"/><rect class="nose" x="0" y="-4" width="3" height="8" rx="1"/></g>
+<text class="ov" id="ov-e" x="6" y="179"></text><text class="ov" id="ov-w" x="776" y="129" text-anchor="end"></text>
+<text class="ov" id="ov-n" x="382" y="12" text-anchor="middle"></text><text class="ov" id="ov-s" x="400" y="296" text-anchor="middle"></text>
+    </svg>
+    <div class="tl" id="tl">
+      <div class="tl-k" aria-hidden="true">
+        <div class="r"><span class="hc"><svg class="hd car3" viewBox="0 0 16 40" data-st="2" aria-hidden="true"><rect class="hh" x="0.5" y="0.5" width="15" height="39" rx="2"/><circle class="lp l2" cx="8" cy="8" r="4.6"/><circle class="lp l1" cx="8" cy="20" r="4.6"/><circle class="lp l0" cx="8" cy="32" r="4.6"/></svg></span><span class="nm"><span class="lg">Main road</span><span class="sh">Main</span></span></div>
+        <div class="r"><span class="hc"><svg class="hd trh" viewBox="0 0 22 22" data-st="2" aria-hidden="true"><rect class="hh" x="0.5" y="0.5" width="21" height="21" rx="2"/><rect class="bar" x="4.5" y="9.5" width="13" height="3" rx="1"/><path class="tri" d="M11 5.5 L16.5 15.5 L5.5 15.5 Z"/></svg></span><span class="nm"><span class="lg">Tram</span><span class="sh">Tram</span></span></div>
+        <div class="r"><span class="hc"><svg class="hd car3" viewBox="0 0 16 40" data-st="2" aria-hidden="true"><rect class="hh" x="0.5" y="0.5" width="15" height="39" rx="2"/><circle class="lp l2" cx="8" cy="8" r="4.6"/><circle class="lp l1" cx="8" cy="20" r="4.6"/><circle class="lp l0" cx="8" cy="32" r="4.6"/></svg></span><span class="nm"><span class="lg">Side street</span><span class="sh">Side</span></span></div>
+        <div class="r"><span class="hc"><svg class="hd ped3" viewBox="0 0 16 40" data-st="2" aria-hidden="true"><rect class="hh" x="0.5" y="0.5" width="15" height="39" rx="2"/><rect class="lp l2" x="3" y="3" width="10" height="10" rx="1.5"/><path class="fig" d="M8 4.8 v0.1 M8 6.6 v3.2 M6.2 8.2 h3.6 M8 9.8 l-1.6 2.4 M8 9.8 l1.6 2.4"/><rect class="lp l1" x="3" y="15" width="10" height="10" rx="1.5"/><path class="fig" d="M8 16.8 v0.1 M8 18.6 v3.2 M6.2 20.2 h3.6 M8 21.8 l-1.6 2.4 M8 21.8 l1.6 2.4"/><rect class="lp l0" x="3" y="27" width="10" height="10" rx="1.5"/><path class="fig" d="M8 28.8 v0.1 M8 30.6 v3.2 M6.2 32.2 h3.6 M8 33.8 l-1.6 2.4 M8 33.8 l1.6 2.4"/></svg></span><span class="nm"><span class="lg">Walking across</span><span class="sh">Walk</span></span></div>
+      </div>
+      <div class="tl-p" id="tlp" tabindex="0" role="slider" aria-label="Time in the two minutes shown" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <svg class="tl-s" id="tls" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><g id="tlg"></g><line class="ph" id="ph" x1="0" y1="0" x2="0" y2="120"/></svg>
+        <div class="tl-tg" id="tlt" aria-hidden="true"></div>
+        <i class="tl-kn" id="kn" aria-hidden="true"></i>
+        <div class="tl-ax" id="tla" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="tl-lg" aria-hidden="true"><span class="g">May go</span><span class="a">Amber</span><span class="x">Held for the tram</span><span class="c">Green cut short</span><span class="w">Tram waiting</span></div>
+    <p class="rh" id="rh">One simulated hour</p>
+  </div>
+  <aside class="notes" id="notes">
+    <span class="n" id="n-k">No priority</span>
+    <h2 id="n-h">The light runs its plan, tram or not.</h2>
+    <p id="n-p">Every 90 s the main road and its trams get 45 s of green and the side street 33 s.</p>
+    <div class="readout" id="ro">
+      <div><b id="r0">·</b><small>Tram, average wait</small><i id="x0"></i></div>
+      <div><b id="r1">·</b><small>Car on the main road</small><i id="x1"></i></div>
+      <div><b id="r2">·</b><small>Car on the side street</small><i id="x2"></i></div>
+      <div><b id="r3">·</b><small>On foot, crossing the main road</small><i id="x3"></i></div>
+    </div>
+    <ul id="n-l"><li>A tram arriving at random meets red half the time, and then waits half of it.</li></ul>
+    <p class="dec" id="n-d"><b>Decided</b>Hold the green for every tram. Cut the red only when the side street can spare it.</p>
+  </aside>
+</div></div></section>
+
+<section class="prose" aria-labelledby="h-rules"><div class="in"><div>
+  <div class="reveal"><span class="n">01 · The rules</span><h2 id="h-rules">What does each lamp say?</h2></div>
+  <div class="reveal" style="--d:.1s">
+    <p>Article 41 of Italy’s highway code sets three kinds of lamp at a junction like this one. Cars get the three colours everyone knows. Trams and buses get their own: a white bar on black, a shape no car lamp has. People on foot get a small figure that changes colour.</p>
+    <figure class="sheet heads" id="heads">
+      <div class="hg">
+        <div class="hc" data-h="car"><svg class="hd car3 big" viewBox="0 0 16 40" data-st="0" aria-hidden="true" id="hk-car"><rect class="hh" x="0.5" y="0.5" width="15" height="39" rx="2"/><circle class="lp l2" cx="8" cy="8" r="4.6"/><circle class="lp l1" cx="8" cy="20" r="4.6"/><circle class="lp l0" cx="8" cy="32" r="4.6"/></svg><div><b>Cars</b><ul><li data-s="2" tabindex="0"><em>Red</em> · stop</li><li data-s="1" tabindex="0"><em>Amber</em> · stop, unless you are too close to stop safely</li><li data-s="0" tabindex="0"><em>Green</em> · go</li><li data-s="f" tabindex="0"><em>Amber, flashing</em> · go slowly, with particular care</li></ul></div></div>
+        <div class="hc" data-h="tram"><svg class="hd trh big" viewBox="0 0 22 22" data-st="0" aria-hidden="true" id="hk-tram"><rect class="hh" x="0.5" y="0.5" width="21" height="21" rx="2"/><rect class="bar" x="4.5" y="9.5" width="13" height="3" rx="1"/><path class="tri" d="M11 5.5 L16.5 15.5 L5.5 15.5 Z"/></svg><div><b>Trams and buses</b><ul><li data-s="2" tabindex="0"><em>Bar flat</em> · stop</li><li data-s="0" tabindex="0"><em>Bar upright</em> · go straight on</li><li data-s="t" tabindex="0"><em>Bar slanted</em> · go, turning that way</li><li data-s="1" tabindex="0"><em>Yellow triangle</em> · get ready to stop</li></ul></div></div>
+        <div class="hc" data-h="walk"><svg class="hd ped3 big" viewBox="0 0 16 40" data-st="0" aria-hidden="true" id="hk-walk"><rect class="hh" x="0.5" y="0.5" width="15" height="39" rx="2"/><rect class="lp l2" x="3" y="3" width="10" height="10" rx="1.5"/><path class="fig" d="M8 4.8 v0.1 M8 6.6 v3.2 M6.2 8.2 h3.6 M8 9.8 l-1.6 2.4 M8 9.8 l1.6 2.4"/><rect class="lp l1" x="3" y="15" width="10" height="10" rx="1.5"/><path class="fig" d="M8 16.8 v0.1 M8 18.6 v3.2 M6.2 20.2 h3.6 M8 21.8 l-1.6 2.4 M8 21.8 l1.6 2.4"/><rect class="lp l0" x="3" y="27" width="10" height="10" rx="1.5"/><path class="fig" d="M8 28.8 v0.1 M8 30.6 v3.2 M6.2 32.2 h3.6 M8 33.8 l-1.6 2.4 M8 33.8 l1.6 2.4"/></svg><div><b>On foot</b><ul><li data-s="2" tabindex="0"><em>Red</em> · don’t start to cross</li><li data-s="1" tabindex="0"><em>Amber</em> · finish crossing, quickly</li><li data-s="0" tabindex="0"><em>Green</em> · cross</li><li data-s="w" tabindex="0"><em>Button</em> · asks for green, which comes once the cars have had their minimum</li></ul></div></div>
+      </div>
+      <figcaption>Fig. 2 · The tram’s lamp works by shape, not colour.</figcaption>
+    </figure>
+    <p>Amber has no legal minimum. A 2001 study for the ministry suggested 3 s at 50 km/h, or 4 s where long vehicles share the road, and the courts have upheld a 3 s amber.</p>
+  </div>
+</div></div></section>
+
+<section class="prose" style="padding-top:0" aria-labelledby="h-wire"><div class="in"><div>
+  <div class="reveal"><span class="n">02 · The wiring</span><h2 id="h-wire">Who decides when the light changes?</h2></div>
+  <div class="reveal" style="--d:.1s">
+    <p>No one, second by second. A controller in a box at the corner runs a plan: how long each green lasts, and in what order. Sensors under the road count the cars. A radio on the tram asks for green as it comes. A control room picks the plan for each hour of the day and watches every junction wired to it.</p>
+    <figure class="sheet sys" id="sys">
+      <svg class="d" id="sysd" viewBox="0 0 540 228" role="img" aria-label="The controller at the centre. The tram radio and the road sensors feed it; it sends plans and status to and from the control room, and commands to the lamps."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" style="fill:none;stroke:var(--chalk-3);stroke-width:1.4"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" style="fill:none;stroke:var(--signal);stroke-width:1.4"/></marker></defs><path class="sp a dr d1" id="sp-tram" d="M150 50 H172 V116 H192" marker-end="url(#aha)"/><path class="sp dr d2" d="M150 200 H172 V134 H192" marker-end="url(#ah)"/><path class="sp dr d3" d="M348 116 H368 V50 H387" marker-start="url(#ah)" marker-end="url(#ah)"/><path class="sp a dr d4" id="sp-lamp" d="M345 134 H368 V200 H387" marker-end="url(#aha)"/><rect class="nd" x="0" y="24" width="150" height="52" rx="2"/><g transform="translate(12 38)"><path class="gl" d="M12 13 v7 M8.6 9.6 a4.8 4.8 0 0 1 6.8 0 M5.6 6.6 a9 9 0 0 1 12.8 0 M10.5 21 h3"/></g><text class="nm" x="46" y="54">Tram radio</text><rect class="nd" x="0" y="174" width="150" height="52" rx="2"/><g transform="translate(12 188)"><path class="gl" d="M2 4 h20 M2 20 h20 M5 8.5 h14 v7 h-14 z"/></g><text class="nm" x="46" y="204">Road sensors</text><rect class="nd hub" x="195" y="99" width="150" height="52" rx="2"/><g transform="translate(207 113)"><path class="gl hub" d="M6 2.5 h12 v19 h-12 z M9 7 h6 M9 11 h6 M9 15 h3"/></g><text class="nm" x="241" y="129">Controller</text><rect class="nd" x="390" y="24" width="150" height="52" rx="2"/><g transform="translate(402 38)"><path class="gl" d="M3 4.5 h18 v12 h-18 z M9 20.5 h6 M12 16.5 v4"/></g><text class="nm" x="436" y="54">Control room</text><rect class="nd" x="390" y="174" width="150" height="52" rx="2"/><g transform="translate(402 188)"><path class="gl" d="M8.5 1.5 h7 v21 h-7 z M12 6.5 v0.1 M12 12 v0.1 M12 17.5 v0.1"/></g><text class="nm" x="436" y="204">Lamps</text><circle class="pk" id="pk" r="4" cx="0" cy="0"/></svg>
+      <dl>
+        <div><dt>Tram radio</dt><dd>Asks the controller for green, about 12 s before the light.</dd></div>
+        <div><dt>Road sensors</dt><dd>Loops under the asphalt and cameras count the cars.</dd></div>
+        <div><dt>Controller</dt><dd>Runs the plan second by second, and grants the tram’s request or refuses it.</dd></div>
+        <div><dt>Control room</dt><dd>Sends the plan for the hour and sees what every junction is doing.</dd></div>
+        <div><dt>Lamps</dt><dd>Car, tram and walking lamps show what the controller decided.</dd></div>
+      </dl>
+      <figcaption>Fig. 3 · A request travels from the tram to the corner, and the answer comes back as a lamp.</figcaption>
+    </figure>
+    <div class="stat">
+      <div><b>700</b><small>traffic lights in Milan, 2011</small></div>
+      <div><b>500</b><small>of them on one network, with 1,400 cameras</small></div>
+      <div><b>9.3 km/h</b><small>tram 9 at the 2024 morning peak, Milan’s slowest</small></div>
+    </div>
+    <p>The network was almost finished in 2011, and its priority for trams and buses was not switched on. “It needs a political decision,” ATM’s head of mobility systems told alVolante. In 2015 the city tried again on five of tram 9’s 25 junctions, aiming to cut its 7.6 km run from as long as 49 minutes to 40. Nine years on, the Politecnico’s transport lab found almost no priority beyond isolated trials.</p>
+  </div>
+</div></div></section>
+
+<section class="prose" style="padding-top:0" aria-labelledby="h-wave"><div class="in"><div>
+  <div class="reveal"><span class="n">03 · The wave</span><h2 id="h-wave">Why can’t every light turn green for the tram?</h2></div>
+  <div class="reveal" style="--d:.1s">
+    <p>Lights along an avenue can turn green one after another, so traffic at the right speed never stops: a green wave. The delay between neighbours, the offset, is the distance divided by the speed. A wave fits one speed in one direction, and Italian lights, an urban planner told Linkiesta, have traditionally been set around cars. A tram is slower, and stops to let people on.</p>
+    <figure class="sheet wv" id="wv">
+      <div class="capr"><span class="cap"><b>Fig. 4</b> · Time runs left to right. A flat line is a vehicle standing still.</span><div class="seg" id="wfor" role="group" aria-label="Lights timed for"><button type="button" data-v="cars" aria-pressed="true">Timed for cars</button><button type="button" data-v="tram" aria-pressed="false">Timed for the tram</button></div></div>
+      <div class="wv-p">
+        <div class="wv-y" id="wvy" aria-hidden="true"></div>
+        <svg class="wv-s" id="wvs" viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="Five lights 300 metres apart, their red periods drawn as bars over five minutes, with the path of a car at 50 kilometres an hour and a tram at 25 with three stops."><g id="wvg"></g><g class="runs" id="wvr"></g></svg>
+      </div>
+      <div class="wv-x" id="wvx" aria-hidden="true"></div>
+      <div class="wv-k"><span class="kc">Car at 50 km/h · <b id="wvc">·</b></span><span class="kt">Tram at 25 km/h, three 20 s stops · <b id="wvt">·</b></span><span class="kr">Red</span></div>
+    </figure>
+    <p>Five lights 300 m apart, the average spacing on tram 9’s route. Every light runs the same 90 s plan; only the offsets change. A car keeping to 50 km/h and a tram stopping to load cannot share one wave. Priority at each junction is what lets the tram keep its own time.</p>
+  </div>
+</div></div></section>
+
+<section class="pml" aria-label="The PM lens"><div class="in"><div class="lens"><i class="bk tl" aria-hidden="true"></i><i class="bk tr" aria-hidden="true"></i><i class="bk bl" aria-hidden="true"></i><i class="bk br" aria-hidden="true"></i>
+  <div class="lhd">
+    <div><span class="kick">The PM lens</span><p class="ask">“How long does the average person wait at an intersection?”</p><cite><a href="https://prachub.com/interview-questions/estimate-the-expected-stop-time-for-someone-passing-through-a-road-junction" rel="noopener">Google product manager interview · decision making · reported to PracHub, 11 April 2025</a></cite></div>
+    <div class="tests"><span class="k">What the round tests</span><p>Whether you decide exactly what you are estimating, build it from labelled assumptions, and then check it against the world.</p></div>
+  </div>
+  <ol class="moves">
+    <li><b>Pin down who, where and when.</b><span>A driver, a tram rider and someone on foot wait different times at the same light, and 8:00 is not midnight. Pick one, say why, and say what you leave out.</span></li>
+    <li><b>Model one light, then add the queue.</b><span>Arrive at random and you meet red for the red’s share of the cycle, then wait half of it: red × red ÷ (2 × cycle). 45 s of red in a 90 s cycle is 11 s. Cars wait longer, because each also waits for the cars in front.</span></li>
+    <li><b>Count people, not vehicles.</b><span>A tram’s wait is every passenger’s wait. Counted that way, holding a green for a tram on a busy junction pays once about ten people are aboard: a seventh of a 35 m Sirio’s 71 seats.</span></li>
+  </ol>
+  <div class="lft">
+    <div class="wrong"><span class="k">If this goes wrong</span><p>Answer with one average and you hide the spread. Half the arrivals never stop and the rest wait up to the whole red, and the second half is what makes a tram line slow.</p></div>
+    <dl><div><dt>Watch</dt><dd>Seconds lost per person at each light · tram speed by line at the peak · priority requests granted and refused</dd></div><div><dt>With</dt><dd>The city’s traffic engineers · ATM, who run the trams · the police control rooms the lights report to · the councillors who sign it off</dd></div></dl>
+  </div>
+</div></div></section>
+
+<section class="decided"><div class="in"><div class="box sheet reveal">
+  <div><span class="k">Decided</span><h2>Hold the green for every tram. Cut the red only when the side street can spare it.</h2></div>
+  <ol>
+    <li><b>Stop</b><span>A tram waits through a whole red while the side street empties.<i>In the simulated hour, one tram waits 41 s at a single light. Holding the green 5 s longer would have saved all of it.</i></span></li>
+    <li><b>Notice</b><span>The wiring was built years ago, and has barely been used for trams.<i>What was missing was never the technology. It was the decision.</i></span></li>
+    <li><b>Tradeoff</b><span>Every second the tram gains comes out of the side street’s green, and the walk across the main road.<i>Holding a green costs the side street little. Cutting a red costs it about five times as much for each second the tram saves.</i></span></li>
+    <li><b>Decide</b><span>Hold the green for every tram, up to 15 s. Cut the red only for late trams or a quiet side street, and never below 12 s for people on foot.<i>What it cost: each car on a busy side street waits 1.0 s more when greens are held, and 8.5 s more when reds are cut as well. Someone has to defend that at the council.</i></span></li>
+  </ol>
+</div></div></section>
+
+<section class="srcrow"><div class="in"><div class="sr"><details><summary>Sources <span>13</span></summary><ol><li><a href="https://www.traspol.polimi.it/wp-content/uploads/2024/12/TRASPOL-2024_1-Rapporto-TP-Milano-Superficie-2016-2024.pdf" rel="noopener">TRASPOL, Politecnico di Milano</a>, Paolo Beria and Tommaso Battilocchi, Report 1/2024 on Milan’s surface public transport, 2016 to 2024, Dec 2024</li><li><a href="https://www.linkiesta.it/2025/01/perche-i-tram-e-i-bus-di-milano-stanno-peggiorando/" rel="noopener">Linkiesta</a>, Fabrizio Fasanella, Perché i tram e i bus di Milano stanno peggiorando, 9 Jan 2025</li><li><a href="https://www.auto.it/news/attualita/2026/03/03-8659561/mezzi-di-superficie-milano-piu-veloci" rel="noopener">auto.it</a>, Luca Talotta, Tram Milano: a che velocità vanno i mezzi nelle città?, 3 Mar 2026</li><li><a href="https://www.alvolante.it/news/milano_non_si_accende_il_semaforo_intelligente-473671044" rel="noopener">alVolante</a>, Milano, non si accende il semaforo intelligente, 26 May 2011</li><li><a href="https://www.affaritaliani.it/milano/tram-9-piu-veloce-grazie-ai-semafori-intelligenti-387126.html" rel="noopener">Affaritaliani</a>, Tram 9 più veloce grazie ai semafori intelligenti, 12 Oct 2015</li><li><a href="https://brocardi.it/codice-della-strada/titolo-ii/capo-ii/art41.html" rel="noopener">Codice della Strada</a>, Article 41, Segnali luminosi, via Brocardi, read 2 Nov 2026</li><li><a href="https://www.sicurauto.it/news/semaforo-giallo-la-bufala-dei-3-secondi/" rel="noopener">SicurAUTO</a>, Semaforo giallo: la bufala dei 3 secondi, 14 Jan 2015, updated 22 Aug 2024</li><li><a href="https://www.geopop.it/perche-i-semafori-rossi-ci-fanno-aspettare-tanto-e-come-funziona-davvero-un-centro-semaforico/" rel="noopener">Geopop</a>, Stefano Gandelli, Perché i semafori rossi ci fanno aspettare tanto, 9 Mar 2023</li><li><a href="https://rosap.ntl.bts.gov/view/dot/54680/dot_54680_DS1.pdf" rel="noopener">District Department of Transportation</a>, Stephen Arhin and Errol Noel, Prevailing saturation flow rate for lane groups in the District of Columbia, Dec 2014</li><li><a href="https://www.toronto.ca/legdocs/mmis/2026/ttc/bgrd/backgroundfile-264729.pdf" rel="noopener">Mobycon for the TTC</a>, Narayan Donaldson, Transit signal priority: opportunities for improvement in Toronto, 2026</li><li><a href="https://www.rupprecht-consult.eu/fileadmin/migratedRupprechtAssets/Documents/08_PRESTO_Infrastrutture_Incroci_con_semaforo.pdf" rel="noopener">PRESTO, Give Cycling a Push</a>, Scheda tecnica: incroci con semaforo</li><li><a href="https://en.wikipedia.org/wiki/Hitachi_Sirio" rel="noopener">Wikipedia</a>, Hitachi Sirio: the 35.35 m Milan series 7100, 285 people, 71 seated, read 2 Nov 2026</li><li><a href="https://prachub.com/interview-questions/estimate-the-expected-stop-time-for-someone-passing-through-a-road-junction" rel="noopener">PracHub</a>, Estimate the expected stop time for someone passing through a road junction, Google product manager, reported 11 Apr 2025</li></ol><p class="nt">The junction is a model, not a real one. Cars arrive at random: 600 an hour each way on the main road, and 200 or 450 on the side street. A tram comes every 6 minutes each way, and 150 people an hour cross the main road. A queue leaves one car every 2 s, about what traffic studies measure, and nobody turns. Each road’s green is in proportion to its traffic. The PM lens and the decision are practice answers written for this page.</p></details></div></div></section>
+
+<nav class="pn" aria-label="Previous and next"><div class="in"><div><a href="ai-models.html"><span>Previous</span><h3>AI models, taken apart</h3></a><a class="next" href="demo-examsim.html"><span>Next</span><h3>ASCOLTO: Language Exam Simulator</h3></a></div></div></nav>
+</main>
+
+<footer class="foot sheet"><div class="in"><span>Built off the clock · © Madhumitha D V</span><span><a href="index.html#work">All work</a> · <a href="mailto:dvmadhumitha2021@outlook.com">Say hi</a> · <a href="https://www.linkedin.com/in/madhumitha-d-v-a04ab8179/">LinkedIn</a></span></div></footer>
+
+<script src="analytics.js" defer></script>
+<script>
+if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
+(function(){
+'use strict';
+var root = document.documentElement;
+root.classList.add('js');
+var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+var CALM = RM || root.classList.contains('static');
+var NS = 'http://www.w3.org/2000/svg';
+function $(id){ return document.getElementById(id); }
+function $$(s, c){ return [].slice.call((c || document).querySelectorAll(s)); }
+function mk(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for(var k in attrs) e.setAttribute(k, attrs[k]); if(parent) parent.appendChild(e); return e; }
+/* a number and its unit stay on one line */
+function keep(s){ return s.replace(/(\d) (s|km\/h|m|people)(?=[\s.,;:·)!?’<]|$)/g, '$1\u00a0$2'); }
+
+/* reveal on first view */
+var reveals = $$('.reveal');
+if(!('IntersectionObserver' in window) || CALM){ reveals.forEach(function(e){ e.classList.add('is-in'); }); }
+else {
+  var rio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); rio.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+  reveals.forEach(function(e){ rio.observe(e); });
+}
+function whenSeen(el, fn, once){
+  if(!('IntersectionObserver' in window)){ fn(); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      fn();
+      if(once) io.unobserve(e.target);
+    });
+  }, {threshold:.3});
+  io.observe(el);
+}
+function segment(id, fn){
+  var g = $(id); if(!g) return;
+  var bs = $$('button', g);
+  bs.forEach(function(b){ b.addEventListener('click', function(){
+    bs.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    fn(b.getAttribute('data-v'));
+  }); });
+}
+function clock(t){ var s = Math.round(t), m = Math.floor(s / 60), h = 8 + Math.floor(m / 60); m %= 60; s %= 60; return h + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
+
+/* ── the engine ── */
+/* the junction engine: one fixed plan, trams that may ask for priority, cars and walkers that queue */
+var TS = (function(){
+  'use strict';
+  var AMBER = 4, ALLRED = 2, CH = AMBER + ALLRED, H = 2, EMAX = 15, GMIN = 12, DET = 12, HOUR = 3600, END = 4800;
+  var RATE = {main:600, quiet:200, busy:450, walk:150, tramGap:360};
+  function rng(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function poisson(r, perHour, T){ var out = [], t = 0, lam = perHour / 3600; for(;;){ t += -Math.log(1 - r()) / lam; if(t >= T) return out; out.push(t); } }
+  function plan(C, busy){ var side = busy ? RATE.busy : RATE.quiet, g = C - 2 * CH, g1 = Math.round(g * RATE.main / (RATE.main + side)); return {C:C, g1:g1, g2:g - g1, side:side}; }
+  function trams(P){
+    var C = P.C, out = [], n = HOUR / RATE.tramGap;
+    ['e', 'w'].forEach(function(dir, j){
+      for(var i = 0; i < n; i++){
+        var base = (j ? 200 : 30) + i * RATE.tramGap, ph = ((i * 2 + j) * 0.6180339887 + 0.13) % 1 * C;
+        var a = base - (base % C) + ph; if(a - base > C / 2) a -= C;
+        out.push({dir:dir, a:a});
+      }
+    });
+    out.sort(function(x, y){ return x.a - y.a; });
+    return out;
+  }
+  function run(o){
+    var P = plan(o.C, o.busy), C = P.C, K = Math.ceil(END / C) + 2;
+    var ms = [], me = [], ss = [], se = [], ext = [], cut = [];
+    for(var k = 0; k <= K; k++){ ms[k] = k * C; me[k] = k * C + P.g1; ss[k] = me[k] + CH; se[k] = (k + 1) * C - CH; ext[k] = 0; cut[k] = 0; }
+    function cycleOf(t){ var k = Math.floor(t / C); while(k > 0 && t < ms[k]) k--; while(t >= ms[k + 1]) k++; return k; }
+    var T = trams(P), log = [];
+    T.forEach(function(tr){
+      var A = tr.a, D = A - DET, k = cycleOf(A);
+      tr.det = D; tr.k = k; tr.act = '';
+      if(A < me[k]){ tr.wait = 0; tr.go = A; return; }
+      if(o.hold && D < me[k]){
+        var e = A + 1 - (k * C + P.g1);
+        if(e <= EMAX && se[k] - (k * C + P.g1 + e + CH) >= GMIN){
+          var add = (k * C + P.g1 + e) - me[k];
+          me[k] = k * C + P.g1 + e; ss[k] = me[k] + CH; ext[k] = e;
+          tr.wait = 0; tr.go = A; tr.act = 'hold'; tr.secs = add; tr.at = D; log.push(tr); return;
+        }
+      }
+      if(o.cut && D < se[k]){
+        var ne = Math.max(ss[k] + GMIN, D, se[k] - (EMAX - cut[k]));
+        if(ne < se[k]){ cut[k] += se[k] - ne; tr.secs = se[k] - ne; se[k] = ne; ms[k + 1] = se[k] + CH; tr.act = 'cut'; tr.at = Math.max(D, ss[k] + GMIN); log.push(tr); }
+      }
+      tr.go = Math.max(A, ms[k + 1]); tr.wait = tr.go - A;
+    });
+    function greens(isMain){ var g = []; for(var k = 0; k <= K; k++) g.push(isMain ? [ms[k], me[k]] : [ss[k], se[k]]); return g; }
+    function queue(arr, gs){
+      var out = [], last = -1e9, gi = 0;
+      for(var i = 0; i < arr.length; i++){
+        var a = arr[i], t = Math.max(a, last + H);
+        while(gs[gi][1] <= t) gi++;
+        if(t < gs[gi][0]) t = gs[gi][0] + H;
+        while(t >= gs[gi][1]){ gi++; t = gs[gi][0] + H; }
+        out.push({a:a, d:t}); last = t;
+      }
+      return out;
+    }
+    var side = P.side;
+    function thin(list, seed, keep){ var r = rng(seed); return list.filter(function(){ return r() < keep; }); }
+    var gm = greens(true), gsd = greens(false);
+    var cars = {
+      e: queue(poisson(rng(21), RATE.main, END), gm),
+      w: queue(poisson(rng(22), RATE.main, END), gm),
+      n: queue(thin(poisson(rng(31), RATE.busy, END), 131, side / RATE.busy), gsd),
+      s: queue(thin(poisson(rng(32), RATE.busy, END), 132, side / RATE.busy), gsd)
+    };
+    var walkers = poisson(rng(41), RATE.walk, END).map(function(a, i){
+      var k = cycleOf(a), st;
+      if(a >= ss[k] && a < se[k]) st = a; else if(a < ss[k]) st = ss[k]; else st = ss[k + 1];
+      return {a:a, s:st, side:i % 2, leg:(i >> 1) % 2};
+    });
+    function mean(list, f){ var n = 0, s = 0; list.forEach(function(x){ if(x.a < HOUR){ n++; s += f(x); } }); return {n:n, sum:s, avg:n ? s / n : 0}; }
+    var dl = function(c){ return c.d - c.a; };
+    var st = {
+      tram: mean(T, function(t){ return t.wait; }),
+      main: mean(cars.e.concat(cars.w), dl),
+      side: mean(cars.n.concat(cars.s), dl),
+      walk: mean(walkers, function(w){ return w.s - w.a; }),
+      held: 0, cut: 0, grants: log.filter(function(t){ return t.a < HOUR; }).length
+    };
+    for(var j = 0; j <= K; j++){ if(ms[j] < HOUR){ st.held += ext[j]; st.cut += cut[j]; } }
+    return {P:P, ms:ms, me:me, ss:ss, se:se, ext:ext, cutk:cut, trams:T, cars:cars, walkers:walkers, st:st, log:log};
+  }
+  var WIN = {};
+  /* the stretch the drawing plays: one and a half cycles around the tram that loses most when nothing gives way, and that a held green would save */
+  function windowFor(C, busy){
+    var key = C + (busy ? 'b' : 'q'); if(WIN[key]) return WIN[key];
+    var B = run({C:C, busy:busy, hold:1, cut:1}), N = run({C:C, busy:busy}), best = null;
+    B.trams.forEach(function(t, i){
+      if(t.act !== 'hold' || t.a < 300 || t.a > HOUR - 400) return;
+      var lost = N.trams[i].wait;
+      if(!best || lost > best.lost) best = {i:i, lost:lost, a:t.a};
+    });
+    if(!best){ var j = 0; N.trams.forEach(function(t, i){ if(t.a > 300 && t.a < HOUR - 400 && t.wait > N.trams[j].wait) j = i; }); best = {i:j, lost:N.trams[j].wait, a:N.trams[j].a}; }
+    return (WIN[key] = {t0:best.a - 30, t1:best.a - 30 + Math.round(1.5 * C) + 10, tram:best.i});
+  }
+  return {run:run, plan:plan, windowFor:windowFor, AMBER:AMBER, ALLRED:ALLRED, CH:CH, H:H, EMAX:EMAX, GMIN:GMIN, DET:DET, HOUR:HOUR};
+})();
+
+/* ── Fig. 1: one junction, played for two cycles, measured for an hour ── */
+(function(){
+  var svg = $('jn'); if(!svg) return;
+  var PX = 2.5, VF = 13.9, VD = 8, VT = 7, SP = 7, LC = 4.5, LT = 35.35;
+  var GEO = {
+    e:{x:true, stop:355, lane:175, sgn:1, up:142, down:171},
+    w:{x:true, stop:427, lane:125, sgn:-1, up:142, down:171},
+    n:{x:false, stop:98, lane:382, sgn:1, up:40, down:81},
+    s:{x:false, stop:202, lane:400, sgn:-1, up:40, down:81}
+  };
+  var S = {mode:'none', C:90, busy:1, t:0, raf:0, seen:false, scrub:false, narrow:false};
+  var POOL = {}, gCars = $('cars'), gPeds = $('peds'), peds = [];
+  ['e', 'w', 'n', 's'].forEach(function(k){
+    POOL[k] = [];
+    for(var i = 0; i < 34; i++){
+      var r = mk('rect', {class:'car', rx:2, width:GEO[k].x ? LC * PX : 8, height:GEO[k].x ? 8 : LC * PX}, gCars);
+      r.style.display = 'none'; POOL[k].push(r);
+    }
+  });
+  for(var i = 0; i < 24; i++){ var c = mk('circle', {class:'ped', r:2.6}, gPeds); c.style.display = 'none'; peds.push(c); }
+  var TR = {e:$('tr-e'), w:$('tr-w')}, ask = $('ask');
+  var SL = {e:$('sl-e'), w:$('sl-w'), n:$('sl-n'), s:$('sl-s')}, TH = {e:$('th-e'), w:$('th-w')};
+  var OV = {e:$('ov-e'), w:$('ov-w'), n:$('ov-n'), s:$('ov-s')};
+  var heads = $$('#tl .tl-k .hd'), clk = $('clk'), ev = $('ev');
+  var tlg = $('tlg'), ph = $('ph'), kn = $('kn'), tlp = $('tlp'), tlt = $('tlt'), tla = $('tla');
+
+  function opts(m){ return {C:S.C, busy:S.busy, hold:m === 'hold' || m === 'both', cut:m === 'cut' || m === 'both'}; }
+  function compute(){
+    S.R = TS.run(opts(S.mode)); S.B = TS.run(opts('none')); S.W = TS.windowFor(S.C, S.busy);
+    var W = S.W, R = S.R;
+    S.cars = {};
+    ['e', 'w', 'n', 's'].forEach(function(k){ S.cars[k] = R.cars[k].filter(function(c){ return c.d > W.t0 - 25 && c.a < W.t1 + 20; }); });
+    S.trams = R.trams.filter(function(t){ return t.go > W.t0 - 40 && t.a < W.t1 + 30; });
+    S.walk = R.walkers.filter(function(w){ return w.s + 13 > W.t0 && w.a < W.t1; });
+    timeline(); numbers();
+  }
+
+  /* which cycle a moment falls in, and what every lamp shows */
+  function cyc(t){ var R = S.R, k = Math.max(0, Math.floor(t / S.C) - 1); while(R.ms[k + 1] <= t) k++; while(k > 0 && R.ms[k] > t) k--; return k; }
+  function lamps(t){
+    var R = S.R, k = cyc(t), A = TS.AMBER;
+    var main = t < R.me[k] ? 0 : t < R.me[k] + A ? 1 : 2;
+    var side = t >= R.ss[k] && t < R.se[k] ? 0 : t >= R.se[k] && t < R.se[k] + A ? 1 : 2;
+    return {k:k, main:main, side:side};
+  }
+
+  function placeCars(k, t){
+    var G = GEO[k], list = S.cars[k], pool = POOL[k], used = 0, prev = null, over = 0;
+    var lim = G.up, vb = S.narrow;
+    if(vb){ lim = G.x ? (G.sgn > 0 ? (G.stop - 130) / PX : (652 - G.stop) / PX) : G.up; }
+    for(var i = 0; i < list.length; i++){
+      var c = list[i], d, free;
+      if(t >= c.d){ d = -VD * (t - c.d); }
+      else {
+        free = VF * (c.a - t); d = free;
+        if(prev !== null) d = Math.max(d, prev + SP);
+        if(d < 0) d = 0;
+      }
+      prev = d;
+      if(d > lim){ if(t < c.d && d > free + .01) over++; continue; }
+      if(d < -G.down || used >= pool.length) continue;
+      var r = pool[used++], f = G.stop - G.sgn * d * PX;
+      if(G.x){ r.setAttribute('x', (G.sgn > 0 ? f - LC * PX : f).toFixed(1)); r.setAttribute('y', G.lane - 4); }
+      else { r.setAttribute('y', (G.sgn > 0 ? f - LC * PX : f).toFixed(1)); r.setAttribute('x', G.lane - 4); }
+      r.style.display = '';
+    }
+    for(var j = used; j < pool.length; j++) pool[j].style.display = 'none';
+    OV[k].textContent = over ? '+' + over : '';
+  }
+  function tramD(tr, t){ return t <= tr.a ? VT * (tr.a - t) : t < tr.go ? 0 : -VT * (t - tr.go); }
+  function placeTrams(t){
+    var showAsk = null;
+    ['e', 'w'].forEach(function(dir){
+      var g = TR[dir], pick = null;
+      S.trams.forEach(function(tr){
+        if(tr.dir !== dir) return;
+        var d = tramD(tr, t);
+        if(d < 150 && d > -(LT + 180)) pick = {tr:tr, d:d};
+      });
+      if(!pick){ g.style.display = 'none'; return; }
+      var x = dir === 'e' ? 355 - pick.d * PX : 427 + pick.d * PX;
+      g.style.display = '';
+      g.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + (dir === 'e' ? 158 : 142) + ')');
+      if(t >= pick.tr.det && t < pick.tr.det + 2.4) showAsk = {x:x, y:dir === 'e' ? 158 : 142};
+    });
+    if(showAsk){ ask.setAttribute('d', 'M' + showAsk.x.toFixed(1) + ' ' + showAsk.y + ' L343 86'); ask.classList.add('on'); }
+    else ask.classList.remove('on');
+  }
+  function placeWalkers(t){
+    var used = 0, wait = {};
+    S.walk.forEach(function(w){
+      if(t < w.a || t > w.s + 12 || used >= peds.length) return;
+      var x = w.leg ? 418 : 364, y0 = w.side ? 190 : 110, y1 = w.side ? 110 : 190, y;
+      if(t < w.s){
+        var key = w.leg + '' + w.side, n = wait[key] = (wait[key] || 0) + 1;
+        x += ((n - 1) % 4 - 1.5) * 5.5; y = y0 + (w.side ? 1 : -1) * Math.floor((n - 1) / 4) * 5.5;
+      } else { y = y0 + (y1 - y0) * (t - w.s) / 12; x += w.side ? 3 : -3; }
+      var c = peds[used++]; c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', y.toFixed(1)); c.style.display = '';
+    });
+    for(var j = used; j < peds.length; j++) peds[j].style.display = 'none';
+  }
+  var STATE = ['go', 'am', ''];
+  function narrate(t, L){
+    var out = '';
+    S.trams.forEach(function(tr){
+      if(t < tr.det - .5 || t > Math.max(tr.go, tr.a) + 4) return;
+      if(t < tr.a){
+        var s = Math.max(1, Math.ceil(tr.a - t)), what;
+        if(t < tr.det) what = 'approaching';
+        else if(tr.act === 'hold') what = 'green held ' + Math.round(tr.secs) + ' s';
+        else if(tr.act === 'cut') what = 'side street green cut ' + Math.round(tr.secs) + ' s';
+        else if(tr.wait > .5) what = S.mode === 'none' ? 'red ahead, no priority' : 'red ahead, nothing to give';
+        else what = 'green ahead';
+        out = 'Tram ' + s + ' s out · ' + what;
+      } else if(t < tr.go) out = 'Tram waiting · green in ' + Math.max(1, Math.ceil(tr.go - t)) + ' s';
+      else out = tr.wait > .5 ? 'Tram through after ' + Math.round(tr.wait) + ' s' : 'Tram through, no wait';
+    });
+    if(out) return out;
+    var R = S.R, k = L.k;
+    if(L.main === 0) return 'Main road green · ' + Math.max(1, Math.ceil(R.me[k] - t)) + ' s left';
+    if(L.side === 0) return 'Side street green · ' + Math.max(1, Math.ceil(R.se[k] - t)) + ' s left';
+    if(L.main === 1 || L.side === 1) return 'Amber · stop if you safely can';
+    return 'Every lamp red · the junction clears';
+  }
+  function render(t){
+    S.t = t;
+    var L = lamps(t);
+    SL.e.setAttribute('class', 'sl ' + STATE[L.main]); SL.w.setAttribute('class', 'sl ' + STATE[L.main]);
+    SL.n.setAttribute('class', 'sl ' + STATE[L.side]); SL.s.setAttribute('class', 'sl ' + STATE[L.side]);
+    TH.e.setAttribute('data-st', L.main); TH.w.setAttribute('data-st', L.main);
+    heads[0].setAttribute('data-st', L.main); heads[1].setAttribute('data-st', L.main);
+    heads[2].setAttribute('data-st', L.side); heads[3].setAttribute('data-st', L.side);
+    ['e', 'w', 'n', 's'].forEach(function(k){ placeCars(k, t); });
+    placeTrams(t); placeWalkers(t);
+    clk.textContent = clock(t); ev.textContent = narrate(t, L);
+    var W = S.W, p = (t - W.t0) / (W.t1 - W.t0), x = (p * 1000).toFixed(1);
+    ph.setAttribute('x1', x); ph.setAttribute('x2', x);
+    kn.style.left = (p * 100).toFixed(2) + '%';
+    tlp.setAttribute('aria-valuenow', Math.round(p * 100));
+    tlp.setAttribute('aria-valuetext', clock(t));
+  }
+
+  /* the plan over the two cycles shown */
+  function timeline(){
+    var R = S.R, W = S.W, Ln = W.t1 - W.t0, A = TS.AMBER, C = S.C, P = R.P;
+    function X(t){ return Math.max(0, Math.min(1000, (t - W.t0) / Ln * 1000)); }
+    function bar(t0, t1, row, cls, y, h){ if(t1 <= W.t0 || t0 >= W.t1) return; mk('rect', {class:cls, x:X(t0).toFixed(1), y:row * 30 + (y || 10), width:Math.max(.5, X(t1) - X(t0)).toFixed(1), height:h || 10}, tlg); }
+    tlg.textContent = ''; tlt.textContent = ''; tla.textContent = '';
+    for(var t = Math.ceil(W.t0 / 30) * 30; t < W.t1; t += 30){
+      mk('line', {class:'gd', x1:X(t), x2:X(t), y1:0, y2:120}, tlg);
+      var s = document.createElement('span'), px = X(t) / 10; s.textContent = clock(t); s.style.left = px + '%'; if(px < 6) s.className = 'e0'; else if(px > 94) s.className = 'e1'; tla.appendChild(s);
+    }
+    [0, 1, 2, 3].forEach(function(r){ mk('line', {class:'st', x1:0, x2:1000, y1:r * 30 + 15, y2:r * 30 + 15}, tlg); });
+    function tag(t, row, text){
+      if(t < W.t0 || t > W.t1) return;
+      var s = document.createElement('span'), x = X(t) / 10;
+      s.textContent = text; s.style.top = (row * 30 + 15) + 'px';
+      if(x > 72){ s.className = 'r'; s.style.left = 'calc(' + x + '% - 4px)'; } else s.style.left = 'calc(' + x + '% + 4px)';
+      tlt.appendChild(s);
+    }
+    for(var k = 0; k < R.ms.length - 1; k++){
+      if(R.ms[k] > W.t1 || R.ms[k + 1] < W.t0) continue;
+      [0, 1].forEach(function(row){ bar(R.ms[k], R.me[k], row, 'go'); bar(R.me[k], R.me[k] + A, row, 'am'); });
+      [2, 3].forEach(function(row){ bar(R.ss[k], R.se[k], row, 'go'); bar(R.se[k], R.se[k] + A, row, 'am'); });
+      if(R.ext[k] > 0){ bar(k * C + P.g1, R.me[k], 0, 'gx', 5, 20); tag(R.me[k], 0, 'Held ' + Math.round(R.me[k] - (k * C + P.g1)) + ' s'); }
+      if(R.cutk[k] > 0){ bar(R.se[k], R.se[k] + R.cutk[k], 2, 'gc'); bar(R.se[k], R.se[k] + R.cutk[k], 3, 'gc'); tag(R.se[k] + R.cutk[k], 2, 'Cut ' + Math.round(R.cutk[k]) + ' s'); }
+    }
+    S.trams.forEach(function(tr){
+      if(tr.a < W.t0 || tr.a > W.t1) return;
+      mk('line', {class:'tk', x1:X(tr.a), x2:X(tr.a), y1:32, y2:58}, tlg);
+      if(tr.wait > .5) mk('line', {class:'wt', x1:X(tr.a), x2:X(tr.go), y1:55, y2:55}, tlg);
+      tag(tr.a, 1, tr.wait > .5 ? 'Tram waits ' + Math.round(tr.wait) + ' s' : 'Tram, no wait');
+    });
+  }
+
+  /* the hour in numbers, and the note beside it */
+  function numbers(){
+    var R = S.R, B = S.B, st = R.st, b = B.st, P = R.P, C = S.C, mode = S.mode;
+    var vals = [st.tram.avg, st.main.avg, st.side.avg, st.walk.avg], base = [b.tram.avg, b.main.avg, b.side.avg, b.walk.avg];
+    vals.forEach(function(v, i){
+      $('r' + i).textContent = v.toFixed(1) + '\u00a0s';
+      var x = $('x' + i), d = Math.round((v - base[i]) * 10) / 10;
+      if(mode === 'none'){ x.textContent = ''; x.className = ''; return; }
+      x.textContent = d === 0 ? 'Same as with none' : Math.abs(d).toFixed(1) + ' s ' + (d < 0 ? 'less' : 'more') + ' than with none';
+      x.className = d < 0 ? 'dn' : d > 0 ? 'up' : '';
+    });
+    $('rh').textContent = 'One simulated hour, 8:00 to 9:00 · ' + st.tram.n + ' trams · ' + (st.main.n + st.side.n).toLocaleString('en-GB') + ' cars · ' + st.walk.n + ' people crossing';
+    var red = C - P.g1, f = red * red / (2 * C), share = Math.round(red / C * 100);
+    var cost = (st.main.sum + st.side.sum + st.walk.sum) - (b.main.sum + b.side.sum + b.walk.sum), gain = b.tram.sum - st.tram.sum;
+    var be = gain > .5 ? cost / gain : null;
+    var beText = be === null ? 'No tram gained this hour.' : be <= 0 ? 'It pays from the first passenger: the main road’s extra green saves more time than the side street loses.' : 'It pays once a tram carries more than <b>' + Math.floor(be) + ' people</b>, counting one per car and one per person on foot. A 35 m Sirio seats 71.';
+    var emax = Math.min(TS.EMAX, P.g2 - TS.GMIN), K = {none:'No priority', hold:'Hold the green', cut:'Cut the red', both:'Both rules'};
+    var H = {
+      none:'The light runs its plan, tram or not.',
+      hold:'The light sees the tram coming and holds the green for it.',
+      cut:'The side street’s green ends early, so the tram’s comes sooner.',
+      both:'Hold the green when the tram is close. Cut the red when it is not.'
+    };
+    var Pp = {
+      none:'Every ' + C + ' s the main road and its trams get ' + P.g1 + ' s of green, and the side street ' + P.g2 + ' s, in proportion to their traffic. Each change costs 6 s: 4 s of amber, then 2 s with every lamp red so the last car can clear the junction.',
+      hold:'A detector 12 s up the track tells the controller a tram is coming. If the green would end before it arrives, the controller holds it, here by up to ' + emax + ' s. The side street’s green starts that much later and still ends on time.',
+      cut:'When a tram is detected and its lamp will be red, the controller ends the side street’s green early: by up to 15 s, and never before it has run 12 s, the time it takes to walk across the main road.',
+      both:'Each rule can move up to 15 s a cycle, and the side street always keeps at least 12 s of green, the time it takes to walk across the main road.'
+    };
+    var held = R.log.filter(function(t){ return t.a < TS.HOUR && t.act === 'hold'; }).length, cuts = R.log.filter(function(t){ return t.a < TS.HOUR && t.act === 'cut'; }).length;
+    var agree = Math.abs(st.tram.avg - f) < 1.5 ? 'The simulated hour agrees.' : 'The simulated hour gives ' + Math.round(st.tram.avg) + ' s: twenty trams are a small sample.';
+    function plural(n, one, many){ return n + ' ' + (n === 1 ? one : many); }
+    var Li = {
+      none:['A tram arriving at random meets red ' + share + '% of the time, and then waits half of it: <span class="nw">' + red + ' × ' + red + ' ÷ (2 × ' + C + ') = <b>' + Math.round(f) + ' s</b></span>. ' + agree,
+            'Cars wait longer than that sum, because each one also waits for the cars in front.',
+            'People crossing the main road walk on the side street’s green.'],
+      hold:['This hour: ' + plural(held, 'green', 'greens') + ' held, ' + Math.round(st.held) + ' s in all.',
+            'It only helps a tram that arrives just after the green would have ended.',
+            beText],
+      cut:['This hour: ' + plural(cuts, 'red', 'reds') + ' cut short, ' + Math.round(st.cut) + ' s taken from the side street.',
+           'The side street pays, and so do people crossing the main road: theirs is the green that ends early.',
+           beText],
+      both:['This hour: ' + plural(held, 'green', 'greens') + ' held and ' + plural(cuts, 'red', 'reds') + ' cut short.',
+            'Holding serves trams just after the green, cutting serves the rest. The side street pays for both.',
+            beText]
+    };
+    $('n-k').textContent = K[mode]; $('n-h').textContent = H[mode]; $('n-p').textContent = keep(Pp[mode]);
+    $('n-l').innerHTML = Li[mode].map(function(s){ return '<li>' + keep(s) + '</li>'; }).join('');
+  }
+
+  /* play the two cycles once; a replay or a new setting plays them again */
+  function stop(){ if(S.raf) cancelAnimationFrame(S.raf); S.raf = 0; }
+  function still(){ var tr = S.R.trams[S.W.tram]; return Math.min(S.W.t1, Math.max(S.W.t0, tr.a + 1)); }
+  function play(){
+    stop();
+    if(CALM){ render(still()); return; }
+    var W = S.W, Ln = W.t1 - W.t0, dur = 15000, start = null;
+    function step(ts){
+      if(start === null) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      render(W.t0 + p * Ln);
+      S.raf = p < 1 ? requestAnimationFrame(step) : 0;
+    }
+    S.raf = requestAnimationFrame(step);
+  }
+  function fit(){
+    var n = window.matchMedia('(max-width: 600px)').matches;
+    if(n === S.narrow) return;
+    S.narrow = n; svg.setAttribute('viewBox', n ? '130 0 522 300' : '0 0 782 300');
+    OV.e.setAttribute('x', n ? 136 : 6); OV.w.setAttribute('x', n ? 646 : 776);
+    if(S.R) render(S.t);
+  }
+  segment('pri', function(v){ S.mode = v; compute(); if(S.seen) play(); else render(S.W.t0); });
+  segment('cyc', function(v){ S.C = +v; compute(); if(S.seen) play(); else render(S.W.t0); });
+  segment('side', function(v){ S.busy = +v; compute(); if(S.seen) play(); else render(S.W.t0); });
+  $('rp').addEventListener('click', play);
+
+  /* drag along the plan to look at any moment */
+  function at(e){ var r = tlp.getBoundingClientRect(), p = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); stop(); render(S.W.t0 + p * (S.W.t1 - S.W.t0)); }
+  tlp.addEventListener('pointerdown', function(e){ S.scrub = true; try{ tlp.setPointerCapture(e.pointerId); }catch(_){} at(e); });
+  tlp.addEventListener('pointermove', function(e){ if(S.scrub) at(e); });
+  ['pointerup', 'pointercancel'].forEach(function(n){ tlp.addEventListener(n, function(){ S.scrub = false; }); });
+  tlp.addEventListener('keydown', function(e){
+    var dt = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : e.key === 'PageUp' ? 10 : e.key === 'PageDown' ? -10 : 0;
+    if(e.key === 'Home') dt = -1e6; if(e.key === 'End') dt = 1e6;
+    if(!dt) return; e.preventDefault(); stop();
+    render(Math.max(S.W.t0, Math.min(S.W.t1, S.t + dt)));
+  });
+  window.addEventListener('resize', fit);
+
+  fit(); compute(); render(CALM ? still() : S.W.t0);
+  whenSeen(svg, function(){ if(S.seen) return; S.seen = true; play(); }, true);
+})();
+
+/* ── Fig. 2: each lamp shows its states once, then answers to a hover ── */
+(function(){
+  var fig = $('heads'); if(!fig) return;
+  var cards = $$('.hc', fig), seqs = {car:['0', '1', '2'], tram:['0', '1', '2'], walk:['0', '1', '2']}, rest = '2', timers = [];
+  cards.forEach(function(card){
+    var hd = card.querySelector('.hd'), items = $$('li', card);
+    function show(s){ hd.setAttribute('data-st', s); items.forEach(function(li){ li.classList.toggle('on', li.getAttribute('data-s') === s); }); }
+    card._show = show; show(rest);
+    items.forEach(function(li){
+      var s = li.getAttribute('data-s');
+      li.addEventListener('mouseenter', function(){ show(s); });
+      li.addEventListener('focus', function(){ show(s); });
+      li.addEventListener('click', function(){ show(s); });
+    });
+    card.addEventListener('mouseleave', function(){ show(rest); });
+  });
+  if(CALM) return;
+  whenSeen(fig, function(){
+    timers.forEach(clearTimeout); timers = [];
+    cards.forEach(function(card, j){
+      var seq = seqs[card.getAttribute('data-h')];
+      seq.forEach(function(s, i){ timers.push(setTimeout(function(){ card._show(s); }, 300 + j * 160 + i * 750)); });
+    });
+    timers.push(setTimeout(function(){ cards.forEach(function(c){ c._show(rest); }); }, 300 + 2 * 160 + 3 * 750 + 200));
+  }, true);
+})();
+
+/* ── Fig. 3: the spokes draw in, then one request travels from the tram to the lamps ── */
+(function(){
+  var d = $('sysd'); if(!d) return;
+  var pk = $('pk'), a = $('sp-tram'), b = $('sp-lamp');
+  if(CALM){ d.classList.add('go'); return; }
+  whenSeen(d, function(){
+    d.classList.add('go');
+    if(!a.getTotalLength) return;
+    var la = a.getTotalLength(), lb = b.getTotalLength(), start = null, dur = 2400;
+    function step(ts){
+      if(start === null) start = ts + 1500;
+      var p = (ts - start) / dur;
+      if(p < 0){ requestAnimationFrame(step); return; }
+      if(p >= 1){ pk.style.opacity = 0; return; }
+      var q = p * (la + lb), pt = q < la ? a.getPointAtLength(q) : b.getPointAtLength(q - la);
+      pk.setAttribute('cx', pt.x.toFixed(1)); pk.setAttribute('cy', pt.y.toFixed(1)); pk.style.opacity = 1;
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }, true);
+})();
+
+/* ── Fig. 4: five lights, one plan, two ways to set the offsets ── */
+(function(){
+  var svg = $('wvs'); if(!svg) return;
+  var C = 90, G = 45, N = 5, D = 300, VC = 50 / 3.6, VTm = 25 / 3.6, DW = 20, STOPS = [1, 2, 3], T = 300, DMAX = 1260;
+  var g = $('wvg'), runs = $('wvr'), yl = $('wvy'), xl = $('wvx');
+  function Y(d){ return 232 - d / DMAX * 224; }
+  function X(t){ return t / T * 1000; }
+  function free(){ var t = 4, out = [t]; for(var k = 1; k < N; k++){ t += D / VTm; if(STOPS.indexOf(k) >= 0) t += DW; out.push(t); } return out; }
+  function plan(forWhat){ var tf = free(), off = []; for(var k = 0; k < N; k++) off.push(forWhat === 'tram' ? (tf[k] - 4) % C : (k * D / VC) % C); return off; }
+  function ride(off, v, start, stops, dw){
+    var t = start, pts = [[t, 0]], reds = 0, wait = 0;
+    for(var k = 0; k < N; k++){
+      if(k > 0){ t += D / v; pts.push([t, k * D]); if(stops.indexOf(k) >= 0){ t += dw; pts.push([t, k * D]); } }
+      var p = ((t - off[k]) % C + C) % C;
+      if(p >= G){ reds++; wait += C - p; t += C - p; pts.push([t, k * D]); }
+    }
+    t += 60 / v; pts.push([t, (N - 1) * D + 60]);
+    return {pts:pts, reds:reds, wait:wait, end:t};
+  }
+  for(var k = 0; k < N; k++){
+    var s = document.createElement('span');
+    s.innerHTML = '<b>Light ' + (k + 1) + '</b><br>' + (k * D).toLocaleString('en-GB') + ' m';
+    s.style.top = (Y(k * D) / 240 * 100) + '%'; yl.appendChild(s);
+  }
+  for(var t = 0; t <= T; t += 60){ var x = document.createElement('span'); x.textContent = t + ' s'; x.style.left = (t / T * 100) + '%'; if(t === T) x.className = 'e1'; xl.appendChild(x); }
+  function line(pts){ return pts.map(function(p, i){ return (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1); }).join(' '); }
+  function draw(forWhat){
+    var off = plan(forWhat), car = ride(off, VC, 2, [], 0), tram = ride(off, VTm, 4, STOPS, DW);
+    g.textContent = ''; runs.textContent = '';
+    mk('line', {class:'ax', x1:0, x2:1000, y1:239, y2:239}, g);
+    for(var tt = 60; tt < T; tt += 60) mk('line', {class:'gd', x1:X(tt), x2:X(tt), y1:0, y2:240}, g);
+    for(var k = 0; k < N; k++){
+      for(var c = -1; c * C + off[k] < T; c++){
+        var r0 = c * C + off[k] + G, r1 = r0 + (C - G);
+        if(r1 <= 0 || r0 >= T) continue;
+        mk('line', {class:'rd', x1:X(Math.max(0, r0)), x2:X(Math.min(T, r1)), y1:Y(k * D), y2:Y(k * D)}, g);
+      }
+    }
+    mk('path', {class:'pc', d:line(car.pts)}, runs);
+    mk('path', {class:'pt', d:line(tram.pts)}, runs);
+    function say(o){ return (o.reds ? o.reds + (o.reds === 1 ? ' red, ' : ' reds, ') + Math.round(o.wait) + ' s waiting' : 'no reds') + ' · ' + Math.round(o.end) + ' s in all'; }
+    $('wvc').textContent = say(car); $('wvt').textContent = say(tram);
+  }
+  function reveal(){ if(CALM){ svg.classList.remove('pre'); return; } svg.classList.add('pre'); void svg.getBoundingClientRect(); requestAnimationFrame(function(){ svg.classList.remove('pre'); }); }
+  var seen = false;
+  segment('wfor', function(v){ draw(v); if(seen) reveal(); });
+  draw('cars');
+  if(!CALM){ svg.classList.add('pre'); whenSeen(svg, function(){ if(seen) return; seen = true; reveal(); }, true); }
+})();
+
+/* ── the PM lens: corners close in, the question sharpens, the moves follow ── */
+$$('.lens').forEach(function(l){ if(CALM) return; l.classList.add('pre'); whenSeen(l, function(){ l.classList.remove('pre'); }, true); });
+})();
+</script>
+</body>
+</html>

@@ -3,93 +3,343 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Currency Design Breakdown · Madhumitha D V</title>
-<meta name="description" content="What does a note have to say before anyone properly looks at it? The ₹10, ₹20 and ₹100 drawn at real size, sized by value, flipped, rotated and benchmarked against five currencies. A case study by Madhumitha D V.">
+<title>Rethinking the currency note · Madhumitha D V</title>
+<meta name="description" content="We use it every day. Have we ever asked why it looks the way it does? Ten notes from around the world compared, today’s ₹500 taken apart, and a new rupee family drawn for sight, low vision and touch. By Madhumitha D V.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=12">
 <style>
-/* the note bench */
-.bench .ctl-row+.ctl-row{margin-top:-6px}
-.note-f{fill:var(--navy-2);stroke:var(--chalk);stroke-width:1.5;transition:fill .5s var(--ease)}
-.note-f.c20{fill:rgba(140,199,214,.22)}
-.note-f.c100{fill:rgba(96,170,120,.22)}
-.note-f.c10{fill:rgba(231,236,240,.10)}
-.d .ghost{fill:none;stroke:var(--chalk-3);stroke-width:1;stroke-dasharray:3 3}
-.d .ghost2{fill:none;stroke:var(--signal);stroke-width:1.25;stroke-dasharray:3 3}
-.d .thread{stroke:var(--chalk);stroke-width:2;stroke-dasharray:6 3}
-.d .bar{fill:var(--chalk)}
-.d .bar.on{fill:var(--signal)}
-.d .motif{fill:url(#hatch2)}
-.d .tiny{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;fill:var(--chalk-3);text-transform:uppercase}
-.d .devan{font-family:var(--text);font-size:14px;fill:var(--chalk)}
-.d .numeral{font-family:var(--display);font-weight:600;fill:var(--chalk);letter-spacing:-.02em}
-.d .serial{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--chalk)}
-.d .lang{stroke:var(--chalk-3);stroke-width:1}
-.d g.scene{transition:opacity .4s var(--ease)}
-.hier td:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+/* ═══ 4 Nov 2026: rethinking the currency note, in four questions ═══ */
 
-/* ═══ ORIGINAL FIGURES (ported from ../demo-currency.html, scoped to .orig) ═══ */
-/* from the old shared stylesheet */
-.orig :where(h2:not(.orig-block > h2),h3:not(.orig-block > h3)){font-family:var(--serif);font-weight:600;letter-spacing:-.02em}
-.orig :where(p:not(.orig-block > p)){font-size:19px;line-height:30px;max-width:var(--text)}
-.orig :where(p + p:not(.orig-block > p)){margin-top:var(--s4)}
-.orig :where(figure){margin-block:var(--s6)}
-.orig :where(figure svg){display:block;width:100%;height:auto}
-.orig :where(figcaption){border-top:1px solid var(--rule);padding-top:var(--s4);margin-top:var(--s4);max-width:var(--text)}
-.orig .o-legend{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s5);margin-bottom:var(--s5)}
-.orig .o-seg{display:flex;flex-wrap:wrap;max-width:720px}
-.orig .o-seg button{flex:1 1 0;min-width:0;text-align:center;height:40px;padding-inline:var(--s4);border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;font-size:15px;cursor:pointer;margin-right:-1px;transition:background 200ms,color 200ms}
-.orig .o-seg button:hover{background:var(--paper-2)}
-@media (max-width:719px){.orig :where(p:not(.orig-block > p)){font-size:17px;line-height:27px}.orig .o-seg button{height:44px}}
-/* the original page's own styles */
-.orig .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:22px 0 14px}
-.orig .o-seg{display:inline-flex;background:var(--paper);border:1px solid var(--line);overflow:hidden}
-.orig .o-seg button{border:0;background:none;padding:9px 16px;font:600 .85rem var(--sans);cursor:pointer;color:var(--ink-soft)}
-.orig .o-seg button.on{background:var(--brand);color:var(--paper)}
-.orig .hintline{font-size:.8rem;color:var(--muted)}
-.orig .o-stage{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;padding-bottom:8px}
-.orig .note-holder{background:var(--paper);border:1px solid var(--line);padding:26px;display:grid;place-items:center}
-.orig svg.o-note{width:100%;max-width:520px;height:auto;display:block}
-.orig .hotspot{cursor:pointer}
-.orig .hotspot circle.ring{fill:var(--paper);stroke:var(--brand);stroke-width:2}
-.orig .hotspot text{font:600 11px var(--sans);fill:var(--brand)}
-.orig .hotspot.on circle.ring{fill:var(--brand)}
-.orig .hotspot.on text{fill:var(--paper)}
-.orig .explain{background:var(--paper);border:1px solid var(--line);padding:20px;min-height:200px}
-.orig .explain .cat{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;margin-bottom:8px}
-.orig .cat.must{background:var(--note-3);color:var(--teal)}
-.orig .cat.good{background:var(--paper-2);color:var(--brand)}
-.orig .cat.use{background:var(--ochre-tint);color:var(--ochre)}
-.orig .explain h3{font-size:1.02rem;margin-bottom:6px}
-.orig .explain p{font-size:.88rem;color:var(--ink-soft)}
-.orig .o-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.orig .o-legend span{font-size:.7rem;padding:3px 9px}
-.orig .figure{background:var(--paper);border:1px solid var(--line);padding:22px;margin:22px 0;min-width:0}
-.orig .figure svg{display:block;width:100%;height:auto;aspect-ratio:5/2}
-.orig .figure figcaption{margin-top:10px;font-size:.78rem;color:var(--muted);max-width:68ch}
-.orig .figure figcaption b{color:var(--ink)}
-.orig .figtitle{font:600 .68rem var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.orig .svg-lbl{font:600 14px var(--sans);fill:var(--ink)}
-.orig .svg-sub{font:400 11.5px var(--sans);fill:var(--ink-3)}
-.orig .svg-tag{font:600 10.5px var(--sans);letter-spacing:.06em}
-.orig .wall{background:var(--paper);border:1px solid var(--line);padding:22px;margin:22px auto 8px}
-.orig .wall-grid{background-image:radial-gradient(var(--rule) 1.3px,transparent 1.3px);background-size:22px 22px;padding:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;align-items:start}
-.orig .cluster{min-width:0}
-.orig .sticky b{font-weight:600}
-.orig .cluster h4{font:600 .72rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;background:var(--paper);display:inline-block;padding:3px 8px;border:1px solid var(--line)}
-.orig .sticky{font-family:var(--hand);font-size:1.15rem;line-height:1.3;color:var(--ink);background:var(--note-1);padding:12px 14px;margin-bottom:14px;transform:rotate(-1.2deg)}
-.orig .sticky.s2{background:var(--note-3);transform:rotate(1.3deg)}
-.orig .sticky.s3{background:var(--paper-2);transform:rotate(-.8deg)}
-.orig .sticky.s4{background:var(--note-2);transform:rotate(1.8deg)}
-.orig .sticky.s5{background:var(--ochre-tint);transform:rotate(-2deg)}
-@media (max-width:760px){.orig .wall-grid{grid-template-columns:1fr}}
-@media (max-width:820px){.orig .o-stage{grid-template-columns:1fr}}
+/* ── a chapter: its number, its question, one line, its product term ── */
+.ch{padding-block:64px 0}
+/* the four lines close the top fold, so the first chapter needs no second rule */
+.phead + .ch{padding-top:40px}
+.phead + .ch .chh{border-top:0;padding-top:0}
+.chh{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:6px 24px;align-items:baseline;padding:20px 0;border-top:1.5px solid var(--ink);margin-bottom:20px}
+.chh .no{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--signal)}
+.chh h2{font-family:var(--display);font-weight:600;font-size:28px;line-height:34px;letter-spacing:-.02em;color:var(--ink)}
+.chh p{margin-top:6px;font-size:16px;line-height:26px;color:var(--ink-2);max-width:78ch}
+.chh .pm{font-family:var(--mono);font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);text-align:right}
+
+/* ── shared by the figures ── */
+.sq{display:block;padding:26px 32px 24px}
+.sq .cap{display:block;margin-bottom:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.sq .cap b{font-weight:400;color:var(--chalk)}
+.sq h3{font-family:var(--display);font-weight:600;font-size:15px;line-height:22px;color:var(--chalk)}
+.sq .k{display:block;font-family:var(--mono);font-size:10px;line-height:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.sq .so{margin-top:18px;padding-top:14px;border-top:1px solid var(--edge);font-size:16px;line-height:26px;font-weight:600;color:var(--chalk);max-width:110ch}
+.sq .so b{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-right:12px}
+.sq .src{margin-top:10px;font-family:var(--mono);font-size:10px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-3)}
+.sq .src a{color:var(--chalk-2);text-decoration:none;border-bottom:1px solid var(--edge)}
+.sq .src a:hover{color:var(--signal)}
+.sq svg.d{display:block;width:100%;height:auto}
+
+/* ── the header: the title beside today’s ₹500, which becomes the redesign once ── */
+.phead .ph-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px 48px;align-items:center}
+.phead .ph-v{margin:0;padding:14px;border:1px solid var(--navy);position:relative;overflow:hidden;padding-bottom:46px}
+.phead .ph-v svg{display:block;width:100%;height:auto}
+.phead .zcap{position:absolute;left:14px;bottom:12px;display:grid;font-family:var(--mono);font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-2)}
+.phead .zcap span{grid-area:1/1}
+.hzm .hq{animation:hqo .45s var(--ease) forwards;animation-delay:calc(1.2s + var(--q) * 45ms)}
+.hzm .hta .tbd{animation:hqo .5s var(--ease) 1.95s forwards}
+.hzm .htb .nb{opacity:0;animation:hpi .6s var(--ease) 1.8s forwards}
+.hzm .htb .hp{opacity:0;transform:translateY(6px);animation:hpi .55s var(--ease) forwards;animation-delay:calc(2.15s + var(--p) * 170ms)}
+@keyframes hqo{to{opacity:0}}
+@keyframes hpi{to{opacity:1;transform:none}}
+.phead .zc1{animation:hqo .5s var(--ease) 1.6s forwards}
+.phead .zc2{opacity:0;animation:hpi .7s var(--ease) 3.3s forwards}
+html.static .hzm .hq,html.static .hzm .hta .tbd,html.static .hzm .htb .nb,html.static .hzm .htb .hp,html.static .phead .zcap span{animation:none}
+html.static .hzm .hq,html.static .hzm .hta .tbd,html.static .phead .zc1{opacity:0}
+html.static .hzm .htb .nb,html.static .hzm .htb .hp,html.static .phead .zc2{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .hzm .hq,.hzm .hta .tbd,.hzm .htb .nb,.hzm .htb .hp,.phead .zcap span{animation:none}
+  .hzm .hq,.hzm .hta .tbd,.phead .zc1{opacity:0}
+  .hzm .htb .nb,.hzm .htb .hp,.phead .zc2{opacity:1;transform:none}
+}
+
+/* ── Fig. 2: today’s ₹500, front and back, the job of each part, and who reads it ── */
+.ft .f1n{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 28px}
+.ft .jobs{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:14px;border-top:1px solid var(--edge)}
+.ft .jobs li{padding:12px 20px 12px 0;border-bottom:1px solid var(--edge);display:grid;grid-template-columns:76px minmax(0,1fr);gap:4px 12px;align-items:baseline}
+.ft .jobs li:nth-child(3n+2),.ft .jobs li:nth-child(3n){padding-left:20px;border-left:1px solid var(--edge)}
+.ft .jobs b{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.ft .jobs .nos{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--chalk-3)}
+.ft .jobs p{grid-column:1/-1;font-size:13px;line-height:20px;color:var(--chalk-2)}
+.ft .rdr{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px 20px;align-items:center;margin-top:16px}
+.ft .rdr ul{list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.ft .rdr li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:2px 8px;align-items:center;color:var(--chalk-2)}
+.ft .rdr li .ic{grid-row:1/3;color:var(--signal)}
+.ft .rdr li b{font-size:12px;line-height:16px;font-weight:600;color:var(--chalk)}
+.ft .rdr li span{font-family:var(--mono);font-size:10px;line-height:14px;letter-spacing:.02em;color:var(--chalk-3)}
+
+/* ── Fig. 1: the world’s notes, one row a family, every family at one scale ── */
+.fw .lu{display:grid;grid-template-columns:148px minmax(212px,1.2fr) minmax(0,1.25fr) minmax(0,.85fr) minmax(0,1.15fr) minmax(0,1fr);border-top:1px solid var(--edge)}
+.fw .lr{display:contents}
+.fw .lr > *{padding:8px 16px 8px 0;border-bottom:1px solid var(--edge);min-width:0;display:flex;align-items:center}
+.fw .lr.hd > *{font-family:var(--mono);font-size:10px;line-height:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3);padding-block:8px 7px;align-items:flex-end}
+.fw .lr.me > *{background:rgba(231,236,240,.04)}
+.fw .lr.me > :first-child{padding-left:10px;border-left:2px solid var(--chalk-2)}
+.fw .cu{flex-direction:column;align-items:flex-start;justify-content:center;gap:6px}
+.fw .cu > a{font-size:14px;line-height:19px;font-weight:600;color:var(--chalk);text-decoration:none}
+.fw .cu > a .ar{font-size:11px;font-weight:400;color:var(--chalk-3);transition:color .2s var(--ease)}
+.fw .cu > a:hover .ar,.fw .cu > a:focus-visible .ar{color:var(--chalk)}
+.fw .sh{display:grid;gap:4px;width:100%;font-family:var(--mono);font-size:10px;line-height:13px;letter-spacing:.04em;color:var(--signal)}
+.fw .sh i{display:block;height:3px;width:var(--w);min-width:3px;background:var(--signal)}
+.fw .sh.tag{color:var(--chalk-3);letter-spacing:.08em;text-transform:uppercase}
+.fw .fm{display:grid;grid-template-columns:minmax(0,1fr) 62px;gap:12px;align-items:end}
+.fw svg.lus{display:block;width:100%;height:auto}
+.d.lus .n{stroke:var(--navy);stroke-width:.7}
+.fw .lg{list-style:none;display:grid;gap:0;align-self:end;font-family:var(--mono);font-size:9.5px;line-height:10px;color:var(--chalk-2)}
+.fw .lg li{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.fw .lg i{width:7px;height:7px;flex:none}
+.fw .lg .ns{white-space:normal;color:var(--chalk-3)}
+.fw .hd .fmk{display:grid;gap:5px}
+.fw .scb{display:flex;align-items:center;gap:6px}
+.fw svg.lsc{display:block;flex:none;width:28.41%;height:auto}
+.fw .lsc path{fill:none;stroke:var(--chalk-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.fw .hd .mm{letter-spacing:.04em;text-transform:none}
+.fw .trt{gap:9px;font-size:12px;line-height:17px;color:var(--chalk-2)}
+.fw svg.gl{display:block;width:20px;height:20px;flex:none;color:var(--chalk-3)}
+.fw .tg .tgn{fill:none;stroke:var(--chalk-3);stroke-width:1.3;stroke-linejoin:round}
+.fw .tg .tgm{fill:none;stroke:var(--signal);stroke-width:1.7;stroke-linecap:round}
+.fw .tg.t0 .tgn{stroke-dasharray:2 2}
+.fw .kk{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fw .tk{font-family:var(--mono);font-size:10px;line-height:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.fw .tk.av{color:var(--chalk-3)}
+.fw .tk.me{color:var(--chalk-2)}
+.fw .lus .n{transform-box:fill-box;transform-origin:0 100%}
+/* a photo of the real note, when one is saved beside the page: over the front note, at the same scale, SPECIMEN across it */
+.fw .pw{position:relative;display:block}
+.fw .phw{position:absolute;display:none;overflow:hidden;background:var(--navy-2);outline:1px solid var(--navy);transform-origin:0 100%;transition:transform .3s var(--ease);z-index:1}
+.fw .phw.on{display:block}
+.fw .phw .ph{display:block;width:100%;height:100%;object-fit:contain}
+.fw .phw[data-up] .ph{position:absolute;left:50%;top:50%;width:var(--rw);height:var(--rh);transform:translate(-50%,-50%) rotate(-90deg)}
+.fw .spec{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-14deg);padding:1px 4px 1px 7px;background:rgba(24,33,44,.64);font-family:var(--mono);font-size:9px;line-height:12px;font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:var(--chalk);white-space:nowrap;pointer-events:none}
+.fw .phw.on:focus-visible{transform:scale(2.4);z-index:3;outline:2px solid var(--chalk)}
+@media (hover:hover){.fw .phw.on{cursor:zoom-in}.fw .phw.on:hover{transform:scale(2.4);z-index:3}}
+.fw .pc{display:none;font-family:var(--mono);font-size:9.5px;line-height:13px;letter-spacing:.04em;color:var(--chalk-3)}
+.fw .lr.hp .pc{display:block}
+.fw .sh.tag a{color:inherit;text-decoration:none;border-bottom:1px solid var(--edge)}
+.fw .sh.tag a:hover{color:var(--chalk)}
+.chh p a{color:inherit;text-decoration:underline;text-decoration-color:var(--signal);text-underline-offset:3px}
+/* ── Fig. 3: the spec, one row a part ── */
+.f3 .lad{display:grid;grid-template-columns:96px minmax(0,1.25fr) 74px 74px 70px minmax(0,1fr) minmax(0,2.1fr);border-top:1px solid var(--edge)}
+.f3 .lr{display:contents}
+.f3 .lr > *{padding:7px 10px 7px 0;border-bottom:1px solid var(--edge);display:flex;align-items:center;min-width:0;font-size:13px;line-height:19px;color:var(--chalk-2)}
+.f3 .lr.hd > *{font-family:var(--mono);font-size:10px;line-height:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.f3 .lr .pt{font-weight:600;color:var(--chalk)}
+.f3 .tier{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.f3 .tier span{padding:3px 6px;border:1px solid var(--signal);color:var(--signal)}
+.f3 .tier.opt span{border-color:var(--chalk-3);color:var(--chalk-2)}
+.f3 .tier.drop span{border-style:dashed;border-color:var(--chalk-3);color:var(--chalk-3)}
+.f3 .rp{font-family:var(--mono);font-size:11px;color:var(--chalk)}
+.f3 .rp .dt{display:inline-flex;gap:3px;margin-right:6px}
+.f3 .rp .dt i{width:7px;height:7px;background:var(--signal)}
+.f3 .sz{font-family:var(--mono);font-size:11px;color:var(--chalk-3)}
+.f3 .zmv{width:62px;height:32px}
+.d .zm,.zmv .zm{fill:rgba(231,236,240,.08);stroke:var(--chalk-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.zmv .zp{fill:rgba(231,236,240,.12)}
+.zmv .zf{fill:none;stroke:var(--chalk-3);stroke-width:.6;stroke-dasharray:1.5 1.5}
+.zmv .zl{fill:var(--signal);opacity:.85}
+.f3.pre .lr:not(.hd) > *{opacity:0}
+.f3.go .lr:not(.hd) > *{transition:opacity .4s var(--ease);transition-delay:calc(var(--k) * 60ms + 120ms)}
+
+/* ── Fig. 4: the new note, to pick, flip, fold and see as some users do ── */
+.f4 .fgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 36px;align-items:start}
+.f4 .fstage{min-width:0}
+.f4 .vcap{margin-top:10px;font-size:14px;line-height:22px;color:var(--chalk-2);min-height:44px}
+.f4 .vcap b{font-weight:600;color:var(--chalk)}
+.f4 .fctl{display:grid;gap:16px;min-width:0}
+.f4 .grp .k{margin-bottom:8px}
+.f4 .seg button{height:34px;padding-inline:12px}
+.f4 .fmy{margin-top:2px}
+.sheet .d.fmy text{stroke:none}
+.fmy .fmm{font-family:var(--mono);font-size:17px;letter-spacing:.02em;fill:var(--chalk-3)}
+.fnl .fv{display:none}
+.fnl .fv.on{display:inline}
+.fnl .fall{transition:filter .4s var(--ease)}
+.fnl.v-low .fall{filter:blur(2.6px)}
+.fnl.v-cvd .fall{filter:url(#cvd)}
+.fnl.v-touch .nt > :not(.nb):not(.ntc){opacity:.05}
+.fnl.v-touch .nt .nb{fill:rgba(231,236,240,.12);stroke:var(--chalk-3);stroke-width:2;stroke-dasharray:8 6}
+.fnl.v-touch .ndot{fill:var(--signal);stroke:var(--chalk);stroke-width:2}
+.fnl .nt > *{transition:opacity .35s var(--ease)}
+.fnl .fold .fl1,.fnl .fold .fl2{fill:none;stroke:var(--signal);stroke-width:1.5;stroke-dasharray:6 5}
+.fnl .fold .fh{fill:var(--navy);fill-rule:evenodd;opacity:.9}
+.fmy .fam{cursor:pointer}
+.fmy .fam rect{transition:opacity .25s var(--ease)}
+.fmy .fam:not(.on) rect{opacity:.55}
+.fmy .fam.on .fmb{stroke:var(--signal);stroke-width:2}
+.fmy .fam:focus-visible{outline:none}
+.fmy .fam:focus-visible .fmb{stroke:var(--chalk);stroke-width:2}
+.fmy .fmn{font-family:var(--display);font-weight:700;font-size:17px}
+
+/* ── first view: each figure fills in once, then rests ── */
+.fw.pre .lus .n{transform:scaleX(0)}
+.fw.go .lus .n{transition:transform .55s var(--ease);transition-delay:calc(var(--k) * 70ms + var(--i) * 45ms + 120ms)}
+.fw.pre .sh i{width:0}
+.fw.pre .phw{opacity:0}
+.fw.go .phw{transition:opacity .4s var(--ease),transform .3s var(--ease);transition-delay:calc(var(--k) * 70ms + 420ms),0s}
+.fw.go .sh i{transition:width .7s var(--ease);transition-delay:calc(var(--k) * 70ms + 60ms)}
+.ft.pre .mkr{opacity:0}
+.ft.go .mkr{transition:opacity .35s var(--ease);transition-delay:calc(var(--k) * 70ms + 200ms)}
+.f4.pre .fmy .fam{opacity:0}
+.f4.go .fmy .fam{transition:opacity .4s var(--ease);transition-delay:calc(var(--k) * 90ms + 200ms)}
+
+@media (max-width:1366px){
+  .fw .lu{grid-template-columns:134px minmax(196px,1.2fr) minmax(0,1.2fr) minmax(0,.85fr) minmax(0,1.15fr) minmax(0,.95fr)}
+  .f3 .lad{grid-template-columns:90px minmax(0,1.2fr) 64px 64px 70px minmax(0,1fr) minmax(0,1.8fr)}
+}
+@media (max-width:1180px){
+  .fw .lu{grid-template-columns:118px minmax(196px,1.35fr) minmax(0,1fr) minmax(0,.75fr) minmax(0,1fr) minmax(0,.8fr)}
+  .fw .lr > *{padding-right:12px}
+  .fw .fm{grid-template-columns:minmax(0,1fr) 52px;gap:8px}
+  .fw .trt{gap:7px}
+  .phead .ph-g{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 32px}
+  .ft .rdr{grid-template-columns:1fr}
+  .ft .rdr ul{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .f3 .lad{grid-template-columns:86px minmax(0,1.2fr) 64px 64px 70px minmax(0,1.9fr)}
+  .f3 .lr .sz{display:none}
+  .f4 .fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 28px}
+}
+@media (max-width:900px){
+  .fw .lu{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1px;background:var(--edge);border:1px solid var(--edge);scrollbar-width:thin}
+  .fw .lr.hd{display:none}
+  .fw .lr{display:grid;align-content:start;gap:10px;flex:0 0 calc((100% - 3px) / 3.3);scroll-snap-align:start;background:var(--navy);padding:14px 16px 16px}
+  .fw .lr.me{background:var(--navy-2)}
+  .fw .lr > *,.fw .lr.me > *,.fw .lr.me > :first-child{border:0;padding:0;background:none}
+  .fw .fm{grid-template-columns:1fr;gap:8px}
+  .fw .lg{display:flex;flex-wrap:wrap;gap:3px 10px}
+  .fw .trt{display:grid;grid-template-columns:20px minmax(0,1fr);gap:3px 9px;align-items:center}
+  .fw .kk{position:static;width:auto;height:auto;overflow:visible;clip:auto;grid-column:1/-1;font-family:var(--mono);font-size:9.5px;line-height:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+  .f4 .fgrid{grid-template-columns:1fr}
+  .f4 .fctl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .phead .ph-g{grid-template-columns:1fr}
+  .phead .ph-v{max-width:760px}
+  .ft .f1n{grid-template-columns:1fr}
+  .ft .jobs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ft .jobs li:nth-child(3n+2),.ft .jobs li:nth-child(3n){padding-left:0;border-left:0}
+  .ft .jobs li:nth-child(2n){padding-left:20px;border-left:1px solid var(--edge)}
+  .chh{grid-template-columns:40px minmax(0,1fr)}
+  .chh .pm{grid-column:2;text-align:left}
+  .f3 .lad{grid-template-columns:1fr}
+  .f3 .lr{display:grid;grid-template-columns:62px minmax(0,1fr);gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--edge)}
+  .f3 .lr > *{border:0;padding:0}
+  .f3 .lr.hd{display:none}
+  .f3 .lr .zw{grid-row:1/4;grid-column:1}
+  .f3 .lr .tier{grid-column:2}
+  .f3 .lr .pt,.f3 .lr .rp,.f3 .lr .wy{grid-column:2}
+  .f3 .lr .rp.bk{display:none}
+}
+@media (max-width:820px){
+  .fw .lr{flex-basis:calc((100% - 2px) / 2.4)}
+}
+@media (max-width:560px){
+  .fw .lr{flex-basis:calc((100% - 1px) / 1.3)}
+}
+@media (max-width:600px){
+  .sq{padding:20px 16px}
+  .ft .jobs{grid-template-columns:1fr}
+  .ft .jobs li:nth-child(2n){padding-left:0;border-left:0}
+  .ft .rdr ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .f4 .fctl{grid-template-columns:1fr}
+  .chh h2{font-size:22px;line-height:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fw .lus .n,.fw .sh i,.fw .phw,.ft .mkr,.f3 .lr > *,.f4 .fmy .fam,.fnl .fall,.fnl .nt > *{transition:none!important}
+}
+/* ── the notes themselves: drawn at 4 units to the millimetre ── */
+.sheet .d .nt text,.sheet .d .tf text,.sheet .d .hzt text{stroke:none}
+.nt .nb{stroke:none}
+.nt .nn{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.02em}
+.nt .nw1,.nt .ni1{font-family:'Noto Sans Devanagari',var(--display);font-weight:600;font-size:15px}
+.nt .nw2{font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.06em}
+.nt .nc{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em}
+.nt .ni1{fill:var(--navy)}
+.nt .ni2{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.06em;fill:var(--navy)}
+.nt .ni3{font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;fill:var(--navy);opacity:.8}
+.nt .nl,.nt .nl2{fill:none;stroke:var(--navy);stroke-width:2;opacity:.42}
+.nt .nl2{stroke-width:1.5}
+.nt .nsig{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-linecap:round}
+.nt .nthr{fill:none;stroke:var(--navy);stroke-width:4;stroke-dasharray:10 8;opacity:.5}
+.nt .nwm{fill:rgba(255,255,255,.42);stroke:var(--navy);stroke-width:1;stroke-dasharray:4 3;opacity:.7}
+.nt .nwp{fill:none;stroke:var(--navy);stroke-width:1.5;opacity:.28}
+.nt .nsr{fill:none;stroke:var(--navy);stroke-width:1.25;opacity:.6}
+.nt .nsr2{fill:none;stroke:var(--navy);stroke-width:3;opacity:.6}
+.nt .nem{fill:none;stroke:var(--navy);stroke-width:1.5;opacity:.7}
+.nt .nsn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;fill:var(--navy)}
+.nt .ndot{fill:#FFFFFF;stroke:var(--navy);stroke-width:1.5}
+.nt .ndot.bk{fill:none;stroke-dasharray:2 2;opacity:.6}
+.nt .nmo,.nt .nlp{fill:rgba(255,255,255,.3);stroke:var(--navy);stroke-width:1;opacity:.55}
+.nt .nmo2{fill:none;stroke:var(--navy);stroke-width:1.5;opacity:.5}
+/* today's ₹500: the RBI's parts, drawn as a plan */
+.tf .tbd{fill:var(--chalk-2)}
+.tf .to,.tf .tr{fill:none;stroke:var(--navy);stroke-width:1.5}
+.tf .tr{stroke-width:2.5}
+.tf .tl{fill:none;stroke:var(--navy);stroke-width:1.25;opacity:.6}
+.tf .tdv{font-family:'Noto Sans Devanagari',var(--display);font-weight:600;font-size:24px;fill:var(--navy)}
+.tf .tmi{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-dasharray:1 3}
+.tf .tth{fill:none;stroke:var(--navy);stroke-width:4;stroke-dasharray:10 8;opacity:.55}
+.tf .tw{fill:rgba(255,255,255,.3);stroke:var(--navy);stroke-width:1;stroke-dasharray:4 3}
+.tf .tsn{font-family:var(--mono);font-size:10px;letter-spacing:.06em;fill:var(--navy)}
+.tf .ts2{font-size:11px}.tf .ts3{font-size:12px}.tf .ts4{font-size:13px}
+.tf .tcs{font-family:var(--display);font-weight:700;font-size:24px;fill:var(--navy)}
+.tf .tbl{fill:none;stroke:var(--navy);stroke-width:2.5;stroke-linecap:round}
+.d .mkr circle{fill:var(--signal);stroke:var(--navy);stroke-width:2}
+.d .mkr text{font-family:var(--mono);font-size:11px;font-weight:500;fill:var(--navy);stroke:none}
+/* the PM lens, as on the other case studies */
+/* the PM lens, on paper, in its own frame */
+.pml{padding-block:72px}
+.lens{position:relative;padding:48px 48px 40px}
+.lens .bk{position:absolute;width:28px;height:28px;pointer-events:none;transition:transform .7s cubic-bezier(.2,.75,.3,1)}
+.lens .bk.tl{top:0;left:0;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);transform-origin:top left}
+.lens .bk.tr{top:0;right:0;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform-origin:top right}
+.lens .bk.bl{bottom:0;left:0;border-bottom:1.5px solid var(--ink);border-left:1.5px solid var(--ink);transform-origin:bottom left}
+.lens .bk.br{bottom:0;right:0;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform-origin:bottom right}
+.lens .lhd{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:end}
+.lens .lhd>*,.lens .lft>*{min-width:0}
+.lens .kick{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:16px}
+.lens .kick::before{content:"";flex:none;width:8px;height:8px;background:var(--signal)}
+.lens .ask{font-family:var(--display);font-weight:600;font-size:clamp(26px,2.8vw,38px);line-height:1.18;letter-spacing:-.02em;color:var(--ink);max-width:30ch;transition:filter .9s ease-out .12s,opacity .9s ease-out .12s}
+.lens cite{display:block;margin-top:14px;font-family:var(--mono);font-style:normal;font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.lens .k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.lens .tests p{font-size:17px;line-height:27px;color:var(--ink-2)}
+.lens .moves{list-style:none;counter-reset:mv;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:36px;border-top:1px solid rgba(24,33,44,.25);padding-top:24px}
+.lens .moves li{counter-increment:mv;min-width:0;padding:0 24px;border-left:1px solid rgba(24,33,44,.25);transition:opacity .52s ease-out,transform .52s ease-out}
+.lens .moves li:first-child{padding-left:0;border-left:0}
+.lens .moves li:last-child{padding-right:0}
+.lens .moves li::before{content:counter(mv);display:block;font-family:var(--mono);font-size:12px;line-height:18px;color:var(--signal);margin-bottom:8px}
+.lens .moves b{display:block;font-family:var(--display);font-weight:600;font-size:19px;line-height:27px;color:var(--ink)}
+.lens .moves span{display:block;margin-top:6px;font-size:16px;line-height:25px;color:var(--ink-2)}
+.lens .lft{display:grid;grid-template-columns:7fr 5fr;gap:56px;margin-top:32px;border-top:1px solid rgba(24,33,44,.25);padding-top:24px;align-items:start}
+.lens .wrong p{font-family:var(--display);font-weight:600;font-size:19px;line-height:28px;color:var(--ink)}
+.lens dl div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:4px 0}
+.lens dt{font-family:var(--mono);font-size:12px;line-height:23px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.lens dd{font-size:15px;line-height:23px;color:var(--ink-2)}
+.lens.pre .bk{transform:scale(0)}
+.lens.pre .ask{filter:blur(6px);opacity:.25}
+.lens.pre .moves li{opacity:0;transform:translateY(10px)}
+.lens .moves li:nth-child(1){transition-delay:.42s}
+.lens .moves li:nth-child(2){transition-delay:.62s}
+.lens .moves li:nth-child(3){transition-delay:.82s}
+@media (max-width:860px){
+  .lens{padding:36px 24px 28px}
+  .lens .lhd,.lens .lft{grid-template-columns:1fr;gap:20px}
+  .lens .moves{grid-template-columns:1fr}
+  .lens .moves li{padding:16px 0 0;border-left:0;border-top:1px solid rgba(24,33,44,.25)}
+  .lens .moves li:first-child{padding-top:0;border-top:0}
+}
+@media (max-width:600px){
+  .pml{padding-block:56px}
+}
+.lens cite a{color:inherit;text-decoration:none;border-bottom:1px solid currentColor}
+
 </style>
 </head>
 <body>
-<a class="skip" href="#lab">Skip to the drawing</a>
+<a class="skip" href="#world">Skip to the page</a>
 
 <header class="top">
   <a class="mark" href="index.html"><i>M</i>Madhumitha D V</a>
@@ -103,266 +353,71 @@
 
 <main>
 
+
 <header class="phead">
   <div class="in">
     <div class="crumb reveal"><a href="index.html#work">← All work</a><span class="no">Money · Case study</span></div>
-    <h1 class="reveal" style="--d:.05s">Currency Design Breakdown</h1>
-    <p class="q reveal" style="--d:.1s">What does a note have to say before anyone properly looks at it?</p>
-    <p class="s reveal" style="--d:.15s">A note is a product for everyone: sighted or not, any language, human or machine. Five currencies taken apart, then the ₹10, ₹20 and ₹100 redrawn. Here you can pick a note, flip it, turn it vertical, and lay it over the others at real size.</p>
+    <div class="ph-g"><div class="ph-t">
+    <h1 class="reveal" style="--d:.05s">Rethinking the currency note</h1>
+    <p class="q reveal" style="--d:.1s">We use it every day. Have we ever asked why it looks the way it does?</p>
+    <p class="s reveal" style="--d:.15s">I compared ten notes from around the world, took today’s ₹500 apart, then sorted, placed and sized every part again: for people who see a note, see it poorly, or only feel it.</p></div>
+    <figure class="ph-v sheet reveal" style="--d:.1s"><svg class="d hzm" viewBox="0 0 640 340" aria-hidden="true" focusable="false"><g class="hta tf" transform="translate(20,38)"><rect class="tbd" width="600" height="264"/><g class="hq" style="--q:0" data-n="1"><g class="tp"><rect class="to" x="30" y="190" width="34" height="34"/><path class="tl" d="M38,214 c6,-18 14,-18 18,0"/></g></g><g class="hq" style="--q:1" data-n="2"><g class="tp"><rect class="to" x="170" y="150" width="26" height="74"/><path class="tl" d="M176,166 v42"/></g></g><g class="hq" style="--q:2" data-n="3"><g class="tp"><text class="tdv" x="34" y="104">५००</text></g></g><g class="hq" style="--q:3" data-n="4"><g class="tp"><ellipse class="to" cx="300" cy="132" rx="70" ry="92"/><path class="tl" d="M300,82 a26,26 0 1 0 .1,0 M248,204 c8,-42 96,-42 104,0"/></g></g><g class="hq" style="--q:4" data-n="5"><g class="tp"><path class="tmi" d="M34,134 h112"/></g></g><g class="hq" style="--q:5" data-n="6"><g class="tp"><path class="tth" d="M392,8 V256"/></g></g><g class="hq" style="--q:6" data-n="7"><g class="tp"><path class="tl" d="M406,62 h108"/><path class="tl" d="M406,71 h108"/><path class="tl" d="M406,80 h92.9"/><path class="tl" d="M406,89 h108"/><path class="tl" d="M406,98 h108"/><circle class="to" cx="496" cy="166" r="11"/><path class="tl" d="M410,172 c8,-10 14,8 22,-2 s10,-8 16,2"/></g></g><g class="hq" style="--q:7" data-n="8"><g class="tp"><ellipse class="tw" cx="552" cy="76" rx="24" ry="36"/></g></g><g class="hq" style="--q:8" data-n="9"><g class="tp"><text class="tsn" x="26" y="30">0AB<tspan class="ts2"> 12</tspan><tspan class="ts3">34</tspan><tspan class="ts4">56</tspan></text><text class="tsn" x="406" y="250">0AB<tspan class="ts2"> 12</tspan><tspan class="ts3">34</tspan><tspan class="ts4">56</tspan></text></g></g><g class="hq" style="--q:9" data-n="10"><g class="tp"><text class="tcs" x="590" y="246" text-anchor="end">₹500</text></g></g><g class="hq" style="--q:10" data-n="11"><g class="tp"><path class="to" d="M540,128 h16 v34 h-16 Z M536,166 h24"/></g></g><g class="hq" style="--q:11" data-n="12"><g class="tp"><circle class="tr" cx="574" cy="192" r="11"/></g></g><g class="hq" style="--q:12" data-n="13"><g class="tp"><path class="tbl" d="M6,104 l8,-8"/><path class="tbl" d="M6,116 l8,-8"/><path class="tbl" d="M6,128 l8,-8"/><path class="tbl" d="M6,140 l8,-8"/><path class="tbl" d="M6,152 l8,-8"/><path class="tbl" d="M582,104 l8,-8"/><path class="tbl" d="M582,116 l8,-8"/><path class="tbl" d="M582,128 l8,-8"/><path class="tbl" d="M582,140 l8,-8"/><path class="tbl" d="M582,152 l8,-8"/></g></g></g><g class="htb" transform="translate(20,20)"><g class="nt"><rect class="nb" width="600" height="300" fill="#DEE1E4"/><g class="ncol hp" style="--p:0"><rect class="np" width="150" height="300" fill="#7F8C99"/><rect class="np" x="573" width="27" height="300" fill="#7F8C99"/></g><g class="nval hp" style="--p:1"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(75.0,132) scale(2.0)">500</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#18212C">पाँच सौ रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#18212C">FIVE HUNDRED RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹500</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹500</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹500</text></g><g class="niss hp" style="--p:3"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro hp" style="--p:5"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec hp" style="--p:4"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem hp" style="--p:4" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser hp" style="--p:5"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc hp" style="--p:2"><circle class="ndot" cx="59" cy="11" r="5"/><circle class="ndot" cx="75" cy="11" r="5"/><circle class="ndot" cx="91" cy="11" r="5"/><circle class="ndot" cx="359" cy="289" r="5"/><circle class="ndot" cx="375" cy="289" r="5"/><circle class="ndot" cx="391" cy="289" r="5"/></g></g></g></svg><figcaption class="zcap"><span class="zc1">Today’s ₹500: thirteen parts on the front</span><span class="zc2">Redesigned: the value first, by sight and by touch</span></figcaption></figure></div>
     <dl class="four reveal" style="--d:.2s">
-      <div><dt>Stopped at</dt><dd>Everything on today's note shouts at once.</dd></div>
-      <div><dt>Noticed</dt><dd>The Euro sizes by value. The dollar does not.</dd></div>
-      <div><dt>Tradeoff</dt><dd>One size for every note, or variation you can feel in a pocket.</dd></div>
-      <div class="dec"><dt>Decided</dt><dd>Sized by value, and a serious look at the vertical format.</dd></div>
+      <div><dt>Stopped at</dt><dd>₹10, ₹20 and ₹50 carry no mark a finger can find.</dd></div>
+      <div><dt>Noticed</dt><dd>From ₹10 to ₹500 the note grows 27 mm longer, but only 3 mm taller.</dd></div>
+      <div><dt>Tradeoff</dt><dd>Every mark for touch or sight takes room from security and the two scripts.</dd></div>
+      <div class="dec"><dt>Decided</dt><dd>One shape at six sizes, a raised code, and the value in every quarter.</dd></div>
     </dl>
   </div>
 </header>
-
-<!-- ═══ THE NOTE BENCH ═══ -->
-<section class="lab" id="lab" aria-label="The note bench">
-  <div class="in"><div class="frame sheet reveal">
-    <div class="bench">
-      <span class="cap"><b>Fig. 1</b> · The note bench · drawn at 3 px per mm</span>
-      <div class="ctl-row">
-        <div class="seg" role="group" aria-label="Denomination">
-          <button type="button" data-den="10">₹10</button>
-          <button type="button" data-den="20">₹20</button>
-          <button type="button" data-den="100" aria-pressed="true">₹100</button>
-        </div>
-        <div class="seg" role="group" aria-label="View">
-          <button type="button" id="flip" aria-pressed="false">Flip</button>
-          <button type="button" id="rot" aria-pressed="false">Rotate</button>
-        </div>
-      </div>
-      <div class="ctl-row">
-        <button type="button" class="tog" id="tsize" aria-pressed="false"><i></i>Size by value</button>
-        <button type="button" class="tog" id="ttac" aria-pressed="true"><i></i>Tactile marks</button>
-        <button type="button" class="tog" id="tcol" aria-pressed="true"><i></i>Colour by value</button>
-      </div>
-      <svg class="d go" id="bench" viewBox="0 0 900 480" role="img" aria-label="A rupee note drawn to its real proportions, which can be switched between ten, twenty and one hundred rupees, flipped, rotated to the vertical format, and compared at scale with Euro and dollar notes.">
-        <defs><pattern id="hatch2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#E7ECF0" stroke-width=".7" opacity=".35"/></pattern></defs>
-        <g id="scene"></g>
-      </svg>
-      <div class="readout" id="ro">
-        <div><b id="ro-size">142 × 66</b><small>mm · width × height</small></div>
-        <div><b id="ro-face">Front</b><small>face</small></div>
-        <div><b id="ro-fmt">Horizontal</b><small>format</small></div>
-        <div><b id="ro-grow">+27 mm</b><small id="ro-grow-l">₹10 → ₹500 · length only</small></div>
-      </div>
-    </div>
-    <aside class="notes" id="notes">
-      <span class="n" id="n-k">Sized by value</span>
-      <h2 id="n-h">You should be able to tell them apart without looking</h2>
-      <p id="n-p">The rupee already grows in length, by 27 mm from ₹10 to ₹500. Its height barely moves, so two notes in a wallet feel the same between finger and thumb. Grow both edges, and the difference is in the hand before it is in the eye.</p>
-      <p class="dec"><b>Decided</b><span id="n-d">Denomination specific sizing, on both axes.</span></p>
-    </aside>
-  </div></div>
-</section>
-
-<!-- ═══ FROM THE ORIGINAL SHEET ═══ -->
-<section class="originals" id="originals"><div class="in">
-  <div class="lead reveal"><div><span class="no">The working figures</span><h2>The chart, the wall and the first draft</h2></div><p>The benchmark that made the argument, the sticky notes it came from, and the first ₹ note with its reasoning behind numbered dots.</p></div>
-  <div class="orig">
-    <div class="orig-block"><span class="k">Fig. 2 · The benchmark</span><h3>This is the whole argument in one chart</h3><p>Every currency benchmarked varies note size with value, except the dollar. The Swiss franc varies in height, because it is printed vertically.</p>
-  <figure class="figure">
-    <div class="figtitle">Does note size vary with denomination? · span from smallest to largest, in millimetres</div>
-    <svg viewBox="0 0 1000 462" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Range chart showing how far note dimensions vary between the smallest and largest denomination of six currencies. The US dollar has no variation.">
-      <line x1="230.0" y1="58" x2="230.0" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
-      <text class="svg-sub" x="230.0" y="48" text-anchor="middle">110 mm</text>
-      <line x1="453.3" y1="58" x2="453.3" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
-      <text class="svg-sub" x="453.3" y="48" text-anchor="middle">130 mm</text>
-      <line x1="676.7" y1="58" x2="676.7" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
-      <text class="svg-sub" x="676.7" y="48" text-anchor="middle">150 mm</text>
-      <line x1="900.0" y1="58" x2="900.0" y2="386" stroke="var(--paper-2)" stroke-width="1.5"/>
-      <text class="svg-sub" x="900.0" y="48" text-anchor="middle">170 mm</text>
-      <text class="svg-lbl" x="20" y="91">Euro</text>
-      <text class="svg-sub" x="20" y="109">€5 → €200</text>
-      <line x1="341.7" y1="86" x2="710.2" y2="86" stroke="var(--teal)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
-      <circle cx="341.7" cy="86" r="7" fill="var(--paper)" stroke="var(--teal)" stroke-width="3"/>
-      <circle cx="710.2" cy="86" r="7" fill="var(--teal)"/>
-      <text class="svg-tag" x="728.2" y="91" fill="var(--teal)">+33 mm</text>
-      <text class="svg-sub" x="20" y="127" opacity=".85">grows in both directions</text>
-      <text class="svg-lbl" x="20" y="148">US dollar</text>
-      <text class="svg-sub" x="20" y="166">$1 → $100</text>
-      <circle cx="743.7" cy="143" r="9" fill="var(--vermilion)"/>
-      <text class="svg-tag" x="763.7" y="148" fill="var(--vermilion)">0 mm. Every note the same size</text>
-      <text class="svg-sub" x="20" y="184" opacity=".85">no variation at all</text>
-      <text class="svg-lbl" x="20" y="205">Swiss franc</text>
-      <text class="svg-sub" x="20" y="223">10 → 1000 fr</text>
-      <line x1="375.2" y1="200" x2="766.0" y2="200" stroke="var(--teal)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
-      <circle cx="375.2" cy="200" r="7" fill="var(--paper)" stroke="var(--teal)" stroke-width="3"/>
-      <circle cx="766.0" cy="200" r="7" fill="var(--teal)"/>
-      <text class="svg-tag" x="784.0" y="205" fill="var(--teal)">+35 mm</text>
-      <text class="svg-sub" x="20" y="241" opacity=".85">vertical, grows in height</text>
-      <text class="svg-lbl" x="20" y="262">UAE dirham</text>
-      <text class="svg-sub" x="20" y="280">5 → 1000 AED</text>
-      <line x1="598.5" y1="257" x2="821.8" y2="257" stroke="var(--ochre)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
-      <circle cx="598.5" cy="257" r="7" fill="var(--paper)" stroke="var(--ochre)" stroke-width="3"/>
-      <circle cx="821.8" cy="257" r="7" fill="var(--ochre)"/>
-      <text class="svg-tag" x="839.8" y="262" fill="var(--ochre)">+20 mm</text>
-      <text class="svg-sub" x="20" y="298" opacity=".85">grows, and fully bilingual</text>
-      <text class="svg-lbl" x="20" y="319">Norwegian krone</text>
-      <text class="svg-sub" x="20" y="337">50 → 1000 kr</text>
-      <line x1="408.7" y1="314" x2="721.3" y2="314" stroke="var(--teal)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
-      <circle cx="408.7" cy="314" r="7" fill="var(--paper)" stroke="var(--teal)" stroke-width="3"/>
-      <circle cx="721.3" cy="314" r="7" fill="var(--teal)"/>
-      <text class="svg-tag" x="739.3" y="319" fill="var(--teal)">+28 mm</text>
-      <text class="svg-sub" x="20" y="355" opacity=".85">grows in length only</text>
-      <text class="svg-lbl" x="20" y="376">Indian rupee</text>
-      <text class="svg-sub" x="20" y="394">₹10 → ₹500</text>
-      <line x1="375.2" y1="371" x2="676.7" y2="371" stroke="var(--ink)" stroke-width="11" stroke-linecap="round" opacity=".22"/>
-      <circle cx="375.2" cy="371" r="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
-      <circle cx="676.7" cy="371" r="7" fill="var(--ink)"/>
-      <text class="svg-tag" x="694.7" y="376" fill="var(--ink)">+27 mm</text>
-      <text class="svg-sub" x="20" y="412" opacity=".85">grows, but height barely moves</text>
-      <text class="svg-tag" x="230" y="445" fill="var(--ink-3)">○ SMALLEST DENOMINATION　　● LARGEST　　LONGEST EDGE, PUBLISHED DIMENSIONS</text>
-      <rect x="20" y="426" width="190" height="30" rx="8" fill="var(--note-2)" stroke="var(--note-2)" stroke-width="1.5"/>
-      <text class="svg-tag" x="34" y="446" fill="var(--vermilion)">THE DOLLAR IS THE OUTLIER</text>
-    </svg>
-    <figcaption><b>This is the whole argument in one chart.</b> Every currency we benchmarked varies note size with value, except the dollar, which is why a US court found it failed blind and low vision users. The Swiss franc varies in <b>height</b> rather than length, because it is printed vertically: that is what made us take the rotation seriously rather than dismissing it.</figcaption>
-  </figure>
-    </div>
-    <div class="orig-block"><span class="k">Fig. 3 · The working board</span><h3>The exploration wall</h3><p>Distilled from the working Miro board: reference points → what each currency taught us → what we observed at home → how we converged.</p>
-  <div class="wall">
-  <div class="wall-grid">
-    <div class="cluster">
-      <h4>Reference points</h4>
-      <div class="sticky">Teardowns of 5 currencies: Euro, USD, UAE Dirham, Swiss Franc, Norwegian Krone</div>
-      <div class="sticky s2">ISO / IMF / IBNS standards, what a note <b>must</b> carry vs what's tradition</div>
-      <div class="sticky s3">Paper money since 618 AD China, which elements survived a millennium, and why</div>
-    </div>
-    <div class="cluster">
-      <h4>What each currency taught us</h4>
-      <div class="sticky s2"><b>Euro 🇪🇺</b>every denomination a different size, and it grows with value. Tactile ridges on the high notes. No real people on it: bridges and arches that belong to no single member state.</div>
-      <div class="sticky s4"><b>US dollar 🇺🇸</b>every note the same size, near enough the same colour. A US court found in 2008 this failed blind and low vision users. <b>The counter example, not the model.</b></div>
-      <div class="sticky s3"><b>Swiss franc 🇨🇭</b> · <b>vertical.</b> Same width, different height per denomination. Themes rather than portraits. The one that made us take the rotation seriously.</div>
-      <div class="sticky s5"><b>UAE dirham 🇦🇪</b>fully bilingual, Arabic and English, numerals in both systems on both faces. Closest parallel to India's two script mandate.</div>
-      <div class="sticky"><b>Norwegian krone 🇳🇴</b>abstract pixel mosaic reverse instead of a face. Proof a note can carry identity without a portrait.</div>
-    </div>
-    <div class="cluster">
-      <h4>What we observed</h4>
-      <div class="sticky s4">Everything on today's note shouts at once, no information hierarchy</div>
-      <div class="sticky s5">Accessibility is bolted on: tactile marks wear off, colours fail colour blind users</div>
-      <div class="sticky">One tiny canvas vs bilingual mandate + regional scripts + security features</div>
-      <div class="sticky s2">Real life eats notes: wallet folds, ATM rollers, counting machines, monsoons</div>
-    </div>
-    <div class="cluster">
-      <h4>Converging</h4>
-      <div class="sticky s3">Every element sorted: must have / good to have / use case based</div>
-      <div class="sticky">Two structural approaches drafted; vertical orientation flagged as the emerging trend</div>
-      <div class="sticky s5">Colour per denomination (₹20 amber, ₹100 green), checked against colour blindness</div>
-      <div class="sticky s4">7 typefaces tested: display faces for numerals, workhorses for scripts</div>
-    </div>
+<section class="ch" id="world" aria-labelledby="worldh"><div class="in">
+  <header class="chh reveal"><span class="no">01</span><div><h2 id="worldh">How does the world design its notes?</h2><p>Eight of the ten most traded currencies, in order of trade, two from my <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612156829952&amp;cot=14" rel="noopener">Miro board</a>, and ours: each family drawn to one scale, in its own colours.</p></div><span class="pm">In product terms · the competitors</span></header>
+  <div class="frame sheet sq fw reveal">
+    <span class="cap"><b>Fig. 1</b> · Ten notes and ours, most traded first, at one scale</span>
+    <div class="lu" role="list"><div class="lr hd" aria-hidden="true"><span>Currency</span><span class="fm"><span class="fmk">Family, to scale<span class="scb"><svg class="d lsc" viewBox="0 0 50 8" aria-hidden="true"><path d="M.5,2 V7 M.5,4.5 H49.5 M49.5,2 V7 M25,3.5 V5.5"/></svg><span class="mm">50 mm</span></span></span></span><span>On the face</span><span>Made of</span><span>Touch</span><span>Take</span></div><div role="listitem" class="lr" style="--k:0" data-c="USD"><span class="cu"><a href="https://uscurrency.gov/educational-materials/training-course/overview" rel="noopener">US dollar <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:100%"></i>89.2% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="US dollar, drawn to scale: $1 156 by 66 mm, green, $2 156 by 66 mm, green, $5 156 by 66 mm, green, $10 156 by 66 mm, green, $20 156 by 66 mm, green, $50 156 by 66 mm, green, $100 156 by 66 mm, green."><rect class="n" style="--i:6" x="18" y="4" width="156" height="66" fill="#7A917B"/><rect class="n" style="--i:5" x="15" y="6" width="156" height="66" fill="#7A917B"/><rect class="n" style="--i:4" x="12" y="8" width="156" height="66" fill="#7A917B"/><rect class="n" style="--i:3" x="9" y="10" width="156" height="66" fill="#7A917B"/><rect class="n" style="--i:2" x="6" y="12" width="156" height="66" fill="#7A917B"/><rect class="n" style="--i:1" x="3" y="14" width="156" height="66" fill="#7A917B"/><rect class="n" style="--i:0" x="0" y="16" width="156" height="66" fill="#7A917B"/></svg><span class="phw" data-k="USD" style="left:0;top:19.51%;width:88.64%;height:80.49%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#7A917B"></i>$1</li><li><i style="background:#7A917B"></i>$2</li><li><i style="background:#7A917B"></i>$5</li><li><i style="background:#7A917B"></i>$10</li><li><i style="background:#7A917B"></i>$20</li><li><i style="background:#7A917B"></i>$50</li><li><i style="background:#7A917B"></i>$100</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A statesman on each</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M5.5,13 c1.6,-1.8 3.2,1.8 4.8,0 s3.2,1.8 4.8,0 s2,1 3.4,0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cotton and linen</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg t0" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/></svg><span>None yet</span></span><span class="tk av">Avoid · One size and feel</span></div><div role="listitem" class="lr" style="--k:1" data-c="EUR"><span class="cu"><a href="https://www.ecb.europa.eu/euro/banknotes/design/html/index.en.html" rel="noopener">Euro <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:32.4%"></i>28.9% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Euro, drawn to scale: €5 120 by 62 mm, grey, €10 127 by 67 mm, red, €20 133 by 72 mm, blue, €50 140 by 77 mm, orange, €100 147 by 77 mm, green, €200 153 by 77 mm, yellow brown."><rect class="n" style="--i:5" x="0" y="5" width="153" height="77" fill="#B99550"/><rect class="n" style="--i:4" x="0" y="5" width="147" height="77" fill="#5E9F5C"/><rect class="n" style="--i:3" x="0" y="5" width="140" height="77" fill="#D98C42"/><rect class="n" style="--i:2" x="0" y="10" width="133" height="72" fill="#4D7FC1"/><rect class="n" style="--i:1" x="0" y="15" width="127" height="67" fill="#C4584F"/><rect class="n" style="--i:0" x="0" y="20" width="120" height="62" fill="#A3A9AF"/></svg><span class="phw" data-k="EUR" style="left:0;top:24.39%;width:68.18%;height:75.61%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#A3A9AF"></i>€5</li><li><i style="background:#C4584F"></i>€10</li><li><i style="background:#4D7FC1"></i>€20</li><li><i style="background:#D98C42"></i>€50</li><li><i style="background:#5E9F5C"></i>€100</li><li><i style="background:#B99550"></i>€200</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5,20 V10.5 a7,7 0 0 1 14,0 V20 M9,20 V13 a3,3 0 0 1 6,0 V20 M3,20 H21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Windows and bridges, none of them real</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M5.5,13 c1.6,-1.8 3.2,1.8 4.8,0 s3.2,1.8 4.8,0 s2,1 3.4,0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cotton</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M5,8.5 V11 M5,13 V15.5 M19,8.5 V11 M19,13 V15.5"/></svg><span>Edge lines, broken 0, 1 or 2 times</span></span><span class="tk">Take · Size and colour step together</span></div><div role="listitem" class="lr" style="--k:2" data-c="JPY"><span class="cu"><a href="https://www.boj.or.jp/en/note_tfjgs/note/valid/issue.htm" rel="noopener">Japanese yen <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:18.8%"></i>16.8% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Japanese yen, drawn to scale: ¥1,000 150 by 76 mm, blue, ¥5,000 156 by 76 mm, purple, ¥10,000 160 by 76 mm, brown."><rect class="n" style="--i:2" x="0" y="6" width="160" height="76" fill="#8F6B4B"/><rect class="n" style="--i:1" x="0" y="6" width="156" height="76" fill="#8C68B8"/><rect class="n" style="--i:0" x="0" y="6" width="150" height="76" fill="#4D7FC1"/></svg><span class="phw" data-k="JPY" style="left:0;top:7.32%;width:85.23%;height:92.68%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#4D7FC1"></i>¥1,000</li><li><i style="background:#8C68B8"></i>¥5,000</li><li><i style="background:#8F6B4B"></i>¥10,000</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A portrait on each, a scene behind</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M5.5,13 c1.6,-1.8 3.2,1.8 4.8,0 s3.2,1.8 4.8,0 s2,1 3.4,0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mitsumata paper</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M9,14.5 l2.6,-5 M11.6,14.5 l2.6,-5"/></svg><span>One mark, in a different place on each</span></span><span class="tk">Take · Place as a code</span></div><div role="listitem" class="lr" style="--k:3" data-c="GBP"><span class="cu"><a href="https://www.bankofengland.co.uk/banknotes" rel="noopener">Pound sterling <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:11.4%"></i>10.2% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Pound sterling, drawn to scale: £5 125 by 65 mm, turquoise blue, £10 132 by 69 mm, orange, £20 139 by 73 mm, purple, £50 146 by 77 mm, red."><rect class="n" style="--i:3" x="0" y="5" width="146" height="77" fill="#C4584F"/><rect class="n" style="--i:2" x="0" y="9" width="139" height="73" fill="#8C68B8"/><rect class="n" style="--i:1" x="0" y="13" width="132" height="69" fill="#D98C42"/><rect class="n" style="--i:0" x="0" y="17" width="125" height="65" fill="#3AA2B3"/></svg><span class="phw" data-k="GBP" style="left:0;top:20.73%;width:71.02%;height:79.27%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#3AA2B3"></i>£5</li><li><i style="background:#D98C42"></i>£10</li><li><i style="background:#8C68B8"></i>£20</li><li><i style="background:#C4584F"></i>£50</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The King, and a figure from history behind</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M14.5,9 h4 v6 h-4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Polymer</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M5.6,9 h.01 M7.6,9 h.01 M5.6,11 h.01 M7.6,11 h.01"/></svg><span>Dots top left: none on £5, then 2, 3, 4</span></span><span class="tk">Take · Count as a code</span></div><div role="listitem" class="lr" style="--k:4" data-c="CHF"><span class="cu"><a href="https://www.snb.ch/en/the-snb/mandates-goals/cash/series-9" rel="noopener">Swiss franc <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:7.2%"></i>6.4% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Swiss franc, drawn to scale: 10 123 by 70 mm, yellow, 20 130 by 70 mm, red, 50 137 by 70 mm, green, 100 144 by 70 mm, blue, 200 151 by 70 mm, brown, 1000 158 by 70 mm, purple."><rect class="n" style="--i:5" x="0" y="12" width="158" height="70" fill="#8C68B8"/><rect class="n" style="--i:4" x="0" y="12" width="151" height="70" fill="#8F6B4B"/><rect class="n" style="--i:3" x="0" y="12" width="144" height="70" fill="#4D7FC1"/><rect class="n" style="--i:2" x="0" y="12" width="137" height="70" fill="#5E9F5C"/><rect class="n" style="--i:1" x="0" y="12" width="130" height="70" fill="#C4584F"/><rect class="n" style="--i:0" x="0" y="12" width="123" height="70" fill="#D7B13D"/></svg><span class="phw" data-k="CHF" data-up="1" style="left:0;top:14.63%;width:69.89%;height:85.37%;--rw:56.91%;--rh:175.71%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#D7B13D"></i>10</li><li><i style="background:#C4584F"></i>20</li><li><i style="background:#5E9F5C"></i>50</li><li><i style="background:#4D7FC1"></i>100</li><li><i style="background:#8F6B4B"></i>200</li><li><i style="background:#8C68B8"></i>1000</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8,13 V5.5 a1.5,1.5 0 0 1 3,0 V11 M11,10 V4.5 a1.5,1.5 0 0 1 3,0 V11 M14,10.5 V6 a1.5,1.5 0 0 1 3,0 V14 c0,4 -2.5,6.5 -6,6.5 c-3,0 -4.6,-1.6 -6.2,-4.2 L3.4,13 a1.5,1.5 0 0 1 2.5,-1.6 L8,14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hands and a globe, no people; held upright</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,7 H21.5 M2.5,12 H21.5 M2.5,17 H21.5 M2.5,7 V17 M21.5,7 V17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paper and polymer, three layers</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M7,6.5 v2.2 M10,6.5 v2.2 M13,6.5 v2.2 M16,6.5 v2.2 M7,17.5 v-2.2 M10,17.5 v-2.2 M13,17.5 v-2.2 M16,17.5 v-2.2"/></svg><span>Short lines on the long edges</span></span><span class="tk">Take · One fixed step</span></div><div role="listitem" class="lr" style="--k:5" data-c="AUD"><span class="cu"><a href="https://www.banknotes.rba.gov.au/australias-banknotes" rel="noopener">Australian dollar <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:6.7%"></i>≈ 6% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Australian dollar, drawn to scale: $5 130 by 65 mm, purple, $10 137 by 65 mm, blue, $20 144 by 65 mm, red, $50 151 by 65 mm, yellow, $100 158 by 65 mm, green."><rect class="n" style="--i:4" x="0" y="17" width="158" height="65" fill="#5E9F5C"/><rect class="n" style="--i:3" x="0" y="17" width="151" height="65" fill="#D7B13D"/><rect class="n" style="--i:2" x="0" y="17" width="144" height="65" fill="#C4584F"/><rect class="n" style="--i:1" x="0" y="17" width="137" height="65" fill="#4D7FC1"/><rect class="n" style="--i:0" x="0" y="17" width="130" height="65" fill="#9C6FB5"/></svg><span class="phw" data-k="AUD" style="left:0;top:20.73%;width:73.86%;height:79.27%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#9C6FB5"></i>$5</li><li><i style="background:#4D7FC1"></i>$10</li><li><i style="background:#C4584F"></i>$20</li><li><i style="background:#D7B13D"></i>$50</li><li><i style="background:#5E9F5C"></i>$100</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Two people a note, one on the $5</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M14.5,9 h4 v6 h-4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Polymer</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M8,6.5 a1.2,1.2 0 0 1 2.4,0 M11,6.5 a1.2,1.2 0 0 1 2.4,0 M14,6.5 a1.2,1.2 0 0 1 2.4,0"/></svg><span>Bumps on the long edges, 1 to 5</span></span><span class="tk">Take · An edge any finger finds</span></div><div role="listitem" class="lr" style="--k:6" data-c="CAD"><span class="cu"><a href="https://www.bankofcanada.ca/banknotes/audience-specific-resources/blind-and-partially-sighted/" rel="noopener">Canadian dollar <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:6.7%"></i>≈ 6% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Canadian dollar, drawn to scale: $5 152.4 by 69.85 mm, blue, $10 152.4 by 69.85 mm, purple, $20 152.4 by 69.85 mm, green, $50 152.4 by 69.85 mm, red, $100 152.4 by 69.85 mm, brown."><rect class="n" style="--i:4" x="12" y="4.15" width="152.4" height="69.85" fill="#8F6B4B"/><rect class="n" style="--i:3" x="9" y="6.15" width="152.4" height="69.85" fill="#C4584F"/><rect class="n" style="--i:2" x="6" y="8.15" width="152.4" height="69.85" fill="#5E9F5C"/><rect class="n" style="--i:1" x="3" y="10.15" width="152.4" height="69.85" fill="#8C68B8"/><rect class="n" style="--i:0" x="0" y="12.15" width="152.4" height="69.85" fill="#4D7FC1"/></svg><span class="phw" data-k="CAD" style="left:0;top:14.82%;width:86.59%;height:85.18%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#4D7FC1"></i>$5</li><li><i style="background:#8C68B8"></i>$10</li><li><i style="background:#5E9F5C"></i>$20</li><li><i style="background:#C4584F"></i>$50</li><li><i style="background:#8F6B4B"></i>$100</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A portrait on each; the $10 upright</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M14.5,9 h4 v6 h-4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Polymer</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M5.5,9 h.01 M7.5,9 h.01 M5.5,11 h.01 M7.5,11 h.01 M5.5,13 h.01 M7.5,13 h.01 M10.5,9 h.01 M12.5,9 h.01 M10.5,11 h.01 M12.5,11 h.01"/></svg><span>Dot symbols, not Braille</span></span><span class="tk">Take · A code anyone learns</span></div><div role="listitem" class="lr" style="--k:7" data-c="SGD"><span class="cu"><a href="https://www.mas.gov.sg/currency/circulation-currency/circulation-currency-notes" rel="noopener">Singapore dollar <span class="ar" aria-hidden="true">↗</span></a><span class="sh"><i style="--w:2.2%"></i>≈ 2% of trade</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Singapore dollar, drawn to scale: $2 126 by 63 mm, purple, $5 133 by 66 mm, green, $10 141 by 69 mm, red, $50 156 by 74 mm, blue, $100 162 by 77 mm, orange."><rect class="n" style="--i:4" x="0" y="5" width="162" height="77" fill="#D98C42"/><rect class="n" style="--i:3" x="0" y="8" width="156" height="74" fill="#4D7FC1"/><rect class="n" style="--i:2" x="0" y="13" width="141" height="69" fill="#C4584F"/><rect class="n" style="--i:1" x="0" y="16" width="133" height="66" fill="#5E9F5C"/><rect class="n" style="--i:0" x="0" y="19" width="126" height="63" fill="#8C68B8"/></svg><span class="phw" data-k="SGD" style="left:0;top:23.17%;width:71.59%;height:76.83%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#8C68B8"></i>$2</li><li><i style="background:#5E9F5C"></i>$5</li><li><i style="background:#C4584F"></i>$10</li><li><i style="background:#4D7FC1"></i>$50</li><li><i style="background:#D98C42"></i>$100</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The first president on every note</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M14.5,9 h4 v6 h-4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Polymer to $10, paper above</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg t0" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/></svg><span>None listed</span></span><span class="tk">Take · One layout, scaled</span></div><div role="listitem" class="lr" style="--k:8" data-c="NOK"><span class="cu"><a href="https://www.norges-bank.no/en/notes-and-coins/Banknotes/legal-tender-banknotes/" rel="noopener">Norwegian krone <span class="ar" aria-hidden="true">↗</span></a><span class="sh tag"><a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612156829952&amp;cot=14" rel="noopener">my board</a></span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Norwegian krone, drawn to scale: 50 126 by 70 mm, green, 100 133 by 70 mm, brown red, 200 140 by 70 mm, blue, 500 147 by 70 mm, brown, 1000 154 by 70 mm, purple."><rect class="n" style="--i:4" x="0" y="12" width="154" height="70" fill="#8C68B8"/><rect class="n" style="--i:3" x="0" y="12" width="147" height="70" fill="#8F6B4B"/><rect class="n" style="--i:2" x="0" y="12" width="140" height="70" fill="#4D7FC1"/><rect class="n" style="--i:1" x="0" y="12" width="133" height="70" fill="#B85A45"/><rect class="n" style="--i:0" x="0" y="12" width="126" height="70" fill="#5E9F5C"/></svg><span class="phw" data-k="NOK" style="left:0;top:14.63%;width:71.59%;height:85.37%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#5E9F5C"></i>50</li><li><i style="background:#B85A45"></i>100</li><li><i style="background:#4D7FC1"></i>200</li><li><i style="background:#8F6B4B"></i>500</li><li><i style="background:#8C68B8"></i>1000</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2,10 c2.5,-3.5 5,-3.5 7.5,0 s5,3.5 7.5,0 s3.5,-2 5,-.5 M2,16 c2.5,-3.5 5,-3.5 7.5,0 s5,3.5 7.5,0 s3.5,-2 5,-.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The sea, from a lighthouse to a wave</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M5.5,13 c1.6,-1.8 3.2,1.8 4.8,0 s3.2,1.8 4.8,0 s2,1 3.4,0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cotton</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M2.5,9.5 h2.4 M2.5,12 h2.4 M2.5,14.5 h2.4 M21.5,9.5 h-2.4 M21.5,12 h-2.4 M21.5,14.5 h-2.4"/></svg><span>Raised lines on the short edges</span></span><span class="tk">Take · A theme, not a face</span></div><div role="listitem" class="lr" style="--k:9" data-c="AED"><span class="cu"><a href="https://www.centralbank.ae/en/our-operations/currency-and-coins/circulated-currency/" rel="noopener">UAE dirham <span class="ar" aria-hidden="true">↗</span></a><span class="sh tag"><a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612156829952&amp;cot=14" rel="noopener">my board</a></span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="UAE dirham, drawn to scale: 5 143 by 66 mm, brown, 10 147 by 66 mm, green, 500 159 by 68 mm, blue, 1000 163 by 66 mm, brown. No size given for 50 and 100."><rect class="n" style="--i:3" x="0" y="16" width="163" height="66" fill="#8F6B4B"/><rect class="n" style="--i:2" x="0" y="14" width="159" height="68" fill="#4D7FC1"/><rect class="n" style="--i:1" x="0" y="16" width="147" height="66" fill="#5E9F5C"/><rect class="n" style="--i:0" x="0" y="16" width="143" height="66" fill="#8F6B4B"/></svg><span class="phw" data-k="AED" style="left:0;top:19.51%;width:81.25%;height:80.49%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#8F6B4B"></i>5</li><li><i style="background:#5E9F5C"></i>10</li><li><i style="background:#4D7FC1"></i>500</li><li><i style="background:#8F6B4B"></i>1000</li><li class="ns">50, 100: no size given</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M15.5,12 m-3.2,0 a3.2,3.2 0 1 0 6.4,0 a3.2,3.2 0 1 0 -6.4,0 M5.5,15 h4 M5.5,12.5 h2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The founder in a clear window, landmarks on most</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M14.5,9 h4 v6 h-4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Polymer since 2021; paper ones still circulate</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M17.5,9.5 h.01 M17.5,12 h.01 M17.5,14.5 h.01"/></svg><span>Raised marks</span></span><span class="tk">Take · The face in a window</span></div><div role="listitem" class="lr me" style="--k:10" data-c="INR"><span class="cu"><a href="https://paisaboltahai.rbi.org.in/rupees-five-hundred.aspx" rel="noopener">Rupee, today <span class="ar" aria-hidden="true">↗</span></a><span class="sh tag">ours</span><span class="pc"></span></span><span class="fm"><span class="pw"><svg class="d lus" viewBox="0 0 176 82" role="img" aria-label="Rupee, today, drawn to scale: ₹10 123 by 63 mm, chocolate brown, ₹20 129 by 63 mm, greenish yellow, ₹50 135 by 66 mm, fluorescent blue, ₹100 142 by 66 mm, lavender, ₹200 146 by 66 mm, bright yellow, ₹500 150 by 66 mm, stone grey."><rect class="n" style="--i:5" x="0" y="16" width="150" height="66" fill="#A7A59C"/><rect class="n" style="--i:4" x="0" y="16" width="146" height="66" fill="#E2C343"/><rect class="n" style="--i:3" x="0" y="16" width="142" height="66" fill="#A79BD2"/><rect class="n" style="--i:2" x="0" y="16" width="135" height="66" fill="#47B5DC"/><rect class="n" style="--i:1" x="0" y="19" width="129" height="63" fill="#B5BD4E"/><rect class="n" style="--i:0" x="0" y="19" width="123" height="63" fill="#7A4B36"/></svg><span class="phw" data-k="INR" style="left:0;top:23.17%;width:69.89%;height:76.83%"><img class="ph" alt="" decoding="async"><i class="spec" aria-hidden="true">Specimen</i></span></span><ul class="lg"><li><i style="background:#7A4B36"></i>₹10</li><li><i style="background:#B5BD4E"></i>₹20</li><li><i style="background:#47B5DC"></i>₹50</li><li><i style="background:#A79BD2"></i>₹100</li><li><i style="background:#E2C343"></i>₹200</li><li><i style="background:#A7A59C"></i>₹500</li></ul></span><span class="trt"><span class="kk">On the face</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12,4.5 a3.6,3.6 0 1 0 .01,0 M5,19.5 c1.4,-4.2 4,-6 7,-6 s5.6,1.8 7,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Gandhi on every note, a monument behind</span></span><span class="trt"><span class="kk">Made of</span><svg class="gl" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5,6.5 H21.5 V17.5 H2.5 Z M5.5,13 c1.6,-1.8 3.2,1.8 4.8,0 s3.2,1.8 4.8,0 s2,1 3.4,0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cotton</span></span><span class="trt"><span class="kk">Touch</span><svg class="gl tg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="tgn" d="M2.5,6.5 H21.5 V17.5 H2.5 Z"/><path class="tgm" d="M2.5,9 l2,-1.6 M2.5,11.5 l2,-1.6 M2.5,14 l2,-1.6 M18.5,14 a1.6,1.6 0 1 0 .01,0"/></svg><span>Raised marks from ₹100</span></span><span class="tk me">Ours, today</span></div></div>
+    <p class="so"><b>So</b>Most families give each value its own colour and its own length, and three feature no real person. The dollar is the outlier: seven notes, one size, all green, which a US appeals court ruled discriminates against blind people in 2008.</p>
+    <p class="src">Sources · <a href="https://www.bis.org/statistics/rpfx25_fx.htm" rel="noopener">BIS, April 2025</a> · <a href="https://webarchive.library.unt.edu/eot2008/20080917091544/http:/treas.gov/education/faq/currency/production.shtml" rel="noopener">US Treasury</a> · <a href="https://uscurrency.gov/educational-materials/training-course/overview" rel="noopener">US Currency Education Program</a> · <a href="https://www.gao.gov/blog/2016/06/28/using-money-when-you-cant-see-it" rel="noopener">GAO</a> · <a href="https://www.jurist.org/news/2008/05/us-paper-currency-discrimination-ruling" rel="noopener">JURIST</a> · <a href="https://www.ecb.europa.eu/euro/banknotes/design/html/index.en.html" rel="noopener">ECB: design</a> · <a href="https://ecb.europa.eu/euro/visually/html/index.en.html" rel="noopener">touch</a> · <a href="https://www.ecb.europa.eu/euro/pdf/material/Quick_Guide_EN_Specimen.pdf" rel="noopener">paper</a> · <a href="https://www.oenb.at/en/the-euro/cash-management/banknotes.html" rel="noopener">OeNB</a> · <a href="https://www.boj.or.jp/en/note_tfjgs/note/n_note/security.htm" rel="noopener">Bank of Japan</a> · <a href="https://www.boj.or.jp/en/note_tfjgs/note/valid/issue.htm" rel="noopener">its 2024 notes</a> · <a href="https://www.mof.go.jp/english/policy/currency/banknotes/20190409.html" rel="noopener">Japan’s Ministry of Finance</a> · <a href="https://www.nippon.com/en/features/jg00054/japanese-banknotes.html" rel="noopener">nippon.com</a> · <a href="https://edition-prod-cf.sitemirror.cnn.com/2024/07/02/business/japan-yen-note-nepal-paperbush-intl-hnk/index.html" rel="noopener">CNN</a> · <a href="https://www.bankofengland.co.uk/-/media/boe/files/banknotes/take-a-closer-look.pdf" rel="noopener">Bank of England</a> · <a href="https://www.bankofengland.co.uk/news/2022/december/king-charles-iii-banknotes-unveiled" rel="noopener">the King’s notes</a> · <a href="https://en.wikipedia.org/wiki/Bank_of_England_note_issues" rel="noopener">Wikipedia: pound</a> · <a href="https://snb.ch/en/iabout/cash/series9/design_series9/id/cash_series9_design_10" rel="noopener">SNB: 10</a> · <a href="https://snb.ch/en/iabout/cash/series9/design_series9/id/cash_series9_design_20" rel="noopener">20</a> · <a href="https://www.snb.ch/en/iabout/cash/series9/id/cash_series9_security_concept" rel="noopener">security</a> · <a href="https://landqart.com/en/stories/case-studies/9-serie-chf" rel="noopener">Landqart</a> · <a href="https://en.wikipedia.org/wiki/Banknotes_of_the_Swiss_franc" rel="noopener">Wikipedia: franc</a> · <a href="https://www.banknotes.rba.gov.au/resources/for-people-with-vision-impairment/accessibility-features" rel="noopener">RBA</a> · <a href="https://www.rba.gov.au/publications/bulletin/2015/mar/bu-0315-1a.html" rel="noopener">RBA Bulletin</a> · <a href="https://en.wikipedia.org/wiki/Banknotes_of_the_Australian_dollar" rel="noopener">Wikipedia: Australian dollar</a> · <a href="https://www.bankofcanada.ca/banknotes/audience-specific-resources/blind-and-partially-sighted/" rel="noopener">Bank of Canada</a> · <a href="https://www.bankofcanada.ca/wp-content/uploads/2011/06/currency_polymer.pdf" rel="noopener">its 2011 notes</a> · <a href="https://en.wikipedia.org/wiki/Banknotes_of_the_Canadian_dollar" rel="noopener">Wikipedia: Canadian dollar</a> · <a href="https://www.mas.gov.sg/currency/circulation-currency/circulation-currency-notes" rel="noopener">MAS</a> · <a href="https://en.wikipedia.org/wiki/Singapore_Portrait_Series_currency_notes" rel="noopener">Wikipedia: Portrait Series</a> · <a href="https://www.norges-bank.no/en/published/press-releases/2017/2017-05-30-press-release/" rel="noopener">Norges Bank</a> · <a href="https://www.norges-bank.no/contentassets/3a1b0cf43ff549c88388e462af5b0a33/fulltekstbrosjyrea5_1000_eng.pdf" rel="noopener">its brochure</a> · <a href="https://www.norges-bank.no/en/notes-and-coins/Banknotes/legal-tender-banknotes/" rel="noopener">its motifs</a> · <a href="https://static.nbp.pl/publikacje/album-walut/norwegia-www.pdf" rel="noopener">NBP</a> · <a href="https://www.centralbank.ae/media/n3jc0vbs/cbuae_aed5_security_features.pdf" rel="noopener">CBUAE: AED 5</a> · <a href="https://centralbank.ae/media/bzvbnvxi/aed10-leaflet-v7.pdf" rel="noopener">10</a> · <a href="https://www.centralbank.ae/media/g1pklvt4/uae-rulers-crown-princes-witness-launch-of-aed50-banknote-as-part-of-nation-s-50th-anniversary-celebrations_en.pdf" rel="noopener">50</a> · <a href="https://centralbank.ae/media/mzkktijj/cbuae-issues-a-new-banknote-of-aed100-denomination-for-circulation-en.pdf" rel="noopener">100</a> · <a href="https://www.centralbank.ae/media/ql1lfixk/cbuae_aed1000_leaflet.pdf" rel="noopener">1000</a> · <a href="https://centralbank.ae/en/our-operations/currency-and-coins/circulated-currency/current-banknotes/aed-20" rel="noopener">20</a> · <a href="https://platform.keesingtechnologies.com/uae-issues-new-5-and-10-dirham-polymer-banknotes/" rel="noopener">Keesing: AED 5 and 10</a> · <a href="https://platform.keesingtechnologies.com/the-uae-introduces-a-new-500-dirham-polymer-banknote/" rel="noopener">AED 500</a> · <a href="https://paisaboltahai.rbi.org.in/rupees-five-hundred.aspx" rel="noopener">RBI</a> · <a href="https://www.rbi.org.in/Scripts/AnnualReportPublications.aspx?Id=1086" rel="noopener">its 2013 annual report</a> · <a href="https://miro.com/app/board/uXjVLx3MAIQ=/?moveToWidget=3458764612156829952&amp;cot=14" rel="noopener">my Miro board</a> · the renminbi and Hong Kong dollar left out</p>
   </div>
+</div></section>
+<section class="ch" id="today" aria-labelledby="todayh"><div class="in">
+  <header class="chh reveal"><span class="no">02</span><div><h2 id="todayh">What is on today’s ₹500, and why there?</h2><p>The note as the RBI describes it: thirteen parts on the front, five on the back.</p></div><span class="pm">The product as it ships</span></header>
+  <div class="frame sheet sq ft reveal">
+    <span class="cap"><b>Fig. 2</b> · Today’s ₹500, and the job each part does</span>
+    <div class="f1n"><svg class="d f1d" viewBox="-14 -30 628 304" role="img" aria-label="Today’s ₹500, front, drawn from the Reserve Bank of India’s description: number panels at the top left and bottom right; on the left the Devanagari numeral, micro lettering, the see through register and the latent image; the portrait in the centre; on the right the windowed thread, the guarantee and promise with the Governor’s signature and the RBI seal, the Ashoka emblem, the watermark, the raised circle and the colour shifting ₹500; five raised bleed lines on each short edge."><text class="tm" x="0" y="-14">Front · 150 × 66 mm</text><g class="tf"><rect class="tbd" width="600" height="264"/><g data-n="1"><g class="tp"><rect class="to" x="30" y="190" width="34" height="34"/><path class="tl" d="M38,214 c6,-18 14,-18 18,0"/></g></g><g data-n="2"><g class="tp"><rect class="to" x="170" y="150" width="26" height="74"/><path class="tl" d="M176,166 v42"/></g></g><g data-n="3"><g class="tp"><text class="tdv" x="34" y="104">५००</text></g></g><g data-n="4"><g class="tp"><ellipse class="to" cx="300" cy="132" rx="70" ry="92"/><path class="tl" d="M300,82 a26,26 0 1 0 .1,0 M248,204 c8,-42 96,-42 104,0"/></g></g><g data-n="5"><g class="tp"><path class="tmi" d="M34,134 h112"/></g></g><g data-n="6"><g class="tp"><path class="tth" d="M392,8 V256"/></g></g><g data-n="7"><g class="tp"><path class="tl" d="M406,62 h108"/><path class="tl" d="M406,71 h108"/><path class="tl" d="M406,80 h92.9"/><path class="tl" d="M406,89 h108"/><path class="tl" d="M406,98 h108"/><circle class="to" cx="496" cy="166" r="11"/><path class="tl" d="M410,172 c8,-10 14,8 22,-2 s10,-8 16,2"/></g></g><g data-n="8"><g class="tp"><ellipse class="tw" cx="552" cy="76" rx="24" ry="36"/></g></g><g data-n="9"><g class="tp"><text class="tsn" x="26" y="30">0AB<tspan class="ts2"> 12</tspan><tspan class="ts3">34</tspan><tspan class="ts4">56</tspan></text><text class="tsn" x="406" y="250">0AB<tspan class="ts2"> 12</tspan><tspan class="ts3">34</tspan><tspan class="ts4">56</tspan></text></g></g><g data-n="10"><g class="tp"><text class="tcs" x="590" y="246" text-anchor="end">₹500</text></g></g><g data-n="11"><g class="tp"><path class="to" d="M540,128 h16 v34 h-16 Z M536,166 h24"/></g></g><g data-n="12"><g class="tp"><circle class="tr" cx="574" cy="192" r="11"/></g></g><g data-n="13"><g class="tp"><path class="tbl" d="M6,104 l8,-8"/><path class="tbl" d="M6,116 l8,-8"/><path class="tbl" d="M6,128 l8,-8"/><path class="tbl" d="M6,140 l8,-8"/><path class="tbl" d="M6,152 l8,-8"/><path class="tbl" d="M582,104 l8,-8"/><path class="tbl" d="M582,116 l8,-8"/><path class="tbl" d="M582,128 l8,-8"/><path class="tbl" d="M582,140 l8,-8"/><path class="tbl" d="M582,152 l8,-8"/></g></g><g class="mkr" data-n="1" transform="translate(47,176)"><circle r="11"/><text y="4" text-anchor="middle">1</text></g><g class="mkr" data-n="2" transform="translate(183,136)"><circle r="11"/><text y="4" text-anchor="middle">2</text></g><g class="mkr" data-n="3" transform="translate(96,94)"><circle r="11"/><text y="4" text-anchor="middle">3</text></g><g class="mkr" data-n="4" transform="translate(300,26)"><circle r="11"/><text y="4" text-anchor="middle">4</text></g><g class="mkr" data-n="5" transform="translate(90,152)"><circle r="11"/><text y="4" text-anchor="middle">5</text></g><g class="mkr" data-n="6" transform="translate(408,30)"><circle r="11"/><text y="4" text-anchor="middle">6</text></g><g class="mkr" data-n="7" transform="translate(460,120)"><circle r="11"/><text y="4" text-anchor="middle">7</text></g><g class="mkr" data-n="8" transform="translate(552,24)"><circle r="11"/><text y="4" text-anchor="middle">8</text></g><g class="mkr" data-n="9" transform="translate(120,26)"><circle r="11"/><text y="4" text-anchor="middle">9</text></g><g class="mkr" data-n="9" transform="translate(500,246)"><circle r="11"/><text y="4" text-anchor="middle">9</text></g><g class="mkr" data-n="10" transform="translate(516,211)"><circle r="11"/><text y="4" text-anchor="middle">10</text></g><g class="mkr" data-n="11" transform="translate(520,146)"><circle r="11"/><text y="4" text-anchor="middle">11</text></g><g class="mkr" data-n="12" transform="translate(548,196)"><circle r="11"/><text y="4" text-anchor="middle">12</text></g><g class="mkr" data-n="13" transform="translate(18,72)"><circle r="11"/><text y="4" text-anchor="middle">13</text></g></g></svg><svg class="d f1d" viewBox="-14 -30 628 304" role="img" aria-label="Today’s ₹500, back: the year of printing on the left, a campaign logo, the Red Fort motif, the language panel in the centre, the Devanagari numeral on the right, and the other half of the see through register."><text class="tm" x="0" y="-14">Back</text><g class="tf"><rect class="tbd" width="600" height="264"/><g data-n="14"><g class="tp"><text class="tsn" x="30" y="40">YEAR</text></g></g><g data-n="15"><g class="tp"><rect class="to" x="30" y="190" width="56" height="34"/><path class="tl" d="M40,206 h36 M40,214 h24"/></g></g><g data-n="16"><g class="tp"><rect class="to" x="340" y="56" width="70" height="152"/><path class="tl" d="M348,70 h54"/><path class="tl" d="M348,79 h54"/><path class="tl" d="M348,88 h46.4"/><path class="tl" d="M348,97 h54"/><path class="tl" d="M348,106 h54"/><path class="tl" d="M348,115 h46.4"/><path class="tl" d="M348,124 h54"/><path class="tl" d="M348,133 h54"/><path class="tl" d="M348,142 h46.4"/><path class="tl" d="M348,151 h54"/><path class="tl" d="M348,160 h54"/><path class="tl" d="M348,169 h46.4"/><path class="tl" d="M348,178 h54"/><path class="tl" d="M348,187 h54"/><path class="tl" d="M348,196 h46.4"/></g></g><g data-n="17"><g class="tp"><rect class="to" x="104" y="56" width="216" height="152"/><path class="tl" d="M116,196 h192 M128,196 v-50 h40 v50 M180,196 v-64 h64 v64 M256,196 v-50 h40 v50 M190,132 v-10 h44 v10"/></g></g><g data-n="18"><g class="tp"><text class="tdv" x="560" y="112" text-anchor="end">५००</text></g></g><g data-n="1"><g class="tp"><rect class="to" x="536" y="190" width="34" height="34"/><path class="tl" d="M544,214 c6,-18 14,-18 18,0"/></g></g><g class="mkr" data-n="14" transform="translate(90,34)"><circle r="11"/><text y="4" text-anchor="middle">14</text></g><g class="mkr" data-n="15" transform="translate(58,176)"><circle r="11"/><text y="4" text-anchor="middle">15</text></g><g class="mkr" data-n="16" transform="translate(375,42)"><circle r="11"/><text y="4" text-anchor="middle">16</text></g><g class="mkr" data-n="17" transform="translate(212,42)"><circle r="11"/><text y="4" text-anchor="middle">17</text></g><g class="mkr" data-n="18" transform="translate(580,80)"><circle r="11"/><text y="4" text-anchor="middle">18</text></g><g class="mkr" data-n="1" transform="translate(553,176)"><circle r="11"/><text y="4" text-anchor="middle">1</text></g></g></svg></div>
+    <ul class="jobs"><li><b>Value</b><span class="nos">3 · 10 · 18</span><p>Read at 3 and 10; held to the light at 1, 2 and 8; felt at 12. On the back, 18.</p></li><li><b>Trust</b><span class="nos">4 · 7 · 11</span><p>A face, a signed promise and the state’s seal, side by side.</p></li><li><b>Security</b><span class="nos">1 · 2 · 5 · 6 · 8</span><p>Each needs blank paper or light behind it: the left end and the watermark field.</p></li><li><b>Touch</b><span class="nos">12 · 13</span><p>A raised circle on the right, five raised bleed lines on each side.</p></li><li><b>Machines</b><span class="nos">9</span><p>Serials in opposite corners, the digits growing, hard to alter.</p></li><li><b>Story</b><span class="nos">14 to 17</span><p>The back: a monument, fifteen languages, a campaign, the year.</p></li></ul>
+    <div class="rdr"><span class="k">Who reads a note</span><ul><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M2,12 C5,6.5 8.5,5 12,5 S19,6.5 22,12 C19,17.5 15.5,19 12,19 S5,17.5 2,12 Z M9,12 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Sighted</b><span>the numeral</span></li><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M2,12 C5,6.5 8.5,5 12,5 S19,6.5 22,12 C19,17.5 15.5,19 12,19 S5,17.5 2,12 Z M8,12 h1 M11.5,12 h1 M15,12 h1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Low vision</b><span>size, colour, a big numeral</span></li><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M8,13 V5.5 a1.5,1.5 0 0 1 3,0 V11 M11,10 V4.5 a1.5,1.5 0 0 1 3,0 V11 M14,10.5 V6 a1.5,1.5 0 0 1 3,0 V14 c0,4 -2.5,6.5 -6,6.5 c-3,0 -4.6,-1.6 -6.2,-4.2 L3.4,13 a1.5,1.5 0 0 1 2.5,-1.6 L8,14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Blind</b><span>size and raised marks</span></li><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12,3 a9,9 0 1 0 .01,0 M12,3 V21 M12,7 h4 M12,11 h7 M12,15 h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Colour blind</b><span>lightness and shape</span></li><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12,3 a9,9 0 1 0 .01,0 M3,12 H21 M12,3 c3,3 4,6 4,9 s-1,6 -4,9 c-3,-3 -4,-6 -4,-9 s1,-6 4,-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>A visitor</b><span>digits, not the scripts</span></li><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4,3 H20 V13 H4 Z M7,13 V21 H17 V13 M9,17 H15 M8,7 H16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Machines</b><span>size, serials, security</span></li><li><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12,3 L20,6 V12 c0,4.5 -3.4,7.6 -8,9 c-4.6,-1.4 -8,-4.5 -8,-9 V6 Z M9,12 l2,2 l4,-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>The RBI</b><span>forgers, and cost</span></li></ul></div>
+    <p class="so"><b>So</b>The value is on the front six times: two to read, three to check for forgery, one to feel. For blind users the RBI added an app in 2020 that names a note from the phone’s camera.</p>
+    <p class="src">Sources · RBI: <a href="https://paisaboltahai.rbi.org.in/rupees-five-hundred.aspx" rel="noopener">₹500</a> · <a href="https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=41460" rel="noopener">₹200</a> · <a href="https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=44533" rel="noopener">₹100</a> · <a href="https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=41412" rel="noopener">₹50</a> · <a href="https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=46913" rel="noopener">₹20</a> · <a href="https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=42782" rel="noopener">₹10</a> · <a href="https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=49022" rel="noopener">MANI</a> · where the RBI gives no position: <a href="https://en.wikipedia.org/wiki/Mahatma_Gandhi_New_Series" rel="noopener">Wikipedia</a>, and the note itself</p>
   </div>
-    </div>
-    <div class="orig-block"><span class="k">Fig. 4 · Interactive demo</span><h3>Reimagining the ₹ note</h3><p>A concept draft that applies the redesign principles from the full exploration. Switch denominations, then tap the numbered dots to see the reasoning behind each element.</p>
-  <div class="toolbar">
-    <div class="o-seg" id="denomSeg">
-      <button data-d="10" class="on">₹10</button>
-      <button data-d="20">₹20</button>
-      <button data-d="100">₹100</button>
-    </div>
-    <span class="hintline">← colour coded per denomination · tap the dots on the note</span>
+</div></section>
+<section class="ch" id="spec" aria-labelledby="spech"><div class="in">
+  <header class="chh reveal"><span class="no">03</span><div><h2 id="spech">What goes on the note, how often, where, and how loud?</h2><p>Every part sorted, then given a count, a place and a size.</p></div><span class="pm">The spec</span></header>
+  <div class="frame sheet sq f3 reveal">
+    <span class="cap"><b>Fig. 3</b> · The spec: what stays, how often, where, and how big</span>
+    <div class="lad"><div class="lr hd"><span>Tier</span><span>Part</span><span>Front</span><span>Back</span><span>Where</span><span class="sz">Size</span><span>Why</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Value, in numerals</span><span class="rp"><span class="dt"><i></i><i></i><i></i><i></i></span>4</span><span class="rp bk"><span class="dt"><i></i><i></i><i></i><i></i></span>4</span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="0.8" y="7" width="13.4" height="8.4"/><rect class="zl" x="16" y="25.8" width="7.4" height="3.2"/><rect class="zl" x="37.4" y="1.8" width="7.2" height="3.4"/><rect class="zl" x="49.2" y="25.8" width="7.4" height="3.2"/></svg></span><span class="sz">big 12 mm · others 4 mm</span><span class="wy">One big at the end, one in each other quarter of the length: folded in half, or folded again, a numeral shows.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Value, in words</span><span class="rp"><span class="dt"><i></i></span>1</span><span class="rp bk"><span class="dt"><i></i></span>1</span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="1.4" y="15.2" width="12.2" height="4.4"/></svg></span><span class="sz">3 mm · 2 mm</span><span class="wy">Hindi and English, under the big numeral.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">A raised code</span><span class="rp">1 to 3</span><span class="rp bk"></span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="4.8" y="0" width="5.4" height="2.2"/><rect class="zl" x="34.8" y="27.8" width="5.4" height="2.2"/></svg></span><span class="sz">dots, 2.5 mm</span><span class="wy">Short edges for ₹10 to ₹50, long edges for ₹100 to ₹500, never on a crease. Never more than three to count.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Size</span><span class="rp">the note</span><span class="rp bk"></span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="0" y="0" width="60" height="30"/></svg></span><span class="sz">+6 mm long · +3 mm tall</span><span class="wy">Every step, on both edges. The one code that cannot wear off.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Colour</span><span class="rp">both ends</span><span class="rp bk">both ends</span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="0" y="0" width="15" height="30"/><rect class="zl" x="57.3" y="0" width="2.7" height="30"/></svg></span><span class="sz">panel and band</span><span class="wy">Six colours from the site’s palette, apart even to colour blind eyes. Never the only cue.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Issuer, guarantee, promise</span><span class="rp"><span class="dt"><i></i></span>1</span><span class="rp bk"><span class="dt"><i></i></span>1</span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="16" y="2.6" width="21" height="5.8"/></svg></span><span class="sz">3 mm · 2 mm</span><span class="wy">Said once, beside the value, signed by the Governor.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Security</span><span class="rp">1 each</span><span class="rp bk"></span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="32.6" y="9.2" width="10.8" height="16.4"/></svg></span><span class="sz"></span><span class="wy">Thread, watermark, see through mark: together in the third quarter, clear of every crease.</span></div><div class="lr"><span class="tier must"><span>Must have</span></span><span class="pt">Serial number</span><span class="rp"><span class="dt"><i></i><i></i></span>2</span><span class="rp bk"><span class="dt"><i></i></span>1</span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="16" y="0.6" width="8.4" height="1.8"/><rect class="zl" x="57.5" y="18.6" width="2.5" height="8"/></svg></span><span class="sz">2 mm</span><span class="wy">The same place on every value, for counters and sorters.</span></div><div class="lr"><span class="tier opt"><span>Optional</span></span><span class="pt">Portrait</span><span class="rp">in the watermark</span><span class="rp bk"></span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="33" y="9.4" width="6" height="6.8"/></svg></span><span class="sz"></span><span class="wy">Trust stays; the centre goes to the value.</span></div><div class="lr"><span class="tier opt"><span>Optional</span></span><span class="pt">Monument and fifteen languages</span><span class="rp"></span><span class="rp bk">back</span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/><rect class="zl" x="3" y="5.6" width="34" height="19"/></svg></span><span class="sz"></span><span class="wy">The country’s story, on the side read least.</span></div><div class="lr"><span class="tier drop"><span>Dropped or later</span></span><span class="pt">Campaign logo · link to digital money</span><span class="rp"></span><span class="rp bk"></span><span class="zw"><svg class="zmv" viewBox="-1 -1 62 32" aria-hidden="true"><rect class="zm" width="60" height="30"/><rect class="zp" width="15" height="30"/><path class="zf" d="M15,0 V30 M30,0 V30 M45,0 V30"/></svg></span><span class="sz"></span><span class="wy">A campaign ends before the note does. A digital link is worth testing, after version one.</span></div></div>
+    <p class="so"><b>So</b>The value four times on each face, one in each quarter of its length, so a note folded in half, or folded again, still shows one. Everything else, once.</p>
   </div>
-
-  <div class="o-stage">
-    <div class="note-holder">
-      <svg class="o-note" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" id="noteSvg">
-        <defs>
-          <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="var(--paper)" stop-opacity=".35"/>
-            <stop offset="1" stop-color="var(--paper)" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <rect id="noteBg" x="4" y="4" width="512" height="232" rx="14" fill="var(--teal)"/>
-        <rect x="4" y="4" width="512" height="232" rx="14" fill="url(#sheen)"/>
-        <!-- security thread -->
-        <rect id="thread" x="150" y="4" width="8" height="232" fill="var(--ink)" opacity=".55"/>
-        <!-- bilingual issuer -->
-        <text x="260" y="34" text-anchor="middle" style="font-family:var(--sans)" font-weight="600" font-size="13" fill="var(--paper)">भारतीय रिज़र्व बैंक · RESERVE BANK OF INDIA</text>
-        <!-- big numeral -->
-        <text id="bigNum" x="452" y="150" text-anchor="middle" style="font-family:var(--serif)" font-weight="600" font-size="72" fill="var(--paper)">10</text>
-        <!-- denomination words bilingual -->
-        <text id="wordsHi" x="40" y="120" style="font-family:var(--sans)" font-weight="600" font-size="17" fill="var(--paper)">दस रुपये</text>
-        <text id="wordsEn" x="40" y="142" style="font-family:var(--sans)" font-weight="500" font-size="13" fill="var(--paper)" opacity=".9">TEN RUPEES</text>
-        <!-- tactile mark -->
-        <g id="tactile" opacity=".95">
-          <circle cx="36" cy="204" r="7" fill="var(--paper)"/>
-          <circle cx="56" cy="204" r="7" fill="var(--paper)" opacity=".55"/>
-          <circle cx="76" cy="204" r="7" fill="var(--paper)" opacity=".25"/>
-        </g>
-        <!-- serial -->
-        <text x="360" y="222" style="font-family:var(--sans)" font-weight="600" font-size="11" fill="var(--paper)" opacity=".9">4 MD 727272</text>
-        <!-- signature -->
-        <text x="260" y="70" text-anchor="middle" style="font-family:var(--sans)" font-style="italic" font-size="10" fill="var(--paper)" opacity=".85">Governor, गवर्नर</text>
-
-        <!-- hotspots -->
-        <g class="hotspot" data-h="0" transform="translate(452,96)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">1</text></g>
-        <g class="hotspot" data-h="1" transform="translate(120,131)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">2</text></g>
-        <g class="hotspot" data-h="2" transform="translate(56,180)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">3</text></g>
-        <g class="hotspot" data-h="3" transform="translate(154,28)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">4</text></g>
-        <g class="hotspot" data-h="4" transform="translate(414,216)"><circle class="ring" r="11"/><text y="4" text-anchor="middle">5</text></g>
-      </svg>
-    </div>
-
-    <div class="explain" id="explain">
-      <span class="cat must" id="exCat">Must have</span>
-      <h3 id="exTitle">Tap a numbered dot</h3>
-      <p id="exBody">Each element on the note earned its place through a must have / good to have / use case based sort, benchmarked against the Euro, USD, Swiss Franc, Dirham and Krone.</p>
-      <div class="o-legend">
-        <span class="cat must">Must have</span>
-        <span class="cat good">Good to have</span>
-        <span class="cat use">Use case based</span>
-      </div>
-    </div>
-  </div>
-    </div>
+</div></section>
+<section class="ch" id="final" aria-labelledby="finalh"><div class="in">
+  <header class="chh reveal"><span class="no">04</span><div><h2 id="finalh">The note, redesigned</h2><p>The spec, drawn: six values that differ by size, colour and touch.</p></div><span class="pm">The release</span></header>
+  <div class="frame sheet sq f4 reveal">
+    <span class="cap"><b>Fig. 4</b> · The new rupee family</span>
+    <div class="fgrid"><div class="fstage"><svg class="d fnl" id="fnl" viewBox="0 0 640 330" role="img" aria-label="The redesigned ₹100, front"><defs><filter id="cvd" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0"/></filter></defs><g class="fall"><g class="fv" data-v="10" data-face="front" data-x="80" data-y="45" data-w="480" data-h="240" transform="translate(80,45) scale(0.80)"><g class="nt " data-v="10" data-face="front"><rect class="nb" width="600" height="300" fill="#ECD2CD"/><g class="ncol"><rect class="np" width="150" height="300" fill="#B4533F"/><rect class="np" x="573" width="27" height="300" fill="#B4533F"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#E7ECF0" transform="translate(75.0,132) scale(2.0)">10</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#E7ECF0">दस रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#E7ECF0">TEN RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹10</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹10</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹10</text></g><g class="niss"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc"><circle class="ndot" cx="11" cy="150" r="5"/><circle class="ndot" cx="589" cy="150" r="5"/></g></g></g><g class="fv" data-v="10" data-face="back" data-x="80" data-y="45" data-w="480" data-h="240" transform="translate(80,45) scale(0.80)"><g class="nt " data-v="10" data-face="back"><rect class="nb" width="600" height="300" fill="#ECD2CD"/><g class="ncol"><rect class="np" x="450" width="150" height="300" fill="#B4533F"/><rect class="np" width="27" height="300" fill="#B4533F"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#E7ECF0" transform="translate(525.0,132) scale(2.0)">10</text><text class="nw1" x="525.0" y="170" text-anchor="middle" fill="#E7ECF0">दस रुपये</text><text class="nw2" x="525.0" y="190" text-anchor="middle" fill="#E7ECF0">TEN RUPEES</text><text class="nc" x="434" y="282" text-anchor="end" fill="#18212C">₹10</text><text class="nc" x="160" y="44" fill="#18212C">₹10</text><text class="nc" x="41" y="282" fill="#18212C">₹10</text></g><g class="nopt"><rect class="nmo" x="40" y="64" width="100" height="150"/><path class="nmo2" d="M46,204 h88 M52,204 v-40 h14 v40 M72,204 v-62 l18,-16 l18,16 v62 M114,204 v-40 h14 v40 M83,204 v-26 a7,7 0 0 1 14,0 v26"/><rect class="nlp" x="316" y="100" width="36" height="140"/><path class="nl2" d="M322,112 h24"/><path class="nl2" d="M322,121 h24"/><path class="nl2" d="M322,130 h20.6"/><path class="nl2" d="M322,139 h24"/><path class="nl2" d="M322,148 h24"/><path class="nl2" d="M322,157 h20.6"/><path class="nl2" d="M322,166 h24"/><path class="nl2" d="M322,175 h24"/><path class="nl2" d="M322,184 h20.6"/><path class="nl2" d="M322,193 h24"/><path class="nl2" d="M322,202 h24"/><path class="nl2" d="M322,211 h20.6"/><path class="nl2" d="M322,220 h24"/><path class="nl2" d="M322,229 h24"/></g><g class="nsec"><ellipse class="nwm" cx="240" cy="128" rx="26" ry="31"/><rect class="nsr" x="228" y="178" width="24" height="24"/><path class="nsr2" d="M246,196 l-12,-12"/></g><g class="nser"><text class="ni2" x="434" y="64" text-anchor="end">RESERVE BANK OF INDIA</text><text class="nsn" x="434" y="20" text-anchor="end">6AB 123456</text><text class="nsn" x="249" y="20">2027</text></g><g class="ntc"><circle class="ndot bk" cx="589" cy="150" r="5"/><circle class="ndot bk" cx="11" cy="150" r="5"/></g></g></g><g class="fv" data-v="20" data-face="front" data-x="68" data-y="39" data-w="504" data-h="252" transform="translate(68,39) scale(0.84)"><g class="nt " data-v="20" data-face="front"><rect class="nb" width="600" height="300" fill="#C8DADE"/><g class="ncol"><rect class="np" width="150" height="300" fill="#2B6F82"/><rect class="np" x="573" width="27" height="300" fill="#2B6F82"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#E7ECF0" transform="translate(75.0,132) scale(2.0)">20</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#E7ECF0">बीस रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#E7ECF0">TWENTY RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹20</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹20</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹20</text></g><g class="niss"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc"><circle class="ndot" cx="11" cy="142" r="5"/><circle class="ndot" cx="11" cy="158" r="5"/><circle class="ndot" cx="589" cy="142" r="5"/><circle class="ndot" cx="589" cy="158" r="5"/></g></g></g><g class="fv" data-v="20" data-face="back" data-x="68" data-y="39" data-w="504" data-h="252" transform="translate(68,39) scale(0.84)"><g class="nt " data-v="20" data-face="back"><rect class="nb" width="600" height="300" fill="#C8DADE"/><g class="ncol"><rect class="np" x="450" width="150" height="300" fill="#2B6F82"/><rect class="np" width="27" height="300" fill="#2B6F82"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#E7ECF0" transform="translate(525.0,132) scale(2.0)">20</text><text class="nw1" x="525.0" y="170" text-anchor="middle" fill="#E7ECF0">बीस रुपये</text><text class="nw2" x="525.0" y="190" text-anchor="middle" fill="#E7ECF0">TWENTY RUPEES</text><text class="nc" x="434" y="282" text-anchor="end" fill="#18212C">₹20</text><text class="nc" x="160" y="44" fill="#18212C">₹20</text><text class="nc" x="41" y="282" fill="#18212C">₹20</text></g><g class="nopt"><rect class="nmo" x="40" y="64" width="100" height="150"/><path class="nmo2" d="M46,204 h88 M52,204 v-40 h14 v40 M72,204 v-62 l18,-16 l18,16 v62 M114,204 v-40 h14 v40 M83,204 v-26 a7,7 0 0 1 14,0 v26"/><rect class="nlp" x="316" y="100" width="36" height="140"/><path class="nl2" d="M322,112 h24"/><path class="nl2" d="M322,121 h24"/><path class="nl2" d="M322,130 h20.6"/><path class="nl2" d="M322,139 h24"/><path class="nl2" d="M322,148 h24"/><path class="nl2" d="M322,157 h20.6"/><path class="nl2" d="M322,166 h24"/><path class="nl2" d="M322,175 h24"/><path class="nl2" d="M322,184 h20.6"/><path class="nl2" d="M322,193 h24"/><path class="nl2" d="M322,202 h24"/><path class="nl2" d="M322,211 h20.6"/><path class="nl2" d="M322,220 h24"/><path class="nl2" d="M322,229 h24"/></g><g class="nsec"><ellipse class="nwm" cx="240" cy="128" rx="26" ry="31"/><rect class="nsr" x="228" y="178" width="24" height="24"/><path class="nsr2" d="M246,196 l-12,-12"/></g><g class="nser"><text class="ni2" x="434" y="64" text-anchor="end">RESERVE BANK OF INDIA</text><text class="nsn" x="434" y="20" text-anchor="end">6AB 123456</text><text class="nsn" x="249" y="20">2027</text></g><g class="ntc"><circle class="ndot bk" cx="589" cy="142" r="5"/><circle class="ndot bk" cx="589" cy="158" r="5"/><circle class="ndot bk" cx="11" cy="142" r="5"/><circle class="ndot bk" cx="11" cy="158" r="5"/></g></g></g><g class="fv" data-v="50" data-face="front" data-x="56" data-y="33" data-w="528" data-h="264" transform="translate(56,33) scale(0.88)"><g class="nt " data-v="50" data-face="front"><rect class="nb" width="600" height="300" fill="#ECF6F9"/><g class="ncol"><rect class="np" width="150" height="300" fill="#B5DDE7"/><rect class="np" x="573" width="27" height="300" fill="#B5DDE7"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(75.0,132) scale(2.0)">50</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#18212C">पचास रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#18212C">FIFTY RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹50</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹50</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹50</text></g><g class="niss"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc"><circle class="ndot" cx="11" cy="134" r="5"/><circle class="ndot" cx="11" cy="150" r="5"/><circle class="ndot" cx="11" cy="166" r="5"/><circle class="ndot" cx="589" cy="134" r="5"/><circle class="ndot" cx="589" cy="150" r="5"/><circle class="ndot" cx="589" cy="166" r="5"/></g></g></g><g class="fv" data-v="50" data-face="back" data-x="56" data-y="33" data-w="528" data-h="264" transform="translate(56,33) scale(0.88)"><g class="nt " data-v="50" data-face="back"><rect class="nb" width="600" height="300" fill="#ECF6F9"/><g class="ncol"><rect class="np" x="450" width="150" height="300" fill="#B5DDE7"/><rect class="np" width="27" height="300" fill="#B5DDE7"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(525.0,132) scale(2.0)">50</text><text class="nw1" x="525.0" y="170" text-anchor="middle" fill="#18212C">पचास रुपये</text><text class="nw2" x="525.0" y="190" text-anchor="middle" fill="#18212C">FIFTY RUPEES</text><text class="nc" x="434" y="282" text-anchor="end" fill="#18212C">₹50</text><text class="nc" x="160" y="44" fill="#18212C">₹50</text><text class="nc" x="41" y="282" fill="#18212C">₹50</text></g><g class="nopt"><rect class="nmo" x="40" y="64" width="100" height="150"/><path class="nmo2" d="M46,204 h88 M52,204 v-40 h14 v40 M72,204 v-62 l18,-16 l18,16 v62 M114,204 v-40 h14 v40 M83,204 v-26 a7,7 0 0 1 14,0 v26"/><rect class="nlp" x="316" y="100" width="36" height="140"/><path class="nl2" d="M322,112 h24"/><path class="nl2" d="M322,121 h24"/><path class="nl2" d="M322,130 h20.6"/><path class="nl2" d="M322,139 h24"/><path class="nl2" d="M322,148 h24"/><path class="nl2" d="M322,157 h20.6"/><path class="nl2" d="M322,166 h24"/><path class="nl2" d="M322,175 h24"/><path class="nl2" d="M322,184 h20.6"/><path class="nl2" d="M322,193 h24"/><path class="nl2" d="M322,202 h24"/><path class="nl2" d="M322,211 h20.6"/><path class="nl2" d="M322,220 h24"/><path class="nl2" d="M322,229 h24"/></g><g class="nsec"><ellipse class="nwm" cx="240" cy="128" rx="26" ry="31"/><rect class="nsr" x="228" y="178" width="24" height="24"/><path class="nsr2" d="M246,196 l-12,-12"/></g><g class="nser"><text class="ni2" x="434" y="64" text-anchor="end">RESERVE BANK OF INDIA</text><text class="nsn" x="434" y="20" text-anchor="end">6AB 123456</text><text class="nsn" x="249" y="20">2027</text></g><g class="ntc"><circle class="ndot bk" cx="589" cy="134" r="5"/><circle class="ndot bk" cx="589" cy="150" r="5"/><circle class="ndot bk" cx="589" cy="166" r="5"/><circle class="ndot bk" cx="11" cy="134" r="5"/><circle class="ndot bk" cx="11" cy="150" r="5"/><circle class="ndot bk" cx="11" cy="166" r="5"/></g></g></g><g class="fv on" data-v="100" data-face="front" data-x="44" data-y="27" data-w="552" data-h="276" transform="translate(44,27) scale(0.92)"><g class="nt " data-v="100" data-face="front"><rect class="nb" width="600" height="300" fill="#CDCFD2"/><g class="ncol"><rect class="np" width="150" height="300" fill="#3E4853"/><rect class="np" x="573" width="27" height="300" fill="#3E4853"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#E7ECF0" transform="translate(75.0,132) scale(2.0)">100</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#E7ECF0">सौ रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#E7ECF0">ONE HUNDRED RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹100</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹100</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹100</text></g><g class="niss"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc"><circle class="ndot" cx="75" cy="11" r="5"/><circle class="ndot" cx="375" cy="289" r="5"/></g></g></g><g class="fv" data-v="100" data-face="back" data-x="44" data-y="27" data-w="552" data-h="276" transform="translate(44,27) scale(0.92)"><g class="nt " data-v="100" data-face="back"><rect class="nb" width="600" height="300" fill="#CDCFD2"/><g class="ncol"><rect class="np" x="450" width="150" height="300" fill="#3E4853"/><rect class="np" width="27" height="300" fill="#3E4853"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#E7ECF0" transform="translate(525.0,132) scale(2.0)">100</text><text class="nw1" x="525.0" y="170" text-anchor="middle" fill="#E7ECF0">सौ रुपये</text><text class="nw2" x="525.0" y="190" text-anchor="middle" fill="#E7ECF0">ONE HUNDRED RUPEES</text><text class="nc" x="434" y="282" text-anchor="end" fill="#18212C">₹100</text><text class="nc" x="160" y="44" fill="#18212C">₹100</text><text class="nc" x="41" y="282" fill="#18212C">₹100</text></g><g class="nopt"><rect class="nmo" x="40" y="64" width="100" height="150"/><path class="nmo2" d="M46,204 h88 M52,204 v-40 h14 v40 M72,204 v-62 l18,-16 l18,16 v62 M114,204 v-40 h14 v40 M83,204 v-26 a7,7 0 0 1 14,0 v26"/><rect class="nlp" x="316" y="100" width="36" height="140"/><path class="nl2" d="M322,112 h24"/><path class="nl2" d="M322,121 h24"/><path class="nl2" d="M322,130 h20.6"/><path class="nl2" d="M322,139 h24"/><path class="nl2" d="M322,148 h24"/><path class="nl2" d="M322,157 h20.6"/><path class="nl2" d="M322,166 h24"/><path class="nl2" d="M322,175 h24"/><path class="nl2" d="M322,184 h20.6"/><path class="nl2" d="M322,193 h24"/><path class="nl2" d="M322,202 h24"/><path class="nl2" d="M322,211 h20.6"/><path class="nl2" d="M322,220 h24"/><path class="nl2" d="M322,229 h24"/></g><g class="nsec"><ellipse class="nwm" cx="240" cy="128" rx="26" ry="31"/><rect class="nsr" x="228" y="178" width="24" height="24"/><path class="nsr2" d="M246,196 l-12,-12"/></g><g class="nser"><text class="ni2" x="434" y="64" text-anchor="end">RESERVE BANK OF INDIA</text><text class="nsn" x="434" y="20" text-anchor="end">6AB 123456</text><text class="nsn" x="249" y="20">2027</text></g><g class="ntc"><circle class="ndot bk" cx="525" cy="11" r="5"/><circle class="ndot bk" cx="225" cy="289" r="5"/></g></g></g><g class="fv" data-v="200" data-face="front" data-x="32" data-y="21" data-w="576" data-h="288" transform="translate(32,21) scale(0.96)"><g class="nt " data-v="200" data-face="front"><rect class="nb" width="600" height="300" fill="#F1EEE8"/><g class="ncol"><rect class="np" width="150" height="300" fill="#CBBFA6"/><rect class="np" x="573" width="27" height="300" fill="#CBBFA6"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(75.0,132) scale(2.0)">200</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#18212C">दो सौ रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#18212C">TWO HUNDRED RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹200</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹200</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹200</text></g><g class="niss"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc"><circle class="ndot" cx="67" cy="11" r="5"/><circle class="ndot" cx="83" cy="11" r="5"/><circle class="ndot" cx="367" cy="289" r="5"/><circle class="ndot" cx="383" cy="289" r="5"/></g></g></g><g class="fv" data-v="200" data-face="back" data-x="32" data-y="21" data-w="576" data-h="288" transform="translate(32,21) scale(0.96)"><g class="nt " data-v="200" data-face="back"><rect class="nb" width="600" height="300" fill="#F1EEE8"/><g class="ncol"><rect class="np" x="450" width="150" height="300" fill="#CBBFA6"/><rect class="np" width="27" height="300" fill="#CBBFA6"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(525.0,132) scale(2.0)">200</text><text class="nw1" x="525.0" y="170" text-anchor="middle" fill="#18212C">दो सौ रुपये</text><text class="nw2" x="525.0" y="190" text-anchor="middle" fill="#18212C">TWO HUNDRED RUPEES</text><text class="nc" x="434" y="282" text-anchor="end" fill="#18212C">₹200</text><text class="nc" x="160" y="44" fill="#18212C">₹200</text><text class="nc" x="41" y="282" fill="#18212C">₹200</text></g><g class="nopt"><rect class="nmo" x="40" y="64" width="100" height="150"/><path class="nmo2" d="M46,204 h88 M52,204 v-40 h14 v40 M72,204 v-62 l18,-16 l18,16 v62 M114,204 v-40 h14 v40 M83,204 v-26 a7,7 0 0 1 14,0 v26"/><rect class="nlp" x="316" y="100" width="36" height="140"/><path class="nl2" d="M322,112 h24"/><path class="nl2" d="M322,121 h24"/><path class="nl2" d="M322,130 h20.6"/><path class="nl2" d="M322,139 h24"/><path class="nl2" d="M322,148 h24"/><path class="nl2" d="M322,157 h20.6"/><path class="nl2" d="M322,166 h24"/><path class="nl2" d="M322,175 h24"/><path class="nl2" d="M322,184 h20.6"/><path class="nl2" d="M322,193 h24"/><path class="nl2" d="M322,202 h24"/><path class="nl2" d="M322,211 h20.6"/><path class="nl2" d="M322,220 h24"/><path class="nl2" d="M322,229 h24"/></g><g class="nsec"><ellipse class="nwm" cx="240" cy="128" rx="26" ry="31"/><rect class="nsr" x="228" y="178" width="24" height="24"/><path class="nsr2" d="M246,196 l-12,-12"/></g><g class="nser"><text class="ni2" x="434" y="64" text-anchor="end">RESERVE BANK OF INDIA</text><text class="nsn" x="434" y="20" text-anchor="end">6AB 123456</text><text class="nsn" x="249" y="20">2027</text></g><g class="ntc"><circle class="ndot bk" cx="517" cy="11" r="5"/><circle class="ndot bk" cx="533" cy="11" r="5"/><circle class="ndot bk" cx="217" cy="289" r="5"/><circle class="ndot bk" cx="233" cy="289" r="5"/></g></g></g><g class="fv" data-v="500" data-face="front" data-x="20" data-y="15" data-w="600" data-h="300" transform="translate(20,15) scale(1.00)"><g class="nt " data-v="500" data-face="front"><rect class="nb" width="600" height="300" fill="#DEE1E4"/><g class="ncol"><rect class="np" width="150" height="300" fill="#7F8C99"/><rect class="np" x="573" width="27" height="300" fill="#7F8C99"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(75.0,132) scale(2.0)">500</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#18212C">पाँच सौ रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#18212C">FIVE HUNDRED RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹500</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹500</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹500</text></g><g class="niss"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc"><circle class="ndot" cx="59" cy="11" r="5"/><circle class="ndot" cx="75" cy="11" r="5"/><circle class="ndot" cx="91" cy="11" r="5"/><circle class="ndot" cx="359" cy="289" r="5"/><circle class="ndot" cx="375" cy="289" r="5"/><circle class="ndot" cx="391" cy="289" r="5"/></g></g></g><g class="fv" data-v="500" data-face="back" data-x="20" data-y="15" data-w="600" data-h="300" transform="translate(20,15) scale(1.00)"><g class="nt " data-v="500" data-face="back"><rect class="nb" width="600" height="300" fill="#DEE1E4"/><g class="ncol"><rect class="np" x="450" width="150" height="300" fill="#7F8C99"/><rect class="np" width="27" height="300" fill="#7F8C99"/></g><g class="nval"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(525.0,132) scale(2.0)">500</text><text class="nw1" x="525.0" y="170" text-anchor="middle" fill="#18212C">पाँच सौ रुपये</text><text class="nw2" x="525.0" y="190" text-anchor="middle" fill="#18212C">FIVE HUNDRED RUPEES</text><text class="nc" x="434" y="282" text-anchor="end" fill="#18212C">₹500</text><text class="nc" x="160" y="44" fill="#18212C">₹500</text><text class="nc" x="41" y="282" fill="#18212C">₹500</text></g><g class="nopt"><rect class="nmo" x="40" y="64" width="100" height="150"/><path class="nmo2" d="M46,204 h88 M52,204 v-40 h14 v40 M72,204 v-62 l18,-16 l18,16 v62 M114,204 v-40 h14 v40 M83,204 v-26 a7,7 0 0 1 14,0 v26"/><rect class="nlp" x="316" y="100" width="36" height="140"/><path class="nl2" d="M322,112 h24"/><path class="nl2" d="M322,121 h24"/><path class="nl2" d="M322,130 h20.6"/><path class="nl2" d="M322,139 h24"/><path class="nl2" d="M322,148 h24"/><path class="nl2" d="M322,157 h20.6"/><path class="nl2" d="M322,166 h24"/><path class="nl2" d="M322,175 h24"/><path class="nl2" d="M322,184 h20.6"/><path class="nl2" d="M322,193 h24"/><path class="nl2" d="M322,202 h24"/><path class="nl2" d="M322,211 h20.6"/><path class="nl2" d="M322,220 h24"/><path class="nl2" d="M322,229 h24"/></g><g class="nsec"><ellipse class="nwm" cx="240" cy="128" rx="26" ry="31"/><rect class="nsr" x="228" y="178" width="24" height="24"/><path class="nsr2" d="M246,196 l-12,-12"/></g><g class="nser"><text class="ni2" x="434" y="64" text-anchor="end">RESERVE BANK OF INDIA</text><text class="nsn" x="434" y="20" text-anchor="end">6AB 123456</text><text class="nsn" x="249" y="20">2027</text></g><g class="ntc"><circle class="ndot bk" cx="509" cy="11" r="5"/><circle class="ndot bk" cx="525" cy="11" r="5"/><circle class="ndot bk" cx="541" cy="11" r="5"/><circle class="ndot bk" cx="209" cy="289" r="5"/><circle class="ndot bk" cx="225" cy="289" r="5"/><circle class="ndot bk" cx="241" cy="289" r="5"/></g></g></g></g><g class="fold" aria-hidden="true"><path class="fh" d=""/><path class="fl1" d=""/><path class="fl2" d=""/></g></svg><p class="vcap" aria-live="polite"></p></div>
+    <div class="fctl"><div class="grp"><span class="k">Value</span><div class="seg" id="fv" role="group"><button type="button" data-k="10" aria-pressed="false">₹10</button><button type="button" data-k="20" aria-pressed="false">₹20</button><button type="button" data-k="50" aria-pressed="false">₹50</button><button type="button" data-k="100" aria-pressed="true">₹100</button><button type="button" data-k="200" aria-pressed="false">₹200</button><button type="button" data-k="500" aria-pressed="false">₹500</button></div></div><div class="grp"><span class="k">Side</span><div class="seg" id="ff" role="group"><button type="button" data-k="front" aria-pressed="true">Front</button><button type="button" data-k="back" aria-pressed="false">Back</button></div></div><div class="grp"><span class="k">Fold</span><div class="seg" id="fo" role="group"><button type="button" data-k="open" aria-pressed="true">Open</button><button type="button" data-k="half" aria-pressed="false">In half</button><button type="button" data-k="four" aria-pressed="false">In four</button></div></div><div class="grp"><span class="k">See it as</span><div class="seg" id="fs" role="group"><button type="button" data-k="sight" aria-pressed="true">Sight</button><button type="button" data-k="low" aria-pressed="false">Low vision</button><button type="button" data-k="cvd" aria-pressed="false">Colour blind</button><button type="button" data-k="touch" aria-pressed="false">Touch only</button></div></div><div class="grp"><span class="k">All six, at true size</span><svg class="d fmy" viewBox="-2 -4 884 108" role="group" aria-label="The six values at true relative size"><g class="fam" data-v="10" role="button" tabindex="0" aria-pressed="false" aria-label="₹10, 120 by 60 mm" transform="translate(0,20)"><rect class="fmb" width="120" height="60" fill="#ECD2CD"/><rect width="30" height="60" fill="#B4533F"/><text class="fmn" x="15" y="36" text-anchor="middle" fill="#E7ECF0">10</text><text class="fmm" x="0" y="76">120 × 60</text></g><g class="fam" data-v="20" role="button" tabindex="0" aria-pressed="false" aria-label="₹20, 126 by 63 mm" transform="translate(132,17)"><rect class="fmb" width="126" height="63" fill="#C8DADE"/><rect width="31.5" height="63" fill="#2B6F82"/><text class="fmn" x="15.8" y="37.5" text-anchor="middle" fill="#E7ECF0">20</text><text class="fmm" x="0" y="79">126 × 63</text></g><g class="fam" data-v="50" role="button" tabindex="0" aria-pressed="false" aria-label="₹50, 132 by 66 mm" transform="translate(270,14)"><rect class="fmb" width="132" height="66" fill="#ECF6F9"/><rect width="33" height="66" fill="#B5DDE7"/><text class="fmn" x="16.5" y="39" text-anchor="middle" fill="#18212C">50</text><text class="fmm" x="0" y="82">132 × 66</text></g><g class="fam on" data-v="100" role="button" tabindex="0" aria-pressed="true" aria-label="₹100, 138 by 69 mm" transform="translate(414,11)"><rect class="fmb" width="138" height="69" fill="#CDCFD2"/><rect width="34.5" height="69" fill="#3E4853"/><text class="fmn" x="17.2" y="40.5" text-anchor="middle" fill="#E7ECF0">100</text><text class="fmm" x="0" y="85">138 × 69</text></g><g class="fam" data-v="200" role="button" tabindex="0" aria-pressed="false" aria-label="₹200, 144 by 72 mm" transform="translate(564,8)"><rect class="fmb" width="144" height="72" fill="#F1EEE8"/><rect width="36" height="72" fill="#CBBFA6"/><text class="fmn" x="18" y="42" text-anchor="middle" fill="#18212C">200</text><text class="fmm" x="0" y="88">144 × 72</text></g><g class="fam" data-v="500" role="button" tabindex="0" aria-pressed="false" aria-label="₹500, 150 by 75 mm" transform="translate(720,5)"><rect class="fmb" width="150" height="75" fill="#DEE1E4"/><rect width="37.5" height="75" fill="#7F8C99"/><text class="fmn" x="18.8" y="43.5" text-anchor="middle" fill="#18212C">500</text><text class="fmm" x="0" y="91">150 × 75</text></g></svg></div></div></div>
+    <p class="so"><b>So</b>Size, a raised code and colour each tell the value on their own. Together they survive a fold, a dim shop and a worn note.</p>
   </div>
 </div></section>
 
-
-<!-- ═══ THE HIERARCHY ═══ -->
-<section class="prose sheet" style="padding-block:var(--pad)">
-  <div class="in"><div>
-    <div><span class="n">01 · The sort</span><h2 style="color:var(--chalk)">Every element, ranked before it was drawn.</h2></div>
-    <div>
-      <p style="color:var(--chalk)">Security, accessibility, two scripts, machine readability and cultural neutrality all compete for a few square centimetres. The way through was not a better drawing. It was an inventory: every element on the note, force ranked, split by front and back.</p>
-      <table class="hier" style="color:var(--chalk)">
-        <thead><tr><th style="color:var(--chalk-3);border-color:var(--chalk)">Rank</th><th style="color:var(--chalk-3);border-color:var(--chalk)">Element</th><th style="color:var(--chalk-3);border-color:var(--chalk)">Why it is there</th></tr></thead>
-        <tbody>
-          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The numeral</b></td><td style="border-color:var(--edge)">First, high contrast, checked against colour blind palettes. Value reads before words do.</td></tr>
-          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The value in both scripts</b></td><td style="border-color:var(--edge)">Per the constitutional mandate, in a fixed order so neither crowds the other.</td></tr>
-          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The tactile mark</b></td><td style="border-color:var(--edge)">One pattern per value, at the held edge, clear of the fold line and the ATM roller.</td></tr>
-          <tr><td style="color:var(--signal)">Must have</td><td style="border-color:var(--edge)"><b>The security thread</b></td><td style="border-color:var(--edge)">Not negotiable. Placed where folds will not wear it.</td></tr>
-          <tr><td style="color:var(--chalk-3)">Use case</td><td style="border-color:var(--edge)"><b>The serial</b></td><td style="border-color:var(--edge)">For machines. The same position on every denomination, because counting machines and ATMs are users too, and they have no patience.</td></tr>
-          <tr><td style="color:var(--chalk-3)">Good to have</td><td style="border-color:var(--edge)"><b>Portrait and motif</b></td><td style="border-color:var(--edge)">Moved off the face. Nothing stays on the front that is only good to have.</td></tr>
-        </tbody>
-      </table>
-      <p style="color:var(--chalk-2)">Four must haves, one use case element. Seven typefaces were tested to get the numerals and the two scripts to sit together: display faces for the numerals, workhorses for the scripts.</p>
-    </div>
-  </div></div>
-</section>
-
-<!-- ═══ TAKE THIS WITH YOU ═══ -->
-<section class="prose">
-  <div class="in"><div>
-    <div><span class="n">02 · Take this with you</span><h2>The same sort works on a screen.</h2></div>
-    <div>
-      <ul><li>Design for the least served user first. Here that was the visually impaired. It raised the floor for everyone.</li><li>List the machines that read your artefact too. Parsers, scanners and printers are users with no patience.</li><li>Stress test against real life: wallet folds, rollers, monsoons, and the designed for edge case, demonetisation.</li></ul>
-      <p style="margin-top:28px">List everything on it. Rank it. Cut or layer everything below the line. Then benchmark four or five comparable products element by element, not vibe by vibe, and you find out what is convention and what is necessary.</p>
-    </div>
-  </div></div>
-</section>
+<section class="pml"><div class="in"><div class="lens"><i class="bk tl" aria-hidden="true"></i><i class="bk tr" aria-hidden="true"></i><i class="bk bl" aria-hidden="true"></i><i class="bk br" aria-hidden="true"></i><div class="lhd"><div><span class="kick">The PM lens</span><p class="ask">“Design an ATM that people who are blind can use on their own.”</p><cite>Google PM interview · product design and strategy · reported to <a href="https://prachub.com/interview-questions/designing-an-accessible-cash-machine-for-blind-and-low-vision-customers" rel="noopener">PracHub</a>, updated 28 October 2026</cite></div><div class="tests"><span class="k">What the round tests</span><p>Whether you follow the person from start to finish, rather than designing the machine.</p></div></div><ol class="moves"><li><b>Start with the cash, not the machine.</b><span>A talking ATM is no use if the note it pays out can’t be checked by hand. The lower rupee notes can’t be.</span></li><li><b>Give every value three cues that work alone.</b><span>Size, a raised code and colour. The round’s first follow up asks about people who don’t read Braille: the code is dots to count, not Braille, as on Canada’s notes.</span></li><li><b>Ship into the machines already out there.</b><span>The second follow up: banks won’t replace their machines quickly. So the ₹500 stays 150 mm long, as now, and the new values arrive one at a time.</span></li></ol><div class="lft"><div class="wrong"><span class="k">If this goes wrong</span><p>A year in, blind users still check every note with an app. Test whether the dots survive a year in a wallet: a mark that wears flat is a mark nobody trusts.</p></div><dl><div><dt>Watch</dt><dd>Notes named right by touch alone, in a blind test · counting errors at bank counters · mixed up notes reported</dd></div><div><dt>With</dt><dd>The RBI’s currency department · the note presses · associations of blind people · ATM makers · banks</dd></div></dl></div></div></div></section>
 
 <section class="decided">
   <div class="in"><div class="box sheet reveal">
-    <div><span class="k">Decided</span><h2>Sized by value, vertical, thumb first. The draft that survived the wallet, the roller and the monsoon.</h2></div>
+    <div><span class="k">Decided</span><h2>Make the value impossible to miss: by eye, by hand, or folded in a wallet.</h2></div>
     <ol>
-      <li><b>Stop</b><span>What does a note have to say before anyone properly looks at it?<i>Three values, one size, one voice. Nothing leads.</i></span></li>
-      <li><b>Notice</b><span>The Euro sizes by value. The dollar does not.<i>And a court said so, in 2008.</i></span></li>
-      <li><b>Tradeoff</b><span>One size for every note, or variation you can feel in a pocket.<i>Standardisation is cheaper to print. Variation is cheaper to use.</i></span></li>
-      <li><b>Decide</b><span>Denomination specific sizing on both axes, and the vertical format.<i>What it cost: new dies for every denomination, and every ATM cassette recalibrated.</i></span></li>
+      <li><b>Stop</b><span>Almost every part of today’s note needs sight.<i>Touch arrived late, and only on the higher values.</i></span></li>
+      <li><b>Notice</b><span>The best notes code value by count or place, not by Braille.<i>The pound counts dots; the yen moves one mark.</i></span></li>
+      <li><b>Tradeoff</b><span>Room for touch and sight comes out of security and two scripts.<i>So the portrait moves into the watermark.</i></span></li>
+      <li><b>Decide</b><span>One shape at six sizes, a three dot code, one numeral in every quarter.<i>What it cost: the face at the centre, and new sizes for every machine.</i></span></li>
     </ol>
   </div></div>
 </section>
@@ -382,171 +437,171 @@
 
 <script src="analytics.js" defer></script>
 <script>
+
 if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("static");
 (function(){
-  var reduce = window.matchMedia('(prefers reduced motion: reduce)').matches;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var els = [].slice.call(document.querySelectorAll('.reveal'));
   if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){ e.classList.add('is-in'); }); }
   else { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.05}); els.forEach(function(e){ io.observe(e); }); }
 
-  /* ── the note bench ── */
-  var S = 3; /* px per mm */
-  var NOTES = {
-    10:  {w:123, h:63, hi:'दस रुपये', en:'TEN RUPEES',         bars:1, col:'c10', serial:'7AB 214596', colour:'not specified in the source'},
-    20:  {w:129, h:63, hi:'बीस रुपये', en:'TWENTY RUPEES',     bars:2, col:'c20', serial:'4MD 727272', colour:'amber'},
-    100: {w:142, h:66, hi:'सौ रुपये', en:'ONE HUNDRED RUPEES', bars:3, col:'c100', serial:'0RB 118219', colour:'green'}
-  };
-  var OTHERS = [
-    {k:'€5',  w:120, h:62}, {k:'€10', w:127, h:67}, {k:'€20', w:133, h:72},
-    {k:'$1',  w:156, h:66}, {k:'$10', w:156, h:66}, {k:'$100', w:156, h:66}
-  ];
-  var st = {den:100, back:false, vert:false, size:false, tac:true, col:true};
-  var scene = document.getElementById('scene');
-  var copy = {
-    front:  {k:'As printed, then sorted', h:'Three values, one size, one voice', p:'Issuer, numeral, two scripts, a portrait, a thread, a serial. All at the same weight, on the same canvas, for every denomination. The redraw starts from what has to be read first, not from what has to be on the note.', d:'Numeral first. Both scripts under it, in order. The thread where folds will not wear it.'},
-    back:   {k:'The back', h:'The face that can carry the good to haves', p:'The motif and the language panel move to the back. The value repeats in the same corner on every denomination, so a note face down is still a note you can count.', d:'Nothing on the front that is only good to have.'},
-    vert:   {k:'Rotate it', h:'The Swiss had a reason', p:'A vertical note keeps one width and changes height. It is right side up in the hand that holds it, the numeral sits at the top where a glance lands, and the tactile edge is the edge you hold. Two structural approaches were drafted. This one kept winning.', d:'Take the vertical format seriously rather than dismissing it as a trend.'},
-    size:   {k:'Sized by value', h:'You should be able to tell them apart without looking', p:'The rupee already grows in length, by 27 mm from ₹10 to ₹500. Its height barely moves, so two notes in a wallet feel the same between finger and thumb. The Euro grows on both edges. The dollar does not grow at all.', d:'Denomination specific sizing, on both axes.'},
-    tac:    {k:'Tactile marks', h:'Put the mark where the thumb already is', p:'Raised marks in a pattern per value let someone identify a note by touch. Today\'s wear off, because they sit where wallet folds and ATM rollers rub. Move them to the edge the thumb holds, and away from the fold line. One, two and three bars here are the proposal\'s pattern, not a specification.', d:'One pattern per value, at the held edge, clear of the fold.'},
-    col:    {k:'Colour, and the machines', h:'A colour per value, and one place for the serial', p:'₹20 amber, ₹100 green, checked for colour-blindness so value reads before words do. The ₹10 tint is left open; the source names only the two. The serial sits in the same position on every denomination, because counting machines and ATMs are users too.', d:'Colour per denomination. One serial position across the family.'}
-  };
-  function setNotes(key){
-    var c = copy[key]; document.getElementById('n-k').textContent = c.k; document.getElementById('n-h').textContent = c.h; document.getElementById('n-p').textContent = c.p; document.getElementById('n-d').textContent = c.d;
-  }
-  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
-  function barsSvg(n, x, y, vert, on){
-    var out = '';
-    for(var i=0;i<n;i++){
-      if(vert) out += '<rect class="bar'+(on?' on':'')+'" x="'+(x+i*10)+'" y="'+y+'" width="5" height="26"/>';
-      else out += '<rect class="bar'+(on?' on':'')+'" x="'+x+'" y="'+(y+i*10)+'" width="26" height="5"/>';
-    }
-    return out;
-  }
-  function noteSvg(d, x, y, opts){
-    var n = NOTES[d], vert = opts.vert, W = (vert?n.h:n.w)*S, H = (vert?n.w:n.h)*S;
-    var cls = 'note-f' + (opts.col ? ' '+n.col : '');
-    var s = '<g class="scene" transform="translate('+x+' '+y+')">';
-    s += '<rect class="'+cls+'" x="0" y="0" width="'+W+'" height="'+H+'"/>';
-    if(opts.back){
-      s += '<rect class="motif" x="'+(W*0.08)+'" y="'+(H*0.14)+'" width="'+(W*0.5)+'" height="'+(H*0.7)+'"/>';
-      s += '<rect class="ghost" x="'+(W*0.08)+'" y="'+(H*0.14)+'" width="'+(W*0.5)+'" height="'+(H*0.7)+'"/>';
-      s += '<text class="numeral" x="'+(W-16)+'" y="'+(H*0.14+30)+'" text-anchor="end" style="font-size:30px">'+d+'</text>';
-      for(var i=0;i<8;i++){ s += '<line class="lang" x1="'+(W*0.64)+'" y1="'+(H*0.42+i*9)+'" x2="'+(W-16)+'" y2="'+(H*0.42+i*9)+'"/>'; }
-      s += '<text class="tiny" x="'+(W*0.64)+'" y="'+(H*0.38)+'">Language panel · 15 scripts</text>';
-      s += '<text class="tiny" x="'+(W*0.08)+'" y="'+(H-10)+'">Motif · heritage, not a person</text>';
-    } else {
-      var thx = vert ? W*0.62 : W*0.58;
-      s += '<line class="thread" x1="'+thx+'" y1="6" x2="'+thx+'" y2="'+(H-6)+'"/>';
-      var nx = opts.tac ? 46 : 18;
-      if(vert){
-        s += '<text class="numeral" x="'+nx+'" y="64" style="font-size:56px">'+d+'</text>';
-        s += '<text class="devan" x="'+nx+'" y="92">'+n.hi+'</text><text class="tiny" x="'+nx+'" y="108">'+n.en+'</text>';
-        s += '<text class="tiny" x="'+nx+'" y="'+(H*0.5)+'">भारतीय रिज़र्व बैंक</text><text class="tiny" x="'+nx+'" y="'+(H*0.5+13)+'">Reserve Bank of India</text>';
-        s += '<rect class="motif" x="'+nx+'" y="'+(H*0.58)+'" width="'+(W-nx-16)+'" height="'+(H*0.26)+'"/><rect class="ghost" x="'+nx+'" y="'+(H*0.58)+'" width="'+(W-nx-16)+'" height="'+(H*0.26)+'"/>';
-        s += '<text class="serial" x="'+nx+'" y="'+(H-14)+'">'+n.serial+'</text>';
-        if(opts.tac) s += barsSvg(n.bars, 14, 22, false, true) + '<text class="tiny" x="14" y="'+(22+n.bars*10+14)+'">held edge</text>';
-      } else {
-        s += '<text class="numeral" x="'+nx+'" y="58" style="font-size:52px">'+d+'</text>';
-        s += '<text class="devan" x="'+nx+'" y="86">'+n.hi+'</text><text class="tiny" x="'+nx+'" y="102">'+n.en+'</text>';
-        s += '<text class="tiny" x="'+nx+'" y="'+(H-34)+'">भारतीय रिज़र्व बैंक · Reserve Bank of India</text>';
-        s += '<text class="serial" x="'+nx+'" y="'+(H-14)+'">'+n.serial+'</text>';
-        s += '<rect class="motif" x="'+(W*0.66)+'" y="18" width="'+(W*0.3)+'" height="'+(H-36)+'"/><rect class="ghost" x="'+(W*0.66)+'" y="18" width="'+(W*0.3)+'" height="'+(H-36)+'"/>';
-        if(opts.tac) s += barsSvg(n.bars, 14, 18, false, true) + '<text class="tiny" x="12" y="'+(18+n.bars*10+14)+'" transform="rotate(90 12 '+(18+n.bars*10+14)+')">held edge</text>';
-      }
-    }
-    s += '</g>';
-    /* dimension lines */
-    s += '<g class="scene" transform="translate('+x+' '+y+')"><line class="dim" x1="0" y1="'+(H+22)+'" x2="'+W+'" y2="'+(H+22)+'"/><line class="dim" x1="0" y1="'+(H+16)+'" x2="0" y2="'+(H+28)+'"/><line class="dim" x1="'+W+'" y1="'+(H+16)+'" x2="'+W+'" y2="'+(H+28)+'"/><text class="tm" x="'+(W/2)+'" y="'+(H+42)+'" text-anchor="middle">'+(vert?n.h:n.w)+' mm</text>';
-    s += '<line class="dim" x1="'+(W+22)+'" y1="0" x2="'+(W+22)+'" y2="'+H+'"/><line class="dim" x1="'+(W+16)+'" y1="0" x2="'+(W+28)+'" y2="0"/><line class="dim" x1="'+(W+16)+'" y1="'+H+'" x2="'+(W+28)+'" y2="'+H+'"/><text class="tm" x="'+(W+36)+'" y="'+(H/2+4)+'">'+(vert?n.w:n.h)+' mm</text></g>';
-    return s;
-  }
-  function sizeScene(){
-    /* the three rupee notes over each other, then the euro and dollar families, all at 3 px per mm */
-    var s = '', x0 = 30, y0 = 70;
-    s += '<text class="tm" x="30" y="30">Rupee · ₹10, ₹20, ₹100 · one corner shared</text>';
-    [100,20,10].forEach(function(d, i){
-      var n = NOTES[d], W = (st.vert?n.h:n.w)*S, H = (st.vert?n.w:n.h)*S;
-      var cls = 'note-f' + (st.col?' '+n.col:'');
-      s += '<g class="scene" transform="translate('+x0+' '+y0+')"><rect class="'+cls+'" x="0" y="0" width="'+W+'" height="'+H+'"/><text class="numeral" x="'+(W+8)+'" y="'+(H-6-i*28)+'" style="font-size:22px">'+d+'</text>'+(st.tac?barsSvg(n.bars,12,14,false,true):'')+'</g>';
-    });
-    var n100 = NOTES[100], W100 = (st.vert?n100.h:n100.w)*S, H100 = (st.vert?n100.w:n100.h)*S;
-    s += '<text class="ta" x="'+(x0)+'" y="'+(y0+H100+30)+'">+19 mm long, +3 mm tall from ₹10 to ₹100 · the proposal grows both edges</text>';
-    /* euro family */
-    var ex = 500, ey = 70;
-    s += '<text class="tm" x="'+ex+'" y="30">Euro · €5, €10, €20 · grows on both edges</text>';
-    OTHERS.slice(0,3).reverse().forEach(function(o){ s += '<g class="scene" transform="translate('+ex+' '+ey+')"><rect class="ghost" x="0" y="0" width="'+(o.w*S)+'" height="'+(o.h*S)+'"/><text class="tm" x="'+(o.w*S-6)+'" y="'+(o.h*S-8)+'" text-anchor="end">'+o.k+' · '+o.w+'×'+o.h+'</text></g>'; });
-    /* dollar family */
-    var dy = ey + 72*S + 60;
-    s += '<text class="tm" x="'+ex+'" y="'+(dy-22)+'">US dollar · $1, $10, $100 · the same 156 × 66 mm</text>';
-    s += '<g class="scene" transform="translate('+ex+' '+dy+')"><rect class="ghost2" x="0" y="0" width="'+(156*S)+'" height="'+(66*S)+'"/><rect class="ghost2" x="4" y="4" width="'+(156*S)+'" height="'+(66*S)+'"/><rect class="ghost2" x="8" y="8" width="'+(156*S)+'" height="'+(66*S)+'"/><text class="ta" x="'+(156*S-4)+'" y="'+(66*S-10)+'" text anchor="end">one size · failed blind users, 2008</text></g>';
-    return s;
-  }
-  function render(){
-    var n = NOTES[st.den];
-    if(st.size){ scene.innerHTML = sizeScene(); }
-    else {
-      var W = (st.vert?n.h:n.w)*S, H = (st.vert?n.w:n.h)*S;
-      var x = Math.round((900 - W - 60)/2), y = Math.round((480 - H - 50)/2);
-      scene.innerHTML = noteSvg(st.den, Math.max(30,x), Math.max(24,y), st);
-    }
-    /* keep everything inside the frame: grow the viewBox when a state needs more room, at the same 900:480 shape */
-    try {
-      var bb = scene.getBBox(), pad = 28;
-      var x0 = Math.min(0, bb.x - pad), y0 = Math.min(0, bb.y - pad);
-      var x1 = Math.max(900, bb.x + bb.width + pad), y1 = Math.max(480, bb.y + bb.height + pad);
-      var vw = Math.max(x1 - x0, (y1 - y0) * 900 / 480), vh = vw * 480 / 900;
-      x0 -= (vw - (x1 - x0)) / 2; y0 -= (vh - (y1 - y0)) / 2;
-      document.getElementById('bench').setAttribute('viewBox', [x0, y0, vw, vh].map(function(v){ return Math.round(v); }).join(' '));
-    } catch(e) {}
-    document.getElementById('ro-size').textContent = (st.vert?n.h:n.w)+' × '+(st.vert?n.w:n.h);
-    document.getElementById('ro-face').textContent = st.back ? 'Back' : 'Front';
-    document.getElementById('ro-fmt').textContent = st.vert ? 'Vertical' : 'Horizontal';
-    document.getElementById('ro-grow').textContent = st.size ? '5 of 6' : (st.col ? n.colour : '·');
-    document.getElementById('ro-grow-l').textContent = st.size ? 'currencies size by value' : 'colour for this value';
-  }
-  [].slice.call(document.querySelectorAll('[data-den]')).forEach(function(b){ b.addEventListener('click', function(){ st.den = +b.getAttribute('data-den'); [].slice.call(document.querySelectorAll('[data-den]')).forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); }); render(); }); });
-  function toggleBtn(id, key, note){ var b = document.getElementById(id); b.addEventListener('click', function(){ st[key] = !st[key]; b.setAttribute('aria-pressed', st[key]?'true':'false'); if(note) setNotes(st[key] ? note : (st.back?'back':(st.vert?'vert':'front'))); render(); }); }
-  toggleBtn('flip','back','back'); toggleBtn('rot','vert','vert'); toggleBtn('tsize','size','size'); toggleBtn('ttac','tac','tac'); toggleBtn('tcol','col','col');
-  render();
 })();
+
 </script>
 <script>
-/* ═══ the original sheet's note: pick a value, tap a numbered dot ═══ */
+/* Photos of the real notes for Fig. 1: the front of each family's lowest value, saved beside this page as note-usd.jpg and so on
+   (.png and .webp work too). SPECIMEN is laid across each one and the credit shows under the name; change a credit if the photo
+   comes from somewhere else. */
+window.NOTE_PHOTOS = {
+  USD: {file: 'note-usd', note: '$1', credit: 'uscurrency.gov'},
+  EUR: {file: 'note-eur', note: '€5', credit: 'ECB'},
+  JPY: {file: 'note-jpy', note: '¥1,000', credit: 'Bank of Japan'},
+  GBP: {file: 'note-gbp', note: '£5', credit: 'Bank of England'},
+  CHF: {file: 'note-chf', note: '10 francs', credit: 'SNB'},
+  AUD: {file: 'note-aud', note: '$5', credit: 'RBA'},
+  CAD: {file: 'note-cad', note: '$5', credit: 'Bank of Canada'},
+  SGD: {file: 'note-sgd', note: '$2', credit: 'MAS'},
+  NOK: {file: 'note-nok', note: '50 kroner', credit: 'Norges Bank'},
+  AED: {file: 'note-aed', note: 'AED 5', credit: 'CBUAE'},
+  INR: {file: 'note-inr', note: '₹10', credit: 'RBI'}
+};
+</script>
+<script>
+/* ═══ rethinking the currency note: each figure fills in once when first seen; the new note can be picked, flipped, folded and seen as some users see it ═══ */
 (function(){
-  const denoms={
-    '10':{bg:'var(--teal)',hi:'दस रुपये',en:'TEN RUPEES'},
-    '20':{bg:'var(--ochre)',hi:'बीस रुपये',en:'TWENTY RUPEES'},
-    '100':{bg:'var(--teal)',hi:'सौ रुपये',en:'ONE HUNDRED RUPEES'}
-  };
-  const seg=document.getElementById('denomSeg');
-  seg.addEventListener('click',e=>{
-    const b=e.target.closest('button');if(!b)return;
-    seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
-    const d=b.getAttribute('data-d'),cfg=denoms[d];
-    document.getElementById('noteBg').setAttribute('fill',cfg.bg);
-    document.getElementById('bigNum').textContent=d;
-    document.getElementById('wordsHi').textContent=cfg.hi;
-    document.getElementById('wordsEn').textContent=cfg.en;
-  });
-
-  const hs=[
-    {cat:'must',cls:'must',t:'High contrast denomination numeral',b:'The single most read element: sized and contrasted first, verified against colour blindness palettes. Distinct colour per denomination (₹20 amber, ₹100 green) so value reads before words do.'},
-    {cat:'must',cls:'must',t:'Bilingual denomination',b:'Hindi and English both carry the value, per the constitutional mandate, with a fixed type hierarchy so neither script crowds the other. Typeface shortlist tested: EB Garamond, PT Sans Narrow, Open Sans and four display faces.'},
-    {cat:'must',cls:'must',t:'Tactile identification mark',b:'Raised marks in a denomination specific pattern let visually impaired users identify value by touch. One of the accessibility requirements that anchored the whole redesign.'},
-    {cat:'must',cls:'must',t:'Security thread',b:'Anti counterfeiting is nonnegotiable: windowed thread plus latent features, positioned where wallet folds won\'t wear it. Polymer substrate considered for durability.'},
-    {cat:'use',cls:'use',t:'Serial number placement',b:'Standardised position across all denominations so counting machines and ATMs read every note the same way. A machine user requirement most redesigns forget.'}
-  ];
-  const cat=document.getElementById('exCat'),ti=document.getElementById('exTitle'),bo=document.getElementById('exBody');
-  const names={must:'Must have',good:'Good to have',use:'Use case based'};
-  document.querySelectorAll('.hotspot').forEach(h=>{
-    h.addEventListener('click',()=>{
-      document.querySelectorAll('.hotspot').forEach(x=>x.classList.toggle('on',x===h));
-      const d=hs[parseInt(h.getAttribute('data-h'))];
-      cat.className='cat '+d.cls;cat.textContent=names[d.cat];
-      ti.textContent=d.t;bo.textContent=d.b;
+  "use strict";
+  var CALM = document.documentElement.classList.contains('static') || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function $(s, r){ return (r || document).querySelector(s); }
+  function $$(s, r){ return [].slice.call((r || document).querySelectorAll(s)); }
+  function whenSeen(el, fn){
+    if(!('IntersectionObserver' in window)){ fn(); return; }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(!en.isIntersecting) return; fn(); io.unobserve(en.target); });
+    }, {threshold:.2});
+    io.observe(el);
+  }
+  /* one run: the cooldown is checked before anything moves, and a settle floor clears the delays */
+  function playOnce(el, floor){
+    if(CALM || !el) return;
+    var timer = 0;
+    el.classList.add('pre');
+    whenSeen(el, function(){
+      if(el.getAttribute('data-played')) return;
+      el.setAttribute('data-played', '1');
+      el.classList.remove('pre'); el.classList.add('go');
+      clearTimeout(timer);
+      timer = setTimeout(function(){ el.classList.remove('go'); }, floor);
     });
+  }
+  /* the order things arrive in */
+  $$('.ft .mkr').forEach(function(m, i){ m.style.setProperty('--k', i); });
+  $$('.f3 .lr:not(.hd)').forEach(function(r, i){ $$('*', r).forEach(function(c){ if(c.parentNode === r) c.style.setProperty('--k', i); }); });
+  $$('.f4 .fam').forEach(function(m, i){ m.style.setProperty('--k', i); });
+  $$('.fw, .ft, .f3, .f4').forEach(function(f){ playOnce(f, 2400); });
+
+  /* ── Fig. 1: a photo of each real note, when one is saved beside the page; the drawing stays until then ── */
+  (function(fig){
+    var P = window.NOTE_PHOTOS || {};
+    if(!fig) return;
+    whenSeen(fig, function(){
+      $$('.phw', fig).forEach(function(w){
+        var c = P[w.getAttribute('data-k')];
+        if(!c || !c.file) return;
+        var row = w.closest('.lr'), img = $('.ph', w), exts = ['.jpg', '.png', '.webp', '.jpeg'], i = 0;
+        (function next(){
+          if(i >= exts.length) return;
+          var src = c.file + exts[i++], probe = new Image();
+          probe.onload = function(){
+            img.src = src;
+            img.alt = c.note + ' note, front. Photo: ' + c.credit;
+            w.classList.add('on'); w.setAttribute('tabindex', '0');
+            var pc = $('.pc', row); if(pc) pc.textContent = 'Photo · ' + c.credit;
+            row.classList.add('hp');
+          };
+          probe.onerror = next;
+          probe.src = src;
+        })();
+      });
+    });
+  })($('.fw'));
+
+  /* ── Fig. 4: the new note ── */
+  (function(fig){
+    if(!fig) return;
+    var svg = $('#fnl', fig), groups = $$('.fv', svg), fam = $$('.fam', fig), cap = $('.vcap', fig);
+    var fh = $('.fold .fh', svg), l1 = $('.fold .fl1', svg), l2 = $('.fold .fl2', svg);
+    var st = {v:'100', face:'front', fold:'open', see:'sight'};
+    var WORDS = {'10':'ten', '20':'twenty', '50':'fifty', '100':'one hundred', '200':'two hundred', '500':'five hundred'};
+    var FAMILY = {'10':'tens', '20':'tens', '50':'tens', '100':'hundreds', '200':'hundreds', '500':'hundreds'};
+    var DOTS = {'10':1, '20':2, '50':3, '100':1, '200':2, '500':3};
+    function cur(){
+      for(var i = 0; i < groups.length; i++){ var g = groups[i]; if(g.getAttribute('data-v') === st.v && g.getAttribute('data-face') === st.face) return g; }
+      return groups[0];
+    }
+    function box(g){ return {x:+g.getAttribute('data-x'), y:+g.getAttribute('data-y'), w:+g.getAttribute('data-w'), h:+g.getAttribute('data-h')}; }
+    function r(x, y, w, h){ return 'M' + x + ',' + y + 'h' + w + 'v' + h + 'h' + (-w) + 'Z'; }
+    function say(){
+      var n = DOTS[st.v], edge = FAMILY[st.v] === 'tens' ? 'short' : 'long';
+      var fold = {open:'Open: a numeral in every quarter of its length.',
+                  half:'Folded in half: the big numeral and a small one still show.',
+                  four:'Folded in four, the half folded again: the big numeral and the dots still show.'}[st.fold];
+      var see = {sight:'',
+                 low:' Blurred for low vision: the big numeral and the colour still read.',
+                 cvd:' Deuteranopia, simulated: the six colours stay apart.',
+                 touch:' Touch only: its size, and ' + n + ' raised dot' + (n > 1 ? 's' : '') + ' on both ' + edge + ' edges.'}[st.see];
+      cap.innerHTML = '<b>₹' + st.v + ', ' + WORDS[st.v] + ' rupees · ' + st.face + '.</b> ' + fold + see;
+      svg.setAttribute('aria-label', 'The redesigned ₹' + st.v + ', ' + st.face + (st.fold === 'open' ? '' : st.fold === 'half' ? ', folded in half' : ', folded in four'));
+    }
+    function draw(){
+      var g = cur(), b = box(g);
+      groups.forEach(function(x){ x.classList.toggle('on', x === g); });
+      fam.forEach(function(x){ var on = x.getAttribute('data-v') === st.v; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      svg.setAttribute('class', 'd fnl v-' + st.see);
+      var hw = b.w / 2;
+      if(st.fold === 'open'){ fh.setAttribute('d', ''); l1.setAttribute('d', ''); l2.setAttribute('d', ''); }
+      else {
+        /* the way most of us fold a note: in half, then the half in half again, so a quarter strip stays on top.
+           The strip kept is the value end, which is the left of the front and the right of the back. */
+        var qw = b.w / 4, keep = st.fold === 'half' ? hw : qw, x0 = st.face === 'back' ? b.x + b.w - keep : b.x;
+        fh.setAttribute('d', r(b.x - 1, b.y - 1, b.w + 2, b.h + 2) + r(x0, b.y, keep, b.h));
+        l1.setAttribute('d', 'M' + (b.x + hw) + ',' + (b.y - 6) + 'V' + (b.y + b.h + 6));
+        var q = st.face === 'back' ? b.x + b.w - qw : b.x + qw;
+        l2.setAttribute('d', st.fold === 'four' ? 'M' + q + ',' + (b.y - 6) + 'V' + (b.y + b.h + 6) : '');
+      }
+      say();
+    }
+    function wire(id, key){
+      var seg = $(id, fig);
+      if(!seg) return;
+      $$('button', seg).forEach(function(bt){
+        bt.addEventListener('click', function(){
+          st[key] = bt.getAttribute('data-k');
+          $$('button', seg).forEach(function(x){ x.setAttribute('aria-pressed', x === bt ? 'true' : 'false'); });
+          draw();
+        });
+      });
+    }
+    wire('#fv', 'v'); wire('#ff', 'face'); wire('#fo', 'fold'); wire('#fs', 'see');
+    fam.forEach(function(x){
+      function pick(){
+        st.v = x.getAttribute('data-v');
+        $$('#fv button', fig).forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k') === st.v ? 'true' : 'false'); });
+        draw();
+      }
+      x.addEventListener('click', pick);
+      x.addEventListener('keydown', function(ev){ if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); pick(); } });
+    });
+    draw();
+  })($('.f4'));
+
+  /* ── the PM lens: the question sharpens, the moves follow, once ── */
+  $$('.lens').forEach(function(l){
+    if(CALM) return;
+    l.classList.add('pre');
+    whenSeen(l, function(){ l.classList.remove('pre'); });
   });
 })();
+
 </script>
 </body>
 </html>

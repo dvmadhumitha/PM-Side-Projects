@@ -62,13 +62,58 @@
 .p3 .zt2{opacity:0;transition:opacity .4s var(--ease)}
 .p3:hover .zt2,.p3:focus-visible .zt2,.p3.touch-on .zt2{opacity:1;transition-delay:1.3s}
 @media (prefers-reduced-motion:reduce){.p3 .hz .zg,.p3 .hz .zd,.p3 .zt1,.p3 .zt2{transition:none}}
-.p4 .nt{transform-box:view-box;transform-origin:42px 260px}
-.p4:hover .c5,.p4.touch-on .c5{transform:translate(18px,-6px) rotate(4deg)}
-.p4:hover .c4,.p4.touch-on .c4{transform:translate(12px,-10px) rotate(2deg)}
-.p4:hover .c3,.p4.touch-on .c3{transform:translate(6px,-8px) rotate(0deg)}
-.p4:hover .c2,.p4.touch-on .c2{transform:translate(0,-4px) rotate(-1.5deg)}
-.p4:hover .c1,.p4.touch-on .c1{transform:translate(-4px,2px) rotate(-3deg)}
-.p4 .nt{transition:transform .6s var(--ease)}.p4 .c4{transition-delay:.04s}.p4 .c3{transition-delay:.08s}.p4 .c2{transition-delay:.12s}.p4 .c1{transition-delay:.16s}
+/* sheet 04: today’s ₹500 at rest; on hover, or in view on a phone, the redesign arrives part by part */
+.p4 .sheet .d .nt text,.p4 .sheet .d .tf text,.p4 .sheet .d .hzt text{stroke:none}
+.p4 .nt .nb{stroke:none}
+.p4 .nt .nn{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.02em}
+.p4 .nt .nw1,.p4 .nt .ni1{font-family:'Noto Sans Devanagari',var(--display);font-weight:600;font-size:15px}
+.p4 .nt .nw2{font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.06em}
+.p4 .nt .nc{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em}
+.p4 .nt .ni1{fill:var(--navy)}
+.p4 .nt .ni2{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.06em;fill:var(--navy)}
+.p4 .nt .ni3{font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;fill:var(--navy);opacity:.8}
+.p4 .nt .nl,.p4 .nt .nl2{fill:none;stroke:var(--navy);stroke-width:2;opacity:.42}
+.p4 .nt .nl2{stroke-width:1.5}
+.p4 .nt .nsig{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-linecap:round}
+.p4 .nt .nthr{fill:none;stroke:var(--navy);stroke-width:4;stroke-dasharray:10 8;opacity:.5}
+.p4 .nt .nwm{fill:rgba(255,255,255,.42);stroke:var(--navy);stroke-width:1;stroke-dasharray:4 3;opacity:.7}
+.p4 .nt .nwp{fill:none;stroke:var(--navy);stroke-width:1.5;opacity:.28}
+.p4 .nt .nsr{fill:none;stroke:var(--navy);stroke-width:1.25;opacity:.6}
+.p4 .nt .nsr2{fill:none;stroke:var(--navy);stroke-width:3;opacity:.6}
+.p4 .nt .nem{fill:none;stroke:var(--navy);stroke-width:1.5;opacity:.7}
+.p4 .nt .nsn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;fill:var(--navy)}
+.p4 .nt .ndot{fill:#FFFFFF;stroke:var(--navy);stroke-width:1.5}
+.p4 .nt .ndot.bk{fill:none;stroke-dasharray:2 2;opacity:.6}
+.p4 .nt .nmo,.p4 .nt .nlp{fill:rgba(255,255,255,.3);stroke:var(--navy);stroke-width:1;opacity:.55}
+.p4 .nt .nmo2{fill:none;stroke:var(--navy);stroke-width:1.5;opacity:.5}
+.p4 .tf .tbd{fill:var(--chalk-2)}
+.p4 .tf .to,.p4 .tf .tr{fill:none;stroke:var(--navy);stroke-width:1.5}
+.p4 .tf .tr{stroke-width:2.5}
+.p4 .tf .tl{fill:none;stroke:var(--navy);stroke-width:1.25;opacity:.6}
+.p4 .tf .tdv{font-family:'Noto Sans Devanagari',var(--display);font-weight:600;font-size:24px;fill:var(--navy)}
+.p4 .tf .tmi{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-dasharray:1 3}
+.p4 .tf .tth{fill:none;stroke:var(--navy);stroke-width:4;stroke-dasharray:10 8;opacity:.55}
+.p4 .tf .tw{fill:rgba(255,255,255,.3);stroke:var(--navy);stroke-width:1;stroke-dasharray:4 3}
+.p4 .tf .tsn{font-family:var(--mono);font-size:10px;letter-spacing:.06em;fill:var(--navy)}
+.p4 .tf .ts2{font-size:11px}.tf .ts3{font-size:12px}.tf .ts4{font-size:13px}
+.p4 .tf .tcs{font-family:var(--display);font-weight:700;font-size:24px;fill:var(--navy)}
+.p4 .tf .tbl{fill:none;stroke:var(--navy);stroke-width:2.5;stroke-linecap:round}
+.p4 .hzm .hta .tbd{fill:rgba(231,236,240,.05);stroke:var(--chalk-2);stroke-width:2}
+.p4 .hzm .hta .to,.p4 .hzm .hta .tr{stroke:var(--chalk-2)}
+.p4 .hzm .hta .tw{fill:none;stroke:var(--chalk-3)}
+.p4 .hzm .hta .tl,.p4 .hzm .hta .tmi,.p4 .hzm .hta .tth,.p4 .hzm .hta .tbl{stroke:var(--chalk-3)}
+.p4 .hzm .hta .tdv,.p4 .hzm .hta .tsn,.p4 .hzm .hta .tcs{fill:var(--chalk-2)}
+.p4 .hzm .hq{transition:opacity .35s var(--ease);transition-delay:calc(var(--q) * 22ms)}
+.p4 .hzm .hta .tbd{transition:opacity .4s var(--ease) .3s}
+.p4:hover .hzm .hq,.p4:focus-visible .hzm .hq,.p4.touch-on .hzm .hq,.p4:hover .hzm .hta .tbd,.p4:focus-visible .hzm .hta .tbd,.p4.touch-on .hzm .hta .tbd{opacity:0}
+.p4 .hzm .htb .nb,.p4 .hzm .htb .hp{opacity:0;transition:opacity .3s var(--ease)}
+.p4:hover .hzm .htb .nb,.p4:focus-visible .hzm .htb .nb,.p4.touch-on .hzm .htb .nb{opacity:1;transition-delay:.4s}
+.p4:hover .hzm .htb .hp,.p4:focus-visible .hzm .htb .hp,.p4.touch-on .hzm .htb .hp{opacity:1;transition-delay:calc(.55s + var(--p) * 110ms)}
+.p4 .zt1{transition:opacity .3s var(--ease) .9s}
+.p4:hover .zt1,.p4:focus-visible .zt1,.p4.touch-on .zt1{opacity:0;transition-delay:0s}
+.p4 .zt2{opacity:0;transition:opacity .3s var(--ease)}
+.p4:hover .zt2,.p4:focus-visible .zt2,.p4.touch-on .zt2{opacity:1;transition-delay:1.2s}
+@media (prefers-reduced-motion:reduce){.p4 .hzm .hq,.p4 .hzm .hta .tbd,.p4 .hzm .htb .nb,.p4 .hzm .htb .hp,.p4 .zt1,.p4 .zt2{transition:none}}
 .p5 .z{opacity:0}.p5:hover .z{opacity:1}.p5:hover .z.z2{transition-delay:.18s}.p5:hover .z.z3{transition-delay:.36s}
 .p6 .lamp{fill:var(--navy-2)}.p6:hover .lamp{fill:var(--signal)}
 .p6 .car{transform:translateY(0)}.p6:hover .car{transform:translateY(-72px)}
@@ -92,14 +137,14 @@
 .plate.wide .sh{aspect-ratio:auto;display:flex;align-items:stretch}
 .plate.wide .sh .vis{position:relative;flex:1 1 56%;min-width:0;overflow:hidden}
 .plate.wide .sh .facts{flex:0 0 44%;min-width:0;border-left:1px solid var(--edge);background:rgba(24,33,44,.5);padding:16px 20px 42px;display:flex;flex-direction:column;gap:8px}
-.plate.wide .facts .fk{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--chalk-3)}
+.plate.wide .facts .fk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--chalk-3)}
 .plate.wide .facts dl{margin:0;display:flex;flex-direction:column;gap:0;flex:1}
 .plate.wide .facts dl div{padding:7px 0;border-top:1px solid var(--edge);transition:opacity .5s var(--ease),transform .5s var(--ease);opacity:.72;transform:translateX(6px)}
 .plate.wide .facts dl div:nth-child(2){transition-delay:.08s}.plate.wide .facts dl div:nth-child(3){transition-delay:.16s}
 .plate.wide:hover .facts dl div,.plate.wide:focus-visible .facts dl div,.plate.wide.touch-on .facts dl div{opacity:1;transform:none}
 .plate.wide .facts dl b{display:block;font-family:var(--display);font-weight:600;font-size:19px;line-height:1.1;color:var(--signal);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-.plate.wide .facts dl span{display:block;margin-top:2px;font-size:12.5px;line-height:17px;color:var(--chalk-2)}
-.plate.wide .facts .fl{margin:0;padding-top:8px;border-top:1px solid var(--edge);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:16px;color:var(--chalk)}
+.plate.wide .facts dl span{display:block;margin-top:2px;font-size:12px;line-height:17px;color:var(--chalk-2)}
+.plate.wide .facts .fl{margin:0;padding-top:8px;border-top:1px solid var(--edge);font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;line-height:16px;color:var(--chalk)}
 .plates{grid-auto-flow:dense}
 @media (min-width:861px){.plate .body{min-height:150px}}
 @media (max-width:1180px){.plate.wide{grid-column:1/-1}}
@@ -289,7 +334,7 @@
           </svg>
           </div><aside class="facts" aria-label="In short"><span class="fk">In short</span><dl><div><b>4</b><span>timed sections, in the exam’s own order</span></div><div><b>2×</b><span>the listening plays twice, as it does on the day</span></div><div><b>Oral</b><span>speech to text, so the app hears you answer</span></div></dl><p class="fl">Went strict. Sat the real one three weeks later.</p></aside><span class="act">Try it here →</span>
         </div>
-        <div class="body"><div class="meta"><span>Language</span><em>Live</em></div><h3>ASCOLTO: Language Exam Simulator</h3><p>Why is there nowhere to practise the exam you're about to sit?</p></div>
+        <div class="body"><div class="meta"><span>Language</span><em>Live</em></div><h3>ASCOLTO: language exam simulator</h3><p>Why is there nowhere to practise the exam you're about to sit?</p></div>
       </a>
 
       <!-- 02 Route Stops -->
@@ -324,10 +369,10 @@
       <!-- 04 Currency -->
       <a class="plate p4 reveal" href="demo-currency.html" style="--d:.15s">
         <div class="sh sheet">
-          <svg class="d" viewBox="0 0 400 300" role="img" aria-label="A stack of five banknotes drawn to proportion: an Indian hundred rupee note at the front, then a UAE dirham, a euro, a US dollar and a Swiss franc printed upright. On hover the stack fans out so the sizes show."><g class="mv nt c5"><rect class="f" x="288" y="16" width="66" height="146" rx="2"/><rect class="lt" x="300" y="28" width="42" height="40"/><text class="th" x="298" y="122" style="font-size:22px">100</text><text class="tm" x="298" y="138" style="font-size:8.5px">CHF</text><text class="tm" x="298" y="150" style="font-size:8.5px">upright</text></g><g class="mv nt c4"><rect class="f" x="186" y="40" width="156" height="66" rx="2"/><rect class="lt" x="312" y="48" width="20" height="50"/><text class="th" x="198" y="65" style="font-size:20px">$20</text><text class="tm" x="198" y="78" style="font-size:8.5px">USD · one size</text></g><g class="mv nt c3"><rect class="f" x="138" y="84" width="140" height="76" rx="2"/><rect class="lt" x="248" y="92" width="20" height="60"/><text class="th" x="150" y="109" style="font-size:20px">€50</text><text class="tm" x="150" y="122" style="font-size:8.5px">EUR · both edges</text></g><g class="mv nt c2"><rect class="f" x="90" y="128" width="150" height="70" rx="2"/><rect class="lt" x="210" y="136" width="20" height="54"/><text class="th" x="102" y="153" style="font-size:20px">100 · ١٠٠</text><text class="tm" x="102" y="166" style="font-size:8.5px">AED · two scripts</text></g><g class="mv nt c1"><rect class="f" x="42" y="172" width="142" height="66" rx="2" style="stroke:var(--signal);stroke-width:1.75"/><text class="th" x="54" y="197" style="font-size:20px">₹100</text><text class="tm" x="54" y="210" style="font-size:8.5px">INR · sized by value</text><text class="tm" x="54" y="228" style="font-size:8.5px">सौ रुपये · one hundred</text></g><text class="ta" x="42" y="268">Every note grows with its value</text><text class="tm" x="42" y="282">except the dollar</text></svg>
+          <svg class="d" viewBox="0 0 400 300" role="img" aria-label="Today’s ₹500 note drawn as a plan of its thirteen front parts. On hover it becomes the redesigned ₹500: a coloured value panel with one big numeral, a numeral in every quarter, three raised dots on the long edges, and everything else said once."><svg class="hzm hzt" x="10" y="40" width="380" height="202" viewBox="0 0 640 340"><g class="hta tf" transform="translate(20,38)"><rect class="tbd" width="600" height="264"/><g class="hq" style="--q:0" data-n="1"><g class="tp"><rect class="to" x="30" y="190" width="34" height="34"/><path class="tl" d="M38,214 c6,-18 14,-18 18,0"/></g></g><g class="hq" style="--q:1" data-n="2"><g class="tp"><rect class="to" x="170" y="150" width="26" height="74"/><path class="tl" d="M176,166 v42"/></g></g><g class="hq" style="--q:2" data-n="3"><g class="tp"><text class="tdv" x="34" y="104">५००</text></g></g><g class="hq" style="--q:3" data-n="4"><g class="tp"><ellipse class="to" cx="300" cy="132" rx="70" ry="92"/><path class="tl" d="M300,82 a26,26 0 1 0 .1,0 M248,204 c8,-42 96,-42 104,0"/></g></g><g class="hq" style="--q:4" data-n="5"><g class="tp"><path class="tmi" d="M34,134 h112"/></g></g><g class="hq" style="--q:5" data-n="6"><g class="tp"><path class="tth" d="M392,8 V256"/></g></g><g class="hq" style="--q:6" data-n="7"><g class="tp"><path class="tl" d="M406,62 h108"/><path class="tl" d="M406,71 h108"/><path class="tl" d="M406,80 h92.9"/><path class="tl" d="M406,89 h108"/><path class="tl" d="M406,98 h108"/><circle class="to" cx="496" cy="166" r="11"/><path class="tl" d="M410,172 c8,-10 14,8 22,-2 s10,-8 16,2"/></g></g><g class="hq" style="--q:7" data-n="8"><g class="tp"><ellipse class="tw" cx="552" cy="76" rx="24" ry="36"/></g></g><g class="hq" style="--q:8" data-n="9"><g class="tp"><text class="tsn" x="26" y="30">0AB<tspan class="ts2"> 12</tspan><tspan class="ts3">34</tspan><tspan class="ts4">56</tspan></text><text class="tsn" x="406" y="250">0AB<tspan class="ts2"> 12</tspan><tspan class="ts3">34</tspan><tspan class="ts4">56</tspan></text></g></g><g class="hq" style="--q:9" data-n="10"><g class="tp"><text class="tcs" x="590" y="246" text-anchor="end">₹500</text></g></g><g class="hq" style="--q:10" data-n="11"><g class="tp"><path class="to" d="M540,128 h16 v34 h-16 Z M536,166 h24"/></g></g><g class="hq" style="--q:11" data-n="12"><g class="tp"><circle class="tr" cx="574" cy="192" r="11"/></g></g><g class="hq" style="--q:12" data-n="13"><g class="tp"><path class="tbl" d="M6,104 l8,-8"/><path class="tbl" d="M6,116 l8,-8"/><path class="tbl" d="M6,128 l8,-8"/><path class="tbl" d="M6,140 l8,-8"/><path class="tbl" d="M6,152 l8,-8"/><path class="tbl" d="M582,104 l8,-8"/><path class="tbl" d="M582,116 l8,-8"/><path class="tbl" d="M582,128 l8,-8"/><path class="tbl" d="M582,140 l8,-8"/><path class="tbl" d="M582,152 l8,-8"/></g></g></g><g class="htb" transform="translate(20,20)"><g class="nt"><rect class="nb" width="600" height="300" fill="#DEE1E4"/><g class="ncol hp" style="--p:0"><rect class="np" width="150" height="300" fill="#7F8C99"/><rect class="np" x="573" width="27" height="300" fill="#7F8C99"/></g><g class="nval hp" style="--p:1"><text class="nn" x="0" y="0" text-anchor="middle" fill="#18212C" transform="translate(75.0,132) scale(2.0)">500</text><text class="nw1" x="75.0" y="170" text-anchor="middle" fill="#18212C">पाँच सौ रुपये</text><text class="nw2" x="75.0" y="190" text-anchor="middle" fill="#18212C">FIVE HUNDRED RUPEES</text><text class="nc" x="166" y="282" fill="#18212C">₹500</text><text class="nc" x="440" y="44" text-anchor="end" fill="#18212C">₹500</text><text class="nc" x="559" y="282" text-anchor="end" fill="#18212C">₹500</text></g><g class="niss hp" style="--p:3"><text class="ni1" x="166" y="44">भारतीय रिज़र्व बैंक</text><text class="ni2" x="166" y="64">RESERVE BANK OF INDIA</text><text class="ni3" x="166" y="79">GUARANTEED BY THE CENTRAL GOVERNMENT</text></g><g class="npro hp" style="--p:5"><path class="nl" d="M166,196 h118"/><path class="nl" d="M166,203 h118"/><path class="nl" d="M166,210 h101.5"/><path class="nsig" d="M170,234 c8,-10 14,8 22,-2 s10,-8 16,2 s12,4 20,-6"/><text class="ni3" x="166" y="254">GOVERNOR</text></g><g class="nsec hp" style="--p:4"><path class="nthr" d="M424,100 V252"/><ellipse class="nwm" cx="360" cy="128" rx="26" ry="31"/><path class="nwp" d="M360,114 a8,8 0 1 0 .1,0 M346,152 c2,-12 26,-12 28,0"/><rect class="nsr" x="348" y="178" width="24" height="24"/><path class="nsr2" d="M354,196 l12,-12"/></g><path class="nem hp" style="--p:4" d="M552,62 h10 v22 h-10 Z M549,88 h16"/><g class="nser hp" style="--p:5"><text class="nsn" x="166" y="20">6AB 123456</text><text class="nsn" x="0" y="0" transform="translate(590,262) rotate(-90)">6AB 123456</text></g><g class="ntc hp" style="--p:2"><circle class="ndot" cx="59" cy="11" r="5"/><circle class="ndot" cx="75" cy="11" r="5"/><circle class="ndot" cx="91" cy="11" r="5"/><circle class="ndot" cx="359" cy="289" r="5"/><circle class="ndot" cx="375" cy="289" r="5"/><circle class="ndot" cx="391" cy="289" r="5"/></g></g></g></svg><text class="tm zt1" x="13" y="293">Today’s ₹500: thirteen parts on the front</text><text class="ta zt2" x="13" y="13">Redesigned: the value first, by sight and by touch</text></svg>
           <span class="act">Open →</span>
         </div>
-        <div class="body"><div class="meta"><span>Money</span><em class="q">Case</em></div><h3>Currency Design Breakdown</h3><p>What does a note have to say before anyone properly looks at it?</p></div>
+        <div class="body"><div class="meta"><span>Money</span><em class="q">Case</em></div><h3>Rethinking the currency note</h3><p>We use it every day. Why does it look this way?</p></div>
       </a>
 
       <!-- 05 Boarding pass -->
@@ -349,11 +394,11 @@
             <g class="mv z z2"><rect class="at" x="40" y="132" width="246" height="58"/><text class="ta" x="150" y="230">02 Passenger</text></g>
             <g class="mv z z3"><rect class="at" x="296" y="90" width="64" height="118"/><text class="ta" x="280" y="230">03 Gate</text></g>
             <line class="dim" x1="36" y1="60" x2="364" y2="60"/><line class="dim" x1="36" y1="54" x2="36" y2="66"/><line class="dim" x1="364" y1="54" x2="364" y2="66"/><text class="tm" x="200" y="50" text-anchor="middle">203 mm</text>
-            <text class="tm" x="36" y="262">Three readers · nineteen fields · one weight</text>
+            <text class="tm" x="13" y="293">Three readers · nineteen fields · one weight</text>
           </svg>
           <span class="act">Open →</span>
         </div>
-        <div class="body"><div class="meta"><span>Travel</span><em class="q">Case</em></div><h3>Boarding Pass Design Analysis</h3><p>Who is a boarding pass actually written for?</p></div>
+        <div class="body"><div class="meta"><span>Travel</span><em class="q">Case</em></div><h3>Boarding pass design analysis</h3><p>Who is a boarding pass actually written for?</p></div>
       </a>
 
       <!-- 06 Elevator -->
@@ -373,7 +418,7 @@
           </svg>
           <span class="act">Open →</span>
         </div>
-        <div class="body"><div class="meta"><span>Buildings</span><em class="q">Case</em></div><h3>Elevator Call Buttons, Fixed</h3><p>The button asks your direction. People think they are calling the lift.</p></div>
+        <div class="body"><div class="meta"><span>Buildings</span><em class="q">Case</em></div><h3>Elevator call buttons, fixed</h3><p>The button asks your direction. People think they are calling the lift.</p></div>
       </a>
 
       <!-- 07 Payments -->

@@ -1,0 +1,1029 @@
+/*
+ * screens-grammar-words: Grammatica · Esercizi (im-gr-) and Parole · Carte (im-fc-),
+ * on top of immersione.css and screens.css. Only what those two do not provide.
+ */
+
+/* ---------- shared: compact rows in one white block (topics, decks) ---------- */
+
+.im-gr-list,
+.im-fc-decks {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.im-gr-list li + li,
+.im-fc-decks li + li {
+  border-top: 1px solid var(--line-strong);
+}
+
+.im-gr-topic,
+.im-fc-deck {
+  width: 100%;
+  min-height: 56px;
+  padding: 9px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.im-gr-topic svg {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+/* thin progress line: answers given in a set, position in a deck or a quiz */
+.im-gr-progress,
+.im-fc-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  overflow: hidden;
+}
+
+.im-gr-progress > div,
+.im-fc-bar > div {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green);
+}
+
+/* right or wrong, said in words and with an icon as well as with colour */
+.im-gr-fb,
+.im-fc-fb {
+  margin: 0;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.im-gr-fb svg,
+.im-fc-fb svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.im-gr-fb.ok,
+.im-fc-fb.ok {
+  background: var(--green-tint);
+  color: var(--green-d);
+}
+
+.im-gr-fb.no,
+.im-fc-fb.no {
+  background: var(--terra-tint);
+  color: #7a2f18;
+}
+
+/* ---------- Grammatica · Esercizi: the list ---------- */
+
+.im-gr-group + .im-gr-group {
+  margin-top: 22px;
+}
+
+.im-gr-group-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.im-gr-group-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+}
+
+.im-gr-topic-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.im-gr-topic-text b {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.im-gr-topic-text small {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.im-gr-topic-count {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- Grammatica · Esercizi: one set in the task screen ---------- */
+
+/* the exercise draws its buttons into this slot of the task screen's footer */
+.im-gr-footer {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+}
+
+.im-gr-sets button {
+  min-height: 44px;
+}
+
+.im-gr-instruction {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.im-gr-score {
+  scroll-margin-top: 20px;
+}
+
+.im-gr-question {
+  min-width: 0;
+}
+
+.im-gr-question legend {
+  width: 100%;
+}
+
+/* the sentence to complete, on a white card as in the design */
+.im-gr-prompt {
+  margin-top: 6px;
+  padding: 22px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(28, 43, 35, 0.06);
+  font: 500 24px/1.35 var(--font-display);
+  color: var(--ink);
+  text-align: center;
+}
+
+.im-gr-blank {
+  display: inline-block;
+  width: 56px;
+  height: 0.9em;
+  border-bottom: 3px solid var(--gold);
+  vertical-align: baseline;
+}
+
+.im-gr-flag {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font: 700 12px/1.3 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terra-ink);
+}
+
+.im-gr-visual {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 12px;
+}
+
+.im-gr-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.im-gr-options {
+  display: grid;
+  gap: 10px;
+}
+
+.im-gr-options.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.im-gr-options.two .im-option {
+  justify-content: center;
+  padding: 10px 12px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.im-gr-fb-more {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.im-gr-explain {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  background: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.im-gr-explain .im-overline {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* fill the gaps: a text with a choice in every gap */
+.im-gr-bank {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.im-gr-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #efeadc;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.im-gr-text {
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  /* tall lines, so that the 44px choices fit inside the text */
+  font: 400 19px/2.8 var(--font-display);
+  color: var(--ink);
+}
+
+.im-gr-gap {
+  margin: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.im-gr-gap-n {
+  font: 700 12px/1 var(--font-ui);
+  color: var(--muted);
+}
+
+.im-gr-gap select {
+  min-width: 76px;
+  max-width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 10px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  font: 600 17px/1.2 var(--font-ui);
+  cursor: pointer;
+}
+
+.im-gr-gap select:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.im-gr-gap.correct select {
+  border-color: var(--green);
+  background: var(--green-tint);
+  color: var(--green-d);
+}
+
+.im-gr-gap.wrong select {
+  border-color: var(--terra-ink);
+  background: var(--terra-tint);
+  color: #7a2f18;
+}
+
+.im-gr-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* rewrite the sentence: one field per sentence */
+.im-gr-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.im-gr-item label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.im-task input.im-gr-input {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 18px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 28px;
+  background: #fff;
+  color: var(--ink);
+  font: 400 17px/1.3 var(--font-ui);
+}
+
+.im-task input.im-gr-input::placeholder {
+  color: var(--muted);
+}
+
+.im-task input.im-gr-input:disabled {
+  opacity: 1;
+}
+
+.im-task input.im-gr-input.correct {
+  border-color: var(--green);
+  background: var(--green-tint);
+  color: var(--green-d);
+}
+
+.im-task input.im-gr-input.wrong {
+  border-color: var(--terra-ink);
+  background: var(--terra-tint);
+  color: #7a2f18;
+}
+
+.im-gr-hint {
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink-2);
+}
+
+/* put in order: the sentence being built, and the words still to place */
+.im-gr-built {
+  min-height: 64px;
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px dashed var(--muted);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.im-gr-placeholder {
+  padding: 0 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.im-gr-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.im-gr-word {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  font: 600 17px/1 var(--font-ui);
+  cursor: pointer;
+}
+
+.im-gr-word.placed {
+  border-color: var(--green);
+  background: var(--green-tint);
+  color: var(--green-d);
+}
+
+.im-gr-word:disabled {
+  cursor: default;
+}
+
+/* match: every beginning with the ending chosen for it */
+.im-gr-match {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.im-gr-match li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-gr-pair {
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.im-gr-pair.on,
+.im-gr-pair.correct {
+  border-color: var(--green);
+  background: var(--green-tint);
+}
+
+.im-gr-pair.correct {
+  color: var(--green-d);
+}
+
+.im-gr-pair.wrong {
+  border-color: var(--terra-ink);
+  background: var(--terra-tint);
+  color: #7a2f18;
+}
+
+.im-gr-pair:disabled {
+  cursor: default;
+}
+
+.im-gr-pair svg {
+  flex-shrink: 0;
+}
+
+.im-gr-pair-n {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #efeadc;
+  color: var(--ink);
+  font: 700 13px/28px var(--font-ui);
+  text-align: center;
+}
+
+.im-gr-pair-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.im-gr-pair-text b {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.im-gr-pair-text span {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.im-gr-pair-text .empty {
+  color: var(--muted);
+}
+
+.im-gr-used {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* the topic before and the topic after */
+.im-gr-nav {
+  margin-top: 6px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.im-gr-nav button {
+  min-height: 56px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.im-gr-nav button.next {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.im-gr-nav svg {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.im-gr-nav span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.im-gr-nav small {
+  font: 700 12px/1.3 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Parole · Carte ---------- */
+
+.im-fc {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.im-fc-study {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-margin-top: 16px;
+}
+
+.im-fc-head,
+.im-fc-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.im-fc-section-head {
+  margin-bottom: 10px;
+}
+
+.im-fc-deckname {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.im-fc-count,
+.im-fc-section-head > span {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* the card, on top of two more as in a deck */
+.im-fc-stage {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.im-fc-under {
+  position: absolute;
+  border-radius: 28px;
+}
+
+.im-fc-under.far {
+  top: 24px;
+  right: 24px;
+  bottom: 0;
+  left: 24px;
+  background: var(--line-strong);
+}
+
+.im-fc-under.near {
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  background: #efeadc;
+}
+
+.im-fc-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--im-shadow);
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* room at the top for the speaker button, which sits over the card */
+.im-fc-face {
+  position: relative;
+  min-height: 356px;
+  padding: 72px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.im-fc-face.photo {
+  align-items: stretch;
+  justify-content: flex-end;
+  background: var(--deep);
+  text-align: left;
+}
+
+.im-fc-face.back {
+  background: var(--deep);
+}
+
+.im-fc-face img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.im-fc-scrim {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 230px;
+  background: linear-gradient(to top, rgba(10, 20, 15, 0.92), rgba(10, 20, 15, 0));
+}
+
+.im-fc-swatch {
+  width: 112px;
+  height: 112px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+}
+
+.im-fc-text {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-fc-word {
+  font: 500 44px/1.05 var(--font-display);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.im-fc-word.m {
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.im-fc-word.l {
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.im-fc-word.xl {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.im-fc-example {
+  font: italic 400 18px/1.4 var(--font-display);
+  color: #e6ece8;
+}
+
+.im-fc-hint {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.im-fc-face.photo .im-fc-word,
+.im-fc-face.back .im-fc-word {
+  color: #fff;
+}
+
+.im-fc-face.photo .im-fc-hint,
+.im-fc-face.back .im-fc-hint {
+  color: #e6ece8;
+}
+
+.im-fc-speak {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.im-fc-speak:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.im-fc-judge {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.im-fc-judge .im-btn {
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.im-fc-browse {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.im-fc-browse button {
+  min-height: 44px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink-2);
+  font: 600 14px/1 var(--font-ui);
+  cursor: pointer;
+}
+
+.im-fc-status,
+.im-fc-actions,
+.im-fc-quiz-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 14px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.im-fc-status b,
+.im-fc-quiz-status b {
+  color: var(--ink);
+}
+
+.im-fc-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #7a5a12;
+}
+
+.im-fc-streak svg {
+  color: var(--gold);
+}
+
+.im-fc-actions .im-linkbtn:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+/* the keyboard is only worth mentioning where there is one */
+.im-fc-keys {
+  display: none;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.im-fc-keys kbd {
+  padding: 1px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink-2);
+  font: 600 12px/1.4 var(--font-ui);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .im-fc-keys {
+    display: block;
+  }
+}
+
+/* words of the day: one row to swipe through on a phone */
+.im-fc-words {
+  list-style: none;
+  margin: 0 calc(var(--im-gutter) * -1);
+  padding: 0 var(--im-gutter) 4px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.im-fc-words::-webkit-scrollbar {
+  display: none;
+}
+
+.im-fc-tile {
+  flex: 0 0 156px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.im-fc-tile-media {
+  display: block;
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.im-fc-tile-text {
+  flex: 1;
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.im-fc-tile-text b {
+  font: 500 19px/1.2 var(--font-display);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.im-fc-tile-text small {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* the deck picker */
+.im-fc-deck b {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.im-fc-deck small {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.im-fc-deck-mark {
+  display: flex;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--green);
+}
+
+.im-fc-deck.on b {
+  color: var(--green-d);
+}
+
+.im-fc-more {
+  margin-top: 6px;
+}
+
+/* the quiz */
+.im-fc-quiz-word {
+  font-size: 34px;
+  overflow-wrap: anywhere;
+}
+
+.im-fc-percent {
+  margin: 0;
+  font: 500 64px/1 var(--font-display);
+  color: var(--ink);
+}
+
+/* ---------- focus, motion, wider screens ---------- */
+
+.im-gr-topic:focus-visible,
+.im-gr-word:focus-visible,
+.im-gr-pair:focus-visible,
+.im-gr-nav button:focus-visible,
+.im-gr-gap select:focus-visible,
+.im-task input.im-gr-input:focus-visible,
+.im-fc-deck:focus-visible,
+.im-fc-card:focus-visible,
+.im-fc-speak:focus-visible,
+.im-fc-browse button:focus-visible,
+.im-fc-words:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .im-gr-progress > div,
+  .im-fc-bar > div {
+    transition: width 0.2s ease-out;
+  }
+
+  /* turning the card: the new side swings in */
+  .im-fc-face {
+    animation: im-fc-turn 0.24s ease-out;
+  }
+}
+
+@keyframes im-fc-turn {
+  from {
+    opacity: 0.3;
+    transform: perspective(900px) rotateY(75deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 620px) {
+  .im-fc-words {
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .im-fc-tile {
+    flex: 1 1 120px;
+  }
+
+  .im-fc-face {
+    min-height: 400px;
+  }
+}

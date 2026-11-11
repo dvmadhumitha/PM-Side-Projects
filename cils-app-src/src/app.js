@@ -316,7 +316,7 @@ function Se({ ans: e, setAns: t, mode: n = `practice`, graded: r = !1, testData:
                 className: `btn play`,
                 disabled: d,
                 onClick: x,
-                children: d ? (l ? `🔊 Riproduzione in corso…` : `✓ Audio terminato`) : `▶ Inizia l’ascolto`,
+                children: d ? (l ? `Riproduzione in corso…` : `Audio terminato`) : `Inizia l’ascolto`,
               }),
               (0, w.jsx)(`span`, {
                 className: `hint`,
@@ -326,17 +326,17 @@ function Se({ ans: e, setAns: t, mode: n = `practice`, graded: r = !1, testData:
           })
         : (0, w.jsx)(`p`, {
             className: `instr`,
-            children: `Part 1: listen and choose A, B or C. Part 2: true (Vero) or false (Falso). Use the ▶ buttons to play each text.`,
+            children: `Part 1: listen and choose A, B or C. Part 2: true (Vero) or false (Falso). Tap the speaker buttons to play each text.`,
           }),
       !k() &&
         (0, w.jsx)(`p`, {
           className: `warn`,
-          children: `⚠️ Your browser can’t play audio (no Speech Synthesis). Read the transcripts instead.`,
+          children: `This device can’t play audio. Read the transcripts instead.`,
         }),
       C &&
         (0, w.jsx)(`p`, {
           className: `warn`,
-          children: `ℹ️ No Italian voice found on your system — audio will use the default voice. (On Windows/macOS you can add an Italian voice in system settings.)`,
+          children: `No Italian voice found on this device — audio will use the default voice. You can add an Italian voice in the system settings.`,
         }),
       (0, w.jsx)(`div`, { className: `sub-h`, children: `Parte 1 — dialoghi (A / B / C)` }),
       a.map((t, n) => {
@@ -359,6 +359,7 @@ function Se({ ans: e, setAns: t, mode: n = `practice`, graded: r = !1, testData:
                           disabled: l,
                           onClick: () => b(s(t), !1),
                           title: `Play once`,
+                          'aria-label': `Play once`,
                           children: (0, w.jsxs)(`svg`, {
                             width: `14`,
                             height: `14`,
@@ -377,6 +378,7 @@ function Se({ ans: e, setAns: t, mode: n = `practice`, graded: r = !1, testData:
                           disabled: l,
                           onClick: () => b(s(t), !0),
                           title: `Play twice`,
+                          'aria-label': `Play twice`,
                           children: (0, w.jsxs)(`svg`, {
                             width: `14`,
                             height: `14`,
@@ -475,6 +477,7 @@ function Se({ ans: e, setAns: t, mode: n = `practice`, graded: r = !1, testData:
                           disabled: l,
                           onClick: () => b([t.script], !1),
                           title: `Play`,
+                          'aria-label': `Play`,
                           children: (0, w.jsxs)(`svg`, {
                             width: `14`,
                             height: `14`,
@@ -819,11 +822,11 @@ function ke({ index: e, transcript: t, onUpdate: n }) {
         ? (0, w.jsx)(`button`, {
             className: `btn rec-btn` + (r ? ` on` : ``),
             onClick: s,
-            children: r ? `⏹ Ferma` : `🎤 Registra e trascrivi`,
+            children: r ? `Ferma` : `Registra e trascrivi`,
           })
         : (0, w.jsx)(`p`, {
             className: `warn`,
-            children: `ℹ️ Live transcription needs Chrome or Edge. In other browsers, type your answer below to practise.`,
+            children: `Live transcription isn’t available on this device. Type your answer below to practise.`,
           }),
       (0, w.jsx)(`textarea`, {
         className: `tx`,
@@ -868,7 +871,7 @@ function Ae({ ans: e, setAns: t, graded: n = !1 }) {
                     className: `q-kicker`,
                     children: [i === 0 ? `Prova 1` : `Prova 2`, ` — `, t.t],
                   }),
-                  (0, w.jsxs)(`span`, { className: `dur`, children: [`⏱ `, t.dur] }),
+                  (0, w.jsx)(`span`, { className: `dur`, children: t.dur }),
                 ],
               }),
               (0, w.jsx)(`div`, { className: `prompt`, dangerouslySetInnerHTML: { __html: t.p } }),
@@ -969,7 +972,7 @@ function Me({ ans: e, setAns: t }) {
         ? (0, w.jsx)(`div`, {
             className: `verdict ` + (c ? `pass` : `fail`),
             children: c
-              ? `PROMOSSO/A — ${o}/48 ✓ (almeno 7 in ogni prova)`
+              ? `PROMOSSO/A — ${o}/48 (almeno 7 in ogni prova)`
               : `Non ancora — ${o}/48. Serve ≥28 totale e ≥7 in ogni prova${l < 7 ? ` (minimo attuale: ${l})` : ``}.`,
           })
         : (0, w.jsxs)(`div`, {
@@ -1681,7 +1684,6 @@ function rt({ set: e }) {
                       (0, w.jsxs)(`div`, {
                         className: `ge-explain`,
                         children: [
-                          (0, w.jsx)(`span`, { className: `ge-explain-icon`, children: `💡` }),
                           (0, w.jsx)(`span`, { children: e.explain }),
                         ],
                       }),
@@ -1711,7 +1713,7 @@ function rt({ set: e }) {
               className: `btn go`,
               onClick: () => i(!0),
               disabled: Object.keys(t).length < e.items.length,
-              children: `Check answers ✓`,
+              children: `Check answers`,
             }),
       }),
     ],
@@ -1789,7 +1791,7 @@ function it({ set: e }) {
                   className: `btn go sm`,
                   disabled: !u,
                   onClick: () => o(!0),
-                  children: `Check ✓`,
+                  children: `Check`,
                 }),
           }),
         ],
@@ -1851,7 +1853,7 @@ function it({ set: e }) {
                     (0, w.jsx)(`button`, { className: `btn ghost sm`, onClick: l, children: `Try again` }),
                   ],
                 })
-              : (0, w.jsx)(`button`, { className: `btn go`, disabled: !u, onClick: () => o(!0), children: `Check ✓` }),
+              : (0, w.jsx)(`button`, { className: `btn go`, disabled: !u, onClick: () => o(!0), children: `Check` }),
           }),
         ],
       });
@@ -1893,15 +1895,15 @@ function at({ set: e }) {
                   className: `mini ghost`,
                   style: { marginTop: 4 },
                   onClick: () => o((e) => ({ ...e, [i]: !e[i] })),
-                  children: a[i] ? `hide hint` : `💡 hint`,
+                  children: a[i] ? `hide hint` : `hint`,
                 }),
-              a[i] && !r && (0, w.jsxs)(`div`, { className: `ge-hint`, children: [`💡 `, e.hint] }),
+              a[i] && !r && (0, w.jsx)(`div`, { className: `ge-hint`, children: e.hint }),
               r &&
                 (0, w.jsxs)(`div`, {
                   className: `ge-fb ` + (s(i) ? `ok` : `no`),
                   children: [
                     s(i) ? `✓ Correct!` : `✗ Suggested: ${e.a}`,
-                    !s(i) && (0, w.jsxs)(`div`, { className: `ge-hint`, children: [`💡 `, e.hint] }),
+                    !s(i) && (0, w.jsx)(`div`, { className: `ge-hint`, children: e.hint }),
                   ],
                 }),
             ],
@@ -1928,7 +1930,7 @@ function at({ set: e }) {
               className: `btn go`,
               onClick: () => i(!0),
               disabled: t.some((e) => e.trim() === ``),
-              children: `Check ✓`,
+              children: `Check`,
             }),
       }),
     ],
@@ -1999,7 +2001,7 @@ function ot({ set: e }) {
                   className: `ge-fb ` + (s ? `ok` : `no`),
                   children: [
                     s ? `✓ Corretto!` : `✗ Correct: ${e.a}`,
-                    !s && (0, w.jsxs)(`div`, { className: `ge-hint`, children: [`💡 `, e.hint] }),
+                    !s && (0, w.jsx)(`div`, { className: `ge-hint`, children: e.hint }),
                   ],
                 }),
             ],
@@ -2027,7 +2029,7 @@ function ot({ set: e }) {
               className: `btn go`,
               onClick: () => i(!0),
               disabled: t.some((e) => e.chosen.length === 0),
-              children: `Check ✓`,
+              children: `Check`,
             }),
       }),
     ],
@@ -2095,7 +2097,7 @@ function st({ set: e }) {
               className: `btn go`,
               onClick: () => a(!0),
               disabled: Object.keys(n).length < e.pairs.length,
-              children: `Check ✓`,
+              children: `Check`,
             }),
       }),
     ],
@@ -2119,7 +2121,7 @@ function ct({ set: e }) {
                 children: [
                   i + 1,
                   `. `,
-                  (0, w.jsxs)(`span`, { className: `ge-wrong-sent`, children: [`❌ `, e.wrong] }),
+                  (0, w.jsx)(`span`, { className: `ge-wrong-sent`, children: e.wrong }),
                 ],
               }),
               (0, w.jsx)(`div`, {
@@ -2152,7 +2154,7 @@ function ct({ set: e }) {
                   className: `ge-fb ` + (a === e.a ? `ok` : `no`),
                   children: [
                     a === e.a ? `✓ Corretto!` : `✗ Risposta giusta: ${String.fromCharCode(65 + e.a)}) ${e.opts[e.a]}`,
-                    (0, w.jsxs)(`div`, { className: `ge-why`, children: [`📖 `, e.why] }),
+                    (0, w.jsx)(`div`, { className: `ge-why`, children: e.why }),
                   ],
                 }),
             ],
@@ -2179,7 +2181,7 @@ function ct({ set: e }) {
               className: `btn go`,
               onClick: () => i(!0),
               disabled: Object.keys(t).length < e.items.length,
-              children: `Check ✓`,
+              children: `Check`,
             }),
       }),
     ],
@@ -2203,7 +2205,8 @@ function lt({ sets: e }) {
       (0, w.jsxs)(`button`, {
         className: `gn-ex-toggle`,
         onClick: () => n((e) => !e),
-        children: [`✏️ Practice Exercises (`, e.length, `) `, t ? `▲` : `▼`],
+        'aria-expanded': t,
+        children: [`Practice Exercises (`, e.length, `)`],
       }),
       t &&
         (0, w.jsxs)(`div`, {
@@ -2502,7 +2505,7 @@ function Wt() {
       (0, w.jsxs)(`div`, {
         className: `pl-rule`,
         children: [
-          (0, w.jsx)(`b`, { children: `🧲 Come due calamite:` }),
+          (0, w.jsx)(`b`, { children: `Come due calamite:` }),
           ` preposition + article attract like two magnets and become `,
           (0, w.jsx)(`b`, { children: `one new word` }),
           ` — and the form follows the `,
@@ -2614,7 +2617,7 @@ function Wt() {
                 (0, w.jsx)(`span`, { className: `pl-eq-part`, children: n.prep }),
                 (0, w.jsx)(`span`, { className: `pl-eq-plus`, children: `+` }),
                 (0, w.jsx)(`span`, { className: `pl-eq-part`, children: n.art }),
-                (0, w.jsx)(`span`, { className: `pl-eq-magnet`, children: `🧲` }),
+                (0, w.jsx)(`span`, { className: `pl-eq-magnet`, children: `=` }),
                 (0, w.jsx)(`span`, { className: `pl-cell-form`, children: n.form }),
               ],
             }),
@@ -2626,12 +2629,12 @@ function Wt() {
               ],
             }),
             (0, w.jsx)(`button`, {
-              className: `icon-play sm`,
+              className: `icon-play sm lp-speak`,
               onClick: () => {
                 (M(), j(n.ex));
               },
               title: `Riascolta`,
-              children: `🔊`,
+              'aria-label': `Riascolta`,
             }),
           ],
         }),
@@ -2729,13 +2732,13 @@ function Kt({ items: e, taskId: t }) {
           className: `pl-done-msg`,
           children:
             t >= 0.8
-              ? `🎉 Fortissimo! Le preposizioni articolate stanno entrando in testa.`
+              ? `Fortissimo! Le preposizioni articolate stanno entrando in testa.`
               : t >= 0.55
                 ? `Buon lavoro — sei sulla strada giusta. Rivedi la tabella e riprova.`
                 : `Ottimo allenamento: torna alla Tabella, poi riprova. Migliorerai subito.`,
         }),
         (0, w.jsx)(`p`, { className: `pl-done-note`, children: `Risultato salvato nei tuoi progressi (Grammatica).` }),
-        (0, w.jsx)(`button`, { className: `btn primary`, onClick: p, children: `🔁 Riprova` }),
+        (0, w.jsx)(`button`, { className: `btn primary`, onClick: p, children: `Riprova` }),
       ],
     });
   }
@@ -2767,7 +2770,6 @@ function Kt({ items: e, taskId: t }) {
             (0, w.jsxs)(`div`, {
               className: `ge-explain`,
               children: [
-                (0, w.jsx)(`span`, { className: `ge-explain-icon`, children: `💡` }),
                 (0, w.jsx)(`span`, { children: u.explain }),
               ],
             }),
@@ -2794,7 +2796,6 @@ function qt() {
               (0, w.jsxs)(`div`, {
                 className: `pl-tip-head`,
                 children: [
-                  (0, w.jsx)(`span`, { className: `pl-tip-emoji`, children: e.emoji }),
                   (0, w.jsx)(`span`, { className: `pl-tip-title`, children: e.title }),
                 ],
               }),
@@ -2822,7 +2823,7 @@ function qt() {
               e.watch &&
                 (0, w.jsxs)(`div`, {
                   className: `pl-tip-watch`,
-                  children: [`👀 `, (0, w.jsx)(`b`, { children: `Occhio:` }), ` `, e.watch],
+                  children: [(0, w.jsx)(`b`, { children: `Occhio:` }), ` `, e.watch],
                 }),
             ],
           },
@@ -2834,11 +2835,11 @@ function qt() {
   });
 }
 var Jt = [
-  { id: `tabella`, label: `🧩 La Tabella` },
-  { id: `trucchi`, label: `💡 Trucchi` },
-  { id: `scene`, label: `🖼️ Nelle Scene` },
-  { id: `indovina`, label: `🎨 Indovina` },
-  { id: `sfida`, label: `⚡ Sfida` },
+  { id: `tabella`, label: `La Tabella` },
+  { id: `trucchi`, label: `Trucchi` },
+  { id: `scene`, label: `Nelle Scene` },
+  { id: `indovina`, label: `Indovina` },
+  { id: `sfida`, label: `Sfida` },
 ];
 function Yt() {
   let [e, t] = (0, S.useState)(`tabella`);
@@ -2874,7 +2875,7 @@ function Yt() {
       (0, w.jsxs)(`div`, {
         className: `pl-use-today`,
         children: [
-          (0, w.jsx)(`div`, { className: `pl-use-label`, children: `✍️ Usale oggi — in Scrittura e Orale` }),
+          (0, w.jsx)(`div`, { className: `pl-use-label`, children: `Usale oggi — in Scrittura e Orale` }),
           bt.map((e, t) =>
             (0, w.jsxs)(
               `div`,
@@ -2901,9 +2902,9 @@ var Xt = tensesRulesData,
   Zt = tensesQuizPastData,
   Qt = tensesQuizFutureData,
   $t = [
-    { id: `quando`, label: `💡 Quando si usa` },
-    { id: `ppimp`, label: `📸🎬 PP o Imperfetto?` },
-    { id: `futuro`, label: `🔮 Futuro` },
+    { id: `quando`, label: `Quando si usa` },
+    { id: `ppimp`, label: `PP o Imperfetto?` },
+    { id: `futuro`, label: `Futuro` },
   ];
 function en() {
   return (0, w.jsxs)(`div`, {
@@ -2918,7 +2919,6 @@ function en() {
               (0, w.jsxs)(`div`, {
                 className: `pl-tip-head`,
                 children: [
-                  (0, w.jsx)(`span`, { className: `pl-tip-emoji`, children: e.emoji }),
                   (0, w.jsx)(`span`, { className: `pl-tip-title`, children: e.title }),
                 ],
               }),
@@ -2946,7 +2946,7 @@ function en() {
               e.watch &&
                 (0, w.jsxs)(`div`, {
                   className: `pl-tip-watch`,
-                  children: [`👀 `, (0, w.jsx)(`b`, { children: `Occhio:` }), ` `, e.watch],
+                  children: [(0, w.jsx)(`b`, { children: `Occhio:` }), ` `, e.watch],
                 }),
             ],
           },
@@ -3052,7 +3052,7 @@ var nn = [
             (0, w.jsxs)(`div`, {
               className: `gn-tip`,
               children: [
-                (0, w.jsx)(`b`, { children: `⚠️ Irregular verbs to memorise:` }),
+                (0, w.jsx)(`b`, { children: `Irregular verbs to memorise:` }),
                 (0, w.jsx)(`br`, {}),
                 (0, w.jsx)(`span`, { className: `gn-irreg`, children: `essere` }),
                 ` → sono, sei, è, siamo, siete, sono`,
@@ -3220,7 +3220,7 @@ var nn = [
             (0, w.jsxs)(`div`, {
               className: `gn-tip`,
               children: [
-                (0, w.jsx)(`b`, { children: `⚠️ Irregular participi:` }),
+                (0, w.jsx)(`b`, { children: `Irregular participi:` }),
                 (0, w.jsx)(`br`, {}),
                 `essere → stato · fare → fatto · dire → detto · scrivere → scritto`,
                 (0, w.jsx)(`br`, {}),
@@ -3248,16 +3248,16 @@ var nn = [
               children: [
                 (0, w.jsx)(`b`, { children: `When to use it:` }),
                 (0, w.jsx)(`br`, {}),
-                `✅ Habits in the past: `,
+                `Habits in the past: `,
                 (0, w.jsx)(`i`, { children: `Da bambino giocavo ogni giorno.` }),
                 (0, w.jsx)(`br`, {}),
-                `✅ Descriptions: `,
+                `Descriptions: `,
                 (0, w.jsx)(`i`, { children: `La casa era grande e luminosa.` }),
                 (0, w.jsx)(`br`, {}),
-                `✅ Ongoing action interrupted: `,
+                `Ongoing action interrupted: `,
                 (0, w.jsx)(`i`, { children: `Dormivo quando ha suonato il telefono.` }),
                 (0, w.jsx)(`br`, {}),
-                `✅ Age/time/weather in the past: `,
+                `Age/time/weather in the past: `,
                 (0, w.jsx)(`i`, { children: `Erano le tre. Faceva freddo.` }),
               ],
             }),
@@ -3303,7 +3303,7 @@ var nn = [
             (0, w.jsxs)(`div`, {
               className: `gn-tip`,
               children: [
-                (0, w.jsx)(`b`, { children: `⚠️ Irregular:` }),
+                (0, w.jsx)(`b`, { children: `Irregular:` }),
                 (0, w.jsx)(`br`, {}),
                 `essere → ero, eri, era, eravamo, eravate, erano`,
                 (0, w.jsx)(`br`, {}),
@@ -3342,10 +3342,10 @@ var nn = [
           ],
         }),
     },
-    { id: `tempi`, label: `Tempi a confronto ⏳`, emoji: `⏳`, content: () => null },
+    { id: `tempi`, label: `Tempi a confronto`, emoji: `⏳`, content: () => null },
     {
       id: `pronomi`,
-      label: `Pronomi 🎯`,
+      label: `Pronomi`,
       emoji: `🎯`,
       content: () =>
         (0, w.jsxs)(w.Fragment, {
@@ -3417,7 +3417,7 @@ var nn = [
             (0, w.jsxs)(`p`, {
               className: `gn-note`,
               children: [
-                `1️⃣ The pronoun goes `,
+                `1. The pronoun goes `,
                 (0, w.jsx)(`b`, { children: `BEFORE` }),
                 ` the conjugated verb: `,
                 (0, w.jsx)(`i`, { children: `La vedo` }),
@@ -3436,7 +3436,7 @@ var nn = [
             (0, w.jsxs)(`p`, {
               className: `gn-note`,
               children: [
-                `2️⃣ With the passato prossimo, `,
+                `2. With the passato prossimo, `,
                 (0, w.jsx)(`b`, { children: `lo/la/li/le make the participle agree` }),
                 `: `,
                 (0, w.jsxs)(`i`, { children: [`Le mele? Le ho comprat`, (0, w.jsx)(`b`, { children: `e` }), `.`] }),
@@ -3447,7 +3447,7 @@ var nn = [
             (0, w.jsxs)(`p`, {
               className: `gn-note`,
               children: [
-                `3️⃣ Verbs with `,
+                `3. Verbs with `,
                 (0, w.jsx)(`b`, { children: `a` }),
                 ` (telefonare a, scrivere a, dare a, piacere a) take the INDIRECT pronoun: `,
                 (0, w.jsxs)(`i`, { children: [(0, w.jsx)(`b`, { children: `Gli` }), ` telefono`] }),
@@ -3472,7 +3472,7 @@ var nn = [
                 ` that follows it — not the spelling. Train your ear on the trigger sounds below.`,
               ],
             }),
-            (0, w.jsx)(`div`, { className: `gn-sub`, children: `🔊 Sound → Article (singular)` }),
+            (0, w.jsx)(`div`, { className: `gn-sub`, children: `Sound → Article (singular)` }),
             (0, w.jsx)(`div`, {
               className: `art-grid`,
               children: [
@@ -3500,12 +3500,12 @@ var nn = [
                           (0, w.jsxs)(`span`, {
                             className: `art-pill m`,
                             style: { background: i + `22`, color: i },
-                            children: [`♂ `, n],
+                            children: [`m. `, n],
                           }),
                           (0, w.jsxs)(`span`, {
                             className: `art-pill f`,
                             style: { background: i + `22`, color: i },
-                            children: [`♀ `, r],
+                            children: [`f. `, r],
                           }),
                         ],
                       }),
@@ -3535,12 +3535,12 @@ var nn = [
                           (0, w.jsxs)(`span`, {
                             className: `art-pill m`,
                             style: { background: r + `22`, color: r },
-                            children: [`♂ `, t],
+                            children: [`m. `, t],
                           }),
                           (0, w.jsxs)(`span`, {
                             className: `art-pill f`,
                             style: { background: r + `22`, color: r },
-                            children: [`♀ `, n],
+                            children: [`f. `, n],
                           }),
                         ],
                       }),
@@ -3575,12 +3575,12 @@ var nn = [
                           (0, w.jsxs)(`span`, {
                             className: `art-pill m`,
                             style: { background: r + `22`, color: r },
-                            children: [`♂ `, t],
+                            children: [`m. `, t],
                           }),
                           (0, w.jsxs)(`span`, {
                             className: `art-pill f`,
                             style: { background: r + `22`, color: r },
-                            children: [`♀ `, n],
+                            children: [`f. `, n],
                           }),
                         ],
                       }),
@@ -4065,10 +4065,8 @@ var nn = [
                 (0, w.jsx)(`b`, { children: `Word order:` }),
                 ` NON always goes before the verb. The second negative word goes after the verb (or after the object).`,
                 (0, w.jsx)(`br`, {}),
-                `✅ `,
                 (0, w.jsxs)(`i`, { children: [`Non mangio `, (0, w.jsx)(`b`, { children: `mai` }), ` la carne.`] }),
                 (0, w.jsx)(`br`, {}),
-                `✅ `,
                 (0, w.jsxs)(`i`, { children: [`Non ho visto `, (0, w.jsx)(`b`, { children: `nessuno` }), `.`] }),
               ],
             }),
@@ -4104,7 +4102,7 @@ function an() {
   return (0, w.jsxs)(`section`, {
     className: `card`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Grammar Notes — Regole` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Grammar Notes` }),
       (0, w.jsx)(`p`, {
         className: `instr`,
         children: `Read the rule, then tap "Practice Exercises" to test yourself without leaving the page.`,
@@ -4734,6 +4732,7 @@ function Dn({ phrase: e, situation: t, showNote: n = !1 }) {
           k() && (i(!0), j(e.it), setTimeout(() => i(!1), 2e3));
         },
         title: `Listen`,
+        'aria-label': `Listen`,
         disabled: !k(),
         style: { '--play-hue': a.hue },
         children: (0, w.jsxs)(`svg`, {
@@ -4774,7 +4773,7 @@ function On() {
   return (0, w.jsxs)(`section`, {
     className: `card`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Frasi Utili — Common Phrases` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Common Phrases` }),
       (0, w.jsx)(`p`, {
         className: `instr`,
         children: `Key spoken phrases for the CILS A2 oral exam. Browse by situation or by tense.`,
@@ -4899,7 +4898,7 @@ function On() {
                     (0, w.jsx)(`button`, {
                       className: `ph-collapse-btn`,
                       onClick: () => a(!1),
-                      children: `Mostra meno ↑`,
+                      children: `Mostra meno`,
                     }),
                   ],
                 }),
@@ -5051,10 +5050,10 @@ function Fn(e, t) {
   return ((n = e === 1 ? `il primo` : e === 8 ? `l'otto` : e === 11 ? `l'undici` : `il ` + jn(e)), `${n} ${Pn[t]}`);
 }
 var In = [
-    { id: `numeri`, label: `🔢 Numeri` },
-    { id: `prezzi`, label: `💶 Prezzi` },
-    { id: `ore`, label: `🕗 Ore` },
-    { id: `date`, label: `📅 Date` },
+    { id: `numeri`, label: `Numeri` },
+    { id: `prezzi`, label: `Prezzi` },
+    { id: `ore`, label: `Ore` },
+    { id: `date`, label: `Date` },
   ],
   Ln = 8;
 function Rn(e) {
@@ -5136,11 +5135,10 @@ function Vn() {
       (0, w.jsxs)(`div`, {
         className: `nl-head`,
         children: [
-          (0, w.jsx)(`span`, { className: `nl-title`, children: `🎧 Allenati: numeri, prezzi, ore e date` }),
+          (0, w.jsx)(`span`, { className: `nl-title`, children: `Allenati: numeri, prezzi, ore e date` }),
           (0, w.jsxs)(`span`, {
             className: `nl-score`,
             children: [
-              `✓ `,
               u.ok,
               `/`,
               u.n,
@@ -5169,12 +5167,12 @@ function Vn() {
               (0, w.jsx)(`button`, {
                 className: `nl-chip mode` + (n === `ascolta` ? ` on` : ``),
                 onClick: () => v(`ascolta`),
-                children: `🎧 Ascolta e scrivi`,
+                children: `Ascolta e scrivi`,
               }),
               (0, w.jsx)(`button`, {
                 className: `nl-chip mode` + (n === `parla` ? ` on` : ``),
                 onClick: () => v(`parla`),
-                children: `🗣️ Leggi e di'`,
+                children: `Leggi e di'`,
               }),
             ],
           }),
@@ -5184,7 +5182,7 @@ function Vn() {
         ? (0, w.jsxs)(`div`, {
             className: `nl-body`,
             children: [
-              (0, w.jsx)(`button`, { className: `btn primary sm`, onClick: f, disabled: !k(), children: `▶ Ascolta` }),
+              (0, w.jsx)(`button`, { className: `btn primary sm`, onClick: f, disabled: !k(), children: `Ascolta` }),
               (0, w.jsx)(`input`, {
                 className: `nl-input`,
                 placeholder:
@@ -5230,7 +5228,7 @@ function Vn() {
                         onClick: () => {
                           (l(`revealed`), f());
                         },
-                        children: `Verifica 🔊`,
+                        children: `Verifica`,
                       }),
                     ],
                   })
@@ -5239,8 +5237,8 @@ function Vn() {
                       children: [
                         (0, w.jsx)(`span`, { className: `nl-words big`, children: i.words }),
                         (0, w.jsx)(`span`, { className: `nl-hint`, children: `L'hai detto giusto?` }),
-                        (0, w.jsx)(`button`, { className: `btn primary sm`, onClick: () => g(!0), children: `Sì ✓` }),
-                        (0, w.jsx)(`button`, { className: `btn ghost sm`, onClick: () => g(!1), children: `No ✗` }),
+                        (0, w.jsx)(`button`, { className: `btn primary sm`, onClick: () => g(!0), children: `Sì` }),
+                        (0, w.jsx)(`button`, { className: `btn ghost sm`, onClick: () => g(!1), children: `No` }),
                       ],
                     })
                   : (0, w.jsxs)(`span`, {
@@ -5265,10 +5263,10 @@ function Vn() {
 }
 function Hn({ text: e, small: t }) {
   return (0, w.jsx)(`button`, {
-    className: `icon-play` + (t ? ` sm` : ``),
+    className: `icon-play lp-speak` + (t ? ` sm` : ``),
     title: `Ascolta: ${e}`,
+    'aria-label': `Ascolta: ${e}`,
     onClick: () => j(e, `it-IT`),
-    children: `🔊`,
   });
 }
 function Un() {
@@ -5385,7 +5383,6 @@ function Gn() {
         {
           className: `qr-row-card`,
           children: [
-            (0, w.jsx)(`span`, { className: `qr-row-pic`, children: n }),
             (0, w.jsx)(`span`, { className: `qr-row-n`, children: e }),
             (0, w.jsxs)(`span`, { className: `qr-row-it`, children: [t, `/a`] }),
             (0, w.jsx)(Hn, { text: t, small: !0 }),
@@ -5413,7 +5410,6 @@ function Kn() {
         {
           className: `qr-day` + (e === `Sab` || e === `Dom` ? ` weekend` : ``),
           children: [
-            (0, w.jsx)(`span`, { className: `qr-day-pic`, children: n }),
             (0, w.jsx)(`span`, { className: `qr-day-abbr`, children: e }),
             (0, w.jsx)(`span`, { className: `qr-day-full`, children: t }),
             (0, w.jsx)(`span`, { className: `qr-day-en`, children: r }),
@@ -5447,7 +5443,6 @@ function qn() {
         {
           className: `qr-month-card`,
           children: [
-            (0, w.jsx)(`span`, { className: `qr-month-pic`, children: n }),
             (0, w.jsx)(`span`, { className: `qr-month-it`, children: e }),
             (0, w.jsx)(`span`, { className: `qr-month-en`, children: t }),
             (0, w.jsx)(Hn, { text: e, small: !0 }),
@@ -5466,28 +5461,28 @@ function Jn() {
         it: `Primavera`,
         emoji: `🌸`,
         en: `Spring (Mar–May)`,
-        weather: [`fa bello ☀️`, `piove 🌧️`, `è mite 🌡️`],
+        weather: [`fa bello`, `piove`, `è mite`],
         color: `#d4edda`,
       },
       {
         it: `Estate`,
         emoji: `☀️`,
         en: `Summer (Jun–Aug)`,
-        weather: [`fa caldo 🥵`, `c'è sole ☀️`, `c'è afa 😰`],
+        weather: [`fa caldo`, `c'è sole`, `c'è afa`],
         color: `#fff3cd`,
       },
       {
         it: `Autunno`,
         emoji: `🍁`,
         en: `Autumn (Sep–Nov)`,
-        weather: [`fa fresco 🍃`, `piove 🌧️`, `è nuvoloso ☁️`],
+        weather: [`fa fresco`, `piove`, `è nuvoloso`],
         color: `#fde8d8`,
       },
       {
         it: `Inverno`,
         emoji: `❄️`,
         en: `Winter (Dec–Feb)`,
-        weather: [`fa freddo 🥶`, `nevica ❄️`, `c'è vento 💨`],
+        weather: [`fa freddo`, `nevica`, `c'è vento`],
         color: `#d6eaf8`,
       },
     ].map(({ it: e, emoji: t, en: n, weather: r, color: i }) =>
@@ -5500,7 +5495,7 @@ function Jn() {
             (0, w.jsxs)(`div`, {
               style: { display: `flex`, alignItems: `center`, gap: `8px` },
               children: [
-                (0, w.jsxs)(`div`, { className: `qr-season-name`, children: [e, ` `, t] }),
+                (0, w.jsx)(`div`, { className: `qr-season-name`, children: e }),
                 (0, w.jsx)(Hn, { text: e, small: !0 }),
               ],
             }),
@@ -5591,49 +5586,49 @@ function Xn() {
 var Zn = [
   {
     id: `alphabet`,
-    label: `Alfabeto Italiano 🔤`,
+    label: `Alfabeto Italiano`,
     Component: Un,
     tip: `Italian has 21 native letters. H is always silent. C before E/I = "ch" (ciao); before A/O/U = "k" (casa). G before E/I = "j" (gelato); before A/O/U = hard g (gatto).`,
   },
   {
     id: `numbers`,
-    label: `Numbers 🔢`,
+    label: `Numbers`,
     Component: Wn,
     tip: `Compounds: 21 = ventuno, 22 = ventidue, 33 = trentatré (accent on 3!). Plurals: mille → mila (duemila).`,
   },
   {
     id: `ordinals`,
-    label: `Ordinal Numbers 🥇`,
+    label: `Ordinal Numbers`,
     Component: Gn,
     tip: `From 11th onwards add -esimo/a → undicesimo, ventesimo… Used for floors: "abito al terzo piano".`,
   },
   {
     id: `days`,
-    label: `Days of the Week 📅`,
+    label: `Days of the Week`,
     Component: Kn,
     tip: `All days are lowercase in Italian. "lavoro il lunedì" = I work on Mondays.`,
   },
   {
     id: `months`,
-    label: `Months 📆`,
+    label: `Months`,
     Component: qn,
     tip: `Preposition: "a gennaio", "ad agosto" (before vowel). All lowercase. Date format: il 15 marzo 2025.`,
   },
   {
     id: `seasons`,
-    label: `Seasons & Weather 🌤️`,
+    label: `Seasons & Weather`,
     Component: Jn,
     tip: `Preposition: "in primavera / in estate / in autunno / in inverno" OR "d'estate / d'inverno".`,
   },
   {
     id: `colours`,
-    label: `Colours 🎨`,
+    label: `Colours`,
     Component: Yn,
     tip: `Colours agree with the noun: rosso→rossa→rossi→rosse. Exception: blu, viola, rosa, beige are invariable.`,
   },
   {
     id: `time`,
-    label: `Telling the Time 🕐`,
+    label: `Telling the Time`,
     Component: Xn,
     tip: `"È" for 1:00, noon, midnight. "Sono" for all other hours. 24h format common: "alle ventidue" = 10pm.`,
   },
@@ -5642,8 +5637,8 @@ function Qn() {
   return (0, w.jsxs)(`section`, {
     className: `card qr-wrap`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `📋 Quick Reference` }),
-      (0, w.jsx)(`p`, { className: `instr`, children: `Tap 🔊 on any card to hear the Italian pronunciation.` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Quick Reference` }),
+      (0, w.jsx)(`p`, { className: `instr`, children: `Tap the speaker on any card to hear the Italian pronunciation.` }),
       (0, w.jsx)(Vn, {}),
       Zn.map(({ id: e, label: t, Component: n, tip: r }) =>
         (0, w.jsxs)(
@@ -5695,7 +5690,7 @@ function nr() {
   return (0, w.jsxs)(`section`, {
     className: `card`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Dialoghi — Common Conversations` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Common Conversations` }),
       (0, w.jsx)(`p`, {
         className: `instr`,
         children: `Read or listen to real-life dialogues. Tap the speaker to hear a line, or play the whole dialogue.`,
@@ -5772,7 +5767,7 @@ function nr() {
                 s(null);
               },
               disabled: o !== null,
-              children: o === null ? `▶ Play all` : `Playing…`,
+              children: o === null ? `Play all` : `Playing…`,
             }),
           ],
         }),
@@ -5801,6 +5796,7 @@ function nr() {
                         onClick: () => u(e.it, t),
                         disabled: o !== null,
                         title: `Play`,
+                        'aria-label': `Play`,
                         children: (0, w.jsxs)(`svg`, {
                           width: `13`,
                           height: `13`,
@@ -6276,12 +6272,11 @@ function yr() {
     m = (e) => {
       e.key === `Enter` && p();
     },
-    h = { en: `🇬🇧 English`, it: `🇮🇹 Italian` },
+    h = { en: `English`, it: `Italian` },
     g = { en: `en-GB`, it: `it-IT` };
   return (0, w.jsxs)(`section`, {
     className: `card`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `📖 Dictionary — Dizionario` }),
       (0, w.jsx)(`p`, {
         className: `instr`,
         children: `Type any word in English or Italian — the app detects the language automatically. Use the toggle if it guesses wrong.`,
@@ -6296,7 +6291,7 @@ function yr() {
               {
                 className: `dict-toggle-btn` + (u === e ? ` on` : ``),
                 onClick: () => d(e),
-                children: e === null ? `Auto` : e === `en` ? `🇬🇧 English` : `🇮🇹 Italian`,
+                children: e === null ? `Auto` : e === `en` ? `English` : `Italian`,
               },
               String(e),
             ),
@@ -6334,7 +6329,7 @@ function yr() {
               onClick: () => {
                 (t(``), r(null), s(null), f.current?.focus());
               },
-              children: `✕`,
+              children: `Clear`,
             }),
         ],
       }),
@@ -6373,10 +6368,10 @@ function yr() {
                     (0, w.jsx)(`span`, { className: `dict-lang-badge`, children: h[n.srcLang] }),
                     (0, w.jsx)(`span`, { className: `dict-query-word`, children: n.query }),
                     (0, w.jsx)(`button`, {
-                      className: `icon-play sm`,
+                      className: `icon-play sm lp-speak`,
                       onClick: () => j(n.query, g[n.srcLang]),
                       title: `Listen`,
-                      children: `🔊`,
+                      'aria-label': `Listen`,
                     }),
                   ],
                 }),
@@ -6387,10 +6382,10 @@ function yr() {
                     (0, w.jsx)(`span`, { className: `dict-lang-badge tgt`, children: h[n.tgtLang] }),
                     (0, w.jsx)(`span`, { className: `dict-translation`, children: n.translation }),
                     (0, w.jsx)(`button`, {
-                      className: `icon-play sm`,
+                      className: `icon-play sm lp-speak`,
                       onClick: () => j(n.translation, g[n.tgtLang]),
                       title: `Listen`,
-                      children: `🔊`,
+                      'aria-label': `Listen`,
                     }),
                   ],
                 }),
@@ -6400,13 +6395,13 @@ function yr() {
               (0, w.jsxs)(`div`, {
                 className: `dict-example`,
                 children: [
-                  n.local && (0, w.jsx)(`span`, { className: `dict-local-badge`, children: `📚 dal tuo vocabolario` }),
+                  n.local && (0, w.jsx)(`span`, { className: `dict-local-badge`, children: `dal tuo vocabolario` }),
                   (0, w.jsxs)(`span`, { className: `dict-example-text`, children: [`“`, n.ex, `”`] }),
                   (0, w.jsx)(`button`, {
-                    className: `icon-play sm`,
+                    className: `icon-play sm lp-speak`,
                     onClick: () => j(n.ex, g.it),
                     title: `Ascolta`,
-                    children: `🔊`,
+                    'aria-label': `Ascolta`,
                   }),
                 ],
               }),
@@ -6425,9 +6420,9 @@ function yr() {
                           children: [
                             (0, w.jsx)(`span`, { className: `dict-alt-text`, children: e.translation }),
                             (0, w.jsx)(`button`, {
-                              className: `icon-play sm`,
+                              className: `icon-play sm lp-speak`,
                               onClick: () => j(e.translation, g[n.tgtLang]),
-                              children: `🔊`,
+                              'aria-label': `Listen`,
                             }),
                           ],
                         },
@@ -6440,7 +6435,7 @@ function yr() {
             (0, w.jsxs)(`div`, {
               className: `dict-switch-tip`,
               children: [
-                `💡 Want the reverse? `,
+                `Want the reverse? `,
                 (0, w.jsxs)(`button`, {
                   className: `mini ghost`,
                   onClick: () => {
@@ -6524,7 +6519,7 @@ function jr(e) {
   return (e.type === `Polygon` ? e.coordinates.forEach(a) : e.coordinates.forEach((e) => e.forEach(a)), [t, n, r, i]);
 }
 function Mr({ geoData: e, selected: t, hovered: n, onSelect: r, onHover: i, scriptIds: a, regionMeta: o }) {
-  if (!e) return (0, w.jsx)(`div`, { className: `exp-map-loading`, children: `🗺️ Loading map…` });
+  if (!e) return (0, w.jsx)(`div`, { className: `exp-map-loading`, children: `Loading map…` });
   let s = t ? e.features.find((e) => Pr(e.properties.reg_name || ``) === t) : null,
     c = 1,
     l = `translate(0px, 0px) scale(1)`;
@@ -6695,7 +6690,7 @@ function Mr({ geoData: e, selected: t, hovered: n, onSelect: r, onHover: i, scri
                     (0, w.jsxs)(w.Fragment, {
                       children: [
                         (0, w.jsx)(`circle`, { cx: s, cy: l - 14, r: `12`, fill: `#fff`, opacity: `0.92` }),
-                        (0, w.jsx)(`text`, { x: s, y: l - 9.5, textAnchor: `middle`, fontSize: `13`, children: d }),
+                        (0, w.jsx)(`circle`, { cx: s, cy: l - 14, r: `5.5`, fill: `#a6452a` }),
                       ],
                     }),
                   (0, w.jsx)(`text`, {
@@ -6776,7 +6771,7 @@ function Lr({ region: e, questions: t }) {
   return (0, w.jsxs)(`div`, {
     className: `exp-quiz`,
     children: [
-      (0, w.jsx)(`div`, { className: `exp-quiz-title`, children: `🎯 Comprehension Check` }),
+      (0, w.jsx)(`div`, { className: `exp-quiz-title`, children: `Comprehension Check` }),
       t.map((e, t) => {
         let a = n[t];
         return (0, w.jsxs)(
@@ -6840,7 +6835,7 @@ function Lr({ region: e, questions: t }) {
               className: `btn go sm`,
               disabled: Object.keys(n).length < t.length,
               onClick: () => a(!0),
-              children: `Check answers ✓`,
+              children: `Check answers`,
             }),
       }),
     ],
@@ -6946,7 +6941,6 @@ function Rr() {
               (0, w.jsxs)(`div`, {
                 className: `exp-terr-caption`,
                 children: [
-                  (0, w.jsx)(`span`, { className: `exp-terr-emoji`, children: y.emoji }),
                   (0, w.jsxs)(`div`, {
                     children: [
                       (0, w.jsx)(`div`, { className: `exp-terr-name`, children: D.name }),
@@ -6965,7 +6959,7 @@ function Rr() {
               (0, w.jsx)(`button`, {
                 className: `btn sm` + (c ? ` ghost` : ` go`),
                 onClick: c ? b : x,
-                children: c ? `⏹ Ferma` : `▶ Ascolta tutto`,
+                children: c ? `Ferma` : `Ascolta tutto`,
               }),
               (0, w.jsxs)(`label`, {
                 className: `exp-toggle`,
@@ -6996,11 +6990,11 @@ function Rr() {
                       ],
                     }),
                     (0, w.jsx)(`button`, {
-                      className: `icon-play sm`,
+                      className: `icon-play sm lp-speak`,
                       onClick: (n) => {
                         (n.stopPropagation(), j(e.it, { rate: 0.92 }), d(t));
                       },
-                      children: `🔊`,
+                      'aria-label': `Ascolta`,
                     }),
                   ],
                 },
@@ -7011,20 +7005,19 @@ function Rr() {
           (0, w.jsx)(Lr, { region: D, questions: y.questions }),
           (0, w.jsx)(`div`, {
             className: `exp-tip`,
-            children: `💡 Ascolta prima con l'inglese nascosto, poi mettiti alla prova con il quiz.`,
+            children: `Ascolta prima con l'inglese nascosto, poi mettiti alla prova con il quiz.`,
           }),
         ],
       })
     : (0, w.jsxs)(`section`, {
         className: `card`,
         children: [
-          (0, w.jsx)(`h2`, { className: `sec-h`, children: `🇮🇹 Italy Explorer — Esplora l'Italia` }),
           (0, w.jsxs)(`p`, {
             className: `instr`,
             children: [
-              `Clicca una regione sulla mappa per `,
+              `Tocca una regione sulla mappa per `,
               (0, w.jsx)(`strong`, { children: `entrare` }),
-              ` — ascolti una storia in italiano e rispondi alle domande. Le regioni con 🔊 sono pronte.`,
+              `. Le regioni con il pallino sono pronte.`,
             ],
           }),
           (0, w.jsxs)(`div`, {
@@ -7045,19 +7038,16 @@ function Rr() {
                   onClick: () => {
                     (b(), t(null));
                   },
-                  children: `🗺 Tutta l'Italia`,
+                  children: `Tutta l'Italia`,
                 }),
               E &&
                 (0, w.jsxs)(`div`, {
                   className: `exp-float-card`,
                   style: { '--rc': E.color },
                   children: [
-                    (0, w.jsxs)(`div`, {
+                    (0, w.jsx)(`div`, {
                       className: `exp-float-name`,
-                      children: [
-                        Fr[ee] && (0, w.jsx)(`span`, { className: `exp-float-emoji`, children: Fr[ee].emoji }),
-                        E.name,
-                      ],
+                      children: E.name,
                     }),
                     (0, w.jsxs)(`div`, { className: `exp-float-capital`, children: [`Capoluogo: `, E.capital] }),
                     E.tag &&
@@ -7070,14 +7060,14 @@ function Rr() {
                     Ir.includes(ee)
                       ? (0, w.jsx)(`div`, {
                           className: `exp-float-cta`,
-                          children: `🔊 Clicca per entrare nella regione`,
+                          children: `Tocca per entrare nella regione`,
                         })
                       : (0, w.jsx)(`div`, { className: `exp-float-soon`, children: `Storia audio in arrivo` }),
                   ],
                 }),
               (0, w.jsx)(`p`, {
                 className: `exp-map-hint`,
-                children: `Passa il mouse su una regione per un assaggio · le regioni con 🔊 hanno una storia e un quiz`,
+                children: `Tocca una regione per un assaggio · le regioni con il pallino hanno una storia e un quiz`,
               }),
             ],
           }),
@@ -7152,7 +7142,7 @@ function Vr() {
   return (0, w.jsxs)(`section`, {
     className: `card`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `🎙️ Shadowing — Ripeti & Impara` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Ripeti & Impara` }),
       (0, w.jsx)(`p`, {
         className: `instr`,
         children: `Listen → repeat out loud → see how close you were. The fastest way to train your ear and your pronunciation at the same time.`,
@@ -7165,7 +7155,7 @@ function Vr() {
             {
               className: `sh-deck-btn` + (t.id === e ? ` on` : ``),
               onClick: () => te(t.id),
-              children: [t.emoji, ` `, t.label],
+              children: t.label,
             },
             t.id,
           ),
@@ -7188,7 +7178,7 @@ function Vr() {
                   `Show English`,
                 ],
               }),
-              (0, w.jsxs)(`span`, { className: `sh-score-badge`, children: [`✓ `, b, ` got · `, x - b, ` missed`] }),
+              (0, w.jsxs)(`span`, { className: `sh-score-badge`, children: [b, ` got · `, x - b, ` missed`] }),
             ],
           }),
         ],
@@ -7207,13 +7197,13 @@ function Vr() {
                 (0, w.jsxs)(`div`, {
                   style: { textAlign: `center` },
                   children: [
-                    (0, w.jsx)(`span`, { className: `sh-sentence-hint`, children: `Press play to hear the sentence` }),
+                    (0, w.jsx)(`span`, { className: `sh-sentence-hint`, children: `Tap Play & Record to hear the sentence` }),
                     f && (0, w.jsx)(`div`, { className: `sh-en-preview`, children: g.en }),
                   ],
                 }),
-              i === `listening` && (0, w.jsx)(`span`, { className: `sh-sentence-text`, children: `🔊 Listening…` }),
+              i === `listening` && (0, w.jsx)(`span`, { className: `sh-sentence-text`, children: `Listening…` }),
               i === `recording` &&
-                (0, w.jsx)(`span`, { className: `sh-sentence-text sh-recording-label`, children: `🎙️ Now repeat it!` }),
+                (0, w.jsx)(`span`, { className: `sh-sentence-text sh-recording-label`, children: `Now repeat it!` }),
               i === `result` &&
                 (0, w.jsxs)(`div`, {
                   style: { textAlign: `center` },
@@ -7242,7 +7232,7 @@ function Vr() {
                   y !== null &&
                   (0, w.jsxs)(`div`, {
                     className: `sh-match` + (y >= 70 ? ` good` : y >= 40 ? ` ok` : ` poor`),
-                    children: [y >= 70 ? `🎯` : y >= 40 ? `🤏` : `❌`, ` `, y, `% word match`],
+                    children: [y, `% word match`],
                   }),
               ],
             }),
@@ -7257,7 +7247,7 @@ function Vr() {
                   className: `mini ghost`,
                   onClick: () => j(_),
                   style: { marginTop: 6 },
-                  children: `🔊 Hear again`,
+                  children: `Hear again`,
                 }),
               ],
             }),
@@ -7268,13 +7258,12 @@ function Vr() {
                 (0, w.jsx)(`button`, {
                   className: `mini ghost`,
                   onClick: () => d((e) => !e),
-                  children: u ? `Hide tip` : `💡 Pronunciation tip`,
+                  children: u ? `Hide tip` : `Pronunciation tip`,
                 }),
                 u &&
                   (0, w.jsxs)(`div`, {
                     className: `sh-tip`,
                     children: [
-                      `🗣️ `,
                       (0, w.jsx)(`b`, { children: `Shadowing tip:` }),
                       ` Don't translate in your head — repeat the sounds immediately. Focus on rhythm and stress, not perfection. Repeat the same sentence 3× in a row for best results.`,
                     ],
@@ -7286,15 +7275,15 @@ function Vr() {
             children: [
               (0, w.jsx)(`button`, { className: `btn ghost sm`, onClick: D, children: `‹ Prev` }),
               i === `ready` &&
-                (0, w.jsx)(`button`, { className: `btn go sh-play-btn`, onClick: C, children: `▶ Play & Record` }),
+                (0, w.jsx)(`button`, { className: `btn go sh-play-btn`, onClick: C, children: `Play & Record` }),
               i === `listening` &&
-                (0, w.jsx)(`button`, { className: `btn ghost sh-play-btn`, disabled: !0, children: `🔊 Playing…` }),
+                (0, w.jsx)(`button`, { className: `btn ghost sh-play-btn`, disabled: !0, children: `Playing…` }),
               i === `recording` &&
                 (0, w.jsx)(`button`, {
                   className: `btn sh-play-btn`,
                   style: { background: `#e74c3c`, color: `#fff` },
                   onClick: T,
-                  children: `⏹ Done speaking`,
+                  children: `Done speaking`,
                 }),
               i === `result` &&
                 (0, w.jsx)(`button`, {
@@ -7302,7 +7291,7 @@ function Vr() {
                   onClick: () => {
                     (a(`ready`), s(``));
                   },
-                  children: `↺ Try again`,
+                  children: `Try again`,
                 }),
               (0, w.jsx)(`button`, { className: `btn ghost sm`, onClick: E, children: `Next ›` }),
             ],
@@ -7313,11 +7302,11 @@ function Vr() {
               className: `sh-selfmark`,
               children: [
                 (0, w.jsx)(`span`, { className: `sh-selfmark-label`, children: `How did you do?` }),
-                (0, w.jsx)(`button`, { className: `sh-mark-btn got`, onClick: () => ee(`got`), children: `✓ Got it` }),
+                (0, w.jsx)(`button`, { className: `sh-mark-btn got`, onClick: () => ee(`got`), children: `Got it` }),
                 (0, w.jsx)(`button`, {
                   className: `sh-mark-btn missed`,
                   onClick: () => ee(`missed`),
-                  children: `✗ Need practice`,
+                  children: `Need practice`,
                 }),
               ],
             }),
@@ -7326,7 +7315,7 @@ function Vr() {
             (0, w.jsxs)(`div`, {
               className: `sh-marked ` + c[v],
               children: [
-                c[v] === `got` ? `✓ Marked as got it` : `✗ Marked for practice`,
+                c[v] === `got` ? `Marked as got it` : `Marked for practice`,
                 (0, w.jsx)(`button`, {
                   className: `mini ghost`,
                   style: { marginLeft: 10 },
@@ -7352,7 +7341,7 @@ function Vr() {
                 className: `sh-how-step`,
                 children: [
                   (0, w.jsx)(`span`, { className: `sh-step-n`, children: `1` }),
-                  `Press `,
+                  `Tap `,
                   (0, w.jsx)(`b`, { children: `Play & Record` }),
                   ` — the sentence plays, then recording starts automatically`,
                 ],
@@ -7381,10 +7370,10 @@ function Vr() {
               (0, w.jsxs)(`div`, {
                 className: `sh-how-step`,
                 children: [
-                  (0, w.jsx)(`span`, { className: `sh-step-n`, children: `💡` }),
+                  (0, w.jsx)(`span`, { className: `sh-step-n`, children: `5` }),
                   `Use the `,
-                  (0, w.jsx)(`b`, { children: `Speed slider` }),
-                  ` in the sidebar — train at 1.15× then the exam feels slow`,
+                  (0, w.jsx)(`b`, { children: `Velocità ascolto` }),
+                  ` buttons above — train at Veloce, then the exam feels slow`,
                 ],
               }),
             ],
@@ -7500,7 +7489,7 @@ function ii({ totalSec: e, onExpire: t }) {
       }),
       (0, w.jsxs)(`span`, {
         className: `de-timer-text` + (s ? ` red` : ``),
-        children: [`⏱ `, i, `:`, a.toString().padStart(2, `0`)],
+        children: [i, `:`, a.toString().padStart(2, `0`)],
       }),
     ],
   });
@@ -7520,7 +7509,7 @@ function oi({ current: e, done: t }) {
         `div`,
         {
           className: `de-sec-chip` + (n.key === e ? ` active` : t.includes(n.key) ? ` done` : ``),
-          children: [t.includes(n.key) ? `✓` : n.icon, ` `, (0, w.jsx)(`span`, { children: n.label })],
+          children: [t.includes(n.key) ? `✓ ` : null, (0, w.jsx)(`span`, { children: n.label })],
         },
         n.key,
       ),
@@ -7716,7 +7705,7 @@ function ui({ exam: e, onFinish: t }) {
             onClick: () => {
               (M(), o(`listening`), c([]), u({}), f({}), m({}), g({}), v(null), b(!1), r((e) => e + 1));
             },
-            children: `↺ Ricomincia`,
+            children: `Ricomincia`,
           }),
         ],
       }),
@@ -7725,7 +7714,7 @@ function ui({ exam: e, onFinish: t }) {
         (0, w.jsxs)(`div`, {
           className: `de-sec-card`,
           children: [
-            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `🔊 Ascolto — Listening` }),
+            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `Ascolto — Listening` }),
             (0, w.jsx)(`div`, {
               className: `de-sec-sub`,
               children: `Ascolta il testo e rispondi alle domande. Puoi ascoltare due volte.`,
@@ -7737,9 +7726,9 @@ function ui({ exam: e, onFinish: t }) {
                   className: `btn sm ` + (x ? `ghost` : `go`),
                   onClick: ee,
                   disabled: x,
-                  children: x ? `🔊 In riproduzione…` : y ? `↺ Riascolta` : `▶ Ascolta il testo`,
+                  children: x ? `In riproduzione…` : y ? `Riascolta` : `Ascolta il testo`,
                 }),
-                y && (0, w.jsx)(`span`, { className: `de-played-badge`, children: `✓ Ascoltato` }),
+                y && (0, w.jsx)(`span`, { className: `de-played-badge`, children: `Ascoltato` }),
               ],
             }),
             y &&
@@ -7754,7 +7743,7 @@ function ui({ exam: e, onFinish: t }) {
         (0, w.jsxs)(`div`, {
           className: `de-sec-card`,
           children: [
-            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `📖 Lettura — Reading` }),
+            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `Lettura — Reading` }),
             (0, w.jsx)(`div`, { className: `de-sec-sub`, children: `Leggi il testo e scegli la risposta corretta.` }),
             (0, w.jsx)(`div`, { className: `de-reading-passage`, children: e.reading.text }),
             (0, w.jsx)(si, {
@@ -7768,7 +7757,7 @@ function ui({ exam: e, onFinish: t }) {
         (0, w.jsxs)(`div`, {
           className: `de-sec-card`,
           children: [
-            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `✏️ Completamento testo — Cloze` }),
+            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `Completamento testo — Cloze` }),
             (0, w.jsx)(`div`, {
               className: `de-sec-sub`,
               children: `Scegli la parola corretta per ogni spazio numerato.`,
@@ -7780,7 +7769,7 @@ function ui({ exam: e, onFinish: t }) {
         (0, w.jsxs)(`div`, {
           className: `de-sec-card`,
           children: [
-            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `✍️ Produzione scritta — Writing` }),
+            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `Produzione scritta — Writing` }),
             (0, w.jsx)(`div`, {
               className: `de-sec-sub`,
               children: `Scrivi la risposta nella casella, poi valuta te stesso.`,
@@ -7792,9 +7781,9 @@ function ui({ exam: e, onFinish: t }) {
               children: [
                 (0, w.jsx)(`span`, { className: `de-self-label`, children: `Come è andata?` }),
                 [
-                  { v: `good`, label: `✓ Bene`, sub: `Ho scritto correttamente` },
-                  { v: `ok`, label: `~ Così così`, sub: `Qualche errore` },
-                  { v: `poor`, label: `✗ Difficile`, sub: `Ho fatto fatica` },
+                  { v: `good`, label: `Bene`, sub: `Ho scritto correttamente` },
+                  { v: `ok`, label: `Così così`, sub: `Qualche errore` },
+                  { v: `poor`, label: `Difficile`, sub: `Ho fatto fatica` },
                 ].map((e) =>
                   (0, w.jsxs)(
                     `button`,
@@ -7817,7 +7806,7 @@ function ui({ exam: e, onFinish: t }) {
         (0, w.jsxs)(`div`, {
           className: `de-sec-card`,
           children: [
-            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `🔤 Vocabolario — Vocabulary` }),
+            (0, w.jsx)(`div`, { className: `de-sec-title`, children: `Vocabolario — Vocabulary` }),
             (0, w.jsx)(`div`, {
               className: `de-sec-sub`,
               children: `Scegli il significato corretto in inglese per ogni parola italiana. Le parole vengono dall'esame di oggi.`,
@@ -7845,7 +7834,7 @@ function ui({ exam: e, onFinish: t }) {
             className: `btn go de-next-btn`,
             onClick: D,
             disabled: !E(),
-            children: a === `vocab` ? `Vedi i risultati ✓` : a === `writing` ? `Vocabolario →` : `Next section →`,
+            children: a === `vocab` ? `Vedi i risultati` : a === `writing` ? `Vocabolario →` : `Next section →`,
           }),
         ],
       }),
@@ -7861,8 +7850,9 @@ function di({ icon: e, title: t, score: n, total: r, children: i }) {
       (0, w.jsxs)(`button`, {
         className: `de-rev-sec-head`,
         onClick: () => o((e) => !e),
+        'aria-expanded': a,
         children: [
-          (0, w.jsxs)(`span`, { children: [e, ` `, t] }),
+          (0, w.jsx)(`span`, { children: t }),
           (0, w.jsxs)(`span`, {
             className: `de-rev-sec-right`,
             children: [
@@ -7872,7 +7862,7 @@ function di({ icon: e, title: t, score: n, total: r, children: i }) {
                   style: { color: s === null ? `#888` : s >= 0.75 ? `var(--ok)` : s >= 0.5 ? `#f0a500` : `var(--no)` },
                   children: [n, `/`, r],
                 }),
-              (0, w.jsx)(`span`, { className: `de-rev-sec-arrow`, children: a ? `▲` : `▼` }),
+              (0, w.jsx)(`span`, { className: `de-rev-sec-arrow`, 'aria-hidden': !0 }),
             ],
           }),
         ],
@@ -7908,7 +7898,7 @@ function fi({ questions: e, answers: t }) {
               className: `de-qrev-correct`,
               children: [r ? `Correct: ` : `Right answer: `, (0, w.jsx)(`b`, { children: e.opts[e.a] })],
             }),
-            e.exp && (0, w.jsxs)(`div`, { className: `de-qrev-exp`, children: [`💡 `, e.exp] }),
+            e.exp && (0, w.jsx)(`div`, { className: `de-qrev-exp`, children: e.exp }),
           ],
         },
         n,
@@ -7972,7 +7962,7 @@ function pi({ cloze: e, answers: t }) {
                   className: `de-qrev-correct`,
                   children: [r ? `Correct: ` : `Right answer: `, (0, w.jsx)(`b`, { children: e.opts[e.a] })],
                 }),
-                e.exp && (0, w.jsxs)(`div`, { className: `de-qrev-exp`, children: [`💡 `, e.exp] }),
+                e.exp && (0, w.jsx)(`div`, { className: `de-qrev-exp`, children: e.exp }),
               ],
             },
             n,
@@ -7992,19 +7982,20 @@ function mi({ writing: e, wMark: t }) {
         className: `de-wr-selfmark`,
         children: [
           `Your self-mark: `,
-          (0, w.jsx)(`b`, { className: t, children: t === `good` ? `✓ Bene` : t === `ok` ? `~ OK` : `✗ Difficile` }),
+          (0, w.jsx)(`b`, { className: t, children: t === `good` ? `Bene` : t === `ok` ? `OK` : `Difficile` }),
         ],
       }),
       (0, w.jsx)(`button`, {
         className: `de-wr-model-btn`,
         onClick: () => r((e) => !e),
-        children: n ? `▲ Hide model answer` : `▼ Show model answer & tips`,
+        'aria-expanded': n,
+        children: n ? `Hide model answer` : `Show model answer & tips`,
       }),
       n &&
         (0, w.jsxs)(`div`, {
           className: `de-wr-model-body`,
           children: [
-            (0, w.jsx)(`div`, { className: `de-wr-model-label`, children: `📝 Risposta modello` }),
+            (0, w.jsx)(`div`, { className: `de-wr-model-label`, children: `Risposta modello` }),
             (0, w.jsx)(`div`, { className: `de-wr-model-text`, children: e.model }),
             e.tips &&
               e.tips.length > 0 &&
@@ -8013,7 +8004,7 @@ function mi({ writing: e, wMark: t }) {
                   (0, w.jsx)(`div`, {
                     className: `de-wr-model-label`,
                     style: { marginTop: 14 },
-                    children: `💡 Key tips`,
+                    children: `Key tips`,
                   }),
                   (0, w.jsx)(`ul`, {
                     className: `de-wr-tips`,
@@ -8053,18 +8044,18 @@ function hi({ result: e, streak: t, onHome: n }) {
             children: [
               (0, w.jsx)(`div`, {
                 className: `de-verdict ` + (m ? `pass` : `fail`),
-                children: m ? `🎉 Ottimo lavoro!` : `💪 Continua così!`,
+                children: m ? `Ottimo lavoro!` : `Continua così!`,
               }),
               (0, w.jsxs)(`div`, {
                 className: `de-streak-chip`,
-                children: [`🔥 `, t.streak, ` day streak \xA0·\xA0 Level `, t.level],
+                children: [t.streak, ` day streak \xA0·\xA0 Level `, t.level],
               }),
               t.level === 1 &&
                 (0, w.jsxs)(`div`, {
                   className: `de-level-prog`,
                   children: [t.qualDays, `/7 days to Level 2 `, m ? `(+1 oggi!)` : ``],
                 }),
-              t.level === 2 && (0, w.jsx)(`div`, { className: `de-level-prog`, children: `🏆 Pre-A2 Level Achieved` }),
+              t.level === 2 && (0, w.jsx)(`div`, { className: `de-level-prog`, children: `Pre-A2 Level Achieved` }),
             ],
           }),
         ],
@@ -8091,7 +8082,7 @@ function hi({ result: e, streak: t, onHome: n }) {
               {
                 className: `de-break-row`,
                 children: [
-                  (0, w.jsxs)(`span`, { children: [e, ` `, t] }),
+                  (0, w.jsx)(`span`, { children: t }),
                   (0, w.jsx)(`div`, {
                     className: `de-break-bar-wrap`,
                     children: (0, w.jsx)(`div`, {
@@ -8116,7 +8107,7 @@ function hi({ result: e, streak: t, onHome: n }) {
           (0, w.jsx)(`div`, {
             className: `de-break-title`,
             style: { marginBottom: 10 },
-            children: `📋 Full Review — click any section to expand`,
+            children: `Full Review — tap any section to expand`,
           }),
           (0, w.jsxs)(di, {
             icon: `🔊`,
@@ -8194,7 +8185,7 @@ function hi({ result: e, streak: t, onHome: n }) {
         className: `btn go`,
         style: { width: `100%` },
         onClick: n,
-        children: `← Torna alla home`,
+        children: `Torna alla home`,
       }),
     ],
   });
@@ -8278,7 +8269,7 @@ function _i() {
     return (0, w.jsxs)(`section`, {
       className: `card`,
       children: [
-        (0, w.jsx)(`h2`, { className: `sec-h`, children: `📅 Daily Exam` }),
+        (0, w.jsx)(`h2`, { className: `sec-h`, children: `Esame di oggi` }),
         (0, w.jsx)(ui, { exam: o, onFinish: d }),
       ],
     });
@@ -8286,7 +8277,7 @@ function _i() {
     return (0, w.jsxs)(`section`, {
       className: `card`,
       children: [
-        (0, w.jsx)(`h2`, { className: `sec-h`, children: `📅 Daily Exam — Risultati` }),
+        (0, w.jsx)(`h2`, { className: `sec-h`, children: `Risultati` }),
         (0, w.jsx)(hi, { result: i, streak: e, onHome: () => r(`home`) }),
       ],
     });
@@ -8294,7 +8285,7 @@ function _i() {
   return (0, w.jsxs)(`section`, {
     className: `card`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `📅 Esame Quotidiano — Daily Exam` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Esame Quotidiano` }),
       (0, w.jsxs)(`p`, {
         className: `instr`,
         children: [
@@ -8306,7 +8297,6 @@ function _i() {
       (0, w.jsxs)(`div`, {
         className: `de-banner` + (e.streak >= 7 ? ` fire` : ``),
         children: [
-          (0, w.jsx)(`span`, { className: `de-banner-fire`, children: `🔥` }),
           (0, w.jsxs)(`div`, {
             className: `de-banner-text`,
             children: [
@@ -8331,7 +8321,7 @@ function _i() {
             children:
               e.level === 1
                 ? `Livello 2 sbloccato dopo 7 giorni con ≥75% · Progresso: ${e.qualDays}/7`
-                : `🏆 Livello 2 — Pre-A2 sbloccato!`,
+                : `Livello 2 — Pre-A2 sbloccato!`,
           }),
           (0, w.jsx)(`div`, {
             className: `de-lev-bar`,
@@ -8367,13 +8357,13 @@ function _i() {
           (0, w.jsxs)(`div`, {
             className: `de-today-left`,
             children: [
-              (0, w.jsx)(`div`, { className: `de-today-tag`, children: s ? `✅ Completato oggi` : `📋 Esame di oggi` }),
+              (0, w.jsx)(`div`, { className: `de-today-tag`, children: s ? `Completato oggi` : `Esame di oggi` }),
               (0, w.jsxs)(`div`, {
                 className: `de-today-topics`,
                 children: [
-                  (0, w.jsxs)(`span`, { children: [`🔊 `, o.listening.title] }),
-                  (0, w.jsxs)(`span`, { children: [`📖 `, o.reading.title] }),
-                  (0, w.jsxs)(`span`, { children: [`✏️ `, o.cloze.title] }),
+                  (0, w.jsx)(`span`, { children: o.listening.title }),
+                  (0, w.jsx)(`span`, { children: o.reading.title }),
+                  (0, w.jsx)(`span`, { children: o.cloze.title }),
                 ],
               }),
               (0, w.jsxs)(`div`, {
@@ -8401,7 +8391,7 @@ function _i() {
             children: [
               s &&
                 (ei()
-                  ? (0, w.jsx)(`button`, { className: `btn de-start go`, onClick: u, children: `📋 Vedi risultati` })
+                  ? (0, w.jsx)(`button`, { className: `btn de-start go`, onClick: u, children: `Vedi risultati` })
                   : (0, w.jsx)(`span`, {
                       className: `de-no-result-tip`,
                       children: `Rifai l'esame per sbloccare la revisione completa`,
@@ -8409,7 +8399,7 @@ function _i() {
               (0, w.jsx)(`button`, {
                 className: `btn de-start ` + (s ? `ghost` : `go`),
                 onClick: l,
-                children: s ? `↺ Rifai` : `▶ Inizia`,
+                children: s ? `Rifai` : `Inizia`,
               }),
             ],
           }),
@@ -8425,7 +8415,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `🔊` }),
                   (0, w.jsxs)(`div`, {
                     children: [
                       (0, w.jsx)(`b`, { children: `Ascolto` }),
@@ -8437,7 +8426,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `📖` }),
                   (0, w.jsxs)(`div`, {
                     children: [
                       (0, w.jsx)(`b`, { children: `Lettura` }),
@@ -8449,7 +8437,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `✏️` }),
                   (0, w.jsxs)(`div`, {
                     children: [
                       (0, w.jsx)(`b`, { children: `Cloze` }),
@@ -8461,7 +8448,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `✍️` }),
                   (0, w.jsxs)(`div`, {
                     children: [
                       (0, w.jsx)(`b`, { children: `Scrittura` }),
@@ -8473,7 +8459,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `🔤` }),
                   (0, w.jsxs)(`div`, {
                     children: [
                       (0, w.jsx)(`b`, { children: `Vocabolario` }),
@@ -8485,7 +8470,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `🔥` }),
                   (0, w.jsx)(`div`, {
                     children: `Fai l\\'esame ogni giorno per mantenere la serie. Le domande cambiano ogni giorno.`,
                   }),
@@ -8494,7 +8478,6 @@ function _i() {
               (0, w.jsxs)(`div`, {
                 className: `de-how-item`,
                 children: [
-                  (0, w.jsx)(`span`, { children: `📈` }),
                   (0, w.jsx)(`div`, {
                     children: `Ottieni ≥75% per 7 giorni consecutivi per sbloccare il Livello 2 Pre-A2.`,
                   }),
@@ -9905,15 +9888,12 @@ function ia({ onGo: e }) {
         (0, w.jsxs)(`div`, {
           className: `pg-head`,
           children: [
-            (0, w.jsxs)(`div`, {
-              children: [
-                (0, w.jsx)(`h2`, { className: `sec-h`, children: `I miei progressi` }),
-                (0, w.jsx)(`p`, {
-                  className: `instr`,
-                  style: { margin: 0 },
-                  children: `Il tuo andamento giorno per giorno, complessivo e per sezione.`,
-                }),
-              ],
+            (0, w.jsx)(`div`, {
+              children: (0, w.jsx)(`p`, {
+                className: `instr`,
+                style: { margin: 0 },
+                children: `Giorno per giorno, complessivo e per sezione.`,
+              }),
             }),
             (0, w.jsx)(`div`, {
               className: `pg-levels`,
@@ -9970,7 +9950,7 @@ function ia({ onGo: e }) {
                     (0, w.jsxs)(`div`, {
                       className: `pg-stat`,
                       children: [
-                        (0, w.jsxs)(`div`, { className: `pg-stat-num`, children: [o, `🔥`] }),
+                        (0, w.jsx)(`div`, { className: `pg-stat-num`, children: o }),
                         (0, w.jsx)(`div`, { className: `pg-stat-lbl`, children: `giorni di fila` }),
                         (0, w.jsx)(`div`, {
                           className: `pg-stat-sub`,
@@ -10111,7 +10091,6 @@ function ia({ onGo: e }) {
                   : (0, w.jsxs)(`div`, {
                       className: `pg-soon`,
                       children: [
-                        `🎯 `,
                         (0, w.jsx)(`b`, { children: `Prossimo aggiornamento:` }),
                         ` analisi dei tuoi errori più frequenti (accenti, articoli, preposizioni…) ed esercizi mirati per correggerli.`,
                       ],
@@ -10121,7 +10100,6 @@ function ia({ onGo: e }) {
           : (0, w.jsxs)(`div`, {
               className: `pg-empty`,
               children: [
-                (0, w.jsx)(`div`, { className: `pg-empty-emoji`, children: `📊` }),
                 (0, w.jsxs)(`p`, {
                   children: [
                     `Ancora nessun dato. Completa un esercizio in `,
@@ -10194,7 +10172,7 @@ function oa({ set: e, onExit: t }) {
           className: `pl-done-msg`,
           children:
             i >= 0.8
-              ? `🎉 Ottimo — le tue traduzioni funzionano. Sei pronta per questo tipo di frasi.`
+              ? `Ottimo — le tue traduzioni funzionano. Sei pronta per questo tipo di frasi.`
               : i >= 0.55
                 ? `Buon lavoro — rileggi le correzioni e rifai il set: la seconda volta vola.`
                 : `Allenamento prezioso: ogni correzione qui vale doppio all'esame. Rifallo domani.`,
@@ -10205,7 +10183,7 @@ function oa({ set: e, onExit: t }) {
           onClick: () => {
             (r(0), a(``), l(null), d([]), p(!1));
           },
-          children: `🔁 Rifai il set`,
+          children: `Rifai il set`,
         }),
         (0, w.jsx)(`button`, { className: `btn ghost sm`, onClick: t, children: `Altri set` }),
       ],
@@ -10217,11 +10195,11 @@ function oa({ set: e, onExit: t }) {
       (0, w.jsxs)(`div`, {
         className: `pl-drill-top`,
         children: [
-          (0, w.jsxs)(`span`, { children: [e.emoji, ` `, e.label, ` · `, n + 1, ` / `, e.items.length] }),
+          (0, w.jsxs)(`span`, { children: [e.label, ` · `, n + 1, ` / `, e.items.length] }),
           (0, w.jsxs)(`span`, { children: [`✓ `, u.filter((e) => e >= 6).length] }),
         ],
       }),
-      (0, w.jsxs)(`div`, { className: `td-en`, children: [`🇬🇧 `, m.en] }),
+      (0, w.jsx)(`div`, { className: `td-en`, children: m.en }),
       (0, w.jsx)(`textarea`, {
         className: `td-input`,
         placeholder: `Scrivi la traduzione in italiano…`,
@@ -10289,19 +10267,19 @@ function oa({ set: e, onExit: t }) {
             (0, w.jsxs)(`div`, {
               className: `td-model`,
               children: [
-                (0, w.jsx)(`div`, { className: `td-model-label`, children: `✅ Traduzione modello` }),
+                (0, w.jsx)(`div`, { className: `td-model-label`, children: `Traduzione modello` }),
                 (0, w.jsxs)(`div`, {
                   className: `td-model-it`,
                   children: [
                     m.it,
                     k() &&
                       (0, w.jsx)(`button`, {
-                        className: `icon-play sm`,
+                        className: `icon-play sm lp-speak`,
                         onClick: () => {
                           (M(), j(m.it));
                         },
                         title: `Ascolta`,
-                        children: `🔊`,
+                        'aria-label': `Ascolta`,
                       }),
                   ],
                 }),
@@ -10310,7 +10288,7 @@ function oa({ set: e, onExit: t }) {
                     className: `td-model-alt`,
                     children: [`Va bene anche: `, (0, w.jsx)(`i`, { children: m.alt })],
                   }),
-                m.note && (0, w.jsxs)(`div`, { className: `td-model-note`, children: [`💡 `, m.note] }),
+                m.note && (0, w.jsx)(`div`, { className: `td-model-note`, children: m.note }),
               ],
             }),
             c.tip &&
@@ -10351,7 +10329,6 @@ function sa() {
                       className: `td-set`,
                       onClick: () => t(e.id),
                       children: [
-                        (0, w.jsx)(`span`, { className: `td-set-emoji`, children: e.emoji }),
                         (0, w.jsx)(`span`, { className: `td-set-label`, children: e.label }),
                         (0, w.jsxs)(`span`, { className: `td-set-n`, children: [e.items.length, ` frasi`] }),
                       ],
@@ -10387,7 +10364,7 @@ function la({ onGo: e }) {
         children: [
           (0, w.jsxs)(`div`, {
             children: [
-              (0, w.jsx)(`h2`, { className: `sec-h`, children: `📋 La Serie d'Esame — 3 giorni` }),
+              (0, w.jsx)(`h2`, { className: `sec-h`, children: `La Serie d'Esame — 3 giorni` }),
               (0, w.jsxs)(`p`, {
                 className: `instr`,
                 style: { margin: 0 },
@@ -10431,7 +10408,7 @@ function la({ onGo: e }) {
                       (0, w.jsxs)(`div`, {
                         className: `xs-sess-head`,
                         children: [
-                          (0, w.jsxs)(`span`, { className: `xs-sess-title`, children: [n.emoji, ` `, n.title] }),
+                          (0, w.jsx)(`span`, { className: `xs-sess-title`, children: n.title }),
                           (0, w.jsxs)(`span`, { className: `xs-sess-mins`, children: [`~`, n.mins, ` min`] }),
                         ],
                       }),
@@ -10448,7 +10425,10 @@ function la({ onGo: e }) {
                                 'aria-label': `fatto`,
                                 children: t[o] ? `✓` : ``,
                               }),
-                              (0, w.jsx)(`span`, { className: `xs-task-label`, children: i.label }),
+                              (0, w.jsx)(`span`, {
+                                className: `xs-task-label`,
+                                children: i.label.replace(/\s*[\p{Extended_Pictographic}️]+/gu, ``),
+                              }),
                               i.target &&
                                 (0, w.jsx)(`button`, {
                                   className: `btn ghost sm xs-go`,
@@ -10513,18 +10493,31 @@ function _a({ onDone: e }) {
     if (!ma(r)) return u(`That email doesn't look right — check it?`);
     (u(``), c(!0), await ha({ name: t, email: r, reason: a }), c(!1), e());
   }
-  return (0, w.jsx)(`div`, {
+  return (0, w.jsxs)(`div`, {
     className: `gate-wrap`,
-    children: (0, w.jsxs)(`form`, {
+    children: [
+     (0, w.jsxs)(`div`, {
+      className: `gate-photo`,
+      children: [
+        (0, w.jsx)(`img`, { src: `/PM-Side-Projects/cils-app/img/regions/toscana.jpg`, alt: `` }),
+        (0, w.jsx)(`div`, { className: `gate-scrim`, 'aria-hidden': !0 }),
+        (0, w.jsxs)(`div`, {
+          className: `gate-brand`,
+          children: [
+            (0, w.jsx)(`h1`, { className: `gate-title`, children: `ASCOLTO` }),
+            (0, w.jsx)(`span`, { className: `gate-over`, children: `CILS A2 · Modulo Integrazione` }),
+          ],
+        }),
+      ],
+     }),
+     (0, w.jsxs)(`form`, {
       className: `gate-card`,
       onSubmit: d,
       noValidate: !0,
       children: [
-        (0, w.jsx)(`div`, { className: `gate-flag`, children: `🇮🇹` }),
-        (0, w.jsx)(`h1`, { className: `gate-title`, children: `CILS A2 — Exam Simulator` }),
         (0, w.jsx)(`p`, {
           className: `gate-sub`,
-          children: `A full practice app for the CILS A2 Integrazione Italian exam — listening with real audio, an AI examiner for the oral, strict written marking, and a 3-day exam plan.`,
+          children: `A full practice app for the CILS A2 Integrazione Italian exam: listening with real audio, an AI examiner for the oral, strict written marking, and a 3 day exam plan.`,
         }),
         (0, w.jsxs)(`label`, {
           className: `gate-label`,
@@ -10575,14 +10568,15 @@ function _a({ onDone: e }) {
           className: `btn primary gate-btn`,
           type: `submit`,
           disabled: s,
-          children: s ? `Un attimo…` : `Inizia a esercitarti →`,
+          children: s ? `Un attimo…` : `Inizia a esercitarti`,
         }),
         (0, w.jsx)(`p`, {
           className: `gate-note`,
-          children: `Just so I know who's using it — no password, no spam, and your practice data never leaves your browser.`,
+          children: `No password, no spam, and your practice data never leaves this device.`,
         }),
       ],
-    }),
+     }),
+    ],
   });
 }
 var va = `modulepreload`,
@@ -10731,7 +10725,7 @@ function Ta() {
     (0, w.jsxs)(`section`, {
       className: `card ie-shell`,
       children: [
-        (0, w.jsx)(`h2`, { className: `sec-h`, children: `Scopri le Parole — Photo Explorer` }),
+        (0, w.jsx)(`h2`, { className: `sec-h`, children: `Photo Explorer` }),
         (0, w.jsx)(`p`, {
           className: `instr`,
           children: `Upload any photo and discover the Italian names for everything in it.`,
@@ -10763,7 +10757,7 @@ function Ta() {
                       onClick: () => {
                         (l(null), s([]), f(null));
                       },
-                      children: `← New photo`,
+                      children: `New photo`,
                     }),
                     o.length > 0 &&
                       (0, w.jsxs)(`span`, { className: `ie-count`, children: [o.length, ` objects found`] }),
@@ -10799,6 +10793,7 @@ function Ta() {
                               },
                               disabled: !k(),
                               title: `Ascolta`,
+                              'aria-label': `Ascolta`,
                               children: (0, w.jsxs)(`svg`, {
                                 width: `15`,
                                 height: `15`,
@@ -10853,7 +10848,7 @@ function Ta() {
                   }),
                 }),
                 (0, w.jsx)(`div`, { className: `ie-drop-label`, children: `Carica una foto` }),
-                (0, w.jsx)(`div`, { className: `ie-drop-sub`, children: `Click to browse or drag & drop` }),
+                (0, w.jsx)(`div`, { className: `ie-drop-sub`, children: `Tap to choose a photo` }),
                 (0, w.jsx)(`input`, {
                   ref: _,
                   type: `file`,
@@ -10955,7 +10950,7 @@ function Aa({ scene: e, onExit: t }) {
         (0, w.jsx)(`div`, {
           className: `pd-quiz-msg`,
           children:
-            r >= 90 ? `Perfetto! 🎉` : r >= 70 ? `Molto bene! 👏` : r >= 50 ? `Buon lavoro!` : `Continua a praticare!`,
+            r >= 90 ? `Perfetto!` : r >= 70 ? `Molto bene!` : r >= 50 ? `Buon lavoro!` : `Continua a praticare!`,
         }),
         (0, w.jsxs)(`div`, {
           className: `pd-quiz-actions`,
@@ -10979,6 +10974,7 @@ function Aa({ scene: e, onExit: t }) {
             onClick: () => j(m.it),
             disabled: !k(),
             title: `Riascolta`,
+            'aria-label': `Riascolta`,
             children: (0, w.jsxs)(`svg`, {
               width: `16`,
               height: `16`,
@@ -11091,7 +11087,7 @@ function ja({ scene: e, onBack: t, onPrev: n, onNext: r, prevScene: i, nextScene
                   }),
                   (0, w.jsx)(`span`, {
                     className: `pd-hint`,
-                    children: `Tocca un'etichetta per ascoltare la pronuncia 🔊`,
+                    children: `Tocca un'etichetta per ascoltare la pronuncia`,
                   }),
                 ],
               }),
@@ -11170,7 +11166,7 @@ function Ma() {
   return (0, w.jsxs)(`section`, {
     className: `card pd-shell`,
     children: [
-      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Dizionario Visivo — Vocabulary in Context` }),
+      (0, w.jsx)(`h2`, { className: `sec-h`, children: `Vocabulary in Context` }),
       (0, w.jsx)(`p`, {
         className: `instr`,
         children: `Impara il nome italiano degli oggetti di ogni giorno. Scegli un ambiente, esplora le etichette, poi mettiti alla prova con il quiz.`,
@@ -11261,9 +11257,9 @@ function Ra({ onGo: e }) {
             title: `Giorni consecutivi di studio`,
             children: [
               (0, w.jsx)(`span`, { className: `dash-streak-n`, children: t }),
-              (0, w.jsxs)(`span`, {
+              (0, w.jsx)(`span`, {
                 className: `dash-streak-label`,
-                children: [t === 1 ? `giorno di fila` : `giorni di fila`, ` 🔥`],
+                children: t === 1 ? `giorno di fila` : `giorni di fila`,
               }),
             ],
           }),
@@ -11360,21 +11356,9 @@ function za({ skillId: e, onGo: t }) {
         className: `card sh-shell`,
         style: { '--sh-hue': n.hue, '--sh-tint': n.tint },
         children: [
-          (0, w.jsxs)(`div`, {
+          (0, w.jsx)(`div`, {
             className: `sh-head`,
-            children: [
-              (0, w.jsx)(`span`, { className: `sh-badge`, children: n.label }),
-              (0, w.jsxs)(`h2`, {
-                className: `sh-title`,
-                children: [
-                  `Prova di `,
-                  n.label,
-                  ` `,
-                  (0, w.jsxs)(`span`, { className: `sh-en`, children: [`· `, n.en] }),
-                ],
-              }),
-              (0, w.jsx)(`p`, { className: `sh-desc`, children: n.desc }),
-            ],
+            children: (0, w.jsx)(`p`, { className: `sh-desc`, children: n.desc }),
           }),
           (0, w.jsx)(`div`, { className: `sh-section-label`, children: `Esercitati` }),
           (0, w.jsx)(`div`, {
@@ -11428,7 +11412,7 @@ function za({ skillId: e, onGo: t }) {
                         target: `_blank`,
                         rel: `noopener noreferrer`,
                         children: [
-                          (0, w.jsxs)(`span`, { className: `sh-foundation-name`, children: [`▶ `, e.label] }),
+                          (0, w.jsx)(`span`, { className: `sh-foundation-name`, children: e.label }),
                           (0, w.jsx)(`span`, { className: `sh-foundation-why`, children: e.why }),
                           (0, w.jsxs)(`svg`, {
                             className: `sh-ext`,
@@ -11559,7 +11543,7 @@ function Xa({ emoji: e, accent: t = `#2E6B5E`, size: n = 44, state: r = `idle` }
     'aria-hidden': `true`,
     children: [
       (0, w.jsx)(`span`, { className: `pa-ring` }),
-      (0, w.jsx)(`span`, { className: `pa-face`, children: e }),
+      (0, w.jsx)(`span`, { className: `pa-face` }),
       r === `thinking` &&
         (0, w.jsxs)(`span`, {
           className: `pa-dots`,
@@ -11700,12 +11684,12 @@ function eo({ scenario: e, onExit: t }) {
                               className: `es-turn-badge ` + (e.rating || `weak`),
                               children:
                                 e.rating === `good`
-                                  ? `✓ Bene`
+                                  ? `Bene`
                                   : e.rating === `blank`
-                                    ? `○ Vuoto`
+                                    ? `Vuoto`
                                     : e.rating === `error`
-                                      ? `✗ Errore`
-                                      : `△ Debole`,
+                                      ? `Errore`
+                                      : `Debole`,
                             }),
                             e.question &&
                               (0, w.jsxs)(`span`, { className: `es-turn-q`, children: [`D: `, e.question] }),
@@ -11757,7 +11741,7 @@ function eo({ scenario: e, onExit: t }) {
                 onClick: () => {
                   (r([{ role: `examiner`, text: e.opening }]), _(null), a(`talk`), T(e.opening));
                 },
-                children: `🔁 Rifai l'esercizio`,
+                children: `Rifai l'esercizio`,
               }),
             ],
           }),
@@ -11778,7 +11762,7 @@ function eo({ scenario: e, onExit: t }) {
             onClick: () => {
               (M(), t());
             },
-            children: `← Scenari`,
+            children: `Scenari`,
           }),
           (0, w.jsxs)(`div`, {
             className: `es-sess-persona`,
@@ -11797,7 +11781,7 @@ function eo({ scenario: e, onExit: t }) {
             className: `es-listen-toggle` + (m ? ` on` : ``),
             onClick: () => h((e) => !e),
             title: `Nascondi il testo e ascolta soltanto, come all'esame`,
-            children: m ? `👁 Mostra il testo` : `🔊 Solo ascolto`,
+            children: m ? `Mostra il testo` : `Solo ascolto`,
           }),
         ],
       }),
@@ -11807,7 +11791,7 @@ function eo({ scenario: e, onExit: t }) {
           (0, w.jsxs)(`span`, {
             className: `es-brief-role`,
             children: [
-              (0, w.jsx)(`span`, { className: `es-brief-lbl`, children: `🎭 Il tuo ruolo` }),
+              (0, w.jsx)(`span`, { className: `es-brief-lbl`, children: `Il tuo ruolo` }),
               (0, w.jsx)(Xa, { emoji: $a.emoji, accent: $a.accent, size: 26 }),
               e.you,
             ],
@@ -11815,11 +11799,11 @@ function eo({ scenario: e, onExit: t }) {
           e.lead === `user` &&
             (0, w.jsxs)(`span`, {
               className: `lead-badge`,
-              children: [`🙋 Qui fai TU le domande — `, C.name, ` risponde`],
+              children: [`Qui fai TU le domande — `, C.name, ` risponde`],
             }),
           (0, w.jsxs)(`span`, {
             className: `es-brief-with`,
-            children: [`Parli con `, (0, w.jsxs)(`b`, { children: [C.emoji, ` `, C.name] })],
+            children: [`Parli con `, (0, w.jsx)(`b`, { children: C.name })],
           }),
         ],
       }),
@@ -11843,6 +11827,7 @@ function eo({ scenario: e, onExit: t }) {
                         (0, w.jsx)(`button`, {
                           className: `es-replay`,
                           title: `Riascolta`,
+                          'aria-label': `Riascolta`,
                           onClick: () => {
                             (M(), T(t.text));
                           },
@@ -11860,7 +11845,7 @@ function eo({ scenario: e, onExit: t }) {
                       m
                         ? (0, w.jsx)(`span`, {
                             className: `es-msg-hidden`,
-                            children: a ? `🔊 tocca per riascoltare` : `🎤 tu`,
+                            children: a ? `tocca per riascoltare` : `tu`,
                           })
                         : (0, w.jsx)(`span`, { children: t.text }),
                     ],
@@ -11876,7 +11861,7 @@ function eo({ scenario: e, onExit: t }) {
             (0, w.jsxs)(`div`, {
               className: `es-row user`,
               children: [
-                (0, w.jsx)(`div`, { className: `es-msg user interim`, children: m ? `🎤 …` : c }),
+                (0, w.jsx)(`div`, { className: `es-msg user interim`, children: m ? `…` : c }),
                 (0, w.jsx)(Xa, { emoji: $a.emoji, accent: $a.accent, state: `listening`, size: 40 }),
               ],
             }),
@@ -11935,7 +11920,7 @@ function eo({ scenario: e, onExit: t }) {
                     value: u,
                     onChange: (e) => d(e.target.value),
                     onKeyDown: (e) => e.key === `Enter` && E(u),
-                    placeholder: `Scrivi la tua risposta in italiano… (mic solo su Chrome)`,
+                    placeholder: `Scrivi la tua risposta in italiano…`,
                   }),
                   (0, w.jsx)(`button`, {
                     className: `btn primary sm`,
@@ -11970,10 +11955,10 @@ function to() {
           ? (0, w.jsx)(eo, { scenario: n, onExit: () => t(null) }, n.id + Date.now())
           : (0, w.jsxs)(w.Fragment, {
               children: [
-                (0, w.jsx)(`h2`, { className: `sec-h`, children: `Esaminatore AI — Role-play Orale` }),
+                (0, w.jsx)(`h2`, { className: `sec-h`, children: `Role-play Orale` }),
                 (0, w.jsx)(`p`, {
                   className: `instr`,
-                  children: `Come nella prova orale CILS: scegli una situazione, parla con l'esaminatore a voce, e alla fine ricevi una valutazione con consigli per migliorare. Usa Chrome per il microfono.`,
+                  children: `Come nella prova orale CILS: scegli una situazione, parla con l'esaminatore a voce, e alla fine ricevi una valutazione con consigli per migliorare.`,
                 }),
                 (0, w.jsx)(`div`, {
                   className: `es-grid`,
@@ -12014,16 +11999,16 @@ function to() {
                               className: `es-card-badges`,
                               children: [
                                 e.lead === `user` &&
-                                  (0, w.jsx)(`span`, { className: `lead-badge`, children: `🙋 Fai TU le domande` }),
+                                  (0, w.jsx)(`span`, { className: `lead-badge`, children: `Fai TU le domande` }),
                                 e.seen
                                   ? (0, w.jsxs)(`span`, {
                                       className: `freq-badge hi`,
-                                      children: [`📊 Uscito in `, e.seen, ` esami campione`],
+                                      children: [`Uscito in `, e.seen, ` esami campione`],
                                     })
                                   : e.freq >= 3
                                     ? (0, w.jsx)(`span`, {
                                         className: `freq-badge hi`,
-                                        children: `⭐ Molto frequente all'esame`,
+                                        children: `Molto frequente all'esame`,
                                       })
                                     : e.freq === 2
                                       ? (0, w.jsx)(`span`, { className: `freq-badge`, children: `Frequente all'esame` })
@@ -13049,7 +13034,7 @@ function Io({ graded: e, setGraded: t, ans: n, setAns: r, resultsRef: i, checkPr
                   sSelf: ``,
                 }));
             },
-            children: `↺ Azzera risposte`,
+            children: `Azzera risposte`,
           }),
           Fo.map((e) =>
             (0, w.jsx)(
@@ -13095,7 +13080,7 @@ function Io({ graded: e, setGraded: t, ans: n, setAns: r, resultsRef: i, checkPr
                 },
                 children: `Edit answers`,
               })
-            : (0, w.jsx)(`button`, { className: `btn go`, onClick: a, children: `Check answers ✓` }),
+            : (0, w.jsx)(`button`, { className: `btn go`, onClick: a, children: `Check answers` }),
           (0, w.jsx)(`button`, { className: `btn ghost`, onClick: o, children: `Exit` }),
         ],
       }),
@@ -13125,14 +13110,16 @@ function Bo({ title: e, onHome: t }) {
   return (0, w.jsxs)(`header`, {
     className: `top`,
     children: [
+      (0, w.jsx)(`img`, { className: `top-photo`, src: `/PM-Side-Projects/cils-app/img/scenes/classe.jpg`, alt: `` }),
       (0, w.jsxs)(`div`, {
-        children: [(0, w.jsx)(`h1`, { children: `CILS A2 — Modulo Integrazione` }), (0, w.jsx)(`p`, { children: e })],
+        className: `top-text`,
+        children: [(0, w.jsx)(`p`, { children: `CILS A2 · Modulo Integrazione` }), (0, w.jsx)(`h1`, { children: e })],
       }),
       t &&
         (0, w.jsxs)(`button`, {
-          className: `btn ghost sm`,
+          className: `top-exit`,
           onClick: t,
-          style: { display: `flex`, alignItems: `center`, gap: 6 },
+          'aria-label': `Esci dall’esame`,
           children: [
             (0, w.jsxs)(`svg`, {
               width: `16`,
@@ -13148,7 +13135,6 @@ function Bo({ title: e, onHome: t }) {
                 (0, w.jsx)(`polyline`, { points: `12 19 5 12 12 5` }),
               ],
             }),
-            `Home`,
           ],
         }),
       (0, w.jsxs)(`div`, {
@@ -13378,7 +13364,7 @@ function Uo({ onStart: e, onHome: t }) {
           (0, w.jsxs)(`div`, {
             className: `bottom static`,
             children: [
-              (0, w.jsx)(`button`, { className: `btn go`, onClick: e, children: `Inizia l’esame ▶` }),
+              (0, w.jsx)(`button`, { className: `btn go`, onClick: e, children: `Inizia l’esame` }),
               (0, w.jsx)(`button`, { className: `btn ghost`, onClick: t, children: `Exit` }),
             ],
           }),
@@ -13523,7 +13509,7 @@ function Jo({ onGo: e }) {
     ? (0, w.jsxs)(`section`, {
         className: `card coach`,
         children: [
-          (0, w.jsx)(`h2`, { className: `sec-h`, children: `🎯 Il tuo coach` }),
+          (0, w.jsx)(`h2`, { className: `sec-h`, children: `Il tuo coach` }),
           (0, w.jsx)(`p`, {
             className: `instr`,
             style: { margin: `0 0 12px` },
@@ -13537,7 +13523,6 @@ function Jo({ onGo: e }) {
                 {
                   className: `coach-card`,
                   children: [
-                    (0, w.jsx)(`span`, { className: `coach-emoji`, children: t.emoji }),
                     (0, w.jsxs)(`div`, {
                       className: `coach-info`,
                       children: [

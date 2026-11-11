@@ -22,6 +22,17 @@ npm run lint       catches names that do not exist
 
 After a build, run `npm run sync` in `../cils-mobile/` so the Android and iOS apps get the same change.
 
+## Writing a screen in the Immersione design
+
+New and rewritten screens live in `src/screens/`, one file each. `ListeningPractice.jsx` is the reference.
+
+- **A list** is `ul.im-rows` of `button.im-row` (photo thumbnail, title, one line of detail).
+- **One exercise** is a `<TaskScreen>`: full screen, a photo with the title on it, the exercise in the sheet below, the main action in the `footer`. It closes with the back button.
+- **Controls** come from `src/styles/screens.css`: `.im-btn primary|secondary`, `.im-option` (with `chosen`, `correct`, `wrong`), `.im-pills`, `.im-linkbtn`, `.im-note`, `.im-overline`.
+- **Photos** are `${import.meta.env.BASE_URL}img/scenes/<name>.jpg` (bagno, bar, biblioteca, camera, classe, cucina, dolci, medico, parco, pasta, persona, pizza, salumeria, soggiorno, stazione, strada, sugo, supermercato, ufficio) and `img/regions/<name>.jpg`.
+- **Logic** is imported from `../app.js`, which exports every recovered function under its short name: `import { At as recordAttempt } from '../app.js'`. Content comes from `src/data/`.
+- **Rules:** no emoji (icons are in `src/shell/icons.jsx`), real `button` and `input` elements, touch targets of 44px or more, text contrast of 4.5:1 or more, and the same storage keys and scoring as the code being replaced.
+
 ## Where this code came from
 
 The original source was lost; only the published build survived. In November 2026 this project was rebuilt from that build: library code became normal imports, every content table moved to `src/data/`, and the rest was reformatted. `src/app.js` therefore still uses the short names a minifier chose. It behaves exactly like the build it came from. Rename things as you work on them.

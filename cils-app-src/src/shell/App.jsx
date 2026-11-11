@@ -15,8 +15,6 @@ import {
   Dictionary,
   ExamSeries,
   ExamSimulation,
-  Flashcards,
-  GrammarExercises,
   GrammarRules,
   ItalyExplorer,
   PhotoExplorer,
@@ -24,15 +22,12 @@ import {
   PracticeTest,
   ProgressReport,
   QuickReference,
-  Reading,
   Shadowing,
   SkillGuide,
-  Speaking,
   TodayPlan,
   Translation,
   VisualDictionary,
   WelcomeGate,
-  Writing,
   emptyPracticeAnswers,
   gateEnabled,
   getCoachSuggestions,
@@ -54,7 +49,12 @@ import {
   IconToday,
   IconWords,
 } from './icons.jsx';
+import Flashcards from '../screens/Flashcards.jsx';
+import GrammarExercises from '../screens/GrammarExercises.jsx';
 import ListeningPractice from '../screens/ListeningPractice.jsx';
+import Reading from '../screens/Reading.jsx';
+import Speaking from '../screens/Speaking.jsx';
+import Writing from '../screens/Writing.jsx';
 import { PHOTOS, PROVE, PROVE_BY_ID, TARGET_SECTION, tabFor } from './sections.js';
 
 const TABS = [
@@ -73,6 +73,16 @@ const SPEEDS = [
 ];
 
 /* ---------- small building blocks ---------- */
+
+// A row of tabs can be wider than the phone: keep the selected one in view.
+function useActiveInView(dependency) {
+  const rowRef = useRef(null);
+  useEffect(() => {
+    const active = rowRef.current && rowRef.current.querySelector('.on');
+    if (active) active.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }, [dependency]);
+  return rowRef;
+}
 
 function TabBar({ active, onGo }) {
   return (
@@ -166,9 +176,10 @@ function SubTabs({ id, tabs, variant = 'segmented', children }) {
     return () => window.removeEventListener('hashchange', sync);
   }, [id]);
   const active = tabs.find((t) => t.id === current) || tabs[0];
+  const rowRef = useActiveInView(active.id);
   return (
     <div className="im-section-body">
-      <div className={`im-subtabs ${variant}`} role="tablist">
+      <div className={`im-subtabs ${variant}`} role="tablist" ref={rowRef}>
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -308,6 +319,7 @@ function Parole({ route, onGo }) {
   ];
   const currentId = route === 'dict' || route === 'ref' ? route : vocabTab;
   const current = chips.find((c) => c.id === currentId) || chips[0];
+  const rowRef = useActiveInView(current.id);
 
   const pick = (chip) => {
     stopSpeech();
@@ -319,7 +331,7 @@ function Parole({ route, onGo }) {
   return (
     <div className="im-page">
       <PageTitle overline="Vocabolario e strumenti" title="Parole" />
-      <div className="im-subtabs chips" role="tablist">
+      <div className="im-subtabs chips" role="tablist" ref={rowRef}>
         {chips.map((c) => (
           <button
             key={c.id}

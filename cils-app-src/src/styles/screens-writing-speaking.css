@@ -1,0 +1,943 @@
+/* screens-writing-speaking: styles for this area, on top of immersione.css and screens.css. */
+
+/*
+ * Scrittura (im-wr-) and Orale · Produzione (im-sp-). What the two screens
+ * share is written once, with both names on the rule.
+ */
+
+/* ---------- both lists: level filter, icon rows ---------- */
+
+.im-wr-screen,
+.im-sp-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* One line of pills that scrolls sideways, out to the edge of the screen. */
+.im-wr-levels,
+.im-sp-levels {
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin: 0 calc(var(--im-gutter) * -1);
+  padding: 3px var(--im-gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.im-wr-levels::-webkit-scrollbar,
+.im-sp-levels::-webkit-scrollbar,
+.im-sp-phrases::-webkit-scrollbar {
+  display: none;
+}
+
+.im-wr-levels button,
+.im-sp-levels button {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 22px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.im-wr-row,
+.im-sp-row {
+  min-height: 72px;
+  padding: 12px 14px;
+  gap: 12px;
+}
+
+.im-wr-row-icon,
+.im-sp-row-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--green-tint);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.im-sp-row-icon {
+  background: #e4f1f3;
+  color: #256773;
+}
+
+.im-wr-row-level,
+.im-sp-row-level {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f1ede2;
+  color: var(--ink-2);
+  font: 700 12px/1.3 var(--font-ui);
+  white-space: nowrap;
+}
+
+.im-row-text small.im-wr-tone,
+.im-row-text small.im-sp-row-freq {
+  font-weight: 600;
+}
+
+.im-row-text small.im-sp-row-freq {
+  color: #7a5a12;
+}
+
+/* A score's colour band: text takes it directly, bars and rings through currentColor. */
+.im-wr-tone.good {
+  color: var(--green-d);
+}
+
+.im-wr-tone.ok {
+  color: #256773;
+}
+
+.im-wr-tone.fair {
+  color: #7a5a12;
+}
+
+.im-wr-tone.low {
+  color: var(--terra-ink);
+}
+
+/* ---------- both tasks: header pill, blocks of text, cards ---------- */
+
+.im-wr-pill,
+.im-sp-pill {
+  height: 44px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 22px;
+  background: var(--paper);
+  color: var(--deep);
+  font: 600 14px/1 var(--font-ui);
+  white-space: nowrap;
+}
+
+.im-wr-block,
+.im-sp-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-wr-prompt,
+.im-sp-prompt {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre-line;
+}
+
+.im-wr-card,
+.im-sp-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  scroll-margin-top: 12px;
+}
+
+/* Italian to read: the learner's own text, corrections, model answers. */
+.im-wr-reading,
+.im-sp-reading {
+  font: 400 18px/1.5 var(--font-display);
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+.im-wr-status,
+.im-sp-status {
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.im-wr-error,
+.im-sp-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.im-wr-error .im-linkbtn,
+.im-sp-error .im-linkbtn {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 0 8px;
+  color: #7a2f18;
+}
+
+.im-wr-verdict,
+.im-sp-verdict {
+  font: 500 18px/1.4 var(--font-display);
+  color: var(--ink);
+}
+
+.im-wr-criteria,
+.im-sp-criteria {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-wr-criteria li,
+.im-sp-criteria li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.im-wr-dots,
+.im-sp-dots {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.im-wr-dots span,
+.im-sp-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.im-wr-dots span.full,
+.im-sp-dots span.full {
+  background: var(--green);
+}
+
+.im-wr-tip,
+.im-sp-tip {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #fbf5e0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* ---------- Scrittura: the task ---------- */
+
+.im-wr-hint {
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 18px;
+  background: var(--green-tint);
+  color: var(--deep);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.im-wr-hint svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--green-d);
+}
+
+/* ".im-task" in front so these win over the shell's general textarea rule. */
+.im-task .im-wr-textarea {
+  display: block;
+  width: 100%;
+  min-height: 190px;
+  padding: 16px;
+  resize: vertical;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  font: 400 18px/1.45 var(--font-display);
+}
+
+.im-task .im-wr-textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(30, 107, 79, 0.12);
+}
+
+.im-wr-textarea::placeholder {
+  color: var(--muted);
+}
+
+.im-wr-meter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.im-wr-meter-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line-strong);
+  overflow: hidden;
+}
+
+.im-wr-meter-bar div {
+  height: 100%;
+  border-radius: 3px;
+  background: #8fa69a;
+}
+
+.im-wr-meter.in .im-wr-meter-bar div {
+  background: var(--green);
+}
+
+.im-wr-meter.over .im-wr-meter-bar div {
+  background: var(--terra-ink);
+}
+
+.im-wr-meter-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink-2);
+  font: 600 13px/1.3 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+}
+
+.im-wr-meter.in .im-wr-meter-label {
+  color: var(--green-d);
+}
+
+/* Two actions share the footer once the answer is marked: let the long label wrap. */
+.im-wr-footer-btn {
+  padding: 8px 16px;
+  line-height: 1.2;
+}
+
+.im-wr-footer-btn.narrow {
+  flex: 0 0 auto;
+  padding: 8px 22px;
+}
+
+/* ---------- Scrittura: the marking ---------- */
+
+.im-wr-result-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.im-wr-ring {
+  flex-shrink: 0;
+}
+
+.im-wr-ring-track {
+  stroke: var(--line-strong);
+}
+
+.im-wr-ring-score {
+  font: 600 28px var(--font-display);
+  fill: currentColor;
+}
+
+.im-wr-ring-max {
+  font: 600 12px var(--font-ui);
+  fill: var(--muted);
+}
+
+.im-wr-grade {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.im-wr-grade b {
+  font: 500 26px/1.1 var(--font-display);
+}
+
+.im-wr-grade span {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.im-wr-grade small {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.im-wr-feedback {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.im-wr-feedback li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #256773;
+}
+
+.im-wr-feedback li.ok {
+  color: var(--green-d);
+}
+
+.im-wr-feedback li.warn {
+  color: #7a5a12;
+}
+
+.im-wr-feedback li.error {
+  color: var(--terra-ink);
+}
+
+.im-wr-feedback svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.im-wr-feedback span {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.im-wr-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.im-wr-chips li {
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: #f1ede2;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.im-wr-chips li.found {
+  background: var(--green-tint);
+  color: var(--green-d);
+  font-weight: 600;
+}
+
+.im-wr-chips li.missed {
+  border: 1px dashed #a39c88;
+  background: #fff;
+  color: var(--ink-2);
+}
+
+.im-wr-chip-empty {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.im-wr-badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  font: 700 12px/1.3 var(--font-ui);
+}
+
+.im-wr-badge.good {
+  background: var(--green-tint);
+  color: var(--green-d);
+}
+
+.im-wr-badge.fair {
+  background: #fbf5e0;
+  color: #7a5a12;
+}
+
+.im-wr-badge.low {
+  background: var(--terra-tint);
+  color: #7a2f18;
+}
+
+.im-wr-sentence {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.im-wr-sentence p,
+.im-sp-corrections p {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.im-wr-sentence p.fixed,
+.im-sp-corrections p.fixed {
+  color: var(--green-d);
+  font-weight: 600;
+}
+
+.im-wr-sentence p.fixed svg,
+.im-sp-corrections p.fixed svg {
+  vertical-align: -3px;
+}
+
+.im-wr-sentence ul {
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.im-wr-model-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.im-wr-model-head span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- Scrittura: earlier attempts ---------- */
+
+.im-wr-history {
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.im-wr-history summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px 12px;
+  cursor: pointer;
+}
+
+.im-wr-history summary::-webkit-details-marker {
+  display: none;
+}
+
+.im-wr-history > summary {
+  min-height: 56px;
+  padding: 10px 16px;
+  justify-content: space-between;
+  border-radius: 22px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.im-wr-history summary svg {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.im-wr-history[open] > summary > svg,
+.im-wr-attempt[open] > summary > svg {
+  transform: rotate(90deg);
+}
+
+.im-wr-history > ul {
+  list-style: none;
+  padding: 0 16px 6px;
+}
+
+.im-wr-history > ul > li {
+  border-top: 1px solid var(--line-strong);
+}
+
+.im-wr-attempt > summary {
+  min-height: 48px;
+  padding: 6px 0;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.im-wr-attempt > summary b {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.im-wr-attempt > summary .im-wr-tone {
+  font-weight: 700;
+}
+
+.im-wr-attempt > summary svg {
+  margin-left: auto;
+}
+
+.im-wr-attempt-text {
+  padding: 2px 0 6px;
+  font: 400 17px/1.5 var(--font-display);
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+.im-wr-attempt-text.none {
+  padding-bottom: 12px;
+  font: 400 14px/1.45 var(--font-ui);
+  color: var(--muted);
+}
+
+/* ---------- Scrittura: "Il mio progresso" ---------- */
+
+.im-wr-stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.im-wr-stats li {
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: #fff;
+  text-align: center;
+}
+
+.im-wr-stats b {
+  font: 500 26px/1.1 var(--font-display);
+  color: var(--ink);
+}
+
+.im-wr-stats span {
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.im-wr-progress {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.im-wr-progress li {
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.im-wr-progress-text {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.im-wr-progress-text b {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.im-wr-progress-text small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.im-wr-progress-best {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.im-wr-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line-strong);
+  overflow: hidden;
+}
+
+.im-wr-bar div {
+  height: 100%;
+  border-radius: 3px;
+  background: currentColor;
+}
+
+.im-wr-trend {
+  height: 28px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.im-wr-trend span {
+  width: 8px;
+  border-radius: 3px;
+  background: currentColor;
+}
+
+/* ---------- Orale: the task ---------- */
+
+.im-sp-aside {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.im-round.im-sp-reading-on {
+  background: var(--terra-ink);
+  color: #fff;
+}
+
+/* Phrases to tap and hear: one line that scrolls sideways, like the level pills. */
+.im-sp-phrases {
+  list-style: none;
+  margin: 0 calc(var(--im-gutter) * -1);
+  padding: 3px var(--im-gutter);
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.im-sp-phrases li {
+  flex: 0 0 auto;
+}
+
+.im-sp-phrases button {
+  min-height: 44px;
+  padding: 0 16px 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  font: 400 15px/1.2 var(--font-ui);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.im-sp-phrases button svg {
+  flex-shrink: 0;
+  color: var(--terra-ink);
+}
+
+.im-sp-answer {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1.5px solid transparent;
+  border-radius: 22px;
+  background: var(--green-tint);
+}
+
+.im-sp-answer.live {
+  border-color: var(--terra-ink);
+}
+
+.im-sp-answer:focus-within {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(30, 107, 79, 0.12);
+}
+
+.im-sp-answer-head {
+  min-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.im-sp-answer-head .im-overline {
+  color: var(--green-d);
+}
+
+.im-sp-live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: var(--terra-ink);
+}
+
+/* ".im-task" in front so these win over the shell's general textarea rule. */
+.im-task .im-sp-textarea {
+  display: block;
+  width: 100%;
+  min-height: 130px;
+  padding: 0;
+  resize: vertical;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--deep);
+  font: 400 20px/1.4 var(--font-display);
+}
+
+.im-sp-textarea::placeholder {
+  color: #4a5a51;
+}
+
+/* The footer: the clock, the record button, the way to the model answer. */
+.im-sp-controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.im-sp-timer {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.im-sp-timer b {
+  font: 700 26px/1.1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.im-sp-timer.reached b {
+  color: var(--green-d);
+}
+
+.im-sp-timer small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.im-sp-rec {
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--terra-ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(166, 69, 42, 0.3);
+  cursor: pointer;
+}
+
+.im-sp-rec.on {
+  box-shadow: 0 0 0 10px rgba(166, 69, 42, 0.16);
+}
+
+.im-linkbtn.im-sp-model-link {
+  flex: 1 1 0;
+  align-self: center;
+  justify-content: flex-end;
+  font-size: 14px;
+  line-height: 1.25;
+  text-align: right;
+}
+
+.im-linkbtn.im-sp-model-link:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.im-sp-ai-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-sp-ai-cta .im-btn {
+  flex: none;
+  width: 100%;
+}
+
+.im-sp-corrections {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.im-sp-corrections li {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.im-sp-corrections p.why {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.im-sp-self button {
+  min-height: 44px;
+}
+
+.im-sp-self-reply {
+  font: 500 20px/1.3 var(--font-display);
+  color: var(--green-d);
+}
+
+.im-wr-history summary:focus-visible,
+.im-sp-phrases button:focus-visible,
+.im-sp-rec:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .im-sp-live-dot {
+    animation: im-sp-pulse 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes im-sp-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}

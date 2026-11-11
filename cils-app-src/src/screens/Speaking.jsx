@@ -257,6 +257,15 @@ function SpeakingTask({ task, onClose }) {
     }
   }
 
+  // The learner's own rating is the only score a spoken answer gets without the
+  // AI examiner, so it is what goes into the progress report (1 to 4, which the
+  // report shows on its scale of 10). The original app saved nothing here, so
+  // "Orale" stayed empty and the coach never stopped suggesting it.
+  const rate = (rating) => {
+    setSelfRating(rating);
+    recordAttempt({ section: 'orale', taskId: task.id, score: rating + 1, max: SELF_RATINGS.length });
+  };
+
   const modelLabel = showModel ? 'Risposta modello mostrata' : 'Mostra risposta modello';
 
   const footer = canRecognise ? (
@@ -395,7 +404,7 @@ function SpeakingTask({ task, onClose }) {
               <h3 className="im-overline">Come valuteresti la tua produzione?</h3>
               <div className="im-pills im-sp-self">
                 {SELF_RATINGS.map((label, i) => (
-                  <button key={i} type="button" onClick={() => setSelfRating(i)}>
+                  <button key={i} type="button" onClick={() => rate(i)}>
                     {label}
                   </button>
                 ))}

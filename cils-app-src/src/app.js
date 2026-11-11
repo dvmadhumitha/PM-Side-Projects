@@ -7,6 +7,7 @@
  * Names are still the short ones the minifier chose; rename as you touch things.
  */
 import * as S from 'react';
+import { matchesModelAnswer } from './lib/answers.js';
 import * as w from 'react/jsx-runtime';
 import * as C from 'react-dom/client';
 import dailyExamClozeData from './data/daily-exam-cloze.json';
@@ -685,37 +686,45 @@ function Ce({ ans: e, setAns: t, graded: n = !1, testData: r }) {
     ],
   });
 }
-function we(e) {
-  let t = 0,
-    n = {},
-    r = {};
-  return (
-    ee.forEach((r, i) => {
-      let a = e.L1[i] != null && Number(e.L1[i]) === r.a;
-      ((n[i] = a), a && t++);
-    }),
-    E.forEach((n, i) => {
-      let a = e.L2[i] != null && (e.L2[i] === `true`) === n.a;
-      ((r[i] = a), a && t++);
-    }),
-    { score: t, l1: n, l2: r, max: 12 }
-  );
+/*
+ * Marks the listening and reading papers of a practice test against THAT
+ * test's answer key (testData); the exam simulation uses Test 1.
+ * Until November 2026 these two always used Test 1's key, whichever test was
+ * open, and read every second-part listening answer as true/false although
+ * Tests 3 and 4 use multiple choice there.
+ * `outOf12` is the score on the exam's 12-point scale, for the verdict: two
+ * of the tests have more reading questions than the real paper.
+ */
+function we(answers, testData = T) {
+  let score = 0,
+    l1 = {},
+    l2 = {};
+  testData.L1.forEach((q, i) => {
+    let ok = answers.L1[i] != null && Number(answers.L1[i]) === q.a;
+    ((l1[i] = ok), ok && score++);
+  });
+  testData.L2.forEach((q, i) => {
+    let given = answers.L2[i],
+      ok = given != null && (Array.isArray(q.opts) ? Number(given) === q.a : (given === `true`) === q.a);
+    ((l2[i] = ok), ok && score++);
+  });
+  let max = testData.L1.length + testData.L2.length;
+  return { score, l1, l2, max, outOf12: Math.round((score / max) * 12) };
 }
-function Te(e) {
-  let t = 0,
-    n = {},
-    r = {};
-  return (
-    D.ans.forEach((r, i) => {
-      let a = e.cloze[i] === r;
-      ((n[i] = a), a && t++);
-    }),
-    te.ans.forEach((n, i) => {
-      let a = e.match[i] === n;
-      ((r[i] = a), a && t++);
-    }),
-    { score: t, cz: n, mt: r, max: 12 }
-  );
+function Te(answers, testData = T) {
+  let score = 0,
+    cz = {},
+    mt = {};
+  testData.CLOZE.ans.forEach((right, i) => {
+    let ok = answers.cloze[i] === right;
+    ((cz[i] = ok), ok && score++);
+  });
+  testData.MATCH.ans.forEach((right, i) => {
+    let ok = answers.match[i] === right;
+    ((mt[i] = ok), ok && score++);
+  });
+  let max = testData.CLOZE.ans.length + testData.MATCH.ans.length;
+  return { score, cz, mt, max, outOf12: Math.round((score / max) * 12) };
 }
 function Ee(e) {
   return (
@@ -893,15 +902,15 @@ function Ae({ ans: e, setAns: t, graded: n = !1 }) {
   });
 }
 var je = [``, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-function Me({ ans: e, setAns: t }) {
-  let n = we(e),
-    r = Te(e),
+function Me({ ans: e, setAns: t, testData: testData }) {
+  let n = we(e, testData),
+    r = Te(e, testData),
     i = e.wSelf === `` ? null : Number(e.wSelf),
     a = e.sSelf === `` ? null : Number(e.sSelf),
-    o = [n.score, r.score, ...(i === null ? [] : [i]), ...(a === null ? [] : [a])].reduce((e, t) => e + t, 0),
+    o = [n.outOf12, r.outOf12, ...(i === null ? [] : [i]), ...(a === null ? [] : [a])].reduce((e, t) => e + t, 0),
     s = i !== null && a !== null,
-    c = s && o >= 28 && n.score >= 7 && r.score >= 7 && i >= 7 && a >= 7,
-    l = Math.min(n.score, r.score, i === null ? 99 : i, a === null ? 99 : a),
+    c = s && o >= 28 && n.outOf12 >= 7 && r.outOf12 >= 7 && i >= 7 && a >= 7,
+    l = Math.min(n.outOf12, r.outOf12, i === null ? 99 : i, a === null ? 99 : a),
     u = (e) => t((t) => ({ ...t, wSelf: e })),
     d = (e) => t((t) => ({ ...t, sSelf: e }));
   return (0, w.jsxs)(`section`, {
@@ -914,14 +923,14 @@ function Me({ ans: e, setAns: t }) {
           (0, w.jsxs)(`div`, {
             className: `stat`,
             children: [
-              (0, w.jsxs)(`div`, { className: `v`, children: [n.score, `/12`] }),
+              (0, w.jsxs)(`div`, { className: `v`, children: [n.score, `/`, n.max] }),
               (0, w.jsx)(`div`, { className: `l`, children: `Listening` }),
             ],
           }),
           (0, w.jsxs)(`div`, {
             className: `stat`,
             children: [
-              (0, w.jsxs)(`div`, { className: `v`, children: [r.score, `/12`] }),
+              (0, w.jsxs)(`div`, { className: `v`, children: [r.score, `/`, r.max] }),
               (0, w.jsx)(`div`, { className: `l`, children: `Reading` }),
             ],
           }),
@@ -980,9 +989,13 @@ function Me({ ans: e, setAns: t }) {
             children: [
               `Auto-score: Listening `,
               n.score,
-              `/12 · Reading `,
+              `/`,
+              n.max,
+              ` · Reading `,
               r.score,
-              `/12 · running total `,
+              `/`,
+              r.max,
+              ` · running total `,
               o,
               `/48. Add your Writing & Speaking self-scores above for a full verdict.`,
             ],
@@ -1862,14 +1875,7 @@ function at({ set: e }) {
   let [t, n] = N(`ge_${e.id}_a`, () => Array(e.items.length).fill(``)),
     [r, i] = (0, S.useState)(!1),
     [a, o] = (0, S.useState)({}),
-    s = (n) => {
-      let r = t[n]
-          .trim()
-          .toLowerCase()
-          .replace(/[.,!?]/g, ``),
-        i = e.items[n].a.toLowerCase().replace(/[.,!?]/g, ``);
-      return r === i || i.includes(r);
-    },
+    s = (n) => matchesModelAnswer(t[n], e.items[n].a),
     c = r ? e.items.filter((e, t) => s(t)).length : null;
   return (0, w.jsxs)(`div`, {
     children: [
@@ -13068,7 +13074,7 @@ function Io({ graded: e, setGraded: t, ans: n, setAns: r, resultsRef: i, checkPr
       (0, w.jsx)(Ce, { ans: n, setAns: r, graded: e, testData: l }),
       (0, w.jsx)(Oe, { ans: n, setAns: r, graded: e, testData: l }),
       (0, w.jsx)(Ae, { ans: n, setAns: r, graded: e }),
-      e && (0, w.jsx)(`div`, { ref: i, children: (0, w.jsx)(Me, { ans: n, setAns: r }) }),
+      e && (0, w.jsx)(`div`, { ref: i, children: (0, w.jsx)(Me, { ans: n, setAns: r, testData: l }) }),
       (0, w.jsxs)(`div`, {
         className: `bottom`,
         children: [

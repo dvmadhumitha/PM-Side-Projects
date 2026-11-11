@@ -8,12 +8,14 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
+  At as recordAttempt,
   N as usePersistentState,
   dn as countItems,
   gn as TYPE_DESCRIPTION,
   pn as topicGroups,
   un as topics,
 } from '../app.js';
+import { matchesModelAnswer } from '../lib/answers.js';
 import { IconBack, IconCheck, IconChevron, IconClose } from '../shell/icons.jsx';
 import TaskScreen from './TaskScreen.jsx';
 
@@ -53,6 +55,17 @@ function Feedback({ ok, children }) {
   );
 }
 
+// Why the right answer is right, shown once the set has been checked.
+function Explanation({ children }) {
+  if (!children) return null;
+  return (
+    <p className="im-gr-explain">
+      <span className="im-overline">Spiegazione</span>
+      {children}
+    </p>
+  );
+}
+
 /*
  * What every kind of exercise shares: the progress line, the instruction, the
  * score, and the buttons at the bottom of the screen.
@@ -78,6 +91,13 @@ function ExerciseFrame(props) {
     if (checked && scoreRef.current) scoreRef.current.scrollIntoView({ block: 'start' });
   }, [checked]);
 
+  // Checking a set also saves its score to the progress report. The original
+  // app never did, so "Grammatica" stayed empty there however much you practised.
+  const check = () => {
+    onCheck();
+    recordAttempt({ section: 'grammatica', taskId: set.id, score, max: total });
+  };
+
   const footer = checked ? (
     <>
       <button type="button" className="im-btn secondary" onClick={onRetry}>
@@ -90,7 +110,7 @@ function ExerciseFrame(props) {
   ) : (
     <div className="im-footer-stack">
       {!complete && <span className="im-footer-hint">{hint}</span>}
-      <button type="button" className="im-btn primary" disabled={!complete} onClick={onCheck}>
+      <button type="button" className="im-btn primary" disabled={!complete} onClick={check}>
         Controlla le risposte
       </button>
     </div>
@@ -303,6 +323,7 @@ function ClozeExercise({ set, frame }) {
                   </>
                 )}
               </Feedback>
+              <Explanation>{ownChoices ? set.blanks[i].explain : set.explains && set.explains[i]}</Explanation>
             </li>
           ))}
         </ul>
@@ -318,12 +339,7 @@ function TransformExercise({ set, frame }) {
   const [checked, setChecked] = useState(false);
   const [hintsOpen, setHintsOpen] = useState({});
 
-  // Unchanged from the recovered code: an answer also passes when it is only a part of the model answer.
-  const isRight = (i) => {
-    const typed = plain((values[i] || '').trim());
-    const model = plain(set.items[i].a);
-    return typed === model || model.includes(typed);
-  };
+  const isRight = (i) => matchesModelAnswer(values[i], set.items[i].a);
   const score = set.items.filter((_, i) => isRight(i)).length;
 
   return (
@@ -335,7 +351,6 @@ function TransformExercise({ set, frame }) {
       complete={!values.some((value) => value.trim() === '')}
       checked={checked}
       score={score}
-      approximate
       hint="Scrivi tutte le risposte."
       onCheck={() => setChecked(true)}
       onRetry={() => {
@@ -396,6 +411,7 @@ function TransformExercise({ set, frame }) {
                 {!right && <span className="im-gr-fb-more">{item.hint}</span>}
               </Feedback>
             )}
+            {checked && <Explanation>{item.explain}</Explanation>}
           </div>
         );
       })}
@@ -500,6 +516,7 @@ function OrderExercise({ set, frame }) {
                 {!right && <span className="im-gr-fb-more">{item.hint}</span>}
               </Feedback>
             )}
+            {checked && <Explanation>{item.explain}</Explanation>}
           </fieldset>
         );
       })}
@@ -608,6 +625,7 @@ function MatchExercise({ set, frame }) {
                   Risposta giusta: <b>{pair[1]}</b>
                 </Feedback>
               )}
+              {checked && <Explanation>{set.explains && set.explains[i]}</Explanation>}
             </li>
           );
         })}

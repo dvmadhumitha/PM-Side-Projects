@@ -1,0 +1,435 @@
+/*
+ * Styles for the screens rewritten for the Immersione design (src/screens):
+ * photo rows, the full-screen task frame, the audio player, questions.
+ * Tokens come from immersione.css.
+ */
+
+.im-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- list rows: a photo, two lines of text, a way in ---------- */
+
+.im-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.im-row {
+  width: 100%;
+  min-height: 84px;
+  padding: 10px 14px 10px 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.im-row-thumb {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  object-fit: cover;
+  background: var(--green-tint);
+}
+
+.im-row-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.im-row-text b {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.im-row-text small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.im-row-go {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--terra-tint);
+  color: var(--terra-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- the full-screen task frame ---------- */
+
+.im-task {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+.im-task-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.im-task-photo,
+.im-task-sheet,
+.im-task-footer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--im-column);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.im-task-photo {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: var(--deep);
+}
+
+.im-task-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.im-task-photo .im-scrim {
+  background: linear-gradient(to bottom, rgba(10, 20, 15, 0.5), rgba(10, 20, 15, 0.08) 35%, rgba(10, 20, 15, 0.9));
+}
+
+.im-task-bar {
+  position: absolute;
+  top: 16px;
+  left: 14px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.im-round.static {
+  position: static;
+}
+
+.im-task-title {
+  position: absolute;
+  left: var(--im-gutter);
+  right: var(--im-gutter);
+  bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.im-task-title h1 {
+  margin: 0;
+  font: 500 32px/1.08 var(--font-display);
+  color: #fff;
+}
+
+.im-task-title p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #e6ece8;
+}
+
+.im-task-sheet {
+  position: relative;
+  margin-top: -28px;
+  padding: 22px var(--im-gutter) 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-radius: var(--im-radius-photo) var(--im-radius-photo) 0 0;
+  background: var(--paper);
+}
+
+.im-task-footer {
+  padding: 12px var(--im-gutter) calc(16px + env(safe-area-inset-bottom));
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid var(--line-strong);
+  background: var(--paper);
+}
+
+.im-footer-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-footer-hint {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- buttons ---------- */
+
+.im-btn {
+  flex: 1;
+  min-height: 56px;
+  padding: 0 22px;
+  border: 1.5px solid transparent;
+  border-radius: 28px;
+  font: 700 16px/1 var(--font-ui);
+  cursor: pointer;
+}
+
+.im-btn.primary {
+  background: var(--green);
+  color: #fff;
+}
+
+.im-btn.primary:disabled {
+  background: #cfd9d2;
+  color: #4a5a51;
+  cursor: default;
+}
+
+.im-btn.secondary {
+  border-color: var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+}
+
+.im-linkbtn {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--green-d);
+  font: 600 15px/1 var(--font-ui);
+  cursor: pointer;
+}
+
+.im-linkbtn.subtle {
+  color: var(--muted);
+}
+
+/* ---------- audio player ---------- */
+
+.im-player {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.im-play {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--terra-ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(166, 69, 42, 0.3);
+  cursor: pointer;
+}
+
+.im-play.on {
+  box-shadow: 0 0 0 8px rgba(166, 69, 42, 0.16);
+}
+
+.im-play:disabled {
+  background: #cfd9d2;
+  box-shadow: none;
+  cursor: default;
+}
+
+.im-player-side {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.im-player-status {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.im-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.im-pills button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 20px;
+  background: #fff;
+  color: var(--ink-2);
+  font: 600 13px/1 var(--font-ui);
+  cursor: pointer;
+}
+
+.im-pills button.on {
+  border-color: var(--green);
+  background: var(--green-tint);
+  color: var(--green-d);
+  font-weight: 700;
+}
+
+.im-note {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.im-note.warn {
+  background: var(--terra-tint);
+  color: #7a2f18;
+}
+
+.im-score {
+  margin: 0;
+  font: 500 26px/1.1 var(--font-display);
+  color: #7a5a12;
+}
+
+.im-score.full {
+  color: var(--green-d);
+}
+
+/* ---------- questions and answers ---------- */
+
+.im-question {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.im-question legend {
+  padding: 0;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.im-question-text {
+  font: 500 22px/1.22 var(--font-display);
+  color: var(--ink);
+}
+
+.im-option {
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 28px;
+  background: #fff;
+  color: var(--ink);
+  font: 400 17px/1.3 var(--font-ui);
+  text-align: left;
+  cursor: pointer;
+}
+
+.im-option.chosen {
+  border-color: var(--green);
+  background: var(--green-tint);
+  font-weight: 700;
+}
+
+.im-option.correct {
+  border-color: var(--green);
+  background: var(--green-tint);
+  color: var(--green-d);
+  font-weight: 700;
+}
+
+.im-option.wrong {
+  border-color: var(--terra-ink);
+  background: var(--terra-tint);
+  color: #7a2f18;
+  font-weight: 700;
+}
+
+.im-option:disabled {
+  cursor: default;
+}
+
+.im-transcript-text {
+  margin-top: 8px;
+  padding: 16px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.im-transcript-text p {
+  margin: 0;
+  font: 400 18px/1.5 var(--font-display);
+  color: var(--ink);
+}
+
+.im-transcript-text p + p {
+  margin-top: 8px;
+}
+
+.im-transcript-text b {
+  font: 700 12px/1 var(--font-ui);
+  color: var(--muted);
+}
+
+.im-btn:focus-visible,
+.im-option:focus-visible,
+.im-row:focus-visible,
+.im-play:focus-visible,
+.im-pills button:focus-visible,
+.im-linkbtn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}

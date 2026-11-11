@@ -13608,4 +13608,15 @@ export {
   fa as hasVisitor,
   I as gateEnabled,
   da as getVisitor,
+  // speech and progress, for screens rewritten in src/screens/
+  k as isSpeechSupported,
+  j as speakLine,
+  A as pause,
+  _e as getSpeechToken,
+  de as getDialogueVoices,
+  fe as hasItalianVoice,
+  At as recordAttempt,
 };
+
+// Every top-level name, under its original short name (generated; see README).
+export { $a, $e, $i, $n, $r, $t, A, Aa, Ae, Ai, An, Ao, Ar, At, B, Ba, Be, Bi, Bn, Bo, Br, Bt, Ca, Ce, Ci, Cn, Co, Cr, Ct, D, Da, De, Di, Dn, Do, Dr, Dt, E, Ea, Ee, Ei, En, Eo, Er, Et, F, Fa, Fe, Fi, Fn, Fo, Fr, Ft, Ga, Ge, Gi, Gn, Go, Gr, Gt, H, Ha, He, Hi, Hn, Ho, Hr, Ht, I, Ia, Ie, Ii, In, Io, Ir, It, Ja, Je, Ji, Jn, Jo, Jr, Jt, Ka, Ke, Ki, Kn, Ko, Kr, Kt, L, La, Le, Li, Ln, Lo, Lr, Lt, M, Ma, Me, Mi, Mn, Mo, Mr, Mt, N, Na, Ne, Ni, Nn, No, Nr, Nt, O, Oa, Oe, Oi, On, Oo, Or, Ot, P, Pa, Pe, Pi, Pn, Po, Pr, Pt, Qa, Qe, Qi, Qn, Qr, Qt, R, Ra, Re, Ri, Rn, Ro, Rr, Rt, Sa, Se, Si, Sn, So, Sr, St, T, Ta, Te, Ti, Tn, To, Tr, Tt, Ua, Ue, Ui, Un, Uo, Ur, Ut, V, Va, Ve, Vi, Vn, Vo, Vr, Vt, Wa, We, Wi, Wn, Wo, Wr, Wt, Xa, Xe, Xi, Xn, Xr, Xt, Ya, Ye, Yi, Yn, Yo, Yr, Yt, Za, Ze, Zi, Zn, Zr, Zt, _a, _e, _i, _n, _o, _r, _t, a, aa, ae, ai, an, ao, ar, at, ba, be, bi, bn, bo, br, bt, c, ca, ce, ci, cn, co, cr, ct, d, da, de, di, dn, dr, dt, e, ea, ee, ei, en, eo, er, et, fa, fe, fi, fn, fo, fr, ft, ga, ge, gi, gn, go, gr, gt, ha, he, hi, hn, ho, hr, ht, i, ia, ie, ii, io, ir, it, j, ja, je, ji, jn, jo, jr, jt, k, ka, ke, ki, kn, ko, kr, kt, l, la, le, li, ln, lo, lr, lt, ma, me, mi, mn, mo, mr, mt, n, na, ne, ni, nn, no, nr, nt, o, oa, oe, oi, on, oo, or, ot, pa, pe, pi, pn, po, pr, pt, qa, qe, qi, qn, qo, qr, qt, r, ra, re, ri, rn, ro, rr, rt, s, sa, se, si, sn, so, sr, st, t, ta, te, ti, tn, to, tr, tt, u, ua, ue, ui, un, uo, ur, ut, va, ve, vi, vn, vo, vr, vt, wa, we, wi, wn, wo, wr, wt, xa, xe, xi, xn, xo, xr, xt, ya, ye, yi, yn, yo, yr, yt, z, za, ze, zi, zn, zo, zr, zt };

@@ -53,6 +53,23 @@ export const IconClock = make(
     <path d="M12 6v6l4 2" />
   </>,
 );
+export const IconClose = make(<path d="M18 6L6 18M6 6l12 12" />);
+export const IconCheck = make(<path d="M20 6L9 17l-5-5" />);
+export const IconChevron = make(<path d="M9 18l6-6-6-6" />);
+export const IconText = make(
+  <>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <path d="M14 2v6h6M8 13h8M8 17h8" />
+  </>,
+);
+export function IconPause({ size = 22 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+    </svg>
+  );
+}
 export function IconPlay({ size = 22 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

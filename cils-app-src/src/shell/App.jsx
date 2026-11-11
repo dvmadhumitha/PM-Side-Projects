@@ -19,7 +19,6 @@ import {
   GrammarExercises,
   GrammarRules,
   ItalyExplorer,
-  ListeningPractice,
   PhotoExplorer,
   Phrases,
   PracticeTest,
@@ -55,6 +54,7 @@ import {
   IconToday,
   IconWords,
 } from './icons.jsx';
+import ListeningPractice from '../screens/ListeningPractice.jsx';
 import { PHOTOS, PROVE, PROVE_BY_ID, TARGET_SECTION, tabFor } from './sections.js';
 
 const TABS = [

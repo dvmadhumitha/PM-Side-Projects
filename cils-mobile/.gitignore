@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Generated from ../cils-app by `npm run sync` — never edited by hand
+www/
+
+# Signing material: never commit
+*.keystore
+*.jks
+keystore.properties
+*.p12
+*.mobileprovision
+
+# OS / editor
+.DS_Store
+Thumbs.db

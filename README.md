@@ -29,6 +29,7 @@ Side projects by Madhumitha D V, a product manager in Milan. Each page takes one
 
 ## Also in this repo
 
+- [`cils-mobile/`](cils-mobile/): the Android and iOS apps for ASCOLTO. They wrap the web app in `cils-app/`, so a feature added to the web app reaches all three with `npm run sync`. See its README.
 - `demo-cityplanning.html` and `demo-matchmaking.html`: earlier pages on city planning and ride hailing matchmaking, kept at their addresses but no longer linked from the site.
 
 ## Run it locally

@@ -1,0 +1,20 @@
+{
+  "appId": "io.github.dvmadhumitha.ascolto",
+  "appName": "ASCOLTO",
+  "webDir": "www",
+  "backgroundColor": "#f7f4ec",
+  "ios": {
+    "contentInset": "always"
+  },
+  "plugins": {
+    "SystemBars": {
+      "style": "LIGHT"
+    },
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 600,
+      "backgroundColor": "#f7f4ec",
+      "showSpinner": false
+    }
+  }
+}

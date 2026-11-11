@@ -1,0 +1,96 @@
+name: ASCOLTO mobile apps
+
+# Rebuilds the Android and iOS apps whenever the web app or the mobile wrapper
+# changes, so the three never drift apart. Download the results from the run's
+# "Artifacts" section.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cils-app/**'
+      - 'cils-mobile/**'
+      - '.github/workflows/mobile.yml'
+  pull_request:
+    paths:
+      - 'cils-app/**'
+      - 'cils-mobile/**'
+      - '.github/workflows/mobile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    name: Android (debug APK)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cils-mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cils-mobile/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - name: Copy the web app into the Android project
+        run: npm run sync:android
+      - name: Build the APK
+        working-directory: cils-mobile/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --console=plain
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ascolto-android-debug
+          path: cils-mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  ios:
+    name: iOS (simulator build)
+    # Capacitor 8 needs a current Xcode; bump this label when GitHub retires it.
+    runs-on: macos-26
+    defaults:
+      run:
+        working-directory: cils-mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cils-mobile/package-lock.json
+      - run: npm ci
+      - name: Copy the web app into the iOS project and install pods
+        run: npm run sync:ios
+      - name: Build for the iPhone simulator (no signing needed)
+        working-directory: cils-mobile/ios/App
+        run: |
+          xcodebuild \
+            -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+      - name: Package the simulator app
+        working-directory: cils-mobile/ios/App/build/Build/Products/Debug-iphonesimulator
+        run: zip -r "$GITHUB_WORKSPACE/ascolto-ios-simulator.zip" App.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ascolto-ios-simulator
+          path: ascolto-ios-simulator.zip
+          if-no-files-found: error

@@ -1,0 +1,3390 @@
+[
+  {
+    "id": "everyday",
+    "label": "Everyday Life",
+    "emoji": "🏠",
+    "cards": [
+      {
+        "it": "il supermercato",
+        "en": "supermarket",
+        "ex": "Vado al supermercato ogni lunedì.",
+        "pic": "🛒"
+      },
+      {
+        "it": "la farmacia",
+        "en": "pharmacy",
+        "ex": "Ho comprato le medicine in farmacia.",
+        "pic": "💊"
+      },
+      {
+        "it": "l'ufficio postale",
+        "en": "post office",
+        "ex": "Mando una lettera all'ufficio postale.",
+        "pic": "📮"
+      },
+      {
+        "it": "il comune",
+        "en": "town hall / municipality",
+        "ex": "Il mio passaporto è al comune.",
+        "pic": "🏛️"
+      },
+      {
+        "it": "lo sportello",
+        "en": "counter / service desk",
+        "ex": "Faccio la fila allo sportello.",
+        "pic": "🪟"
+      },
+      {
+        "it": "il quartiere",
+        "en": "neighbourhood",
+        "ex": "Abito in un quartiere tranquillo.",
+        "pic": "🏘️"
+      },
+      {
+        "it": "l'affitto",
+        "en": "rent",
+        "ex": "Pago l'affitto ogni mese.",
+        "pic": "🏠💶"
+      },
+      {
+        "it": "il condominio",
+        "en": "apartment building",
+        "ex": "C'è un ascensore nel condominio.",
+        "pic": "🏢"
+      },
+      {
+        "it": "la bolletta",
+        "en": "utility bill",
+        "ex": "Ho pagato la bolletta dell'acqua.",
+        "pic": "📄💡"
+      },
+      {
+        "it": "la patente",
+        "en": "driving licence",
+        "ex": "Ho preso la patente l'anno scorso.",
+        "pic": "🪪🚗"
+      },
+      {
+        "it": "il documento",
+        "en": "identity document",
+        "ex": "Porta un documento con la foto.",
+        "pic": "📋"
+      },
+      {
+        "it": "la carta d'identità",
+        "en": "identity card",
+        "ex": "La carta d'identità scade tra un anno.",
+        "pic": "🪪"
+      },
+      {
+        "it": "il permesso di soggiorno",
+        "en": "residence permit",
+        "ex": "Ho rinnovato il permesso di soggiorno.",
+        "pic": "📜✅"
+      },
+      {
+        "it": "il certificato",
+        "en": "certificate",
+        "ex": "Ritiro il certificato allo sportello.",
+        "pic": "📃"
+      },
+      {
+        "it": "l'anagrafe",
+        "en": "civil registry office",
+        "ex": "Mi sono iscritto all'anagrafe.",
+        "pic": "🗂️"
+      },
+      {
+        "it": "l'ascensore",
+        "en": "lift / elevator",
+        "ex": "L'ascensore del palazzo è rotto.",
+        "pic": "🛗"
+      },
+      {
+        "it": "il palazzo",
+        "en": "building / block of flats",
+        "ex": "Abito al terzo piano del palazzo.",
+        "pic": "🏢"
+      },
+      {
+        "it": "il piano",
+        "en": "floor / storey",
+        "ex": "Il mio appartamento è al secondo piano.",
+        "pic": "🔢🏠"
+      },
+      {
+        "it": "il campanello",
+        "en": "doorbell",
+        "ex": "Suona il campanello quando arrivi.",
+        "pic": "🔔"
+      },
+      {
+        "it": "il portone",
+        "en": "main entrance door",
+        "ex": "Il portone si chiude alle 23.",
+        "pic": "🚪"
+      },
+      {
+        "it": "la cassetta delle lettere",
+        "en": "letterbox / mailbox",
+        "ex": "Controlla la cassetta delle lettere.",
+        "pic": "📬"
+      },
+      {
+        "it": "il vicino di casa",
+        "en": "neighbour",
+        "ex": "Il mio vicino di casa è molto gentile.",
+        "pic": "🏠👋"
+      },
+      {
+        "it": "il pacco",
+        "en": "parcel / package",
+        "ex": "Aspetto un pacco dal corriere.",
+        "pic": "📦"
+      },
+      {
+        "it": "il corriere",
+        "en": "courier / delivery person",
+        "ex": "Il corriere lascia i pacchi al portone.",
+        "pic": "🚚"
+      },
+      {
+        "it": "la spazzatura / i rifiuti",
+        "en": "rubbish / waste",
+        "ex": "Porto fuori la spazzatura ogni sera.",
+        "pic": "🗑️"
+      },
+      {
+        "it": "la raccolta differenziata",
+        "en": "recycling / waste sorting",
+        "ex": "Faccio la raccolta differenziata ogni giorno.",
+        "pic": "♻️"
+      },
+      {
+        "it": "il garage",
+        "en": "garage / parking space",
+        "ex": "Parcheggio la macchina nel garage.",
+        "pic": "🏎️🏠"
+      },
+      {
+        "it": "il canone",
+        "en": "fee / regular payment",
+        "ex": "Pago il canone televisivo ogni anno.",
+        "pic": "📺💶"
+      }
+    ]
+  },
+  {
+    "id": "health",
+    "label": "Health",
+    "emoji": "🏥",
+    "cards": [
+      {
+        "it": "il medico di base",
+        "en": "GP / family doctor",
+        "ex": "Devo scegliere un medico di base.",
+        "pic": "👨‍⚕️"
+      },
+      {
+        "it": "la visita medica",
+        "en": "medical appointment",
+        "ex": "Ho prenotato una visita medica.",
+        "pic": "🩺"
+      },
+      {
+        "it": "la ricetta",
+        "en": "prescription",
+        "ex": "Il medico mi ha dato una ricetta.",
+        "pic": "📋💊"
+      },
+      {
+        "it": "la pastiglia / la compressa",
+        "en": "tablet / pill",
+        "ex": "Prendo due pastiglie al giorno.",
+        "pic": "💊"
+      },
+      {
+        "it": "lo sciroppo",
+        "en": "syrup / cough medicine",
+        "ex": "Questo sciroppo è per la tosse.",
+        "pic": "🍶"
+      },
+      {
+        "it": "la tosse",
+        "en": "cough",
+        "ex": "Ho la tosse da tre giorni.",
+        "pic": "😮‍💨"
+      },
+      {
+        "it": "il mal di testa",
+        "en": "headache",
+        "ex": "Ho un forte mal di testa.",
+        "pic": "🤕"
+      },
+      {
+        "it": "il mal di stomaco",
+        "en": "stomachache",
+        "ex": "Ho mangiato troppo e ho mal di stomaco.",
+        "pic": "🤢"
+      },
+      {
+        "it": "il mal di gola",
+        "en": "sore throat",
+        "ex": "Con questo freddo ho mal di gola.",
+        "pic": "😷"
+      },
+      {
+        "it": "la febbre",
+        "en": "fever / temperature",
+        "ex": "Mio figlio ha la febbre a 39.",
+        "pic": "🌡️"
+      },
+      {
+        "it": "l'ASL",
+        "en": "local health authority",
+        "ex": "Vado all'ASL per iscrivermi.",
+        "pic": "🏥"
+      },
+      {
+        "it": "il pronto soccorso",
+        "en": "emergency room (A&E)",
+        "ex": "È andato al pronto soccorso di notte.",
+        "pic": "🚨🏥"
+      },
+      {
+        "it": "l'ambulanza",
+        "en": "ambulance",
+        "ex": "Hanno chiamato l'ambulanza.",
+        "pic": "🚑"
+      },
+      {
+        "it": "la guardia medica",
+        "en": "out-of-hours doctor service",
+        "ex": "Di notte chiami la guardia medica.",
+        "pic": "🌙👨‍⚕️"
+      },
+      {
+        "it": "l'allergia",
+        "en": "allergy",
+        "ex": "Ho un'allergia al glutine.",
+        "pic": "🤧"
+      },
+      {
+        "it": "la ferita",
+        "en": "wound / injury",
+        "ex": "Ha una ferita alla mano.",
+        "pic": "🩹"
+      },
+      {
+        "it": "il dolore",
+        "en": "pain / ache",
+        "ex": "Sento un dolore alla schiena.",
+        "pic": "😣"
+      },
+      {
+        "it": "stare male",
+        "en": "to feel ill / unwell",
+        "ex": "Oggi sto male e resto a casa.",
+        "pic": "🤒"
+      },
+      {
+        "it": "guarire",
+        "en": "to recover / get better",
+        "ex": "Spero di guarire presto.",
+        "pic": "💪✅"
+      },
+      {
+        "it": "prenotare",
+        "en": "to book / make an appointment",
+        "ex": "Ho prenotato una visita per venerdì.",
+        "pic": "📅"
+      },
+      {
+        "it": "l'appuntamento",
+        "en": "appointment",
+        "ex": "Ho un appuntamento dal dottore alle 15.",
+        "pic": "📆"
+      },
+      {
+        "it": "la sala d'aspetto",
+        "en": "waiting room",
+        "ex": "Aspetta in sala d'aspetto.",
+        "pic": "🪑"
+      },
+      {
+        "it": "la pressione",
+        "en": "blood pressure",
+        "ex": "Il medico mi misura la pressione.",
+        "pic": "💉"
+      },
+      {
+        "it": "il termometro",
+        "en": "thermometer",
+        "ex": "Usa il termometro per misurare la febbre.",
+        "pic": "🌡️"
+      }
+    ]
+  },
+  {
+    "id": "work",
+    "label": "Work & Study",
+    "emoji": "💼",
+    "cards": [
+      {
+        "it": "il colloquio",
+        "en": "job interview",
+        "ex": "Ho un colloquio di lavoro domani.",
+        "pic": "🤝"
+      },
+      {
+        "it": "il curriculum (vitae)",
+        "en": "CV / résumé",
+        "ex": "Mando il curriculum via email.",
+        "pic": "📄"
+      },
+      {
+        "it": "l'annuncio",
+        "en": "advertisement / job notice",
+        "ex": "Ho visto un annuncio di lavoro online.",
+        "pic": "📢"
+      },
+      {
+        "it": "il centro per l'impiego",
+        "en": "employment centre",
+        "ex": "Vado al centro per l'impiego a cercare lavoro.",
+        "pic": "🏢🔍"
+      },
+      {
+        "it": "il contratto",
+        "en": "contract",
+        "ex": "Ho firmato il contratto ieri.",
+        "pic": "✍️📄"
+      },
+      {
+        "it": "lo stipendio",
+        "en": "salary / wage",
+        "ex": "Il mio stipendio è di 1200 euro al mese.",
+        "pic": "💶"
+      },
+      {
+        "it": "l'orario di lavoro",
+        "en": "working hours",
+        "ex": "Il mio orario di lavoro è 9-17.",
+        "pic": "🕘"
+      },
+      {
+        "it": "il turno",
+        "en": "shift",
+        "ex": "Faccio il turno di notte questa settimana.",
+        "pic": "🔄"
+      },
+      {
+        "it": "il cameriere / la cameriera",
+        "en": "waiter / waitress",
+        "ex": "Lavoro come cameriere in un bar.",
+        "pic": "🍽️"
+      },
+      {
+        "it": "l'esperienza lavorativa",
+        "en": "work experience",
+        "ex": "Ho due anni di esperienza lavorativa.",
+        "pic": "📊"
+      },
+      {
+        "it": "la mansione",
+        "en": "job duty / task",
+        "ex": "Le mie mansioni includono la cassa.",
+        "pic": "✅"
+      },
+      {
+        "it": "il datore di lavoro",
+        "en": "employer",
+        "ex": "Il mio datore di lavoro è molto disponibile.",
+        "pic": "👔"
+      },
+      {
+        "it": "il dipendente",
+        "en": "employee",
+        "ex": "L'azienda ha cento dipendenti.",
+        "pic": "👷"
+      },
+      {
+        "it": "la ditta / l'azienda",
+        "en": "company / firm",
+        "ex": "Lavoro per una ditta di informatica.",
+        "pic": "🏭"
+      },
+      {
+        "it": "la lezione",
+        "en": "lesson / class",
+        "ex": "La lezione di italiano è alle 18.",
+        "pic": "📚"
+      },
+      {
+        "it": "i compiti",
+        "en": "homework",
+        "ex": "Faccio i compiti ogni sera.",
+        "pic": "✏️📓"
+      },
+      {
+        "it": "iscriversi",
+        "en": "to enrol / register",
+        "ex": "Mi sono iscritto al corso di italiano.",
+        "pic": "📝✅"
+      },
+      {
+        "it": "il corso",
+        "en": "course",
+        "ex": "Seguo un corso di italiano gratuito.",
+        "pic": "🎓"
+      },
+      {
+        "it": "il voto",
+        "en": "grade / mark",
+        "ex": "Ho preso un bel voto all'esame.",
+        "pic": "💯"
+      },
+      {
+        "it": "la borsa di studio",
+        "en": "scholarship",
+        "ex": "Ho vinto una borsa di studio.",
+        "pic": "🎓💶"
+      },
+      {
+        "it": "l'esame",
+        "en": "exam",
+        "ex": "Devo studiare per l'esame.",
+        "pic": "📝"
+      },
+      {
+        "it": "il tirocinio",
+        "en": "internship / work placement",
+        "ex": "Faccio un tirocinio in un'azienda.",
+        "pic": "🔬💼"
+      }
+    ]
+  },
+  {
+    "id": "transport",
+    "label": "Transport",
+    "emoji": "🚌",
+    "cards": [
+      {
+        "it": "il binario",
+        "en": "platform (train)",
+        "ex": "Il treno parte dal binario 4.",
+        "pic": "🚉"
+      },
+      {
+        "it": "in orario",
+        "en": "on time",
+        "ex": "Il treno è in orario oggi.",
+        "pic": "✅🕐"
+      },
+      {
+        "it": "in ritardo",
+        "en": "late / delayed",
+        "ex": "L'autobus è in ritardo di dieci minuti.",
+        "pic": "⏰❌"
+      },
+      {
+        "it": "l'abbonamento",
+        "en": "travel pass / monthly pass",
+        "ex": "Ho comprato l'abbonamento mensile.",
+        "pic": "🎫"
+      },
+      {
+        "it": "la fermata",
+        "en": "stop (bus/tram)",
+        "ex": "Scendo alla prossima fermata.",
+        "pic": "🚏"
+      },
+      {
+        "it": "la coincidenza",
+        "en": "connection (train/bus)",
+        "ex": "Ho perso la coincidenza per Roma.",
+        "pic": "🔀🚂"
+      },
+      {
+        "it": "l'andata e ritorno",
+        "en": "return ticket",
+        "ex": "Un biglietto andata e ritorno, per favore.",
+        "pic": "↔️🎟️"
+      },
+      {
+        "it": "solo andata",
+        "en": "one-way ticket",
+        "ex": "Voglio un biglietto solo andata.",
+        "pic": "➡️🎟️"
+      },
+      {
+        "it": "il semaforo",
+        "en": "traffic light",
+        "ex": "Fermati al semaforo rosso.",
+        "pic": "🚦"
+      },
+      {
+        "it": "la rotonda",
+        "en": "roundabout",
+        "ex": "Gira a sinistra alla rotonda.",
+        "pic": "🔄🛣️"
+      },
+      {
+        "it": "il parcheggio",
+        "en": "car park / parking",
+        "ex": "Il parcheggio è gratuito il sabato.",
+        "pic": "🅿️"
+      },
+      {
+        "it": "la multa",
+        "en": "fine / penalty",
+        "ex": "Ho preso una multa per divieto di sosta.",
+        "pic": "📋⚠️"
+      },
+      {
+        "it": "spostarsi",
+        "en": "to get around / travel",
+        "ex": "Mi sposto sempre in autobus.",
+        "pic": "🗺️"
+      },
+      {
+        "it": "cambiare (treno/bus)",
+        "en": "to change (train/bus)",
+        "ex": "Devi cambiare treno a Milano.",
+        "pic": "🔁🚂"
+      },
+      {
+        "it": "la stazione",
+        "en": "station",
+        "ex": "Ti aspetto davanti alla stazione.",
+        "pic": "🚉"
+      },
+      {
+        "it": "l'aeroporto",
+        "en": "airport",
+        "ex": "Il volo parte dall'aeroporto alle 6.",
+        "pic": "✈️"
+      },
+      {
+        "it": "il porto",
+        "en": "port / harbour",
+        "ex": "Il traghetto parte dal porto.",
+        "pic": "⛵"
+      },
+      {
+        "it": "le strisce pedonali",
+        "en": "zebra crossing",
+        "ex": "Attraversa sulle strisce pedonali.",
+        "pic": "🚶‍♀️"
+      }
+    ]
+  },
+  {
+    "id": "services",
+    "label": "Community & Services",
+    "emoji": "🏛️",
+    "cards": [
+      {
+        "it": "il volontario / la volontaria",
+        "en": "volunteer",
+        "ex": "Faccio il volontario in biblioteca.",
+        "pic": "🤝"
+      },
+      {
+        "it": "il numero verde",
+        "en": "freephone number",
+        "ex": "Chiama il numero verde per informazioni.",
+        "pic": "📞🟢"
+      },
+      {
+        "it": "gratuito / gratis",
+        "en": "free (of charge)",
+        "ex": "Il corso è gratuito per tutti i cittadini.",
+        "pic": "🆓"
+      },
+      {
+        "it": "a pagamento",
+        "en": "paid / not free",
+        "ex": "Il parcheggio in centro è a pagamento.",
+        "pic": "💳"
+      },
+      {
+        "it": "l'offerta",
+        "en": "offer / deal / promotion",
+        "ex": "C'è un'offerta speciale al supermercato.",
+        "pic": "🏷️"
+      },
+      {
+        "it": "la consegna a domicilio",
+        "en": "home delivery",
+        "ex": "Il ristorante fa consegna a domicilio.",
+        "pic": "🛵📦"
+      },
+      {
+        "it": "urgente",
+        "en": "urgent",
+        "ex": "Sono lavori urgenti, chiudono l'acqua domani.",
+        "pic": "🚨"
+      },
+      {
+        "it": "chiedere informazioni",
+        "en": "to ask for information",
+        "ex": "Posso chiedere informazioni sull'orario?",
+        "pic": "❓"
+      },
+      {
+        "it": "l'associazione",
+        "en": "association / organisation",
+        "ex": "Faccio parte di un'associazione culturale.",
+        "pic": "👥"
+      },
+      {
+        "it": "il cittadino",
+        "en": "citizen",
+        "ex": "Questo servizio è per tutti i cittadini.",
+        "pic": "🧑‍🤝‍🧑"
+      },
+      {
+        "it": "straniero / straniera",
+        "en": "foreigner / foreign",
+        "ex": "I corsi sono per cittadini stranieri.",
+        "pic": "🌍"
+      },
+      {
+        "it": "la biblioteca",
+        "en": "library",
+        "ex": "Prendo i libri in biblioteca.",
+        "pic": "📚"
+      },
+      {
+        "it": "il mercato",
+        "en": "market",
+        "ex": "Ogni sabato c'è il mercato in piazza.",
+        "pic": "🛍️"
+      },
+      {
+        "it": "il municipio",
+        "en": "town hall (building)",
+        "ex": "L'ufficio anagrafe è nel municipio.",
+        "pic": "🏛️"
+      },
+      {
+        "it": "la modulistica",
+        "en": "forms / paperwork",
+        "ex": "Devo compilare la modulistica.",
+        "pic": "📋"
+      },
+      {
+        "it": "la firma",
+        "en": "signature",
+        "ex": "Metti la firma in fondo al modulo.",
+        "pic": "✍️"
+      },
+      {
+        "it": "la fila / la coda",
+        "en": "queue",
+        "ex": "C'è molta fila allo sportello oggi.",
+        "pic": "👥➡️"
+      }
+    ]
+  },
+  {
+    "id": "food",
+    "label": "Food & Shopping",
+    "emoji": "🛒",
+    "cards": [
+      {
+        "it": "la verdura",
+        "en": "vegetables",
+        "ex": "Mangio molta verdura ogni giorno.",
+        "pic": "🥦"
+      },
+      {
+        "it": "la frutta",
+        "en": "fruit",
+        "ex": "La frutta è fresca al mercato.",
+        "pic": "🍎"
+      },
+      {
+        "it": "la carne",
+        "en": "meat",
+        "ex": "Non mangio carne, sono vegetariano.",
+        "pic": "🥩"
+      },
+      {
+        "it": "il pesce",
+        "en": "fish",
+        "ex": "Mangiamo il pesce il venerdì.",
+        "pic": "🐟"
+      },
+      {
+        "it": "il pane",
+        "en": "bread",
+        "ex": "Compro il pane fresco ogni mattina.",
+        "pic": "🍞"
+      },
+      {
+        "it": "la pasta",
+        "en": "pasta",
+        "ex": "La pasta è il piatto preferito degli italiani.",
+        "pic": "🍝"
+      },
+      {
+        "it": "il riso",
+        "en": "rice",
+        "ex": "Oggi mangio il risotto.",
+        "pic": "🍚"
+      },
+      {
+        "it": "le uova",
+        "en": "eggs",
+        "ex": "Ho bisogno di quattro uova per la torta.",
+        "pic": "🥚"
+      },
+      {
+        "it": "il latte",
+        "en": "milk",
+        "ex": "Bevo un bicchiere di latte la mattina.",
+        "pic": "🥛"
+      },
+      {
+        "it": "lo zucchero",
+        "en": "sugar",
+        "ex": "Prendo il caffè senza zucchero.",
+        "pic": "🍬"
+      },
+      {
+        "it": "l'olio d'oliva",
+        "en": "olive oil",
+        "ex": "L'olio d'oliva è ottimo per cucinare.",
+        "pic": "🫒"
+      },
+      {
+        "it": "il sale",
+        "en": "salt",
+        "ex": "Aggiungo un po' di sale alla pasta.",
+        "pic": "🧂"
+      },
+      {
+        "it": "la ricevuta / lo scontrino",
+        "en": "receipt",
+        "ex": "Conserva lo scontrino per il cambio.",
+        "pic": "🧾"
+      },
+      {
+        "it": "la cassa",
+        "en": "checkout / cash desk",
+        "ex": "Pago alla cassa.",
+        "pic": "💰"
+      },
+      {
+        "it": "in scadenza",
+        "en": "about to expire (food)",
+        "ex": "Controlla la data: è in scadenza domani.",
+        "pic": "⏳🥫"
+      },
+      {
+        "it": "la promozione",
+        "en": "promotion / special offer",
+        "ex": "C'è una promozione 3x2 sui biscotti.",
+        "pic": "🏷️🎉"
+      },
+      {
+        "it": "il carrello",
+        "en": "shopping trolley",
+        "ex": "Ho riempito il carrello.",
+        "pic": "🛒"
+      },
+      {
+        "it": "la busta (della spesa)",
+        "en": "shopping bag",
+        "ex": "Ho portato la mia busta della spesa.",
+        "pic": "🛍️"
+      },
+      {
+        "it": "la macelleria",
+        "en": "butcher's",
+        "ex": "Compro la carne in macelleria.",
+        "pic": "🔪🥩"
+      },
+      {
+        "it": "la panetteria / il forno",
+        "en": "bakery",
+        "ex": "Il forno apre alle 7 di mattina.",
+        "pic": "🥖"
+      },
+      {
+        "it": "la pescheria",
+        "en": "fishmonger's",
+        "ex": "Il pesce fresco è in pescheria.",
+        "pic": "🐠"
+      }
+    ]
+  },
+  {
+    "id": "home",
+    "label": "Home & Family",
+    "emoji": "👨‍👩‍👧",
+    "cards": [
+      {
+        "it": "la cucina",
+        "en": "kitchen",
+        "ex": "Preparo la cena in cucina.",
+        "pic": "🍳"
+      },
+      {
+        "it": "il soggiorno",
+        "en": "living room",
+        "ex": "La sera guardo la TV nel soggiorno.",
+        "pic": "🛋️"
+      },
+      {
+        "it": "la camera da letto",
+        "en": "bedroom",
+        "ex": "La mia camera da letto è piccola.",
+        "pic": "🛏️"
+      },
+      {
+        "it": "il bagno",
+        "en": "bathroom",
+        "ex": "Il bagno è in fondo al corridoio.",
+        "pic": "🚿"
+      },
+      {
+        "it": "il balcone",
+        "en": "balcony",
+        "ex": "Ho i fiori sul balcone.",
+        "pic": "🌸🏠"
+      },
+      {
+        "it": "il riscaldamento",
+        "en": "heating",
+        "ex": "Il riscaldamento è incluso nell'affitto.",
+        "pic": "🌡️🔥"
+      },
+      {
+        "it": "il rubinetto",
+        "en": "tap / faucet",
+        "ex": "Il rubinetto perde acqua.",
+        "pic": "🚰"
+      },
+      {
+        "it": "il guasto",
+        "en": "breakdown / fault",
+        "ex": "C'è un guasto al riscaldamento.",
+        "pic": "🔧❌"
+      },
+      {
+        "it": "l'idraulico",
+        "en": "plumber",
+        "ex": "Ho chiamato l'idraulico per il rubinetto.",
+        "pic": "🔧"
+      },
+      {
+        "it": "l'elettricista",
+        "en": "electrician",
+        "ex": "L'elettricista viene domani mattina.",
+        "pic": "⚡"
+      },
+      {
+        "it": "il marito / la moglie",
+        "en": "husband / wife",
+        "ex": "Mio marito lavora in centro.",
+        "pic": "👫"
+      },
+      {
+        "it": "il figlio / la figlia",
+        "en": "son / daughter",
+        "ex": "Mia figlia va a scuola elementare.",
+        "pic": "👦👧"
+      },
+      {
+        "it": "il fratello / la sorella",
+        "en": "brother / sister",
+        "ex": "Ho due fratelli e una sorella.",
+        "pic": "👬"
+      },
+      {
+        "it": "i nonni",
+        "en": "grandparents",
+        "ex": "I nonni abitano in campagna.",
+        "pic": "👴👵"
+      },
+      {
+        "it": "da solo / da sola",
+        "en": "alone / by oneself",
+        "ex": "Vivo da sola in questo appartamento.",
+        "pic": "🧍"
+      }
+    ]
+  },
+  {
+    "id": "verbs",
+    "label": "Key Verbs",
+    "emoji": "⚡",
+    "cards": [
+      {
+        "it": "trasferirsi",
+        "en": "to move (house/city)",
+        "ex": "Mi sono trasferito in Italia due anni fa.",
+        "pic": "🚚📦"
+      },
+      {
+        "it": "compilare",
+        "en": "to fill in (a form)",
+        "ex": "Devo compilare questo modulo.",
+        "pic": "📝"
+      },
+      {
+        "it": "ritirare",
+        "en": "to collect / pick up",
+        "ex": "Ritiro il pacco all'ufficio postale.",
+        "pic": "📦👋"
+      },
+      {
+        "it": "mancare",
+        "en": "to be missing / be absent",
+        "ex": "Domani mancherà l'acqua per tre ore.",
+        "pic": "❓"
+      },
+      {
+        "it": "controllare",
+        "en": "to check / inspect",
+        "ex": "I tecnici controllano gli ascensori.",
+        "pic": "🔍"
+      },
+      {
+        "it": "suonare il campanello",
+        "en": "to ring the doorbell",
+        "ex": "Suona pure al mio campanello.",
+        "pic": "🔔"
+      },
+      {
+        "it": "assicurare",
+        "en": "to insure / guarantee",
+        "ex": "Ho assicurato la mia casa.",
+        "pic": "🛡️"
+      },
+      {
+        "it": "organizzare",
+        "en": "to organise",
+        "ex": "Il comune organizza corsi gratuiti.",
+        "pic": "📋✅"
+      },
+      {
+        "it": "riparare",
+        "en": "to repair / fix",
+        "ex": "L'idraulico ripara il rubinetto rotto.",
+        "pic": "🔧"
+      },
+      {
+        "it": "aspettare",
+        "en": "to wait / expect",
+        "ex": "Aspetto un pacco importante.",
+        "pic": "⏳"
+      },
+      {
+        "it": "portare",
+        "en": "to bring / carry",
+        "ex": "Porta i documenti con te.",
+        "pic": "📁👋"
+      },
+      {
+        "it": "ricordare",
+        "en": "to remember / remind",
+        "ex": "Le ricordo l'appuntamento di giovedì.",
+        "pic": "💭"
+      },
+      {
+        "it": "aiutare",
+        "en": "to help",
+        "ex": "Gli impiegati ti aiutano con i documenti.",
+        "pic": "🤝"
+      },
+      {
+        "it": "scadere",
+        "en": "to expire",
+        "ex": "La carta d'identità scade tra due mesi.",
+        "pic": "📅❌"
+      },
+      {
+        "it": "firmare",
+        "en": "to sign",
+        "ex": "Devo firmare il contratto.",
+        "pic": "✍️"
+      },
+      {
+        "it": "rinnovare",
+        "en": "to renew",
+        "ex": "Devo rinnovare il permesso di soggiorno.",
+        "pic": "🔄📄"
+      },
+      {
+        "it": "consegnare",
+        "en": "to deliver / hand over",
+        "ex": "Il corriere consegna i pacchi al mattino.",
+        "pic": "📦➡️"
+      },
+      {
+        "it": "richiedere",
+        "en": "to request / apply for",
+        "ex": "Ho richiesto un documento online.",
+        "pic": "📨"
+      },
+      {
+        "it": "presentarsi",
+        "en": "to introduce oneself / turn up",
+        "ex": "Mi sono presentato all'ufficio con i documenti.",
+        "pic": "👋"
+      },
+      {
+        "it": "iscriversi",
+        "en": "to enrol / register",
+        "ex": "Mi sono iscritto al corso di italiano.",
+        "pic": "✅📝"
+      },
+      {
+        "it": "cambiare",
+        "en": "to change",
+        "ex": "Ho cambiato medico di base.",
+        "pic": "🔄"
+      },
+      {
+        "it": "scegliere",
+        "en": "to choose",
+        "ex": "Devo scegliere un nuovo medico.",
+        "pic": "🤔✅"
+      },
+      {
+        "it": "avvisare",
+        "en": "to notify / warn",
+        "ex": "Il comune avvisa i cittadini via lettera.",
+        "pic": "📢"
+      },
+      {
+        "it": "spiegare",
+        "en": "to explain",
+        "ex": "L'impiegato mi ha spiegato la procedura.",
+        "pic": "💬"
+      },
+      {
+        "it": "aprire / chiudere",
+        "en": "to open / close",
+        "ex": "Lo sportello apre alle 9 e chiude alle 13.",
+        "pic": "🔓🔐"
+      },
+      {
+        "it": "pagare",
+        "en": "to pay",
+        "ex": "Ho pagato la multa online.",
+        "pic": "💳"
+      },
+      {
+        "it": "prenotare",
+        "en": "to book / reserve",
+        "ex": "Ho prenotato una visita dal medico.",
+        "pic": "📅✅"
+      },
+      {
+        "it": "partecipare (a)",
+        "en": "to participate (in)",
+        "ex": "Partecipo a un corso di cucina.",
+        "pic": "🙋"
+      },
+      {
+        "it": "frequentare",
+        "en": "to attend regularly",
+        "ex": "Frequento un corso di italiano.",
+        "pic": "🎓"
+      }
+    ]
+  },
+  {
+    "id": "adjectives",
+    "label": "Adjectives",
+    "emoji": "🎨",
+    "cards": [
+      {
+        "it": "gratuito",
+        "en": "free (of charge)",
+        "ex": "Il corso è completamente gratuito.",
+        "pic": "🆓"
+      },
+      {
+        "it": "urgente",
+        "en": "urgent",
+        "ex": "È una questione urgente.",
+        "pic": "🚨"
+      },
+      {
+        "it": "disponibile",
+        "en": "available / helpful",
+        "ex": "Il medico è molto disponibile.",
+        "pic": "✅"
+      },
+      {
+        "it": "puntuale",
+        "en": "punctual / on time",
+        "ex": "Il treno è sempre puntuale.",
+        "pic": "⏱️✅"
+      },
+      {
+        "it": "straniero",
+        "en": "foreign / foreigner",
+        "ex": "Sono uno studente straniero.",
+        "pic": "🌍"
+      },
+      {
+        "it": "vicino / lontano",
+        "en": "near / far",
+        "ex": "La farmacia è vicina, il pronto soccorso è lontano.",
+        "pic": "📍"
+      },
+      {
+        "it": "aperto / chiuso",
+        "en": "open / closed",
+        "ex": "Il negozio è aperto fino alle 20.",
+        "pic": "🔓🔐"
+      },
+      {
+        "it": "pieno / vuoto",
+        "en": "full / empty",
+        "ex": "Il treno è pieno di gente.",
+        "pic": "🪣"
+      },
+      {
+        "it": "fresco",
+        "en": "fresh / cool",
+        "ex": "Compro sempre il pane fresco.",
+        "pic": "🌿"
+      },
+      {
+        "it": "scaduto",
+        "en": "expired / past use-by date",
+        "ex": "Il latte è scaduto ieri.",
+        "pic": "📅❌"
+      },
+      {
+        "it": "obbligatorio",
+        "en": "compulsory / required",
+        "ex": "Il documento è obbligatorio per iscriversi.",
+        "pic": "⚠️"
+      },
+      {
+        "it": "previsto",
+        "en": "planned / scheduled",
+        "ex": "La visita è prevista per domani.",
+        "pic": "📆"
+      },
+      {
+        "it": "occupato",
+        "en": "busy / occupied",
+        "ex": "Il medico è occupato adesso.",
+        "pic": "🔴"
+      },
+      {
+        "it": "libero",
+        "en": "free / available",
+        "ex": "Ho un posto libero alle 15.",
+        "pic": "🟢"
+      },
+      {
+        "it": "tranquillo",
+        "en": "quiet / calm",
+        "ex": "Abito in un quartiere tranquillo.",
+        "pic": "😌"
+      },
+      {
+        "it": "rumoroso",
+        "en": "noisy",
+        "ex": "Il mio vicino è molto rumoroso di notte.",
+        "pic": "📣"
+      },
+      {
+        "it": "luminoso",
+        "en": "bright / light-filled",
+        "ex": "L'appartamento è luminoso e grande.",
+        "pic": "☀️"
+      },
+      {
+        "it": "comodo",
+        "en": "comfortable / convenient",
+        "ex": "L'autobus è comodo per andare in centro.",
+        "pic": "👌"
+      }
+    ]
+  },
+  {
+    "id": "time",
+    "label": "Time & Frequency",
+    "emoji": "🕐",
+    "cards": [
+      {
+        "it": "ogni giorno / quotidiano",
+        "en": "every day / daily",
+        "ex": "Faccio la spesa ogni giorno.",
+        "pic": "📅"
+      },
+      {
+        "it": "ogni settimana",
+        "en": "every week",
+        "ex": "Il mercato c'è ogni settimana.",
+        "pic": "🗓️"
+      },
+      {
+        "it": "ogni mese / mensile",
+        "en": "every month / monthly",
+        "ex": "Pago l'affitto ogni mese.",
+        "pic": "📆"
+      },
+      {
+        "it": "dal lunedì al venerdì",
+        "en": "Monday to Friday",
+        "ex": "Lo sportello è aperto dal lunedì al venerdì.",
+        "pic": "🗓️"
+      },
+      {
+        "it": "nei giorni festivi",
+        "en": "on public holidays",
+        "ex": "Lo sportello è chiuso nei giorni festivi.",
+        "pic": "🎉"
+      },
+      {
+        "it": "di mattina / al mattino",
+        "en": "in the morning",
+        "ex": "Studio di mattina.",
+        "pic": "🌅"
+      },
+      {
+        "it": "di sera / la sera",
+        "en": "in the evening",
+        "ex": "Lavoro di sera.",
+        "pic": "🌆"
+      },
+      {
+        "it": "a mezzogiorno",
+        "en": "at midday / noon",
+        "ex": "Mangio a mezzogiorno.",
+        "pic": "☀️12"
+      },
+      {
+        "it": "a mezzanotte",
+        "en": "at midnight",
+        "ex": "Il portone si chiude a mezzanotte.",
+        "pic": "🌙"
+      },
+      {
+        "it": "l'anno scorso",
+        "en": "last year",
+        "ex": "L'anno scorso ho trovato lavoro.",
+        "pic": "⬅️📅"
+      },
+      {
+        "it": "l'anno prossimo",
+        "en": "next year",
+        "ex": "L'anno prossimo mi laureo.",
+        "pic": "➡️📅"
+      },
+      {
+        "it": "tra poco",
+        "en": "soon / in a little while",
+        "ex": "Il treno arriva tra poco.",
+        "pic": "⏱️"
+      },
+      {
+        "it": "fino a",
+        "en": "until / up to",
+        "ex": "Il negozio è aperto fino alle 20.",
+        "pic": "⏹️"
+      },
+      {
+        "it": "già",
+        "en": "already",
+        "ex": "Ho già mangiato, grazie.",
+        "pic": "✅"
+      },
+      {
+        "it": "ancora",
+        "en": "still / yet",
+        "ex": "Non ho ancora finito i compiti.",
+        "pic": "⏳"
+      },
+      {
+        "it": "di solito",
+        "en": "usually",
+        "ex": "Di solito mi sveglio alle 7.",
+        "pic": "🔄"
+      },
+      {
+        "it": "a volte",
+        "en": "sometimes",
+        "ex": "A volte vado al cinema il sabato.",
+        "pic": "🤷"
+      },
+      {
+        "it": "spesso",
+        "en": "often",
+        "ex": "Vado spesso in biblioteca.",
+        "pic": "🔁"
+      },
+      {
+        "it": "raramente",
+        "en": "rarely",
+        "ex": "Raramente mangio fuori.",
+        "pic": "🌙❓"
+      },
+      {
+        "it": "mai",
+        "en": "never",
+        "ex": "Non vado mai a letto tardi.",
+        "pic": "🚫"
+      }
+    ]
+  },
+  {
+    "id": "city",
+    "label": "City & Places",
+    "emoji": "🏙️",
+    "cards": [
+      {
+        "it": "la piazza",
+        "en": "square / plaza",
+        "ex": "Ci incontriamo in piazza alle 10.",
+        "pic": "⛲"
+      },
+      {
+        "it": "la via / il viale",
+        "en": "street / avenue",
+        "ex": "Abito in via Roma, numero 5.",
+        "pic": "🛣️"
+      },
+      {
+        "it": "l'incrocio",
+        "en": "crossroads / junction",
+        "ex": "Gira a destra al prossimo incrocio.",
+        "pic": "✚"
+      },
+      {
+        "it": "il marciapiede",
+        "en": "pavement / sidewalk",
+        "ex": "Cammina sul marciapiede.",
+        "pic": "🚶"
+      },
+      {
+        "it": "la banca",
+        "en": "bank",
+        "ex": "Devo andare in banca a prelevare.",
+        "pic": "🏦"
+      },
+      {
+        "it": "lo sportello bancomat",
+        "en": "ATM / cash machine",
+        "ex": "C'è uno sportello bancomat all'angolo.",
+        "pic": "🏧"
+      },
+      {
+        "it": "la chiesa",
+        "en": "church",
+        "ex": "La chiesa è in centro storico.",
+        "pic": "⛪"
+      },
+      {
+        "it": "il parco",
+        "en": "park",
+        "ex": "Porto i bambini al parco il pomeriggio.",
+        "pic": "🌳"
+      },
+      {
+        "it": "la scuola elementare",
+        "en": "primary school",
+        "ex": "Mia figlia va alla scuola elementare.",
+        "pic": "🏫"
+      },
+      {
+        "it": "l'università",
+        "en": "university",
+        "ex": "Studio all'università di Bologna.",
+        "pic": "🎓"
+      },
+      {
+        "it": "il teatro",
+        "en": "theatre",
+        "ex": "Andiamo a teatro sabato sera.",
+        "pic": "🎭"
+      },
+      {
+        "it": "il cinema",
+        "en": "cinema",
+        "ex": "C'è un bel film al cinema questa settimana.",
+        "pic": "🎬"
+      },
+      {
+        "it": "il museo",
+        "en": "museum",
+        "ex": "Il museo è aperto il martedì.",
+        "pic": "🏛️"
+      },
+      {
+        "it": "l'ospedale",
+        "en": "hospital",
+        "ex": "L'ospedale più vicino è a 5 km.",
+        "pic": "🏥"
+      },
+      {
+        "it": "la questura",
+        "en": "police headquarters",
+        "ex": "Vado in questura per il permesso di soggiorno.",
+        "pic": "👮"
+      },
+      {
+        "it": "l'ambasciata",
+        "en": "embassy",
+        "ex": "Mi rivolgo all'ambasciata per il passaporto.",
+        "pic": "🏴"
+      },
+      {
+        "it": "il centro storico",
+        "en": "old town / historic centre",
+        "ex": "Il museo è nel centro storico.",
+        "pic": "🏰"
+      },
+      {
+        "it": "la periferia",
+        "en": "outskirts / suburbs",
+        "ex": "Abito in periferia, lontano dal centro.",
+        "pic": "🏘️"
+      }
+    ]
+  },
+  {
+    "id": "verbs-essential",
+    "label": "Verbi Essenziali A2",
+    "emoji": "🔑",
+    "cards": [
+      {
+        "it": "abbracciare",
+        "en": "to hug",
+        "ex": "Ho abbracciato i miei figli appena sono tornato.",
+        "pic": "🤗"
+      },
+      {
+        "it": "abituarsi (a)",
+        "en": "to get used to",
+        "ex": "Mi sto abituando al clima freddo del nord Italia.",
+        "pic": "🌡️✅"
+      },
+      {
+        "it": "accogliere",
+        "en": "to welcome / receive",
+        "ex": "I vicini ci hanno accolto con un sorriso.",
+        "pic": "🤝😊"
+      },
+      {
+        "it": "accompagnare",
+        "en": "to accompany / take",
+        "ex": "Accompagno mio figlio a scuola ogni mattina.",
+        "pic": "👨‍👦🚶"
+      },
+      {
+        "it": "accorgersi (di)",
+        "en": "to notice / realise",
+        "ex": "Non mi sono accorto dell'errore subito.",
+        "pic": "👁️💡"
+      },
+      {
+        "it": "aggiungere",
+        "en": "to add",
+        "ex": "Aggiungi un po' di sale alla pasta.",
+        "pic": "➕🧂"
+      },
+      {
+        "it": "ammettere",
+        "en": "to admit",
+        "ex": "Ammetto di aver sbagliato — mi scuso.",
+        "pic": "🙋‍♂️✅"
+      },
+      {
+        "it": "annoiarsi",
+        "en": "to get bored",
+        "ex": "Mi annoio quando non ho niente da fare.",
+        "pic": "😴💬"
+      },
+      {
+        "it": "apparire",
+        "en": "to appear / seem",
+        "ex": "Appare stanco — deve riposarsi.",
+        "pic": "👤✨"
+      },
+      {
+        "it": "appartenere (a)",
+        "en": "to belong to",
+        "ex": "Questo documento appartiene all'ufficio immigrazione.",
+        "pic": "📄🏛️"
+      },
+      {
+        "it": "arrabbiarsi",
+        "en": "to get angry",
+        "ex": "Mi sono arrabbiato perché ho perso il treno.",
+        "pic": "😠"
+      },
+      {
+        "it": "aspettarsi",
+        "en": "to expect",
+        "ex": "Non mi aspettavo una risposta così veloce.",
+        "pic": "😮"
+      },
+      {
+        "it": "baciare",
+        "en": "to kiss",
+        "ex": "Gli italiani si salutano con due baci sulla guancia.",
+        "pic": "😘"
+      },
+      {
+        "it": "ballare",
+        "en": "to dance",
+        "ex": "Ballo la salsa ogni venerdì sera.",
+        "pic": "💃"
+      },
+      {
+        "it": "bisognare",
+        "en": "to be necessary (bisogna + inf.)",
+        "ex": "Bisogna portare tutti i documenti originali.",
+        "pic": "⚠️📋"
+      },
+      {
+        "it": "bussare",
+        "en": "to knock",
+        "ex": "Busso alla porta prima di entrare.",
+        "pic": "✊🚪"
+      },
+      {
+        "it": "cadere",
+        "en": "to fall",
+        "ex": "Sono caduto sulla ghiaccio e mi sono fatto male.",
+        "pic": "🧊😣"
+      },
+      {
+        "it": "calmarsi",
+        "en": "to calm down",
+        "ex": "Calmati — ti spiego tutto con calma.",
+        "pic": "😤➡️😌"
+      },
+      {
+        "it": "cantare",
+        "en": "to sing",
+        "ex": "Canto sotto la doccia ogni mattina!",
+        "pic": "🎵🚿"
+      },
+      {
+        "it": "causare",
+        "en": "to cause",
+        "ex": "L'incidente ha causato molto traffico.",
+        "pic": "⚠️"
+      },
+      {
+        "it": "cercare (di + inf.)",
+        "en": "to try to / look for",
+        "ex": "Cerco di parlare italiano ogni giorno.",
+        "pic": "🔍"
+      },
+      {
+        "it": "cogliere",
+        "en": "to catch / pick up on",
+        "ex": "Ho colto l'opportunità di lavoro subito.",
+        "pic": "🎯"
+      },
+      {
+        "it": "cominciare (a + inf.)",
+        "en": "to begin to",
+        "ex": "Ho cominciato a studiare italiano sei mesi fa.",
+        "pic": "🚦✅"
+      },
+      {
+        "it": "comportarsi",
+        "en": "to behave",
+        "ex": "Bisogna comportarsi bene in ufficio.",
+        "pic": "🧑‍💼✅"
+      },
+      {
+        "it": "condividere",
+        "en": "to share",
+        "ex": "Condivido l'appartamento con due colleghi.",
+        "pic": "🏠👥"
+      },
+      {
+        "it": "conoscere",
+        "en": "to know (person/place)",
+        "ex": "Conosco bene la città — ci vivo da tre anni.",
+        "pic": "🗺️✅"
+      },
+      {
+        "it": "consigliare",
+        "en": "to advise / recommend",
+        "ex": "Mi ha consigliato un buon avvocato.",
+        "pic": "💡👍"
+      },
+      {
+        "it": "continuare (a + inf.)",
+        "en": "to continue to",
+        "ex": "Continuo a studiare anche nei weekend.",
+        "pic": "➡️📚"
+      },
+      {
+        "it": "correre",
+        "en": "to run",
+        "ex": "Corro al parco tre volte a settimana.",
+        "pic": "🏃"
+      },
+      {
+        "it": "credere (di/che)",
+        "en": "to believe / think",
+        "ex": "Credo che l'ufficio chiuda alle 13.",
+        "pic": "💭"
+      },
+      {
+        "it": "diventare",
+        "en": "to become",
+        "ex": "Voglio diventare cittadino italiano.",
+        "pic": "🇮🇹✨"
+      },
+      {
+        "it": "dormire",
+        "en": "to sleep",
+        "ex": "Dormo male quando ho troppo stress.",
+        "pic": "😴"
+      },
+      {
+        "it": "dubitare",
+        "en": "to doubt",
+        "ex": "Dubito che sia facile — ma ci provo.",
+        "pic": "🤔❓"
+      },
+      {
+        "it": "ferire",
+        "en": "to injure / hurt",
+        "ex": "Mi sono ferito alla mano sul lavoro.",
+        "pic": "🤕"
+      },
+      {
+        "it": "fidarsi (di)",
+        "en": "to trust",
+        "ex": "Mi fido del mio dottore — è molto bravo.",
+        "pic": "🤝💙"
+      },
+      {
+        "it": "finire (di + inf.)",
+        "en": "to finish / stop doing",
+        "ex": "Ho finito di lavorare alle sei di sera.",
+        "pic": "✅🕕"
+      },
+      {
+        "it": "incontrare",
+        "en": "to meet",
+        "ex": "Incontro i miei amici al bar il sabato.",
+        "pic": "👫☕"
+      },
+      {
+        "it": "iniziare (a + inf.)",
+        "en": "to start to",
+        "ex": "Ho iniziato a lavorare qui un anno fa.",
+        "pic": "🚀"
+      },
+      {
+        "it": "insegnare",
+        "en": "to teach",
+        "ex": "Insegna italiano agli stranieri al comune.",
+        "pic": "👩‍🏫"
+      },
+      {
+        "it": "lasciare",
+        "en": "to leave (sth/sb)",
+        "ex": "Ho lasciato il messaggio in segreteria.",
+        "pic": "📨"
+      },
+      {
+        "it": "perdere",
+        "en": "to lose / miss",
+        "ex": "Ho perso il treno — aspetto il prossimo.",
+        "pic": "🚆❌"
+      },
+      {
+        "it": "permettere (di)",
+        "en": "to allow / permit",
+        "ex": "Il contratto non permette di lavorare part-time.",
+        "pic": "🚫📋"
+      },
+      {
+        "it": "prendere",
+        "en": "to take / catch",
+        "ex": "Prendo l'autobus numero 5 ogni mattina.",
+        "pic": "🚌"
+      },
+      {
+        "it": "provare (a + inf.)",
+        "en": "to try to",
+        "ex": "Prova a chiamarli di nuovo domani.",
+        "pic": "🔄"
+      },
+      {
+        "it": "rendere",
+        "en": "to make / render",
+        "ex": "Questo corso mi rende più sicuro in italiano.",
+        "pic": "💪✨"
+      },
+      {
+        "it": "rientrare",
+        "en": "to return / get back",
+        "ex": "Rientro a casa sempre prima delle otto.",
+        "pic": "🏠⬅️"
+      },
+      {
+        "it": "sentire",
+        "en": "to hear / feel",
+        "ex": "Sento che il mio italiano è migliorato molto.",
+        "pic": "👂💡"
+      },
+      {
+        "it": "smettere (di + inf.)",
+        "en": "to stop doing",
+        "ex": "Ho smesso di fumare due anni fa.",
+        "pic": "🚬❌"
+      },
+      {
+        "it": "succedere",
+        "en": "to happen",
+        "ex": "Cos'è successo? Stai bene?",
+        "pic": "❓😲"
+      },
+      {
+        "it": "tenere",
+        "en": "to keep / hold",
+        "ex": "Tieni i documenti in un posto sicuro.",
+        "pic": "📁🔒"
+      },
+      {
+        "it": "toccare",
+        "en": "to touch / be one's turn",
+        "ex": "Tocca a te — sei il prossimo allo sportello.",
+        "pic": "☝️"
+      },
+      {
+        "it": "trattare (di)",
+        "en": "to deal with / be about",
+        "ex": "Il corso tratta di grammatica italiana.",
+        "pic": "📖"
+      },
+      {
+        "it": "trovare",
+        "en": "to find",
+        "ex": "Ho trovato lavoro in un'officina vicino a casa.",
+        "pic": "🔍✅"
+      },
+      {
+        "it": "usare",
+        "en": "to use",
+        "ex": "Uso sempre il dizionario quando non capisco.",
+        "pic": "📖👆"
+      },
+      {
+        "it": "valere",
+        "en": "to be worth / be valid",
+        "ex": "Questo documento vale come carta d'identità.",
+        "pic": "📄✅"
+      },
+      {
+        "it": "vincere",
+        "en": "to win",
+        "ex": "Ho vinto un corso di italiano gratuito!",
+        "pic": "🏆"
+      },
+      {
+        "it": "visitare",
+        "en": "to visit (place)",
+        "ex": "Ho visitato il museo nazionale la settimana scorsa.",
+        "pic": "🏛️"
+      },
+      {
+        "it": "vivere",
+        "en": "to live",
+        "ex": "Vivo in Italia da tre anni con la mia famiglia.",
+        "pic": "🏡"
+      }
+    ]
+  },
+  {
+    "id": "verbs-daily",
+    "label": "Verbi — Vita Quotidiana",
+    "emoji": "🌅",
+    "cards": [
+      {
+        "it": "svegliarsi",
+        "en": "to wake up",
+        "ex": "Mi sveglio sempre alle 7 anche il sabato.",
+        "pic": "⏰"
+      },
+      {
+        "it": "alzarsi",
+        "en": "to get up",
+        "ex": "Mi alzo, faccio la doccia e preparo la colazione.",
+        "pic": "🛏️➡️"
+      },
+      {
+        "it": "vestirsi",
+        "en": "to get dressed",
+        "ex": "Mi vesto in fretta perché sono in ritardo.",
+        "pic": "👕"
+      },
+      {
+        "it": "lavarsi",
+        "en": "to wash oneself",
+        "ex": "Mi lavo i denti tre volte al giorno.",
+        "pic": "🪥"
+      },
+      {
+        "it": "fare colazione",
+        "en": "to have breakfast",
+        "ex": "Faccio colazione con un caffè e un cornetto.",
+        "pic": "☕🥐"
+      },
+      {
+        "it": "andare al lavoro",
+        "en": "to go to work",
+        "ex": "Vado al lavoro in autobus ogni mattina.",
+        "pic": "🚌💼"
+      },
+      {
+        "it": "tornare a casa",
+        "en": "to come home",
+        "ex": "Torno a casa stanca ma contenta.",
+        "pic": "🏠🔑"
+      },
+      {
+        "it": "cucinare",
+        "en": "to cook",
+        "ex": "Cucino la pasta al pomodoro quasi ogni sera.",
+        "pic": "🍳"
+      },
+      {
+        "it": "fare la spesa",
+        "en": "to do the grocery shopping",
+        "ex": "Faccio la spesa ogni venerdì al supermercato.",
+        "pic": "🛒"
+      },
+      {
+        "it": "pulire",
+        "en": "to clean",
+        "ex": "Pulisco il bagno il sabato mattina.",
+        "pic": "🧹"
+      },
+      {
+        "it": "lavare i piatti",
+        "en": "to wash the dishes",
+        "ex": "Dopo cena lavo i piatti o li metto in lavastoviglie.",
+        "pic": "🍽️💧"
+      },
+      {
+        "it": "stirare",
+        "en": "to iron",
+        "ex": "Non mi piace stirare, ma devo farlo ogni settimana.",
+        "pic": "👔🔥"
+      },
+      {
+        "it": "riposarsi",
+        "en": "to rest",
+        "ex": "Il pomeriggio mi riposo sul divano.",
+        "pic": "😴🛋️"
+      },
+      {
+        "it": "addormentarsi",
+        "en": "to fall asleep",
+        "ex": "Mi addormento sempre davanti alla tv.",
+        "pic": "😴📺"
+      },
+      {
+        "it": "sognare",
+        "en": "to dream",
+        "ex": "Ho sognato di tornare nel mio paese.",
+        "pic": "💭✨"
+      },
+      {
+        "it": "dimenticare",
+        "en": "to forget",
+        "ex": "Ho dimenticato le chiavi in ufficio!",
+        "pic": "🗝️❓"
+      },
+      {
+        "it": "ricordare",
+        "en": "to remember",
+        "ex": "Non ricordo il numero di telefono a memoria.",
+        "pic": "💡💭"
+      },
+      {
+        "it": "sbagliare",
+        "en": "to make a mistake",
+        "ex": "Ho sbagliato strada — devo tornare indietro.",
+        "pic": "❌🗺️"
+      },
+      {
+        "it": "capire",
+        "en": "to understand",
+        "ex": "Non capisco bene il dialetto locale.",
+        "pic": "🤔💡"
+      },
+      {
+        "it": "imparare",
+        "en": "to learn",
+        "ex": "Sto imparando l'italiano da sei mesi.",
+        "pic": "📚✨"
+      },
+      {
+        "it": "studiare",
+        "en": "to study",
+        "ex": "Studio italiano ogni sera dopo cena.",
+        "pic": "📖"
+      },
+      {
+        "it": "lavorare",
+        "en": "to work",
+        "ex": "Lavoro in un ristorante dal lunedì al sabato.",
+        "pic": "💪"
+      },
+      {
+        "it": "guadagnare",
+        "en": "to earn",
+        "ex": "Guadagno milleduecento euro al mese.",
+        "pic": "💶"
+      },
+      {
+        "it": "spendere",
+        "en": "to spend (money)",
+        "ex": "Spendo troppo in abbigliamento!",
+        "pic": "💸"
+      },
+      {
+        "it": "risparmiare",
+        "en": "to save (money)",
+        "ex": "Cerco di risparmiare almeno 200 euro al mese.",
+        "pic": "🐷💰"
+      },
+      {
+        "it": "comprare / vendere",
+        "en": "to buy / to sell",
+        "ex": "Ho comprato una bici usata online.",
+        "pic": "🛍️"
+      },
+      {
+        "it": "giocare",
+        "en": "to play (game/sport)",
+        "ex": "Gioco a calcio con gli amici ogni domenica.",
+        "pic": "⚽"
+      },
+      {
+        "it": "guardare",
+        "en": "to watch / look at",
+        "ex": "Guardo le notizie in italiano per esercitarmi.",
+        "pic": "📺👀"
+      },
+      {
+        "it": "ascoltare",
+        "en": "to listen to",
+        "ex": "Ascolto musica italiana in macchina.",
+        "pic": "🎧"
+      },
+      {
+        "it": "leggere",
+        "en": "to read",
+        "ex": "Leggo il giornale ogni mattina.",
+        "pic": "📰"
+      },
+      {
+        "it": "scrivere",
+        "en": "to write",
+        "ex": "Scrivo un messaggio ai miei genitori ogni domenica.",
+        "pic": "✍️"
+      }
+    ]
+  },
+  {
+    "id": "verbs-move",
+    "label": "Verbi — Movimento & Comunicazione",
+    "emoji": "🗣️",
+    "cards": [
+      {
+        "it": "andare (a + inf.)",
+        "en": "to go (to do sth)",
+        "ex": "Vado a fare la spesa. Vado a lavorare.",
+        "pic": "🚶➡️"
+      },
+      {
+        "it": "venire",
+        "en": "to come",
+        "ex": "Vieni anche tu alla festa sabato?",
+        "pic": "🚶⬅️"
+      },
+      {
+        "it": "tornare",
+        "en": "to return / come back",
+        "ex": "Torno da mia sorella domani sera.",
+        "pic": "↩️"
+      },
+      {
+        "it": "partire",
+        "en": "to leave / depart",
+        "ex": "Il treno parte dal binario 3 alle 10:15.",
+        "pic": "🚆💨"
+      },
+      {
+        "it": "arrivare",
+        "en": "to arrive",
+        "ex": "Sono arrivato in Italia tre anni fa.",
+        "pic": "🛬"
+      },
+      {
+        "it": "passare (da)",
+        "en": "to pass by / stop by",
+        "ex": "Passo da te dopo il lavoro.",
+        "pic": "🚶🏠"
+      },
+      {
+        "it": "uscire",
+        "en": "to go out",
+        "ex": "Usciamo a prendere un aperitivo?",
+        "pic": "🚪➡️"
+      },
+      {
+        "it": "entrare",
+        "en": "to enter / go in",
+        "ex": "Entra pure, la porta è aperta.",
+        "pic": "🚪⬅️"
+      },
+      {
+        "it": "salire / scendere",
+        "en": "to go up / go down",
+        "ex": "Salgo al terzo piano. Scendo alla prossima fermata.",
+        "pic": "⬆️⬇️"
+      },
+      {
+        "it": "fermarsi",
+        "en": "to stop",
+        "ex": "Il bus si ferma davanti alla scuola.",
+        "pic": "🛑"
+      },
+      {
+        "it": "girare",
+        "en": "to turn",
+        "ex": "Gira a destra al semaforo e poi vai dritto.",
+        "pic": "↪️"
+      },
+      {
+        "it": "attraversare",
+        "en": "to cross",
+        "ex": "Attraversa la piazza e trovi la banca.",
+        "pic": "🚶⬛"
+      },
+      {
+        "it": "parlare (con / di)",
+        "en": "to speak / talk (with / about)",
+        "ex": "Parlo con il direttore domani. Parliamo di sport.",
+        "pic": "💬"
+      },
+      {
+        "it": "chiedere",
+        "en": "to ask",
+        "ex": "Ho chiesto informazioni allo sportello.",
+        "pic": "❓🙋"
+      },
+      {
+        "it": "rispondere",
+        "en": "to answer / reply",
+        "ex": "Ha risposto subito alla mia email.",
+        "pic": "↩️💬"
+      },
+      {
+        "it": "dire",
+        "en": "to say / tell",
+        "ex": "Mi ha detto che l'ufficio è chiuso il lunedì.",
+        "pic": "🗣️"
+      },
+      {
+        "it": "raccontare",
+        "en": "to tell (a story) / recount",
+        "ex": "Mi racconta com'è andata la sua giornata.",
+        "pic": "📖🗣️"
+      },
+      {
+        "it": "spiegare",
+        "en": "to explain",
+        "ex": "Può spiegarmi come si fa la domanda?",
+        "pic": "📋💬"
+      },
+      {
+        "it": "chiamare",
+        "en": "to call",
+        "ex": "Ti chiamo appena arrivo — aspettami.",
+        "pic": "📞"
+      },
+      {
+        "it": "mandare",
+        "en": "to send",
+        "ex": "Ti mando la foto del documento per messaggio.",
+        "pic": "📤"
+      },
+      {
+        "it": "ricevere",
+        "en": "to receive",
+        "ex": "Ho ricevuto una lettera dal comune.",
+        "pic": "📥"
+      },
+      {
+        "it": "incontrare",
+        "en": "to meet (by chance or arrangement)",
+        "ex": "Ho incontrato il mio capo per caso al bar.",
+        "pic": "🤝"
+      },
+      {
+        "it": "salutare",
+        "en": "to greet / say goodbye",
+        "ex": "Ho salutato i colleghi prima di uscire.",
+        "pic": "👋"
+      },
+      {
+        "it": "invitare",
+        "en": "to invite",
+        "ex": "Ho invitato i vicini a cena sabato.",
+        "pic": "🎉📩"
+      },
+      {
+        "it": "ringraziare",
+        "en": "to thank",
+        "ex": "Voglio ringraziare tutti per l'aiuto.",
+        "pic": "🙏"
+      },
+      {
+        "it": "scusarsi",
+        "en": "to apologise",
+        "ex": "Mi scuso per il ritardo — c'era traffico.",
+        "pic": "😔🙏"
+      },
+      {
+        "it": "lamentarsi (di)",
+        "en": "to complain (about)",
+        "ex": "Mi lamento del rumore dei vicini.",
+        "pic": "😤"
+      },
+      {
+        "it": "preoccuparsi",
+        "en": "to worry",
+        "ex": "Non preoccuparti — tutto si risolve.",
+        "pic": "😟"
+      },
+      {
+        "it": "sperare (di + inf.)",
+        "en": "to hope (to do sth)",
+        "ex": "Spero di superare l'esame al primo tentativo.",
+        "pic": "🤞✨"
+      },
+      {
+        "it": "decidere (di + inf.)",
+        "en": "to decide (to do sth)",
+        "ex": "Ho deciso di iscrivermi al corso di cucina.",
+        "pic": "🤔✅"
+      }
+    ]
+  },
+  {
+    "id": "abbigliamento",
+    "label": "Abbigliamento",
+    "emoji": "👗",
+    "cards": [
+      {
+        "it": "la maglietta",
+        "en": "t-shirt",
+        "ex": "Porto una maglietta bianca sotto la giacca.",
+        "pic": "👕"
+      },
+      {
+        "it": "la camicia",
+        "en": "shirt",
+        "ex": "Al lavoro indosso sempre una camicia.",
+        "pic": "👔"
+      },
+      {
+        "it": "la giacca",
+        "en": "jacket",
+        "ex": "Ho comprato una giacca nuova al mercato.",
+        "pic": "🧥"
+      },
+      {
+        "it": "il cappotto",
+        "en": "coat",
+        "ex": "D'inverno metto il cappotto pesante.",
+        "pic": "🧥❄️"
+      },
+      {
+        "it": "i pantaloni",
+        "en": "trousers",
+        "ex": "Cerco dei pantaloni neri taglia 44.",
+        "pic": "👖"
+      },
+      {
+        "it": "i jeans",
+        "en": "jeans",
+        "ex": "I jeans sono comodi per tutti i giorni.",
+        "pic": "👖💙"
+      },
+      {
+        "it": "la gonna",
+        "en": "skirt",
+        "ex": "Porta una gonna lunga e una blusa rosa.",
+        "pic": "👗"
+      },
+      {
+        "it": "il vestito",
+        "en": "dress / suit",
+        "ex": "Ho comprato un vestito elegante per la festa.",
+        "pic": "👗✨"
+      },
+      {
+        "it": "le scarpe",
+        "en": "shoes",
+        "ex": "Porto le scarpe numero 40.",
+        "pic": "👟"
+      },
+      {
+        "it": "i calzini",
+        "en": "socks",
+        "ex": "Ho dimenticato i calzini in palestra!",
+        "pic": "🧦"
+      },
+      {
+        "it": "il cappello",
+        "en": "hat",
+        "ex": "D'estate metto il cappello per il sole.",
+        "pic": "🎩"
+      },
+      {
+        "it": "i guanti",
+        "en": "gloves",
+        "ex": "Fa freddo — non dimenticare i guanti.",
+        "pic": "🧤"
+      },
+      {
+        "it": "la sciarpa",
+        "en": "scarf",
+        "ex": "La sciarpa di lana è calda d'inverno.",
+        "pic": "🧣"
+      },
+      {
+        "it": "gli stivali",
+        "en": "boots",
+        "ex": "Questi stivali sono impermeabili — perfetti per la pioggia.",
+        "pic": "👢"
+      },
+      {
+        "it": "la borsa",
+        "en": "bag / handbag",
+        "ex": "Ho messo il portafoglio nella borsa.",
+        "pic": "👜"
+      },
+      {
+        "it": "il portafoglio",
+        "en": "wallet",
+        "ex": "Ho perso il portafoglio — chiamo subito la polizia.",
+        "pic": "👛"
+      },
+      {
+        "it": "la taglia",
+        "en": "size (clothing)",
+        "ex": "Che taglia porta? — La M.",
+        "pic": "📏"
+      },
+      {
+        "it": "il numero",
+        "en": "size (shoes)",
+        "ex": "Porto il numero 42 di scarpe.",
+        "pic": "👟🔢"
+      },
+      {
+        "it": "la vetrina",
+        "en": "shop window",
+        "ex": "Ho visto una borsa bella in vetrina.",
+        "pic": "🪟👜"
+      },
+      {
+        "it": "il camerino",
+        "en": "changing room",
+        "ex": "Posso provare questa giacca? Dov'è il camerino?",
+        "pic": "🚪👗"
+      },
+      {
+        "it": "lo scontrino",
+        "en": "receipt",
+        "ex": "Conserva lo scontrino — potresti cambiarlo.",
+        "pic": "🧾"
+      },
+      {
+        "it": "il saldo / i saldi",
+        "en": "sale / sales",
+        "ex": "I saldi invernali iniziano il 7 gennaio.",
+        "pic": "🏷️"
+      }
+    ]
+  },
+  {
+    "id": "tecnologia",
+    "label": "Tecnologia",
+    "emoji": "💻",
+    "cards": [
+      {
+        "it": "il cellulare / il telefono",
+        "en": "mobile phone",
+        "ex": "Ho rotto il cellulare — devo comprarne uno nuovo.",
+        "pic": "📱"
+      },
+      {
+        "it": "il computer / il portatile",
+        "en": "computer / laptop",
+        "ex": "Lavoro con il portatile da casa.",
+        "pic": "💻"
+      },
+      {
+        "it": "la password",
+        "en": "password",
+        "ex": "Ho dimenticato la password — devo reimpostarla.",
+        "pic": "🔐"
+      },
+      {
+        "it": "il caricatore",
+        "en": "charger",
+        "ex": "Hai un caricatore? Il mio telefono è scarico.",
+        "pic": "🔌"
+      },
+      {
+        "it": "la connessione / il Wi-Fi",
+        "en": "connection / Wi-Fi",
+        "ex": "La connessione è lenta — posso usare il Wi-Fi?",
+        "pic": "📶"
+      },
+      {
+        "it": "l'email / la mail",
+        "en": "email",
+        "ex": "Ti mando i documenti via email entro oggi.",
+        "pic": "📧"
+      },
+      {
+        "it": "il messaggio",
+        "en": "message",
+        "ex": "Ti mando un messaggio quando arrivo.",
+        "pic": "💬"
+      },
+      {
+        "it": "la videochiamata",
+        "en": "video call",
+        "ex": "Faccio una videochiamata con la mia famiglia ogni domenica.",
+        "pic": "📹"
+      },
+      {
+        "it": "scaricare",
+        "en": "to download",
+        "ex": "Ho scaricato l'app dello sportello online.",
+        "pic": "⬇️📱"
+      },
+      {
+        "it": "caricare",
+        "en": "to upload / charge",
+        "ex": "Carica il modulo sul sito prima di giovedì.",
+        "pic": "⬆️📄"
+      },
+      {
+        "it": "prenotare online",
+        "en": "to book online",
+        "ex": "Ho prenotato il medico online — è più veloce.",
+        "pic": "🖱️📅"
+      },
+      {
+        "it": "il sito web",
+        "en": "website",
+        "ex": "Trova le informazioni sul sito del comune.",
+        "pic": "🌐"
+      },
+      {
+        "it": "la tastiera / lo schermo",
+        "en": "keyboard / screen",
+        "ex": "Lo schermo del mio telefono si è rotto.",
+        "pic": "⌨️🖥️"
+      },
+      {
+        "it": "le cuffie",
+        "en": "headphones",
+        "ex": "Uso le cuffie per ascoltare le lezioni in italiano.",
+        "pic": "🎧"
+      }
+    ]
+  },
+  {
+    "id": "famiglia",
+    "label": "Famiglia & Relazioni",
+    "emoji": "👨‍👩‍👧",
+    "cards": [
+      {
+        "it": "il marito / la moglie",
+        "en": "husband / wife",
+        "ex": "Mio marito lavora in fabbrica.",
+        "pic": "💍"
+      },
+      {
+        "it": "il fidanzato / la fidanzata",
+        "en": "boyfriend / girlfriend",
+        "ex": "La mia fidanzata è italiana — mi aiuta con la lingua.",
+        "pic": "❤️"
+      },
+      {
+        "it": "il compagno / la compagna",
+        "en": "partner (life)",
+        "ex": "Vivo con il mio compagno da due anni.",
+        "pic": "👫"
+      },
+      {
+        "it": "il figlio / la figlia",
+        "en": "son / daughter",
+        "ex": "Ho un figlio di 8 anni e una figlia di 5.",
+        "pic": "👦👧"
+      },
+      {
+        "it": "il fratello / la sorella",
+        "en": "brother / sister",
+        "ex": "Mia sorella abita ancora nel mio paese d'origine.",
+        "pic": "👫"
+      },
+      {
+        "it": "il padre / la madre",
+        "en": "father / mother",
+        "ex": "I miei genitori vivono ancora in Bangladesh.",
+        "pic": "👨👩"
+      },
+      {
+        "it": "il nonno / la nonna",
+        "en": "grandfather / grandmother",
+        "ex": "I miei nonni non parlano italiano.",
+        "pic": "👴👵"
+      },
+      {
+        "it": "lo zio / la zia",
+        "en": "uncle / aunt",
+        "ex": "Mio zio abita a Milano e ci aiuta molto.",
+        "pic": "🧔👩"
+      },
+      {
+        "it": "il cugino / la cugina",
+        "en": "cousin",
+        "ex": "Ho tanti cugini — la famiglia è grande!",
+        "pic": "👪"
+      },
+      {
+        "it": "il nipote / la nipote",
+        "en": "nephew / niece / grandchild",
+        "ex": "La mia nipote ha appena imparato a camminare.",
+        "pic": "👶"
+      },
+      {
+        "it": "il vicino / la vicina",
+        "en": "neighbour",
+        "ex": "I vicini sono gentili — ci aiutano spesso.",
+        "pic": "🏠👋"
+      },
+      {
+        "it": "il collega / la collega",
+        "en": "colleague",
+        "ex": "I miei colleghi mi hanno aiutato ad ambientarmi.",
+        "pic": "💼🤝"
+      },
+      {
+        "it": "l'amico / l'amica",
+        "en": "friend",
+        "ex": "Ho conosciuto tanti amici al corso di italiano.",
+        "pic": "😊🤝"
+      },
+      {
+        "it": "il conoscente",
+        "en": "acquaintance",
+        "ex": "È un conoscente — non lo conosco bene.",
+        "pic": "🤔👋"
+      },
+      {
+        "it": "il ricongiungimento familiare",
+        "en": "family reunification",
+        "ex": "Ho richiesto il ricongiungimento familiare per mia moglie.",
+        "pic": "👨‍👩‍👧📄"
+      }
+    ]
+  },
+  {
+    "id": "numbers",
+    "label": "Numbers",
+    "emoji": "🔢",
+    "cards": [
+      {
+        "it": "zero",
+        "en": "0",
+        "ex": "Ho zero euro in tasca!",
+        "pic": "0️⃣"
+      },
+      {
+        "it": "uno / una",
+        "en": "1",
+        "ex": "Ho un figlio.",
+        "pic": "1️⃣"
+      },
+      {
+        "it": "due",
+        "en": "2",
+        "ex": "Ho due fratelli.",
+        "pic": "2️⃣"
+      },
+      {
+        "it": "tre",
+        "en": "3",
+        "ex": "Vivo qui da tre anni.",
+        "pic": "3️⃣"
+      },
+      {
+        "it": "quattro",
+        "en": "4",
+        "ex": "L'ufficio è al quarto piano.",
+        "pic": "4️⃣"
+      },
+      {
+        "it": "cinque",
+        "en": "5",
+        "ex": "Costa cinque euro.",
+        "pic": "5️⃣"
+      },
+      {
+        "it": "sei",
+        "en": "6",
+        "ex": "Il corso dura sei mesi.",
+        "pic": "6️⃣"
+      },
+      {
+        "it": "sette",
+        "en": "7",
+        "ex": "La settimana ha sette giorni.",
+        "pic": "7️⃣"
+      },
+      {
+        "it": "otto",
+        "en": "8",
+        "ex": "L'ufficio apre alle otto.",
+        "pic": "8️⃣"
+      },
+      {
+        "it": "nove",
+        "en": "9",
+        "ex": "Abito al numero nove.",
+        "pic": "9️⃣"
+      },
+      {
+        "it": "dieci",
+        "en": "10",
+        "ex": "Ho aspettato dieci minuti.",
+        "pic": "🔟"
+      },
+      {
+        "it": "undici / dodici / tredici",
+        "en": "11 / 12 / 13",
+        "ex": "Il treno arriva alle undici e dodici.",
+        "pic": "🔢"
+      },
+      {
+        "it": "venti",
+        "en": "20",
+        "ex": "Ho venti anni.",
+        "pic": "🔢"
+      },
+      {
+        "it": "trenta / quaranta / cinquanta",
+        "en": "30 / 40 / 50",
+        "ex": "L'affitto è trecento euro.",
+        "pic": "🔢"
+      },
+      {
+        "it": "cento",
+        "en": "100",
+        "ex": "Costa cento euro.",
+        "pic": "💯"
+      },
+      {
+        "it": "mille / duemila",
+        "en": "1,000 / 2,000",
+        "ex": "Lo stipendio è milleduecento euro.",
+        "pic": "💶"
+      },
+      {
+        "it": "primo / seconda / terzo",
+        "en": "1st / 2nd / 3rd (ordinal)",
+        "ex": "Abito al primo piano.",
+        "pic": "🥇"
+      }
+    ]
+  },
+  {
+    "id": "calendar",
+    "label": "Days & Months",
+    "emoji": "📅",
+    "cards": [
+      {
+        "it": "lunedì",
+        "en": "Monday",
+        "ex": "L'ufficio è chiuso il lunedì.",
+        "pic": "😩"
+      },
+      {
+        "it": "martedì",
+        "en": "Tuesday",
+        "ex": "Il corso è il martedì e il giovedì.",
+        "pic": "📚"
+      },
+      {
+        "it": "mercoledì",
+        "en": "Wednesday",
+        "ex": "Mercoledì ho un appuntamento dal medico.",
+        "pic": "🏥"
+      },
+      {
+        "it": "giovedì",
+        "en": "Thursday",
+        "ex": "Giovedì andiamo a cena fuori.",
+        "pic": "🍽️"
+      },
+      {
+        "it": "venerdì",
+        "en": "Friday",
+        "ex": "Venerdì finisco prima il lavoro.",
+        "pic": "🎉"
+      },
+      {
+        "it": "sabato",
+        "en": "Saturday",
+        "ex": "Il sabato vado al mercato.",
+        "pic": "🛒"
+      },
+      {
+        "it": "domenica",
+        "en": "Sunday",
+        "ex": "La domenica resto a casa.",
+        "pic": "😴"
+      },
+      {
+        "it": "gennaio",
+        "en": "January",
+        "ex": "Sono arrivato in Italia a gennaio.",
+        "pic": "❄️"
+      },
+      {
+        "it": "febbraio",
+        "en": "February",
+        "ex": "A febbraio fa molto freddo.",
+        "pic": "🌨️"
+      },
+      {
+        "it": "marzo",
+        "en": "March",
+        "ex": "A marzo inizia la primavera.",
+        "pic": "🌱"
+      },
+      {
+        "it": "aprile",
+        "en": "April",
+        "ex": "Ad aprile piove spesso.",
+        "pic": "🌧️"
+      },
+      {
+        "it": "maggio",
+        "en": "May",
+        "ex": "A maggio fa bello.",
+        "pic": "🌸"
+      },
+      {
+        "it": "giugno",
+        "en": "June",
+        "ex": "A giugno inizia l'estate.",
+        "pic": "☀️"
+      },
+      {
+        "it": "luglio",
+        "en": "July",
+        "ex": "A luglio vado in vacanza.",
+        "pic": "🏖️"
+      },
+      {
+        "it": "agosto",
+        "en": "August",
+        "ex": "Ad agosto molti negozi sono chiusi.",
+        "pic": "🌴"
+      },
+      {
+        "it": "settembre",
+        "en": "September",
+        "ex": "A settembre i bambini tornano a scuola.",
+        "pic": "🎒"
+      },
+      {
+        "it": "ottobre",
+        "en": "October",
+        "ex": "A ottobre fa fresco.",
+        "pic": "🍂"
+      },
+      {
+        "it": "novembre",
+        "en": "November",
+        "ex": "A novembre il cielo è grigio.",
+        "pic": "🌫️"
+      },
+      {
+        "it": "dicembre",
+        "en": "December",
+        "ex": "A dicembre festeggiamo il Natale.",
+        "pic": "🎄"
+      }
+    ]
+  },
+  {
+    "id": "seasons",
+    "label": "Seasons & Weather",
+    "emoji": "🌤️",
+    "cards": [
+      {
+        "it": "la primavera",
+        "en": "spring",
+        "ex": "In primavera i fiori sbocciano.",
+        "pic": "🌸"
+      },
+      {
+        "it": "l'estate",
+        "en": "summer",
+        "ex": "D'estate fa molto caldo.",
+        "pic": "☀️"
+      },
+      {
+        "it": "l'autunno",
+        "en": "autumn",
+        "ex": "In autunno le foglie cadono.",
+        "pic": "🍁"
+      },
+      {
+        "it": "l'inverno",
+        "en": "winter",
+        "ex": "D'inverno indosso il cappotto.",
+        "pic": "🧥"
+      },
+      {
+        "it": "fa caldo",
+        "en": "it's hot",
+        "ex": "Oggi fa molto caldo, ho sete.",
+        "pic": "🥵"
+      },
+      {
+        "it": "fa freddo",
+        "en": "it's cold",
+        "ex": "D'inverno fa freddo a Milano.",
+        "pic": "🥶"
+      },
+      {
+        "it": "piove / la pioggia",
+        "en": "it rains / rain",
+        "ex": "Oggi piove, prendo l'ombrello.",
+        "pic": "🌧️"
+      },
+      {
+        "it": "nevica / la neve",
+        "en": "it snows / snow",
+        "ex": "In montagna nevica molto.",
+        "pic": "❄️"
+      },
+      {
+        "it": "c'è il sole",
+        "en": "it's sunny",
+        "ex": "C'è il sole, andiamo al parco!",
+        "pic": "☀️"
+      },
+      {
+        "it": "è nuvoloso",
+        "en": "it's cloudy",
+        "ex": "Il cielo è nuvoloso oggi.",
+        "pic": "☁️"
+      },
+      {
+        "it": "c'è vento",
+        "en": "it's windy",
+        "ex": "C'è vento forte, tieni il cappello!",
+        "pic": "💨"
+      },
+      {
+        "it": "la temperatura",
+        "en": "temperature",
+        "ex": "La temperatura è di 30 gradi.",
+        "pic": "🌡️"
+      }
+    ]
+  },
+  {
+    "id": "frasi-utili",
+    "label": "Frasi Utili",
+    "emoji": "💬",
+    "cards": [
+      {
+        "it": "Ask for information politely",
+        "en": "Buongiorno, vorrei un'informazione, per favore.",
+        "pic": "🙋"
+      },
+      {
+        "it": "Say you're looking for a job as a waiter",
+        "en": "Cerco lavoro come cameriere / cameriera.",
+        "pic": "🍽️"
+      },
+      {
+        "it": "Ask which documents are needed",
+        "en": "Quali documenti servono / sono necessari?",
+        "pic": "📋"
+      },
+      {
+        "it": "Ask for something for a headache (pharmacy)",
+        "en": "Vorrei qualcosa per il mal di testa.",
+        "pic": "💊"
+      },
+      {
+        "it": "Ask how to register with a GP",
+        "en": "Come faccio per scegliere il medico di base?",
+        "pic": "🏥"
+      },
+      {
+        "it": "Ask for help filling in a form",
+        "en": "Mi può aiutare a compilare il modulo?",
+        "pic": "📝"
+      },
+      {
+        "it": "Ask the opening hours",
+        "en": "Qual è l'orario di apertura?",
+        "pic": "🕐"
+      },
+      {
+        "it": "Say you didn't understand / ask to repeat",
+        "en": "Scusi, non ho capito. Può ripetere, per favore?",
+        "pic": "🔁"
+      },
+      {
+        "it": "Ask the price",
+        "en": "Quanto costa? / Quant'è?",
+        "pic": "💶"
+      },
+      {
+        "it": "Make an appointment",
+        "en": "Vorrei prenotare un appuntamento.",
+        "pic": "📅"
+      },
+      {
+        "it": "Ask where something is",
+        "en": "Scusi, mi sa dire dove si trova...?",
+        "pic": "📍"
+      },
+      {
+        "it": "Say you have just moved",
+        "en": "Mi sono trasferito/a da poco.",
+        "pic": "🏠"
+      },
+      {
+        "it": "Ask what to do next (bureaucracy)",
+        "en": "Cosa devo fare / portare?",
+        "pic": "❓"
+      },
+      {
+        "it": "Thank someone formally",
+        "en": "Grazie mille, molto gentile.",
+        "pic": "🙏"
+      }
+    ]
+  },
+  {
+    "id": "prova-orale",
+    "label": "Prova Orale",
+    "emoji": "🎤",
+    "cards": [
+      {
+        "it": "Role-play: At the centro per l'impiego — want a job as a waiter",
+        "en": "\"Buongiorno, cerco lavoro come cameriere.\" · \"Quali offerte ci sono in città?\" · \"Che documenti servono per lavorare?\" · \"Devo avere esperienza?\"",
+        "pic": "💼"
+      },
+      {
+        "it": "Role-play: At the hospital — ask how to choose your medico di base",
+        "en": "\"Mi sono trasferito da poco.\" · \"Come faccio per scegliere il medico di base?\" · \"Quali documenti devo portare?\" · \"Dove devo andare?\"",
+        "pic": "🏥"
+      },
+      {
+        "it": "Monologue (~1½ min): \"La città dove vivi adesso.\"",
+        "en": "Where it is (\"Vivo a… nel nord/sud Italia\") · what it's like (\"è grande / tranquilla\") · what there is (\"ci sono parchi, negozi\") · what you like & do · transport.",
+        "pic": "🏙️"
+      },
+      {
+        "it": "Monologue (~1½ min): \"Come hai imparato l'italiano.\"",
+        "en": "When/where you started · how (\"a scuola, con un corso, con gli amici, guardando la TV\") · easy/difficult parts · why you study it.",
+        "pic": "📚"
+      },
+      {
+        "it": "Speaking tip: how to sound clear at A2?",
+        "en": "Use connectors \"prima… poi… e… ma… perché\". Short full sentences. Don't aim for perfection — show you can communicate.",
+        "pic": "🗣️"
+      }
+    ]
+  },
+  {
+    "id": "prova-scritta",
+    "label": "Prova Scritta",
+    "emoji": "✍️",
+    "cards": [
+      {
+        "it": "Reply (15–30 words): \"Ciao Anna, ieri non ti ho visto a lezione di italiano. Ti è successo qualcosa?\"",
+        "en": "\"Ciao! Scusa, ieri non sono venuta perché stavo male, avevo la febbre. Ora sto meglio. Ci vediamo domani a lezione. A presto!\" (≈22 words)",
+        "pic": "📨"
+      },
+      {
+        "it": "Reply (15–30 words): \"Nabil, esco tardi dal lavoro. Puoi preparare tu qualcosa per cena?\"",
+        "en": "\"Certo, non ti preoccupare! Preparo io la cena, faccio la pasta con le verdure. Tu torna con calma. A dopo!\" (≈21 words)",
+        "pic": "🍝"
+      },
+      {
+        "it": "Reply (15–30 words): \"Ciao Silvia, andiamo domani a fare la spesa insieme?\"",
+        "en": "\"Va bene, volentieri! Andiamo al supermercato vicino casa mia. Ci troviamo domani alle 10 davanti all'entrata. A domani!\" (≈19 words)",
+        "pic": "🛒"
+      },
+      {
+        "it": "Task 1 — describe a picture (40–60 words). What frame can you use?",
+        "en": "Start: \"Nell'immagine c'è / ci sono…\". Where: \"a sinistra, a destra, davanti, dietro\". People & actions: \"una donna sta parlando…\". Add one detail or opinion.",
+        "pic": "🖼️"
+      }
+    ]
+  },
+  {
+    "id": "colours",
+    "label": "Colours & Descriptions",
+    "emoji": "🎨",
+    "cards": [
+      {
+        "it": "rosso / rossa",
+        "en": "red",
+        "ex": "Ho una macchina rossa.",
+        "pic": "🔴"
+      },
+      {
+        "it": "blu / azzurro",
+        "en": "blue",
+        "ex": "Il cielo è azzurro.",
+        "pic": "🔵"
+      },
+      {
+        "it": "verde",
+        "en": "green",
+        "ex": "Il semaforo è verde.",
+        "pic": "🟢"
+      },
+      {
+        "it": "giallo / gialla",
+        "en": "yellow",
+        "ex": "Il taxi è giallo.",
+        "pic": "🟡"
+      },
+      {
+        "it": "bianco / bianca",
+        "en": "white",
+        "ex": "Indosso una camicia bianca.",
+        "pic": "⬜"
+      },
+      {
+        "it": "nero / nera",
+        "en": "black",
+        "ex": "Ho una borsa nera.",
+        "pic": "⬛"
+      },
+      {
+        "it": "arancione",
+        "en": "orange",
+        "ex": "Il gatto è arancione.",
+        "pic": "🟠"
+      },
+      {
+        "it": "viola",
+        "en": "purple",
+        "ex": "La giacca è viola.",
+        "pic": "🟣"
+      },
+      {
+        "it": "grigio / grigia",
+        "en": "grey",
+        "ex": "Il cielo è grigio in inverno.",
+        "pic": "🩶"
+      },
+      {
+        "it": "marrone",
+        "en": "brown",
+        "ex": "Ho i capelli marroni.",
+        "pic": "🟤"
+      },
+      {
+        "it": "grande / piccolo",
+        "en": "big / small",
+        "ex": "Ho un appartamento grande.",
+        "pic": "📏"
+      },
+      {
+        "it": "lungo / corto",
+        "en": "long / short",
+        "ex": "Ho i capelli corti.",
+        "pic": "✂️"
+      },
+      {
+        "it": "alto / basso",
+        "en": "tall / short (height)",
+        "ex": "Mio fratello è molto alto.",
+        "pic": "📐"
+      },
+      {
+        "it": "bello / brutto",
+        "en": "beautiful / ugly",
+        "ex": "Che bel paesaggio!",
+        "pic": "😍"
+      }
+    ]
+  },
+  {
+    "id": "appuntamenti-servizi",
+    "label": "Appuntamenti e servizi",
+    "emoji": "💈",
+    "cards": [
+      {
+        "it": "il parrucchiere",
+        "en": "hairdresser",
+        "ex": "Ho un appuntamento dal parrucchiere alle 15.",
+        "pic": "💇"
+      },
+      {
+        "it": "la prenotazione",
+        "en": "booking / reservation",
+        "ex": "Ho fatto la prenotazione per venerdì mattina.",
+        "pic": "📆"
+      },
+      {
+        "it": "il corriere",
+        "en": "courier / delivery person",
+        "ex": "Il corriere consegna il pacco domani mattina.",
+        "pic": "🚚"
+      },
+      {
+        "it": "l'appuntamento",
+        "en": "appointment",
+        "ex": "Ho preso un appuntamento per il taglio.",
+        "pic": "🗓️"
+      },
+      {
+        "it": "il taglio",
+        "en": "haircut",
+        "ex": "Il taglio costa venti euro.",
+        "pic": "✂️"
+      },
+      {
+        "it": "la piega",
+        "en": "blow-dry / styling",
+        "ex": "Dopo il taglio faccio anche la piega.",
+        "pic": "💇‍♀️"
+      },
+      {
+        "it": "la barba",
+        "en": "beard",
+        "ex": "Il barbiere mi taglia la barba.",
+        "pic": "🧔"
+      },
+      {
+        "it": "la consegna",
+        "en": "delivery",
+        "ex": "La consegna è prevista per domani.",
+        "pic": "📦✅"
+      },
+      {
+        "it": "il pacco",
+        "en": "parcel / package",
+        "ex": "Ho ricevuto un pacco dal corriere.",
+        "pic": "📦"
+      },
+      {
+        "it": "il ritiro",
+        "en": "pickup / collection",
+        "ex": "Il ritiro del pacco è all'ufficio postale.",
+        "pic": "📥"
+      },
+      {
+        "it": "il documento",
+        "en": "identity document",
+        "ex": "Alla questura devi mostrare un documento.",
+        "pic": "🪪"
+      },
+      {
+        "it": "la denuncia",
+        "en": "police report",
+        "ex": "Ho fatto la denuncia per il telefono rubato.",
+        "pic": "📝"
+      },
+      {
+        "it": "il modulo",
+        "en": "form",
+        "ex": "Devo compilare il modulo per il permesso.",
+        "pic": "📄"
+      },
+      {
+        "it": "prenotare",
+        "en": "to book / reserve",
+        "ex": "Voglio prenotare un tavolo per due.",
+        "pic": "📅"
+      },
+      {
+        "it": "disdire",
+        "en": "to cancel (a booking)",
+        "ex": "Ho dovuto disdire l'appuntamento.",
+        "pic": "❌"
+      },
+      {
+        "it": "l'orario",
+        "en": "opening hours / timetable",
+        "ex": "Qual è l'orario di apertura dell'ufficio?",
+        "pic": "🕐"
+      },
+      {
+        "it": "il corso",
+        "en": "course",
+        "ex": "Frequento un corso di italiano al comune.",
+        "pic": "📚"
+      },
+      {
+        "it": "la lezione",
+        "en": "lesson / class",
+        "ex": "La lezione comincia alle sei.",
+        "pic": "🧑‍🏫"
+      },
+      {
+        "it": "iscriversi",
+        "en": "to enrol / sign up",
+        "ex": "Mi sono iscritto a un corso di cucina.",
+        "pic": "✍️"
+      }
+    ]
+  },
+  {
+    "id": "tempo-libero-trasporti",
+    "label": "Tempo Libero & Trasporti",
+    "emoji": "🚴",
+    "cards": [
+      {
+        "it": "fare una passeggiata",
+        "en": "to go for a walk",
+        "ex": "La domenica faccio sempre una passeggiata al parco.",
+        "pic": "🚶‍♀️"
+      },
+      {
+        "it": "guardare un film",
+        "en": "to watch a film",
+        "ex": "Il sabato sera guardiamo un film insieme.",
+        "pic": "🎬"
+      },
+      {
+        "it": "andare in bicicletta",
+        "en": "to ride a bike / to cycle",
+        "ex": "Vado in bicicletta quando fa bel tempo.",
+        "pic": "🚴"
+      },
+      {
+        "it": "fare fotografie",
+        "en": "to take photos",
+        "ex": "Mi piace fare fotografie durante i viaggi.",
+        "pic": "📸"
+      },
+      {
+        "it": "dipingere",
+        "en": "to paint",
+        "ex": "Nel tempo libero mi piace dipingere.",
+        "pic": "🎨"
+      },
+      {
+        "it": "fare giardinaggio",
+        "en": "to do gardening",
+        "ex": "Mio padre fa giardinaggio ogni weekend.",
+        "pic": "🌱"
+      },
+      {
+        "it": "la metropolitana",
+        "en": "underground / subway",
+        "ex": "Prendo la metropolitana per andare al lavoro.",
+        "pic": "🚇"
+      },
+      {
+        "it": "il biglietto",
+        "en": "ticket",
+        "ex": "Ho comprato il biglietto per l'autobus alla macchinetta.",
+        "pic": "🎫"
+      },
+      {
+        "it": "il monopattino elettrico",
+        "en": "electric scooter",
+        "ex": "In centro molti usano il monopattino elettrico.",
+        "pic": "🛴"
+      },
+      {
+        "it": "il taxi",
+        "en": "taxi",
+        "ex": "Ho preso un taxi perché ero in ritardo.",
+        "pic": "🚕"
+      },
+      {
+        "it": "il clima",
+        "en": "climate",
+        "ex": "Il clima in Italia cambia molto tra nord e sud.",
+        "pic": "🌦️"
+      },
+      {
+        "it": "umido",
+        "en": "humid / damp",
+        "ex": "D'estate l'aria è molto umida qui.",
+        "pic": "💧"
+      },
+      {
+        "it": "secco",
+        "en": "dry",
+        "ex": "In montagna l'aria è secca e fresca.",
+        "pic": "🏜️"
+      }
+    ]
+  },
+  {
+    "id": "esame-essenziali",
+    "label": "Essenziali per l'Esame",
+    "emoji": "🎓",
+    "cards": [
+      {
+        "it": "Può ripetere, per favore?",
+        "en": "Can you repeat, please?",
+        "ex": "Scusi, può ripetere più lentamente?",
+        "pic": "🔁"
+      },
+      {
+        "it": "Non ho capito",
+        "en": "I didn't understand",
+        "ex": "Mi dispiace, non ho capito la domanda.",
+        "pic": "🤔"
+      },
+      {
+        "it": "Come si scrive?",
+        "en": "How do you spell it?",
+        "ex": "Come si scrive il suo cognome?",
+        "pic": "✍️"
+      },
+      {
+        "it": "Che cosa significa…?",
+        "en": "What does … mean?",
+        "ex": "Che cosa significa questa parola?",
+        "pic": "❓"
+      },
+      {
+        "it": "la prova",
+        "en": "the test / exam paper",
+        "ex": "La prova di ascolto dura venti minuti.",
+        "pic": "📄"
+      },
+      {
+        "it": "il compito",
+        "en": "the task / exercise",
+        "ex": "Legga bene il compito prima di scrivere.",
+        "pic": "📝"
+      },
+      {
+        "it": "l'esempio",
+        "en": "the example",
+        "ex": "Guardate l'esempio numero zero.",
+        "pic": "👀"
+      },
+      {
+        "it": "la risposta giusta",
+        "en": "the right answer",
+        "ex": "Scelga la risposta giusta.",
+        "pic": "✅"
+      },
+      {
+        "it": "scegliere (scelga!)",
+        "en": "to choose (choose! - formal)",
+        "ex": "Scelga una delle due tracce.",
+        "pic": "☑️"
+      },
+      {
+        "it": "completare",
+        "en": "to complete / fill in",
+        "ex": "Completi il testo con le parole.",
+        "pic": "🧩"
+      },
+      {
+        "it": "compilare il modulo",
+        "en": "to fill in the form",
+        "ex": "Compili il modulo con i suoi dati.",
+        "pic": "📋"
+      },
+      {
+        "it": "in stampatello",
+        "en": "in block letters",
+        "ex": "Scriva il nome in stampatello.",
+        "pic": "🔠"
+      },
+      {
+        "it": "la firma / firmare",
+        "en": "signature / to sign",
+        "ex": "Metta la firma in fondo alla pagina.",
+        "pic": "🖊️"
+      },
+      {
+        "it": "il cognome",
+        "en": "the surname",
+        "ex": "Prima il cognome, poi il nome.",
+        "pic": "🪪"
+      },
+      {
+        "it": "la data di nascita",
+        "en": "date of birth",
+        "ex": "Scriva la sua data di nascita.",
+        "pic": "🎂"
+      },
+      {
+        "it": "il luogo di nascita",
+        "en": "place of birth",
+        "ex": "Luogo di nascita: Mumbai, India.",
+        "pic": "📍"
+      },
+      {
+        "it": "la cittadinanza",
+        "en": "citizenship / nationality",
+        "ex": "Cittadinanza: indiana.",
+        "pic": "🌍"
+      },
+      {
+        "it": "ascoltare due volte",
+        "en": "to listen twice",
+        "ex": "Ascolterete il testo due volte.",
+        "pic": "🎧"
+      },
+      {
+        "it": "il foglio delle risposte",
+        "en": "the answer sheet",
+        "ex": "Scriva le risposte sul foglio delle risposte.",
+        "pic": "🗒️"
+      },
+      {
+        "it": "In bocca al lupo! — Crepi!",
+        "en": "Good luck! — reply: Crepi!",
+        "ex": "In bocca al lupo per l'esame! — Crepi il lupo!",
+        "pic": "🐺"
+      }
+    ]
+  }
+]

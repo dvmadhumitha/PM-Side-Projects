@@ -1,0 +1,30 @@
+{
+  "bank": [
+    "parlano",
+    "aiutano",
+    "territorio",
+    "carta",
+    "aperto",
+    "chiama",
+    "scrivono",
+    "chiuso",
+    "tempo"
+  ],
+  "parts": [
+    "Lo Sportello del Comune è un servizio gratuito per tutti i cittadini. Gli impiegati ",
+    " molte lingue e ti ",
+    " a compilare i documenti. Allo sportello puoi chiedere informazioni sui servizi del ",
+    ", sull’iscrizione all’anagrafe e sulla richiesta della ",
+    " d’identità. Lo sportello è ",
+    " dal lunedì al venerdì. Per prenotare un appuntamento, ",
+    " il numero verde."
+  ],
+  "ans": [
+    "parlano",
+    "aiutano",
+    "territorio",
+    "carta",
+    "aperto",
+    "chiama"
+  ]
+}

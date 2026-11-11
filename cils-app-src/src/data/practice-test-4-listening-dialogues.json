@@ -1,0 +1,164 @@
+[
+  {
+    "script": [
+      [
+        "—",
+        "Officina Cambi? Buongiorno, sono la signora Giorgi! Chiamo per sapere se ha riparato l'auto!"
+      ],
+      [
+        "—",
+        "Buongiorno signora Giorgi, controllo subito! È una Panda, vero?"
+      ],
+      [
+        "—",
+        "Sì, è una Panda rossa! L'ho portata un paio di giorni fa!"
+      ],
+      [
+        "—",
+        "La sua auto è già pronta! Può passare anche subito in officina a riprenderla!"
+      ]
+    ],
+    "ask": "L'automobile della signora Giorgi si trova",
+    "opts": [
+      "dal meccanico.",
+      "nel parcheggio del signor Cambi.",
+      "davanti casa sua."
+    ],
+    "a": 0
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno signora Fanetti! Venga, entri… la aiuto con le valigie."
+      ],
+      [
+        "—",
+        "Oh grazie Matteo, sei così gentile! Sono appena tornata da Napoli, sono stata da mia sorella."
+      ],
+      [
+        "—",
+        "Sì, ho visto le finestre di casa sua chiuse."
+      ],
+      [
+        "—",
+        "Sì, sono stata via una settimana!"
+      ]
+    ],
+    "ask": "La signora Fanetti torna a casa",
+    "opts": [
+      "dal mercato.",
+      "dal lavoro.",
+      "da una vacanza."
+    ],
+    "a": 2
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Mamma ciao! Ascolta… stamattina ho macchiato i pantaloni. Come posso togliere la macchia?"
+      ],
+      [
+        "—",
+        "Con che cosa hai macchiato i pantaloni?"
+      ],
+      [
+        "—",
+        "Con il caffè!"
+      ],
+      [
+        "—",
+        "Allora mettici sopra un po' di smacchiatore per mezz'ora, poi lavi i pantaloni in lavatrice."
+      ]
+    ],
+    "ask": "Il ragazzo chiede alla madre",
+    "opts": [
+      "un consiglio per pulire i pantaloni.",
+      "come preparare il caffè.",
+      "l'indirizzo di una lavanderia."
+    ],
+    "a": 0
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Scusi… qual è l'uscita per il volo per Tirana? Parte tra poco e ancora non è nel tabellone!"
+      ],
+      [
+        "—",
+        "Signore, il volo parte con trenta minuti di ritardo purtroppo! Però guardi… è già sul monitor!"
+      ],
+      [
+        "—",
+        "Ah è vero! Però… l'uscita non c'è!"
+      ],
+      [
+        "—",
+        "Non si preoccupi… tra poco compare!"
+      ]
+    ],
+    "ask": "Il signore vuole sapere",
+    "opts": [
+      "da dove parte il suo volo.",
+      "quanto ritardo ha il suo volo.",
+      "a che ore arriva il volo da Tirana."
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Nadia! Dove vai così in fretta?"
+      ],
+      [
+        "—",
+        "Oh, Giorgio, ciao! Vado al lavoro, sono in ritardo… ho perso l'autobus."
+      ],
+      [
+        "—",
+        "Se vuoi, ti accompagno io con l'auto."
+      ],
+      [
+        "—",
+        "Oh grazie, sei un vero amico!"
+      ]
+    ],
+    "ask": "Giorgio offre a Nadia",
+    "opts": [
+      "un biglietto dell'autobus.",
+      "un passaggio in automobile.",
+      "un caffè dopo il lavoro."
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, vorrei qualcosa per il mal di testa."
+      ],
+      [
+        "—",
+        "Vuole un farmaco in pastiglie o in bustina?"
+      ],
+      [
+        "—",
+        "In bustina va bene."
+      ],
+      [
+        "—",
+        "Ecco, sono 5 euro."
+      ]
+    ],
+    "ask": "Il dialogo si svolge",
+    "opts": [
+      "in uno studio medico.",
+      "in un bar.",
+      "in una farmacia."
+    ],
+    "a": 2
+  }
+]

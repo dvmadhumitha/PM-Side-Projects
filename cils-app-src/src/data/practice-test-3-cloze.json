@@ -1,0 +1,35 @@
+{
+  "bank": [
+    "parlano",
+    "aiutano",
+    "uffici",
+    "familiare",
+    "orario",
+    "trovi",
+    "gratuito",
+    "stranieri",
+    "ricongiungimento",
+    "cerchi"
+  ],
+  "parts": [
+    "Lo \"Sportello informativo sull'immigrazione\" è un servizio ",
+    " per i cittadini ",
+    ". Allo Sportello lavorano mediatori culturali che ",
+    " molte lingue e ti ",
+    " a comprendere i documenti o a comunicare con gli ",
+    " pubblici. Puoi anche chiedere informazioni sul ricongiungimento ",
+    ". Allo sportello ",
+    " anche persone che ti aiutano con l'assistenza sanitaria. L'",
+    " di ricevimento è dal lunedì al venerdì, mattina e pomeriggio."
+  ],
+  "ans": [
+    "gratuito",
+    "stranieri",
+    "parlano",
+    "aiutano",
+    "uffici",
+    "familiare",
+    "trovi",
+    "orario"
+  ]
+}

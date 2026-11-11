@@ -1,0 +1,322 @@
+{
+  "person": {
+    "it": "la persona",
+    "en": "person"
+  },
+  "bicycle": {
+    "it": "la bicicletta",
+    "en": "bicycle"
+  },
+  "car": {
+    "it": "la macchina",
+    "en": "car"
+  },
+  "motorcycle": {
+    "it": "la moto",
+    "en": "motorcycle"
+  },
+  "airplane": {
+    "it": "l'aereo",
+    "en": "airplane"
+  },
+  "bus": {
+    "it": "il autobus",
+    "en": "bus"
+  },
+  "train": {
+    "it": "il treno",
+    "en": "train"
+  },
+  "truck": {
+    "it": "il camion",
+    "en": "truck"
+  },
+  "boat": {
+    "it": "la barca",
+    "en": "boat"
+  },
+  "traffic light": {
+    "it": "il semaforo",
+    "en": "traffic light"
+  },
+  "fire hydrant": {
+    "it": "l'idrante",
+    "en": "fire hydrant"
+  },
+  "stop sign": {
+    "it": "il segnale di stop",
+    "en": "stop sign"
+  },
+  "parking meter": {
+    "it": "il parchimetro",
+    "en": "parking meter"
+  },
+  "bench": {
+    "it": "la panchina",
+    "en": "bench"
+  },
+  "bird": {
+    "it": "l'uccello",
+    "en": "bird"
+  },
+  "cat": {
+    "it": "il gatto",
+    "en": "cat"
+  },
+  "dog": {
+    "it": "il cane",
+    "en": "dog"
+  },
+  "horse": {
+    "it": "il cavallo",
+    "en": "horse"
+  },
+  "sheep": {
+    "it": "la pecora",
+    "en": "sheep"
+  },
+  "cow": {
+    "it": "la mucca",
+    "en": "cow"
+  },
+  "elephant": {
+    "it": "l'elefante",
+    "en": "elephant"
+  },
+  "bear": {
+    "it": "l'orso",
+    "en": "bear"
+  },
+  "zebra": {
+    "it": "la zebra",
+    "en": "zebra"
+  },
+  "giraffe": {
+    "it": "la giraffa",
+    "en": "giraffe"
+  },
+  "backpack": {
+    "it": "lo zaino",
+    "en": "backpack"
+  },
+  "umbrella": {
+    "it": "l'ombrello",
+    "en": "umbrella"
+  },
+  "handbag": {
+    "it": "la borsa",
+    "en": "handbag"
+  },
+  "tie": {
+    "it": "la cravatta",
+    "en": "tie"
+  },
+  "suitcase": {
+    "it": "la valigia",
+    "en": "suitcase"
+  },
+  "frisbee": {
+    "it": "il frisbee",
+    "en": "frisbee"
+  },
+  "skis": {
+    "it": "gli sci",
+    "en": "skis"
+  },
+  "snowboard": {
+    "it": "lo snowboard",
+    "en": "snowboard"
+  },
+  "sports ball": {
+    "it": "il pallone",
+    "en": "sports ball"
+  },
+  "kite": {
+    "it": "l'aquilone",
+    "en": "kite"
+  },
+  "baseball bat": {
+    "it": "la mazza da baseball",
+    "en": "baseball bat"
+  },
+  "baseball glove": {
+    "it": "il guanto da baseball",
+    "en": "baseball glove"
+  },
+  "skateboard": {
+    "it": "lo skateboard",
+    "en": "skateboard"
+  },
+  "surfboard": {
+    "it": "il surf",
+    "en": "surfboard"
+  },
+  "tennis racket": {
+    "it": "la racchetta",
+    "en": "tennis racket"
+  },
+  "bottle": {
+    "it": "la bottiglia",
+    "en": "bottle"
+  },
+  "wine glass": {
+    "it": "il bicchiere da vino",
+    "en": "wine glass"
+  },
+  "cup": {
+    "it": "la tazza",
+    "en": "cup"
+  },
+  "fork": {
+    "it": "la forchetta",
+    "en": "fork"
+  },
+  "knife": {
+    "it": "il coltello",
+    "en": "knife"
+  },
+  "spoon": {
+    "it": "il cucchiaio",
+    "en": "spoon"
+  },
+  "bowl": {
+    "it": "la ciotola",
+    "en": "bowl"
+  },
+  "banana": {
+    "it": "la banana",
+    "en": "banana"
+  },
+  "apple": {
+    "it": "la mela",
+    "en": "apple"
+  },
+  "sandwich": {
+    "it": "il panino",
+    "en": "sandwich"
+  },
+  "orange": {
+    "it": "l'arancia",
+    "en": "orange"
+  },
+  "broccoli": {
+    "it": "i broccoli",
+    "en": "broccoli"
+  },
+  "carrot": {
+    "it": "la carota",
+    "en": "carrot"
+  },
+  "hot dog": {
+    "it": "il hot dog",
+    "en": "hot dog"
+  },
+  "pizza": {
+    "it": "la pizza",
+    "en": "pizza"
+  },
+  "donut": {
+    "it": "il donut",
+    "en": "donut"
+  },
+  "cake": {
+    "it": "la torta",
+    "en": "cake"
+  },
+  "chair": {
+    "it": "la sedia",
+    "en": "chair"
+  },
+  "couch": {
+    "it": "il divano",
+    "en": "couch"
+  },
+  "potted plant": {
+    "it": "la pianta in vaso",
+    "en": "potted plant"
+  },
+  "bed": {
+    "it": "il letto",
+    "en": "bed"
+  },
+  "dining table": {
+    "it": "il tavolo",
+    "en": "dining table"
+  },
+  "toilet": {
+    "it": "il gabinetto",
+    "en": "toilet"
+  },
+  "tv": {
+    "it": "la televisione",
+    "en": "TV"
+  },
+  "laptop": {
+    "it": "il laptop",
+    "en": "laptop"
+  },
+  "mouse": {
+    "it": "il mouse",
+    "en": "mouse"
+  },
+  "remote": {
+    "it": "il telecomando",
+    "en": "remote"
+  },
+  "keyboard": {
+    "it": "la tastiera",
+    "en": "keyboard"
+  },
+  "cell phone": {
+    "it": "il cellulare",
+    "en": "cell phone"
+  },
+  "microwave": {
+    "it": "il microonde",
+    "en": "microwave"
+  },
+  "oven": {
+    "it": "il forno",
+    "en": "oven"
+  },
+  "toaster": {
+    "it": "il tostapane",
+    "en": "toaster"
+  },
+  "sink": {
+    "it": "il lavandino",
+    "en": "sink"
+  },
+  "refrigerator": {
+    "it": "il frigorifero",
+    "en": "refrigerator"
+  },
+  "book": {
+    "it": "il libro",
+    "en": "book"
+  },
+  "clock": {
+    "it": "l'orologio",
+    "en": "clock"
+  },
+  "vase": {
+    "it": "il vaso",
+    "en": "vase"
+  },
+  "scissors": {
+    "it": "le forbici",
+    "en": "scissors"
+  },
+  "teddy bear": {
+    "it": "l'orsacchiotto",
+    "en": "teddy bear"
+  },
+  "hair drier": {
+    "it": "il phon",
+    "en": "hair dryer"
+  },
+  "toothbrush": {
+    "it": "lo spazzolino",
+    "en": "toothbrush"
+  }
+}

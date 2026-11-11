@@ -1,0 +1,1034 @@
+[
+  {
+    "id": "l01",
+    "title": "Allo sportello immigrazione",
+    "passage": "Buongiorno, ho un appuntamento per rinnovare il permesso di soggiorno. Prego, si accomodi. Ha portato tutto? Sì, ho il passaporto, due foto e la marca da bollo da sedici euro. Bene. Deve anche compilare questo modulo con i suoi dati. Il ritiro del permesso sarà possibile fra trenta giorni, riceverà un SMS quando è pronto.",
+    "questions": [
+      {
+        "q": "Perché la persona è allo sportello?",
+        "opts": [
+          "Per chiedere informazioni",
+          "Per rinnovare il permesso di soggiorno",
+          "Per fare la carta di identità",
+          "Per iscriversi all'anagrafe"
+        ],
+        "a": 1,
+        "exp": "The person says at the start: \"ho un appuntamento per rinnovare il permesso di soggiorno\" — I have an appointment to renew my residence permit."
+      },
+      {
+        "q": "Quanto costa la marca da bollo?",
+        "opts": [
+          "Dieci euro",
+          "Quattordici euro",
+          "Sedici euro",
+          "Venti euro"
+        ],
+        "a": 2,
+        "exp": "The audio says: \"la marca da bollo da sedici euro\" — the revenue stamp costs sixteen euros, not fourteen or twenty."
+      },
+      {
+        "q": "Cosa deve fare la persona allo sportello?",
+        "opts": [
+          "Solo consegnare le foto",
+          "Compilare un modulo",
+          "Fare una foto",
+          "Pagare subito"
+        ],
+        "a": 1,
+        "exp": "The clerk says: \"Deve anche compilare questo modulo con i suoi dati\" — you must also fill in this form with your details."
+      },
+      {
+        "q": "Quando sarà pronto il permesso?",
+        "opts": [
+          "In una settimana",
+          "In quindici giorni",
+          "In venti giorni",
+          "In trenta giorni"
+        ],
+        "a": 3,
+        "exp": "The clerk says: \"Il ritiro del permesso sarà possibile fra trenta giorni\" — collection will be possible in thirty days."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il permesso di soggiorno",
+        "en": "residence permit",
+        "opts": [
+          "work visa",
+          "residence permit",
+          "identity card",
+          "driving licence"
+        ],
+        "a": 1
+      },
+      {
+        "it": "la marca da bollo",
+        "en": "revenue stamp",
+        "opts": [
+          "postage stamp",
+          "identity sticker",
+          "revenue stamp",
+          "tax code"
+        ],
+        "a": 2
+      },
+      {
+        "it": "compilare un modulo",
+        "en": "to fill in a form",
+        "opts": [
+          "to send a form",
+          "to fill in a form",
+          "to sign a form",
+          "to lose a form"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l02",
+    "title": "Al pronto soccorso",
+    "passage": "Salve, ho mal di pancia molto forte da ieri sera. Ha la febbre? No, non ce l'ho, però ho vomitato due volte stamattina. Prenda questo numero e si sieda in sala d'attesa. Il medico la chiamerà fra circa un'ora. Se la situazione peggiora me lo dica subito.",
+    "questions": [
+      {
+        "q": "Da quando ha il mal di pancia la persona?",
+        "opts": [
+          "Da stamattina",
+          "Da ieri sera",
+          "Da due giorni",
+          "Da una settimana"
+        ],
+        "a": 1,
+        "exp": "The person says: \"ho mal di pancia molto forte da ieri sera\" — since yesterday evening, not just since this morning."
+      },
+      {
+        "q": "La persona ha la febbre?",
+        "opts": [
+          "Sì, molta",
+          "Sì, un po'",
+          "No",
+          "Non lo sa"
+        ],
+        "a": 2,
+        "exp": "The person says clearly: \"No, non ce l'ho\" — No, I don't have a fever. They do vomit, but no temperature."
+      },
+      {
+        "q": "Quanto dovrà aspettare il medico?",
+        "opts": [
+          "Mezz'ora",
+          "Un'ora",
+          "Due ore",
+          "Tre ore"
+        ],
+        "a": 1,
+        "exp": "The nurse says: \"Il medico la chiamerà fra circa un'ora\" — the doctor will call you in about one hour."
+      },
+      {
+        "q": "Cosa deve fare se sta peggio?",
+        "opts": [
+          "Andare a casa",
+          "Chiamare un'ambulanza",
+          "Dirlo subito all'infermiere",
+          "Aspettare comunque"
+        ],
+        "a": 2,
+        "exp": "The nurse says: \"Se la situazione peggiora me lo dica subito\" — if it gets worse, tell me immediately. \"Me\" = the nurse at the desk."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il pronto soccorso",
+        "en": "emergency room / A&E",
+        "opts": [
+          "chemist's",
+          "outpatients clinic",
+          "emergency room / A&E",
+          "intensive care"
+        ],
+        "a": 2
+      },
+      {
+        "it": "la sala d'attesa",
+        "en": "waiting room",
+        "opts": [
+          "operating room",
+          "waiting room",
+          "consulting room",
+          "pharmacy"
+        ],
+        "a": 1
+      },
+      {
+        "it": "peggiorare",
+        "en": "to get worse / worsen",
+        "opts": [
+          "to improve",
+          "to recover",
+          "to get worse / worsen",
+          "to stay the same"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l03",
+    "title": "Al telefono con la scuola",
+    "passage": "Pronto, scuola elementare Manzoni, buongiorno. Buongiorno, sono la mamma di Ali Hassan, classe seconda B. Mio figlio oggi non può venire a scuola perché ha la febbre a trentotto e mezzo. Va bene, lo segniamo assente. Quando rientra dovrà portare il certificato medico se l'assenza dura più di cinque giorni.",
+    "questions": [
+      {
+        "q": "Perché il bambino non va a scuola?",
+        "opts": [
+          "Ha mal di pancia",
+          "Ha la febbre",
+          "È in vacanza",
+          "Ha un appuntamento"
+        ],
+        "a": 1,
+        "exp": "The mother says: \"non può venire a scuola perché ha la febbre a trentotto e mezzo\" — he has a fever of 38.5°C."
+      },
+      {
+        "q": "In quale classe è Ali?",
+        "opts": [
+          "Prima A",
+          "Prima B",
+          "Seconda A",
+          "Seconda B"
+        ],
+        "a": 3,
+        "exp": "The mother introduces herself: \"sono la mamma di Ali Hassan, classe seconda B\" — second year, class B."
+      },
+      {
+        "q": "Quanta febbre ha il bambino?",
+        "opts": [
+          "Trentasette e cinque",
+          "Trentotto",
+          "Trentotto e mezzo",
+          "Trentanove"
+        ],
+        "a": 2,
+        "exp": "The audio states exactly: \"ha la febbre a trentotto e mezzo\" — 38.5 degrees."
+      },
+      {
+        "q": "Quando serve il certificato medico?",
+        "opts": [
+          "Sempre",
+          "Se assente più di tre giorni",
+          "Se assente più di cinque giorni",
+          "Non serve mai"
+        ],
+        "a": 2,
+        "exp": "The school says: \"dovrà portare il certificato medico se l'assenza dura più di cinque giorni\" — only if the absence exceeds five days."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "assente",
+        "en": "absent",
+        "opts": [
+          "present",
+          "ill",
+          "absent",
+          "late"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il certificato medico",
+        "en": "medical certificate",
+        "opts": [
+          "doctor's prescription",
+          "medical certificate",
+          "health card",
+          "vaccination record"
+        ],
+        "a": 1
+      },
+      {
+        "it": "rientrare (a scuola)",
+        "en": "to return (to school)",
+        "opts": [
+          "to leave school",
+          "to enrol in school",
+          "to return (to school)",
+          "to drop out"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l04",
+    "title": "In banca",
+    "passage": "Buongiorno, vorrei aprire un conto corrente. Ha un documento di identità e il codice fiscale? Sì, ho tutto qui. Bene. Il conto base è gratuito per il primo anno. Poi ha un costo di tre euro al mese. Può richiedere anche il bancomat. La carta arriverà a casa in dieci giorni lavorativi.",
+    "questions": [
+      {
+        "q": "Cosa vuole fare la persona in banca?",
+        "opts": [
+          "Fare un bonifico",
+          "Aprire un conto",
+          "Chiedere un prestito",
+          "Cambiare valuta"
+        ],
+        "a": 1,
+        "exp": "The person says: \"vorrei aprire un conto corrente\" — I would like to open a current account."
+      },
+      {
+        "q": "Quanto costa il conto il primo anno?",
+        "opts": [
+          "Tre euro al mese",
+          "È gratuito",
+          "Un euro al mese",
+          "Dieci euro al mese"
+        ],
+        "a": 1,
+        "exp": "The clerk says: \"Il conto base è gratuito per il primo anno\" — it is free for the first year."
+      },
+      {
+        "q": "Dopo il primo anno quanto costa?",
+        "opts": [
+          "Due euro al mese",
+          "Tre euro al mese",
+          "Cinque euro al mese",
+          "Ancora gratuito"
+        ],
+        "a": 1,
+        "exp": "The clerk continues: \"Poi ha un costo di tre euro al mese\" — then it costs three euros per month."
+      },
+      {
+        "q": "Quando arriva il bancomat a casa?",
+        "opts": [
+          "In tre giorni",
+          "In una settimana",
+          "In dieci giorni lavorativi",
+          "In venti giorni"
+        ],
+        "a": 2,
+        "exp": "The clerk says: \"La carta arriverà a casa in dieci giorni lavorativi\" — ten working days, not calendar days."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il conto corrente",
+        "en": "current / checking account",
+        "opts": [
+          "savings account",
+          "credit account",
+          "current / checking account",
+          "loan"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il bancomat",
+        "en": "ATM card / debit card",
+        "opts": [
+          "credit card",
+          "ATM card / debit card",
+          "cheque book",
+          "bank transfer"
+        ],
+        "a": 1
+      },
+      {
+        "it": "i giorni lavorativi",
+        "en": "working days",
+        "opts": [
+          "calendar days",
+          "public holidays",
+          "working days",
+          "weekends"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l05",
+    "title": "Al supermercato",
+    "passage": "Scusi, sa dove sono i prodotti surgelati? Sì, sono in fondo al corridoio a destra, vicino ai latticini. Grazie. Senta, oggi i prodotti di questo marchio sono in offerta: due confezioni al prezzo di una. Vale solo per oggi. Posso pagare con il bancomat? Certamente, anche con il telefono se preferisce.",
+    "questions": [
+      {
+        "q": "Dove si trovano i prodotti surgelati?",
+        "opts": [
+          "All'entrata a sinistra",
+          "In fondo a destra",
+          "Al centro del negozio",
+          "Vicino alla cassa"
+        ],
+        "a": 1,
+        "exp": "The assistant says: \"sono in fondo al corridoio a destra, vicino ai latticini\" — at the far end of the aisle on the right."
+      },
+      {
+        "q": "Qual è l'offerta del giorno?",
+        "opts": [
+          "Sconto del 50%",
+          "Tre prodotti al prezzo di due",
+          "Due prodotti al prezzo di uno",
+          "Tutto a metà prezzo"
+        ],
+        "a": 2,
+        "exp": "The audio says: \"due confezioni al prezzo di una\" — two packs for the price of one."
+      },
+      {
+        "q": "Fino a quando vale l'offerta?",
+        "opts": [
+          "Fino alla settimana prossima",
+          "Solo per oggi",
+          "Per tre giorni",
+          "Senza limite di tempo"
+        ],
+        "a": 1,
+        "exp": "\"Vale solo per oggi\" — valid only today. \"Solo\" means only."
+      },
+      {
+        "q": "Come si può pagare?",
+        "opts": [
+          "Solo contanti",
+          "Solo bancomat",
+          "Bancomat o telefono",
+          "Solo carta di credito"
+        ],
+        "a": 2,
+        "exp": "The clerk says: \"Certamente, anche con il telefono se preferisce\" — bank card or phone are both accepted."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "i prodotti surgelati",
+        "en": "frozen products / frozen food",
+        "opts": [
+          "fresh products",
+          "organic products",
+          "frozen products / frozen food",
+          "dairy products"
+        ],
+        "a": 2
+      },
+      {
+        "it": "i latticini",
+        "en": "dairy products",
+        "opts": [
+          "frozen products",
+          "bakery products",
+          "dairy products",
+          "canned goods"
+        ],
+        "a": 2
+      },
+      {
+        "it": "in offerta",
+        "en": "on special offer",
+        "opts": [
+          "out of stock",
+          "on special offer",
+          "at full price",
+          "sold out"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l06",
+    "title": "Corso di italiano",
+    "passage": "Buonasera a tutti e benvenuti al corso di italiano per stranieri. Le lezioni si tengono il martedì e il giovedì dalle diciotto alle venti. Il corso è gratuito, ma è obbligatorio frequentare almeno il settanta per cento delle lezioni. Alla fine del corso riceverete un attestato di frequenza. Chi vuole sostenere l'esame A2 deve iscriversi separatamente.",
+    "questions": [
+      {
+        "q": "Quando si svolgono le lezioni?",
+        "opts": [
+          "Lunedì e mercoledì",
+          "Martedì e giovedì",
+          "Mercoledì e venerdì",
+          "Tutti i giorni"
+        ],
+        "a": 1,
+        "exp": "\"Le lezioni si tengono il martedì e il giovedì\" — lessons are held on Tuesday and Thursday."
+      },
+      {
+        "q": "Quanto costa il corso?",
+        "opts": [
+          "Cinquanta euro",
+          "Cento euro",
+          "È gratuito",
+          "Dipende dal livello"
+        ],
+        "a": 2,
+        "exp": "\"Il corso è gratuito\" — the course is free. This is stated clearly after mentioning when classes are held."
+      },
+      {
+        "q": "Quale percentuale minima di presenze è obbligatoria?",
+        "opts": [
+          "50%",
+          "60%",
+          "70%",
+          "80%"
+        ],
+        "a": 2,
+        "exp": "\"obbligatorio frequentare almeno il settanta per cento delle lezioni\" — you must attend at least 70% of lessons."
+      },
+      {
+        "q": "Cosa ricevono gli studenti alla fine del corso?",
+        "opts": [
+          "Un diploma A2",
+          "Un attestato di frequenza",
+          "Un certificato di lavoro",
+          "Niente"
+        ],
+        "a": 1,
+        "exp": "\"riceverete un attestato di frequenza\" — you will receive an attendance certificate. To sit the A2 exam you must register separately."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "l'attestato di frequenza",
+        "en": "attendance certificate",
+        "opts": [
+          "diploma",
+          "attendance certificate",
+          "exam result",
+          "enrolment form"
+        ],
+        "a": 1
+      },
+      {
+        "it": "frequentare (un corso)",
+        "en": "to attend (a course)",
+        "opts": [
+          "to teach",
+          "to pay for",
+          "to complete",
+          "to attend (a course)"
+        ],
+        "a": 3
+      },
+      {
+        "it": "sostenere l'esame",
+        "en": "to sit / take the exam",
+        "opts": [
+          "to study for the exam",
+          "to pass the exam",
+          "to fail the exam",
+          "to sit / take the exam"
+        ],
+        "a": 3
+      }
+    ]
+  },
+  {
+    "id": "l07",
+    "title": "Trasporto pubblico",
+    "passage": "Attenzione: per lavori sulla linea due, la metropolitana sarà interrotta fra le stazioni Centrale e Garibaldi sabato e domenica. Saranno attivi bus sostitutivi. I passeggeri con abbonamento mensile potranno utilizzare i bus sostitutivi senza costi aggiuntivi. Per informazioni chiamare il numero verde o visitare il sito dell'azienda.",
+    "questions": [
+      {
+        "q": "Perché è interrotta la metropolitana?",
+        "opts": [
+          "Sciopero dei lavoratori",
+          "Lavori sulla linea",
+          "Problema tecnico",
+          "Chiusura definitiva"
+        ],
+        "a": 1,
+        "exp": "\"per lavori sulla linea due, la metropolitana sarà interrotta\" — due to engineering works on line two. A strike (sciopero) is not mentioned."
+      },
+      {
+        "q": "Quali giorni è interrotta?",
+        "opts": [
+          "Venerdì e sabato",
+          "Sabato e domenica",
+          "Solo sabato",
+          "Solo domenica"
+        ],
+        "a": 1,
+        "exp": "\"la metropolitana sarà interrotta... sabato e domenica\" — Saturday and Sunday, not Friday."
+      },
+      {
+        "q": "Cosa è previsto al posto della metro?",
+        "opts": [
+          "Taxi gratuiti",
+          "Treni speciali",
+          "Bus sostitutivi",
+          "Niente"
+        ],
+        "a": 2,
+        "exp": "\"Saranno attivi bus sostitutivi\" — replacement buses will operate. No taxis or special trains are mentioned."
+      },
+      {
+        "q": "Gli abbonati devono pagare di più per i bus?",
+        "opts": [
+          "Sì, un euro in più",
+          "Sì, due euro",
+          "No, è incluso nell'abbonamento",
+          "Solo i mensili pagano"
+        ],
+        "a": 2,
+        "exp": "\"I passeggeri con abbonamento mensile potranno utilizzare i bus sostitutivi senza costi aggiuntivi\" — no extra cost for monthly pass holders."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il bus sostitutivo",
+        "en": "replacement bus",
+        "opts": [
+          "express bus",
+          "replacement bus",
+          "free bus",
+          "night bus"
+        ],
+        "a": 1
+      },
+      {
+        "it": "l'abbonamento mensile",
+        "en": "monthly travel pass",
+        "opts": [
+          "single ticket",
+          "weekly pass",
+          "monthly travel pass",
+          "annual card"
+        ],
+        "a": 2
+      },
+      {
+        "it": "i lavori (sulla linea)",
+        "en": "engineering works (on the line)",
+        "opts": [
+          "a strike",
+          "a delay",
+          "engineering works (on the line)",
+          "an accident"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l08",
+    "title": "Cercare lavoro",
+    "passage": "Salve, ho visto il vostro annuncio per il posto di magazziniere. Quali requisiti ho? Servono la patente B, buona conoscenza dell'italiano e disponibilità a lavorare su turni, anche il sabato. Si lavora otto ore al giorno. Lo stipendio è di millequattrocento euro netti al mese. Dovrà fare un mese di prova prima di firmare il contratto.",
+    "questions": [
+      {
+        "q": "Per quale lavoro è l'annuncio?",
+        "opts": [
+          "Camionista",
+          "Magazziniere",
+          "Commesso",
+          "Corriere"
+        ],
+        "a": 1,
+        "exp": "The caller says: \"ho visto il vostro annuncio per il posto di magazziniere\" — the ad is for a warehouse worker position."
+      },
+      {
+        "q": "Quale documento di guida è richiesto?",
+        "opts": [
+          "Patente A",
+          "Patente B",
+          "Patente C",
+          "Non serve la patente"
+        ],
+        "a": 1,
+        "exp": "\"Servono la patente B\" — category B driving licence is required. Category A is for motorbikes, C for lorries."
+      },
+      {
+        "q": "Quanto è lo stipendio netto mensile?",
+        "opts": [
+          "Milleduecento euro",
+          "Milletrecento euro",
+          "Millequattrocento euro",
+          "Millecinquecento euro"
+        ],
+        "a": 2,
+        "exp": "\"Lo stipendio è di millequattrocento euro netti al mese\" — 1,400 euros net per month."
+      },
+      {
+        "q": "Cosa deve fare prima di firmare il contratto?",
+        "opts": [
+          "Fare un corso",
+          "Un mese di prova",
+          "Tre mesi di prova",
+          "Niente di speciale"
+        ],
+        "a": 1,
+        "exp": "\"Dovrà fare un mese di prova prima di firmare il contratto\" — one month's trial period before signing."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il magazziniere",
+        "en": "warehouse worker",
+        "opts": [
+          "shop assistant",
+          "warehouse worker",
+          "delivery driver",
+          "factory worker"
+        ],
+        "a": 1
+      },
+      {
+        "it": "lo stipendio netto",
+        "en": "net (take-home) salary",
+        "opts": [
+          "gross salary",
+          "net (take-home) salary",
+          "hourly rate",
+          "bonus"
+        ],
+        "a": 1
+      },
+      {
+        "it": "il periodo di prova",
+        "en": "probationary period",
+        "opts": [
+          "notice period",
+          "holiday entitlement",
+          "probationary period",
+          "pay-rise period"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l09",
+    "title": "Visita medica di base",
+    "passage": "Allora, come si sente? Ho mal di schiena da due settimane. Ho lavorato molto con il computer. Capisco. Le prescrivo degli antidolorifici da prendere due volte al giorno dopo i pasti. Faccia anche un po' di stretching ogni mattina. Se dopo una settimana non migliora torni da me. Eviti di portare pesi per almeno dieci giorni.",
+    "questions": [
+      {
+        "q": "Dove ha dolore il paziente?",
+        "opts": [
+          "Alla testa",
+          "Alla schiena",
+          "Alle gambe",
+          "Alle spalle"
+        ],
+        "a": 1,
+        "exp": "The patient says: \"Ho mal di schiena da due settimane\" — back pain (schiena = back) for two weeks."
+      },
+      {
+        "q": "Da quanto tempo ha il dolore?",
+        "opts": [
+          "Una settimana",
+          "Due settimane",
+          "Un mese",
+          "Tre giorni"
+        ],
+        "a": 1,
+        "exp": "\"Ho mal di schiena da due settimane\" — for two weeks. Note: \"da\" + time period = for how long."
+      },
+      {
+        "q": "Quando deve prendere gli antidolorifici?",
+        "opts": [
+          "Prima dei pasti",
+          "Dopo i pasti",
+          "A stomaco vuoto",
+          "Solo la sera"
+        ],
+        "a": 1,
+        "exp": "\"da prendere due volte al giorno dopo i pasti\" — twice a day, after meals. \"Dopo\" means after."
+      },
+      {
+        "q": "Cosa deve evitare per dieci giorni?",
+        "opts": [
+          "Lo stretching",
+          "Lavorare al computer",
+          "Portare pesi",
+          "Camminare"
+        ],
+        "a": 2,
+        "exp": "\"Eviti di portare pesi per almeno dieci giorni\" — avoid carrying heavy things. Stretching is actually recommended."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "l'antidolorifico",
+        "en": "painkiller",
+        "opts": [
+          "antibiotic",
+          "vitamin",
+          "painkiller",
+          "sleeping pill"
+        ],
+        "a": 2
+      },
+      {
+        "it": "prescrivere",
+        "en": "to prescribe",
+        "opts": [
+          "to diagnose",
+          "to prescribe",
+          "to treat",
+          "to recommend"
+        ],
+        "a": 1
+      },
+      {
+        "it": "portare pesi",
+        "en": "to lift / carry heavy things",
+        "opts": [
+          "to do exercise",
+          "to climb stairs",
+          "to lift / carry heavy things",
+          "to stand for long periods"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l10",
+    "title": "Affitto appartamento",
+    "passage": "Ho visto l'annuncio per l'appartamento in via Roma. È ancora disponibile? Sì, è libero dal primo del mese prossimo. È un trilocale al secondo piano, con balcone. L'affitto è di ottocentocinquanta euro al mese, escluse le spese condominiali. Richiedono due mesi di caparra. È possibile vedere l'appartamento domani pomeriggio?",
+    "questions": [
+      {
+        "q": "Quante stanze ha l'appartamento?",
+        "opts": [
+          "Bilocale",
+          "Trilocale",
+          "Quadrilocale",
+          "Monolocale"
+        ],
+        "a": 1,
+        "exp": "\"È un trilocale\" — a three-room apartment. Bilocale = 2 rooms, trilocale = 3, quadrilocale = 4."
+      },
+      {
+        "q": "A quale piano è l'appartamento?",
+        "opts": [
+          "Piano terra",
+          "Primo piano",
+          "Secondo piano",
+          "Terzo piano"
+        ],
+        "a": 2,
+        "exp": "\"È un trilocale al secondo piano\" — on the second floor. In Italy, piano terra = ground floor, primo piano = first floor."
+      },
+      {
+        "q": "Quanto è l'affitto mensile?",
+        "opts": [
+          "Settecento euro",
+          "Ottocentocinquanta euro",
+          "Novecento euro",
+          "Mille euro"
+        ],
+        "a": 1,
+        "exp": "\"L'affitto è di ottocentocinquanta euro al mese\" — 850 euros per month."
+      },
+      {
+        "q": "Quanti mesi di caparra sono richiesti?",
+        "opts": [
+          "Uno",
+          "Due",
+          "Tre",
+          "Nessuno"
+        ],
+        "a": 1,
+        "exp": "\"Richiedono due mesi di caparra\" — they require a deposit of two months' rent."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il trilocale",
+        "en": "three-room apartment",
+        "opts": [
+          "studio flat",
+          "two-room apartment",
+          "three-room apartment",
+          "four-room apartment"
+        ],
+        "a": 2
+      },
+      {
+        "it": "la caparra",
+        "en": "security deposit",
+        "opts": [
+          "monthly rent",
+          "agency fee",
+          "security deposit",
+          "utility bill"
+        ],
+        "a": 2
+      },
+      {
+        "it": "le spese condominiali",
+        "en": "building service charges",
+        "opts": [
+          "utility bills",
+          "building service charges",
+          "property tax",
+          "insurance costs"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l11",
+    "title": "All'ufficio postale",
+    "passage": "Buongiorno. Devo spedire questo pacco in Marocco. Quanto pesa? Circa due chili. Per la spedizione normale ci vogliono dieci-quindici giorni lavorativi e costa ventidue euro. Con la spedizione prioritaria arriva in cinque giorni e costa trentacinque euro. Quale preferisce? Quella normale va bene. Deve compilare questo modulo con il nome e l'indirizzo del destinatario.",
+    "questions": [
+      {
+        "q": "Dove vuole spedire il pacco?",
+        "opts": [
+          "In Tunisia",
+          "In Egitto",
+          "In Marocco",
+          "In Algeria"
+        ],
+        "a": 2,
+        "exp": "The customer says at the start: \"Devo spedire questo pacco in Marocco\" — I need to send this parcel to Morocco."
+      },
+      {
+        "q": "Quanto costa la spedizione normale?",
+        "opts": [
+          "Quindici euro",
+          "Ventidue euro",
+          "Venticinque euro",
+          "Trentacinque euro"
+        ],
+        "a": 1,
+        "exp": "\"la spedizione normale... costa ventidue euro\" — standard shipping costs 22 euros. 35 euros is for priority."
+      },
+      {
+        "q": "Quanti giorni impiega la spedizione prioritaria?",
+        "opts": [
+          "Due giorni",
+          "Tre giorni",
+          "Cinque giorni",
+          "Dieci giorni"
+        ],
+        "a": 2,
+        "exp": "\"Con la spedizione prioritaria arriva in cinque giorni\" — priority shipping takes five days."
+      },
+      {
+        "q": "Cosa deve compilare il cliente?",
+        "opts": [
+          "Il contratto",
+          "Un modulo con i dati del destinatario",
+          "Una ricevuta",
+          "Niente"
+        ],
+        "a": 1,
+        "exp": "\"Deve compilare questo modulo con il nome e l'indirizzo del destinatario\" — fill in a form with the recipient's name and address."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "la spedizione prioritaria",
+        "en": "priority / express shipping",
+        "opts": [
+          "standard delivery",
+          "priority / express shipping",
+          "recorded delivery",
+          "insured shipping"
+        ],
+        "a": 1
+      },
+      {
+        "it": "il destinatario",
+        "en": "recipient / addressee",
+        "opts": [
+          "sender",
+          "postman",
+          "recipient / addressee",
+          "customs officer"
+        ],
+        "a": 2
+      },
+      {
+        "it": "spedire un pacco",
+        "en": "to send a parcel",
+        "opts": [
+          "to collect a parcel",
+          "to track a parcel",
+          "to send a parcel",
+          "to open a parcel"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l12",
+    "title": "Iscrizione a scuola",
+    "passage": "Mia figlia ha sei anni e deve iniziare la prima elementare. Dove mi devo rivolgere? Deve andare alla segreteria della scuola del suo quartiere. Che documenti servono? Il documento di identità del bambino, il suo codice fiscale e il certificato vaccinale. Le iscrizioni per settembre si fanno a gennaio. La scuola è gratuita, ma i libri sono a pagamento.",
+    "questions": [
+      {
+        "q": "Quanti anni ha la figlia?",
+        "opts": [
+          "Cinque anni",
+          "Sei anni",
+          "Sette anni",
+          "Otto anni"
+        ],
+        "a": 1,
+        "exp": "\"Mia figlia ha sei anni\" — my daughter is six years old. In Italy, children start primary school at 6."
+      },
+      {
+        "q": "Quale documento sanitario è richiesto?",
+        "opts": [
+          "Il libretto medico",
+          "Il certificato vaccinale",
+          "La tessera sanitaria",
+          "La ricetta del medico"
+        ],
+        "a": 1,
+        "exp": "The list of required documents includes \"il certificato vaccinale\" — the vaccination record. The health card (tessera sanitaria) is not listed."
+      },
+      {
+        "q": "Quando si fanno le iscrizioni per settembre?",
+        "opts": [
+          "A settembre",
+          "A giugno",
+          "A marzo",
+          "A gennaio"
+        ],
+        "a": 3,
+        "exp": "\"Le iscrizioni per settembre si fanno a gennaio\" — enrolments for September take place in January."
+      },
+      {
+        "q": "La scuola elementare è gratuita?",
+        "opts": [
+          "No, costa poco",
+          "Sì, tutto è gratuito",
+          "Sì, ma i libri si pagano",
+          "No, è cara"
+        ],
+        "a": 2,
+        "exp": "\"La scuola è gratuita, ma i libri sono a pagamento\" — school is free but books must be paid for. Not everything is included."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il certificato vaccinale",
+        "en": "vaccination record / certificate",
+        "opts": [
+          "prescription",
+          "vaccination record / certificate",
+          "health card",
+          "birth certificate"
+        ],
+        "a": 1
+      },
+      {
+        "it": "la segreteria (scolastica)",
+        "en": "school office / secretariat",
+        "opts": [
+          "classroom",
+          "staffroom",
+          "headteacher's office",
+          "school office / secretariat"
+        ],
+        "a": 3
+      },
+      {
+        "it": "iscriversi",
+        "en": "to enrol / register",
+        "opts": [
+          "to graduate",
+          "to fail",
+          "to enrol / register",
+          "to transfer"
+        ],
+        "a": 2
+      }
+    ]
+  }
+]

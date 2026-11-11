@@ -1,0 +1,41 @@
+[
+  {
+    "label": "Verbi",
+    "topics": [
+      "Presente Indicativo",
+      "Passato Prossimo",
+      "Imperfetto",
+      "Imperfetto vs Passato Prossimo",
+      "Verbi Modali",
+      "Negazione"
+    ]
+  },
+  {
+    "label": "Articoli & Preposizioni",
+    "topics": [
+      "Articoli — Sound Triggers",
+      "Articoli — Definite vs Indefinite",
+      "Preposizioni — A vs IN vs DA",
+      "Preposizioni Articolate — cloze",
+      "Preposizioni — Immagini"
+    ]
+  },
+  {
+    "label": "Testi da completare",
+    "topics": [
+      "Cloze Test — Cittadinanza",
+      "Cloze Test — Salute",
+      "Cloze Test — Lavoro"
+    ]
+  },
+  {
+    "label": "Giochi con le frasi",
+    "topics": [
+      "Parole Interrogative",
+      "Word Order",
+      "Match — Sentence Halves",
+      "Match — Questions & Answers",
+      "Trova l'Errore"
+    ]
+  }
+]

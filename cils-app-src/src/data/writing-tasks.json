@@ -1,0 +1,609 @@
+[
+  {
+    "id": "w1",
+    "level": 1,
+    "type": "message",
+    "topic": "Presentarsi",
+    "title": "Write a short introduction",
+    "prompt": "Write a short message to introduce yourself to a new Italian language class. Include: your name, where you are from, and one thing you like.",
+    "hint": "Use: Mi chiamo…, Vengo da…, Mi piace…",
+    "wordTarget": [
+      25,
+      45
+    ],
+    "model": "Ciao a tutti! Mi chiamo Lena e vengo dalla Germania. Abito a Milano da sei mesi. Mi piace molto cucinare e imparare l'italiano. Sono felice di essere in questa classe!",
+    "keyPhrases": [
+      "Mi chiamo…",
+      "Vengo da…",
+      "Abito a…",
+      "Mi piace…",
+      "Sono felice di…"
+    ]
+  },
+  {
+    "id": "w2",
+    "level": 1,
+    "type": "reply",
+    "topic": "Vita quotidiana",
+    "title": "Reply to an invitation",
+    "prompt": "Your friend Marco writes: \"Ciao! Vuoi venire a cena da me sabato sera alle 20?\" Write a short reply accepting and asking what to bring.",
+    "hint": "Use: Certo! / Sì, volentieri! / Cosa porto?",
+    "wordTarget": [
+      20,
+      40
+    ],
+    "model": "Ciao Marco! Certo, vengo volentieri sabato sera! Grazie per l'invito. Cosa porto? Posso portare il vino o il dolce. A sabato!",
+    "keyPhrases": [
+      "Sì, volentieri!",
+      "Grazie per l'invito.",
+      "Cosa porto?",
+      "Posso portare…",
+      "A sabato!"
+    ]
+  },
+  {
+    "id": "w3",
+    "level": 1,
+    "type": "form",
+    "topic": "Informazioni personali",
+    "title": "Fill in a registration form",
+    "prompt": "You are joining a local Italian sports club. Write 3–4 sentences with your personal details: full name, date of birth (invent one), address in Italy, and a sport you want to practise.",
+    "hint": "Use: Mi chiamo…, Sono nato/a il…, Abito in Via…, Vorrei praticare…",
+    "wordTarget": [
+      25,
+      50
+    ],
+    "model": "Mi chiamo Anna Bauer. Sono nata il 14 marzo 1990. Abito in Via Garibaldi 12, Milano. Vorrei praticare il nuoto.",
+    "keyPhrases": [
+      "Mi chiamo…",
+      "Sono nato/a il…",
+      "Abito in Via…",
+      "Vorrei praticare…"
+    ]
+  },
+  {
+    "id": "w4",
+    "level": 1,
+    "type": "message",
+    "topic": "Salute",
+    "title": "Message to cancel an appointment",
+    "prompt": "You feel unwell and cannot go to your Italian lesson tomorrow. Write a WhatsApp message to your teacher to cancel and ask to reschedule.",
+    "hint": "Use: Mi dispiace…, Non sto bene…, Possiamo…?",
+    "wordTarget": [
+      25,
+      45
+    ],
+    "model": "Buongiorno professoressa! Mi dispiace molto, ma non sto bene oggi e domani non posso venire alla lezione. Ho mal di testa e un po' di febbre. Possiamo spostare la lezione a giovedì? Grazie mille!",
+    "keyPhrases": [
+      "Mi dispiace molto,",
+      "Non sto bene.",
+      "Ho mal di…",
+      "Possiamo spostare…?",
+      "Grazie mille!"
+    ]
+  },
+  {
+    "id": "w5",
+    "level": 1,
+    "type": "describe",
+    "topic": "Casa & famiglia",
+    "title": "Describe your home",
+    "prompt": "Describe where you live in 4–5 sentences. Mention: type of home (flat/house), how many rooms, the neighbourhood, and one thing you like about it.",
+    "hint": "Use: Abito in un appartamento / una casa…, Ci sono… camere…, Il quartiere è…",
+    "wordTarget": [
+      35,
+      60
+    ],
+    "model": "Abito in un appartamento al terzo piano in centro a Milano. Ci sono due camere da letto, un soggiorno e una cucina grande. Il quartiere è molto animato con tanti negozi e un bel parco. Mi piace molto perché è vicino alla fermata della metro.",
+    "keyPhrases": [
+      "Abito in un appartamento…",
+      "Ci sono… camere",
+      "Il quartiere è…",
+      "Mi piace perché…",
+      "È vicino a…"
+    ]
+  },
+  {
+    "id": "w6",
+    "level": 2,
+    "type": "email",
+    "topic": "Lavoro & studio",
+    "title": "Email asking about a job",
+    "prompt": "You see a job advertisement for a shop assistant at a local supermarket. Write a short email expressing your interest. Include: why you are interested, your relevant experience (real or invented), and when you are available for an interview.",
+    "hint": "Use: scrivo per…, Ho esperienza in…, Sono disponibile…",
+    "wordTarget": [
+      50,
+      80
+    ],
+    "model": "Gentile Signora Rossi,\n\nLe scrivo per il lavoro di commesso/a pubblicato sul sito del supermercato. Sono molto interessato/a perché mi piace lavorare con le persone e ho già esperienza in un negozio di abbigliamento.\n\nSono disponibile dal lunedì al sabato, anche nei fine settimana. Sono puntuale e affidabile.\n\nLe allego il mio curriculum. La ringrazio e resto in attesa di una risposta.\n\nCordiali saluti",
+    "keyPhrases": [
+      "Le scrivo per…",
+      "Sono molto interessato/a…",
+      "Ho esperienza in…",
+      "Sono disponibile…",
+      "La ringrazio e resto in attesa"
+    ]
+  },
+  {
+    "id": "w7",
+    "level": 2,
+    "type": "reply",
+    "topic": "Trasporti",
+    "title": "Reply to 3 messages about travel plans",
+    "prompt": "Reply to each message in 15–25 words:\n\n1. Your friend asks: \"Come vieni a Roma, in treno o in macchina?\"\n2. She asks: \"A che ora parti?\"\n3. She asks: \"Ti servono indicazioni dall'aeroporto?\"",
+    "hint": "Answer each question separately with a full sentence.",
+    "wordTarget": [
+      40,
+      75
+    ],
+    "model": "1. Vengo in treno perché è più comodo e veloce. Ho già comprato il biglietto online.\n2. Parto alle 8 di mattina dalla stazione centrale. Arrivo a Roma alle 11.\n3. Sì, grazie! Puoi mandarmi l'indirizzo? Prendo un taxi o l'autobus dalla stazione.",
+    "keyPhrases": [
+      "Vengo in… perché…",
+      "Parto alle…",
+      "Arrivo a…",
+      "Ho già…",
+      "Puoi mandarmi…?"
+    ]
+  },
+  {
+    "id": "w8",
+    "level": 2,
+    "type": "describe",
+    "topic": "Cibo & shopping",
+    "title": "Describe your favourite meal",
+    "prompt": "Write a short paragraph about your favourite Italian dish or meal. Include: the name of the dish, main ingredients, when/where you eat it, and why you like it.",
+    "hint": "Use: Il mio piatto preferito è…, Si prepara con…, Lo mangio…, Mi piace perché…",
+    "wordTarget": [
+      50,
+      80
+    ],
+    "model": "Il mio piatto preferito è la pasta al pomodoro. Si prepara con pasta, pomodori freschi, aglio, basilico e olio d'oliva. È semplice ma deliziosa! Lo mangio spesso la domenica a pranzo con la mia famiglia. Mi piace perché è un piatto classico italiano e mi ricorda la mia prima vacanza in Toscana.",
+    "keyPhrases": [
+      "Il mio piatto preferito è…",
+      "Si prepara con…",
+      "Lo mangio…",
+      "Mi piace perché…",
+      "Mi ricorda…"
+    ]
+  },
+  {
+    "id": "w9",
+    "level": 2,
+    "type": "message",
+    "topic": "Servizi & comunità",
+    "title": "Complaint to a landlord",
+    "prompt": "Write a message to your landlord (il proprietario) to report a problem in your flat: the heating (il riscaldamento) is not working and it's very cold. Ask him to send a technician as soon as possible.",
+    "hint": "Use: Gentile Signor…, Purtroppo…, Il riscaldamento non funziona…, Può mandare…?",
+    "wordTarget": [
+      45,
+      75
+    ],
+    "model": "Gentile Signor Ferrari,\n\nLe scrivo perché purtroppo il riscaldamento dell'appartamento non funziona da due giorni. In casa fa molto freddo e non riesco a dormire bene. \n\nPuò mandare un tecnico il prima possibile? Sono disponibile tutti i giorni dopo le 14.\n\nGrazie e cordiali saluti",
+    "keyPhrases": [
+      "Le scrivo perché…",
+      "Purtroppo…",
+      "non funziona da…",
+      "il prima possibile",
+      "Sono disponibile…"
+    ]
+  },
+  {
+    "id": "w10",
+    "level": 2,
+    "type": "describe",
+    "topic": "Tempo libero",
+    "title": "Describe a typical weekend",
+    "prompt": "Write a paragraph describing what you usually do on weekends. Include at least 3 different activities and say who you do them with.",
+    "hint": "Use the present tense: faccio, vado, incontro, guardo, preparo…",
+    "wordTarget": [
+      55,
+      90
+    ],
+    "model": "Il sabato mattina faccio la spesa al mercato con mia moglie. Nel pomeriggio vado in palestra con un amico — ci alleniamo per un'ora. La domenica mattina mi alzo tardi e preparo una colazione abbondante. Dopo pranzo guardo una partita di calcio in televisione o faccio una passeggiata nel parco. La domenica sera incontro i miei amici al bar per un aperitivo.",
+    "keyPhrases": [
+      "Il sabato / La domenica…",
+      "faccio la spesa",
+      "Nel pomeriggio…",
+      "mi alzo tardi",
+      "incontro i miei amici"
+    ]
+  },
+  {
+    "id": "w11",
+    "level": 3,
+    "type": "email",
+    "topic": "Lavoro & studio",
+    "title": "Formal complaint about a course",
+    "prompt": "You signed up for an Italian language course but the teacher has been absent 3 times, the materials are old, and the class is overcrowded. Write a formal complaint to the school director asking for a solution or a refund.",
+    "hint": "Formal register: Le scrivo, vorrei segnalare, chiedo cortesemente, rimango in attesa",
+    "wordTarget": [
+      70,
+      110
+    ],
+    "model": "Egr. Direttore,\n\nLe scrivo per segnalare alcuni problemi con il corso d'italiano al livello A2, al quale sono iscritta dal mese scorso.\n\nPurtroppo l'insegnante è stata assente tre volte senza preavviso, il materiale didattico è vecchio e la classe ha troppi studenti — quasi 25 persone.\n\nQueste condizioni rendono difficile imparare efficacemente. Chiedo cortesemente che la scuola trovi una soluzione, ad esempio un insegnante sostituto e materiali aggiornati. Se non è possibile, vorrei un rimborso parziale del corso.\n\nRimango in attesa di una risposta.\n\nDistinti saluti",
+    "keyPhrases": [
+      "Le scrivo per segnalare…",
+      "Purtroppo…",
+      "rendono difficile…",
+      "Chiedo cortesemente…",
+      "Rimango in attesa"
+    ]
+  },
+  {
+    "id": "w12",
+    "level": 3,
+    "type": "describe",
+    "topic": "Città & luoghi",
+    "title": "Recommend a place to a friend",
+    "prompt": "Write a message to an Italian friend recommending a place you visited recently (a restaurant, a park, a museum, a town). Describe what it is like, what you did there, and why they should visit.",
+    "hint": "Use past tense (passato prossimo) for what you did: ho visitato, ho mangiato, siamo andati…",
+    "wordTarget": [
+      65,
+      100
+    ],
+    "model": "Ciao Sara! Ti scrivo perché ho visitato un posto bellissimo che devi assolutamente vedere. Ho passato il fine settimana a Bergamo Alta — la città vecchia sulle colline. Siamo saliti con la funicolare e abbiamo camminato per le strade medievali. Abbiamo mangiato la polenta taragna in un ristorante tipico — era deliziosa!\n\nIl panorama sulla pianura è spettacolare, specialmente al tramonto. Ti consiglio di andarci di domenica mattina quando è più tranquillo. Porta le scarpe comode!",
+    "keyPhrases": [
+      "ho visitato / siamo andati",
+      "era deliziosa / bellissimo",
+      "Ti consiglio di…",
+      "devi assolutamente…",
+      "specialmente…"
+    ]
+  },
+  {
+    "id": "w13",
+    "level": 3,
+    "type": "reply",
+    "topic": "Salute",
+    "title": "Reply to 3 messages about health",
+    "prompt": "Reply to each message in 20–30 words:\n\n1. Your colleague asks: \"Non sei venuto al lavoro ieri — stai bene?\"\n2. She asks: \"Hai già chiamato il medico?\"\n3. She asks: \"Posso farti qualcosa — portarti la spesa o una medicina?\"",
+    "hint": "Use past tense and expressions like: Ho avuto…, Sì, ho chiamato…, Sei gentilissima…",
+    "wordTarget": [
+      55,
+      90
+    ],
+    "model": "1. Ciao! Sì, ieri non stavo bene — ho avuto la febbre alta e mal di gola. Oggi mi sento un po' meglio, grazie per aver chiesto!\n2. Sì, ho già chiamato il medico stamattina. Mi ha dato una ricetta per degli antibiotici. Vado in farmacia nel pomeriggio.\n3. Sei gentilissima! Se puoi, mi porteresti una bottiglia di sciroppo per la tosse? Lo puoi trovare in qualsiasi farmacia. Grazie mille!",
+    "keyPhrases": [
+      "Non stavo bene…",
+      "Ho avuto la febbre / mal di…",
+      "Mi sento meglio",
+      "Sì, ho già…",
+      "Sei gentilissima!"
+    ]
+  },
+  {
+    "id": "w14",
+    "level": 3,
+    "type": "email",
+    "topic": "Casa & servizi",
+    "title": "Email to find a flat",
+    "prompt": "You are looking for a flat to rent in an Italian city. Write an email to a letting agency. Describe what you need: location, size, budget, and when you want to move in. Ask about available flats and the viewing process.",
+    "hint": "Use: Sono alla ricerca di…, avrei bisogno di…, il mio budget è…, Sarebbe possibile…?",
+    "wordTarget": [
+      70,
+      110
+    ],
+    "model": "Gentili signori,\n\nVi scrivo perché sono alla ricerca di un appartamento in affitto a Bologna per una persona. Avrei bisogno di un bilocale (camera da letto + soggiorno) in zona centrale, preferibilmente vicino ai mezzi pubblici.\n\nIl mio budget mensile è di circa 700–800 euro, spese incluse. Vorrei trasferirmi dal 1° settembre.\n\nSarebbe possibile avere un elenco degli appartamenti disponibili? Sono disponibile per le visite dal lunedì al venerdì dopo le 17:00.\n\nIn attesa di una vostra risposta,\nCordiali saluti",
+    "keyPhrases": [
+      "Sono alla ricerca di…",
+      "Avrei bisogno di…",
+      "preferibilmente vicino a…",
+      "il mio budget è…",
+      "Sarebbe possibile…?"
+    ]
+  },
+  {
+    "id": "w15",
+    "level": 3,
+    "type": "describe",
+    "topic": "Lavoro & quotidiano",
+    "title": "Describe your daily routine",
+    "prompt": "Write about a typical workday. Use a mix of present tense and phrases about time. Include at least 6 different activities from waking up to going to bed.",
+    "hint": "Use time markers: alle…, poi, dopo, verso, nel pomeriggio, la sera…",
+    "wordTarget": [
+      75,
+      120
+    ],
+    "model": "Ogni mattina mi sveglio alle 7. Faccio la doccia, mi vesto e preparo il caffè. Non faccio mai una colazione lunga — bevo il caffè in piedi e mangio un cornetto.\n\nVado al lavoro in metro: ci vogliono circa 25 minuti. Lavoro in un ufficio dalle 9 alle 18, con una pausa pranzo di un'ora. Mangio spesso un panino al bar con i colleghi.\n\nVers o le 18:30 torno a casa. Cucino qualcosa di semplice — pasta o insalata. Poi guardo la televisione o leggo un po'. Vado a letto verso le 23.",
+    "keyPhrases": [
+      "mi sveglio alle…",
+      "Vado al lavoro in…",
+      "ci vogliono…",
+      "con una pausa di…",
+      "verso le… vado a letto"
+    ]
+  },
+  {
+    "id": "w16",
+    "level": 1,
+    "type": "describe",
+    "topic": "Lavoro & studio",
+    "title": "Why do you study Italian?",
+    "prompt": "Write a short text answering the question \"Perché studi l'italiano?\". Include: how long you have studied, where or how you study, and two reasons why Italian is useful for you.",
+    "hint": "Use: Studio l'italiano da…, Seguo un corso…, perché voglio…, Mi serve per…",
+    "wordTarget": [
+      30,
+      50
+    ],
+    "model": "Studio l'italiano da otto mesi. Seguo un corso al comune il martedì e il giovedì sera. Studio l'italiano perché vivo in Italia e voglio parlare con i colleghi e con i vicini. Mi serve anche per il lavoro e per capire i documenti. Mi piace molto questa lingua!",
+    "keyPhrases": [
+      "Studio l'italiano da…",
+      "Seguo un corso…",
+      "perché voglio…",
+      "Mi serve per…",
+      "Mi piace…"
+    ]
+  },
+  {
+    "id": "w17",
+    "level": 1,
+    "type": "message",
+    "topic": "Servizi & consegne",
+    "title": "Message to the courier",
+    "prompt": "A courier is bringing you a parcel tomorrow, but you are not home in the morning. Write a short message telling the courier where to leave the parcel and when you are home.",
+    "hint": "Use: Domani non sono a casa…, Può lasciare il pacco…, Sono a casa dopo le…",
+    "wordTarget": [
+      25,
+      45
+    ],
+    "model": "Buongiorno, sono la signora Rossi. Domani mattina non sono a casa. Può lasciare il pacco dal vicino al piano terra, per favore? Se non è possibile, torno a casa dopo le 17. Grazie mille!",
+    "keyPhrases": [
+      "Non sono a casa…",
+      "Può lasciare il pacco…",
+      "dal vicino / al portone",
+      "Torno a casa dopo le…",
+      "Grazie mille!"
+    ]
+  },
+  {
+    "id": "w18",
+    "level": 2,
+    "type": "email",
+    "topic": "Prenotazioni",
+    "title": "Email to book a hotel room",
+    "prompt": "Write an email to a hotel to book a room. Include: the type of room, the dates and number of nights, how many people, and one question (about breakfast or parking).",
+    "hint": "Use: Vorrei prenotare…, dal… al…, per… persone, È inclusa la colazione?",
+    "wordTarget": [
+      45,
+      75
+    ],
+    "model": "Gentile Hotel Sole,\n\nvorrei prenotare una camera doppia per due persone dal 10 al 12 settembre, per due notti.\n\nÈ inclusa la colazione nel prezzo? Vorrei sapere anche se c'è un parcheggio per i clienti.\n\nResto in attesa di una conferma. La ringrazio.\n\nCordiali saluti,\nMaria Bianchi",
+    "keyPhrases": [
+      "Vorrei prenotare…",
+      "dal… al…",
+      "per… persone",
+      "È inclusa la colazione?",
+      "Resto in attesa di una conferma"
+    ]
+  },
+  {
+    "id": "w19",
+    "level": 3,
+    "type": "email",
+    "topic": "Servizi & documenti",
+    "title": "Report a lost document at the questura",
+    "prompt": "You have lost your residence permit (il permesso di soggiorno). Write a formal email to the immigration office (questura) to report it. Say when and where you lost it, that you have already made a police report, and ask what you must do to get a duplicate.",
+    "hint": "Formal register: Le scrivo per segnalare…, Ho perso…, Ho già fatto la denuncia…, Vorrei sapere…",
+    "wordTarget": [
+      65,
+      100
+    ],
+    "model": "Gentile Ufficio Immigrazione,\n\nLe scrivo per segnalare la perdita del mio permesso di soggiorno. L'ho perso ieri, probabilmente sull'autobus, dopo il lavoro.\n\nHo già fatto la denuncia alla polizia e ho una copia del documento. Vorrei sapere che cosa devo fare adesso per chiedere un duplicato e quali documenti servono.\n\nSono disponibile a venire in questura su appuntamento. La ringrazio per l'aiuto.\n\nDistinti saluti,\nAhmed Hassan",
+    "keyPhrases": [
+      "Le scrivo per segnalare…",
+      "Ho perso…",
+      "Ho già fatto la denuncia",
+      "Vorrei sapere…",
+      "quali documenti servono?"
+    ]
+  },
+  {
+    "id": "w20",
+    "level": 1,
+    "type": "describe",
+    "topic": "Vita quotidiana",
+    "title": "Describe your typical day",
+    "prompt": "Write about your typical day: what time you wake up, what you do during the day, and how you spend the evening.",
+    "hint": "Use the present tense: mi sveglio, faccio, vado, ceno… Use time words: la mattina, nel pomeriggio, la sera.",
+    "wordTarget": [
+      35,
+      60
+    ],
+    "model": "Di solito mi sveglio alle sette e faccio colazione con caffè e biscotti. La mattina vado al lavoro in autobus e lavoro fino all'una. Nel pomeriggio torno a casa e faccio la spesa o pulisco un po'. La sera preparo la cena, mangio con la mia famiglia e guardo la televisione. Vado a dormire verso le undici.",
+    "keyPhrases": [
+      "Di solito mi sveglio alle…",
+      "La mattina vado a…",
+      "Nel pomeriggio…",
+      "La sera preparo/guardo…",
+      "Vado a dormire verso le…"
+    ]
+  },
+  {
+    "id": "w21",
+    "level": 2,
+    "type": "describe",
+    "topic": "Paese d'origine",
+    "title": "Describe your home country",
+    "prompt": "Write about your home country: where it is, what the climate is like, and what you miss most about it.",
+    "hint": "Use: Il mio paese si trova…, Il clima è…, Quello che mi manca di più è…",
+    "wordTarget": [
+      55,
+      90
+    ],
+    "model": "Vengo dal Perù, un paese dell'America del Sud. Il mio paese si trova vicino all'oceano e ha montagne altissime. Il clima è molto vario: sulla costa fa caldo tutto l'anno, ma in montagna fa freddo e a volte nevica. Quello che mi manca di più è la mia famiglia e il cibo tradizionale, come il ceviche. Mi manca anche parlare spagnolo con gli amici. In Italia il clima è più simile alle stagioni europee, con un inverno freddo e piovoso. Mi sto abituando, ma penso spesso al mio paese.",
+    "keyPhrases": [
+      "Vengo da…, un paese…",
+      "Il mio paese si trova…",
+      "Il clima è…",
+      "Quello che mi manca di più è…",
+      "Mi sto abituando…"
+    ]
+  },
+  {
+    "id": "w22",
+    "level": 2,
+    "type": "describe",
+    "topic": "Viaggi & vacanze",
+    "title": "Describe a recent trip",
+    "prompt": "Write about a trip or short holiday you took recently: where you went, who with, and what you saw or did. You MUST use the passato prossimo (past tense).",
+    "hint": "Use the passato prossimo: sono andato/a, ho visitato, abbiamo mangiato, siamo tornati/e…",
+    "wordTarget": [
+      60,
+      95
+    ],
+    "model": "Il weekend scorso sono andata al mare con la mia amica Carla. Siamo partite sabato mattina in treno e siamo arrivate a Rimini dopo due ore. Abbiamo lasciato le valigie in albergo e siamo subito andate in spiaggia. Abbiamo nuotato, abbiamo preso il sole e abbiamo mangiato un gelato buonissimo. La sera abbiamo cenato in un ristorante di pesce vicino al porto. Domenica abbiamo visitato il centro storico e abbiamo comprato dei souvenir. Siamo tornate a casa domenica sera, stanche ma felici. È stata una vacanza breve ma molto bella.",
+    "keyPhrases": [
+      "Sono andato/a…",
+      "Abbiamo visitato…",
+      "Abbiamo mangiato…",
+      "È stata una vacanza…",
+      "Siamo tornati/e…"
+    ]
+  },
+  {
+    "id": "w23",
+    "level": 3,
+    "type": "describe",
+    "topic": "Lavoro & futuro",
+    "title": "My plans for the future / my dream job",
+    "prompt": "Write about your plans for the future or your dream job: what you would like to do, and what you will do to achieve it.",
+    "hint": "Use the simple future tense: lavorerò, studierò, finirò… and the conditional: mi piacerebbe, vorrei…",
+    "wordTarget": [
+      70,
+      110
+    ],
+    "model": "Il lavoro dei miei sogni è diventare infermiera, perché mi piace aiutare le persone. Adesso lavoro come cameriera, ma non è il mio sogno. L'anno prossimo mi iscriverò a un corso professionale per infermieri e studierò con impegno. Mi piacerebbe anche migliorare il mio italiano per capire meglio i pazienti e i colleghi. Se tutto va bene, tra tre anni finirò gli studi e comincerò a lavorare in un ospedale. So che non sarà facile e dovrò studiare molto, ma sono motivata. Un giorno vorrei anche aiutare altri stranieri che vogliono imparare una professione in Italia.",
+    "keyPhrases": [
+      "Il lavoro dei miei sogni è…",
+      "Mi piacerebbe…",
+      "L'anno prossimo…",
+      "lavorerò / studierò / finirò",
+      "Sono motivato/a a…"
+    ]
+  },
+  {
+    "id": "w24",
+    "level": 2,
+    "type": "email",
+    "topic": "Lavoro & studio",
+    "title": "Email to the job centre about a position",
+    "prompt": "You are looking for work as a waiter/waitress. Write a short email to the local job centre (centro per l'impiego) asking about available job offers in your city and what documents you need to bring.",
+    "hint": "Use: Sto cercando lavoro come…, Vorrei sapere se…, Quali documenti servono?",
+    "wordTarget": [
+      45,
+      75
+    ],
+    "model": "Gentile Centro per l'Impiego,\n\nMi chiamo Youssef e sto cercando lavoro come cameriere in un bar. Vorrei sapere se ci sono offerte disponibili nella mia città, in centro o in periferia.\n\nPotrebbe dirmi anche quali documenti devo portare? Ho già il permesso di soggiorno e il passaporto.\n\nResto in attesa di una risposta e vi ringrazio.\n\nCordiali saluti,\nYoussef",
+    "keyPhrases": [
+      "Sto cercando lavoro come…",
+      "Vorrei sapere se…",
+      "Quali documenti devo portare?",
+      "Ho già…",
+      "Resto in attesa di una risposta"
+    ]
+  },
+  {
+    "id": "w25",
+    "level": 2,
+    "type": "describe",
+    "topic": "Città & luoghi",
+    "title": "Describe the city where you live",
+    "prompt": "Write about the city where you live now: what you like about it, a favourite place (square, park, café), and — if you moved from somewhere else — how it compares to where you lived before.",
+    "hint": "Use: Vivo a…, Mi piace…, Prima vivevo a… (imperfetto): era più…, C'erano…",
+    "wordTarget": [
+      60,
+      100
+    ],
+    "model": "Adesso vivo a Bologna, vicino al centro. È una città grande e molto vivace, con tanti studenti e negozi. Mi piace molto Piazza Maggiore: ci vado spesso a prendere un caffè o a passeggiare con la mia famiglia. Vicino alla stazione ci sono anche molti bar e gelaterie.\n\nPrima vivevo a Imola, una città più piccola. Non era bella come Bologna, ma gli affitti erano più bassi e le persone erano molto gentili. Adesso preferisco Bologna perché ci sono più cose da fare, ma a volte mi manca la tranquillità di Imola.",
+    "keyPhrases": [
+      "Adesso vivo a…",
+      "Mi piace molto…",
+      "Prima vivevo a…",
+      "era più… / c'erano…",
+      "Adesso preferisco… perché…"
+    ]
+  },
+  {
+    "id": "w26",
+    "level": 2,
+    "type": "message",
+    "topic": "Salute",
+    "title": "Message to register with a new doctor",
+    "prompt": "You have just moved to a new city. Write a short message to the local health office asking to register with a GP (medico di base). Say where you lived before, and ask what documents you need to bring.",
+    "hint": "Use: Mi sono trasferito/a da poco…, Vorrei iscrivermi a…, Prima vivevo a…, Quali documenti servono?",
+    "wordTarget": [
+      40,
+      70
+    ],
+    "model": "Buongiorno,\n\nmi sono trasferito/a da due settimane in città e vorrei iscrivermi a un medico di base. Prima vivevo a Milano e il mio medico si chiamava dottor Rossi.\n\nQuali documenti devo portare? Ho la tessera sanitaria e il passaporto. Vorrei iscrivere anche mia moglie e mio figlio.\n\nGrazie mille, resto in attesa di una risposta.",
+    "keyPhrases": [
+      "Mi sono trasferito/a da…",
+      "Vorrei iscrivermi a…",
+      "Prima vivevo a…",
+      "Quali documenti devo portare?",
+      "Vorrei iscrivere anche…"
+    ]
+  },
+  {
+    "id": "w27",
+    "type": "describe",
+    "level": 1,
+    "title": "Il mio posto preferito",
+    "topic": "I miei preferiti",
+    "prompt": "Describe your favourite place (a park, a square, a café…): where it is, what it looks like and why you like going there.",
+    "hint": "Use: Il mio posto preferito è…, Si trova…, Ci vado per…, Mi piace perché…",
+    "wordTarget": [
+      30,
+      50
+    ],
+    "keyPhrases": [
+      "Il mio posto preferito è",
+      "Si trova",
+      "Ci vado",
+      "Mi piace perché"
+    ],
+    "model": "Il mio posto preferito è il parco vicino a casa mia. Si trova a dieci minuti a piedi. È grande e verde, con una fontana al centro. Ci vado quasi ogni sera per camminare o leggere. Mi piace perché è tranquillo e posso rilassarmi dopo il lavoro."
+  },
+  {
+    "id": "w28",
+    "type": "describe",
+    "level": 2,
+    "title": "La mia stagione preferita",
+    "topic": "I miei preferiti",
+    "prompt": "Write about your favourite season: the weather, what you usually do, and why you prefer it to the others.",
+    "hint": "Watch the article: LA mia stagione preferita. Use: fa caldo/fresco, le giornate sono…, preferisco… perché…",
+    "wordTarget": [
+      40,
+      60
+    ],
+    "keyPhrases": [
+      "La mia stagione preferita è",
+      "fa",
+      "le giornate",
+      "preferisco",
+      "perché"
+    ],
+    "model": "La mia stagione preferita è la primavera. Fa fresco, c'è il sole e le giornate sono più lunghe. Di solito faccio passeggiate nel parco e vado in bicicletta. Mi piacciono i fiori e i colori di questa stagione. La preferisco all'estate perché non fa troppo caldo e ho più energia per fare tante cose."
+  },
+  {
+    "id": "w29",
+    "type": "describe",
+    "level": 3,
+    "title": "Un viaggio che vorrei fare",
+    "topic": "I miei preferiti",
+    "prompt": "Write about a place you would like to visit: why you want to go there, with whom, and what you would like to do. Use \"mi piacerebbe\" and \"vorrei\".",
+    "hint": "Conditional for wishes: mi piacerebbe visitare…, vorrei andare…, un giorno andrò…",
+    "wordTarget": [
+      50,
+      70
+    ],
+    "keyPhrases": [
+      "mi piacerebbe",
+      "vorrei",
+      "un giorno",
+      "con",
+      "perché"
+    ],
+    "model": "Un posto che mi piacerebbe visitare è la Sicilia. Vorrei andarci la prossima estate con mio marito. Mi piacerebbe vedere il mare, visitare i mercati e mangiare il pesce fresco e i dolci siciliani. Ho visto tante foto e mi sembra bellissima. Un giorno andrò anche in Giappone, ma è un viaggio troppo caro per ora. Per questo comincio dalla Sicilia!"
+  }
+]

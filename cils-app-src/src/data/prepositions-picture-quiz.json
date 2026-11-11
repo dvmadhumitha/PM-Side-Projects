@@ -1,0 +1,156 @@
+[
+  {
+    "pic": "🪜👟",
+    "q": "Le scarpe sono ___ scale.",
+    "opts": [
+      "sulle",
+      "sugli",
+      "sulla"
+    ],
+    "a": 0,
+    "explain": "scale is feminine plural (le), so su + le = sulle: sulle scale. Es: Il gatto dorme sulle scale."
+  },
+  {
+    "pic": "🍓🫙",
+    "q": "La marmellata è ___ fragola.",
+    "opts": [
+      "alla",
+      "della",
+      "nella"
+    ],
+    "a": 0,
+    "explain": "Flavours use a + article: alla fragola, al caffè, al tartufo. It answers \"what flavour?\", not \"where\". Es: Un gelato al limone, per favore."
+  },
+  {
+    "pic": "☕🥄",
+    "q": "Lo zucchero è ___ caffè.",
+    "opts": [
+      "nello",
+      "nel",
+      "sul"
+    ],
+    "a": 1,
+    "explain": "caffè takes il, and in + il = nel (in → ne-, Italian loves vowels): nel caffè. Es: C’è troppo zucchero nel caffè."
+  },
+  {
+    "pic": "🍾🍾",
+    "q": "L’acqua è ___ bottiglie.",
+    "opts": [
+      "nei",
+      "nelle",
+      "negli"
+    ],
+    "a": 1,
+    "explain": "bottiglie is feminine plural (le), so in + le = nelle: nelle bottiglie. \"nei/negli\" are masculine plurals. Es: Il vino è nelle bottiglie verdi."
+  },
+  {
+    "pic": "🍦☕",
+    "q": "Vorrei un gelato ___ caffè.",
+    "opts": [
+      "del",
+      "nel",
+      "al"
+    ],
+    "a": 2,
+    "explain": "Flavours use a + il = al: gelato al caffè. \"nel caffè\" would mean the ice cream is inside the coffee! Es: Prendo un gelato al pistacchio."
+  },
+  {
+    "pic": "🛒",
+    "q": "Oggi sono andata ___ supermercato.",
+    "opts": [
+      "al",
+      "allo",
+      "nel"
+    ],
+    "a": 0,
+    "explain": "supermercato takes il, so a + il = al: al supermercato — the video’s own example! Es: Oggi sono andato al supermercato."
+  },
+  {
+    "pic": "👀",
+    "q": "Guardami ___ occhi.",
+    "opts": [
+      "nei",
+      "negli",
+      "agli"
+    ],
+    "a": 1,
+    "explain": "occhi starts with a vowel, so plural takes gli → in + gli = negli: negli occhi. Es: Guardami negli occhi!"
+  },
+  {
+    "pic": "🖥️📚",
+    "q": "Ho lavorato ___ studio.",
+    "opts": [
+      "nel",
+      "nello",
+      "sullo"
+    ],
+    "a": 1,
+    "explain": "studio starts with st- (s+consonant), so it takes lo → in + lo = nello: nello studio. Es: Ho lavorato nello studio tutto il giorno."
+  },
+  {
+    "pic": "🗝️👟",
+    "q": "Le chiavi sono ___ scarpe!",
+    "opts": [
+      "nelle",
+      "sulle",
+      "dalle"
+    ],
+    "a": 0,
+    "explain": "scarpe is feminine plural (le), so in + le = nelle: nelle scarpe — where the video finds the lost keys! Es: Le chiavi sono nelle scarpe."
+  },
+  {
+    "pic": "🐕🐈🏠",
+    "q": "Ci sono 32 milioni di animali ___ case italiane.",
+    "opts": [
+      "nei",
+      "nelle",
+      "negli"
+    ],
+    "a": 1,
+    "explain": "case is feminine plural (le), so in + le = nelle: nelle case. Fun fact from the video: one pet for every two Italians! Es: Nelle case italiane ci sono tanti gatti."
+  },
+  {
+    "pic": "🦷",
+    "q": "Domani vado ___ dentista.",
+    "opts": [
+      "al",
+      "dal",
+      "nel"
+    ],
+    "a": 1,
+    "explain": "Places get a, PEOPLE get da — the dentist is a person, so da + il = dal: dal dentista. \"al dentista\" is the classic trap. Es: Vado dal dentista alle 10."
+  },
+  {
+    "pic": "🥖👨‍🍳",
+    "q": "Compro il pane ___ panettiere.",
+    "opts": [
+      "dal",
+      "al",
+      "sul"
+    ],
+    "a": 0,
+    "explain": "The baker is a person → da: dal panettiere. Going to the SHOP would be alla panetteria. Es: Compro il pane fresco dal panettiere."
+  },
+  {
+    "pic": "🎬",
+    "q": "Stasera andiamo ___ cinema.",
+    "opts": [
+      "al",
+      "dal",
+      "allo"
+    ],
+    "a": 0,
+    "explain": "The cinema is a PLACE → a + il = al: al cinema. \"dal cinema\" would mean coming FROM it. Es: Andiamo al cinema stasera?"
+  },
+  {
+    "pic": "👵👴🍝",
+    "q": "Domenica pranzo ___ nonni.",
+    "opts": [
+      "ai",
+      "dai",
+      "dagli"
+    ],
+    "a": 1,
+    "explain": "Eating at someone’s HOME uses da; nonni take i → dai: pranzo dai nonni. \"ai nonni\" is for directing something TO them (telefono ai nonni). Es: Domenica mangiamo dai nonni."
+  }
+]

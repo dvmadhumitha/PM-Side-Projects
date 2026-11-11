@@ -1,0 +1,102 @@
+[
+  {
+    "q": "Ieri ___ una pizza con Marco.",
+    "opts": [
+      "mangiavo",
+      "ho mangiato",
+      "mangerò"
+    ],
+    "a": 1,
+    "explain": "Ieri + one finished event → passato prossimo 📸: ho mangiato. \"mangiavo\" is the video (habit/background). Es: Ieri ho mangiato al ristorante."
+  },
+  {
+    "q": "Da bambina ___ in campagna.",
+    "opts": [
+      "ho abitato",
+      "abitavo",
+      "abiterò"
+    ],
+    "a": 1,
+    "explain": "Da bambina = how life WAS back then → imperfetto 🎬: abitavo. Es: Da bambino giocavo sempre fuori."
+  },
+  {
+    "q": "Mentre ___ la doccia, è arrivato il corriere.",
+    "opts": [
+      "facevo",
+      "ho fatto",
+      "farò"
+    ],
+    "a": 0,
+    "explain": "mentre = the video running in the background → imperfetto: facevo. The photo-event is è arrivato. Es: Mentre dormivo, ha squillato il telefono."
+  },
+  {
+    "q": "Improvvisamente ___ un rumore.",
+    "opts": [
+      "sentivo",
+      "ho sentito",
+      "sentirò"
+    ],
+    "a": 1,
+    "explain": "improvvisamente = a sudden snap 📸 → passato prossimo: ho sentito. Es: Improvvisamente è andata via la luce."
+  },
+  {
+    "q": "Ogni estate ___ al mare con i nonni.",
+    "opts": [
+      "siamo andati",
+      "andavamo",
+      "andremo"
+    ],
+    "a": 1,
+    "explain": "Ogni estate = repeated habit in the past → imperfetto: andavamo. \"siamo andati\" would be ONE specific trip. Es: Ogni domenica pranzavamo insieme."
+  },
+  {
+    "q": "Ieri ___ caldo e c’era il sole.",
+    "opts": [
+      "ha fatto",
+      "faceva",
+      "farà"
+    ],
+    "a": 1,
+    "explain": "Weather descriptions in the past → imperfetto: faceva caldo. Es: Quella mattina faceva freddo."
+  },
+  {
+    "q": "La settimana scorsa ___ il permesso di soggiorno.",
+    "opts": [
+      "rinnovavo",
+      "ho rinnovato",
+      "rinnoverò"
+    ],
+    "a": 1,
+    "explain": "la settimana scorsa + completed action → passato prossimo: ho rinnovato. Es: Ho firmato il contratto a giugno."
+  },
+  {
+    "q": "Quando ___ dieci anni, abitavo a Mumbai.",
+    "opts": [
+      "ho avuto",
+      "avevo",
+      "avrò"
+    ],
+    "a": 1,
+    "explain": "Age in the past → imperfetto: avevo dieci anni. Es: Quando avevo vent’anni, studiavo molto."
+  },
+  {
+    "q": "Stamattina ___ tardi e ho perso l’autobus.",
+    "opts": [
+      "mi svegliavo",
+      "mi sono svegliata",
+      "mi sveglierò"
+    ],
+    "a": 1,
+    "explain": "One finished event this morning → passato prossimo (reflexives take essere): mi sono svegliata. Es: Stamattina mi sono alzato alle sette."
+  },
+  {
+    "q": "Prima ___ sempre stanca, adesso sto bene.",
+    "opts": [
+      "sono stata",
+      "ero",
+      "sarò"
+    ],
+    "a": 1,
+    "explain": "An ongoing state back then → imperfetto: ero stanca. Es: Prima ero nervosa, ora sono tranquilla."
+  }
+]

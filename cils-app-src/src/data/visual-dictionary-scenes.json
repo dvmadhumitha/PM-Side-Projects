@@ -1,0 +1,1187 @@
+[
+  {
+    "id": "soggiorno",
+    "title": "Il Soggiorno",
+    "en": "Living Room",
+    "hue": "#C9603A",
+    "tint": "#FBEDE6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#ece6da\"/>\n  <rect y=\"192\" width=\"400\" height=\"88\" fill=\"#d8c3a5\"/>\n  <!-- window -->\n  <rect x=\"26\" y=\"48\" width=\"72\" height=\"96\" rx=\"3\" fill=\"#bfe0ea\" stroke=\"#fff\" stroke-width=\"5\"/>\n  <line x1=\"62\" y1=\"48\" x2=\"62\" y2=\"144\" stroke=\"#fff\" stroke-width=\"4\"/>\n  <rect x=\"18\" y=\"44\" width=\"12\" height=\"108\" fill=\"#e7cfa0\"/>\n  <rect x=\"94\" y=\"44\" width=\"12\" height=\"108\" fill=\"#e7cfa0\"/>\n  <!-- painting -->\n  <rect x=\"172\" y=\"52\" width=\"72\" height=\"58\" rx=\"2\" fill=\"#9cc5d1\" stroke=\"#b98a5e\" stroke-width=\"6\"/>\n  <!-- bookshelf -->\n  <rect x=\"348\" y=\"80\" width=\"46\" height=\"112\" fill=\"#b98a5e\"/>\n  <rect x=\"352\" y=\"86\" width=\"38\" height=\"30\" fill=\"#cfa877\"/>\n  <rect x=\"352\" y=\"120\" width=\"38\" height=\"30\" fill=\"#cfa877\"/>\n  <rect x=\"352\" y=\"154\" width=\"38\" height=\"34\" fill=\"#cfa877\"/>\n  <rect x=\"356\" y=\"90\" width=\"6\" height=\"22\" fill=\"#7a5a8e\"/><rect x=\"364\" y=\"90\" width=\"6\" height=\"22\" fill=\"#a8434b\"/><rect x=\"372\" y=\"90\" width=\"6\" height=\"22\" fill=\"#2e7d8a\"/>\n  <!-- rug -->\n  <ellipse cx=\"196\" cy=\"250\" rx=\"150\" ry=\"26\" fill=\"#e0d3c0\"/>\n  <!-- armchair -->\n  <rect x=\"36\" y=\"168\" width=\"74\" height=\"70\" rx=\"12\" fill=\"#a9c3cb\"/>\n  <rect x=\"30\" y=\"184\" width=\"20\" height=\"56\" rx=\"8\" fill=\"#93b2bb\"/>\n  <rect x=\"96\" y=\"184\" width=\"20\" height=\"56\" rx=\"8\" fill=\"#93b2bb\"/>\n  <!-- lamp -->\n  <rect x=\"128\" y=\"150\" width=\"6\" height=\"70\" fill=\"#7a6a58\"/>\n  <path d=\"M116 150 L146 150 L140 124 L122 124 Z\" fill=\"#f0e2c0\"/>\n  <!-- coffee table -->\n  <rect x=\"150\" y=\"214\" width=\"116\" height=\"18\" rx=\"3\" fill=\"#b98a5e\"/>\n  <rect x=\"156\" y=\"232\" width=\"8\" height=\"26\" fill=\"#9a7049\"/>\n  <rect x=\"252\" y=\"232\" width=\"8\" height=\"26\" fill=\"#9a7049\"/>\n  <!-- sofa -->\n  <rect x=\"250\" y=\"176\" width=\"128\" height=\"62\" rx=\"12\" fill=\"#cdd7d0\"/>\n  <rect x=\"250\" y=\"150\" width=\"128\" height=\"34\" rx=\"10\" fill=\"#bcc9c1\"/>\n  <rect x=\"262\" y=\"158\" width=\"46\" height=\"40\" rx=\"8\" fill=\"#a9c3cb\"/>\n  <rect x=\"316\" y=\"158\" width=\"46\" height=\"40\" rx=\"8\" fill=\"#a9c3cb\"/>\n  <!-- plant (front of sofa, visible) -->\n  <rect x=\"126\" y=\"196\" width=\"26\" height=\"30\" rx=\"3\" fill=\"#c9603a\"/>\n  <path d=\"M139 196 Q126 166 132 158 Q141 174 139 196\" fill=\"#3a8a52\"/>\n  <path d=\"M139 196 Q152 168 148 156 Q140 176 139 196\" fill=\"#2e7d4a\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/soggiorno.jpg",
+    "ratio": "1200 / 750",
+    "credit": "Prydumano Design / Unsplash",
+    "objects": [
+      {
+        "it": "la finestra",
+        "en": "window",
+        "x": 10,
+        "y": 45,
+        "ax": "l"
+      },
+      {
+        "it": "la tenda",
+        "en": "curtain",
+        "x": 24,
+        "y": 45
+      },
+      {
+        "it": "la lampada",
+        "en": "lamp",
+        "x": 43,
+        "y": 41
+      },
+      {
+        "it": "il divano",
+        "en": "sofa",
+        "x": 48,
+        "y": 70
+      },
+      {
+        "it": "il cuscino",
+        "en": "cushion",
+        "x": 36,
+        "y": 64
+      },
+      {
+        "it": "il tavolino",
+        "en": "coffee table",
+        "x": 52,
+        "y": 78,
+        "dir": "down"
+      },
+      {
+        "it": "il tappeto",
+        "en": "rug",
+        "x": 33,
+        "y": 87
+      },
+      {
+        "it": "la libreria",
+        "en": "bookshelf",
+        "x": 79,
+        "y": 52
+      },
+      {
+        "it": "il pavimento",
+        "en": "floor",
+        "x": 12,
+        "y": 92,
+        "ax": "l"
+      },
+      {
+        "it": "il soffitto",
+        "en": "ceiling",
+        "x": 55,
+        "y": 6
+      }
+    ]
+  },
+  {
+    "id": "camera",
+    "title": "La Camera da Letto",
+    "en": "Bedroom",
+    "hue": "#2E7D8A",
+    "tint": "#E3F4F6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#dfe8f0\"/>\n  <rect y=\"196\" width=\"400\" height=\"84\" fill=\"#d8c3a5\"/>\n  <!-- window -->\n  <rect x=\"24\" y=\"54\" width=\"70\" height=\"92\" rx=\"3\" fill=\"#bfe0ea\" stroke=\"#fff\" stroke-width=\"5\"/>\n  <line x1=\"59\" y1=\"54\" x2=\"59\" y2=\"146\" stroke=\"#fff\" stroke-width=\"4\"/>\n  <rect x=\"16\" y=\"50\" width=\"11\" height=\"104\" fill=\"#cddff0\"/>\n  <rect x=\"91\" y=\"50\" width=\"11\" height=\"104\" fill=\"#cddff0\"/>\n  <!-- painting -->\n  <rect x=\"250\" y=\"54\" width=\"70\" height=\"52\" rx=\"2\" fill=\"#a9cbd6\" stroke=\"#c7b28a\" stroke-width=\"6\"/>\n  <!-- bedside lamp -->\n  <rect x=\"120\" y=\"150\" width=\"6\" height=\"42\" fill=\"#8a7a68\"/>\n  <path d=\"M110 150 L136 150 L131 128 L115 128 Z\" fill=\"#f2e6c4\"/>\n  <!-- nightstand -->\n  <rect x=\"104\" y=\"176\" width=\"46\" height=\"42\" rx=\"3\" fill=\"#c7a877\"/>\n  <!-- bed -->\n  <rect x=\"150\" y=\"150\" width=\"176\" height=\"26\" rx=\"6\" fill=\"#f4f6fa\"/>\n  <rect x=\"150\" y=\"176\" width=\"200\" height=\"70\" rx=\"8\" fill=\"#e9eef5\"/>\n  <rect x=\"150\" y=\"200\" width=\"200\" height=\"46\" rx=\"6\" fill=\"#7aa0c9\"/>\n  <rect x=\"168\" y=\"158\" width=\"52\" height=\"34\" rx=\"8\" fill=\"#bcd3ea\"/>\n  <rect x=\"226\" y=\"158\" width=\"52\" height=\"34\" rx=\"8\" fill=\"#a9c3dd\"/>\n  <rect x=\"196\" y=\"164\" width=\"40\" height=\"28\" rx=\"6\" fill=\"#6f96c4\"/>\n  <!-- bench -->\n  <rect x=\"150\" y=\"234\" width=\"90\" height=\"14\" rx=\"3\" fill=\"#c7a877\"/>\n  <rect x=\"156\" y=\"248\" width=\"8\" height=\"22\" fill=\"#a8895f\"/>\n  <rect x=\"226\" y=\"248\" width=\"8\" height=\"22\" fill=\"#a8895f\"/>\n  <!-- plant -->\n  <rect x=\"352\" y=\"200\" width=\"24\" height=\"28\" rx=\"3\" fill=\"#c9603a\"/>\n  <path d=\"M364 200 Q352 172 358 164 Q367 180 364 200\" fill=\"#3a8a52\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/camera.jpg",
+    "ratio": "1200 / 891",
+    "credit": "Ali Moradi / Unsplash",
+    "objects": [
+      {
+        "it": "il letto",
+        "en": "bed",
+        "x": 38,
+        "y": 71
+      },
+      {
+        "it": "il cuscino",
+        "en": "pillow",
+        "x": 44,
+        "y": 57
+      },
+      {
+        "it": "la coperta",
+        "en": "blanket",
+        "x": 63,
+        "y": 70
+      },
+      {
+        "it": "il comodino",
+        "en": "nightstand",
+        "x": 25,
+        "y": 70
+      },
+      {
+        "it": "la lampada",
+        "en": "lamp",
+        "x": 26,
+        "y": 45
+      },
+      {
+        "it": "la poltrona",
+        "en": "armchair",
+        "x": 14,
+        "y": 78
+      },
+      {
+        "it": "il tappeto",
+        "en": "rug",
+        "x": 45,
+        "y": 92
+      },
+      {
+        "it": "la tenda",
+        "en": "curtain",
+        "x": 89,
+        "y": 45
+      },
+      {
+        "it": "l'armadio",
+        "en": "wardrobe",
+        "x": 6,
+        "y": 42,
+        "ax": "l"
+      },
+      {
+        "it": "il vaso",
+        "en": "vase",
+        "x": 76,
+        "y": 57
+      },
+      {
+        "it": "la borsa",
+        "en": "bag",
+        "x": 83,
+        "y": 80
+      }
+    ]
+  },
+  {
+    "id": "bagno",
+    "title": "Il Bagno",
+    "en": "Bathroom",
+    "hue": "#7A5A8E",
+    "tint": "#F0EAF6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#eef1ee\"/>\n  <rect x=\"150\" y=\"40\" width=\"150\" height=\"150\" fill=\"#bcd4dc\"/>\n  <rect y=\"214\" width=\"400\" height=\"66\" fill=\"#e3ddd0\"/>\n  <!-- shower curtain rail + curtain -->\n  <rect x=\"120\" y=\"40\" width=\"14\" height=\"150\" fill=\"#f4f4f0\"/>\n  <rect x=\"120\" y=\"40\" width=\"14\" height=\"150\" fill=\"#dfe6e6\"/>\n  <rect x=\"118\" y=\"40\" width=\"18\" height=\"150\" fill=\"#e9eeee\"/>\n  <line x1=\"127\" y1=\"50\" x2=\"127\" y2=\"185\" stroke=\"#cdd8d8\" stroke-width=\"3\"/>\n  <!-- showerhead -->\n  <circle cx=\"220\" cy=\"70\" r=\"12\" fill=\"#8a8a80\"/>\n  <rect x=\"216\" y=\"52\" width=\"8\" height=\"20\" fill=\"#8a8a80\"/>\n  <!-- mirror -->\n  <rect x=\"316\" y=\"60\" width=\"60\" height=\"70\" rx=\"3\" fill=\"#cfe0e4\" stroke=\"#c7b28a\" stroke-width=\"6\"/>\n  <!-- towel -->\n  <rect x=\"290\" y=\"110\" width=\"18\" height=\"54\" rx=\"3\" fill=\"#7aa0c9\"/>\n  <!-- bathtub -->\n  <rect x=\"150\" y=\"150\" width=\"150\" height=\"60\" rx=\"14\" fill=\"#f8f8f4\" stroke=\"#dcdcd2\" stroke-width=\"4\"/>\n  <!-- sink vanity -->\n  <rect x=\"316\" y=\"150\" width=\"70\" height=\"70\" fill=\"#c7a877\"/>\n  <rect x=\"322\" y=\"140\" width=\"58\" height=\"16\" rx=\"3\" fill=\"#e8e8e0\"/>\n  <path d=\"M348 138 q8 0 8 8\" fill=\"none\" stroke=\"#8a8a80\" stroke-width=\"4\"/>\n  <!-- toilet -->\n  <rect x=\"26\" y=\"150\" width=\"46\" height=\"70\" rx=\"6\" fill=\"#f4f4ee\"/>\n  <ellipse cx=\"49\" cy=\"150\" rx=\"28\" ry=\"14\" fill=\"#f8f8f2\" stroke=\"#dcdcd2\" stroke-width=\"3\"/>\n  <rect x=\"30\" y=\"110\" width=\"38\" height=\"42\" rx=\"4\" fill=\"#f0f0e8\"/>\n  <!-- bath mat -->\n  <rect x=\"150\" y=\"236\" width=\"120\" height=\"26\" rx=\"4\" fill=\"#c9d6e2\"/>\n  <!-- soap bottles -->\n  <rect x=\"170\" y=\"128\" width=\"10\" height=\"22\" rx=\"2\" fill=\"#7a5a8e\"/>\n  <rect x=\"184\" y=\"132\" width=\"9\" height=\"18\" rx=\"2\" fill=\"#c9603a\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/bagno.jpg",
+    "ratio": "1200 / 798",
+    "credit": "Andrea Davis / Unsplash",
+    "objects": [
+      {
+        "it": "lo specchio",
+        "en": "mirror",
+        "x": 41,
+        "y": 13
+      },
+      {
+        "it": "il rubinetto",
+        "en": "tap",
+        "x": 50,
+        "y": 47
+      },
+      {
+        "it": "il lavandino",
+        "en": "sink",
+        "x": 61,
+        "y": 68
+      },
+      {
+        "it": "il sapone",
+        "en": "soap",
+        "x": 26,
+        "y": 54
+      },
+      {
+        "it": "il mobile",
+        "en": "cabinet",
+        "x": 35,
+        "y": 90
+      },
+      {
+        "it": "la parete",
+        "en": "wall",
+        "x": 82,
+        "y": 30
+      },
+      {
+        "it": "la presa",
+        "en": "power socket",
+        "x": 71,
+        "y": 18
+      }
+    ]
+  },
+  {
+    "id": "ufficio",
+    "title": "L'Ufficio",
+    "en": "Office",
+    "hue": "#1E6B4F",
+    "tint": "#EAF2EC",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#e8e6de\"/>\n  <rect y=\"200\" width=\"400\" height=\"80\" fill=\"#c9b79a\"/>\n  <!-- window -->\n  <rect x=\"20\" y=\"44\" width=\"80\" height=\"94\" rx=\"3\" fill=\"#bfe0ea\" stroke=\"#fff\" stroke-width=\"5\"/>\n  <line x1=\"60\" y1=\"44\" x2=\"60\" y2=\"138\" stroke=\"#fff\" stroke-width=\"4\"/>\n  <line x1=\"20\" y1=\"91\" x2=\"100\" y2=\"91\" stroke=\"#fff\" stroke-width=\"4\"/>\n  <!-- wall clock -->\n  <circle cx=\"180\" cy=\"70\" r=\"20\" fill=\"#fff\" stroke=\"#7a6a58\" stroke-width=\"4\"/>\n  <line x1=\"180\" y1=\"70\" x2=\"180\" y2=\"58\" stroke=\"#333\" stroke-width=\"2\"/>\n  <line x1=\"180\" y1=\"70\" x2=\"189\" y2=\"74\" stroke=\"#333\" stroke-width=\"2\"/>\n  <!-- bookshelf -->\n  <rect x=\"340\" y=\"60\" width=\"52\" height=\"132\" fill=\"#a8895f\"/>\n  <rect x=\"345\" y=\"66\" width=\"42\" height=\"34\" fill=\"#c19a6a\"/>\n  <rect x=\"345\" y=\"104\" width=\"42\" height=\"34\" fill=\"#c19a6a\"/>\n  <rect x=\"345\" y=\"142\" width=\"42\" height=\"44\" fill=\"#c19a6a\"/>\n  <rect x=\"349\" y=\"70\" width=\"6\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"357\" y=\"70\" width=\"6\" height=\"26\" fill=\"#a8434b\"/><rect x=\"365\" y=\"70\" width=\"6\" height=\"26\" fill=\"#c99a2e\"/>\n  <!-- desk -->\n  <rect x=\"120\" y=\"176\" width=\"190\" height=\"16\" rx=\"3\" fill=\"#8a6a48\"/>\n  <rect x=\"128\" y=\"192\" width=\"10\" height=\"42\" fill=\"#75563a\"/>\n  <rect x=\"292\" y=\"192\" width=\"10\" height=\"42\" fill=\"#75563a\"/>\n  <!-- monitor -->\n  <rect x=\"170\" y=\"120\" width=\"80\" height=\"52\" rx=\"4\" fill=\"#2b3540\"/>\n  <rect x=\"176\" y=\"126\" width=\"68\" height=\"40\" rx=\"2\" fill=\"#5aa0c9\"/>\n  <rect x=\"204\" y=\"172\" width=\"12\" height=\"10\" fill=\"#2b3540\"/>\n  <rect x=\"192\" y=\"182\" width=\"36\" height=\"6\" rx=\"2\" fill=\"#2b3540\"/>\n  <!-- keyboard -->\n  <rect x=\"180\" y=\"168\" width=\"60\" height=\"10\" rx=\"2\" fill=\"#cdd2d8\"/>\n  <!-- desk lamp -->\n  <rect x=\"140\" y=\"150\" width=\"6\" height=\"26\" fill=\"#333\"/>\n  <path d=\"M138 150 l16 0 l-4 -12 l-8 0 z\" fill=\"#c99a2e\"/>\n  <!-- phone -->\n  <rect x=\"270\" y=\"164\" width=\"26\" height=\"14\" rx=\"3\" fill=\"#333\"/>\n  <!-- office chair -->\n  <rect x=\"196\" y=\"200\" width=\"44\" height=\"14\" rx=\"6\" fill=\"#3a4a55\"/>\n  <rect x=\"200\" y=\"150\" width=\"36\" height=\"52\" rx=\"10\" fill=\"#46596a\"/>\n  <rect x=\"214\" y=\"214\" width=\"8\" height=\"30\" fill=\"#333\"/>\n  <path d=\"M198 244 h40\" stroke=\"#333\" stroke-width=\"5\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/ufficio.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Mikey Harris / Unsplash",
+    "objects": [
+      {
+        "it": "la finestra",
+        "en": "window",
+        "x": 67,
+        "y": 25
+      },
+      {
+        "it": "la tenda",
+        "en": "curtain",
+        "x": 33,
+        "y": 15
+      },
+      {
+        "it": "la pianta",
+        "en": "plant",
+        "x": 23,
+        "y": 48
+      },
+      {
+        "it": "il computer",
+        "en": "laptop",
+        "x": 54,
+        "y": 62
+      },
+      {
+        "it": "la scrivania",
+        "en": "desk",
+        "x": 82,
+        "y": 86
+      },
+      {
+        "it": "la bottiglia",
+        "en": "bottle",
+        "x": 79,
+        "y": 57
+      },
+      {
+        "it": "il cellulare",
+        "en": "mobile phone",
+        "x": 66,
+        "y": 84
+      },
+      {
+        "it": "la sedia",
+        "en": "chair",
+        "x": 22,
+        "y": 82
+      }
+    ]
+  },
+  {
+    "id": "strada",
+    "title": "La Strada",
+    "en": "The Street",
+    "hue": "#C99A2E",
+    "tint": "#FBF5E0",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#cfe4ee\"/>\n  <rect y=\"150\" width=\"400\" height=\"130\" fill=\"#9aa0a6\"/>\n  <rect y=\"150\" width=\"400\" height=\"26\" fill=\"#7f8f7a\"/>\n  <!-- buildings -->\n  <rect x=\"20\" y=\"70\" width=\"70\" height=\"82\" fill=\"#c7b8a0\"/>\n  <rect x=\"30\" y=\"82\" width=\"16\" height=\"16\" fill=\"#8fb0c0\"/><rect x=\"54\" y=\"82\" width=\"16\" height=\"16\" fill=\"#8fb0c0\"/><rect x=\"30\" y=\"106\" width=\"16\" height=\"16\" fill=\"#8fb0c0\"/><rect x=\"54\" y=\"106\" width=\"16\" height=\"16\" fill=\"#8fb0c0\"/>\n  <!-- shop -->\n  <rect x=\"300\" y=\"80\" width=\"84\" height=\"72\" fill=\"#d8b48a\"/>\n  <rect x=\"308\" y=\"120\" width=\"30\" height=\"32\" fill=\"#6a4a2a\"/>\n  <rect x=\"344\" y=\"120\" width=\"32\" height=\"32\" fill=\"#8fb0c0\"/>\n  <rect x=\"300\" y=\"72\" width=\"84\" height=\"14\" fill=\"#a8434b\"/>\n  <!-- crosswalk -->\n  <rect x=\"150\" y=\"200\" width=\"18\" height=\"72\" fill=\"#f0f0ea\"/>\n  <rect x=\"180\" y=\"200\" width=\"18\" height=\"72\" fill=\"#f0f0ea\"/>\n  <rect x=\"210\" y=\"200\" width=\"18\" height=\"72\" fill=\"#f0f0ea\"/>\n  <rect x=\"240\" y=\"200\" width=\"18\" height=\"72\" fill=\"#f0f0ea\"/>\n  <!-- sidewalk -->\n  <rect y=\"150\" width=\"120\" height=\"20\" fill=\"#b8bcc0\"/>\n  <!-- traffic light -->\n  <rect x=\"112\" y=\"96\" width=\"12\" height=\"60\" fill=\"#333\"/>\n  <rect x=\"106\" y=\"70\" width=\"24\" height=\"40\" rx=\"4\" fill=\"#222\"/>\n  <circle cx=\"118\" cy=\"80\" r=\"5\" fill=\"#c0392b\"/><circle cx=\"118\" cy=\"92\" r=\"5\" fill=\"#c99a2e\"/><circle cx=\"118\" cy=\"104\" r=\"5\" fill=\"#3a8a52\"/>\n  <!-- car -->\n  <rect x=\"40\" y=\"176\" width=\"90\" height=\"30\" rx=\"8\" fill=\"#2e7d8a\"/>\n  <rect x=\"58\" y=\"160\" width=\"54\" height=\"24\" rx=\"8\" fill=\"#3a92a0\"/>\n  <circle cx=\"62\" cy=\"208\" r=\"11\" fill=\"#222\"/><circle cx=\"112\" cy=\"208\" r=\"11\" fill=\"#222\"/>\n  <!-- bus -->\n  <rect x=\"255\" y=\"158\" width=\"120\" height=\"52\" rx=\"8\" fill=\"#c9603a\"/>\n  <rect x=\"264\" y=\"166\" width=\"24\" height=\"20\" rx=\"3\" fill=\"#bfe0ea\"/><rect x=\"294\" y=\"166\" width=\"24\" height=\"20\" rx=\"3\" fill=\"#bfe0ea\"/><rect x=\"324\" y=\"166\" width=\"24\" height=\"20\" rx=\"3\" fill=\"#bfe0ea\"/>\n  <circle cx=\"280\" cy=\"212\" r=\"12\" fill=\"#222\"/><circle cx=\"350\" cy=\"212\" r=\"12\" fill=\"#222\"/>\n  <!-- tree -->\n  <rect x=\"138\" y=\"120\" width=\"10\" height=\"34\" fill=\"#8a6a48\"/>\n  <circle cx=\"143\" cy=\"112\" r=\"22\" fill=\"#3a8a52\"/>\n  <!-- bench -->\n  <rect x=\"30\" y=\"172\" width=\"46\" height=\"8\" rx=\"2\" fill=\"#8a6a48\"/>\n  <rect x=\"34\" y=\"156\" width=\"38\" height=\"8\" rx=\"2\" fill=\"#a8895f\"/>\n  <rect x=\"34\" y=\"180\" width=\"6\" height=\"16\" fill=\"#75563a\"/><rect x=\"66\" y=\"180\" width=\"6\" height=\"16\" fill=\"#75563a\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/strada.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Nick Night / Unsplash",
+    "objects": [
+      {
+        "it": "il palazzo",
+        "en": "building",
+        "x": 55,
+        "y": 25
+      },
+      {
+        "it": "l'albero",
+        "en": "tree",
+        "x": 7,
+        "y": 20,
+        "ax": "l"
+      },
+      {
+        "it": "l'autobus",
+        "en": "bus",
+        "x": 8,
+        "y": 44,
+        "ax": "l"
+      },
+      {
+        "it": "la macchina",
+        "en": "car",
+        "x": 21,
+        "y": 48,
+        "dir": "down"
+      },
+      {
+        "it": "il taxi",
+        "en": "taxi",
+        "x": 30,
+        "y": 49
+      },
+      {
+        "it": "il semaforo",
+        "en": "traffic light",
+        "x": 43,
+        "y": 40
+      },
+      {
+        "it": "il lampione",
+        "en": "street lamp",
+        "x": 62,
+        "y": 24,
+        "dir": "down"
+      },
+      {
+        "it": "la strada",
+        "en": "road",
+        "x": 55,
+        "y": 70
+      },
+      {
+        "it": "il marciapiede",
+        "en": "sidewalk",
+        "x": 18,
+        "y": 80
+      }
+    ]
+  },
+  {
+    "id": "cucina",
+    "title": "La Cucina",
+    "en": "Kitchen",
+    "hue": "#A8434B",
+    "tint": "#FAEAEB",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#f7ecd9\"/>\n  <rect y=\"214\" width=\"400\" height=\"66\" fill=\"#cbb089\"/>\n  <rect y=\"208\" width=\"400\" height=\"8\" fill=\"#b7d4dd\" stroke=\"#2b2b2b\" stroke-width=\"2\"/>\n  <!-- range hood -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <rect x=\"58\" y=\"16\" width=\"20\" height=\"44\" fill=\"#cfe3ea\"/>\n    <path d=\"M38 60 L98 60 L86 88 L50 88 Z\" fill=\"#d8e9ef\"/>\n    <rect x=\"50\" y=\"86\" width=\"36\" height=\"6\" fill=\"#b7d4dd\"/>\n  </g>\n  <!-- wall cabinet with dishes + cups -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <rect x=\"150\" y=\"40\" width=\"132\" height=\"84\" rx=\"3\" fill=\"#e0a24a\"/>\n    <rect x=\"158\" y=\"48\" width=\"116\" height=\"68\" fill=\"#f2e6cf\"/>\n    <line x1=\"158\" y1=\"84\" x2=\"274\" y2=\"84\"/>\n    <path d=\"M198 58 q0 16 12 16 q12 0 12 -16 z\" fill=\"#f2c94c\"/>\n    <path d=\"M222 62 q11 0 11 7 q0 7 -9 7\" fill=\"none\"/>\n    <path d=\"M230 58 q0 16 12 16 q12 0 12 -16 z\" fill=\"#f2c94c\"/>\n    <path d=\"M164 60 q11 7 22 0\" fill=\"#fff\"/>\n    <path d=\"M164 66 q11 7 22 0\" fill=\"#fff\"/>\n    <ellipse cx=\"216\" cy=\"104\" rx=\"48\" ry=\"5\" fill=\"#fff\"/>\n    <ellipse cx=\"216\" cy=\"98\" rx=\"48\" ry=\"5\" fill=\"#fff\"/>\n  </g>\n  <!-- fridge + plant -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <path d=\"M356 94 q-5 -26 4 -34 q6 10 3 34 z\" fill=\"#8bbf5a\"/>\n    <path d=\"M366 94 q6 -22 15 -26 q-2 14 -9 26 z\" fill=\"#7bb04a\"/>\n    <path d=\"M346 94 L386 94 L380 76 L352 76 Z\" fill=\"#a9642e\"/>\n    <rect x=\"330\" y=\"94\" width=\"66\" height=\"152\" rx=\"5\" fill=\"#bfe0ea\"/>\n    <line x1=\"330\" y1=\"168\" x2=\"396\" y2=\"168\"/>\n    <rect x=\"336\" y=\"118\" width=\"6\" height=\"26\" rx=\"3\" fill=\"#9fbfc9\"/>\n    <rect x=\"336\" y=\"182\" width=\"6\" height=\"26\" rx=\"3\" fill=\"#9fbfc9\"/>\n  </g>\n  <!-- counter -->\n  <rect x=\"0\" y=\"150\" width=\"330\" height=\"14\" fill=\"#e6eaeb\" stroke=\"#2b2b2b\" stroke-width=\"2.4\"/>\n  <!-- base cabinets -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <rect x=\"120\" y=\"164\" width=\"120\" height=\"82\" fill=\"#e0a24a\"/>\n    <rect x=\"240\" y=\"164\" width=\"90\" height=\"82\" fill=\"#e0a24a\"/>\n    <rect x=\"120\" y=\"164\" width=\"120\" height=\"22\" fill=\"#a9642e\"/>\n    <line x1=\"180\" y1=\"186\" x2=\"180\" y2=\"246\"/>\n    <rect x=\"150\" y=\"172\" width=\"26\" height=\"5\" rx=\"2\" fill=\"#f2e6cf\"/>\n    <rect x=\"176\" y=\"202\" width=\"4\" height=\"22\" rx=\"2\" fill=\"#f2e6cf\"/>\n    <rect x=\"282\" y=\"202\" width=\"4\" height=\"22\" rx=\"2\" fill=\"#f2e6cf\"/>\n  </g>\n  <!-- stove + oven -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <rect x=\"0\" y=\"150\" width=\"120\" height=\"96\" fill=\"#eef2f2\"/>\n    <rect x=\"4\" y=\"156\" width=\"112\" height=\"16\" fill=\"#dfe3e4\"/>\n    <circle cx=\"16\" cy=\"164\" r=\"4.5\" fill=\"#9aa4a0\"/><circle cx=\"34\" cy=\"164\" r=\"4.5\" fill=\"#9aa4a0\"/><circle cx=\"86\" cy=\"164\" r=\"4.5\" fill=\"#9aa4a0\"/><circle cx=\"104\" cy=\"164\" r=\"4.5\" fill=\"#9aa4a0\"/>\n    <rect x=\"10\" y=\"182\" width=\"100\" height=\"58\" rx=\"5\" fill=\"#8a7355\"/>\n    <rect x=\"18\" y=\"190\" width=\"84\" height=\"10\" rx=\"5\" fill=\"#f2c94c\"/>\n  </g>\n  <!-- kettle on stovetop, with steam -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M78 116 q-7 -8 0 -15 q7 -8 0 -15\" fill=\"none\" stroke=\"#c4cdcd\" stroke-width=\"3\"/>\n    <path d=\"M66 114 q-6 -7 0 -13 q6 -7 0 -12\" fill=\"none\" stroke=\"#d4dbdb\" stroke-width=\"3\"/>\n    <path d=\"M40 126 q18 -20 36 0\" fill=\"none\"/>\n    <ellipse cx=\"58\" cy=\"136\" rx=\"25\" ry=\"17\" fill=\"#7fc4e0\"/>\n    <path d=\"M81 130 l15 -6 l2 9 z\" fill=\"#7fc4e0\"/>\n    <ellipse cx=\"58\" cy=\"120\" rx=\"6\" ry=\"3\" fill=\"#7fc4e0\"/>\n    <ellipse cx=\"49\" cy=\"131\" rx=\"8\" ry=\"5\" fill=\"#a6d9ee\" stroke=\"none\"/>\n  </g>\n  <!-- fruit bowl -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <circle cx=\"188\" cy=\"128\" r=\"16\" fill=\"#f2c94c\"/>\n    <circle cx=\"207\" cy=\"132\" r=\"14\" fill=\"#f2a24c\"/>\n    <path d=\"M188 112 q3 -9 11 -8\" fill=\"none\"/>\n    <path d=\"M166 134 q30 22 60 0 q-30 9 -60 0\" fill=\"#d95c6a\"/>\n  </g>\n  <!-- sink + faucet + dishes -->\n  <g stroke=\"#2b2b2b\" stroke-width=\"2.4\" stroke-linejoin=\"round\">\n    <rect x=\"248\" y=\"150\" width=\"72\" height=\"14\" fill=\"#e6eaeb\"/>\n    <rect x=\"256\" y=\"150\" width=\"54\" height=\"9\" rx=\"2\" fill=\"#b7d4dd\"/>\n    <path d=\"M300 150 q0 -24 15 -24 q11 0 11 11 l-8 0 q0 -5 -3 -5 q-6 0 -6 18\" fill=\"none\"/>\n    <ellipse cx=\"276\" cy=\"150\" rx=\"11\" ry=\"5\" fill=\"#fff\"/>\n    <ellipse cx=\"290\" cy=\"147\" rx=\"9\" ry=\"5\" fill=\"#fff\"/>\n  </g>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/cucina.jpg",
+    "ratio": "800 / 451",
+    "credit": "Stephen Owen / Unsplash",
+    "objects": [
+      {
+        "it": "la cappa",
+        "en": "range hood",
+        "x": 8,
+        "y": 34,
+        "ax": "l"
+      },
+      {
+        "it": "i pensili",
+        "en": "wall cabinets",
+        "x": 50,
+        "y": 14
+      },
+      {
+        "it": "gli utensili",
+        "en": "utensils",
+        "x": 29,
+        "y": 43
+      },
+      {
+        "it": "il tagliere",
+        "en": "cutting board",
+        "x": 40,
+        "y": 48,
+        "dir": "down"
+      },
+      {
+        "it": "il rubinetto",
+        "en": "tap",
+        "x": 65,
+        "y": 47
+      },
+      {
+        "it": "il fornello",
+        "en": "hob",
+        "x": 10,
+        "y": 61,
+        "ax": "l"
+      },
+      {
+        "it": "il lavello",
+        "en": "sink",
+        "x": 68,
+        "y": 59
+      },
+      {
+        "it": "i piatti",
+        "en": "dishes",
+        "x": 76,
+        "y": 57,
+        "dir": "down"
+      },
+      {
+        "it": "il cassetto",
+        "en": "drawer",
+        "x": 26,
+        "y": 71
+      },
+      {
+        "it": "il tostapane",
+        "en": "toaster",
+        "x": 94,
+        "y": 66,
+        "ax": "r"
+      }
+    ]
+  },
+  {
+    "id": "supermercato",
+    "title": "Il Supermercato",
+    "en": "Supermarket",
+    "hue": "#1E6B4F",
+    "tint": "#EAF2EC",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#eaeeee\"/>\n  <rect y=\"200\" width=\"400\" height=\"80\" fill=\"#dcd8cc\"/>\n  <!-- back shelves -->\n  <rect x=\"30\" y=\"70\" width=\"150\" height=\"120\" fill=\"#cbb89a\"/>\n  <rect x=\"34\" y=\"76\" width=\"142\" height=\"24\" fill=\"#e4d8c0\"/>\n  <rect x=\"34\" y=\"104\" width=\"142\" height=\"24\" fill=\"#e4d8c0\"/>\n  <rect x=\"34\" y=\"132\" width=\"142\" height=\"24\" fill=\"#e4d8c0\"/>\n  <rect x=\"34\" y=\"160\" width=\"142\" height=\"24\" fill=\"#e4d8c0\"/>\n  <rect x=\"40\" y=\"80\" width=\"14\" height=\"16\" fill=\"#a8434b\"/><rect x=\"58\" y=\"80\" width=\"14\" height=\"16\" fill=\"#c99a2e\"/><rect x=\"76\" y=\"80\" width=\"14\" height=\"16\" fill=\"#2e7d8a\"/><rect x=\"94\" y=\"80\" width=\"14\" height=\"16\" fill=\"#7a5a8e\"/><rect x=\"112\" y=\"80\" width=\"14\" height=\"16\" fill=\"#3a8a52\"/><rect x=\"130\" y=\"80\" width=\"14\" height=\"16\" fill=\"#c9603a\"/>\n  <rect x=\"40\" y=\"108\" width=\"14\" height=\"16\" fill=\"#2e7d8a\"/><rect x=\"58\" y=\"108\" width=\"14\" height=\"16\" fill=\"#a8434b\"/><rect x=\"76\" y=\"108\" width=\"14\" height=\"16\" fill=\"#c99a2e\"/><rect x=\"94\" y=\"108\" width=\"14\" height=\"16\" fill=\"#3a8a52\"/><rect x=\"112\" y=\"108\" width=\"14\" height=\"16\" fill=\"#7a5a8e\"/><rect x=\"130\" y=\"108\" width=\"14\" height=\"16\" fill=\"#c9603a\"/>\n  <rect x=\"40\" y=\"136\" width=\"14\" height=\"16\" fill=\"#c99a2e\"/><rect x=\"58\" y=\"136\" width=\"14\" height=\"16\" fill=\"#3a8a52\"/><rect x=\"76\" y=\"136\" width=\"14\" height=\"16\" fill=\"#a8434b\"/><rect x=\"94\" y=\"136\" width=\"14\" height=\"16\" fill=\"#2e7d8a\"/><rect x=\"112\" y=\"136\" width=\"14\" height=\"16\" fill=\"#c9603a\"/><rect x=\"130\" y=\"136\" width=\"14\" height=\"16\" fill=\"#7a5a8e\"/>\n  <!-- fruit & veg bins -->\n  <rect x=\"20\" y=\"200\" width=\"72\" height=\"38\" rx=\"4\" fill=\"#b98a5e\"/>\n  <circle cx=\"34\" cy=\"206\" r=\"7\" fill=\"#c0392b\"/><circle cx=\"50\" cy=\"206\" r=\"7\" fill=\"#c0392b\"/><circle cx=\"66\" cy=\"206\" r=\"7\" fill=\"#c0392b\"/><circle cx=\"82\" cy=\"206\" r=\"7\" fill=\"#c0392b\"/>\n  <rect x=\"20\" y=\"240\" width=\"72\" height=\"34\" rx=\"4\" fill=\"#a8895f\"/>\n  <circle cx=\"34\" cy=\"248\" r=\"7\" fill=\"#3a8a52\"/><circle cx=\"50\" cy=\"248\" r=\"7\" fill=\"#3a8a52\"/><circle cx=\"66\" cy=\"248\" r=\"7\" fill=\"#3a8a52\"/><circle cx=\"82\" cy=\"248\" r=\"7\" fill=\"#3a8a52\"/>\n  <!-- checkout -->\n  <rect x=\"300\" y=\"180\" width=\"90\" height=\"60\" fill=\"#c7a877\"/>\n  <rect x=\"300\" y=\"172\" width=\"90\" height=\"12\" fill=\"#b0b7b5\"/>\n  <rect x=\"330\" y=\"148\" width=\"34\" height=\"26\" rx=\"3\" fill=\"#3a4a55\"/>\n  <rect x=\"336\" y=\"154\" width=\"22\" height=\"13\" fill=\"#5aa0c9\"/>\n  <!-- trolley -->\n  <path d=\"M172 210 l12 40 l68 0 l10 -30 l-82 0\" fill=\"#eef0f0\" stroke=\"#9aa4a0\" stroke-width=\"4\"/>\n  <line x1=\"170\" y1=\"210\" x2=\"160\" y2=\"200\" stroke=\"#9aa4a0\" stroke-width=\"4\"/>\n  <circle cx=\"192\" cy=\"260\" r=\"7\" fill=\"#5a5f62\"/><circle cx=\"242\" cy=\"260\" r=\"7\" fill=\"#5a5f62\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/supermercato.jpg",
+    "ratio": "1200 / 900",
+    "credit": "nrd / Unsplash",
+    "objects": [
+      {
+        "it": "lo scaffale",
+        "en": "shelf",
+        "x": 47,
+        "y": 35
+      },
+      {
+        "it": "l'insalata",
+        "en": "lettuce",
+        "x": 12,
+        "y": 25
+      },
+      {
+        "it": "i peperoni",
+        "en": "peppers",
+        "x": 45,
+        "y": 24
+      },
+      {
+        "it": "le zucchine",
+        "en": "courgettes",
+        "x": 77,
+        "y": 23
+      },
+      {
+        "it": "i cetrioli",
+        "en": "cucumbers",
+        "x": 60,
+        "y": 80
+      },
+      {
+        "it": "le melanzane",
+        "en": "aubergines",
+        "x": 76,
+        "y": 63
+      },
+      {
+        "it": "l'aglio",
+        "en": "garlic",
+        "x": 46,
+        "y": 82
+      },
+      {
+        "it": "il cavolo",
+        "en": "cabbage",
+        "x": 9,
+        "y": 82,
+        "ax": "l"
+      },
+      {
+        "it": "i broccoli",
+        "en": "broccoli",
+        "x": 30,
+        "y": 87
+      },
+      {
+        "it": "la zucca",
+        "en": "squash",
+        "x": 79,
+        "y": 85
+      },
+      {
+        "it": "il cartellino",
+        "en": "price tag",
+        "x": 29,
+        "y": 57
+      }
+    ]
+  },
+  {
+    "id": "bar",
+    "title": "Il Bar",
+    "en": "Café",
+    "hue": "#C9603A",
+    "tint": "#FBEDE6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#efe4d6\"/>\n  <rect y=\"200\" width=\"400\" height=\"80\" fill=\"#c9b79a\"/>\n  <!-- back shelf + bottles -->\n  <rect x=\"250\" y=\"60\" width=\"140\" height=\"8\" fill=\"#a8895f\"/>\n  <rect x=\"258\" y=\"40\" width=\"10\" height=\"20\" rx=\"2\" fill=\"#3a8a52\"/><rect x=\"274\" y=\"36\" width=\"10\" height=\"24\" rx=\"2\" fill=\"#a8434b\"/><rect x=\"290\" y=\"42\" width=\"10\" height=\"18\" rx=\"2\" fill=\"#c99a2e\"/><rect x=\"306\" y=\"38\" width=\"10\" height=\"22\" rx=\"2\" fill=\"#2e7d8a\"/>\n  <!-- counter -->\n  <rect x=\"230\" y=\"150\" width=\"160\" height=\"20\" fill=\"#8a6a48\"/>\n  <rect x=\"230\" y=\"170\" width=\"160\" height=\"60\" fill=\"#a8895f\"/>\n  <!-- espresso machine -->\n  <rect x=\"300\" y=\"108\" width=\"70\" height=\"42\" rx=\"4\" fill=\"#9aa4a0\"/>\n  <rect x=\"308\" y=\"116\" width=\"54\" height=\"16\" rx=\"2\" fill=\"#6a6f72\"/>\n  <rect x=\"322\" y=\"150\" width=\"8\" height=\"8\" fill=\"#6a6f72\"/>\n  <!-- cup on counter -->\n  <path d=\"M244 146 q0 12 10 12 q10 0 10 -12 z\" fill=\"#fff\" stroke=\"#ddd\" stroke-width=\"2\"/>\n  <!-- round table -->\n  <ellipse cx=\"108\" cy=\"222\" rx=\"72\" ry=\"16\" fill=\"#b98a5e\"/>\n  <rect x=\"104\" y=\"222\" width=\"8\" height=\"42\" fill=\"#9a7049\"/>\n  <path d=\"M90 264 h36\" stroke=\"#9a7049\" stroke-width=\"5\"/>\n  <!-- cup + saucer -->\n  <ellipse cx=\"96\" cy=\"216\" rx=\"20\" ry=\"6\" fill=\"#f0f0ea\"/>\n  <path d=\"M84 210 q0 14 12 14 q12 0 12 -14 z\" fill=\"#fff\" stroke=\"#ccc\" stroke-width=\"2\"/>\n  <path d=\"M108 213 q11 0 11 7 q0 6 -9 6\" fill=\"none\" stroke=\"#ccc\" stroke-width=\"2\"/>\n  <!-- cornetto on plate -->\n  <ellipse cx=\"142\" cy=\"219\" rx=\"17\" ry=\"5\" fill=\"#f0f0ea\"/>\n  <path d=\"M130 217 q12 -11 24 0 q-12 5 -24 0\" fill=\"#d9a441\"/>\n  <!-- menu -->\n  <rect x=\"58\" y=\"194\" width=\"20\" height=\"28\" rx=\"2\" fill=\"#fff\" stroke=\"#ccc\" stroke-width=\"1.5\"/>\n  <line x1=\"62\" y1=\"200\" x2=\"74\" y2=\"200\" stroke=\"#bbb\"/><line x1=\"62\" y1=\"206\" x2=\"74\" y2=\"206\" stroke=\"#bbb\"/><line x1=\"62\" y1=\"212\" x2=\"70\" y2=\"212\" stroke=\"#bbb\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/bar.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Gabriel Forsberg / Unsplash",
+    "objects": [
+      {
+        "it": "il cappuccino",
+        "en": "coffee with frothy milk",
+        "x": 59,
+        "y": 40
+      },
+      {
+        "it": "il cornetto",
+        "en": "croissant",
+        "x": 45,
+        "y": 56
+      },
+      {
+        "it": "il piatto",
+        "en": "plate",
+        "x": 33,
+        "y": 69
+      },
+      {
+        "it": "il tavolo",
+        "en": "table",
+        "x": 70,
+        "y": 80
+      },
+      {
+        "it": "la pianta",
+        "en": "plant",
+        "x": 56,
+        "y": 14
+      },
+      {
+        "it": "il cesto",
+        "en": "basket",
+        "x": 57,
+        "y": 27,
+        "dir": "left"
+      },
+      {
+        "it": "lo sgabello",
+        "en": "stool",
+        "x": 88,
+        "y": 24
+      },
+      {
+        "it": "il pavimento",
+        "en": "floor",
+        "x": 15,
+        "y": 25
+      }
+    ]
+  },
+  {
+    "id": "persona",
+    "title": "La Persona",
+    "en": "Body & Clothes",
+    "hue": "#7A5A8E",
+    "tint": "#F0EAF6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#eef1f2\"/>\n  <rect y=\"252\" width=\"400\" height=\"28\" fill=\"#d8c3a5\"/>\n  <!-- trousers -->\n  <rect x=\"176\" y=\"182\" width=\"20\" height=\"64\" fill=\"#3a4a6a\"/>\n  <rect x=\"204\" y=\"182\" width=\"20\" height=\"64\" fill=\"#3a4a6a\"/>\n  <!-- shoes -->\n  <rect x=\"168\" y=\"244\" width=\"30\" height=\"12\" rx=\"5\" fill=\"#5a3a2a\"/>\n  <rect x=\"202\" y=\"244\" width=\"30\" height=\"12\" rx=\"5\" fill=\"#5a3a2a\"/>\n  <!-- shirt / torso -->\n  <rect x=\"166\" y=\"120\" width=\"68\" height=\"66\" rx=\"10\" fill=\"#2e7d8a\"/>\n  <!-- arms -->\n  <rect x=\"148\" y=\"122\" width=\"18\" height=\"60\" rx=\"8\" fill=\"#2e7d8a\"/>\n  <rect x=\"234\" y=\"122\" width=\"18\" height=\"60\" rx=\"8\" fill=\"#2e7d8a\"/>\n  <!-- hands -->\n  <circle cx=\"157\" cy=\"188\" r=\"9\" fill=\"#e8b98a\"/>\n  <circle cx=\"243\" cy=\"188\" r=\"9\" fill=\"#e8b98a\"/>\n  <!-- neck -->\n  <rect x=\"192\" y=\"104\" width=\"16\" height=\"20\" fill=\"#e8b98a\"/>\n  <!-- head -->\n  <circle cx=\"200\" cy=\"84\" r=\"30\" fill=\"#e8b98a\"/>\n  <!-- ears -->\n  <circle cx=\"171\" cy=\"86\" r=\"6\" fill=\"#e8b98a\"/><circle cx=\"229\" cy=\"86\" r=\"6\" fill=\"#e8b98a\"/>\n  <!-- hair -->\n  <path d=\"M170 80 q0 -34 30 -34 q30 0 30 34 q-8 -18 -30 -18 q-22 0 -30 18\" fill=\"#5a3a2a\"/>\n  <!-- eyes -->\n  <circle cx=\"190\" cy=\"82\" r=\"3\" fill=\"#333\"/><circle cx=\"210\" cy=\"82\" r=\"3\" fill=\"#333\"/>\n  <!-- nose -->\n  <path d=\"M200 86 l-3 8 l6 0 z\" fill=\"#d9a878\"/>\n  <!-- mouth -->\n  <path d=\"M192 98 q8 6 16 0\" fill=\"none\" stroke=\"#c0392b\" stroke-width=\"2\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/persona.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Nadeem Choudhary / Unsplash",
+    "objects": [
+      {
+        "it": "il cappello",
+        "en": "cap",
+        "x": 48,
+        "y": 13
+      },
+      {
+        "it": "la camicia",
+        "en": "shirt",
+        "x": 52,
+        "y": 32
+      },
+      {
+        "it": "il braccio",
+        "en": "arm",
+        "x": 44,
+        "y": 42
+      },
+      {
+        "it": "la mano",
+        "en": "hand",
+        "x": 44,
+        "y": 53
+      },
+      {
+        "it": "i pantaloni",
+        "en": "trousers",
+        "x": 51,
+        "y": 60
+      },
+      {
+        "it": "la gamba",
+        "en": "leg",
+        "x": 54,
+        "y": 70
+      },
+      {
+        "it": "le scarpe",
+        "en": "shoes",
+        "x": 50,
+        "y": 90
+      },
+      {
+        "it": "il muro",
+        "en": "wall",
+        "x": 85,
+        "y": 25
+      },
+      {
+        "it": "la strada",
+        "en": "road",
+        "x": 20,
+        "y": 75
+      }
+    ]
+  },
+  {
+    "id": "biblioteca",
+    "title": "La Biblioteca",
+    "en": "Library",
+    "hue": "#2E7D8A",
+    "tint": "#E3F4F6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#ece4d6\"/>\n  <rect y=\"205\" width=\"400\" height=\"75\" fill=\"#c9a877\"/>\n  <!-- bookshelf -->\n  <rect x=\"20\" y=\"40\" width=\"200\" height=\"162\" fill=\"#8a6a48\"/>\n  <rect x=\"26\" y=\"46\" width=\"188\" height=\"34\" fill=\"#5a3f28\"/>\n  <rect x=\"26\" y=\"84\" width=\"188\" height=\"34\" fill=\"#5a3f28\"/>\n  <rect x=\"26\" y=\"122\" width=\"188\" height=\"34\" fill=\"#5a3f28\"/>\n  <rect x=\"26\" y=\"160\" width=\"188\" height=\"34\" fill=\"#5a3f28\"/>\n  <g>\n    <rect x=\"30\" y=\"50\" width=\"9\" height=\"26\" fill=\"#a8434b\"/><rect x=\"41\" y=\"50\" width=\"9\" height=\"26\" fill=\"#c99a2e\"/><rect x=\"52\" y=\"50\" width=\"9\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"63\" y=\"50\" width=\"9\" height=\"26\" fill=\"#7a5a8e\"/><rect x=\"74\" y=\"50\" width=\"9\" height=\"26\" fill=\"#3a8a52\"/><rect x=\"85\" y=\"50\" width=\"9\" height=\"26\" fill=\"#c9603a\"/><rect x=\"96\" y=\"50\" width=\"9\" height=\"26\" fill=\"#a8434b\"/><rect x=\"107\" y=\"50\" width=\"9\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"118\" y=\"50\" width=\"9\" height=\"26\" fill=\"#c99a2e\"/><rect x=\"129\" y=\"50\" width=\"9\" height=\"26\" fill=\"#7a5a8e\"/><rect x=\"140\" y=\"50\" width=\"9\" height=\"26\" fill=\"#3a8a52\"/><rect x=\"151\" y=\"50\" width=\"9\" height=\"26\" fill=\"#c9603a\"/>\n    <rect x=\"30\" y=\"88\" width=\"9\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"41\" y=\"88\" width=\"9\" height=\"26\" fill=\"#a8434b\"/><rect x=\"52\" y=\"88\" width=\"9\" height=\"26\" fill=\"#c9603a\"/><rect x=\"63\" y=\"88\" width=\"9\" height=\"26\" fill=\"#c99a2e\"/><rect x=\"74\" y=\"88\" width=\"9\" height=\"26\" fill=\"#7a5a8e\"/><rect x=\"85\" y=\"88\" width=\"9\" height=\"26\" fill=\"#3a8a52\"/><rect x=\"96\" y=\"88\" width=\"9\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"107\" y=\"88\" width=\"9\" height=\"26\" fill=\"#a8434b\"/><rect x=\"118\" y=\"88\" width=\"9\" height=\"26\" fill=\"#c9603a\"/><rect x=\"129\" y=\"88\" width=\"9\" height=\"26\" fill=\"#c99a2e\"/><rect x=\"140\" y=\"88\" width=\"9\" height=\"26\" fill=\"#7a5a8e\"/><rect x=\"151\" y=\"88\" width=\"9\" height=\"26\" fill=\"#3a8a52\"/>\n    <rect x=\"30\" y=\"126\" width=\"9\" height=\"26\" fill=\"#c99a2e\"/><rect x=\"41\" y=\"126\" width=\"9\" height=\"26\" fill=\"#3a8a52\"/><rect x=\"52\" y=\"126\" width=\"9\" height=\"26\" fill=\"#a8434b\"/><rect x=\"63\" y=\"126\" width=\"9\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"74\" y=\"126\" width=\"9\" height=\"26\" fill=\"#c9603a\"/><rect x=\"85\" y=\"126\" width=\"9\" height=\"26\" fill=\"#7a5a8e\"/><rect x=\"96\" y=\"126\" width=\"9\" height=\"26\" fill=\"#c99a2e\"/><rect x=\"107\" y=\"126\" width=\"9\" height=\"26\" fill=\"#3a8a52\"/><rect x=\"118\" y=\"126\" width=\"9\" height=\"26\" fill=\"#a8434b\"/><rect x=\"129\" y=\"126\" width=\"9\" height=\"26\" fill=\"#2e7d8a\"/><rect x=\"140\" y=\"126\" width=\"9\" height=\"26\" fill=\"#c9603a\"/><rect x=\"151\" y=\"126\" width=\"9\" height=\"26\" fill=\"#7a5a8e\"/>\n  </g>\n  <!-- window -->\n  <rect x=\"300\" y=\"50\" width=\"80\" height=\"90\" rx=\"3\" fill=\"#bfe0ea\" stroke=\"#fff\" stroke-width=\"5\"/>\n  <line x1=\"340\" y1=\"50\" x2=\"340\" y2=\"140\" stroke=\"#fff\" stroke-width=\"4\"/>\n  <!-- table -->\n  <rect x=\"240\" y=\"200\" width=\"150\" height=\"16\" rx=\"3\" fill=\"#b98a5e\"/>\n  <rect x=\"250\" y=\"216\" width=\"10\" height=\"44\" fill=\"#9a7049\"/>\n  <rect x=\"370\" y=\"216\" width=\"10\" height=\"44\" fill=\"#9a7049\"/>\n  <!-- lamp -->\n  <rect x=\"270\" y=\"176\" width=\"6\" height=\"24\" fill=\"#2b3540\"/>\n  <path d=\"M262 176 l24 0 l-6 -14 l-12 0 z\" fill=\"#c99a2e\"/>\n  <!-- laptop -->\n  <rect x=\"300\" y=\"182\" width=\"40\" height=\"24\" rx=\"2\" fill=\"#3a4a55\"/>\n  <rect x=\"304\" y=\"186\" width=\"32\" height=\"16\" fill=\"#5aa0c9\"/>\n  <!-- open book -->\n  <path d=\"M348 200 l24 0 l0 -9 l-24 0 z\" fill=\"#f0f0ea\" stroke=\"#ddd\"/>\n  <line x1=\"360\" y1=\"191\" x2=\"360\" y2=\"200\" stroke=\"#ccc\"/>\n  <!-- chair -->\n  <rect x=\"300\" y=\"220\" width=\"40\" height=\"12\" rx=\"3\" fill=\"#a8895f\"/>\n  <rect x=\"300\" y=\"186\" width=\"40\" height=\"36\" rx=\"4\" fill=\"#b89968\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/biblioteca.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Metin Ozer / Unsplash",
+    "objects": [
+      {
+        "it": "lo scaffale",
+        "en": "bookshelf",
+        "x": 23,
+        "y": 40
+      },
+      {
+        "it": "i libri",
+        "en": "books",
+        "x": 91,
+        "y": 45,
+        "ax": "r"
+      },
+      {
+        "it": "il tavolo",
+        "en": "table",
+        "x": 54,
+        "y": 55
+      },
+      {
+        "it": "la sedia",
+        "en": "chair",
+        "x": 40,
+        "y": 58
+      },
+      {
+        "it": "la moquette",
+        "en": "carpet",
+        "x": 50,
+        "y": 80
+      },
+      {
+        "it": "il cartello",
+        "en": "sign",
+        "x": 12,
+        "y": 15,
+        "ax": "l"
+      },
+      {
+        "it": "il soffitto",
+        "en": "ceiling",
+        "x": 55,
+        "y": 5
+      }
+    ]
+  },
+  {
+    "id": "stazione",
+    "title": "La Stazione",
+    "en": "Train Station",
+    "hue": "#2E7D8A",
+    "tint": "#E3F4F6",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#d9e2e8\"/>\n  <rect y=\"210\" width=\"400\" height=\"70\" fill=\"#b6babe\"/>\n  <rect y=\"0\" width=\"400\" height=\"28\" fill=\"#c9cdcf\"/>\n  <rect x=\"60\" y=\"28\" width=\"8\" height=\"42\" fill=\"#9aa0a4\"/><rect x=\"200\" y=\"28\" width=\"8\" height=\"42\" fill=\"#9aa0a4\"/><rect x=\"340\" y=\"28\" width=\"8\" height=\"42\" fill=\"#9aa0a4\"/>\n  <!-- departure board -->\n  <rect x=\"150\" y=\"34\" width=\"110\" height=\"46\" rx=\"3\" fill=\"#20303a\"/>\n  <rect x=\"156\" y=\"40\" width=\"98\" height=\"8\" fill=\"#3a8a52\"/><rect x=\"156\" y=\"52\" width=\"98\" height=\"8\" fill=\"#c99a2e\"/><rect x=\"156\" y=\"64\" width=\"98\" height=\"8\" fill=\"#3a8a52\"/>\n  <!-- clock -->\n  <circle cx=\"60\" cy=\"58\" r=\"18\" fill=\"#fff\" stroke=\"#333\" stroke-width=\"3\"/>\n  <line x1=\"60\" y1=\"58\" x2=\"60\" y2=\"46\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"60\" y1=\"58\" x2=\"68\" y2=\"62\" stroke=\"#333\" stroke-width=\"2\"/>\n  <!-- train -->\n  <rect x=\"250\" y=\"88\" width=\"150\" height=\"122\" rx=\"14\" fill=\"#a8434b\"/>\n  <rect x=\"250\" y=\"100\" width=\"150\" height=\"10\" fill=\"#7a2f36\"/>\n  <rect x=\"266\" y=\"122\" width=\"34\" height=\"30\" rx=\"4\" fill=\"#bfe0ea\"/><rect x=\"310\" y=\"122\" width=\"34\" height=\"30\" rx=\"4\" fill=\"#bfe0ea\"/><rect x=\"354\" y=\"122\" width=\"34\" height=\"30\" rx=\"4\" fill=\"#bfe0ea\"/>\n  <rect x=\"262\" y=\"160\" width=\"40\" height=\"48\" rx=\"3\" fill=\"#7a2f36\"/>\n  <line x1=\"282\" y1=\"160\" x2=\"282\" y2=\"208\" stroke=\"#a8434b\" stroke-width=\"2\"/>\n  <!-- platform edge + rails -->\n  <rect x=\"0\" y=\"205\" width=\"250\" height=\"6\" fill=\"#c99a2e\"/>\n  <rect x=\"250\" y=\"216\" width=\"150\" height=\"4\" fill=\"#8a8f92\"/><rect x=\"250\" y=\"228\" width=\"150\" height=\"4\" fill=\"#8a8f92\"/>\n  <!-- bench -->\n  <rect x=\"40\" y=\"180\" width=\"54\" height=\"8\" rx=\"2\" fill=\"#8a6a48\"/>\n  <rect x=\"44\" y=\"162\" width=\"46\" height=\"8\" rx=\"2\" fill=\"#a8895f\"/>\n  <rect x=\"44\" y=\"188\" width=\"6\" height=\"20\" fill=\"#75563a\"/><rect x=\"84\" y=\"188\" width=\"6\" height=\"20\" fill=\"#75563a\"/>\n  <!-- suitcase -->\n  <rect x=\"104\" y=\"178\" width=\"30\" height=\"34\" rx=\"4\" fill=\"#2e7d8a\"/>\n  <rect x=\"116\" y=\"170\" width=\"6\" height=\"10\" fill=\"#2e7d8a\"/>\n  <!-- ticket machine -->\n  <rect x=\"150\" y=\"150\" width=\"40\" height=\"60\" rx=\"4\" fill=\"#3a4a55\"/>\n  <rect x=\"156\" y=\"158\" width=\"28\" height=\"20\" fill=\"#5aa0c9\"/>\n  <rect x=\"158\" y=\"184\" width=\"24\" height=\"6\" fill=\"#c99a2e\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/stazione.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Frederic Köberl / Unsplash",
+    "objects": [
+      {
+        "it": "il treno",
+        "en": "train",
+        "x": 12,
+        "y": 48,
+        "ax": "l"
+      },
+      {
+        "it": "l'orologio",
+        "en": "clock",
+        "x": 49,
+        "y": 28
+      },
+      {
+        "it": "il binario",
+        "en": "platform",
+        "x": 43,
+        "y": 43
+      },
+      {
+        "it": "il cartello",
+        "en": "sign",
+        "x": 54,
+        "y": 43
+      },
+      {
+        "it": "la scala mobile",
+        "en": "escalator",
+        "x": 48,
+        "y": 80
+      },
+      {
+        "it": "il tetto",
+        "en": "roof",
+        "x": 75,
+        "y": 10
+      }
+    ]
+  },
+  {
+    "id": "classe",
+    "title": "L'Aula",
+    "en": "Classroom",
+    "hue": "#C99A2E",
+    "tint": "#FBF5E0",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#e8ece6\"/>\n  <rect y=\"200\" width=\"400\" height=\"80\" fill=\"#cbb89a\"/>\n  <!-- blackboard -->\n  <rect x=\"110\" y=\"50\" width=\"180\" height=\"90\" rx=\"4\" fill=\"#2e4d3a\" stroke=\"#8a6a48\" stroke-width=\"6\"/>\n  <line x1=\"130\" y1=\"80\" x2=\"250\" y2=\"80\" stroke=\"#dfe6e0\" stroke-width=\"2\" opacity=\"0.6\"/><line x1=\"130\" y1=\"100\" x2=\"220\" y2=\"100\" stroke=\"#dfe6e0\" stroke-width=\"2\" opacity=\"0.6\"/>\n  <!-- map -->\n  <rect x=\"312\" y=\"54\" width=\"70\" height=\"60\" rx=\"2\" fill=\"#bcd3c0\"/>\n  <path d=\"M322 72 q10 -8 22 0 q10 8 26 -2 l0 30 q-24 8 -48 0 z\" fill=\"#7aa07a\"/>\n  <circle cx=\"348\" cy=\"62\" r=\"4\" fill=\"#a8434b\"/>\n  <!-- clock -->\n  <circle cx=\"60\" cy=\"70\" r=\"18\" fill=\"#fff\" stroke=\"#333\" stroke-width=\"3\"/>\n  <line x1=\"60\" y1=\"70\" x2=\"60\" y2=\"58\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"60\" y1=\"70\" x2=\"68\" y2=\"74\" stroke=\"#333\" stroke-width=\"2\"/>\n  <!-- desk -->\n  <rect x=\"150\" y=\"190\" width=\"120\" height=\"16\" rx=\"3\" fill=\"#c19a6a\"/>\n  <rect x=\"158\" y=\"206\" width=\"10\" height=\"50\" fill=\"#a8895f\"/><rect x=\"252\" y=\"206\" width=\"10\" height=\"50\" fill=\"#a8895f\"/>\n  <!-- chair -->\n  <rect x=\"190\" y=\"200\" width=\"44\" height=\"34\" rx=\"4\" fill=\"#a8895f\"/>\n  <rect x=\"190\" y=\"230\" width=\"44\" height=\"10\" rx=\"3\" fill=\"#8a6a48\"/>\n  <rect x=\"194\" y=\"240\" width=\"6\" height=\"20\" fill=\"#75563a\"/><rect x=\"224\" y=\"240\" width=\"6\" height=\"20\" fill=\"#75563a\"/>\n  <!-- book + notebook + pen -->\n  <rect x=\"158\" y=\"178\" width=\"34\" height=\"12\" rx=\"2\" fill=\"#a8434b\"/>\n  <rect x=\"204\" y=\"180\" width=\"30\" height=\"10\" rx=\"1\" fill=\"#f4f4ee\"/>\n  <line x1=\"206\" y1=\"184\" x2=\"232\" y2=\"184\" stroke=\"#ccc\"/>\n  <rect x=\"240\" y=\"180\" width=\"22\" height=\"4\" rx=\"2\" fill=\"#2e7d8a\"/>\n  <!-- backpack -->\n  <rect x=\"88\" y=\"210\" width=\"42\" height=\"50\" rx=\"12\" fill=\"#c9603a\"/>\n  <rect x=\"94\" y=\"226\" width=\"30\" height=\"20\" rx=\"4\" fill=\"#a84f2f\"/>\n  <rect x=\"103\" y=\"204\" width=\"12\" height=\"10\" rx=\"4\" fill=\"#c9603a\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/classe.jpg",
+    "ratio": "1200 / 675",
+    "credit": "Ivan Aleksic / Unsplash",
+    "objects": [
+      {
+        "it": "la lavagna",
+        "en": "blackboard",
+        "x": 50,
+        "y": 21
+      },
+      {
+        "it": "la cattedra",
+        "en": "teacher's desk",
+        "x": 50,
+        "y": 38
+      },
+      {
+        "it": "il banco",
+        "en": "school desk",
+        "x": 12,
+        "y": 55,
+        "ax": "l"
+      },
+      {
+        "it": "la sedia",
+        "en": "chair",
+        "x": 88,
+        "y": 68
+      },
+      {
+        "it": "la carta geografica",
+        "en": "map",
+        "x": 93,
+        "y": 20,
+        "ax": "r"
+      },
+      {
+        "it": "il quadro",
+        "en": "picture",
+        "x": 50,
+        "y": 7,
+        "dir": "right"
+      },
+      {
+        "it": "il pavimento",
+        "en": "floor",
+        "x": 42,
+        "y": 80
+      },
+      {
+        "it": "la parete",
+        "en": "wall",
+        "x": 8,
+        "y": 25,
+        "ax": "l"
+      }
+    ]
+  },
+  {
+    "id": "parco",
+    "title": "Il Parco",
+    "en": "The Park",
+    "hue": "#1E6B4F",
+    "tint": "#EAF2EC",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#bfe0ea\"/>\n  <rect y=\"150\" width=\"400\" height=\"130\" fill=\"#7aa85a\"/>\n  <!-- sun -->\n  <circle cx=\"360\" cy=\"48\" r=\"24\" fill=\"#f0c645\"/>\n  <!-- path -->\n  <path d=\"M120 280 Q185 205 205 150 L245 150 Q225 210 205 280 Z\" fill=\"#cbb89a\"/>\n  <!-- tree -->\n  <rect x=\"70\" y=\"120\" width=\"16\" height=\"52\" fill=\"#8a6a48\"/>\n  <circle cx=\"54\" cy=\"115\" r=\"26\" fill=\"#357d47\"/><circle cx=\"104\" cy=\"115\" r=\"26\" fill=\"#357d47\"/><circle cx=\"78\" cy=\"98\" r=\"40\" fill=\"#3a8a52\"/>\n  <!-- fountain -->\n  <ellipse cx=\"108\" cy=\"232\" rx=\"42\" ry=\"16\" fill=\"#7aa8c8\"/>\n  <rect x=\"102\" y=\"200\" width=\"12\" height=\"32\" fill=\"#c8cecb\"/>\n  <circle cx=\"108\" cy=\"200\" r=\"9\" fill=\"#a8b0b4\"/>\n  <!-- bench -->\n  <rect x=\"150\" y=\"196\" width=\"54\" height=\"8\" rx=\"2\" fill=\"#8a6a48\"/>\n  <rect x=\"154\" y=\"180\" width=\"46\" height=\"8\" rx=\"2\" fill=\"#a8895f\"/>\n  <rect x=\"154\" y=\"204\" width=\"6\" height=\"18\" fill=\"#75563a\"/><rect x=\"194\" y=\"204\" width=\"6\" height=\"18\" fill=\"#75563a\"/>\n  <!-- bin -->\n  <rect x=\"230\" y=\"182\" width=\"20\" height=\"34\" rx=\"3\" fill=\"#4a5a4a\"/>\n  <rect x=\"227\" y=\"178\" width=\"26\" height=\"6\" rx=\"2\" fill=\"#3a4a3a\"/>\n  <!-- pond -->\n  <ellipse cx=\"322\" cy=\"212\" rx=\"60\" ry=\"28\" fill=\"#5aa0c9\"/>\n  <ellipse cx=\"310\" cy=\"206\" rx=\"10\" ry=\"6\" fill=\"#f4f4ee\"/><circle cx=\"302\" cy=\"202\" r=\"4\" fill=\"#f4f4ee\"/><path d=\"M298 202 l-5 1 l5 2 z\" fill=\"#c99a2e\"/>\n  <!-- dog -->\n  <ellipse cx=\"262\" cy=\"248\" rx=\"18\" ry=\"9\" fill=\"#8a6a48\"/><circle cx=\"278\" cy=\"242\" r=\"7\" fill=\"#8a6a48\"/><rect x=\"250\" y=\"252\" width=\"4\" height=\"10\" fill=\"#8a6a48\"/><rect x=\"272\" y=\"252\" width=\"4\" height=\"10\" fill=\"#8a6a48\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/parco.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Mike Benna / Unsplash",
+    "objects": [
+      {
+        "it": "l'albero",
+        "en": "tree",
+        "x": 85,
+        "y": 30
+      },
+      {
+        "it": "le foglie",
+        "en": "leaves",
+        "x": 55,
+        "y": 12
+      },
+      {
+        "it": "il cespuglio",
+        "en": "bush",
+        "x": 42,
+        "y": 55
+      },
+      {
+        "it": "la panchina",
+        "en": "bench",
+        "x": 87,
+        "y": 65
+      },
+      {
+        "it": "il sentiero",
+        "en": "path",
+        "x": 48,
+        "y": 75
+      },
+      {
+        "it": "il prato",
+        "en": "lawn",
+        "x": 25,
+        "y": 85
+      }
+    ]
+  },
+  {
+    "id": "medico",
+    "title": "Dal Medico",
+    "en": "Doctor's Office",
+    "hue": "#A8434B",
+    "tint": "#FAEAEB",
+    "svg": "\n<svg viewBox=\"0 0 400 280\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"400\" height=\"280\" fill=\"#eef3f1\"/>\n  <rect y=\"205\" width=\"400\" height=\"75\" fill=\"#d6d0c2\"/>\n  <!-- poster -->\n  <rect x=\"36\" y=\"48\" width=\"52\" height=\"74\" rx=\"3\" fill=\"#fff\" stroke=\"#ccc\" stroke-width=\"2\"/>\n  <rect x=\"48\" y=\"58\" width=\"28\" height=\"8\" fill=\"#333\"/><rect x=\"52\" y=\"72\" width=\"20\" height=\"6\" fill=\"#555\"/><rect x=\"54\" y=\"84\" width=\"16\" height=\"5\" fill=\"#777\"/><rect x=\"56\" y=\"94\" width=\"10\" height=\"4\" fill=\"#999\"/>\n  <!-- shelf + medicine -->\n  <rect x=\"300\" y=\"62\" width=\"90\" height=\"9\" fill=\"#a8895f\"/>\n  <rect x=\"308\" y=\"44\" width=\"12\" height=\"18\" rx=\"2\" fill=\"#3a8a52\"/><rect x=\"326\" y=\"46\" width=\"12\" height=\"16\" rx=\"2\" fill=\"#a8434b\"/><rect x=\"344\" y=\"42\" width=\"12\" height=\"20\" rx=\"2\" fill=\"#2e7d8a\"/><rect x=\"362\" y=\"48\" width=\"12\" height=\"14\" rx=\"2\" fill=\"#c99a2e\"/>\n  <!-- stethoscope -->\n  <path d=\"M196 116 q-12 32 6 50 q18 -18 6 -50\" fill=\"none\" stroke=\"#2b3540\" stroke-width=\"3\"/>\n  <circle cx=\"208\" cy=\"168\" r=\"6\" fill=\"#8a8f92\"/>\n  <!-- exam couch -->\n  <rect x=\"250\" y=\"152\" width=\"140\" height=\"30\" rx=\"6\" fill=\"#8fb0c8\"/>\n  <rect x=\"250\" y=\"142\" width=\"52\" height=\"20\" rx=\"8\" fill=\"#a8c8d8\"/>\n  <rect x=\"250\" y=\"180\" width=\"140\" height=\"6\" fill=\"#f4f4ee\"/>\n  <rect x=\"258\" y=\"182\" width=\"10\" height=\"30\" fill=\"#6a7a82\"/><rect x=\"372\" y=\"182\" width=\"10\" height=\"30\" fill=\"#6a7a82\"/>\n  <!-- desk -->\n  <rect x=\"36\" y=\"182\" width=\"130\" height=\"14\" rx=\"3\" fill=\"#b98a5e\"/>\n  <rect x=\"44\" y=\"196\" width=\"10\" height=\"40\" fill=\"#9a7049\"/><rect x=\"148\" y=\"196\" width=\"10\" height=\"40\" fill=\"#9a7049\"/>\n  <!-- computer -->\n  <rect x=\"60\" y=\"150\" width=\"48\" height=\"32\" rx=\"3\" fill=\"#3a4a55\"/><rect x=\"66\" y=\"156\" width=\"36\" height=\"22\" fill=\"#5aa0c9\"/><rect x=\"78\" y=\"182\" width=\"12\" height=\"4\" fill=\"#3a4a55\"/>\n  <!-- ricetta + termometro -->\n  <rect x=\"120\" y=\"176\" width=\"30\" height=\"14\" rx=\"1\" fill=\"#fff\" stroke=\"#ddd\"/>\n  <line x1=\"124\" y1=\"181\" x2=\"146\" y2=\"181\" stroke=\"#ccc\"/><line x1=\"124\" y1=\"185\" x2=\"140\" y2=\"185\" stroke=\"#ccc\"/>\n  <rect x=\"118\" y=\"170\" width=\"20\" height=\"4\" rx=\"2\" fill=\"#a8434b\"/>\n  <!-- chair -->\n  <rect x=\"70\" y=\"200\" width=\"40\" height=\"10\" rx=\"3\" fill=\"#46596a\"/>\n  <rect x=\"74\" y=\"210\" width=\"6\" height=\"24\" fill=\"#333\"/>\n  <path d=\"M70 234 h40\" stroke=\"#333\" stroke-width=\"4\"/>\n</svg>",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/medico.jpg",
+    "ratio": "1200 / 675",
+    "credit": "Vitaly Gariev / Unsplash",
+    "objects": [
+      {
+        "it": "la dottoressa",
+        "en": "doctor",
+        "x": 30,
+        "y": 25,
+        "dir": "down"
+      },
+      {
+        "it": "gli occhiali",
+        "en": "glasses",
+        "x": 30,
+        "y": 17,
+        "dir": "up"
+      },
+      {
+        "it": "lo stetoscopio",
+        "en": "stethoscope",
+        "x": 77,
+        "y": 72
+      },
+      {
+        "it": "il camice",
+        "en": "white coat",
+        "x": 25,
+        "y": 75
+      },
+      {
+        "it": "il paziente",
+        "en": "patient",
+        "x": 88,
+        "y": 35
+      },
+      {
+        "it": "la pianta",
+        "en": "plant",
+        "x": 70,
+        "y": 30
+      },
+      {
+        "it": "il poster",
+        "en": "poster",
+        "x": 55,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "id": "pizza",
+    "title": "La Pizza",
+    "en": "Pizza Toppings",
+    "hue": "#C9603A",
+    "tint": "#FBEDE6",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/pizza.jpg",
+    "ratio": "1200 / 801",
+    "credit": "Blake Wisz / Unsplash",
+    "objects": [
+      {
+        "it": "il basilico",
+        "en": "basil",
+        "x": 22,
+        "y": 17
+      },
+      {
+        "it": "la mozzarella",
+        "en": "soft white cheese",
+        "x": 15,
+        "y": 38
+      },
+      {
+        "it": "il pomodoro",
+        "en": "tomato",
+        "x": 44,
+        "y": 17
+      },
+      {
+        "it": "la salsa di pomodoro",
+        "en": "tomato sauce",
+        "x": 49,
+        "y": 29,
+        "dir": "down"
+      },
+      {
+        "it": "il bordo",
+        "en": "crust",
+        "x": 53,
+        "y": 46
+      },
+      {
+        "it": "la teglia",
+        "en": "baking tray",
+        "x": 56,
+        "y": 14
+      }
+    ]
+  },
+  {
+    "id": "pasta",
+    "title": "La Pasta",
+    "en": "Types of Pasta",
+    "hue": "#C99A2E",
+    "tint": "#FBF5E0",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/pasta.jpg",
+    "ratio": "1224 / 818",
+    "credit": "Unsplash (collage)",
+    "objects": [
+      {
+        "it": "gli spaghetti",
+        "en": "long thin pasta",
+        "x": 17,
+        "y": 25
+      },
+      {
+        "it": "le tagliatelle",
+        "en": "ribbon pasta",
+        "x": 26,
+        "y": 36
+      },
+      {
+        "it": "i rigatoni",
+        "en": "ridged pasta tubes",
+        "x": 50,
+        "y": 25
+      },
+      {
+        "it": "i fusilli",
+        "en": "spiral pasta",
+        "x": 83,
+        "y": 25
+      },
+      {
+        "it": "le farfalle",
+        "en": "bow-tie pasta",
+        "x": 17,
+        "y": 75
+      },
+      {
+        "it": "le lasagne",
+        "en": "layered pasta bake",
+        "x": 50,
+        "y": 75
+      },
+      {
+        "it": "i ravioli",
+        "en": "stuffed pasta parcels",
+        "x": 83,
+        "y": 75
+      }
+    ]
+  },
+  {
+    "id": "dolci",
+    "title": "I Dolci",
+    "en": "Italian Sweets",
+    "hue": "#7A5A8E",
+    "tint": "#F0EAF6",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/dolci.jpg",
+    "ratio": "1224 / 818",
+    "credit": "Unsplash (collage)",
+    "objects": [
+      {
+        "it": "il tiramisù",
+        "en": "coffee and mascarpone dessert",
+        "x": 17,
+        "y": 25
+      },
+      {
+        "it": "i cannoli",
+        "en": "cream-filled pastries",
+        "x": 50,
+        "y": 25
+      },
+      {
+        "it": "il gelato",
+        "en": "ice cream",
+        "x": 83,
+        "y": 25
+      },
+      {
+        "it": "il panettone",
+        "en": "Christmas sweet bread",
+        "x": 17,
+        "y": 75
+      },
+      {
+        "it": "i cantucci",
+        "en": "almond biscuits",
+        "x": 50,
+        "y": 75
+      },
+      {
+        "it": "la panna cotta",
+        "en": "cooked-cream dessert",
+        "x": 83,
+        "y": 75
+      }
+    ]
+  },
+  {
+    "id": "salumeria",
+    "title": "La Salumeria",
+    "en": "Italian Deli",
+    "hue": "#A8434B",
+    "tint": "#FAEAEB",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/salumeria.jpg",
+    "ratio": "1200 / 800",
+    "credit": "Max Nayman / Unsplash",
+    "objects": [
+      {
+        "it": "i salumi",
+        "en": "cured meats",
+        "x": 43,
+        "y": 8
+      },
+      {
+        "it": "il prosciutto",
+        "en": "ham",
+        "x": 32,
+        "y": 33
+      },
+      {
+        "it": "il formaggio",
+        "en": "cheese",
+        "x": 23,
+        "y": 45
+      },
+      {
+        "it": "le olive",
+        "en": "olives",
+        "x": 68,
+        "y": 31
+      },
+      {
+        "it": "l'olio d'oliva",
+        "en": "olive oil",
+        "x": 24,
+        "y": 15
+      },
+      {
+        "it": "la mortadella",
+        "en": "pork cold cut",
+        "x": 78,
+        "y": 45
+      },
+      {
+        "it": "l'affettatrice",
+        "en": "meat slicer",
+        "x": 16,
+        "y": 63
+      },
+      {
+        "it": "il bancone",
+        "en": "counter",
+        "x": 55,
+        "y": 82
+      },
+      {
+        "it": "la focaccia",
+        "en": "Italian flatbread",
+        "x": 85,
+        "y": 90
+      }
+    ]
+  },
+  {
+    "id": "sugo",
+    "title": "Il Sugo",
+    "en": "Pasta Sauce Ingredients",
+    "hue": "#1E6B4F",
+    "tint": "#EAF2EC",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/sugo.jpg",
+    "ratio": "1630 / 818",
+    "credit": "Unsplash (collage)",
+    "objects": [
+      {
+        "it": "il pomodoro",
+        "en": "tomato",
+        "x": 12.6,
+        "y": 25
+      },
+      {
+        "it": "l'aglio",
+        "en": "garlic",
+        "x": 37.5,
+        "y": 25
+      },
+      {
+        "it": "la cipolla",
+        "en": "onion",
+        "x": 62.4,
+        "y": 25
+      },
+      {
+        "it": "il basilico",
+        "en": "basil",
+        "x": 87.4,
+        "y": 25
+      },
+      {
+        "it": "l'olio d'oliva",
+        "en": "olive oil",
+        "x": 12.6,
+        "y": 75
+      },
+      {
+        "it": "il parmigiano",
+        "en": "parmesan",
+        "x": 37.5,
+        "y": 75
+      },
+      {
+        "it": "il sale",
+        "en": "salt",
+        "x": 62.4,
+        "y": 75
+      },
+      {
+        "it": "il peperoncino",
+        "en": "chilli pepper",
+        "x": 87.4,
+        "y": 75
+      }
+    ]
+  }
+]

@@ -1,0 +1,828 @@
+[
+  {
+    "id": "presentarsi",
+    "label": "Presentarsi",
+    "emoji": "👋",
+    "situation": "Meeting someone new at an Italian class or community event",
+    "img": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&h=375&fit=crop&auto=format",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Ciao! Sei nuovo/a qui?",
+        "en": "Hi! Are you new here?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì, sono arrivato/a in Italia tre mesi fa. Mi chiamo Amir.",
+        "en": "Yes, I arrived in Italy three months ago. My name is Amir."
+      },
+      {
+        "speaker": "A",
+        "it": "Piacere, io sono Giulia. Di dove sei?",
+        "en": "Nice to meet you, I'm Giulia. Where are you from?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sono del Marocco, di Casablanca. E tu?",
+        "en": "I'm from Morocco, from Casablanca. And you?"
+      },
+      {
+        "speaker": "A",
+        "it": "Io sono di Napoli, ma abito a Milano da dieci anni. Cosa fai?",
+        "en": "I'm from Naples, but I've lived in Milan for ten years. What do you do?"
+      },
+      {
+        "speaker": "B",
+        "it": "Lavoro in un'officina meccanica. E tu?",
+        "en": "I work at a car repair shop. And you?"
+      },
+      {
+        "speaker": "A",
+        "it": "Insegno italiano agli stranieri! Sei qui per il corso?",
+        "en": "I teach Italian to foreigners! Are you here for the course?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì, voglio migliorare l'italiano per il lavoro e per l'esame di cittadinanza.",
+        "en": "Yes, I want to improve my Italian for work and for the citizenship exam."
+      },
+      {
+        "speaker": "A",
+        "it": "Ottimo! Vedrai, con un po' di pratica impari in fretta.",
+        "en": "Great! You'll see, with a bit of practice you'll learn quickly."
+      },
+      {
+        "speaker": "B",
+        "it": "Spero! Piacere di conoscerti, Giulia.",
+        "en": "I hope so! Nice to meet you, Giulia."
+      }
+    ]
+  },
+  {
+    "id": "bar",
+    "label": "Al Bar",
+    "emoji": "☕",
+    "situation": "Ordering at an Italian bar — the quintessential daily ritual",
+    "img": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&h=375&fit=crop&auto=format",
+    "lines": [
+      {
+        "speaker": "Barista",
+        "it": "Buongiorno! Cosa prende?",
+        "en": "Good morning! What will you have?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Buongiorno! Un caffè e un cornetto alla crema, per favore.",
+        "en": "Good morning! A coffee and a cream croissant, please."
+      },
+      {
+        "speaker": "Barista",
+        "it": "Il caffè lo vuole ristretto, lungo o macchiato?",
+        "en": "Do you want the coffee short, long, or with a dash of milk?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Macchiato, grazie. Ah, e mi dà anche un bicchiere d'acqua?",
+        "en": "Macchiato, thanks. Oh, and can you give me a glass of water too?"
+      },
+      {
+        "speaker": "Barista",
+        "it": "Certo! Vuole mangiare al banco o si siede?",
+        "en": "Of course! Do you want to eat at the counter or sit down?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Al banco va bene, ho fretta.",
+        "en": "The counter is fine, I'm in a hurry."
+      },
+      {
+        "speaker": "Barista",
+        "it": "Eccolo! Il cornetto è appena sfornato.",
+        "en": "Here you go! The croissant is just out of the oven."
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Ottimo, grazie! Quanto le devo?",
+        "en": "Great, thank you! How much do I owe you?"
+      },
+      {
+        "speaker": "Barista",
+        "it": "Due euro e venti, per favore.",
+        "en": "Two euros twenty, please."
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Ecco a lei. Buona giornata!",
+        "en": "Here you are. Have a good day!"
+      }
+    ]
+  },
+  {
+    "id": "abbigliamento",
+    "img": "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&h=375&fit=crop&auto=format",
+    "label": "Comprare Vestiti",
+    "emoji": "👗",
+    "situation": "Shopping for clothes in a clothing store",
+    "lines": [
+      {
+        "speaker": "Commessa",
+        "it": "Buongiorno, posso aiutarla?",
+        "en": "Good morning, can I help you?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Sì, cerco una giacca leggera per la primavera.",
+        "en": "Yes, I'm looking for a light jacket for spring."
+      },
+      {
+        "speaker": "Commessa",
+        "it": "Che taglia porta?",
+        "en": "What size do you wear?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Di solito la M, ma dipende dal modello.",
+        "en": "Usually M, but it depends on the style."
+      },
+      {
+        "speaker": "Commessa",
+        "it": "Guardi questa — è molto comoda e ha una bella vestibilità.",
+        "en": "Look at this one — it's very comfortable and fits nicely."
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Mi piace! Ce l'ha in blu o in verde?",
+        "en": "I like it! Do you have it in blue or green?"
+      },
+      {
+        "speaker": "Commessa",
+        "it": "In blu sì, abbiamo ancora la M e la L. Vuole provarla?",
+        "en": "In blue yes, we still have M and L. Would you like to try it on?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Sì, volentieri. Dov'è il camerino?",
+        "en": "Yes, I'd love to. Where is the changing room?"
+      },
+      {
+        "speaker": "Commessa",
+        "it": "In fondo a sinistra.",
+        "en": "At the back on the left."
+      },
+      {
+        "speaker": "Cliente",
+        "it": "È un po' stretta sulle spalle. Ha una taglia più grande?",
+        "en": "It's a bit tight on the shoulders. Do you have a bigger size?"
+      },
+      {
+        "speaker": "Commessa",
+        "it": "La L è rimasta solo in nero, mi dispiace.",
+        "en": "The L is only left in black, I'm sorry."
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Va bene lo stesso, la prendo in nero. Quanto costa?",
+        "en": "That's fine, I'll take it in black. How much is it?"
+      },
+      {
+        "speaker": "Commessa",
+        "it": "Cinquantanove euro e novanta. Paga in contanti o con carta?",
+        "en": "Fifty-nine euros ninety. Are you paying cash or by card?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Con il bancomat. Grazie per la pazienza!",
+        "en": "With my debit card. Thank you for your patience!"
+      }
+    ]
+  },
+  {
+    "id": "ristorante",
+    "img": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=375&fit=crop&auto=format",
+    "label": "Al Ristorante",
+    "emoji": "🍝",
+    "situation": "Having dinner at an Italian restaurant",
+    "lines": [
+      {
+        "speaker": "Cameriere",
+        "it": "Buonasera, avete prenotato?",
+        "en": "Good evening, do you have a reservation?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Sì, ho prenotato per due persone a nome Kaur.",
+        "en": "Yes, I booked for two people under the name Kaur."
+      },
+      {
+        "speaker": "Cameriere",
+        "it": "Prego, seguitemi. Ecco il tavolo. Posso portarvi il menù?",
+        "en": "Please, follow me. Here's your table. Can I bring you the menu?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Sì, grazie. E potremmo avere dell'acqua naturale?",
+        "en": "Yes, thank you. And could we have still water?"
+      },
+      {
+        "speaker": "Cameriere",
+        "it": "Certo. Volete anche un po' di pane?",
+        "en": "Of course. Would you also like some bread?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Sì, volentieri. Cos'è il piatto del giorno?",
+        "en": "Yes please. What is the dish of the day?"
+      },
+      {
+        "speaker": "Cameriere",
+        "it": "Abbiamo risotto ai funghi porcini e branzino alla griglia.",
+        "en": "We have porcini mushroom risotto and grilled sea bass."
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Perfetto! Prendo il risotto, e lei prende la pasta al ragù.",
+        "en": "Perfect! I'll have the risotto, and she'll have the pasta with ragù."
+      },
+      {
+        "speaker": "Cameriere",
+        "it": "Ottima scelta. E da bere oltre all'acqua?",
+        "en": "Excellent choice. And to drink besides water?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Un quarto di vino rosso della casa, per favore.",
+        "en": "A quarter litre of house red wine, please."
+      },
+      {
+        "speaker": "Cameriere",
+        "it": "[più tardi] Come avete trovato?",
+        "en": "[later] How did you find it?"
+      },
+      {
+        "speaker": "Cliente",
+        "it": "Buonissimo! Il risotto era cremoso e saporito. Il conto, per favore.",
+        "en": "Delicious! The risotto was creamy and tasty. The bill, please."
+      }
+    ]
+  },
+  {
+    "id": "medico",
+    "img": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=375&fit=crop&auto=format",
+    "label": "Dal Medico",
+    "emoji": "🩺",
+    "situation": "Visiting the doctor with a health problem",
+    "lines": [
+      {
+        "speaker": "Medico",
+        "it": "Buongiorno, si accomodi. Cosa la porta da me oggi?",
+        "en": "Good morning, have a seat. What brings you to me today?"
+      },
+      {
+        "speaker": "Paziente",
+        "it": "Ho mal di gola e un po' di febbre da due giorni.",
+        "en": "I've had a sore throat and a slight fever for two days."
+      },
+      {
+        "speaker": "Medico",
+        "it": "Ha anche tosse o naso chiuso?",
+        "en": "Do you also have a cough or a blocked nose?"
+      },
+      {
+        "speaker": "Paziente",
+        "it": "Sì, ho il naso chiuso e mi fa male la testa.",
+        "en": "Yes, I have a blocked nose and my head hurts."
+      },
+      {
+        "speaker": "Medico",
+        "it": "Quanti gradi di febbre aveva?",
+        "en": "How high was your fever?"
+      },
+      {
+        "speaker": "Paziente",
+        "it": "Ieri sera trentotto e due.",
+        "en": "Last night thirty-eight point two."
+      },
+      {
+        "speaker": "Medico",
+        "it": "Apra la bocca — dica \"aaa\". Sì, la gola è arrossata. Le prescrivo un antibiotico.",
+        "en": "Open your mouth — say \"aaa\". Yes, the throat is inflamed. I'll prescribe an antibiotic."
+      },
+      {
+        "speaker": "Paziente",
+        "it": "Devo stare a casa dal lavoro?",
+        "en": "Do I need to stay home from work?"
+      },
+      {
+        "speaker": "Medico",
+        "it": "Sì, le do il certificato medico per tre giorni. Beva tanta acqua e riposi.",
+        "en": "Yes, I'll give you a sick note for three days. Drink plenty of water and rest."
+      },
+      {
+        "speaker": "Paziente",
+        "it": "Grazie dottore. Quando devo tornare se non miglioro?",
+        "en": "Thank you doctor. When should I come back if I don't improve?"
+      },
+      {
+        "speaker": "Medico",
+        "it": "Se dopo tre giorni la febbre non scende, torni subito.",
+        "en": "If after three days the fever doesn't go down, come back immediately."
+      }
+    ]
+  },
+  {
+    "id": "affitto",
+    "img": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=375&fit=crop&auto=format",
+    "label": "Cercare Casa",
+    "emoji": "🏠",
+    "situation": "Calling about an apartment rental",
+    "lines": [
+      {
+        "speaker": "Proprietario",
+        "it": "Pronto?",
+        "en": "Hello?"
+      },
+      {
+        "speaker": "Inquilino",
+        "it": "Buongiorno, chiamo per l'annuncio dell'appartamento in affitto in Via Mazzini.",
+        "en": "Good morning, I'm calling about the rental ad for the apartment on Via Mazzini."
+      },
+      {
+        "speaker": "Proprietario",
+        "it": "Sì, è ancora disponibile. È un bilocale al terzo piano, 700 euro al mese, spese incluse.",
+        "en": "Yes, it's still available. It's a one-bedroom flat on the third floor, €700 a month, bills included."
+      },
+      {
+        "speaker": "Inquilino",
+        "it": "C'è l'ascensore?",
+        "en": "Is there a lift?"
+      },
+      {
+        "speaker": "Proprietario",
+        "it": "No, mi dispiace. Ma l'appartamento è luminoso e ha un piccolo balcone.",
+        "en": "No, I'm sorry. But the flat is bright and has a small balcony."
+      },
+      {
+        "speaker": "Inquilino",
+        "it": "Quando è disponibile? E si affitta anche a stranieri?",
+        "en": "When is it available? And do you also rent to foreigners?"
+      },
+      {
+        "speaker": "Proprietario",
+        "it": "È libero dal primo del mese. Sì, certo — ho bisogno di busta paga e documento d'identità.",
+        "en": "It's free from the first of the month. Yes, of course — I need a payslip and ID."
+      },
+      {
+        "speaker": "Inquilino",
+        "it": "Posso venire a vederlo questo sabato?",
+        "en": "Can I come to see it this Saturday?"
+      },
+      {
+        "speaker": "Proprietario",
+        "it": "Sabato mattina va bene? Diciamo alle 10?",
+        "en": "Saturday morning works? Say at 10?"
+      },
+      {
+        "speaker": "Inquilino",
+        "it": "Perfetto. Mi può mandare l'indirizzo esatto per messaggio?",
+        "en": "Perfect. Can you send me the exact address by message?"
+      },
+      {
+        "speaker": "Proprietario",
+        "it": "Certo, glielo mando subito. A sabato!",
+        "en": "Of course, I'll send it right away. See you Saturday!"
+      }
+    ]
+  },
+  {
+    "id": "amici-piano",
+    "img": "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&h=375&fit=crop&auto=format",
+    "label": "Programmi con Amici",
+    "emoji": "🎉",
+    "situation": "Making plans with a friend for the weekend",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Ehi! Cosa fai sabato sera?",
+        "en": "Hey! What are you doing Saturday night?"
+      },
+      {
+        "speaker": "B",
+        "it": "Non ho ancora programmi. Perché?",
+        "en": "I don't have plans yet. Why?"
+      },
+      {
+        "speaker": "A",
+        "it": "Penso di organizzare una cena a casa mia. Vieni?",
+        "en": "I'm thinking of organising a dinner at my place. Are you coming?"
+      },
+      {
+        "speaker": "B",
+        "it": "Certo! A che ora?",
+        "en": "Of course! What time?"
+      },
+      {
+        "speaker": "A",
+        "it": "Verso le otto e mezza. Invito anche Marco e Fatima.",
+        "en": "Around half past eight. I'm also inviting Marco and Fatima."
+      },
+      {
+        "speaker": "B",
+        "it": "Ottimo! Cosa porto? Un dolce o del vino?",
+        "en": "Great! What shall I bring? A dessert or some wine?"
+      },
+      {
+        "speaker": "A",
+        "it": "Se vuoi porta il tiramisù — lo fai benissimo!",
+        "en": "If you like, bring the tiramisu — you make it really well!"
+      },
+      {
+        "speaker": "B",
+        "it": "Ahaha, ok! Ma attenzione, questa volta lo faccio senza uova — sono vegano da un mese.",
+        "en": "Haha, ok! But careful, this time I'm making it without eggs — I've been vegan for a month."
+      },
+      {
+        "speaker": "A",
+        "it": "Davvero?! Non lo sapevo. Cucino qualcosa di vegano allora.",
+        "en": "Really?! I didn't know. I'll cook something vegan then."
+      },
+      {
+        "speaker": "B",
+        "it": "Non ti preoccupare, porto anche qualcosa per me. Non vedo l'ora!",
+        "en": "Don't worry, I'll also bring something for myself. Can't wait!"
+      }
+    ]
+  },
+  {
+    "id": "comune",
+    "img": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=375&fit=crop&auto=format",
+    "label": "Allo Sportello",
+    "emoji": "🏛️",
+    "situation": "At the council office — renewing a permit or asking for information",
+    "lines": [
+      {
+        "speaker": "Impiegato",
+        "it": "Buongiorno, prego.",
+        "en": "Good morning, how can I help?"
+      },
+      {
+        "speaker": "Cittadino",
+        "it": "Buongiorno. Devo rinnovare il permesso di soggiorno. Cosa devo portare?",
+        "en": "Good morning. I need to renew my residence permit. What do I need to bring?"
+      },
+      {
+        "speaker": "Impiegato",
+        "it": "Servono: il passaporto in corso di validità, il modulo compilato, una foto tessera e la ricevuta del pagamento.",
+        "en": "You need: a valid passport, the completed form, a passport photo and the payment receipt."
+      },
+      {
+        "speaker": "Cittadino",
+        "it": "Il modulo dove lo trovo?",
+        "en": "Where do I find the form?"
+      },
+      {
+        "speaker": "Impiegato",
+        "it": "Lo scarica dal sito del Ministero dell'Interno oppure lo ritira qui allo sportello.",
+        "en": "You can download it from the Interior Ministry website or pick it up here at the desk."
+      },
+      {
+        "speaker": "Cittadino",
+        "it": "E dove si fa il pagamento?",
+        "en": "And where do I make the payment?"
+      },
+      {
+        "speaker": "Impiegato",
+        "it": "All'ufficio postale, con il bollettino postale. Costa 73 euro e 50.",
+        "en": "At the post office, with a postal order. It costs €73.50."
+      },
+      {
+        "speaker": "Cittadino",
+        "it": "Quanto tempo ci vuole per il rinnovo?",
+        "en": "How long does the renewal take?"
+      },
+      {
+        "speaker": "Impiegato",
+        "it": "Di solito dai 60 ai 90 giorni. Le diamo una ricevuta che vale come documento nel frattempo.",
+        "en": "Usually 60 to 90 days. We give you a receipt that serves as a document in the meantime."
+      },
+      {
+        "speaker": "Cittadino",
+        "it": "Capito. Posso prendere un appuntamento per la settimana prossima?",
+        "en": "Understood. Can I make an appointment for next week?"
+      },
+      {
+        "speaker": "Impiegato",
+        "it": "Sì, martedì 10 alle 9 va bene?",
+        "en": "Yes, Tuesday the 10th at 9am works?"
+      },
+      {
+        "speaker": "Cittadino",
+        "it": "Perfetto. Grazie mille!",
+        "en": "Perfect. Thank you very much!"
+      }
+    ]
+  },
+  {
+    "id": "fidanzato",
+    "img": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&h=375&fit=crop&auto=format",
+    "label": "Con il Partner",
+    "emoji": "❤️",
+    "situation": "Everyday conversation with a partner — plans, small moments",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Amore, sei tornato/a! Come è andata al lavoro?",
+        "en": "Love, you're back! How did work go?"
+      },
+      {
+        "speaker": "B",
+        "it": "Bene ma stancante. Ho avuto una riunione di tre ore!",
+        "en": "Good but tiring. I had a three-hour meeting!"
+      },
+      {
+        "speaker": "A",
+        "it": "Povero/a! Hai già mangiato?",
+        "en": "Poor you! Have you eaten yet?"
+      },
+      {
+        "speaker": "B",
+        "it": "Ho solo preso un panino in pausa. Ho ancora fame.",
+        "en": "I only had a sandwich at break. I'm still hungry."
+      },
+      {
+        "speaker": "A",
+        "it": "Ho fatto la pasta al forno — è ancora calda. Vuoi?",
+        "en": "I made pasta al forno — it's still warm. Do you want some?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sei fantastico/a! Sì, grazie. Cosa facciamo dopo cena?",
+        "en": "You're fantastic! Yes, please. What are we doing after dinner?"
+      },
+      {
+        "speaker": "A",
+        "it": "Ho voglia di guardare una serie. Tu che vuoi vedere?",
+        "en": "I feel like watching a series. What do you want to watch?"
+      },
+      {
+        "speaker": "B",
+        "it": "Decidi tu, l'ultima volta ho scelto io. Però niente horror, per favore!",
+        "en": "You decide, last time I chose. But nothing horror, please!"
+      },
+      {
+        "speaker": "A",
+        "it": "Ahaha ok! Ah, domani mattina hai il medico — non dimenticare.",
+        "en": "Haha ok! Oh, tomorrow morning you have the doctor — don't forget."
+      },
+      {
+        "speaker": "B",
+        "it": "Giusto, grazie per il promemoria. Che farei senza di te?",
+        "en": "Right, thanks for the reminder. What would I do without you?"
+      }
+    ]
+  },
+  {
+    "id": "stazione",
+    "label": "Alla Stazione",
+    "emoji": "🚉",
+    "situation": "Buying a train ticket and asking about the platform",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/stazione.jpg",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Buongiorno, vorrei un biglietto per Firenze, per favore.",
+        "en": "Good morning, I'd like a ticket to Florence, please."
+      },
+      {
+        "speaker": "B",
+        "it": "Solo andata o andata e ritorno?",
+        "en": "One way or return?"
+      },
+      {
+        "speaker": "A",
+        "it": "Andata e ritorno. A che ora parte il prossimo treno?",
+        "en": "Return. What time does the next train leave?"
+      },
+      {
+        "speaker": "B",
+        "it": "Alle 10:25, dal binario 7. Sono 32 euro.",
+        "en": "At 10:25, from platform 7. That's 32 euros."
+      },
+      {
+        "speaker": "A",
+        "it": "Devo cambiare treno?",
+        "en": "Do I have to change trains?"
+      },
+      {
+        "speaker": "B",
+        "it": "No, è diretto. Arriva a Firenze alle 12:10.",
+        "en": "No, it's direct. It arrives in Florence at 12:10."
+      },
+      {
+        "speaker": "A",
+        "it": "Perfetto. Posso pagare con la carta?",
+        "en": "Perfect. Can I pay by card?"
+      },
+      {
+        "speaker": "B",
+        "it": "Certo. Ecco il biglietto. Buon viaggio!",
+        "en": "Of course. Here's your ticket. Have a good trip!"
+      }
+    ]
+  },
+  {
+    "id": "comune",
+    "label": "Al Comune",
+    "emoji": "🏛️",
+    "situation": "Registering your residence at the town hall",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/ufficio.jpg",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Buongiorno, devo fare la residenza. È lo sportello giusto?",
+        "en": "Hello, I need to register my residence. Is this the right desk?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì. Ha un documento e il permesso di soggiorno?",
+        "en": "Yes. Do you have an ID and your residence permit?"
+      },
+      {
+        "speaker": "A",
+        "it": "Sì, eccoli. Devo compilare un modulo?",
+        "en": "Yes, here they are. Do I need to fill in a form?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì, questo modulo. Scriva nome, indirizzo e data di nascita.",
+        "en": "Yes, this form. Write your name, address and date of birth."
+      },
+      {
+        "speaker": "A",
+        "it": "Va bene. E poi cosa succede?",
+        "en": "Okay. And then what happens?"
+      },
+      {
+        "speaker": "B",
+        "it": "Un vigile viene a controllare l'indirizzo. Poi la residenza è pronta.",
+        "en": "An officer comes to check the address. Then the residence is ready."
+      },
+      {
+        "speaker": "A",
+        "it": "Quanto tempo ci vuole?",
+        "en": "How long does it take?"
+      },
+      {
+        "speaker": "B",
+        "it": "Circa quindici giorni. Le arriva una lettera a casa.",
+        "en": "About fifteen days. You'll get a letter at home."
+      }
+    ]
+  },
+  {
+    "id": "colloquio",
+    "label": "Il Colloquio",
+    "emoji": "💼",
+    "situation": "A simple job interview at a small shop",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/ufficio.jpg",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Buongiorno, si accomodi. Mi parli un po' di lei.",
+        "en": "Good morning, have a seat. Tell me a bit about yourself."
+      },
+      {
+        "speaker": "B",
+        "it": "Mi chiamo Sara, ho 28 anni e cerco un lavoro come commessa.",
+        "en": "My name is Sara, I'm 28 and I'm looking for a job as a shop assistant."
+      },
+      {
+        "speaker": "A",
+        "it": "Ha già esperienza?",
+        "en": "Do you have experience?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì, ho lavorato due anni in un negozio di abbigliamento.",
+        "en": "Yes, I worked for two years in a clothing shop."
+      },
+      {
+        "speaker": "A",
+        "it": "Bene. È disponibile anche il fine settimana?",
+        "en": "Good. Are you available on weekends too?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì, il sabato non c'è problema. La domenica preferisco di no.",
+        "en": "Yes, Saturday is no problem. I'd prefer not on Sunday."
+      },
+      {
+        "speaker": "A",
+        "it": "Va bene. Le facciamo sapere entro una settimana.",
+        "en": "Alright. We'll let you know within a week."
+      },
+      {
+        "speaker": "B",
+        "it": "Grazie mille per l'opportunità. Arrivederci.",
+        "en": "Thank you very much for the opportunity. Goodbye."
+      }
+    ]
+  },
+  {
+    "id": "farmacia",
+    "label": "In Farmacia",
+    "emoji": "💊",
+    "situation": "Asking the pharmacist for medicine",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/medico.jpg",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Buongiorno, ho mal di gola e un po' di tosse.",
+        "en": "Good morning, I have a sore throat and a bit of a cough."
+      },
+      {
+        "speaker": "B",
+        "it": "Ha la febbre?",
+        "en": "Do you have a fever?"
+      },
+      {
+        "speaker": "A",
+        "it": "No, solo la gola. Cosa mi consiglia?",
+        "en": "No, just the throat. What do you recommend?"
+      },
+      {
+        "speaker": "B",
+        "it": "Queste pastiglie per la gola e uno sciroppo per la tosse.",
+        "en": "These throat lozenges and a syrup for the cough."
+      },
+      {
+        "speaker": "A",
+        "it": "Come devo prendere lo sciroppo?",
+        "en": "How should I take the syrup?"
+      },
+      {
+        "speaker": "B",
+        "it": "Un cucchiaio tre volte al giorno, dopo i pasti.",
+        "en": "One spoonful three times a day, after meals."
+      },
+      {
+        "speaker": "A",
+        "it": "Serve la ricetta?",
+        "en": "Do I need a prescription?"
+      },
+      {
+        "speaker": "B",
+        "it": "No, sono senza ricetta. In tutto sono 12 euro.",
+        "en": "No, they're over the counter. That's 12 euros in total."
+      }
+    ]
+  },
+  {
+    "id": "supermercato",
+    "label": "Al Supermercato",
+    "emoji": "🛒",
+    "situation": "Asking for help while grocery shopping",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/supermercato.jpg",
+    "lines": [
+      {
+        "speaker": "A",
+        "it": "Scusi, dove sono i prodotti per la colazione?",
+        "en": "Excuse me, where are the breakfast products?"
+      },
+      {
+        "speaker": "B",
+        "it": "Nella corsia 4, vicino al latte e ai biscotti.",
+        "en": "In aisle 4, near the milk and biscuits."
+      },
+      {
+        "speaker": "A",
+        "it": "Grazie. E il pane fresco?",
+        "en": "Thank you. And the fresh bread?"
+      },
+      {
+        "speaker": "B",
+        "it": "Il pane è in fondo, dopo la frutta e la verdura.",
+        "en": "The bread is at the back, after the fruit and vegetables."
+      },
+      {
+        "speaker": "A",
+        "it": "Perfetto. C'è un'offerta sul caffè oggi?",
+        "en": "Perfect. Is there an offer on coffee today?"
+      },
+      {
+        "speaker": "B",
+        "it": "Sì, tre pacchi al prezzo di due. È sullo scaffale in alto.",
+        "en": "Yes, three packs for the price of two. It's on the top shelf."
+      },
+      {
+        "speaker": "A",
+        "it": "Ottimo, grazie dell'aiuto!",
+        "en": "Great, thanks for the help!"
+      },
+      {
+        "speaker": "B",
+        "it": "Di niente. Le casse sono all'uscita a destra.",
+        "en": "You're welcome. The checkouts are at the exit on the right."
+      }
+    ]
+  }
+]

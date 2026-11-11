@@ -1,0 +1,196 @@
+[
+  {
+    "day": 1,
+    "label": "Oggi — 3 sessioni",
+    "sessions": [
+      {
+        "id": "d1s1",
+        "title": "Esame Completo A — formato reale",
+        "emoji": "🎓",
+        "mins": 75,
+        "tasks": [
+          {
+            "label": "Ascolto: 3 tracce (Luca · In questura · Dal parrucchiere)",
+            "target": "ascoltop"
+          },
+          {
+            "label": "Lettura: \"La giornata di Marta\" (comprensione)",
+            "target": "reading"
+          },
+          {
+            "label": "Analisi: Pronomi — regole + i 2 esercizi",
+            "target": "pronomi"
+          },
+          {
+            "label": "Scrittura: \"La città dove vivo\" (w25)",
+            "target": "writing"
+          },
+          {
+            "label": "Orale: Colloquio città e trasporti + monologo \"La città dove vivi\"",
+            "target": "esaminatore"
+          }
+        ]
+      },
+      {
+        "id": "d1s2",
+        "title": "Grammatica intensiva",
+        "emoji": "🧩",
+        "mins": 45,
+        "tasks": [
+          {
+            "label": "Traduzione EN→IT: set Pronomi 🎯",
+            "target": "traduzione"
+          },
+          {
+            "label": "Preposizioni: Sfida (16 domande)",
+            "target": "preposizioni"
+          },
+          {
+            "label": "Traduzione EN→IT: set Preposizioni 🧲",
+            "target": "traduzione"
+          }
+        ]
+      },
+      {
+        "id": "d1s3",
+        "title": "Esame Completo B",
+        "emoji": "🎓",
+        "mins": 75,
+        "tasks": [
+          {
+            "label": "Daily Exam (misto, a tempo)",
+            "target": "daily"
+          },
+          {
+            "label": "Scrittura: email al Centro per l'Impiego (w24)",
+            "target": "writing"
+          },
+          {
+            "label": "Orale: Centro per l'Impiego 🙋 (fai TU le domande!)",
+            "target": "esaminatore"
+          },
+          {
+            "label": "Monologo: \"Come hai imparato l'italiano\" (~90s ad alta voce)",
+            "target": "speaking"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "label": "Domani — 3 sessioni",
+    "sessions": [
+      {
+        "id": "d2s1",
+        "title": "Esame Completo C",
+        "emoji": "🎓",
+        "mins": 75,
+        "tasks": [
+          {
+            "label": "Ascolto: 3 tracce nuove (Milano · Prenotazione hotel · Il corriere)",
+            "target": "ascoltop"
+          },
+          {
+            "label": "Lettura: \"Avviso della questura\" (comprensione)",
+            "target": "reading"
+          },
+          {
+            "label": "Analisi: Tempi — drill PP o Imperfetto + Futuro",
+            "target": "tempi"
+          },
+          {
+            "label": "Scrittura: \"Un viaggio recente\" (w22 — passato prossimo!)",
+            "target": "writing"
+          },
+          {
+            "label": "Orale: Iscrizione al Medico di Base 🙋 + monologo \"Un viaggio recente\"",
+            "target": "esaminatore"
+          }
+        ]
+      },
+      {
+        "id": "d2s2",
+        "title": "Traduzione + coach",
+        "emoji": "🎯",
+        "mins": 45,
+        "tasks": [
+          {
+            "label": "Traduzione EN→IT: set Tempi ⏳",
+            "target": "traduzione"
+          },
+          {
+            "label": "Traduzione EN→IT: set Situazioni d'esame 🎓",
+            "target": "traduzione"
+          },
+          {
+            "label": "Home: fai quello che il coach ti consiglia oggi",
+            "target": "home"
+          }
+        ]
+      },
+      {
+        "id": "d2s3",
+        "title": "SIMULAZIONE FINALE — Practice Test",
+        "emoji": "🏁",
+        "mins": 90,
+        "tasks": [
+          {
+            "label": "Practice Test completo, senza pause — condizioni d'esame",
+            "target": "exam"
+          },
+          {
+            "label": "Orale: Colloquio casa e famiglia + monologo \"Un piatto tipico\"",
+            "target": "esaminatore"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 3,
+    "label": "Vigilia — mezza giornata, leggera",
+    "sessions": [
+      {
+        "id": "d3s1",
+        "title": "Rifinitura (mattina)",
+        "emoji": "✨",
+        "mins": 45,
+        "tasks": [
+          {
+            "label": "I 4 monologhi ⭐ (giornata, paese, viaggio, lavoro): dilli ad alta voce di fila",
+            "target": "speaking"
+          },
+          {
+            "label": "Esaminatore: La Presentazione (il classico che apre ogni esame)",
+            "target": "esaminatore"
+          },
+          {
+            "label": "Ripasso 10 min: Trucchi preposizioni + le 3 regole dei pronomi",
+            "target": "preposizioni"
+          }
+        ]
+      },
+      {
+        "id": "d3s2",
+        "title": "Chiusura leggera (opzionale)",
+        "emoji": "🌙",
+        "mins": 30,
+        "tasks": [
+          {
+            "label": "Daily Exam leggero — solo per tenere il ritmo",
+            "target": "daily"
+          },
+          {
+            "label": "Rileggi le tue versioni migliori in Scrittura (fiducia!)",
+            "target": "writing"
+          },
+          {
+            "label": "Stop entro sera: cena buona, sonno lungo. In bocca al lupo! 🐺",
+            "target": null
+          }
+        ]
+      }
+    ]
+  }
+]

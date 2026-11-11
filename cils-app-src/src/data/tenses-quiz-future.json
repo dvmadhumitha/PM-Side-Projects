@@ -1,0 +1,82 @@
+[
+  {
+    "q": "Domani ___ fino alle sei.",
+    "opts": [
+      "lavorerò",
+      "lavoravo",
+      "ho lavorato"
+    ],
+    "a": 0,
+    "explain": "domani → futuro: -are verbs end in -erò with io: lavorerò. Es: Domani lavorerò da casa."
+  },
+  {
+    "q": "L’anno prossimo ___ in Italia.",
+    "opts": [
+      "andavamo",
+      "andremo",
+      "siamo andati"
+    ],
+    "a": 1,
+    "explain": "andare has an irregular future stem andr-: andremo. Es: Andremo a Roma a giugno."
+  },
+  {
+    "q": "Secondo me domani ___.",
+    "opts": [
+      "pioveva",
+      "è piovuto",
+      "pioverà"
+    ],
+    "a": 2,
+    "explain": "Predictions use the futuro: pioverà. Es: Secondo me farà bel tempo."
+  },
+  {
+    "q": "Sabato ___ a casa tutto il giorno.",
+    "opts": [
+      "sarò",
+      "ero",
+      "sono stato"
+    ],
+    "a": 0,
+    "explain": "essere has the irregular future sarò. Es: Sarò in ufficio alle nove."
+  },
+  {
+    "q": "Dopo il corso ___ meglio l’italiano.",
+    "opts": [
+      "parlavo",
+      "parlerò",
+      "ho parlato"
+    ],
+    "a": 1,
+    "explain": "A future result → parlerò. Es: Dopo l’esame parlerai benissimo!"
+  },
+  {
+    "q": "Quando ___ tempo, ti chiamerò.",
+    "opts": [
+      "avrò",
+      "avevo",
+      "ho avuto"
+    ],
+    "a": 0,
+    "explain": "avere has the irregular future avrò. Es: Avrò una risposta domani."
+  },
+  {
+    "q": "Che cosa ___ domenica tuo figlio?",
+    "opts": [
+      "farà",
+      "faceva",
+      "ha fatto"
+    ],
+    "a": 0,
+    "explain": "fare has the irregular future farà. Es: Cosa farai nel weekend?"
+  },
+  {
+    "q": "I miei amici ___ a trovarmi a luglio.",
+    "opts": [
+      "venivano",
+      "verranno",
+      "sono venuti"
+    ],
+    "a": 1,
+    "explain": "venire has the irregular future stem verr-: verranno. Es: Verranno anche i nonni."
+  }
+]

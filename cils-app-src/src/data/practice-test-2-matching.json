@@ -1,0 +1,70 @@
+{
+  "notices": [
+    [
+      "1",
+      "Vendesi bicicletta — Vendo bicicletta da donna in buono stato, quasi nuova."
+    ],
+    [
+      "2",
+      "Lezioni di chitarra — Musicista offre lezioni private di chitarra per principianti."
+    ],
+    [
+      "3",
+      "Avviso condominio — Si ricorda che è vietato lasciare biciclette nel corridoio."
+    ],
+    [
+      "4",
+      "Offerta di lavoro — Bar cerca barista con esperienza, disponibile anche nel weekend."
+    ],
+    [
+      "5",
+      "Cercasi babysitter — Famiglia cerca babysitter per due bambini, tre pomeriggi a settimana."
+    ],
+    [
+      "6",
+      "Corso di cucina — Il centro sociale organizza un corso di cucina italiana per principianti."
+    ]
+  ],
+  "options": [
+    [
+      "A",
+      "Chi è interessato può mandare il curriculum all'indirizzo email indicato."
+    ],
+    [
+      "B",
+      "Le lezioni si tengono il sabato mattina dalle 10 alle 12."
+    ],
+    [
+      "C",
+      "Per informazioni chiamare il numero 333 456 7890."
+    ],
+    [
+      "D",
+      "I residenti devono portarle nel box auto o in cantina."
+    ],
+    [
+      "E",
+      "I partecipanti imparano a preparare pasta, risotto e dolci tradizionali."
+    ],
+    [
+      "F",
+      "Il compenso è di 10 euro all'ora."
+    ],
+    [
+      "G",
+      "La partita si gioca domenica alle 15."
+    ],
+    [
+      "H",
+      "Lo sconto è valido fino alla fine del mese."
+    ]
+  ],
+  "ans": [
+    "C",
+    "B",
+    "D",
+    "A",
+    "F",
+    "E"
+  ]
+}

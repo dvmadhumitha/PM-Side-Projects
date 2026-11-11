@@ -1,0 +1,164 @@
+[
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, ho un problema con il mio telefono. Non si accende più."
+      ],
+      [
+        "—",
+        "Lo lasci qui, do un'occhiata. Torna domani pomeriggio."
+      ],
+      [
+        "—",
+        "Non può farlo oggi?"
+      ],
+      [
+        "—",
+        "Mi dispiace, ho troppo lavoro. Al massimo domani mattina."
+      ]
+    ],
+    "ask": "Il cliente deve tornare",
+    "opts": [
+      "oggi pomeriggio",
+      "domani mattina",
+      "domani pomeriggio"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Scusi, cerco la biblioteca comunale. È lontana da qui?"
+      ],
+      [
+        "—",
+        "No, è a cinque minuti a piedi. Vada dritto, poi giri a sinistra al semaforo."
+      ],
+      [
+        "—",
+        "E a che ora apre?"
+      ],
+      [
+        "—",
+        "Apre alle 9 e chiude alle 19, tranne il lunedì che è chiusa."
+      ]
+    ],
+    "ask": "La biblioteca è chiusa",
+    "opts": [
+      "il sabato",
+      "la domenica",
+      "il lunedì"
+    ],
+    "a": 2
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Pronto? Buonasera, chiamo per l'annuncio dell'appartamento in affitto."
+      ],
+      [
+        "—",
+        "Sì, è un bilocale al primo piano, 600 euro al mese, spese escluse."
+      ],
+      [
+        "—",
+        "È possibile vederlo questo fine settimana?"
+      ],
+      [
+        "—",
+        "Sabato mattina va bene? Diciamo alle 10?"
+      ]
+    ],
+    "ask": "La persona telefona per",
+    "opts": [
+      "comprare una casa",
+      "vedere un appartamento in affitto",
+      "pagare l'affitto"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, ho bisogno di un certificato di residenza."
+      ],
+      [
+        "—",
+        "Certo. Ha un documento d'identità?"
+      ],
+      [
+        "—",
+        "Sì, ecco la mia carta d'identità."
+      ],
+      [
+        "—",
+        "Bene. Torni tra 20 minuti, il certificato sarà pronto."
+      ]
+    ],
+    "ask": "Il dialogo si svolge",
+    "opts": [
+      "in una banca",
+      "in un ufficio postale",
+      "in un ufficio del comune"
+    ],
+    "a": 2
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Ciao Marco, vieni alla festa di Laura sabato?"
+      ],
+      [
+        "—",
+        "Vorrei, ma sabato devo lavorare fino alle 22."
+      ],
+      [
+        "—",
+        "Peccato! La festa inizia alle 20."
+      ],
+      [
+        "—",
+        "Forse passo dopo, ma non so se Laura è ancora sveglia."
+      ]
+    ],
+    "ask": "Marco non può andare alla festa perché",
+    "opts": [
+      "non conosce Laura",
+      "deve lavorare sabato sera",
+      "è malato"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, vorrei iscrivere mio figlio al corso di nuoto."
+      ],
+      [
+        "—",
+        "Quanti anni ha?"
+      ],
+      [
+        "—",
+        "Ha 8 anni."
+      ],
+      [
+        "—",
+        "Il corso per bambini dai 6 ai 10 anni è il martedì e il giovedì, dalle 17 alle 18."
+      ]
+    ],
+    "ask": "Il corso di nuoto per bambini si svolge",
+    "opts": [
+      "ogni giorno dalle 17 alle 18",
+      "il martedì e il giovedì",
+      "solo il sabato mattina"
+    ],
+    "a": 1
+  }
+]

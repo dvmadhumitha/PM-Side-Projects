@@ -1,0 +1,37 @@
+{
+  "bank": [
+    "stranieri",
+    "compilare",
+    "gratuito",
+    "documento",
+    "corsi",
+    "aperto",
+    "iscriversi",
+    "portare",
+    "chiuso",
+    "lingua"
+  ],
+  "parts": [
+    "Il Comune organizza ",
+    " di ",
+    " italiana per cittadini ",
+    ". Il servizio è completamente ",
+    ". Per ",
+    " al corso, è necessario ",
+    " un ",
+    " d'identità valido. Lo sportello di iscrizione è ",
+    " dal lunedì al venerdì. Puoi anche ",
+    " il modulo online."
+  ],
+  "ans": [
+    "corsi",
+    "lingua",
+    "stranieri",
+    "gratuito",
+    "iscriversi",
+    "portare",
+    "documento",
+    "aperto",
+    "compilare"
+  ]
+}

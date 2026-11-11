@@ -1,0 +1,32 @@
+[
+  {
+    "script": "Il negozio di scarpe «Bel Piede» è aperto dal lunedì al sabato, dalle 9 alle 20. La domenica è chiuso.",
+    "st": "Il negozio è aperto la domenica.",
+    "a": false
+  },
+  {
+    "script": "Con l’offerta «Casa Sicura» assicuri la tua casa a soli 10 euro al mese. Per informazioni chiama il numero verde 800 123 456.",
+    "st": "Per avere informazioni puoi chiamare un numero verde.",
+    "a": true
+  },
+  {
+    "script": "Il Comune organizza corsi gratuiti di lingua italiana per cittadini stranieri. Le lezioni sono il martedì e il giovedì sera.",
+    "st": "I corsi di italiano sono a pagamento.",
+    "a": false
+  },
+  {
+    "script": "Attenzione: domani, mercoledì, l’acqua sarà chiusa dalle 9 alle 13 per lavori urgenti.",
+    "st": "Domani mancherà l’acqua per qualche ora.",
+    "a": true
+  },
+  {
+    "script": "La biblioteca comunale cerca volontari per aiutare i bambini a fare i compiti il pomeriggio.",
+    "st": "La biblioteca cerca persone per pulire le sale.",
+    "a": false
+  },
+  {
+    "script": "Il ristorante «Da Mario» porta la cena direttamente a casa tua. Ordina al numero 055 33 33.",
+    "st": "Il ristorante offre la consegna a domicilio.",
+    "a": true
+  }
+]

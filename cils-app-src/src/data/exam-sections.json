@@ -1,0 +1,172 @@
+[
+  {
+    "id": "ascolto",
+    "label": "Ascolto",
+    "en": "Listening",
+    "hue": "#2E7D8A",
+    "tint": "#E3F4F6",
+    "desc": "Capire dialoghi e annunci di ogni giorno.",
+    "modules": [
+      {
+        "tab": "ascoltop",
+        "label": "Ascolto Pratica",
+        "desc": "Dialoghi e annunci con domande, come all'esame"
+      },
+      {
+        "tab": "dialogues",
+        "label": "Dialoghi",
+        "desc": "Ascolta conversazioni reali con audio"
+      },
+      {
+        "tab": "shadow",
+        "label": "Shadowing",
+        "desc": "Ascolta e ripeti per allenare l'orecchio"
+      },
+      {
+        "tab": "daily",
+        "label": "Daily Exam",
+        "desc": "La sezione ascolto dell'esame quotidiano"
+      }
+    ],
+    "foundations": [
+      {
+        "tab": "phrases",
+        "label": "Frasi utili",
+        "why": "riconoscere le frasi comuni a orecchio"
+      },
+      {
+        "tab": "flash",
+        "label": "Flashcards",
+        "why": "più parole conosci, più capisci"
+      }
+    ],
+    "resources": [
+      {
+        "url": "https://www.youtube.com/@everydayitaliantalks",
+        "label": "Everyday Italian Talks",
+        "why": "dialoghi facili A1/A2 con pause per ripetere"
+      },
+      {
+        "url": "https://www.youtube.com/easyitalian",
+        "label": "Easy Italian",
+        "why": "interviste per strada con sottotitoli — italiano vero"
+      }
+    ]
+  },
+  {
+    "id": "lettura",
+    "label": "Lettura",
+    "en": "Reading",
+    "hue": "#C99A2E",
+    "tint": "#FBF5E0",
+    "desc": "Leggere avvisi, moduli e testi brevi.",
+    "modules": [
+      {
+        "tab": "reading",
+        "label": "Comprensione",
+        "desc": "Testi brevi con domande, come all'esame"
+      },
+      {
+        "tab": "daily",
+        "label": "Daily Exam",
+        "desc": "La sezione lettura dell'esame quotidiano"
+      }
+    ],
+    "foundations": [
+      {
+        "tab": "scenes",
+        "label": "Dizionario Visivo",
+        "why": "il lessico quotidiano che trovi nei testi"
+      },
+      {
+        "tab": "flash",
+        "label": "Flashcards",
+        "why": "vocabolario di base per ogni testo"
+      },
+      {
+        "tab": "grammar",
+        "label": "Grammar Notes",
+        "why": "riconoscere tempi e strutture"
+      }
+    ]
+  },
+  {
+    "id": "scrittura",
+    "label": "Scrittura",
+    "en": "Writing",
+    "hue": "#1E6B4F",
+    "tint": "#EAF2EC",
+    "desc": "Scrivere messaggi, email e moduli.",
+    "modules": [
+      {
+        "tab": "writing",
+        "label": "Writing Practice",
+        "desc": "Tracce A2 con punteggio e correzione AI"
+      },
+      {
+        "tab": "exam",
+        "label": "Practice Test",
+        "desc": "La prova scritta completa, con timer"
+      }
+    ],
+    "foundations": [
+      {
+        "tab": "phrases",
+        "label": "Frasi utili",
+        "why": "formule pronte per email e messaggi"
+      },
+      {
+        "tab": "exercises",
+        "label": "Exercises",
+        "why": "grammatica corretta = punteggio più alto"
+      },
+      {
+        "tab": "ref",
+        "label": "Quick Ref",
+        "why": "coniugazioni e regole a portata di mano"
+      }
+    ]
+  },
+  {
+    "id": "orale",
+    "label": "Orale",
+    "en": "Speaking",
+    "hue": "#C9603A",
+    "tint": "#FBEDE6",
+    "desc": "Presentarti e parlare di situazioni quotidiane.",
+    "modules": [
+      {
+        "tab": "esaminatore",
+        "label": "Esaminatore AI",
+        "desc": "Role-play a voce con valutazione finale"
+      },
+      {
+        "tab": "speaking",
+        "label": "Speaking Practice",
+        "desc": "Compiti orali A2 con registrazione"
+      },
+      {
+        "tab": "shadow",
+        "label": "Shadowing",
+        "desc": "Ripeti dopo il modello per la pronuncia"
+      },
+      {
+        "tab": "dialogues",
+        "label": "Dialoghi",
+        "desc": "Studia le conversazioni tipiche dell'esame"
+      }
+    ],
+    "foundations": [
+      {
+        "tab": "phrases",
+        "label": "Frasi utili",
+        "why": "frasi pronte per ogni situazione"
+      },
+      {
+        "tab": "scenes",
+        "label": "Dizionario Visivo",
+        "why": "nomina gli oggetti di ogni giorno"
+      }
+    ]
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, vorrei aprire un conto corrente."
+      ],
+      [
+        "—",
+        "Certo. Ha un documento d'identità?"
+      ],
+      [
+        "—",
+        "Sì, ho la carta d'identità."
+      ],
+      [
+        "—",
+        "Bene, si accomodi allo sportello 3."
+      ]
+    ],
+    "ask": "Dove si svolge il dialogo?",
+    "opts": [
+      "alla posta",
+      "in banca",
+      "al comune"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Scusa, sai dov'è la fermata dell'autobus numero 12?"
+      ],
+      [
+        "—",
+        "Sì, è in fondo a questa via, dopo il semaforo."
+      ],
+      [
+        "—",
+        "Grazie mille!"
+      ]
+    ],
+    "ask": "La fermata dell'autobus è…",
+    "opts": [
+      "vicino al semaforo",
+      "dopo il semaforo",
+      "davanti alla banca"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Pronto, buonasera. Vorrei prenotare un tavolo per sabato sera."
+      ],
+      [
+        "—",
+        "Per quante persone?"
+      ],
+      [
+        "—",
+        "Per quattro, grazie."
+      ],
+      [
+        "—",
+        "Alle 20 va bene?"
+      ],
+      [
+        "—",
+        "Perfetto!"
+      ]
+    ],
+    "ask": "La persona telefona per…",
+    "opts": [
+      "ordinare cibo a domicilio",
+      "prenotare un tavolo al ristorante",
+      "cancellare una prenotazione"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, il mio abbonamento mensile è scaduto."
+      ],
+      [
+        "—",
+        "Vuole rinnovarlo?"
+      ],
+      [
+        "—",
+        "Sì, per favore. Quanto costa?"
+      ],
+      [
+        "—",
+        "Costa 35 euro al mese o 380 euro all'anno."
+      ]
+    ],
+    "ask": "La persona vuole…",
+    "opts": [
+      "comprare un biglietto",
+      "rinnovare l'abbonamento",
+      "fare un reclamo"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buonasera, ho bisogno di una camera singola per due notti."
+      ],
+      [
+        "—",
+        "Quando vuole arrivare?"
+      ],
+      [
+        "—",
+        "Domani sera, il 15."
+      ],
+      [
+        "—",
+        "Abbiamo una camera disponibile. La colazione è inclusa."
+      ]
+    ],
+    "ask": "La persona vuole…",
+    "opts": [
+      "affittare un appartamento",
+      "prenotare una camera in hotel",
+      "comprare una casa"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Ciao, non vengo alla partita stasera."
+      ],
+      [
+        "—",
+        "Perché, che succede?"
+      ],
+      [
+        "—",
+        "Devo andare a prendere mia madre in stazione."
+      ],
+      [
+        "—",
+        "Capisco, ci vediamo la settimana prossima!"
+      ]
+    ],
+    "ask": "Perché la persona non va alla partita?",
+    "opts": [
+      "è malata",
+      "deve prendere sua madre in stazione",
+      "deve lavorare"
+    ],
+    "a": 1
+  }
+]

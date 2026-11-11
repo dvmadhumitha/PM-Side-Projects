@@ -1,0 +1,284 @@
+[
+  {
+    "id": "greetings",
+    "label": "Greetings & Daily",
+    "emoji": "👋",
+    "sentences": [
+      {
+        "it": "Buongiorno, come stai?",
+        "en": "Good morning, how are you?"
+      },
+      {
+        "it": "Mi chiamo Marco, piacere di conoscerti.",
+        "en": "My name is Marco, nice to meet you."
+      },
+      {
+        "it": "Dove abiti adesso?",
+        "en": "Where do you live now?"
+      },
+      {
+        "it": "Lavoro in un ufficio in centro.",
+        "en": "I work in an office in the city centre."
+      },
+      {
+        "it": "A che ora finisce il corso di italiano?",
+        "en": "What time does the Italian class finish?"
+      },
+      {
+        "it": "Ho bisogno di rinnovare il permesso di soggiorno.",
+        "en": "I need to renew my residence permit."
+      },
+      {
+        "it": "Posso avere un appuntamento per la prossima settimana?",
+        "en": "Can I have an appointment for next week?"
+      },
+      {
+        "it": "Quanto costa il biglietto dell'autobus?",
+        "en": "How much does the bus ticket cost?"
+      },
+      {
+        "it": "Devo compilare questo modulo?",
+        "en": "Do I need to fill in this form?"
+      },
+      {
+        "it": "Non capisco, può ripetere più lentamente?",
+        "en": "I don't understand, can you repeat more slowly?"
+      }
+    ]
+  },
+  {
+    "id": "places",
+    "label": "Getting Around",
+    "emoji": "🗺️",
+    "sentences": [
+      {
+        "it": "Scusi, dov'è la stazione degli autobus?",
+        "en": "Excuse me, where is the bus station?"
+      },
+      {
+        "it": "Devo prendere il treno per Roma.",
+        "en": "I need to take the train to Rome."
+      },
+      {
+        "it": "Il supermercato è vicino alla farmacia.",
+        "en": "The supermarket is near the pharmacy."
+      },
+      {
+        "it": "Giro a sinistra al semaforo e poi vado dritto.",
+        "en": "I turn left at the traffic light and then go straight."
+      },
+      {
+        "it": "Quanto tempo ci vuole per arrivare al centro?",
+        "en": "How long does it take to get to the centre?"
+      },
+      {
+        "it": "C'è un bancomat qui vicino?",
+        "en": "Is there a cash machine nearby?"
+      },
+      {
+        "it": "L'ufficio postale è chiuso il pomeriggio.",
+        "en": "The post office is closed in the afternoon."
+      },
+      {
+        "it": "Vorrei un biglietto di andata e ritorno.",
+        "en": "I'd like a return ticket."
+      },
+      {
+        "it": "Il prossimo autobus parte tra venti minuti.",
+        "en": "The next bus leaves in twenty minutes."
+      },
+      {
+        "it": "Mi sono perso, può aiutarmi?",
+        "en": "I'm lost, can you help me?"
+      }
+    ]
+  },
+  {
+    "id": "shopping",
+    "label": "Shopping & Food",
+    "emoji": "🛒",
+    "sentences": [
+      {
+        "it": "Vorrei mezzo chilo di pomodori, per favore.",
+        "en": "I'd like half a kilo of tomatoes, please."
+      },
+      {
+        "it": "Quanto costa questo vestito?",
+        "en": "How much does this dress cost?"
+      },
+      {
+        "it": "Posso provare la taglia media?",
+        "en": "Can I try the medium size?"
+      },
+      {
+        "it": "Accettate la carta di credito?",
+        "en": "Do you accept credit cards?"
+      },
+      {
+        "it": "Ha qualcosa di meno caro?",
+        "en": "Do you have something cheaper?"
+      },
+      {
+        "it": "Il conto, per favore.",
+        "en": "The bill, please."
+      },
+      {
+        "it": "Vorrei prenotare un tavolo per due persone.",
+        "en": "I'd like to book a table for two people."
+      },
+      {
+        "it": "Sono allergico alle noci.",
+        "en": "I'm allergic to nuts."
+      },
+      {
+        "it": "Il servizio è incluso nel prezzo?",
+        "en": "Is service included in the price?"
+      },
+      {
+        "it": "Posso avere lo scontrino?",
+        "en": "Can I have the receipt?"
+      }
+    ]
+  },
+  {
+    "id": "health",
+    "label": "Health & Services",
+    "emoji": "🏥",
+    "sentences": [
+      {
+        "it": "Ho mal di testa da due giorni.",
+        "en": "I've had a headache for two days."
+      },
+      {
+        "it": "Devo prenotare una visita dal medico.",
+        "en": "I need to book a doctor's appointment."
+      },
+      {
+        "it": "Dove si trova il pronto soccorso?",
+        "en": "Where is the emergency room?"
+      },
+      {
+        "it": "Ho la febbre e mi fa male la gola.",
+        "en": "I have a fever and my throat hurts."
+      },
+      {
+        "it": "Prendo questa medicina due volte al giorno.",
+        "en": "I take this medicine twice a day."
+      },
+      {
+        "it": "Ho bisogno di una ricetta medica.",
+        "en": "I need a medical prescription."
+      },
+      {
+        "it": "Sono iscritto al servizio sanitario nazionale.",
+        "en": "I am registered with the national health service."
+      },
+      {
+        "it": "Devo fare delle analisi del sangue.",
+        "en": "I need to have a blood test."
+      },
+      {
+        "it": "La farmacia di turno è aperta tutta la notte.",
+        "en": "The on-duty pharmacy is open all night."
+      },
+      {
+        "it": "Mi sono fatto male alla caviglia.",
+        "en": "I hurt my ankle."
+      }
+    ]
+  },
+  {
+    "id": "work",
+    "label": "Work & Study",
+    "emoji": "💼",
+    "sentences": [
+      {
+        "it": "Ho un colloquio di lavoro domani mattina.",
+        "en": "I have a job interview tomorrow morning."
+      },
+      {
+        "it": "Lavoro part-time in un negozio di abbigliamento.",
+        "en": "I work part-time in a clothes shop."
+      },
+      {
+        "it": "Sto studiando italiano da sei mesi.",
+        "en": "I have been studying Italian for six months."
+      },
+      {
+        "it": "Il mio contratto scade a fine anno.",
+        "en": "My contract expires at the end of the year."
+      },
+      {
+        "it": "Devo iscrivermi al corso di formazione.",
+        "en": "I need to enrol in the training course."
+      },
+      {
+        "it": "Il mio capo è molto esigente.",
+        "en": "My boss is very demanding."
+      },
+      {
+        "it": "Ho mandato il curriculum a molte aziende.",
+        "en": "I have sent my CV to many companies."
+      },
+      {
+        "it": "Sono disoccupato e cerco lavoro.",
+        "en": "I am unemployed and looking for work."
+      },
+      {
+        "it": "Guadagno milleduecento euro al mese.",
+        "en": "I earn one thousand two hundred euros a month."
+      },
+      {
+        "it": "Ho bisogno di un certificato di lavoro.",
+        "en": "I need a work certificate."
+      }
+    ]
+  },
+  {
+    "id": "exam-phrases",
+    "label": "Exam-Level Phrases",
+    "emoji": "📝",
+    "sentences": [
+      {
+        "it": "Lo sportello immigrazione è aperto dal lunedì al venerdì.",
+        "en": "The immigration desk is open from Monday to Friday."
+      },
+      {
+        "it": "Per rinnovare il permesso bisogna portare due foto e il passaporto.",
+        "en": "To renew the permit you need to bring two photos and your passport."
+      },
+      {
+        "it": "Il corso di italiano per stranieri inizia il prossimo mese.",
+        "en": "The Italian course for foreigners starts next month."
+      },
+      {
+        "it": "La signora Fanetti si è trasferita a Milano tre anni fa.",
+        "en": "Mrs Fanetti moved to Milan three years ago."
+      },
+      {
+        "it": "Il volo da Tirana è in ritardo di trenta minuti.",
+        "en": "The flight from Tirana is thirty minutes late."
+      },
+      {
+        "it": "Cerco un appartamento in affitto vicino ai mezzi pubblici.",
+        "en": "I'm looking for a flat to rent near public transport."
+      },
+      {
+        "it": "La macchina non parte, devo chiamare il meccanico.",
+        "en": "The car won't start, I need to call the mechanic."
+      },
+      {
+        "it": "Il bambino ha la febbre, non va a scuola oggi.",
+        "en": "The child has a fever, he's not going to school today."
+      },
+      {
+        "it": "Ho bisogno di un interprete per capire il documento.",
+        "en": "I need an interpreter to understand the document."
+      },
+      {
+        "it": "Devo familiarizzare con le procedure dello sportello comunale.",
+        "en": "I need to get familiar with the procedures at the council office."
+      }
+    ]
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "id": "w01",
+    "type": "formal",
+    "prompt": "Scrivi una breve email al tuo comune per chiedere informazioni sui corsi di italiano gratuiti. Usa un tono formale. (3-4 frasi)",
+    "model": "Spettabile Comune di Bologna,\nle scrivo per chiedere informazioni sui corsi di italiano gratuiti per stranieri. Abito a Bologna da due anni e vorrei migliorare il mio italiano per superare l'esame A2. Potreste indicarmi dove si svolgono le lezioni e quali documenti devo portare per iscrivermi?\nIn attesa di una vostra risposta, porgo distinti saluti.",
+    "tips": [
+      "Start with \"Spettabile\" (not \"Gentile\") when writing to an institution or office.",
+      "Use \"Lei\" (formal you): \"le scrivo\", not \"ti scrivo\".",
+      "State your reason clearly: \"le scrivo per chiedere...\" (I am writing to ask...)",
+      "Close formally: \"Porgo distinti saluti\" or \"Cordiali saluti\"."
+    ]
+  },
+  {
+    "id": "w02",
+    "type": "description",
+    "prompt": "Descrivi la tua settimana tipica: cosa fai ogni giorno? Usa il presente. (4-5 frasi)",
+    "model": "Ogni settimana lavoro dal lunedì al venerdì come operaio in una fabbrica. La mattina mi alzo alle sei, faccio colazione e poi vado al lavoro in autobus. Il martedì sera frequento un corso di italiano al centro civico. Il sabato faccio la spesa e pulisco casa. La domenica di solito sto con la famiglia e mi riposo.",
+    "tips": [
+      "Use the present tense throughout: mi alzo, faccio, vado, frequento.",
+      "Time expressions: ogni settimana, il lunedì, la mattina, di solito.",
+      "Routine verbs: alzarsi (to get up), fare colazione (to have breakfast), andare al lavoro (to go to work).",
+      "Connectors: poi (then), di solito (usually), di tanto in tanto (from time to time)."
+    ]
+  },
+  {
+    "id": "w03",
+    "type": "narrative",
+    "prompt": "Hai avuto un problema con il permesso di soggiorno. Scrivi un messaggio a un amico spiegando cosa è successo e cosa hai fatto. (4-5 frasi)",
+    "model": "Caro Ali, ho avuto un problema con il permesso di soggiorno: era scaduto e non lo sapevo! Martedì sono andato alla questura per rinnovarlo, ma mi hanno detto che devo prima prenotare un appuntamento online. Ho portato tutti i documenti — il passaporto, le foto e la marca da bollo — ma senza appuntamento non mi hanno ricevuto. Finalmente ho trovato un appuntamento per venerdì prossimo e spero che tutto vada bene.",
+    "tips": [
+      "Use passato prossimo for completed actions: sono andato, mi hanno detto, ho portato.",
+      "Use imperfect for background states: era scaduto (it had expired), non sapevo (I did not know).",
+      "Key vocabulary: scaduto (expired), rinnovare (to renew), prenotare (to book), la marca da bollo (revenue stamp).",
+      "Informal opening: \"Caro Ali,\" and closing: \"A presto!\""
+    ]
+  },
+  {
+    "id": "w04",
+    "type": "formal",
+    "prompt": "Scrivi una nota per giustificare l'assenza di tuo figlio da scuola ieri. Spiega il motivo e quando rientrerà. (2-3 frasi formali)",
+    "model": "Spettabile Insegnante,\nla informo che mio figlio Ahmed non è potuto venire a scuola ieri perché aveva la febbre alta. Rientrerà domani mattina, se le sue condizioni miglioreranno. Se l'assenza dovesse durare più di cinque giorni, porterò il certificato medico.\nDistinti saluti.",
+    "tips": [
+      "Use \"Spettabile Insegnante\" or \"Gentile Professoressa/Professore\" — always formal.",
+      "Explain the reason: \"perché aveva la febbre\" (because he had a fever).",
+      "State when they will return: \"Rientrerà domani\" (He will return tomorrow).",
+      "Useful phrases: non è potuto venire (was not able to come), le condizioni migliorano (the condition improves)."
+    ]
+  },
+  {
+    "id": "w05",
+    "type": "narrative",
+    "prompt": "Racconta come hai imparato l'italiano: dove hai studiato, quanto tempo ci ha voluto, cosa è stato difficile. (4-5 frasi)",
+    "model": "Ho iniziato a studiare l'italiano tre anni fa, quando sono arrivato in Italia dal Marocco. All'inizio non capivo niente e mi sentivo molto perso. Ho frequentato un corso gratuito al centro civico vicino a casa mia per un anno. La cosa più difficile per me è stata la grammatica, soprattutto i verbi irregolari. Adesso riesco a comunicare bene nella vita quotidiana e al lavoro.",
+    "tips": [
+      "Use passato prossimo for events: ho iniziato, sono arrivato, ho frequentato.",
+      "Use imperfect for ongoing states/feelings: non capivo (I did not understand), mi sentivo (I felt).",
+      "Useful phrases: all'inizio (at first), la cosa più difficile (the hardest thing), adesso (now), riesco a (I manage to).",
+      "Mention: where you studied, how long it took, what was difficult."
+    ]
+  },
+  {
+    "id": "w06",
+    "type": "description",
+    "prompt": "Descrivi il tuo quartiere: cosa c'è vicino a casa tua? Ti piace vivere lì? Perché? (4-5 frasi)",
+    "model": "Il mio quartiere si chiama Porta Nuova ed è abbastanza tranquillo. Vicino a casa mia ci sono un supermercato, una farmacia e una scuola elementare. C'è anche una fermata dell'autobus che mi porta al lavoro in venti minuti. Mi piace vivere qui perché è comodo e i vicini sono gentili. L'unica cosa che non mi piace è il traffico il mattino.",
+    "tips": [
+      "Use \"c'è\" (there is) and \"ci sono\" (there are) to describe what is in your area.",
+      "Use \"mi piace + noun/infinitive\" for likes and \"non mi piace\" for dislikes.",
+      "Useful adjectives: tranquillo (quiet), comodo (convenient), rumoroso (noisy), animato (lively).",
+      "Useful nouns: la fermata (bus stop), il supermercato, la farmacia, il parco, i vicini (neighbours)."
+    ]
+  },
+  {
+    "id": "w07",
+    "type": "formal",
+    "prompt": "Hai visto un annuncio di lavoro interessante. Scrivi una breve lettera di presentazione. (4-5 frasi formali)",
+    "model": "Gentile responsabile,\nle scrivo in risposta all'annuncio per il posto di magazziniere pubblicato sul vostro sito. Ho tre anni di esperienza in un magazzino a Bologna e possiedo la patente B. Sono disponibile a lavorare su turni, anche il sabato. Allego il mio curriculum vitae e sono a disposizione per un colloquio in qualsiasi momento.\nPorgo distinti saluti.",
+    "tips": [
+      "Opening: \"Gentile responsabile\" or \"Spettabile azienda\".",
+      "Mention experience: \"Ho X anni di esperienza in...\".",
+      "Show availability: \"Sono disponibile a lavorare su turni / a tempo pieno\".",
+      "Attach your CV: \"Allego il curriculum vitae\".",
+      "Close: \"Porgo distinti saluti\" (formal) or \"Cordiali saluti\"."
+    ]
+  },
+  {
+    "id": "w08",
+    "type": "informal",
+    "prompt": "Scrivi un messaggio a un amico per invitarlo a cena a casa tua. Indica giorno, ora e cosa cucinerai. (3-4 frasi)",
+    "model": "Ciao Fatima! Ti scrivo per invitarti a cena a casa mia sabato sera, alle 20:00. Cucinerò un tajine di pollo con cous cous — spero che ti piaccia! Abitiamo in via Garibaldi 12, secondo piano interno 4. Fammelo sapere se puoi venire. A presto!",
+    "tips": [
+      "Informal opening: \"Ciao [name]!\" — use \"tu\" throughout.",
+      "Include all key details: day, time, address, what you will cook.",
+      "Useful phrases: Ti invito a... (I am inviting you to...), Cucinerò... (I will cook...), Fammelo sapere (let me know).",
+      "Future tense for plans: cucinerò (I will cook), sarà (it will be)."
+    ]
+  },
+  {
+    "id": "w09",
+    "type": "narrative",
+    "prompt": "Descrivi un problema che hai avuto con la salute in Italia: sei andato dal medico? Cosa ha detto il dottore? (4-5 frasi)",
+    "model": "Un mese fa ho avuto un forte mal di schiena e non riuscivo a muovermi bene. Sono andato dal mio medico di base e lui mi ha visitato. Mi ha prescritto degli antidolorifici da prendere dopo i pasti e mi ha consigliato di fare dello stretching ogni mattina. Mi ha detto anche di evitare di portare pesi per dieci giorni. Dopo una settimana stavo già molto meglio.",
+    "tips": [
+      "Use passato prossimo for events: sono andato, mi ha prescritto, mi ha consigliato.",
+      "Use imperfect for ongoing states: non riuscivo (I was unable to), stavo meglio (I was feeling better).",
+      "Useful medical phrases: mi ha prescritto (he prescribed me), mi ha consigliato (he advised me), evitare di (to avoid -ing).",
+      "Body/symptom vocabulary: mal di schiena (backache), la febbre (fever), prendere medicine (to take medicine)."
+    ]
+  },
+  {
+    "id": "w10",
+    "type": "narrative",
+    "prompt": "Cosa hai fatto lo scorso fine settimana? Racconta usando il passato prossimo. (4-5 frasi)",
+    "model": "Sabato mattina sono andato al mercato con mia moglie e abbiamo comprato frutta, verdura e del pesce fresco. Nel pomeriggio siamo rimasti a casa: io ho guardato una partita di calcio e lei ha letto un libro. La domenica abbiamo invitato dei colleghi a pranzo e ho cucinato io. È stato un bel fine settimana tranquillo.",
+    "tips": [
+      "Use passato prossimo throughout: sono andato, abbiamo comprato, ho guardato, ha letto.",
+      "Remember: verbs of movement take \"essere\": sono andato, siamo rimasti, sono venuto.",
+      "Other verbs take \"avere\": ho cucinato, abbiamo invitato, ho guardato.",
+      "Time markers: sabato mattina, nel pomeriggio, la domenica."
+    ]
+  }
+]

@@ -1,0 +1,182 @@
+{
+  "valdaosta": {
+    "name": "Valle d'Aosta",
+    "capital": "Aosta",
+    "color": "#A9BF7E",
+    "tag": {
+      "it": "Qui vai a sciare sulle Alpi e mangi la fontina nelle baite.",
+      "en": "Here you go skiing in the Alps and eat fontina cheese in mountain huts."
+    }
+  },
+  "piemonte": {
+    "name": "Piemonte",
+    "capital": "Torino",
+    "color": "#D98E73",
+    "tag": {
+      "it": "A Torino bevi un caffè nei bar storici e vedi le Alpi da lontano.",
+      "en": "In Turin you drink coffee in historic cafés and see the Alps in the distance."
+    }
+  },
+  "liguria": {
+    "name": "Liguria",
+    "capital": "Genova",
+    "color": "#6FAF9B",
+    "tag": {
+      "it": "Cammini nei sentieri delle Cinque Terre e mangi il pesto.",
+      "en": "You walk the Cinque Terre trails and eat pesto."
+    }
+  },
+  "lombardia": {
+    "name": "Lombardia",
+    "capital": "Milano",
+    "color": "#B490B4",
+    "tag": {
+      "it": "A Milano fai shopping, visiti il Duomo e prendi un aperitivo.",
+      "en": "In Milan you go shopping, visit the Duomo and have an aperitivo."
+    }
+  },
+  "trentino": {
+    "name": "Trentino-A.A.",
+    "capital": "Trento",
+    "color": "#85B6CC",
+    "tag": {
+      "it": "Fai trekking sulle Dolomiti, montagne rosa al tramonto.",
+      "en": "You go hiking in the Dolomites, mountains that turn pink at sunset."
+    }
+  },
+  "veneto": {
+    "name": "Veneto",
+    "capital": "Venezia",
+    "color": "#CB8FA3",
+    "tag": {
+      "it": "A Venezia prendi il vaporetto e a febbraio vedi il Carnevale.",
+      "en": "In Venice you take the vaporetto and in February you see the Carnival."
+    }
+  },
+  "friuli": {
+    "name": "Friuli-V.G.",
+    "capital": "Trieste",
+    "color": "#74AEC6",
+    "tag": {
+      "it": "A Trieste bevi un caffè in una piazza aperta sul mare.",
+      "en": "In Trieste you drink coffee in a square that opens onto the sea."
+    }
+  },
+  "emilia": {
+    "name": "Emilia-Romagna",
+    "capital": "Bologna",
+    "color": "#D9A76C",
+    "tag": {
+      "it": "A Bologna mangi i tortellini e il parmigiano: la città del cibo!",
+      "en": "In Bologna you eat tortellini and parmesan: the city of food!"
+    }
+  },
+  "toscana": {
+    "name": "Toscana",
+    "capital": "Firenze",
+    "color": "#9BB56A",
+    "tag": {
+      "it": "A Firenze vedi il Duomo e nelle colline bevi il Chianti.",
+      "en": "In Florence you see the Duomo and in the hills you drink Chianti."
+    }
+  },
+  "marche": {
+    "name": "Marche",
+    "capital": "Ancona",
+    "color": "#6FA3BF",
+    "tag": {
+      "it": "Spiagge tranquille e piccoli paesi antichi sulle colline.",
+      "en": "Quiet beaches and small ancient villages on the hills."
+    }
+  },
+  "umbria": {
+    "name": "Umbria",
+    "capital": "Perugia",
+    "color": "#6FAF9B",
+    "tag": {
+      "it": "Il cuore verde d'Italia: visiti Assisi e mangi il cioccolato a Perugia.",
+      "en": "Italy's green heart: you visit Assisi and eat chocolate in Perugia."
+    }
+  },
+  "lazio": {
+    "name": "Lazio",
+    "capital": "Roma",
+    "color": "#C77B6F",
+    "tag": {
+      "it": "A Roma vedi il Colosseo, lanci una moneta nella Fontana di Trevi e mangi la carbonara.",
+      "en": "In Rome you see the Colosseum, throw a coin in the Trevi Fountain and eat carbonara."
+    }
+  },
+  "abruzzo": {
+    "name": "Abruzzo",
+    "capital": "L'Aquila",
+    "color": "#9A93C6",
+    "tag": {
+      "it": "Montagne e parchi nazionali dove vivono orsi e lupi.",
+      "en": "Mountains and national parks where bears and wolves live."
+    }
+  },
+  "molise": {
+    "name": "Molise",
+    "capital": "Campobasso",
+    "color": "#74B8A5",
+    "tag": {
+      "it": "Piccola e tranquilla: gli italiani scherzano \"il Molise non esiste!\"",
+      "en": "Small and quiet: Italians joke \"Molise doesn't exist!\""
+    }
+  },
+  "campania": {
+    "name": "Campania",
+    "capital": "Napoli",
+    "color": "#DDB16E",
+    "tag": {
+      "it": "A Napoli mangi la vera pizza e vedi il Vesuvio dal mare.",
+      "en": "In Naples you eat real pizza and see Vesuvius from the sea."
+    }
+  },
+  "puglia": {
+    "name": "Puglia",
+    "capital": "Bari",
+    "color": "#D98E73",
+    "tag": {
+      "it": "Dormi in un trullo ad Alberobello e nuoti in un mare azzurro.",
+      "en": "You sleep in a trullo in Alberobello and swim in a blue sea."
+    }
+  },
+  "basilicata": {
+    "name": "Basilicata",
+    "capital": "Potenza",
+    "color": "#A9BF7E",
+    "tag": {
+      "it": "A Matera visiti i Sassi, case antiche scavate nella pietra.",
+      "en": "In Matera you visit the Sassi, ancient houses carved into stone."
+    }
+  },
+  "calabria": {
+    "name": "Calabria",
+    "capital": "Catanzaro",
+    "color": "#6FA3BF",
+    "tag": {
+      "it": "Mare bellissimo, spiagge selvagge e peperoncino piccante.",
+      "en": "Beautiful sea, wild beaches and spicy chilli pepper."
+    }
+  },
+  "sicilia": {
+    "name": "Sicilia",
+    "capital": "Palermo",
+    "color": "#E0C171",
+    "tag": {
+      "it": "Vedi l'Etna, il vulcano attivo, e mangi cannoli e arancini.",
+      "en": "You see Etna, the active volcano, and eat cannoli and arancini."
+    }
+  },
+  "sardegna": {
+    "name": "Sardegna",
+    "capital": "Cagliari",
+    "color": "#CE8B78",
+    "tag": {
+      "it": "Spiagge bianche e mare trasparente, come ai Caraibi.",
+      "en": "White beaches and transparent sea, like the Caribbean."
+    }
+  }
+}

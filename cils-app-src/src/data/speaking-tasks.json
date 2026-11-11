@@ -1,0 +1,553 @@
+[
+  {
+    "id": "s1",
+    "level": 1,
+    "type": "intro",
+    "topic": "Presentarsi",
+    "title": "Introduce yourself",
+    "prompt": "Introduce yourself in Italian. Say: your name, where you are from, where you live now, and what you do (work or study).",
+    "duration": "45–60 seconds",
+    "cue": "Parla di te: nome, provenienza, dove abiti, lavoro o studio.",
+    "keyPhrases": [
+      "Mi chiamo…",
+      "Vengo da… / Sono di…",
+      "Abito a… da… anni/mesi",
+      "Lavoro come… / Studio…",
+      "Sono qui per imparare l'italiano."
+    ],
+    "model": "Ciao! Mi chiamo Ana. Vengo dalla Spagna, da Barcellona, ma abito a Milano da due anni. Lavoro in un ristorante come cameriera. Nel tempo libero mi piace studiare l'italiano e andare in bicicletta."
+  },
+  {
+    "id": "s2",
+    "level": 1,
+    "type": "situation",
+    "topic": "Vita quotidiana",
+    "title": "At the bar — order a coffee",
+    "prompt": "You are at an Italian bar. Order a coffee and a croissant. Ask the price. Pay and say thank you.",
+    "duration": "45–60 seconds",
+    "cue": "Al bar: ordina, chiedi il prezzo, paga.",
+    "keyPhrases": [
+      "Vorrei un caffè, per favore.",
+      "Anche un cornetto, grazie.",
+      "Quant'è / Quanto costa?",
+      "Ecco… euro.",
+      "Grazie, arrivederci!"
+    ],
+    "model": "Buongiorno! Vorrei un caffè macchiato e un cornetto alla marmellata, per favore. Quant'è? Ah, un euro e ottanta — ecco due euro. Grazie mille! Buona giornata!"
+  },
+  {
+    "id": "s3",
+    "level": 1,
+    "type": "describe",
+    "topic": "Casa & famiglia",
+    "title": "Describe a family member",
+    "prompt": "Describe one person in your family. Say: who they are, how old they are, what they look like, and one thing they like doing.",
+    "duration": "45–60 seconds",
+    "cue": "Descrivi un familiare: chi è, età, aspetto fisico, un hobby.",
+    "keyPhrases": [
+      "Mia madre / Mio padre / Mio fratello…",
+      "Ha … anni.",
+      "È alto/a, basso/a, con i capelli…",
+      "Gli/Le piace molto…",
+      "È una persona molto…"
+    ],
+    "model": "Ti parlo di mia sorella Elena. Ha 28 anni ed è un po' più bassa di me. Ha i capelli ricci e scuri e gli occhi verdi. Le piace molto leggere e fare yoga. È una persona molto tranquilla e gentile."
+  },
+  {
+    "id": "s4",
+    "level": 1,
+    "type": "situation",
+    "topic": "Trasporti",
+    "title": "Ask for directions",
+    "prompt": "You are lost in an Italian city. Stop someone and ask how to get to the nearest metro station. React to their answer — say whether you understood or ask them to repeat more slowly.",
+    "duration": "45–60 seconds",
+    "cue": "Chiedi indicazioni per la metro. Reagisci alle spiegazioni.",
+    "keyPhrases": [
+      "Mi scusi, sa dov'è la fermata della metro?",
+      "Come si arriva…?",
+      "Devo girare a destra / sinistra?",
+      "È lontano da qui?",
+      "Può ripetere più lentamente, per favore?"
+    ],
+    "model": "Mi scusi, sa dov'è la fermata della metro più vicina? Ah… devo girare a destra e poi andare dritto per 200 metri? Scusi, può ripetere più lentamente? Capisco — a destra, poi dritto, poi a sinistra. Grazie mille!"
+  },
+  {
+    "id": "s5",
+    "level": 1,
+    "type": "describe",
+    "topic": "Tempo & stagioni",
+    "title": "Talk about the weather",
+    "prompt": "Describe the weather today and say what you like doing in your favourite season.",
+    "duration": "45–60 seconds",
+    "cue": "Che tempo fa oggi? Qual è la tua stagione preferita e perché?",
+    "keyPhrases": [
+      "Oggi fa… / C'è il sole / Piove / Fa freddo.",
+      "La mia stagione preferita è…",
+      "In… mi piace…",
+      "D'estate / D'inverno / In primavera / In autunno…",
+      "…perché…"
+    ],
+    "model": "Oggi fa abbastanza freddo e c'è un po' di vento, ma c'è il sole. La mia stagione preferita è l'estate perché fa caldo e posso andare al mare. Mi piace nuotare e mangiare il gelato. L'inverno è bello per Natale, ma fa troppo freddo per me!"
+  },
+  {
+    "id": "s6",
+    "level": 2,
+    "type": "situation",
+    "topic": "Salute",
+    "title": "At the doctor's surgery",
+    "prompt": "You don't feel well. You are at the doctor's. Explain your symptoms, answer the doctor's questions, and ask about the prescription.",
+    "duration": "1–1.5 minutes",
+    "cue": "Dal medico: spiega i sintomi, rispondi alle domande, chiedi della ricetta.",
+    "keyPhrases": [
+      "Non mi sento bene da… giorni.",
+      "Ho mal di… / la febbre / la tosse.",
+      "Ho anche…",
+      "Da quando ha questi sintomi?",
+      "Cosa devo prendere? / Ho bisogno di una ricetta?"
+    ],
+    "model": "Buongiorno dottore. Non mi sento bene da tre giorni. Ho la febbre — circa 38 gradi — e ho molto mal di gola. Ho anche un po' di tosse secca. No, non ho difficoltà a respirare. Sì, ho preso del paracetamolo ma non è bastato. Ho bisogno di una ricetta per degli antibiotici?"
+  },
+  {
+    "id": "s7",
+    "level": 2,
+    "type": "opinion",
+    "topic": "Vita quotidiana",
+    "title": "Talk about your daily routine",
+    "prompt": "Describe your typical weekday from morning to evening. Use time expressions and connectors. Then say one thing you would like to change about your routine.",
+    "duration": "1–1.5 minutes",
+    "cue": "Descrivi la tua giornata tipica. Cosa cambieresti?",
+    "keyPhrases": [
+      "Di solito mi sveglio alle…",
+      "Poi / Dopo / Verso le…",
+      "A pranzo / La sera…",
+      "Prima di andare a dormire…",
+      "Vorrei… ma non ho tempo / sono troppo stanco/a."
+    ],
+    "model": "Di solito mi sveglio alle 7 e faccio subito una doccia. Poi faccio colazione veloce — caffè e biscotti. Lavoro dalle 9 alle 18 con una pausa pranzo di un'ora. La sera cucino qualcosa di semplice, guardo la televisione o parlo con la mia famiglia al telefono. Vado a letto verso le 23. Vorrei fare più sport, ma dopo il lavoro sono sempre stanco. Forse potrei svegliarmi prima…"
+  },
+  {
+    "id": "s8",
+    "level": 2,
+    "type": "situation",
+    "topic": "Lavoro & studio",
+    "title": "Simple job interview",
+    "prompt": "You are at a job interview for a shop assistant role. Introduce yourself, say why you want the job, describe your experience, and ask one question about the position.",
+    "duration": "1–1.5 minutes",
+    "cue": "Colloquio di lavoro: presentati, motivazione, esperienza, domanda.",
+    "keyPhrases": [
+      "Mi chiamo… e sono… nazionalità.",
+      "Sono interessato/a a questo lavoro perché…",
+      "Ho lavorato come… per… anni.",
+      "So usare… / Parlo…",
+      "Posso chiederle…? / Quali sono gli orari?"
+    ],
+    "model": "Buongiorno, mi chiamo Petra e sono ceca. Sono molto interessata a questo lavoro perché mi piace stare a contatto con le persone e ho già esperienza come commessa. Ho lavorato in un supermercato per due anni nel mio Paese. Parlo italiano, inglese e ceco. Sono puntuale e precisa. Posso chiederle quali sono gli orari di lavoro e se è previsto un contratto part-time?"
+  },
+  {
+    "id": "s9",
+    "level": 2,
+    "type": "describe",
+    "topic": "Cibo & shopping",
+    "title": "Describe a shopping experience",
+    "prompt": "Tell your friend about a recent shopping trip. Where did you go? What did you buy? Was there any problem — wrong size, long queue, something too expensive? What did you do?",
+    "duration": "1–1.5 minutes",
+    "cue": "Racconta un'esperienza di shopping recente — positiva o negativa.",
+    "keyPhrases": [
+      "Sabato scorso sono andato/a…",
+      "Ho comprato / Ho provato…",
+      "Purtroppo…",
+      "Ho chiesto / Ho cambiato…",
+      "Alla fine…"
+    ],
+    "model": "Sabato scorso sono andata in centro a cercare delle scarpe nuove. Ho trovato un paio bellissimo in una boutique, ma costavano 120 euro — troppo cari! Poi sono andata in un negozio più grande e ho trovato delle scarpe simili a 45 euro. Le ho provate — erano della misura giusta — e le ho comprate subito. Alla fine sono contenta! Ho anche preso una borsa in saldo."
+  },
+  {
+    "id": "s10",
+    "level": 2,
+    "type": "opinion",
+    "topic": "Città & luoghi",
+    "title": "Compare two places",
+    "prompt": "Compare the city where you live now with your hometown (or another city you know well). Talk about: size, transport, cost of living, what you like and dislike about each.",
+    "duration": "1–1.5 minutes",
+    "cue": "Confronta la tua città attuale con un'altra che conosci bene.",
+    "keyPhrases": [
+      "… è più grande / piccola / cara di…",
+      "Qui i trasporti sono… / Là invece…",
+      "Il costo della vita…",
+      "Quello che mi manca è…",
+      "Preferisco… perché…"
+    ],
+    "model": "Abito a Milano da due anni. La mia città d'origine è Cracovia, in Polonia. Milano è molto più grande e cara — l'affitto è il doppio! I trasporti a Milano sono ottimi, con metro e tram ovunque. A Cracovia invece si gira bene anche a piedi perché il centro è più compatto. Quello che mi manca di Cracovia è la vita notturna — è più vivace e meno costosa. Però apprezzo Milano per le opportunità di lavoro."
+  },
+  {
+    "id": "s11",
+    "level": 3,
+    "type": "narrate",
+    "topic": "Esperienze personali",
+    "title": "Tell a story about a problem",
+    "prompt": "Tell a story about a time when something went wrong (missed a bus, lost your keys, a misunderstanding at work or school). What happened? How did you feel? How did you solve it?",
+    "duration": "1.5–2 minutes",
+    "cue": "Racconta una situazione difficile: cosa è successo, come ti sei sentito/a, come l'hai risolta.",
+    "keyPhrases": [
+      "Un giorno / L'anno scorso…",
+      "Stavo… quando all'improvviso…",
+      "Non sapevo cosa fare.",
+      "Ho deciso di…",
+      "Alla fine è andato tutto bene / ho imparato che…"
+    ],
+    "model": "L'anno scorso ho avuto un problema brutto. Stavo andando a un colloquio di lavoro importante quando mi sono accorta di aver dimenticato il portafoglio a casa — con i documenti e i soldi. Ero in panico! Non sapevo cosa fare. Ho chiamato mia sorella che abita vicino al mio ufficio. Lei ha preso il portafoglio a casa mia e me lo ha portato alla fermata della metro. Sono arrivata al colloquio con dieci minuti di ritardo, ho spiegato la situazione e il direttore è stato molto comprensivo. E ho anche preso il lavoro!"
+  },
+  {
+    "id": "s12",
+    "level": 3,
+    "type": "opinion",
+    "topic": "Tecnologia & vita moderna",
+    "title": "Technology in daily life",
+    "prompt": "Talk about how you use technology in daily life. Give examples of things you do with your phone or computer. Do you think technology makes life better or more complicated? Why?",
+    "duration": "1.5–2 minutes",
+    "cue": "Come usi la tecnologia ogni giorno? È un bene o un problema?",
+    "keyPhrases": [
+      "Uso il telefono / il computer per…",
+      "Non potrei vivere senza…",
+      "D'altra parte…",
+      "Secondo me…",
+      "Il rischio è che…"
+    ],
+    "model": "Uso lo smartphone ogni giorno per moltissime cose: controllare i messaggi, fare acquisti online, navigare con Google Maps quando mi perdo. Non potrei vivere senza la traduzione automatica — mi aiuta tantissimo con l'italiano!\n\nD'altra parte, penso che la tecnologia possa essere un problema. Passo troppo tempo sui social media e spesso mi distraggo. Secondo me è importante usare il telefono con intelligenza. Il rischio è diventare dipendenti e perdere il contatto con le persone vicino a noi."
+  },
+  {
+    "id": "s13",
+    "level": 3,
+    "type": "situation",
+    "topic": "Servizi & burocrazia",
+    "title": "At the municipality — residency registration",
+    "prompt": "You are at the local council (il Comune) to register your new address (residenza). Explain why you are there, give your details, ask what documents you need, and ask how long the process takes.",
+    "duration": "1.5–2 minutes",
+    "cue": "Al Comune: registra la tua residenza. Chiedi documenti e tempi.",
+    "keyPhrases": [
+      "Buongiorno, vorrei registrare la mia residenza.",
+      "Ho cambiato indirizzo il…",
+      "Quali documenti servono?",
+      "Ho già… / Non ho ancora…",
+      "Quanto tempo ci vuole?"
+    ],
+    "model": "Buongiorno, vorrei registrare la mia nuova residenza, per favore. Ho cambiato appartamento il primo di questo mese. Quali documenti servono? Ho già il passaporto e il permesso di soggiorno. Devo portare anche il contratto d'affitto? Non ho ancora la tessera sanitaria nuova — è un problema? E quanto tempo ci vuole per avere la conferma? Devo tornare qui o mi mandano tutto per posta? Grazie mille per le informazioni."
+  },
+  {
+    "id": "s14",
+    "level": 3,
+    "type": "describe",
+    "topic": "Cultura & tradizioni",
+    "title": "An Italian tradition you experienced",
+    "prompt": "Describe an Italian tradition, festival, or custom that you experienced or that impressed you. What is it? When does it happen? What did you see, eat, or do? How did it make you feel?",
+    "duration": "1.5–2 minutes",
+    "cue": "Descrivi una tradizione o festa italiana che hai vissuto o che ti ha colpito/a.",
+    "keyPhrases": [
+      "Una tradizione italiana che mi ha impressionato è…",
+      "Si celebra… / Si mangia…",
+      "Ho partecipato a…",
+      "L'atmosfera era…",
+      "È diverso da… nel mio Paese."
+    ],
+    "model": "Una tradizione italiana che mi ha molto impressionato è la Festa della Repubblica, il 2 giugno. Quest'anno ero a Roma e ho visto la parata militare sui Fori Imperiali. L'atmosfera era incredibile — tanta gente, le bandiere italiane ovunque, gli aerei che facevano il tricolore nel cielo. Poi la sera c'erano concerti gratuiti nei giardini del Quirinale. Nel mio Paese non abbiamo qualcosa di simile — i festeggiamenti nazionali sono più sobri. Ho capito quanto gli italiani siano orgogliosi della loro storia."
+  },
+  {
+    "id": "s15",
+    "level": 3,
+    "type": "opinion",
+    "topic": "Integrazione & vita in Italia",
+    "title": "Living in Italy — challenges and rewards",
+    "prompt": "Talk about what has been most challenging and most rewarding about living in Italy (or learning Italian). What advice would you give to someone who has just arrived?",
+    "duration": "1.5–2 minutes",
+    "cue": "Vita in Italia: difficoltà e soddisfazioni. Che consiglio daresti a chi arriva?",
+    "keyPhrases": [
+      "La cosa più difficile per me è stata…",
+      "Non mi aspettavo che…",
+      "Però ho imparato che…",
+      "La cosa che apprezzo di più è…",
+      "Consiglio a chi arriva di…"
+    ],
+    "model": "La cosa più difficile per me è stata la burocrazia — aprire un conto in banca, fare la residenza, trovare un medico di base — ci vuole molta pazienza! E all'inizio la lingua era un ostacolo enorme. Non mi aspettavo che gli italiani parlassero così in fretta.\n\nPerò ho imparato che se chiedi aiuto con un sorriso, la gente è molto disponibile. La cosa che apprezzo di più è lo stile di vita — mangiare bene, passare tempo con la famiglia, godersi la vita.\n\nConsiglio a chi arriva di imparare l'italiano il prima possibile — è la chiave per integrarsi davvero. E di uscire, esplorare il quartiere, e non avere paura di sbagliare."
+  },
+  {
+    "id": "s16",
+    "freq": 3,
+    "level": 2,
+    "type": "monologo",
+    "topic": "Giornata tipo",
+    "title": "Describe your typical day (exam monologue)",
+    "prompt": "Describe your typical day: what time you wake up, what you do during the day, and how you spend the evening.",
+    "duration": "~90 secondi",
+    "cue": "Descriva la sua giornata tipo: a che ora si sveglia, cosa fa durante il giorno e come passa la sera.",
+    "keyPhrases": [
+      "Di solito mi sveglio alle…",
+      "La mattina / Durante il giorno…",
+      "Nel pomeriggio vado a…",
+      "La sera ceno e…",
+      "Prima di dormire…"
+    ],
+    "model": "Di solito mi sveglio alle sette e faccio colazione con caffè e pane. Poi mi vesto e vado al lavoro in autobus: il viaggio dura venti minuti. Durante il giorno lavoro in un negozio dalle nove alle diciotto, con una pausa pranzo di un'ora. Nel pomeriggio, dopo il lavoro, faccio la spesa o vado in palestra due volte a settimana. La sera torno a casa, cucino qualcosa di semplice e ceno con la mia famiglia. Dopo cena guardo un po' di televisione o parlo al telefono con mia madre. Vado a dormire verso le undici."
+  },
+  {
+    "id": "s17",
+    "freq": 3,
+    "level": 2,
+    "type": "monologo",
+    "topic": "Paese d'origine",
+    "title": "Talk about your home country (exam monologue)",
+    "prompt": "Talk about your home country: where it is, what the climate is like, and what you miss most about it.",
+    "duration": "~90 secondi",
+    "cue": "Parli del suo paese d'origine: dove si trova, com'è il clima e cosa le manca di più.",
+    "keyPhrases": [
+      "Vengo da… che si trova…",
+      "Il clima è… / D'estate fa… / D'inverno fa…",
+      "Quello che mi manca di più è…",
+      "Mi mancano anche…",
+      "Però mi piace vivere qui perché…"
+    ],
+    "model": "Vengo dal Marocco, un paese che si trova nel nord Africa, vicino alla Spagna. Il clima è molto diverso dall'Italia: d'estate fa caldissimo e non piove quasi mai, mentre d'inverno il tempo è mite. Quello che mi manca di più è il mare di Casablanca e il sole tutto l'anno. Mi mancano anche i piatti della mia famiglia, come il cous cous della domenica. Qui in Italia piove più spesso e l'inverno è più freddo, ma mi piace vivere qui perché ho trovato un buon lavoro e ho fatto tanti amici."
+  },
+  {
+    "id": "s18",
+    "freq": 3,
+    "level": 3,
+    "type": "monologo",
+    "topic": "Viaggi & vacanze",
+    "title": "Talk about a recent trip (exam monologue)",
+    "prompt": "Talk about a trip or holiday you took recently: where you went, who with, and what you visited. Use the passato prossimo (past tense).",
+    "duration": "~90 secondi",
+    "cue": "Racconti un viaggio o una vacanza che ha fatto di recente: dove è andato, con chi e cosa ha visitato.",
+    "keyPhrases": [
+      "Il mese scorso sono andato/a a…",
+      "Ho viaggiato con…",
+      "Abbiamo visitato…",
+      "Abbiamo mangiato / visto…",
+      "È stata un'esperienza…"
+    ],
+    "model": "Il mese scorso sono andata a Firenze con il mio compagno per tre giorni. Abbiamo viaggiato in treno e siamo arrivati venerdì pomeriggio. Abbiamo visitato il Duomo e gli Uffizi, e abbiamo camminato per il centro storico. Un giorno abbiamo fatto una gita a Siena in autobus. Abbiamo mangiato in una trattoria tipica — ho provato la bistecca alla fiorentina, era buonissima! La sera abbiamo passeggiato lungo l'Arno e abbiamo fatto tante foto. È stata una vacanza breve ma bellissima, e voglio tornare presto in Toscana."
+  },
+  {
+    "id": "s19",
+    "freq": 3,
+    "level": 3,
+    "type": "monologo",
+    "topic": "Lavoro & futuro",
+    "title": "Talk about your current or dream job (exam monologue)",
+    "prompt": "Talk about your current job or your dream job: what your daily tasks are, or what you would like to do in the future.",
+    "duration": "~90 secondi",
+    "cue": "Il suo lavoro attuale o il lavoro dei suoi sogni: quali sono le sue mansioni o cosa le piacerebbe fare.",
+    "keyPhrases": [
+      "Attualmente lavoro come…",
+      "Le mie mansioni sono…",
+      "Il lavoro dei miei sogni sarebbe…",
+      "Mi piacerebbe…",
+      "Un giorno lavorerò come…"
+    ],
+    "model": "Attualmente lavoro come commessa in un supermercato. Le mie mansioni sono sistemare gli scaffali, aiutare i clienti e lavorare alla cassa. È un lavoro faticoso ma mi piace parlare con le persone. Però il lavoro dei miei sogni sarebbe fare l'infermiera, perché mi piace aiutare gli altri e mi interessa la medicina. Mi piacerebbe frequentare un corso professionale il prossimo anno. Se studio bene e supero gli esami, tra qualche anno lavorerò in un ospedale qui in Italia. Per ora continuo a studiare e a fare pratica con la lingua ogni giorno."
+  },
+  {
+    "id": "s20",
+    "seen": 2,
+    "level": 2,
+    "type": "monologo",
+    "topic": "Città & luoghi",
+    "title": "Describe the city where you live now (exam monologue)",
+    "prompt": "Talk about the city where you live now: what it is like, your favourite place there, and — if you moved from somewhere else — how it compares to where you lived before.",
+    "duration": "~90 secondi",
+    "cue": "Parli della città dove vive adesso: com'è, il suo posto preferito e, se si è trasferito/a, come si vive rispetto a prima.",
+    "keyPhrases": [
+      "Adesso vivo a…",
+      "Mi piace molto… perché…",
+      "Vado spesso a… per…",
+      "Prima vivevo a… (imperfetto: era, c'erano)",
+      "Adesso preferisco… perché…"
+    ],
+    "model": "Adesso vivo a Bologna, vicino al centro. È una città grande, pulita e molto vivace, con tanti studenti. Mi piace molto Piazza Maggiore: ci vado spesso a prendere un caffè o a passeggiare con la mia famiglia. Vicino alla stazione ci sono anche molti bar e gelaterie. Prima vivevo a Imola, una città più piccola: non era bella come Bologna, ma gli affitti erano più bassi e le persone erano molto gentili. Adesso preferisco Bologna perché ci sono più cose da fare, anche se a volte mi manca la tranquillità di Imola."
+  },
+  {
+    "id": "s21",
+    "seen": 1,
+    "level": 2,
+    "type": "monologo",
+    "topic": "Lavoro & studio",
+    "title": "How did you learn Italian? (exam monologue)",
+    "prompt": "Talk about how you learned Italian: where you started, what courses you did, how long they lasted, and what you would like to do next with the language.",
+    "duration": "~90 secondi",
+    "cue": "Come ha imparato l'italiano: dove ha cominciato, che corsi ha seguito, per quanto tempo e cosa vorrebbe fare adesso.",
+    "keyPhrases": [
+      "Ho cominciato a studiare italiano…",
+      "Ho seguito un corso di… mesi",
+      "Andavo a lezione … volte a settimana",
+      "Quando sono arrivato/a in Italia ho continuato con…",
+      "Adesso vorrei…"
+    ],
+    "model": "Sono americano e ho cominciato a studiare italiano a Philadelphia, nella mia città. Ho pagato 300 dollari per un corso di livello A1: andavo a lezione due volte a settimana, la sera dopo il lavoro. Mi è sempre piaciuto vivere in Italia, così ho continuato a studiare. Quando sono arrivato qui, ho fatto un corso di livello A2 in una scuola in centro, con un'insegnante molto brava. Adesso vorrei fare l'esame di livello A2 per il mio lavoro e in futuro continuare fino al livello B2, perché imparare la lingua aiuta a integrarsi meglio."
+  },
+  {
+    "id": "s22",
+    "seen": 1,
+    "level": 2,
+    "type": "monologo",
+    "topic": "Casa & famiglia",
+    "title": "A person who is important to you (exam monologue)",
+    "prompt": "Describe a person who is important to you: who they are, how long you have known them, and why they are important to you.",
+    "duration": "~90 secondi",
+    "cue": "Descriva una persona importante per lei: chi è, da quanto tempo la conosce e perché è importante.",
+    "keyPhrases": [
+      "Una persona importante per me è…",
+      "Lo/la conosco da…",
+      "Era/è una persona molto…",
+      "Mi ha insegnato…",
+      "Per questo…"
+    ],
+    "model": "Una persona importante per me è il mio professore di storia al liceo, il signor Bianchi. Lo conosco dai tempi della scuola. Era una persona molto appassionata: ci raccontava gli eventi storici in modo interessante e ci consigliava sempre libri per approfondire. Non spiegava solo la lezione, ma parlava con tutti noi e ci dava anche consigli di vita. Ho imparato molto da lui e mi sono appassionato di storia grazie a lui: per questo ho deciso di studiare storia all'università."
+  },
+  {
+    "id": "s23",
+    "seen": 2,
+    "level": 1,
+    "type": "monologo",
+    "topic": "Vita quotidiana",
+    "title": "The clothes you like (exam monologue)",
+    "prompt": "Talk about the clothes you like to wear: what you usually wear for work/school and on a day off, and why you like that style.",
+    "duration": "~90 secondi",
+    "cue": "Parli dei vestiti che le piacciono: cosa indossa di solito per andare al lavoro o in un giorno di festa, e perché le piace quello stile.",
+    "keyPhrases": [
+      "Mi piace vestire in modo…",
+      "Mi metto…",
+      "Perché mi sento comodo/a…",
+      "Anche per andare al lavoro…",
+      "Non mi piace…"
+    ],
+    "model": "Mi piace vestire in modo sportivo. Mi metto una maglietta, i jeans e le scarpe da ginnastica, perché mi sento comodo/a e posso stare tutto il giorno in giro. Metto gli stessi vestiti anche per andare al lavoro o in un giorno di festa: preferisco stare comodo/a piuttosto che fare bella impressione. I miei colori preferiti sono il blu e il nero. Non mi piace mettermi la giacca e la cravatta: costa di più e devo portarla in lavanderia. Penso che ognuno debba vestirsi come vuole, senza farsi influenzare dagli altri."
+  },
+  {
+    "id": "s24",
+    "seen": 2,
+    "level": 2,
+    "type": "monologo",
+    "topic": "Cibo & shopping",
+    "title": "A typical dish from your country (exam monologue)",
+    "prompt": "Talk about a typical dish from your country: what it is made of, how it is cooked, and why you like it.",
+    "duration": "~90 secondi",
+    "cue": "Parli di un piatto tipico del suo paese: gli ingredienti, come si prepara e perché le piace.",
+    "keyPhrases": [
+      "Un piatto tipico del mio paese è…",
+      "Si prepara con…",
+      "La parte difficile è…",
+      "Si può fare anche…",
+      "Mi piace perché…"
+    ],
+    "model": "Un piatto tipico del mio paese è la paella spagnola: si prepara con il riso, il pesce e i frutti di mare, ma esiste anche una versione vegetariana con le verdure. È un piatto semplice ma un po' costoso, perché servono molti ingredienti. La parte più difficile è la cottura, perché il riso, il pesce e i frutti di mare hanno tempi diversi: prima si cuoce il riso, poi si aggiunge il pesce e alla fine i frutti di mare. Si può fare in piccole o grandi porzioni, per una famiglia o per molte persone. Mi piace perché è leggero, saporito e mi ricorda casa."
+  },
+  {
+    "id": "s25",
+    "seen": 1,
+    "level": 1,
+    "type": "monologo",
+    "topic": "Casa & famiglia",
+    "title": "Your favourite room at home (exam monologue)",
+    "prompt": "Describe the room you like best in your home: which room it is, what you do there, and why you like it.",
+    "duration": "~90 secondi",
+    "cue": "Descriva la stanza che preferisce della sua casa: qual è, cosa fa lì e perché le piace.",
+    "keyPhrases": [
+      "La stanza che preferisco è…",
+      "È il posto dove…",
+      "Mi piace perché…",
+      "Passo il tempo libero…",
+      "Trovo sempre qualcuno con cui…"
+    ],
+    "model": "La stanza che preferisco della mia casa è il soggiorno. È il posto dove passo il tempo libero quando torno a casa: guardiamo la televisione, giochiamo a qualche gioco da tavolo o parliamo tra di noi. È la stanza più grande della casa e mi ricorda momenti belli in famiglia. Mi piace perché lì non sono mai solo/a: trovo sempre qualcuno con cui scambiare due parole, un fratello, la madre o il padre. Per questo è il posto dove mi piace stare di più."
+  },
+  {
+    "id": "s26",
+    "seen": 1,
+    "level": 1,
+    "type": "monologo",
+    "topic": "Cibo & shopping",
+    "title": "Market or supermarket? (exam monologue)",
+    "prompt": "Talk about how you do your food shopping: do you prefer the weekly market or big supermarkets, what do you usually buy, and do you go alone or with someone?",
+    "duration": "~90 secondi",
+    "cue": "Parli di come fa la spesa: preferisce il mercato settimanale o i grandi supermercati, cosa compra di solito e se va da solo/a o con qualcuno.",
+    "keyPhrases": [
+      "Preferisco andare…",
+      "Perché trovo…",
+      "Di solito compro…",
+      "Ci vado da solo/a / con…",
+      "Non compro troppo perché…"
+    ],
+    "model": "Preferisco andare al supermercato perché trovo tutto: frutta, verdura fresca, pasta e tante qualità diverse a prezzi differenti. Ho un supermercato vicino a casa, quindi ci vado quasi ogni sera dopo l'università. Non faccio una grande spesa una volta a settimana: compro solo due o tre cose che mi mancano, così la frutta e la verdura non si rovinano. Di solito compro pasta e sughi pronti, perché sono facili da preparare, ma nel fine settimana cucino anche piatti più completi. Ci vado sempre da solo/a, perché vivo con dei coinquilini e ognuno fa la spesa per conto suo."
+  },
+  {
+    "id": "s27",
+    "level": 2,
+    "type": "monologo",
+    "topic": "I miei preferiti",
+    "title": "My favourite place (exam monologue)",
+    "prompt": "Describe your favourite place: where it is, what it looks like, what you do there and why you like it. Speak for about 90 seconds.",
+    "duration": "~90 secondi",
+    "cue": "Parla del tuo posto preferito: dove si trova, com'è, cosa fai lì e perché ti piace.",
+    "keyPhrases": [
+      "Il mio posto preferito è…",
+      "Si trova…",
+      "Ci vado per…",
+      "Mi piace perché…",
+      "È tranquillo / vivace…"
+    ],
+    "model": "Il mio posto preferito è il parco vicino a casa mia. Si trova a dieci minuti a piedi dal mio appartamento. È un parco grande, con tanti alberi e una fontana al centro. Ci vado quasi ogni sera dopo il lavoro per fare una passeggiata o leggere un libro su una panchina. Il fine settimana ci vado con mio marito e facciamo un picnic quando c'è il sole. Mi piace perché è tranquillo e verde, e lì posso rilassarmi dopo una giornata lunga."
+  },
+  {
+    "id": "s28",
+    "level": 2,
+    "type": "monologo",
+    "topic": "I miei preferiti",
+    "title": "My favourite season (exam monologue)",
+    "prompt": "Talk about your favourite season: what the weather is like, what you do in that season and why you prefer it. Speak for about 90 seconds.",
+    "duration": "~90 secondi",
+    "cue": "Parla della tua stagione preferita: che tempo fa, cosa fai in quella stagione e perché la preferisci.",
+    "keyPhrases": [
+      "La mia stagione preferita è…",
+      "Fa caldo / fresco…",
+      "Le giornate sono più lunghe…",
+      "Di solito…",
+      "La preferisco perché…"
+    ],
+    "model": "La mia stagione preferita è la primavera. Fa fresco ma c'è il sole, e le giornate sono più lunghe. In primavera i parchi sono pieni di fiori e tutto è verde. Di solito faccio lunghe passeggiate, vado in bicicletta e mangio il gelato fuori. Nel mio paese la primavera è molto corta, quindi qui in Italia la apprezzo ancora di più. La preferisco perché non fa né troppo caldo né troppo freddo, e ho più energia."
+  },
+  {
+    "id": "s29",
+    "level": 2,
+    "type": "monologo",
+    "topic": "I miei preferiti",
+    "title": "My favourite dish (exam monologue)",
+    "prompt": "Describe your favourite dish: what it is, what ingredients it has, when you eat it and who prepares it. Speak for about 90 seconds.",
+    "duration": "~90 secondi",
+    "cue": "Parla del tuo piatto preferito: che cos'è, quali ingredienti ha, quando lo mangi e chi lo prepara.",
+    "keyPhrases": [
+      "Il mio piatto preferito è…",
+      "Si prepara con…",
+      "Lo mangio quando…",
+      "Lo cucina…",
+      "Mi piace perché…"
+    ],
+    "model": "Il mio piatto preferito è il riso con le verdure e le spezie. Si prepara con riso, cipolla, carote, piselli e tante spezie del mio paese. Di solito lo cucino io la domenica, quando ho più tempo, e qualche volta lo prepara mio marito. Lo mangiamo insieme a pranzo. Mi piace perché è saporito e mi ricorda la cucina di mia madre. Qui in Italia ho imparato anche a cucinare la pasta, ma il riso resta il mio piatto del cuore."
+  },
+  {
+    "id": "s30",
+    "level": 3,
+    "type": "monologo",
+    "topic": "I miei preferiti",
+    "title": "Where you would like to travel (exam monologue)",
+    "prompt": "Talk about the places you like to travel to and one place you would really like to visit: why, with whom, and what you would do there. Speak for about 90 seconds.",
+    "duration": "~90 secondi",
+    "cue": "Parla dei posti dove ti piace viaggiare e di un posto che vorresti visitare: perché, con chi e cosa faresti lì.",
+    "keyPhrases": [
+      "Mi piace viaggiare in…",
+      "Mi piacerebbe visitare…",
+      "Vorrei andare a… con…",
+      "Un giorno andrò…",
+      "Perché…"
+    ],
+    "model": "Mi piace molto viaggiare, soprattutto nelle città con il mare. In Italia sono già stata a Genova e mi è piaciuta tantissimo. Un posto che vorrei davvero visitare è la Sicilia: mi piacerebbe vedere il mare, mangiare il pesce fresco e visitare i mercati. Vorrei andarci con mio marito la prossima estate. Un giorno andrò anche in Giappone, ma è un viaggio lungo e caro, quindi per ora resto in Italia — per fortuna qui c'è tanto da vedere!"
+  }
+]

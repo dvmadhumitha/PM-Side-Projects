@@ -1,0 +1,899 @@
+[
+  {
+    "id": "presentarsi",
+    "label": "Presentarsi",
+    "emoji": "👋",
+    "desc": "Introducing yourself",
+    "phrases": [
+      {
+        "it": "Mi chiamo Priya e vengo dall'India.",
+        "en": "My name is Priya and I come from India.",
+        "tense": "presente"
+      },
+      {
+        "it": "Sono nato/a a Mumbai, ma adesso abito a Firenze.",
+        "en": "I was born in Mumbai, but now I live in Florence.",
+        "tense": "presente"
+      },
+      {
+        "it": "Abito in Italia da tre anni.",
+        "en": "I have been living in Italy for three years.",
+        "tense": "presente"
+      },
+      {
+        "it": "Sono sposato/a e ho due figli.",
+        "en": "I am married and have two children.",
+        "tense": "presente"
+      },
+      {
+        "it": "Lavoro come cuoco/a in un ristorante.",
+        "en": "I work as a cook in a restaurant.",
+        "tense": "presente"
+      },
+      {
+        "it": "Parlo italiano, inglese e un po' di francese.",
+        "en": "I speak Italian, English and a little French.",
+        "tense": "presente"
+      },
+      {
+        "it": "Studio italiano da sei mesi al corso serale.",
+        "en": "I have been studying Italian for six months at the evening class.",
+        "tense": "presente"
+      },
+      {
+        "it": "Nel tempo libero mi piace cucinare e fare passeggiate.",
+        "en": "In my free time I like cooking and going for walks.",
+        "tense": "presente"
+      },
+      {
+        "it": "Mi sono trasferito/a in Italia per lavoro.",
+        "en": "I moved to Italy for work.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Prima di venire qui, vivevo a Londra.",
+        "en": "Before coming here, I lived in London.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Mi piacerebbe ottenere la cittadinanza italiana.",
+        "en": "I would like to obtain Italian citizenship.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Piacere di conoscerla! / Piacere!",
+        "en": "Pleased to meet you!",
+        "tense": "formula"
+      }
+    ]
+  },
+  {
+    "id": "lavoro",
+    "label": "Cercare Lavoro",
+    "emoji": "💼",
+    "desc": "Looking for work / job interviews",
+    "phrases": [
+      {
+        "it": "Cerco lavoro come cameriere/a.",
+        "en": "I am looking for work as a waiter/waitress.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho tre anni di esperienza in questo settore.",
+        "en": "I have three years of experience in this field.",
+        "tense": "presente"
+      },
+      {
+        "it": "Sono disponibile anche nel weekend.",
+        "en": "I am available at weekends too.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho già lavorato in un bar per due anni.",
+        "en": "I have already worked in a café for two years.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Ho visto il suo annuncio online e vorrei candidarmi.",
+        "en": "I saw your advertisement online and I would like to apply.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Ho allegato il mio curriculum alla email.",
+        "en": "I have attached my CV to the email.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Prima lavoravo in un negozio, poi ho cambiato settore.",
+        "en": "Previously I worked in a shop, then I changed sector.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Vorrei sapere qual è l'orario di lavoro.",
+        "en": "I would like to know what the working hours are.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Potrei lavorare anche la mattina presto.",
+        "en": "I could also work early in the morning.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Quando posso sapere se sono stato/a selezionato/a?",
+        "en": "When can I find out if I have been selected?",
+        "tense": "presente"
+      },
+      {
+        "it": "Quali documenti devo portare?",
+        "en": "Which documents do I need to bring?",
+        "tense": "presente"
+      },
+      {
+        "it": "Sono pronto/a a iniziare subito.",
+        "en": "I am ready to start straight away.",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "medico",
+    "label": "Dal Medico / Farmacia",
+    "emoji": "🏥",
+    "desc": "At the doctor's / pharmacy",
+    "phrases": [
+      {
+        "it": "Vorrei prenotare una visita con il dottor Bianchi.",
+        "en": "I would like to book an appointment with Dr Bianchi.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Ho la febbre da tre giorni e mi fa male la gola.",
+        "en": "I have had a fever for three days and my throat hurts.",
+        "tense": "presente"
+      },
+      {
+        "it": "Non sto bene da ieri sera.",
+        "en": "I have not been well since last night.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho un forte mal di testa e la tosse.",
+        "en": "I have a bad headache and a cough.",
+        "tense": "presente"
+      },
+      {
+        "it": "Sono allergico/a alla penicillina.",
+        "en": "I am allergic to penicillin.",
+        "tense": "presente"
+      },
+      {
+        "it": "Prendo già queste medicine.",
+        "en": "I am already taking these medicines.",
+        "tense": "presente"
+      },
+      {
+        "it": "Devo scegliere un medico di base. Come faccio?",
+        "en": "I need to choose a GP. How do I do it?",
+        "tense": "presente"
+      },
+      {
+        "it": "Il mio medico mi ha dato una ricetta.",
+        "en": "My doctor gave me a prescription.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Vorrei qualcosa per il mal di testa — sciroppo o pastiglie?",
+        "en": "I would like something for a headache — syrup or tablets?",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Quante volte al giorno devo prenderle?",
+        "en": "How many times a day should I take them?",
+        "tense": "presente"
+      },
+      {
+        "it": "Spero di guarire presto.",
+        "en": "I hope to get better soon.",
+        "tense": "presente"
+      },
+      {
+        "it": "Mi sono sentito/a male stamattina e non sono andato/a al lavoro.",
+        "en": "I felt ill this morning and did not go to work.",
+        "tense": "passato prossimo"
+      }
+    ]
+  },
+  {
+    "id": "comune",
+    "label": "Al Comune / Uffici",
+    "emoji": "🏛️",
+    "desc": "At the town hall / public offices",
+    "phrases": [
+      {
+        "it": "Buongiorno, mi sono trasferito/a qui da poco. Cosa devo fare per iscrivermi all'anagrafe?",
+        "en": "Good morning, I moved here recently. What do I need to do to register with the civil registry?",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Ho bisogno di rinnovare il permesso di soggiorno.",
+        "en": "I need to renew my residence permit.",
+        "tense": "presente"
+      },
+      {
+        "it": "Quali documenti devo portare per fare la carta d'identità?",
+        "en": "Which documents do I need to bring to get an identity card?",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho già compilato il modulo online.",
+        "en": "I have already filled in the form online.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Devo pagare qualcosa?",
+        "en": "Do I need to pay anything?",
+        "tense": "presente"
+      },
+      {
+        "it": "Entro quanto tempo è pronto il documento?",
+        "en": "How long will the document take to be ready?",
+        "tense": "presente"
+      },
+      {
+        "it": "Vorrei chiedere informazioni sui corsi di italiano gratuiti.",
+        "en": "I would like to ask for information about free Italian courses.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "La mia carta d'identità è scaduta il mese scorso.",
+        "en": "My identity card expired last month.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Devo portare le foto tessera?",
+        "en": "Do I need to bring passport photos?",
+        "tense": "presente"
+      },
+      {
+        "it": "C'è uno sportello che parla inglese?",
+        "en": "Is there a desk where they speak English?",
+        "tense": "presente"
+      },
+      {
+        "it": "A che ora chiude lo sportello?",
+        "en": "What time does the counter close?",
+        "tense": "presente"
+      },
+      {
+        "it": "Posso prenotare un appuntamento online?",
+        "en": "Can I book an appointment online?",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "trasporti",
+    "label": "Trasporti",
+    "emoji": "🚌",
+    "desc": "Getting around",
+    "phrases": [
+      {
+        "it": "Scusi, a che ora parte il prossimo treno per Roma?",
+        "en": "Excuse me, what time does the next train to Rome leave?",
+        "tense": "presente"
+      },
+      {
+        "it": "Vorrei un biglietto andata e ritorno per Napoli.",
+        "en": "I would like a return ticket to Naples.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Da quale binario parte?",
+        "en": "Which platform does it leave from?",
+        "tense": "presente"
+      },
+      {
+        "it": "Il treno è in ritardo?",
+        "en": "Is the train delayed?",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho perso la coincidenza — c'è un altro treno?",
+        "en": "I missed my connection — is there another train?",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Devo cambiare treno?",
+        "en": "Do I need to change trains?",
+        "tense": "presente"
+      },
+      {
+        "it": "Scusi, questa è la fermata per il centro?",
+        "en": "Excuse me, is this the stop for the centre?",
+        "tense": "presente"
+      },
+      {
+        "it": "Quanto costa l'abbonamento mensile?",
+        "en": "How much does a monthly pass cost?",
+        "tense": "presente"
+      },
+      {
+        "it": "Dove posso comprare i biglietti?",
+        "en": "Where can I buy tickets?",
+        "tense": "presente"
+      },
+      {
+        "it": "Vado sempre al lavoro in autobus, non ho la macchina.",
+        "en": "I always go to work by bus, I don't have a car.",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "quotidiana",
+    "label": "Vita Quotidiana",
+    "emoji": "☕",
+    "desc": "Everyday situations",
+    "phrases": [
+      {
+        "it": "Di solito mi sveglio alle 7 e faccio colazione.",
+        "en": "I usually wake up at 7 and have breakfast.",
+        "tense": "presente"
+      },
+      {
+        "it": "La mattina porto i bambini a scuola.",
+        "en": "In the morning I take the children to school.",
+        "tense": "presente"
+      },
+      {
+        "it": "A mezzogiorno mangio spesso a casa.",
+        "en": "At midday I often eat at home.",
+        "tense": "presente"
+      },
+      {
+        "it": "La sera guardo la televisione o leggo un libro.",
+        "en": "In the evening I watch television or read a book.",
+        "tense": "presente"
+      },
+      {
+        "it": "Il fine settimana vado al mercato con mia moglie.",
+        "en": "At the weekend I go to the market with my wife.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ieri ho fatto la spesa al supermercato.",
+        "en": "Yesterday I did the shopping at the supermarket.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "La settimana scorsa sono andato/a al comune.",
+        "en": "Last week I went to the town hall.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Quando ero nel mio paese, la vita era diversa.",
+        "en": "When I was in my home country, life was different.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Da piccolo/a abitavo in campagna.",
+        "en": "When I was little I lived in the countryside.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Il mese prossimo vado a trovare la mia famiglia.",
+        "en": "Next month I am going to visit my family.",
+        "tense": "futuro (pres.)"
+      },
+      {
+        "it": "Vorrei imparare a guidare.",
+        "en": "I would like to learn to drive.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Se potessi, tornerei a vivere vicino al mare.",
+        "en": "If I could, I would go back to living near the sea.",
+        "tense": "condizionale"
+      }
+    ]
+  },
+  {
+    "id": "casa",
+    "label": "Casa e Quartiere",
+    "emoji": "🏠",
+    "desc": "Describing your home and neighbourhood",
+    "phrases": [
+      {
+        "it": "Abito in un appartamento al secondo piano.",
+        "en": "I live in a flat on the second floor.",
+        "tense": "presente"
+      },
+      {
+        "it": "Il mio appartamento è piccolo ma luminoso.",
+        "en": "My flat is small but bright.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ha due camere da letto, un bagno e la cucina.",
+        "en": "It has two bedrooms, a bathroom and a kitchen.",
+        "tense": "presente"
+      },
+      {
+        "it": "Il quartiere è tranquillo e ci sono molti servizi.",
+        "en": "The neighbourhood is quiet and there are many services.",
+        "tense": "presente"
+      },
+      {
+        "it": "Vicino a casa mia c'è una farmacia e un supermercato.",
+        "en": "Near my home there is a pharmacy and a supermarket.",
+        "tense": "presente"
+      },
+      {
+        "it": "Pago 700 euro al mese di affitto, le spese incluse.",
+        "en": "I pay €700 a month in rent, bills included.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho avuto un guasto al riscaldamento e ho chiamato il tecnico.",
+        "en": "I had a heating breakdown and called the technician.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Prima vivevo in una casa più grande con il giardino.",
+        "en": "Before I lived in a bigger house with a garden.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Vorrei trovare un appartamento più vicino al lavoro.",
+        "en": "I would like to find a flat closer to work.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Mi trovo bene in questo quartiere — la gente è molto gentile.",
+        "en": "I feel comfortable in this neighbourhood — the people are very kind.",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "cortesia",
+    "label": "Espressioni di Cortesia",
+    "emoji": "🤝",
+    "desc": "Polite expressions & social phrases",
+    "phrases": [
+      {
+        "it": "Scusi, può ripetere più lentamente?",
+        "en": "Excuse me, can you repeat more slowly?",
+        "tense": "presente"
+      },
+      {
+        "it": "Non ho capito bene — può spiegare?",
+        "en": "I did not quite understand — can you explain?",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Come si dice \"appointment\" in italiano?",
+        "en": "How do you say \"appointment\" in Italian?",
+        "tense": "presente"
+      },
+      {
+        "it": "Grazie mille per l'aiuto!",
+        "en": "Thank you very much for your help!",
+        "tense": "formula"
+      },
+      {
+        "it": "Prego! / Non c'è di che.",
+        "en": "You're welcome! / Don't mention it.",
+        "tense": "formula"
+      },
+      {
+        "it": "Mi dispiace per il ritardo.",
+        "en": "I'm sorry for the delay.",
+        "tense": "presente"
+      },
+      {
+        "it": "Potrei avere un modulo da compilare?",
+        "en": "Could I have a form to fill in?",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Avrei bisogno di un interprete.",
+        "en": "I would need an interpreter.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Per favore, può parlare più piano?",
+        "en": "Please, can you speak more slowly?",
+        "tense": "presente"
+      },
+      {
+        "it": "Arrivederci e grazie!",
+        "en": "Goodbye and thank you!",
+        "tense": "formula"
+      },
+      {
+        "it": "Buona giornata! / Buona serata!",
+        "en": "Have a good day! / Have a good evening!",
+        "tense": "formula"
+      },
+      {
+        "it": "Con permesso — posso passare?",
+        "en": "Excuse me — may I pass?",
+        "tense": "formula"
+      }
+    ]
+  },
+  {
+    "id": "telefono",
+    "label": "Al Telefono",
+    "emoji": "📞",
+    "desc": "Phone calls",
+    "phrases": [
+      {
+        "it": "Pronto, sono [nome]. Con chi parlo?",
+        "en": "Hello, this is [name]. Who am I speaking to?",
+        "tense": "presente"
+      },
+      {
+        "it": "Vorrei parlare con il dottor Rossi.",
+        "en": "I would like to speak to Dr Rossi.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Chiamo per un appuntamento.",
+        "en": "I am calling to make an appointment.",
+        "tense": "presente"
+      },
+      {
+        "it": "Vorrei prenotare una visita per martedì pomeriggio.",
+        "en": "I would like to book an appointment for Tuesday afternoon.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "A che ora è disponibile?",
+        "en": "What time is he/she available?",
+        "tense": "presente"
+      },
+      {
+        "it": "Può richiamarmi quando è libero/a?",
+        "en": "Can you call me back when you're free?",
+        "tense": "presente"
+      },
+      {
+        "it": "Il mio numero è 333 456 7890.",
+        "en": "My number is 333 456 7890.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho chiamato ieri ma non rispondeva nessuno.",
+        "en": "I called yesterday but no one answered.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Scusi, ho sbagliato numero.",
+        "en": "Sorry, I dialled the wrong number.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Non sento bene — può parlare più forte?",
+        "en": "I can't hear well — can you speak louder?",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "pasti",
+    "label": "Pasti & Cibo",
+    "emoji": "🍽️",
+    "desc": "Meals, eating out, food culture",
+    "phrases": [
+      {
+        "it": "Faccio colazione alle sette — un caffè e un cornetto.",
+        "en": "I have breakfast at seven — a coffee and a croissant.",
+        "tense": "presente"
+      },
+      {
+        "it": "A pranzo mangio un panino o un piatto caldo.",
+        "en": "At lunch I eat a sandwich or a hot dish.",
+        "tense": "presente"
+      },
+      {
+        "it": "La cena è il pasto principale — di solito verso le 20.",
+        "en": "Dinner is the main meal — usually around 8pm.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho fame! Cosa c'è per cena stasera?",
+        "en": "I'm hungry! What's for dinner tonight?",
+        "tense": "presente"
+      },
+      {
+        "it": "Un tavolo per due, per favore.",
+        "en": "A table for two, please.",
+        "tense": "formula"
+      },
+      {
+        "it": "Posso vedere il menù?",
+        "en": "Can I see the menu?",
+        "tense": "presente"
+      },
+      {
+        "it": "Cos'è il piatto del giorno?",
+        "en": "What is the dish of the day?",
+        "tense": "presente"
+      },
+      {
+        "it": "Sono allergico/a alle noci / al glutine / al lattosio.",
+        "en": "I am allergic to nuts / gluten / lactose.",
+        "tense": "presente"
+      },
+      {
+        "it": "Vorrei ordinare la pasta al pomodoro e un'acqua minerale.",
+        "en": "I would like to order pasta with tomato sauce and a mineral water.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Il conto, per favore. Paghiamo separati.",
+        "en": "The bill, please. We'll pay separately.",
+        "tense": "formula"
+      },
+      {
+        "it": "Era buonissimo! Complimenti allo chef.",
+        "en": "It was delicious! Compliments to the chef.",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Ho uno spuntino verso le 16 — di solito frutta o uno yogurt.",
+        "en": "I have a snack around 4pm — usually fruit or a yoghurt.",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "shopping",
+    "label": "Shopping & Negozi",
+    "emoji": "🛍️",
+    "desc": "Buying clothes, shoes, in shops",
+    "phrases": [
+      {
+        "it": "Posso aiutarla? — Sto solo guardando, grazie.",
+        "en": "Can I help you? — I'm just looking, thanks.",
+        "tense": "presente"
+      },
+      {
+        "it": "Cerco una camicia / un paio di jeans / delle scarpe.",
+        "en": "I'm looking for a shirt / a pair of jeans / some shoes.",
+        "tense": "presente"
+      },
+      {
+        "it": "Che taglia porta?",
+        "en": "What size do you wear?",
+        "tense": "presente"
+      },
+      {
+        "it": "Porto la taglia M / la 42 di scarpe.",
+        "en": "I wear size M / size 42 in shoes.",
+        "tense": "presente"
+      },
+      {
+        "it": "Posso provarlo/la?",
+        "en": "Can I try it on?",
+        "tense": "presente"
+      },
+      {
+        "it": "Il camerino è in fondo a destra.",
+        "en": "The changing room is at the back on the right.",
+        "tense": "presente"
+      },
+      {
+        "it": "È un po' stretto/a — ha una taglia più grande?",
+        "en": "It's a bit tight — do you have a bigger size?",
+        "tense": "presente"
+      },
+      {
+        "it": "Quanto costa? / Quanto vengono?",
+        "en": "How much is it? / How much are they?",
+        "tense": "presente"
+      },
+      {
+        "it": "È in saldo? C'è uno sconto?",
+        "en": "Is it on sale? Is there a discount?",
+        "tense": "presente"
+      },
+      {
+        "it": "Lo/La prendo. Pago con il bancomat.",
+        "en": "I'll take it. I'll pay by card.",
+        "tense": "presente"
+      },
+      {
+        "it": "Posso avere lo scontrino?",
+        "en": "Can I have the receipt?",
+        "tense": "presente"
+      },
+      {
+        "it": "Posso cambiarlo/a se non va bene?",
+        "en": "Can I exchange it if it doesn't fit?",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "turismo",
+    "label": "Turismo & Città",
+    "emoji": "🗺️",
+    "desc": "Exploring places, asking for directions, sightseeing",
+    "phrases": [
+      {
+        "it": "Scusi, sa dov'è il Duomo / la stazione / il centro?",
+        "en": "Excuse me, do you know where the cathedral / station / centre is?",
+        "tense": "presente"
+      },
+      {
+        "it": "Quanto ci vuole a piedi / in autobus?",
+        "en": "How long does it take on foot / by bus?",
+        "tense": "presente"
+      },
+      {
+        "it": "A che ora apre / chiude il museo?",
+        "en": "What time does the museum open / close?",
+        "tense": "presente"
+      },
+      {
+        "it": "Quanto costa il biglietto d'ingresso?",
+        "en": "How much is the entrance ticket?",
+        "tense": "presente"
+      },
+      {
+        "it": "C'è uno sconto per studenti / famiglie?",
+        "en": "Is there a discount for students / families?",
+        "tense": "presente"
+      },
+      {
+        "it": "Vorrei una mappa della città, per favore.",
+        "en": "I would like a map of the city, please.",
+        "tense": "condizionale"
+      },
+      {
+        "it": "Cosa c'è da vedere qui vicino?",
+        "en": "What is there to see nearby?",
+        "tense": "presente"
+      },
+      {
+        "it": "Mi può consigliare un buon ristorante tipico?",
+        "en": "Can you recommend a good local restaurant?",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho perso il portafoglio / il telefono — dove trovo la polizia?",
+        "en": "I've lost my wallet / phone — where do I find the police?",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Dov'è la fermata dell'autobus / la metropolitana?",
+        "en": "Where is the bus stop / the underground?",
+        "tense": "presente"
+      }
+    ]
+  },
+  {
+    "id": "amici",
+    "label": "Con gli Amici",
+    "emoji": "👫",
+    "desc": "Casual chat with friends, plans, social life",
+    "phrases": [
+      {
+        "it": "Ciao! Come stai? Tutto bene?",
+        "en": "Hi! How are you? All good?",
+        "tense": "presente"
+      },
+      {
+        "it": "Dai, non ci vediamo da una vita!",
+        "en": "Come on, we haven't seen each other in ages!",
+        "tense": "presente"
+      },
+      {
+        "it": "Cosa fai stasera / questo weekend?",
+        "en": "What are you doing tonight / this weekend?",
+        "tense": "presente"
+      },
+      {
+        "it": "Usciamo? Ti va di andare a prendere un aperitivo?",
+        "en": "Shall we go out? Do you feel like going for an aperitivo?",
+        "tense": "presente"
+      },
+      {
+        "it": "Mi fa piacere rivederti!",
+        "en": "It's great to see you again!",
+        "tense": "presente"
+      },
+      {
+        "it": "Hai sentito di [nome]? Me l'ha detto Marco.",
+        "en": "Have you heard about [name]? Marco told me.",
+        "tense": "passato prossimo"
+      },
+      {
+        "it": "Andiamo a mangiare qualcosa dopo?",
+        "en": "Shall we go eat something afterwards?",
+        "tense": "presente"
+      },
+      {
+        "it": "Scusa il ritardo, c'era traffico!",
+        "en": "Sorry I'm late, there was traffic!",
+        "tense": "imperfetto"
+      },
+      {
+        "it": "Che ridere! Sei troppo divertente.",
+        "en": "So funny! You're too funny.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ti mando un messaggio dopo, ok?",
+        "en": "I'll message you later, ok?",
+        "tense": "presente"
+      },
+      {
+        "it": "In bocca al lupo per l'esame!",
+        "en": "Good luck with the exam! (lit. In the wolf's mouth)",
+        "tense": "formula"
+      }
+    ]
+  },
+  {
+    "id": "lavoro-small",
+    "label": "Conversazioni al Lavoro",
+    "emoji": "💼",
+    "desc": "Work small-talk, emails, meetings",
+    "phrases": [
+      {
+        "it": "Buongiorno, mi chiamo [nome] — sono il/la nuovo/a collega.",
+        "en": "Good morning, my name is [name] — I'm the new colleague.",
+        "tense": "presente"
+      },
+      {
+        "it": "Di cosa si occupa la sua azienda?",
+        "en": "What does your company do?",
+        "tense": "presente"
+      },
+      {
+        "it": "Lavoro nel settore [edilizia / ristorazione / assistenza].",
+        "en": "I work in the [construction / catering / care] sector.",
+        "tense": "presente"
+      },
+      {
+        "it": "A che ora inizia / finisce il turno?",
+        "en": "What time does the shift start / end?",
+        "tense": "presente"
+      },
+      {
+        "it": "Devo chiedere un giorno di ferie / un permesso.",
+        "en": "I need to ask for a day off / leave.",
+        "tense": "presente"
+      },
+      {
+        "it": "Posso parlare con il responsabile?",
+        "en": "Can I speak to the manager?",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho un problema con il contratto — posso avere un chiarimento?",
+        "en": "I have a problem with my contract — can I have a clarification?",
+        "tense": "presente"
+      },
+      {
+        "it": "La riunione è alle 10 in sala conferenze.",
+        "en": "The meeting is at 10 in the conference room.",
+        "tense": "presente"
+      },
+      {
+        "it": "Le mando un'email con i dettagli.",
+        "en": "I'll send you an email with the details.",
+        "tense": "presente"
+      },
+      {
+        "it": "Ho finito il mio turno — ci vediamo domani!",
+        "en": "I've finished my shift — see you tomorrow!",
+        "tense": "passato prossimo"
+      }
+    ]
+  }
+]

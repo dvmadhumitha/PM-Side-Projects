@@ -1,0 +1,522 @@
+{
+  "piemonte": {
+    "emoji": "🏔️",
+    "lines": [
+      {
+        "it": "Il Piemonte è una regione del nord-ovest dell'Italia.",
+        "en": "Piemonte is a region in north-west Italy."
+      },
+      {
+        "it": "La città principale è Torino, una città grande e moderna.",
+        "en": "The main city is Turin, a large and modern city."
+      },
+      {
+        "it": "Torino è famosa per il Museo dell'Automobile e per la Mole Antonelliana.",
+        "en": "Turin is famous for the Car Museum and the Mole Antonelliana tower."
+      },
+      {
+        "it": "Il Piemonte è famoso per le Alpi con tanta neve in inverno.",
+        "en": "Piemonte is famous for the Alps with lots of snow in winter."
+      },
+      {
+        "it": "I piatti tipici sono la bagna cauda e il risotto. Ci sono anche vini famosi come il Barolo.",
+        "en": "Typical dishes are bagna cauda and risotto. There are also famous wines like Barolo."
+      },
+      {
+        "it": "I turisti visitano le colline delle Langhe, dove si produce il tartufo bianco.",
+        "en": "Tourists visit the Langhe hills, where white truffles are produced."
+      },
+      {
+        "it": "In inverno molti turisti vanno a sciare sulle montagne.",
+        "en": "In winter many tourists go skiing in the mountains."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Qual è la città principale del Piemonte?",
+        "opts": [
+          "Genova",
+          "Torino",
+          "Aosta",
+          "Cuneo"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Cosa si produce nelle colline delle Langhe?",
+        "opts": [
+          "Il Parmigiano",
+          "La mozzarella",
+          "Il tartufo bianco",
+          "Il prosciutto"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Cosa fanno i turisti in Piemonte in inverno?",
+        "opts": [
+          "Vanno al mare",
+          "Vanno a sciare",
+          "Visitano musei",
+          "Fanno shopping"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  "lombardia": {
+    "emoji": "🏙️",
+    "lines": [
+      {
+        "it": "La Lombardia è la regione più grande e più ricca d'Italia.",
+        "en": "Lombardy is the largest and richest region in Italy."
+      },
+      {
+        "it": "Il capoluogo è Milano, la capitale della moda e del design.",
+        "en": "The capital is Milan, the capital of fashion and design."
+      },
+      {
+        "it": "A Milano si trova il Duomo, una bellissima cattedrale gotica nel centro della città.",
+        "en": "In Milan you can find the Duomo, a beautiful Gothic cathedral in the city centre."
+      },
+      {
+        "it": "In Lombardia ci sono laghi bellissimi come il Lago di Como e il Lago di Garda.",
+        "en": "In Lombardy there are beautiful lakes like Lake Como and Lake Garda."
+      },
+      {
+        "it": "La cucina lombarda è molto buona: il risotto alla milanese e la cotoletta sono famosi in tutto il mondo.",
+        "en": "Lombard cuisine is very good: Milanese risotto and cotoletta are famous worldwide."
+      },
+      {
+        "it": "Milano è anche una città per lo shopping. Ci sono molti negozi eleganti in Via Montenapoleone.",
+        "en": "Milan is also a city for shopping. There are many elegant shops in Via Montenapoleone."
+      },
+      {
+        "it": "I turisti visitano i laghi in barca e camminano nei piccoli paesi sulla riva.",
+        "en": "Tourists visit the lakes by boat and walk through the small villages on the shore."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Per cosa è famosa Milano?",
+        "opts": [
+          "Per il mare",
+          "Per la moda e il design",
+          "Per i vulcani",
+          "Per le isole"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quale lago si trova in Lombardia?",
+        "opts": [
+          "Lago Maggiore",
+          "Lago di Garda",
+          "Lago Trasimeno",
+          "Lago d'Orta"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Come si chiama il piatto tipico milanese a base di riso?",
+        "opts": [
+          "Pasta alla norma",
+          "Risotto alla milanese",
+          "Spaghetti carbonara",
+          "Penne arrabbiata"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  "veneto": {
+    "emoji": "🚣",
+    "lines": [
+      {
+        "it": "Il Veneto è una regione del nord-est dell'Italia.",
+        "en": "Veneto is a region in north-east Italy."
+      },
+      {
+        "it": "La città più famosa è Venezia, costruita sull'acqua con tanti canali.",
+        "en": "The most famous city is Venice, built on water with many canals."
+      },
+      {
+        "it": "A Venezia non ci sono macchine. Le persone si spostano in barca o a piedi.",
+        "en": "In Venice there are no cars. People get around by boat or on foot."
+      },
+      {
+        "it": "Piazza San Marco è il centro della città con la Basilica e il Palazzo Ducale.",
+        "en": "Piazza San Marco is the city centre with the Basilica and the Doge's Palace."
+      },
+      {
+        "it": "Ogni anno a febbraio c'è il Carnevale di Venezia. Le persone portano maschere e costumi colorati.",
+        "en": "Every February there is the Venice Carnival. People wear masks and colourful costumes."
+      },
+      {
+        "it": "Verona è famosa per l'Arena, un anfiteatro romano, e per la storia di Romeo e Giulietta.",
+        "en": "Verona is famous for the Arena, a Roman amphitheatre, and for the story of Romeo and Juliet."
+      },
+      {
+        "it": "Il dolce tipico del Veneto è il tiramisù. Il vino famoso è il Prosecco.",
+        "en": "The typical Veneto dessert is tiramisù. The famous wine is Prosecco."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Come si spostano le persone a Venezia?",
+        "opts": [
+          "In macchina",
+          "In bici e a piedi",
+          "In barca o a piedi",
+          "In autobus"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Quando si celebra il Carnevale di Venezia?",
+        "opts": [
+          "A luglio",
+          "A dicembre",
+          "A febbraio",
+          "Ad aprile"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Quale dolce viene dal Veneto?",
+        "opts": [
+          "Il cannolo",
+          "La panna cotta",
+          "Il tiramisù",
+          "Il panettone"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  "emilia": {
+    "emoji": "🍝",
+    "lines": [
+      {
+        "it": "L'Emilia-Romagna è famosa in tutto il mondo per il cibo.",
+        "en": "Emilia-Romagna is famous throughout the world for its food."
+      },
+      {
+        "it": "Il capoluogo è Bologna, chiamata \"La Grassa\" per la sua ottima cucina.",
+        "en": "The capital is Bologna, called \"La Grassa\" — the fat one — for its excellent cuisine."
+      },
+      {
+        "it": "Il Parmigiano Reggiano, il Prosciutto di Parma e l'Aceto Balsamico di Modena vengono da questa regione.",
+        "en": "Parmigiano Reggiano, Parma ham and Modena balsamic vinegar all come from this region."
+      },
+      {
+        "it": "Le tagliatelle al ragù, famose nel mondo come \"spaghetti bolognesi\", sono originarie di Bologna.",
+        "en": "Tagliatelle with ragù, known worldwide as spaghetti bolognese, originally come from Bologna."
+      },
+      {
+        "it": "Ravenna è famosa per i suoi mosaici bizantini, considerati tra i più belli del mondo.",
+        "en": "Ravenna is famous for its Byzantine mosaics, considered among the most beautiful in the world."
+      },
+      {
+        "it": "Rimini, sulla costa adriatica, è una meta turistica molto popolare d'estate per il mare.",
+        "en": "Rimini, on the Adriatic coast, is a very popular summer tourist destination for the sea."
+      },
+      {
+        "it": "L'Emilia-Romagna è il paradiso per chi ama mangiare bene.",
+        "en": "Emilia-Romagna is paradise for those who love to eat well."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Come viene chiamata Bologna per la sua cucina?",
+        "opts": [
+          "\"La Bella\"",
+          "\"La Grassa\"",
+          "\"La Rossa\"",
+          "\"La Grande\""
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quale città è famosa per i mosaici bizantini?",
+        "opts": [
+          "Parma",
+          "Bologna",
+          "Ravenna",
+          "Rimini"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Quale prodotto tipico viene da Modena?",
+        "opts": [
+          "Il Prosecco",
+          "L'Aceto Balsamico",
+          "Il tartufo",
+          "La mozzarella"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  "toscana": {
+    "emoji": "🌻",
+    "lines": [
+      {
+        "it": "La Toscana è una delle regioni più belle e famose d'Italia.",
+        "en": "Tuscany is one of the most beautiful and famous regions of Italy."
+      },
+      {
+        "it": "Il capoluogo è Firenze, la città del Rinascimento, con musei importanti come gli Uffizi.",
+        "en": "The capital is Florence, the city of the Renaissance, with important museums like the Uffizi."
+      },
+      {
+        "it": "Il Duomo di Firenze con la sua cupola rossa è il simbolo della città.",
+        "en": "Florence's Duomo with its red dome is the symbol of the city."
+      },
+      {
+        "it": "Pisa è famosa per la Torre Pendente, che si trova in Piazza dei Miracoli.",
+        "en": "Pisa is famous for the Leaning Tower, located in the Piazza dei Miracoli."
+      },
+      {
+        "it": "La campagna toscana è bellissima: ci sono colline verdi, cipressi e vigneti.",
+        "en": "The Tuscan countryside is beautiful: green hills, cypress trees and vineyards."
+      },
+      {
+        "it": "Il vino Chianti è il più famoso della Toscana. È prodotto nelle colline tra Firenze e Siena.",
+        "en": "Chianti wine is the most famous in Tuscany. It is produced in the hills between Florence and Siena."
+      },
+      {
+        "it": "I piatti tipici sono la bistecca alla fiorentina, la ribollita e la pappa al pomodoro.",
+        "en": "Typical dishes are Florentine steak, ribollita soup and pappa al pomodoro."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Qual è la città famosa per la Torre Pendente?",
+        "opts": [
+          "Firenze",
+          "Siena",
+          "Pisa",
+          "Lucca"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Come si chiama il museo più famoso di Firenze?",
+        "opts": [
+          "La Scala",
+          "Gli Uffizi",
+          "Il Colosseo",
+          "La Biennale"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Qual è il vino tipico della Toscana?",
+        "opts": [
+          "Il Barolo",
+          "Il Prosecco",
+          "Il Chianti",
+          "Il Primitivo"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  "lazio": {
+    "emoji": "🏛️",
+    "lines": [
+      {
+        "it": "Il Lazio è la regione dove si trova Roma, la capitale d'Italia.",
+        "en": "Lazio is the region where Rome, the capital of Italy, is located."
+      },
+      {
+        "it": "Roma è chiamata \"La Città Eterna\" perché ha più di 2.700 anni di storia.",
+        "en": "Rome is called \"The Eternal City\" because it has more than 2,700 years of history."
+      },
+      {
+        "it": "Il Colosseo è il simbolo di Roma. Era un anfiteatro dove i romani guardavano i gladiatori.",
+        "en": "The Colosseum is the symbol of Rome. It was an amphitheatre where Romans watched gladiators."
+      },
+      {
+        "it": "Il Vaticano si trova a Roma. È il paese più piccolo del mondo e la sede del Papa.",
+        "en": "The Vatican is in Rome. It is the smallest country in the world and the home of the Pope."
+      },
+      {
+        "it": "La Fontana di Trevi è molto famosa. I turisti buttano una moneta nell'acqua per tornare a Roma.",
+        "en": "The Trevi Fountain is very famous. Tourists throw a coin in the water to return to Rome."
+      },
+      {
+        "it": "I piatti tipici romani sono la carbonara, la cacio e pepe e la pasta all'amatriciana.",
+        "en": "Typical Roman dishes are carbonara, cacio e pepe and pasta all'amatriciana."
+      },
+      {
+        "it": "Roma è una città che si può visitare in tutte le stagioni dell'anno.",
+        "en": "Rome is a city that can be visited in all seasons of the year."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Come viene chiamata Roma?",
+        "opts": [
+          "\"La Bella\"",
+          "\"La Grassa\"",
+          "\"La Città Eterna\"",
+          "\"La Grande\""
+        ],
+        "a": 2
+      },
+      {
+        "q": "Cosa fanno i turisti alla Fontana di Trevi?",
+        "opts": [
+          "Mangiano la pizza",
+          "Buttano una moneta",
+          "Guardano i gladiatori",
+          "Comprano souvenir"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quale piatto tipico romano usa il pecorino e il pepe?",
+        "opts": [
+          "La carbonara",
+          "La cacio e pepe",
+          "L'amatriciana",
+          "La gricia"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  "campania": {
+    "emoji": "🍕",
+    "lines": [
+      {
+        "it": "La Campania è una regione del sud Italia, famosa per Napoli e la pizza.",
+        "en": "Campania is a region of southern Italy, famous for Naples and pizza."
+      },
+      {
+        "it": "Napoli è la città dove è nata la pizza. La pizza napoletana è famosa in tutto il mondo.",
+        "en": "Naples is the city where pizza was born. Neapolitan pizza is famous throughout the world."
+      },
+      {
+        "it": "Vicino a Napoli ci sono Pompei ed Ercolano, due città romane distrutte dal Vesuvio.",
+        "en": "Near Naples there are Pompeii and Herculaneum, two Roman cities destroyed by Vesuvius."
+      },
+      {
+        "it": "Il Vesuvio è un vulcano ancora attivo. I turisti possono salire fino al cratere.",
+        "en": "Vesuvius is a still active volcano. Tourists can climb up to the crater."
+      },
+      {
+        "it": "La Costiera Amalfitana è una delle zone più belle d'Italia, con paesi colorati sulle scogliere.",
+        "en": "The Amalfi Coast is one of the most beautiful areas in Italy, with colourful villages on the cliffs."
+      },
+      {
+        "it": "L'isola di Capri è famosa per le sue acque azzurre e la Grotta Azzurra.",
+        "en": "The island of Capri is famous for its blue waters and the Blue Grotto."
+      },
+      {
+        "it": "Oltre alla pizza, la Campania è famosa per la mozzarella di bufala e i frutti di mare.",
+        "en": "Besides pizza, Campania is famous for buffalo mozzarella and seafood."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Cosa è successo a Pompei ed Ercolano?",
+        "opts": [
+          "Sono state allagate dal mare",
+          "Sono state distrutte dal Vesuvio",
+          "Sono state bruciate da un incendio",
+          "Sono state conquistate dai romani"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Come si chiama la famosa grotta sull'isola di Capri?",
+        "opts": [
+          "Grotta Verde",
+          "Grotta Rossa",
+          "Grotta Azzurra",
+          "Grotta Nera"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Qual è il tipo di mozzarella tipica della Campania?",
+        "opts": [
+          "Di pecora",
+          "Di capra",
+          "Di bufala",
+          "Di mucca"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  "sicilia": {
+    "emoji": "🍋",
+    "lines": [
+      {
+        "it": "La Sicilia è l'isola più grande del Mediterraneo.",
+        "en": "Sicily is the largest island in the Mediterranean."
+      },
+      {
+        "it": "Il capoluogo è Palermo, una città con una storia ricchissima.",
+        "en": "The capital is Palermo, a city with a very rich history."
+      },
+      {
+        "it": "La Sicilia è stata dominata da molti popoli: i greci, i romani, gli arabi e i normanni.",
+        "en": "Sicily has been ruled by many peoples: Greeks, Romans, Arabs and Normans."
+      },
+      {
+        "it": "I templi greci di Agrigento sono tra i più belli e meglio conservati del mondo.",
+        "en": "The Greek temples of Agrigento are among the most beautiful and best-preserved in the world."
+      },
+      {
+        "it": "L'Etna è il vulcano più alto d'Europa. È ancora attivo e si può visitare.",
+        "en": "Etna is the highest volcano in Europe. It is still active and can be visited."
+      },
+      {
+        "it": "I piatti tipici sono la pasta alla norma, gli arancini di riso e la caponata.",
+        "en": "Typical dishes are pasta alla norma, rice arancini and caponata."
+      },
+      {
+        "it": "Per il dolce, il cannolo siciliano e la granita di limone sono famosi in tutto il mondo.",
+        "en": "For dessert, Sicilian cannolo and lemon granita are famous throughout the world."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Qual è il vulcano più alto d'Europa?",
+        "opts": [
+          "Il Vesuvio",
+          "Lo Stromboli",
+          "L'Etna",
+          "Il Vulcano"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Quale popolo, oltre ai greci, ha dominato la Sicilia?",
+        "opts": [
+          "I francesi",
+          "Gli arabi",
+          "Gli spagnoli",
+          "I tedeschi"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Cos'è un arancino?",
+        "opts": [
+          "Un dolce al cioccolato",
+          "Una pasta al forno",
+          "Una pallina di riso fritta",
+          "Un tipo di pizza"
+        ],
+        "a": 2
+      }
+    ]
+  }
+}

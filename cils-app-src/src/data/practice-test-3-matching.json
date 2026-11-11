@@ -1,0 +1,70 @@
+{
+  "notices": [
+    [
+      "1",
+      "Acqua & Sapone — Grande catena di negozi cerca addetti/e alle vendite su tutto il territorio."
+    ],
+    [
+      "2",
+      "Progetto \"FareScuola\" — Progetto per dare gratuitamente materiali didattici alle scuole."
+    ],
+    [
+      "3",
+      "Offerta TIM International — Minuti illimitati, 300 minuti internazionali e 10 Giga a 11€/mese."
+    ],
+    [
+      "4",
+      "Corsi di italiano — La scuola \"Vivelingue\" organizza corsi gratuiti di italiano a Brescia."
+    ],
+    [
+      "5",
+      "Avviso ai genitori — Lunedì 8 maggio c'è un incontro scuola-famiglia per alcune classi."
+    ],
+    [
+      "6",
+      "Campi estivi — Il Comune di Bologna organizza attività estive per bambini dai 4 ai 14 anni."
+    ]
+  ],
+  "options": [
+    [
+      "A",
+      "Puoi trovare materiali didattici in tutte le librerie. L'offerta è valida fino alla fine del mese."
+    ],
+    [
+      "B",
+      "Per partecipare invia il tuo curriculum vitae con foto. Puoi trovare altre informazioni online."
+    ],
+    [
+      "C",
+      "Per viaggiare all'estero è necessario avere un documento d'identità valido."
+    ],
+    [
+      "D",
+      "Al termine del corso puoi sostenere un esame di certificazione di livello A2 gratuitamente."
+    ],
+    [
+      "E",
+      "Le scuole che vogliono partecipare devono fare un'iscrizione gratuita."
+    ],
+    [
+      "F",
+      "Se paghi con carta di credito hai uno sconto di 2€ ogni mese."
+    ],
+    [
+      "G",
+      "L'incontro è alle 16.00 presso la sede della scuola \"Coppino\", in Via Cristoforo Colombo, 36."
+    ],
+    [
+      "H",
+      "Lo scopo dei campi è far divertire i ragazzi e creare occasioni di incontro con altri giovani."
+    ]
+  ],
+  "ans": [
+    "B",
+    "E",
+    "F",
+    "D",
+    "G",
+    "H"
+  ]
+}

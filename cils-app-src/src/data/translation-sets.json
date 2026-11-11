@@ -1,0 +1,372 @@
+[
+  {
+    "id": "tr-pronomi",
+    "label": "Pronomi",
+    "emoji": "🎯",
+    "items": [
+      {
+        "en": "I see her every day at the bus stop.",
+        "it": "La vedo ogni giorno alla fermata dell'autobus.",
+        "note": "direct pronoun la before the verb"
+      },
+      {
+        "en": "Did you call him? — Yes, I called him yesterday.",
+        "it": "L'hai chiamato? — Sì, l'ho chiamato ieri.",
+        "note": "lo → l' before ho/hai; participle stays -o"
+      },
+      {
+        "en": "Can you help me, please?",
+        "it": "Puoi aiutarmi, per favore?",
+        "alt": "Mi puoi aiutare, per favore?",
+        "note": "pronoun attaches to infinitive OR goes before the modal"
+      },
+      {
+        "en": "I give her the keys tomorrow.",
+        "it": "Le do le chiavi domani.",
+        "note": "indirect le = to her"
+      },
+      {
+        "en": "The apples? I bought them at the market.",
+        "it": "Le mele? Le ho comprate al mercato.",
+        "note": "with direct la/le/lo/li + passato prossimo the participle AGREES: comprate"
+      },
+      {
+        "en": "I write to him every week.",
+        "it": "Gli scrivo ogni settimana.",
+        "note": "indirect gli = to him"
+      },
+      {
+        "en": "Do you know Marco? — Yes, I know him well.",
+        "it": "Conosci Marco? — Sì, lo conosco bene.",
+        "note": "direct lo"
+      },
+      {
+        "en": "Wait for me, I'm coming!",
+        "it": "Aspettami, arrivo!",
+        "alt": "Aspettatemi, arrivo!",
+        "note": "pronoun attaches to the imperative: aspetta + mi"
+      }
+    ]
+  },
+  {
+    "id": "tr-preposizioni",
+    "label": "Preposizioni",
+    "emoji": "🧲",
+    "items": [
+      {
+        "en": "I go to the doctor at ten o'clock.",
+        "it": "Vado dal medico alle dieci.",
+        "note": "da + person, alle + time"
+      },
+      {
+        "en": "The books are on the shelves.",
+        "it": "I libri sono sugli scaffali.",
+        "note": "su + gli = sugli"
+      },
+      {
+        "en": "I have lived in Milan for two years.",
+        "it": "Abito a Milano da due anni.",
+        "note": "da + duration still true — present tense in Italian!"
+      },
+      {
+        "en": "The keys are in the backpack.",
+        "it": "Le chiavi sono nello zaino.",
+        "note": "in + lo = nello"
+      },
+      {
+        "en": "Tonight we eat at my grandparents' place.",
+        "it": "Stasera mangiamo dai nonni.",
+        "note": "da + i = dai (at someone's home)"
+      },
+      {
+        "en": "The shop is open from nine to seven.",
+        "it": "Il negozio è aperto dalle nove alle sette.",
+        "note": "dalle…alle… for schedules"
+      }
+    ]
+  },
+  {
+    "id": "tr-tempi",
+    "label": "Tempi",
+    "emoji": "⏳",
+    "items": [
+      {
+        "en": "Yesterday I went to the market with my husband.",
+        "it": "Ieri sono andata al mercato con mio marito.",
+        "alt": "Ieri sono andato al mercato con mio marito.",
+        "note": "andare → essere; participle agrees with the speaker"
+      },
+      {
+        "en": "While I was studying, the phone rang.",
+        "it": "Mentre studiavo, ha squillato il telefono.",
+        "note": "video (imperfetto) + photo (passato prossimo)"
+      },
+      {
+        "en": "When I was a child, I lived in the countryside.",
+        "it": "Da bambina abitavo in campagna.",
+        "alt": "Quando ero bambina, abitavo in campagna.",
+        "note": "childhood habit → imperfetto"
+      },
+      {
+        "en": "Tomorrow I will work until six.",
+        "it": "Domani lavorerò fino alle sei.",
+        "alt": "Domani lavoro fino alle sei.",
+        "note": "futuro — or the present, common for near plans"
+      },
+      {
+        "en": "Next year we will go to Italy.",
+        "it": "L'anno prossimo andremo in Italia.",
+        "note": "andare → irregular future andr-"
+      },
+      {
+        "en": "Every summer we used to go to the seaside.",
+        "it": "Ogni estate andavamo al mare.",
+        "note": "repeated past habit → imperfetto"
+      }
+    ]
+  },
+  {
+    "id": "tr-orale",
+    "label": "Frasi per l'Orale",
+    "emoji": "🎤",
+    "items": [
+      {
+        "en": "I wake up at seven and get ready for work.",
+        "it": "Mi sveglio alle sette e mi preparo per il lavoro.",
+        "note": "reflexives: mi sveglio, mi preparo — the exam's giornata tipo!"
+      },
+      {
+        "en": "I really like Italian dishes.",
+        "it": "Mi piacciono molto i piatti italiani.",
+        "note": "plural thing → piacciono, not piace"
+      },
+      {
+        "en": "I like my job, but I don't like the schedule.",
+        "it": "Mi piace il mio lavoro, ma non mi piace l'orario.",
+        "note": "piacere: the THING is the subject"
+      },
+      {
+        "en": "My mother lives in India with my brother.",
+        "it": "Mia madre vive in India con mio fratello.",
+        "note": "NO article with singular family members: mia madre, not \"la mia madre\""
+      },
+      {
+        "en": "In my free time I go for a walk or watch a film.",
+        "it": "Nel tempo libero faccio una passeggiata o guardo un film.",
+        "note": "fare una passeggiata — monologue staple"
+      },
+      {
+        "en": "I have been working in this company for six months.",
+        "it": "Lavoro in questa azienda da sei mesi.",
+        "note": "da + PRESENT for still-true durations"
+      },
+      {
+        "en": "On Sundays we visit our friends.",
+        "it": "La domenica andiamo a trovare i nostri amici.",
+        "note": "la domenica = every Sunday; visiting people = andare a trovare"
+      },
+      {
+        "en": "I can't come tomorrow because I have to work.",
+        "it": "Non posso venire domani perché devo lavorare.",
+        "note": "modals potere/dovere + infinitive"
+      }
+    ]
+  },
+  {
+    "id": "tr-scritto",
+    "label": "Frasi per la Scrittura",
+    "emoji": "✍️",
+    "items": [
+      {
+        "en": "Dear Madam, I would like to ask for some information.",
+        "it": "Gentile Signora, vorrei chiedere alcune informazioni.",
+        "note": "formal email opener + vorrei"
+      },
+      {
+        "en": "I arrived in Italy two years ago with my family.",
+        "it": "Sono arrivata in Italia due anni fa con la mia famiglia.",
+        "alt": "Sono arrivato in Italia due anni fa con la mia famiglia.",
+        "note": "arrivare → essere; fa = ago"
+      },
+      {
+        "en": "Could you send me the timetable, please?",
+        "it": "Mi può mandare l'orario, per favore?",
+        "alt": "Può mandarmi l'orario, per favore?",
+        "note": "formal Lei + pronoun before modal or attached to infinitive"
+      },
+      {
+        "en": "I am writing to you because I need a certificate.",
+        "it": "Le scrivo perché ho bisogno di un certificato.",
+        "note": "Le scrivo (formal indirect) + avere bisogno DI"
+      },
+      {
+        "en": "Thank you for your help. Best regards.",
+        "it": "La ringrazio per il suo aiuto. Cordiali saluti.",
+        "note": "La ringrazio — formal direct pronoun"
+      },
+      {
+        "en": "Unfortunately I cannot come to the appointment on Monday.",
+        "it": "Purtroppo non posso venire all'appuntamento di lunedì.",
+        "note": "purtroppo + a+l' = all'"
+      },
+      {
+        "en": "Is it possible to move the appointment to Friday?",
+        "it": "È possibile spostare l'appuntamento a venerdì?",
+        "note": "spostare = move (an appointment)"
+      },
+      {
+        "en": "I look forward to your reply.",
+        "it": "Aspetto una sua risposta.",
+        "note": "simple A2 closer for formal emails"
+      }
+    ]
+  },
+  {
+    "id": "tr-mix",
+    "label": "Grammatica sotto esame",
+    "emoji": "🔬",
+    "items": [
+      {
+        "en": "The oranges? I already bought them.",
+        "it": "Le arance? Le ho già comprate.",
+        "note": "pronoun le + participle agreement + già before the participle"
+      },
+      {
+        "en": "How many brothers do you have? — I have two.",
+        "it": "Quanti fratelli hai? — Ne ho due.",
+        "note": "ne = \"of them\" with quantities"
+      },
+      {
+        "en": "There is a pharmacy near the station.",
+        "it": "C'è una farmacia vicino alla stazione.",
+        "note": "c'è + vicino A"
+      },
+      {
+        "en": "There are many shops in my neighbourhood.",
+        "it": "Ci sono molti negozi nel mio quartiere.",
+        "note": "plural → ci sono"
+      },
+      {
+        "en": "I never eat meat in the evening.",
+        "it": "Non mangio mai carne la sera.",
+        "alt": "La sera non mangio mai carne.",
+        "note": "non…mai — Italian keeps both"
+      },
+      {
+        "en": "Milan is bigger than my city.",
+        "it": "Milano è più grande della mia città.",
+        "note": "più…di + article = della"
+      },
+      {
+        "en": "Call me tonight, please!",
+        "it": "Chiamami stasera, per favore!",
+        "note": "imperative + pronoun attached: chiama+mi"
+      },
+      {
+        "en": "We are tired because we worked a lot.",
+        "it": "Siamo stanchi perché abbiamo lavorato molto.",
+        "alt": "Siamo stanche perché abbiamo lavorato molto.",
+        "note": "stanchi/e agrees; lavorare takes avere"
+      },
+      {
+        "en": "Did you all have fun at the party?",
+        "it": "Vi siete divertiti alla festa?",
+        "alt": "Vi siete divertite alla festa?",
+        "note": "reflexive past → essere + agreement: divertiti/e"
+      },
+      {
+        "en": "Who did you go to the cinema with?",
+        "it": "Con chi sei andato al cinema?",
+        "alt": "Con chi sei andata al cinema?",
+        "note": "con chi opens; andare → essere with agreement"
+      }
+    ]
+  },
+  {
+    "id": "tr-esame",
+    "label": "Situazioni d'esame",
+    "emoji": "🎓",
+    "items": [
+      {
+        "en": "Excuse me, where is the nearest pharmacy?",
+        "it": "Mi scusi, dov'è la farmacia più vicina?",
+        "note": "polite Lei form: mi scusi"
+      },
+      {
+        "en": "I would like to book a table for two, please.",
+        "it": "Vorrei prenotare un tavolo per due, per favore.",
+        "note": "vorrei = polite request"
+      },
+      {
+        "en": "What documents do I need to bring?",
+        "it": "Quali documenti devo portare?",
+        "note": "quali + dovere"
+      },
+      {
+        "en": "I have been living here for three months and I am looking for a job.",
+        "it": "Abito qui da tre mesi e cerco un lavoro.",
+        "note": "da + present; cercare (no preposition)"
+      },
+      {
+        "en": "Could you repeat, please? I didn't understand.",
+        "it": "Può ripetere, per favore? Non ho capito.",
+        "note": "exam lifesaver — memorize it!"
+      },
+      {
+        "en": "How much does it cost and when can I start?",
+        "it": "Quanto costa e quando posso cominciare?",
+        "note": "two exam-typical questions joined"
+      }
+    ]
+  },
+  {
+    "id": "tr-preferiti",
+    "label": "I miei preferiti",
+    "emoji": "💚",
+    "items": [
+      {
+        "en": "My favourite season is spring because the days are longer.",
+        "it": "La mia stagione preferita è la primavera perché le giornate sono più lunghe.",
+        "note": "article + possessive: LA mia stagione (only family drops the article!)"
+      },
+      {
+        "en": "My favourite place is the park near my house.",
+        "it": "Il mio posto preferito è il parco vicino a casa mia.",
+        "note": "vicino a + casa mia (no article with casa mia)"
+      },
+      {
+        "en": "I would like to visit Sicily next summer.",
+        "it": "Mi piacerebbe visitare la Sicilia la prossima estate.",
+        "alt": "Vorrei visitare la Sicilia la prossima estate.",
+        "note": "wishes: mi piacerebbe / vorrei + infinitive"
+      },
+      {
+        "en": "What I like most is walking by the sea.",
+        "it": "Quello che mi piace di più è passeggiare al mare.",
+        "alt": "La cosa che mi piace di più è passeggiare al mare.",
+        "note": "di più = the most"
+      },
+      {
+        "en": "In summer it is too hot for me.",
+        "it": "D'estate fa troppo caldo per me.",
+        "alt": "In estate fa troppo caldo per me.",
+        "note": "weather: FA caldo (not \"è caldo\")"
+      },
+      {
+        "en": "My favourite dish is rice with vegetables — my mother taught it to me.",
+        "it": "Il mio piatto preferito è il riso con le verdure — me l'ha insegnato mia madre.",
+        "note": "double pronoun me l'ha (advanced — even partial credit is a win!)"
+      },
+      {
+        "en": "I have already visited Rome twice.",
+        "it": "Ho già visitato Roma due volte.",
+        "note": "già between avere and the participle"
+      },
+      {
+        "en": "One day I will go to Japan with my husband.",
+        "it": "Un giorno andrò in Giappone con mio marito.",
+        "note": "future andrò + IN with countries"
+      }
+    ]
+  }
+]

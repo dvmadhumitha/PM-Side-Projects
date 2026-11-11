@@ -1,0 +1,142 @@
+[
+  {
+    "id": "al-dal",
+    "emoji": "🧑📍",
+    "title": "Al o dal?",
+    "hook": "Places get A, people get DA.",
+    "rows": [
+      {
+        "it": "Vado al supermercato / alla posta.",
+        "en": "to a PLACE → a"
+      },
+      {
+        "it": "Vado dal medico / dal parrucchiere.",
+        "en": "to a PERSON → da (their office is implied)"
+      },
+      {
+        "it": "Vado al salone = vado dal parrucchiere.",
+        "en": "same errand, two ways: place ↔ person"
+      }
+    ],
+    "watch": "That’s why trattorias are called “Da Gino” — it means “at Gino’s”. And da also means FROM: vengo dalla stazione — the verb tells you which."
+  },
+  {
+    "id": "a-in",
+    "emoji": "🏙️🌍",
+    "title": "A o in? (cities vs countries)",
+    "hook": "Cities take A, countries and regions take IN.",
+    "rows": [
+      {
+        "it": "Abito a Milano. Vado a Roma.",
+        "en": "city → a"
+      },
+      {
+        "it": "Vivo in Italia. Vado in Toscana.",
+        "en": "country / region → in"
+      },
+      {
+        "it": "Sono in farmacia / in banca / in ufficio.",
+        "en": "many everyday places take plain in (no article)"
+      }
+    ],
+    "watch": "Sono nata a Mumbai — birthplace is a city, so a (never “da Mumbai”)."
+  },
+  {
+    "id": "da-tempo",
+    "emoji": "⏳",
+    "title": "Da = since / for (still going)",
+    "hook": "DA + time = it started in the past and is STILL true.",
+    "rows": [
+      {
+        "it": "Studio italiano da tre anni.",
+        "en": "I’ve been studying for 3 years (and still do)"
+      },
+      {
+        "it": "Abito qui da gennaio.",
+        "en": "I’ve lived here since January"
+      },
+      {
+        "it": "Ho studiato per due ore.",
+        "en": "finished duration → per, not da"
+      }
+    ],
+    "watch": "Exam favourite: “Da quanto tempo sei in Italia?” → “Da due anni.”"
+  },
+  {
+    "id": "di-poss",
+    "emoji": "🔑",
+    "title": "Di = of / belonging",
+    "hook": "DI links two nouns: whose it is, or what it’s part of.",
+    "rows": [
+      {
+        "it": "Il libro di Maria.",
+        "en": "Maria’s book"
+      },
+      {
+        "it": "La chiave della macchina.",
+        "en": "the car key (di + la = della)"
+      },
+      {
+        "it": "Di dove sei? — Sono di Mumbai.",
+        "en": "origin uses di with essere"
+      }
+    ]
+  },
+  {
+    "id": "a-gusti",
+    "emoji": "🍦",
+    "title": "A = flavours & styles",
+    "hook": "What flavour? A + article — not in!",
+    "rows": [
+      {
+        "it": "Un gelato al cioccolato.",
+        "en": "chocolate ice cream"
+      },
+      {
+        "it": "Una pizza ai funghi.",
+        "en": "mushroom pizza"
+      },
+      {
+        "it": "La marmellata alla fragola.",
+        "en": "strawberry jam"
+      }
+    ],
+    "watch": "“Gelato nel caffè” would put the ice cream inside the coffee ☕ — that’s an affogato, not a flavour!"
+  },
+  {
+    "id": "alle-ore",
+    "emoji": "🕗",
+    "title": "Alle = at (time)",
+    "hook": "Times take LE, so at + time = alle.",
+    "rows": [
+      {
+        "it": "La lezione comincia alle otto.",
+        "en": "at eight"
+      },
+      {
+        "it": "Torno all’una.",
+        "en": "at one — l’una is singular!"
+      },
+      {
+        "it": "Mangio a mezzogiorno.",
+        "en": "noon & midnight take plain a"
+      }
+    ]
+  },
+  {
+    "id": "in-mezzi",
+    "emoji": "🚌",
+    "title": "In = transport",
+    "hook": "How do you travel? IN + vehicle, no article.",
+    "rows": [
+      {
+        "it": "Vado in autobus / in treno / in macchina.",
+        "en": "by bus / train / car"
+      },
+      {
+        "it": "Vado a piedi.",
+        "en": "on foot is the exception — a piedi!"
+      }
+    ]
+  }
+]

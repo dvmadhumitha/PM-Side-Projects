@@ -1,0 +1,88 @@
+{
+  "oggi": [
+    "home"
+  ],
+  "progress": [
+    "home"
+  ],
+  "ascoltop": [
+    "ascolto",
+    "pratica"
+  ],
+  "dialogues": [
+    "ascolto",
+    "dialoghi"
+  ],
+  "shadow": [
+    "ascolto",
+    "shadowing"
+  ],
+  "reading": [
+    "lettura",
+    "pratica"
+  ],
+  "writing": [
+    "scrittura",
+    "pratica"
+  ],
+  "speaking": [
+    "orale",
+    "produzione"
+  ],
+  "esaminatore": [
+    "orale",
+    "esaminatore"
+  ],
+  "exercises": [
+    "grammatica",
+    "esercizi"
+  ],
+  "preposizioni": [
+    "grammatica",
+    "regole"
+  ],
+  "grammar": [
+    "grammatica",
+    "regole"
+  ],
+  "tempi": [
+    "grammatica",
+    "regole"
+  ],
+  "pronomi": [
+    "grammatica",
+    "regole"
+  ],
+  "traduzione": [
+    "grammatica",
+    "traduzione"
+  ],
+  "serie": [
+    "esame",
+    "serie"
+  ],
+  "flash": [
+    "vocabolario",
+    "flashcards"
+  ],
+  "scenes": [
+    "vocabolario",
+    "dizionario"
+  ],
+  "photos": [
+    "vocabolario",
+    "scopri"
+  ],
+  "phrases": [
+    "vocabolario",
+    "frasi"
+  ],
+  "daily": [
+    "esame",
+    "daily"
+  ],
+  "exam": [
+    "esame",
+    "test"
+  ]
+}

@@ -1,0 +1,831 @@
+[
+  {
+    "id": "cloze-lavoro",
+    "type": "cloze",
+    "topic": "Annuncio di lavoro",
+    "emoji": "💼",
+    "intro": "Read the job advertisement and fill each gap with the correct word from the dropdown.",
+    "text": "Cerchiamo una persona (1)___ e disponibile per lavorare come (2)___ in un bar nel centro di Bologna. Il lavoro è (3)___ dal lunedì al sabato, dalle 7 alle 14. È (4)___ avere esperienza, ma non è obbligatoria. Offriamo un (5)___ regolare e un ambiente di lavoro (6)___. Per candidarsi, inviare il curriculum via (7)___ all'indirizzo lavoro@barcentro.it entro il 30 giugno.",
+    "blanks": [
+      {
+        "opts": [
+          "seria",
+          "piccola",
+          "lontana",
+          "nuova"
+        ],
+        "a": 0
+      },
+      {
+        "opts": [
+          "medico",
+          "barista",
+          "insegnante",
+          "meccanico"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "gratuito",
+          "aperto",
+          "a tempo pieno",
+          "facile"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "necessario",
+          "possibile",
+          "utile",
+          "difficile"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "corso",
+          "contratto",
+          "permesso",
+          "diploma"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "pericoloso",
+          "lontano",
+          "piacevole",
+          "complicato"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "telefono",
+          "email",
+          "lettera",
+          "fax"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "cloze-salute",
+    "type": "cloze",
+    "topic": "Informazioni sanitarie",
+    "emoji": "🏥",
+    "intro": "Read this information leaflet from a health centre and fill each gap.",
+    "text": "Il Centro Medico \"Salute per Tutti\" offre (1)___ mediche gratuite ai cittadini stranieri che non hanno ancora un medico di (2)___. Per prenotare una visita, è necessario (3)___ al numero 055 123 456 o mandare un'(4)___ all'indirizzo info@salutepertutti.it. Portare sempre un (5)___ d'identità valido e il (6)___ di soggiorno. Il centro è aperto dal lunedì al (7)___, dalle 9 alle 17.",
+    "blanks": [
+      {
+        "opts": [
+          "visite",
+          "lezioni",
+          "corsi",
+          "feste"
+        ],
+        "a": 0
+      },
+      {
+        "opts": [
+          "lavoro",
+          "base",
+          "famiglia",
+          "casa"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "scrivere",
+          "telefonare",
+          "andare",
+          "aspettare"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "lettera",
+          "sms",
+          "email",
+          "modulo"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "biglietto",
+          "documento",
+          "contratto",
+          "certificato"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "passaporto",
+          "permesso",
+          "diploma",
+          "modulo"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "domenica",
+          "sabato",
+          "venerdì",
+          "lunedì"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "cloze-corso",
+    "type": "cloze",
+    "topic": "Iscrizione a un corso",
+    "emoji": "📚",
+    "intro": "Fill the gaps in this course registration notice.",
+    "text": "Il Comune di Firenze organizza corsi gratuiti di (1)___ italiana per stranieri. I corsi si (2)___ ogni martedì e giovedì dalle 18 alle 20. Per (3)___ è necessario compilare il (4)___ disponibile allo sportello o sul sito del Comune. I posti sono (5)___ — solo 20 per classe. Non è richiesto nessun (6)___ precedente. Il corso dura (7)___ mesi e al termine si sostiene un esame.",
+    "blanks": [
+      {
+        "opts": [
+          "matematica",
+          "lingua",
+          "musica",
+          "cucina"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "svolgono",
+          "chiudono",
+          "aprono",
+          "trovano"
+        ],
+        "a": 0
+      },
+      {
+        "opts": [
+          "pagare",
+          "iscriversi",
+          "lavorare",
+          "studiare"
+        ],
+        "a": 1
+      },
+      {
+        "opts": [
+          "biglietto",
+          "passaporto",
+          "modulo",
+          "contratto"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "gratis",
+          "lunghi",
+          "limitati",
+          "difficili"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "documento",
+          "voto",
+          "livello",
+          "titolo"
+        ],
+        "a": 2
+      },
+      {
+        "opts": [
+          "due",
+          "dieci",
+          "venti",
+          "tre"
+        ],
+        "a": 3
+      }
+    ]
+  },
+  {
+    "id": "match-servizi",
+    "type": "match",
+    "topic": "Servizi comunali",
+    "emoji": "🏛️",
+    "intro": "Match each notice (1–6) to the correct continuation (A–H). There are two extra continuations you will not need.",
+    "notices": [
+      [
+        "1",
+        "Anagrafe — Ufficio Certificati\nRilascia certificati di residenza, stato di famiglia, nascita e matrimonio. È necessario prenotare online."
+      ],
+      [
+        "2",
+        "Corso di italiano per adulti stranieri\nLezioni tre volte a settimana. Livelli A1–B1. Materiale didattico fornito gratuitamente."
+      ],
+      [
+        "3",
+        "Avviso: interruzione acqua\nMercoledì 25 giugno dalle 8 alle 14, l'acqua sarà interrotta in Via Roma e strade limitrofe per lavori alla rete."
+      ],
+      [
+        "4",
+        "Biblioteca civica — Prestito libri\nPuoi prendere in prestito fino a 5 libri per 30 giorni. Tessera gratuita con documento d'identità."
+      ],
+      [
+        "5",
+        "Sportello lavoro\nAiuta i cittadini a trovare offerte di lavoro, preparare il curriculum e simulare colloqui."
+      ],
+      [
+        "6",
+        "Raccolta differenziata\nDa lunedì 1 luglio cambiano i giorni di raccolta. Carta e cartone: lunedì. Vetro: mercoledì. Plastica: venerdì."
+      ]
+    ],
+    "options": [
+      [
+        "A",
+        "Per iscriversi portare la tessera sanitaria e un documento valido. Il primo mese è gratuito."
+      ],
+      [
+        "B",
+        "Il servizio è aperto dal lunedì al venerdì. Gli appuntamenti si prenotano sul sito del Comune o di persona."
+      ],
+      [
+        "C",
+        "Si consiglia di fare scorta di acqua la sera prima. Le famiglie con bambini piccoli possono chiamare il numero verde."
+      ],
+      [
+        "D",
+        "Il servizio è rivolto a chi cerca la prima occupazione o vuole cambiare lavoro. È gratuito per i residenti."
+      ],
+      [
+        "E",
+        "I nuovi orari entrano in vigore dal 1 luglio. Tenere il calendario aggiornato e rispettare i giorni indicati."
+      ],
+      [
+        "F",
+        "È possibile rinnovare i libri anche online dal proprio profilo. In caso di ritardo si paga 0,20€ al giorno."
+      ],
+      [
+        "G",
+        "Per i certificati urgenti è possibile richiederli anche via email allegando fotocopia del documento d'identità."
+      ],
+      [
+        "H",
+        "Le lezioni si tengono presso il Centro Civico di Via Manzoni 12. L'iscrizione è aperta fino al 15 settembre."
+      ]
+    ],
+    "ans": [
+      "B",
+      "H",
+      "C",
+      "F",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "match-annunci",
+    "type": "match",
+    "topic": "Annunci e offerte",
+    "emoji": "📌",
+    "intro": "Match each advertisement (1–6) to the correct continuation (A–H).",
+    "notices": [
+      [
+        "1",
+        "Palestra \"Movimento\" — Offerta lancio\nIscriviti entro il 30 giugno e ricevi il primo mese gratuito. Corsi di yoga, pilates, nuoto e fitness."
+      ],
+      [
+        "2",
+        "Appartamento in affitto — Zona centro\nBilocale, 3° piano con ascensore. 750€/mese spese escluse. Libero dal 1 agosto."
+      ],
+      [
+        "3",
+        "Scuola guida \"Sicura\"\nCorsi intensivi per patente B. Lezioni teoriche online e pratiche con istruttori qualificati."
+      ],
+      [
+        "4",
+        "Mercatino dell'usato — domenica 22 giugno\nVendi e compra oggetti di seconda mano. Abbigliamento, libri, elettronica e tanto altro. Ingresso libero."
+      ],
+      [
+        "5",
+        "Babysitter cercasi\nFamiglia cerca babysitter per due bambini (4 e 7 anni), il pomeriggio dalle 16 alle 19. Rimborso spese incluso."
+      ],
+      [
+        "6",
+        "Ristorante \"Da Lucia\" — Menu fisso\nPrimo, secondo, contorno e acqua a 12€. Solo a pranzo, dal lunedì al venerdì."
+      ]
+    ],
+    "options": [
+      [
+        "A",
+        "L'esame teorico si può fare anche in lingua straniera. Chiedi informazioni allo sportello."
+      ],
+      [
+        "B",
+        "Esperienza con bambini richiesta. Inviare curriculum e referenze a famiglia.rossi@email.it."
+      ],
+      [
+        "C",
+        "Non è richiesta esperienza di cucina. Basta portare la voglia di divertirsi e scambiare oggetti."
+      ],
+      [
+        "D",
+        "Il menu cambia ogni giorno. Non occorre prenotare ma i posti sono limitati — arriva entro le 12.30."
+      ],
+      [
+        "E",
+        "L'offerta è valida per i nuovi iscritti. Non è cumulabile con altre promozioni. Tessera annuale 350€."
+      ],
+      [
+        "F",
+        "Per visitare l'appartamento contattare l'agenzia al 333 456 789 o scrivere a info@casabell.it."
+      ],
+      [
+        "G",
+        "L'ingresso è gratuito ma bisogna prenotare il posto online entro sabato 21 giugno."
+      ],
+      [
+        "H",
+        "Il mercatino si tiene in Piazza Garibaldi dalle 9 alle 18. In caso di pioggia l'evento è rimandato."
+      ]
+    ],
+    "ans": [
+      "E",
+      "F",
+      "A",
+      "H",
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "comp-lettera",
+    "type": "comprehension",
+    "topic": "Una lettera ad un amico",
+    "emoji": "✉️",
+    "intro": "Read the letter and answer the questions.",
+    "text": "Cara Sofia,\n\ncome stai? Spero bene! Sono molto contenta di scriverti perché ho delle buone notizie: ho trovato lavoro! Dopo tre mesi di ricerca, ho firmato un contratto part-time in un asilo nido come assistente educativa. Inizierò il primo luglio. Sono un po' nervosa perché sarà la mia prima esperienza in Italia, ma anche molto entusiasta.\n\nL'asilo è vicino a casa mia — ci vogliono solo dieci minuti a piedi. L'orario è dalle 8 alle 13, dal lunedì al venerdì. Il sabato sono libera, quindi potremmo vederci! Che ne dici di pranzare insieme sabato 28 giugno?\n\nHo anche un'altra notizia: mi sono iscritta a un corso di italiano avanzato. Le lezioni sono il martedì e il giovedì sera. Voglio migliorare il mio italiano per comunicare meglio con i colleghi e i genitori dei bambini.\n\nAspetto una tua risposta. Tanti saluti,\nAmina",
+    "questions": [
+      {
+        "q": "Che lavoro ha trovato Amina?",
+        "opts": [
+          "Insegnante di italiano",
+          "Assistente in un asilo nido",
+          "Barista in un bar vicino a casa",
+          "Impiegata in un ufficio"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quando inizia a lavorare?",
+        "opts": [
+          "Il 28 giugno",
+          "Il primo luglio",
+          "Il primo giugno",
+          "Il 30 luglio"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Perché Amina è nervosa?",
+        "opts": [
+          "Non conosce i bambini",
+          "Non sa dove si trova l'asilo",
+          "È la prima volta che lavora in Italia",
+          "Il contratto è troppo corto"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Quando propone di incontrarsi con Sofia?",
+        "opts": [
+          "Martedì sera",
+          "Giovedì sera",
+          "Sabato a pranzo",
+          "Domenica mattina"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Perché Amina studia italiano avanzato?",
+        "opts": [
+          "Per trovare un lavoro migliore",
+          "Per comunicare meglio al lavoro",
+          "Perché il corso è gratuito",
+          "Per passare l'esame di cittadinanza"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "comp-articolo",
+    "type": "comprehension",
+    "topic": "Articolo: immigrazione e integrazione",
+    "emoji": "🌍",
+    "intro": "Read the article and answer the questions.",
+    "text": "In Italia vivono oggi circa 5 milioni di cittadini stranieri, pari all'8% della popolazione totale. Molti di loro lavorano nei settori dell'edilizia, della ristorazione, dell'agricoltura e dell'assistenza alle persone anziane.\n\nPer ottenere la cittadinanza italiana, un cittadino straniero deve in genere vivere legalmente in Italia per almeno 10 anni. Deve inoltre dimostrare di conoscere la lingua italiana almeno al livello A2, tramite una certificazione come il CILS o il CELI.\n\nMolti comuni italiani organizzano corsi gratuiti di italiano per stranieri, spesso tenuti da insegnanti volontari. Questi corsi aiutano le persone a integrarsi meglio nella società italiana: a capire i documenti, a comunicare con gli uffici pubblici e a trovare lavoro.\n\nL'integrazione non è sempre facile. Molti stranieri devono affrontare difficoltà linguistiche, burocratiche e culturali. Tuttavia, secondo recenti sondaggi, la maggior parte si dice soddisfatta della propria vita in Italia e vuole restare nel paese.",
+    "questions": [
+      {
+        "q": "Quanti cittadini stranieri vivono in Italia?",
+        "opts": [
+          "Circa 5 mila",
+          "Circa 5 milioni",
+          "Circa 8 milioni",
+          "Circa 10 milioni"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Qual è il livello minimo di italiano richiesto per la cittadinanza?",
+        "opts": [
+          "A1",
+          "B1",
+          "B2",
+          "A2"
+        ],
+        "a": 3
+      },
+      {
+        "q": "Chi organizza spesso i corsi di italiano per stranieri?",
+        "opts": [
+          "Le scuole private",
+          "I comuni italiani",
+          "Le aziende",
+          "Le ambasciate"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Dopo quanti anni di residenza legale si può chiedere la cittadinanza?",
+        "opts": [
+          "5 anni",
+          "8 anni",
+          "10 anni",
+          "12 anni"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Cosa dicono i sondaggi sugli stranieri in Italia?",
+        "opts": [
+          "Vogliono tutti tornare nel loro paese",
+          "La maggior parte è insoddisfatta",
+          "La maggior parte vuole restare in Italia",
+          "Nessuno vuole studiare italiano"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "comp-volantino",
+    "type": "comprehension",
+    "topic": "Volantino: evento culturale",
+    "emoji": "🎭",
+    "intro": "Read the event flyer and answer the questions.",
+    "text": "FESTA DELLE CULTURE 2026\nDomenica 6 luglio, dalle 15 alle 22\nParco Sempione, Milano\n\nVieni a festeggiare insieme la diversità culturale della nostra città!\n\nProgramma:\n• 15:00 – Apertura con musica dal vivo (gruppi di 5 nazionalità diverse)\n• 16:30 – Laboratori per bambini: danze tradizionali, pittura e cucina\n• 18:00 – Spettacolo di danza: \"Un mondo insieme\"\n• 19:30 – Cena condivisa: porta un piatto tipico del tuo paese!\n• 21:00 – Concerto finale e fuochi d'artificio\n\nL'evento è gratuito e aperto a tutti. In caso di pioggia, l'evento si sposta al Palazzetto dello Sport in Via Aquileia 12.\nPer info: festadelleculture@comune.mi.it",
+    "questions": [
+      {
+        "q": "Quando si svolge la Festa delle Culture?",
+        "opts": [
+          "Sabato 5 luglio",
+          "Domenica 6 luglio",
+          "Lunedì 7 luglio",
+          "Domenica 6 giugno"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Dove si trova il parco dove si svolge l'evento?",
+        "opts": [
+          "Roma",
+          "Torino",
+          "Milano",
+          "Bologna"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Cosa devono portare i partecipanti alla cena condivisa?",
+        "opts": [
+          "Un regalo",
+          "Un piatto tipico del loro paese",
+          "Un biglietto d'ingresso",
+          "Una bevanda"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Cosa succede se piove?",
+        "opts": [
+          "L'evento è annullato",
+          "L'evento viene rimandato a domenica prossima",
+          "L'evento si sposta al Palazzetto dello Sport",
+          "L'evento diventa a pagamento"
+        ],
+        "a": 2
+      },
+      {
+        "q": "A che ora iniziano i laboratori per bambini?",
+        "opts": [
+          "Alle 15:00",
+          "Alle 16:30",
+          "Alle 18:00",
+          "Alle 19:30"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "comp-italiano",
+    "type": "comprehension",
+    "topic": "Perché studio l'italiano",
+    "emoji": "📚",
+    "intro": "Read the text and answer the questions.",
+    "text": "Mi chiamo Yusuf e vengo dalla Turchia. Vivo in Italia da due anni e lavoro in un ristorante come aiuto cuoco. Ho deciso di studiare l'italiano per un motivo semplice: voglio comunicare meglio con i miei colleghi e con i clienti.\n\nQuando sono arrivato, ho avuto molte difficoltà. Non è facile fare la spesa o andare dal medico se non parli bene la lingua. Per questo, sei mesi fa mi sono iscritto a un corso di italiano al comune. Le lezioni sono il lunedì e il mercoledì sera, dopo il lavoro.\n\nIl corso è gratuito e l'insegnante è molto brava. Adesso capisco meglio e parlo con le persone senza paura. Il mio sogno è aprire un giorno un piccolo ristorante mio, e per questo l'italiano è molto importante per me.",
+    "questions": [
+      {
+        "q": "Perché Yusuf studia l'italiano?",
+        "opts": [
+          "Per comunicare meglio al lavoro",
+          "Per tornare in Turchia",
+          "Per trovare una casa",
+          "Perché deve fare un esame"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Dove segue il corso di italiano?",
+        "opts": [
+          "In una scuola privata",
+          "Al comune",
+          "All'università",
+          "A casa online"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Qual è il sogno di Yusuf?",
+        "opts": [
+          "Diventare insegnante",
+          "Aprire un suo ristorante",
+          "Comprare una macchina",
+          "Cambiare città"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "comp-prenotazione",
+    "type": "comprehension",
+    "topic": "Conferma di prenotazione",
+    "emoji": "🏨",
+    "intro": "Read this hotel booking confirmation email and answer the questions.",
+    "text": "Gentile Signor Khan,\n\nLa ringraziamo per la Sua prenotazione presso l'Hotel Sole di Rimini. Le confermiamo i dettagli del Suo soggiorno:\n\n- Camera: doppia con balcone\n- Arrivo: venerdì 5 settembre (check-in dalle ore 14:00)\n- Partenza: domenica 7 settembre (check-out entro le ore 11:00)\n- Prezzo: 90 euro a notte, colazione inclusa\n- Totale: 180 euro\n\nLa colazione è servita dalle 7:30 alle 10:00. L'hotel dispone di un parcheggio gratuito per i clienti. Se desidera annullare la prenotazione, La preghiamo di avvisarci almeno tre giorni prima dell'arrivo.\n\nPer qualsiasi informazione può scriverci a info@hotelsole.it o chiamare il numero 0541 123456.\n\nCordiali saluti,\nLa Reception",
+    "questions": [
+      {
+        "q": "Quante notti resta il signor Khan in hotel?",
+        "opts": [
+          "Una notte",
+          "Due notti",
+          "Tre notti",
+          "Una settimana"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Che cosa è incluso nel prezzo della camera?",
+        "opts": [
+          "La cena",
+          "Il parcheggio a pagamento",
+          "La colazione",
+          "Il pranzo"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Fino a che ora si può fare il check-out?",
+        "opts": [
+          "Fino alle 10:00",
+          "Fino alle 11:00",
+          "Fino alle 14:00",
+          "Fino alle 7:30"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quanto costa in totale il soggiorno?",
+        "opts": [
+          "90 euro",
+          "180 euro",
+          "270 euro",
+          "150 euro"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Cosa deve fare il cliente se vuole annullare la prenotazione?",
+        "opts": [
+          "Pagare una penale",
+          "Avvisare almeno tre giorni prima",
+          "Scrivere una lettera",
+          "Non può annullare"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "comp-questura",
+    "type": "comprehension",
+    "topic": "In questura: informazioni",
+    "emoji": "🛂",
+    "intro": "Read this notice from the immigration office and answer the questions.",
+    "text": "UFFICIO IMMIGRAZIONE — QUESTURA DI TORINO\nInformazioni per i cittadini stranieri\n\nOrari di apertura: dal lunedì al venerdì, dalle 8:30 alle 12:30. Il giovedì l'ufficio è aperto anche il pomeriggio, dalle 15:00 alle 17:00.\n\nCome rinnovare il permesso di soggiorno:\nIl permesso di soggiorno si deve rinnovare almeno 60 giorni prima della scadenza. Per la domanda bisogna compilare il modulo, che si trova all'ufficio postale, e allegare due foto tessera.\n\nDocumento smarrito o rubato:\nSe hai perso il permesso di soggiorno o te l'hanno rubato, devi prima fare una denuncia alla polizia. Poi, con la denuncia, puoi chiedere un duplicato in questura.\n\nPer prenotare un appuntamento, usa il sito www.questura.to.it. Non si ricevono richieste senza appuntamento.",
+    "questions": [
+      {
+        "q": "Quando è aperto anche il pomeriggio l'ufficio?",
+        "opts": [
+          "Il lunedì",
+          "Il mercoledì",
+          "Il giovedì",
+          "Il venerdì"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Quando bisogna rinnovare il permesso di soggiorno?",
+        "opts": [
+          "Il giorno della scadenza",
+          "Almeno 60 giorni prima della scadenza",
+          "Dopo la scadenza",
+          "Ogni anno"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Dove si trova il modulo per la domanda?",
+        "opts": [
+          "In questura",
+          "All'ufficio postale",
+          "Al comune",
+          "In farmacia"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Cosa devi fare per prima cosa se hai perso il permesso di soggiorno?",
+        "opts": [
+          "Chiedere subito un duplicato",
+          "Fare una denuncia alla polizia",
+          "Pagare una multa",
+          "Aspettare 60 giorni"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Come si prenota un appuntamento?",
+        "opts": [
+          "Per telefono",
+          "Di persona allo sportello",
+          "Sul sito internet",
+          "Via email"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "comp-giornata",
+    "type": "comprehension",
+    "topic": "La giornata di Marta, pendolare",
+    "emoji": "🚋",
+    "intro": "Read the text and answer the questions.",
+    "text": "Mi chiamo Marta e lavoro come segretaria in un ufficio del centro. Ogni mattina mi sveglio alle 6:30 e faccio colazione velocemente con un caffè e una fetta di pane. Poi esco di casa alle 7:15 e vado a piedi fino alla fermata dell'autobus, che è a cinque minuti da casa mia.\n\nPrendo l'autobus numero 12 e dopo tre fermate scendo e cambio con la metropolitana. Il viaggio in metro dura circa venti minuti. Di solito leggo le notizie sul telefono o ascolto la musica con le cuffie. Arrivo in ufficio verso le 8:30, giusto in tempo per iniziare a lavorare alle 8:45.\n\nIl pomeriggio finisco di lavorare alle 17:30 e torno a casa con lo stesso percorso, ma al contrario. Il tragitto totale dura circa un'ora, tra andata e ritorno quasi due ore al giorno sui mezzi pubblici! Per fortuna ho l'abbonamento mensile, così non devo comprare il biglietto ogni volta.\n\nLa sera sono sempre un po' stanca, ma sono contenta perché i mezzi pubblici sono comodi ed economici.",
+    "questions": [
+      {
+        "q": "Come si chiama la protagonista del testo?",
+        "opts": [
+          "Carla",
+          "Marta",
+          "Sara",
+          "Anna"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A che ora si sveglia Marta?",
+        "opts": [
+          "Alle 6:30",
+          "Alle 7:15",
+          "Alle 8:30",
+          "Alle 8:45"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Quali mezzi di trasporto usa Marta per andare al lavoro?",
+        "opts": [
+          "Solo l'autobus",
+          "Solo la metropolitana",
+          "L'autobus e la metropolitana",
+          "La macchina"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Perché Marta non deve comprare il biglietto ogni volta?",
+        "opts": [
+          "Perché va a piedi",
+          "Perché ha l'abbonamento mensile",
+          "Perché il trasporto è gratuito",
+          "Perché prende il taxi"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quanto dura circa il tragitto totale (andata e ritorno) ogni giorno?",
+        "opts": [
+          "Venti minuti",
+          "Un'ora",
+          "Quasi due ore",
+          "Tre ore"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "comp-weekend-viaggio",
+    "type": "comprehension",
+    "topic": "Un weekend a Verona",
+    "emoji": "🧳",
+    "intro": "Read the letter and answer the questions.",
+    "text": "Ciao Giulia,\n\nti scrivo per raccontarti il weekend che ho passato a Verona con mio marito. Siamo partiti venerdì sera in treno e siamo arrivati dopo due ore di viaggio. Abbiamo trovato un piccolo hotel vicino al centro storico, non troppo caro.\n\nSabato mattina abbiamo visitato l'Arena di Verona, l'anfiteatro romano famoso per l'opera lirica. Poi abbiamo camminato fino a Casa di Giulietta, dove abbiamo visto il famoso balcone. Nel pomeriggio abbiamo fatto una passeggiata lungo il fiume Adige e abbiamo bevuto un aperitivo in un bar all'aperto.\n\nLa sera abbiamo cenato in una trattoria tipica: abbiamo mangiato i tortellini e abbiamo bevuto un buon vino veronese. Domenica, prima di ripartire, abbiamo comprato dei regali per i bambini in un mercatino in piazza.\n\nSiamo tornati a casa domenica sera, stanchi ma felicissimi. È stata una vacanza breve ma indimenticabile. Ti consiglio di andarci anche tu!\n\nUn abbraccio,\nElena",
+    "questions": [
+      {
+        "q": "Con chi è andata Elena a Verona?",
+        "opts": [
+          "Con un'amica",
+          "Con suo marito",
+          "Da sola",
+          "Con i suoi genitori"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Come sono arrivati a Verona?",
+        "opts": [
+          "In treno",
+          "In macchina",
+          "In aereo",
+          "In autobus"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Cosa hanno visitato sabato mattina?",
+        "opts": [
+          "Il Duomo",
+          "L'Arena di Verona",
+          "Il museo civico",
+          "Il castello"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Cosa hanno fatto domenica prima di ripartire?",
+        "opts": [
+          "Hanno visitato un museo",
+          "Hanno comprato dei regali al mercatino",
+          "Sono andati al mare",
+          "Hanno fatto un giro in barca"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Come si è sentita Elena alla fine del weekend?",
+        "opts": [
+          "Annoiata",
+          "Stanca ma felice",
+          "Delusa",
+          "Preoccupata"
+        ],
+        "a": 1
+      }
+    ]
+  }
+]

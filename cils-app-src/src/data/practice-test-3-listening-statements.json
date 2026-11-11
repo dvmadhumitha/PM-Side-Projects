@@ -1,0 +1,56 @@
+[
+  {
+    "script": "La palestra \"Forma e Salute\" di Via Rossini offre a tutti i nuovi iscritti un mese gratuito. L'offerta è valida solo fino al 30 giugno. Per informazioni chiama il 333 100 200.",
+    "st": "Which statement is true?",
+    "opts": [
+      "A. I nuovi iscritti hanno uno sconto del 50%.",
+      "B. I nuovi iscritti ricevono un mese gratuito."
+    ],
+    "a": 1
+  },
+  {
+    "script": "Attenzione viaggiatori: il treno Intercity 742 per Milano Centrale è in arrivo al binario 5 con un ritardo di circa 15 minuti.",
+    "st": "Which statement is true?",
+    "opts": [
+      "A. Il treno arriva al binario 4.",
+      "B. Il treno arriva con 15 minuti di ritardo."
+    ],
+    "a": 1
+  },
+  {
+    "script": "Il ristorante \"Da Piero\" è aperto tutti i giorni a pranzo e a cena, tranne il mercoledì. Consegnamo a domicilio in tutta la città. Ordina online o chiama il 055 789 123.",
+    "st": "Which statement is true?",
+    "opts": [
+      "A. Il ristorante è aperto anche il mercoledì.",
+      "B. Il ristorante fa consegna a domicilio."
+    ],
+    "a": 1
+  },
+  {
+    "script": "Avviso per i residenti di Via Manzoni: giovedì 19 giugno l'acqua sarà chiusa dalle 8 alle 14 per lavori di manutenzione alla rete idrica.",
+    "st": "Which statement is true?",
+    "opts": [
+      "A. L'acqua sarà chiusa tutto il giorno di giovedì.",
+      "B. L'acqua sarà chiusa giovedì mattina fino alle 14."
+    ],
+    "a": 1
+  },
+  {
+    "script": "Il Comune di Arezzo cerca 10 volontari per il servizio di accompagnamento anziani. Il servizio si svolge dal lunedì al venerdì, mattina o pomeriggio. Per candidarsi inviare una email a volontari@comune.arezzo.it.",
+    "st": "Which statement is true?",
+    "opts": [
+      "A. Il Comune cerca volontari per aiutare gli anziani.",
+      "B. Il servizio di volontariato è solo la sera."
+    ],
+    "a": 0
+  },
+  {
+    "script": "Gentile cliente, la sua auto è pronta. Può venire a ritirarla in qualsiasi momento durante l'orario di apertura: dal lunedì al sabato, dalle 8 alle 18. Il costo della riparazione è di 240 euro.",
+    "st": "Which statement is true?",
+    "opts": [
+      "A. L'auto è pronta e costa 240 euro di riparazione.",
+      "B. L'auto sarà pronta domani mattina."
+    ],
+    "a": 0
+  }
+]

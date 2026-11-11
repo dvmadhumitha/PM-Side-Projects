@@ -1,0 +1,150 @@
+[
+  {
+    "id": "cucina",
+    "title": "In cucina",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/cucina.jpg",
+    "lines": [
+      {
+        "pre": "Il latte è ",
+        "hl": "nel",
+        "post": " frigorifero.",
+        "en": "The milk is in the fridge."
+      },
+      {
+        "pre": "I bicchieri sono ",
+        "hl": "sul",
+        "post": " tavolo.",
+        "en": "The glasses are on the table."
+      },
+      {
+        "pre": "Le mele sono ",
+        "hl": "nella",
+        "post": " borsa.",
+        "en": "The apples are in the bag."
+      },
+      {
+        "pre": "Metto i piatti ",
+        "hl": "negli",
+        "post": " armadietti.",
+        "en": "I put the plates in the cupboards."
+      },
+      {
+        "pre": "La ricetta è ",
+        "hl": "sulla",
+        "post": " porta del frigo.",
+        "en": "The recipe is on the fridge door."
+      }
+    ]
+  },
+  {
+    "id": "soggiorno",
+    "title": "In soggiorno",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/soggiorno.jpg",
+    "lines": [
+      {
+        "pre": "Il gatto dorme ",
+        "hl": "sul",
+        "post": " divano.",
+        "en": "The cat sleeps on the sofa."
+      },
+      {
+        "pre": "I libri sono ",
+        "hl": "sugli",
+        "post": " scaffali.",
+        "en": "The books are on the shelves."
+      },
+      {
+        "pre": "Il telecomando è ",
+        "hl": "sul",
+        "post": " tavolino.",
+        "en": "The remote is on the coffee table."
+      },
+      {
+        "pre": "Le foto sono ",
+        "hl": "alle",
+        "post": " pareti.",
+        "en": "The photos are on the walls. (Italian says \"at\" the walls!)"
+      },
+      {
+        "pre": "La lampada è accanto ",
+        "hl": "alla",
+        "post": " finestra.",
+        "en": "The lamp is next to the window."
+      }
+    ]
+  },
+  {
+    "id": "strada",
+    "title": "Per strada",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/strada.jpg",
+    "lines": [
+      {
+        "pre": "La farmacia è accanto ",
+        "hl": "al",
+        "post": " bar.",
+        "en": "The pharmacy is next to the bar."
+      },
+      {
+        "pre": "L'autobus si ferma davanti ",
+        "hl": "alla",
+        "post": " stazione.",
+        "en": "The bus stops in front of the station."
+      },
+      {
+        "pre": "Le macchine sono ",
+        "hl": "nel",
+        "post": " parcheggio.",
+        "en": "The cars are in the car park."
+      },
+      {
+        "pre": "Il semaforo è ",
+        "hl": "all'",
+        "post": "angolo.",
+        "en": "The traffic light is at the corner."
+      },
+      {
+        "pre": "I nomi delle vie sono ",
+        "hl": "sui",
+        "post": " cartelli blu.",
+        "en": "The street names are on the blue signs."
+      }
+    ]
+  },
+  {
+    "id": "bar",
+    "title": "Al bar",
+    "img": "/PM-Side-Projects/cils-app/img/scenes/bar.jpg",
+    "lines": [
+      {
+        "pre": "Il cornetto è ",
+        "hl": "sul",
+        "post": " piatto.",
+        "en": "The croissant is on the plate."
+      },
+      {
+        "pre": "I clienti sono ",
+        "hl": "al",
+        "post": " tavolo.",
+        "en": "The customers are at the table."
+      },
+      {
+        "pre": "Il barista è dietro ",
+        "hl": "al",
+        "post": " banco.",
+        "en": "The barista is behind the counter."
+      },
+      {
+        "pre": "Pago ",
+        "hl": "alla",
+        "post": " cassa.",
+        "en": "I pay at the till."
+      },
+      {
+        "pre": "Il menù è ",
+        "hl": "sulla",
+        "post": " lavagna.",
+        "en": "The menu is on the blackboard."
+      }
+    ]
+  }
+]

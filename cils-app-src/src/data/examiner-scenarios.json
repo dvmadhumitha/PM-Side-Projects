@@ -1,0 +1,516 @@
+[
+  {
+    "id": "presentazione",
+    "freq": 3,
+    "seen": 2,
+    "label": "La Presentazione",
+    "en": "Introduce yourself",
+    "desc": "L'esaminatore ti fa domande su di te: nome, origine, lavoro, famiglia, giornata tipica.",
+    "examinerRole": "l'esaminatore CILS che conduce il colloquio di presentazione",
+    "userRole": "il candidato",
+    "persona": {
+      "name": "Prof. Ricci",
+      "emoji": "👨‍🏫"
+    },
+    "you": "Sei te stesso/a. Presentati: nome, da dove vieni, cosa fai, la tua famiglia.",
+    "scene": "ufficio.jpg",
+    "accent": "#2E6B5E",
+    "opening": "Buongiorno! Benvenuto. Come si chiama e di dove è?"
+  },
+  {
+    "id": "medico",
+    "freq": 2,
+    "label": "Dal Medico",
+    "en": "At the doctor's",
+    "desc": "Non stai bene. Spiega i sintomi al medico e rispondi alle sue domande.",
+    "examinerRole": "un medico di base gentile",
+    "userRole": "un/una paziente che non si sente bene",
+    "persona": {
+      "name": "Dott.ssa Bianchi",
+      "emoji": "👩‍⚕️"
+    },
+    "you": "Sei un/una paziente: hai la febbre e mal di gola da due giorni.",
+    "scene": "medico.jpg",
+    "accent": "#3E7CB1",
+    "opening": "Buongiorno, si accomodi. Mi dica, che problema ha?"
+  },
+  {
+    "id": "negozio",
+    "label": "Al Negozio",
+    "en": "At the shop",
+    "desc": "Vuoi comprare un vestito o delle scarpe. Chiedi taglia, colore e prezzo.",
+    "examinerRole": "un commesso / una commessa di un negozio di abbigliamento",
+    "userRole": "un/una cliente",
+    "persona": {
+      "name": "Elena, la commessa",
+      "emoji": "💁‍♀️"
+    },
+    "you": "Sei un/una cliente: cerchi una giacca elegante, taglia media, per una festa.",
+    "scene": null,
+    "accent": "#B0568A",
+    "opening": "Buongiorno! Posso aiutarla? Cerca qualcosa in particolare?"
+  },
+  {
+    "id": "stazione",
+    "lead": "user",
+    "freq": 2,
+    "label": "Alla Stazione",
+    "en": "At the station",
+    "desc": "Devi comprare un biglietto del treno. Chiedi orari, binario e prezzo.",
+    "examinerRole": "un impiegato della biglietteria della stazione",
+    "userRole": "un viaggiatore / una viaggiatrice",
+    "persona": {
+      "name": "Marco (biglietteria)",
+      "emoji": "👨‍💼"
+    },
+    "you": "Devi andare a Roma domani mattina. Compra il biglietto e chiedi orario e binario.",
+    "scene": "stazione.jpg",
+    "accent": "#4A6FA5",
+    "opening": "Buongiorno, mi dica. Dove deve andare?"
+  },
+  {
+    "id": "casa",
+    "lead": "user",
+    "freq": 2,
+    "label": "Cercare Casa",
+    "en": "Looking for a flat",
+    "desc": "Telefoni per un annuncio di un appartamento. Chiedi affitto, zona e quando puoi vederlo.",
+    "examinerRole": "il proprietario / la proprietaria di un appartamento in affitto",
+    "userRole": "una persona che cerca casa",
+    "persona": {
+      "name": "Sig. Rossi (proprietario)",
+      "emoji": "👴"
+    },
+    "you": "Cerchi un appartamento per due persone, non troppo caro. Chiedi affitto, zona e quando vederlo.",
+    "scene": "soggiorno.jpg",
+    "accent": "#B07A3E",
+    "opening": "Pronto? Sì, buongiorno. Chiama per l'annuncio dell'appartamento?"
+  },
+  {
+    "id": "bar",
+    "label": "Al Bar",
+    "en": "At the café",
+    "desc": "Ordina la colazione e fai due chiacchiere con il barista.",
+    "examinerRole": "un barista simpatico di un bar di quartiere",
+    "userRole": "un/una cliente abituale",
+    "persona": {
+      "name": "Gino, il barista",
+      "emoji": "🧔"
+    },
+    "you": "Sei un/una cliente abituale: ordini la colazione e fai due chiacchiere.",
+    "scene": "bar.jpg",
+    "accent": "#A9703C",
+    "opening": "Buongiorno! Il solito caffè, o oggi qualcosa di diverso?"
+  },
+  {
+    "id": "strada",
+    "lead": "user",
+    "label": "Per Strada",
+    "en": "Asking directions",
+    "desc": "Sei perso/a. Chiedi indicazioni per la farmacia e capisci le risposte.",
+    "examinerRole": "un passante gentile che conosce bene il quartiere",
+    "userRole": "una persona che cerca la farmacia",
+    "persona": {
+      "name": "Una passante",
+      "emoji": "👩"
+    },
+    "you": "Sei perso/a. Chiedi dove è la farmacia più vicina e come arrivarci.",
+    "scene": "strada.jpg",
+    "accent": "#5E8A6A",
+    "opening": "Mi scusi, ha bisogno di aiuto? La vedo un po' persa."
+  },
+  {
+    "id": "posta",
+    "label": "All'Ufficio Postale",
+    "en": "At the post office",
+    "desc": "Devi spedire un pacco e ritirare una raccomandata. Rispondi alle domande dell'impiegato.",
+    "examinerRole": "un impiegato dell'ufficio postale, professionale ma paziente",
+    "userRole": "un/una cliente con un pacco da spedire",
+    "persona": {
+      "name": "Sig.ra Conti (sportello)",
+      "emoji": "👩‍💼"
+    },
+    "you": "Devi spedire un pacco a un amico e ritirare una raccomandata.",
+    "scene": "ufficio.jpg",
+    "accent": "#C0603A",
+    "opening": "Buongiorno, numero 42! Venga pure. Mi dica."
+  },
+  {
+    "id": "vicino",
+    "label": "Il Vicino di Casa",
+    "en": "Small talk with a neighbour",
+    "desc": "Incontri il tuo vicino sulle scale. Due chiacchiere: il fine settimana, il tempo, un piccolo favore.",
+    "examinerRole": "un vicino di casa anziano e chiacchierone",
+    "userRole": "il nuovo inquilino / la nuova inquilina del palazzo",
+    "persona": {
+      "name": "Sig. Bruno (vicino)",
+      "emoji": "🧓"
+    },
+    "you": "Sei il nuovo inquilino/a del terzo piano. Saluti il vicino e fai due chiacchiere.",
+    "scene": "soggiorno.jpg",
+    "accent": "#7A6A9E",
+    "opening": "Oh, buongiorno! Lei è quello nuovo del terzo piano, vero? Come si trova qui?"
+  },
+  {
+    "id": "ristorante",
+    "freq": 2,
+    "label": "Al Ristorante",
+    "en": "At the restaurant",
+    "desc": "Hai prenotato un tavolo. Ordina la cena e chiedi il conto.",
+    "examinerRole": "un cameriere professionale di una trattoria",
+    "userRole": "un/una cliente a cena",
+    "persona": {
+      "name": "Il cameriere",
+      "emoji": "🤵"
+    },
+    "you": "Hai prenotato un tavolo per due. Ordina la cena e alla fine chiedi il conto.",
+    "scene": "pasta.jpg",
+    "accent": "#B5473C",
+    "opening": "Buonasera! Ha prenotato? Mi dice il nome, per favore?"
+  },
+  {
+    "id": "farmacia",
+    "label": "In Farmacia",
+    "en": "At the pharmacy",
+    "desc": "Non ti senti bene. Chiedi al farmacista una medicina e come prenderla.",
+    "examinerRole": "un farmacista gentile e preciso",
+    "userRole": "un/una cliente con un piccolo problema di salute",
+    "persona": {
+      "name": "Il farmacista",
+      "emoji": "👨‍⚕️"
+    },
+    "you": "Hai mal di testa e un po' di tosse. Chiedi una medicina e come prenderla.",
+    "scene": null,
+    "accent": "#3E9B8A",
+    "opening": "Buongiorno, mi dica. Come posso aiutarla?"
+  },
+  {
+    "id": "colloquio",
+    "label": "Il Colloquio di Lavoro",
+    "en": "Job interview",
+    "desc": "Un colloquio semplice per un lavoro: parla di te, della tua esperienza e degli orari.",
+    "examinerRole": "il titolare di un piccolo negozio che cerca un aiutante, cordiale ma concreto",
+    "userRole": "il candidato / la candidata al lavoro",
+    "persona": {
+      "name": "Sig. Neri (titolare)",
+      "emoji": "🧑‍💼"
+    },
+    "you": "Cerchi un lavoro part-time in un negozio. Parla di te, della tua esperienza e degli orari.",
+    "scene": "ufficio.jpg",
+    "accent": "#4E6A8A",
+    "opening": "Buongiorno, grazie di essere venuto. Allora, mi parli un po' di lei."
+  },
+  {
+    "id": "scuola",
+    "seen": 1,
+    "label": "A Scuola",
+    "en": "Talking to your child's teacher",
+    "desc": "Parli con l'insegnante di tuo figlio: come va a scuola, i compiti, una riunione.",
+    "examinerRole": "l'insegnante della scuola elementare di tuo figlio, disponibile e chiara",
+    "userRole": "il genitore di un bambino di 8 anni",
+    "persona": {
+      "name": "Maestra Sara",
+      "emoji": "👩‍🏫"
+    },
+    "you": "Sei il genitore di Luca (8 anni). Chiedi come va a scuola e come sono i compiti.",
+    "scene": "classe.jpg",
+    "accent": "#C98A2E",
+    "opening": "Buongiorno! Lei è il papà o la mamma di Luca, vero? Prego, si sieda."
+  },
+  {
+    "id": "telefono",
+    "lead": "user",
+    "label": "Al Telefono",
+    "en": "Phone call",
+    "desc": "Telefoni per prenotare o chiedere informazioni. Non vedi la persona: devi ascoltare bene.",
+    "examinerRole": "l'impiegato di un ufficio informazioni che risponde al telefono",
+    "userRole": "una persona che telefona per chiedere informazioni",
+    "persona": {
+      "name": "Ufficio informazioni",
+      "emoji": "🧑‍💻"
+    },
+    "you": "Telefoni per prenotare una visita al museo per sabato. Chiedi orari e prezzo.",
+    "scene": "ufficio.jpg",
+    "accent": "#5A7A9E",
+    "opening": "Pronto, ufficio informazioni, buongiorno. Come posso aiutarla?"
+  },
+  {
+    "id": "banca",
+    "label": "In Banca",
+    "en": "At the bank",
+    "desc": "Vuoi aprire un conto o fare un'operazione semplice. Rispondi alle domande dell'impiegato.",
+    "examinerRole": "un impiegato di banca, cortese e formale",
+    "userRole": "un/una cliente che vuole aprire un conto",
+    "persona": {
+      "name": "Sig. Verdi (impiegato)",
+      "emoji": "👨‍💼"
+    },
+    "you": "Vuoi aprire un conto corrente. Rispondi alle domande e chiedi i documenti necessari.",
+    "scene": "ufficio.jpg",
+    "accent": "#3E6B7A",
+    "opening": "Buongiorno, prego, si accomodi. Mi dica, di cosa ha bisogno?"
+  },
+  {
+    "id": "emergenza",
+    "label": "Un Piccolo Problema",
+    "en": "A small emergency",
+    "desc": "Hai perso qualcosa o hai un piccolo problema. Spiega la situazione e chiedi aiuto.",
+    "examinerRole": "un vigile / una persona gentile che ti aiuta con un problema",
+    "userRole": "una persona che ha perso il portafoglio",
+    "persona": {
+      "name": "Un vigile",
+      "emoji": "👮"
+    },
+    "you": "Hai perso il portafoglio per strada. Spiega cosa è successo e chiedi aiuto.",
+    "scene": "strada.jpg",
+    "accent": "#C0503A",
+    "opening": "Mi scusi, la vedo preoccupata. È successo qualcosa?"
+  },
+  {
+    "id": "mercato",
+    "freq": 2,
+    "label": "Al Mercato",
+    "en": "At the market",
+    "desc": "Compra frutta e verdura al banco: quantità, prezzi, qualità.",
+    "examinerRole": "un fruttivendolo simpatico e un po' insistente",
+    "userRole": "un/una cliente che fa la spesa",
+    "persona": {
+      "name": "Tonino (fruttivendolo)",
+      "emoji": "👨‍🌾"
+    },
+    "you": "Compri frutta e verdura per la settimana. Chiedi prezzi, quantità e qualità.",
+    "scene": "supermercato.jpg",
+    "accent": "#7A9B3E",
+    "opening": "Buongiorno signora... o signore! Guardi che belle queste pesche. Cosa le do?"
+  },
+  {
+    "id": "colloquio-casa",
+    "freq": 3,
+    "seen": 2,
+    "label": "Colloquio: Casa e Famiglia",
+    "en": "Guided interview — home & family",
+    "desc": "L'esaminatrice ti fa domande sulla tua casa e la tua famiglia in Italia, come nella conversazione guidata dell'esame orale.",
+    "examinerRole": "l'esaminatrice CILS che conduce la conversazione guidata su casa e famiglia",
+    "userRole": "il candidato",
+    "persona": {
+      "name": "Prof.ssa Marini",
+      "emoji": "👩‍🏫"
+    },
+    "you": "Sei te stesso/a. Rispondi a domande sulla tua casa in Italia: con chi vivi, com'è la casa, qual è la tua stanza preferita.",
+    "scene": "ufficio.jpg",
+    "accent": "#7A5A48",
+    "opening": "Buongiorno, si accomodi. Iniziamo con una domanda semplice: con chi vive qui in Italia?"
+  },
+  {
+    "id": "colloquio-tempo",
+    "freq": 3,
+    "seen": 1,
+    "label": "Colloquio: Tempo Libero",
+    "en": "Guided interview — free time & weekend",
+    "desc": "L'esaminatore ti fa domande sul tuo tempo libero e su cosa fai nel fine settimana.",
+    "examinerRole": "l'esaminatore CILS che conduce la conversazione guidata sul tempo libero",
+    "userRole": "il candidato",
+    "persona": {
+      "name": "Prof. Colombo",
+      "emoji": "👨‍🏫"
+    },
+    "you": "Sei te stesso/a. Parla del tuo tempo libero: cosa fai di solito nel weekend e quali sono i tuoi hobby.",
+    "scene": "ufficio.jpg",
+    "accent": "#5A9E6E",
+    "opening": "Buongiorno! Parliamo un po' del tempo libero. Cosa fa di solito nel fine settimana?"
+  },
+  {
+    "id": "colloquio-citta",
+    "freq": 3,
+    "seen": 2,
+    "label": "Colloquio: Città e Trasporti",
+    "en": "Guided interview — city & transport",
+    "desc": "L'esaminatore ti fa domande sulla città dove abiti e su come ti sposti ogni giorno.",
+    "examinerRole": "l'esaminatore CILS che conduce la conversazione guidata su città e trasporti",
+    "userRole": "il candidato",
+    "persona": {
+      "name": "Dott. Ferri",
+      "emoji": "🧑‍🏫"
+    },
+    "you": "Sei te stesso/a. Parla della città dove abiti e di come ti sposti per andare al lavoro.",
+    "scene": "ufficio.jpg",
+    "accent": "#3A5A8A",
+    "opening": "Buongiorno, benvenuto/a. Le faccio qualche domanda sulla città. Dove abita?"
+  },
+  {
+    "id": "info-turista",
+    "lead": "user",
+    "label": "Ufficio Informazioni Turistiche",
+    "en": "At the tourist information office",
+    "desc": "Sei all'ufficio informazioni turistiche. Devi chiedere gli orari di apertura, il prezzo del biglietto e come arrivare a un museo.",
+    "examinerRole": "un'impiegata cortese dell'ufficio informazioni turistiche",
+    "userRole": "un turista / una turista",
+    "persona": {
+      "name": "Giulia (ufficio turistico)",
+      "emoji": "🙋‍♀️"
+    },
+    "you": "Vuoi visitare un museo. Chiedi gli orari di apertura, il prezzo del biglietto e come arrivarci.",
+    "scene": "ufficio.jpg",
+    "accent": "#2E8A9E",
+    "opening": "Buongiorno! Mi dica pure."
+  },
+  {
+    "id": "segreteria-corso",
+    "lead": "user",
+    "freq": 2,
+    "label": "Segreteria della Scuola d'Italiano",
+    "en": "At the Italian school secretary's office",
+    "desc": "Sei alla segreteria di una scuola d'italiano. Chiedi informazioni sul corso: giorni, orari, costo e come iscriverti.",
+    "examinerRole": "la segretaria di una scuola d'italiano, gentile e disponibile",
+    "userRole": "una persona che vuole iscriversi a un corso d'italiano",
+    "persona": {
+      "name": "Sig.ra Greco (segreteria)",
+      "emoji": "👩‍💼"
+    },
+    "you": "Vuoi iscriverti a un corso d'italiano. Chiedi i giorni, gli orari, il costo e come iscriverti.",
+    "scene": "classe.jpg",
+    "accent": "#8A5A9E",
+    "opening": "Buongiorno, prego, si accomodi. Mi dica pure."
+  },
+  {
+    "id": "centro-impiego",
+    "lead": "user",
+    "seen": 1,
+    "label": "Al Centro per l'Impiego",
+    "en": "At the job centre",
+    "desc": "Cerchi lavoro come cameriere/a in un bar. Vai al centro per l'impiego e chiedi le offerte disponibili nella tua città e i documenti necessari per lavorare.",
+    "examinerRole": "l'impiegato/a del centro per l'impiego: hai due offerte di lavoro come cameriere/a, una in centro e una in periferia, entrambe pagano 10 euro all'ora; se il candidato è interessato, proponi un appuntamento con il titolare del bar e spiega quali documenti servono (permesso di soggiorno, passaporto, referenze di altre esperienze)",
+    "userRole": "una persona in cerca di lavoro come cameriere/a in un bar",
+    "persona": {
+      "name": "Sig.ra Fabbri (centro impiego)",
+      "emoji": "🗂️"
+    },
+    "you": "Cerchi lavoro come cameriere/a in un bar. Chiedi all'impiegato/a le offerte disponibili nella tua città e quali documenti servono per lavorare.",
+    "scene": "ufficio.jpg",
+    "accent": "#9E7A3E",
+    "opening": "Buongiorno, si accomodi pure. Mi dica, che tipo di lavoro cerca?"
+  },
+  {
+    "id": "medico-base",
+    "lead": "user",
+    "seen": 1,
+    "label": "Iscrizione al Medico di Base",
+    "en": "Registering with a GP",
+    "desc": "Ti sei trasferito/a da poco in una nuova città. Vai all'ufficio dell'azienda ospedaliera locale per chiedere informazioni sull'iscrizione al medico di base.",
+    "examinerRole": "l'impiegato/a dell'ufficio dell'azienda ospedaliera: chiedi in che città viveva prima e chi era il suo medico di base, chiedi la tessera sanitaria, poi offri la scelta tra quattro medici disponibili (due uomini e due donne, uno vicino al centro e uno vicino all'aeroporto) e proponi anche di iscrivere il coniuge e i figli",
+    "userRole": "una persona nuova in città che vuole iscriversi a un medico di base",
+    "persona": {
+      "name": "Sig. Marchetti (ufficio sanitario)",
+      "emoji": "🗃️"
+    },
+    "you": "Ti sei trasferito/a da due settimane in una nuova città. Vuoi iscriverti a un medico di base: rispondi alle domande e scegli un medico.",
+    "scene": "ufficio.jpg",
+    "accent": "#3E8A6B",
+    "opening": "Buongiorno, mi dica pure. Come posso aiutarla oggi?"
+  },
+  {
+    "id": "autobus-fermata",
+    "lead": "user",
+    "seen": 1,
+    "label": "Sull'Autobus: la Fermata Giusta",
+    "en": "On the bus — asking for your stop",
+    "desc": "Devi andare in una via che non conosci. Sei sull'autobus ma non sai a quale fermata scendere: chiedi informazioni all'autista.",
+    "examinerRole": "l'autista dell'autobus: spiega che mancano ancora molte fermate (circa 45 minuti), che deve premere il pulsante quando vede la fermata giusta, e come si fa a comprare il biglietto a bordo",
+    "userRole": "un passeggero/una passeggera che non conosce bene il percorso",
+    "persona": {
+      "name": "L'autista",
+      "emoji": "🚌"
+    },
+    "you": "Devi scendere in Via Rossi ma non sai a quale fermata. Chiedi informazioni all'autista: quale fermata, quanto tempo ci vuole e come si fa il biglietto.",
+    "scene": "strada.jpg",
+    "accent": "#4E7A9E",
+    "opening": "Buongiorno, prego, mi dica. Ha bisogno di aiuto?"
+  },
+  {
+    "id": "prenotazione-medico",
+    "lead": "user",
+    "seen": 1,
+    "label": "Prenotare una Visita Medica",
+    "en": "Booking a doctor's appointment by phone",
+    "desc": "Da qualche giorno non ti senti bene. Chiami lo studio del medico per fissare un appuntamento e spieghi i sintomi.",
+    "examinerRole": "la segretaria dello studio medico al telefono: chiedi nome, cognome, indirizzo e numero della tessera sanitaria/assicurazione, chiedi quali sintomi ha, poi proponi un appuntamento nella stessa giornata (verso le 10) e chiedi di essere informata se la situazione peggiora",
+    "userRole": "un/una paziente che si sente poco bene",
+    "persona": {
+      "name": "Segreteria medica",
+      "emoji": "☎️"
+    },
+    "you": "Da qualche giorno hai il raffreddore, la febbre e mal di testa. Telefona per fissare un appuntamento con il medico e chiedi anche un certificato per il lavoro.",
+    "scene": null,
+    "accent": "#8A3E5A",
+    "opening": "Pronto, studio medico, buongiorno. Mi dica pure."
+  },
+  {
+    "id": "centro-impiego-cv",
+    "seen": 1,
+    "label": "Aiuto con il Curriculum",
+    "en": "Job centre — help with your CV",
+    "desc": "Sei disoccupato/a e cerchi lavoro. Vai al centro per l'impiego per un aiuto a scrivere il curriculum: parla dei tuoi studi, delle lingue e delle esperienze.",
+    "examinerRole": "l'impiegato/a del centro per l'impiego che aiuta a migliorare il curriculum: chiedi cosa ha studiato, se parla lingue straniere, quali esperienze lavorative ha avuto e che tipo di persona è (lavoro di gruppo, lavorare sotto stress)",
+    "userRole": "una persona disoccupata che cerca lavoro",
+    "persona": {
+      "name": "Sig. Colombo (centro impiego)",
+      "emoji": "📋"
+    },
+    "you": "Sei momentaneamente disoccupato/a. Rispondi alle domande sui tuoi studi, le lingue che parli e le tue esperienze di lavoro.",
+    "scene": "ufficio.jpg",
+    "accent": "#6A8A3E",
+    "opening": "Certo, si accomodi. Allora, mi dica: cosa ha studiato?"
+  },
+  {
+    "id": "ritardo-lavoro",
+    "seen": 1,
+    "label": "In Ritardo al Lavoro",
+    "en": "Calling in late for work",
+    "desc": "Sei bloccato/a alla stazione per uno sciopero dei treni e farai tardi al lavoro. Chiama il tuo responsabile per spiegare la situazione.",
+    "examinerRole": "il tuo responsabile al lavoro al telefono: chiedi come mai non è ancora arrivato/a e quanto tarderà, mostrati un po' preoccupato ma comprensivo, chiedi di essere aggiornato appena ci sono novità",
+    "userRole": "un/una dipendente in ritardo per uno sciopero dei treni",
+    "persona": {
+      "name": "Il tuo responsabile",
+      "emoji": "📞"
+    },
+    "you": "Sei bloccato/a alla stazione: i treni sono in sciopero. Chiama il responsabile, spiega perché sei in ritardo e cosa puoi fare fino al tuo arrivo.",
+    "scene": "stazione.jpg",
+    "accent": "#9E5A2E",
+    "opening": "Pronto? Ciao, come mai non sei ancora arrivato/a? Ti stiamo aspettando."
+  },
+  {
+    "id": "scuola-guida",
+    "lead": "user",
+    "seen": 1,
+    "label": "Alla Scuola Guida",
+    "en": "At the driving school",
+    "desc": "Vuoi prendere la patente. Vai alla scuola guida della tua città e chiedi informazioni sul corso: orari, prezzi e quando puoi iniziare.",
+    "examinerRole": "l'impiegato/a della scuola guida: chiedi quanti anni ha il candidato, se lavora o studia e quando è libero, poi spiega gli orari dei corsi (serali, dalle 18 alle 20) e i prezzi (teoria 400 euro, pratica 500 euro)",
+    "userRole": "una persona che vuole prendere la patente",
+    "persona": {
+      "name": "Scuola Guida Sicura",
+      "emoji": "🚗"
+    },
+    "you": "Vuoi prendere la patente. Chiedi informazioni sugli orari dei corsi e sui prezzi, e di' quando sei disponibile.",
+    "scene": null,
+    "accent": "#5A3E9E",
+    "opening": "Buongiorno, si accomodi. Mi dica pure, come posso aiutarla?"
+  },
+  {
+    "id": "colloquio-preferiti",
+    "freq": 2,
+    "label": "Colloquio: I Tuoi Preferiti",
+    "en": "Your favourites (guided conversation)",
+    "desc": "L'esaminatrice ti chiede dei tuoi preferiti: il posto, la stagione, il piatto, i viaggi che vorresti fare.",
+    "examinerRole": "un'esaminatrice CILS che conduce una conversazione guidata sui gusti e le preferenze del candidato (posto preferito, stagione, cibo, viaggi)",
+    "userRole": "il candidato",
+    "persona": {
+      "name": "Prof.ssa Fontana",
+      "emoji": "👩‍🏫"
+    },
+    "you": "Rispondi con frasi complete e aggiungi sempre un perché: il tuo posto preferito, la stagione che preferisci, il tuo piatto preferito, dove vorresti viaggiare.",
+    "scene": "ufficio.jpg",
+    "accent": "#6A8A5E",
+    "opening": "Bene, parliamo un po' di lei. Qual è il suo posto preferito nella città dove vive?"
+  }
+]

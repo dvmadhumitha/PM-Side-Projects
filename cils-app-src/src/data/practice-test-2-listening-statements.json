@@ -1,0 +1,32 @@
+[
+  {
+    "script": "Il Museo Civico è aperto tutti i giorni tranne il lunedì, dalle 10 alle 18. L'ingresso è gratuito per i minori di 18 anni.",
+    "st": "Il museo è chiuso la domenica.",
+    "a": false
+  },
+  {
+    "script": "La piscina comunale organizza corsi di nuoto per adulti ogni martedì e giovedì dalle 19 alle 20.",
+    "st": "I corsi di nuoto per adulti si tengono due volte a settimana.",
+    "a": true
+  },
+  {
+    "script": "Attenzione: il parcheggio di Via Mazzini sarà chiuso per lavori dal 10 al 17 giugno. Si prega di utilizzare il parcheggio di Via Verdi.",
+    "st": "Il parcheggio di Via Mazzini è sempre aperto.",
+    "a": false
+  },
+  {
+    "script": "Il Comune offre un servizio di assistenza fiscale gratuita per la compilazione del modulo 730. Per prenotare un appuntamento, chiamare il numero 0577 123456.",
+    "st": "Il servizio di assistenza fiscale si paga.",
+    "a": false
+  },
+  {
+    "script": "Per motivi di sicurezza, l'ascensore del palazzo sarà fuori servizio mercoledì dalle 9 alle 13 per la manutenzione annuale.",
+    "st": "L'ascensore non funzionerà per mezza giornata.",
+    "a": true
+  },
+  {
+    "script": "Il centro culturale «La Porta» cerca volontari per aiutare nell'organizzazione di eventi. Per informazioni scrivere a info@laporta.it.",
+    "st": "Il centro culturale offre lavoro retribuito ai volontari.",
+    "a": false
+  }
+]

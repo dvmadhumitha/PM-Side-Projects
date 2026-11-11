@@ -1,0 +1,160 @@
+[
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, ha finito di riparare la mia macchina?"
+      ],
+      [
+        "—",
+        "Sì signora, è pronta. Può venirla a prendere oggi pomeriggio."
+      ],
+      [
+        "—",
+        "Perfetto, grazie!"
+      ]
+    ],
+    "ask": "La macchina della signora…",
+    "opts": [
+      "è ancora rotta",
+      "è pronta",
+      "sarà pronta domani"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, vorrei qualcosa per la tosse."
+      ],
+      [
+        "—",
+        "Preferisce uno sciroppo o delle pastiglie?"
+      ],
+      [
+        "—",
+        "Uno sciroppo, grazie."
+      ],
+      [
+        "—",
+        "Sono 8 euro."
+      ]
+    ],
+    "ask": "Dove si svolge il dialogo?",
+    "opts": [
+      "dal medico",
+      "in farmacia",
+      "al supermercato"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Pronto, chiamo per l’annuncio di lavoro come cameriere."
+      ],
+      [
+        "—",
+        "Bene, ha esperienza?"
+      ],
+      [
+        "—",
+        "Sì, ho lavorato due anni in un bar."
+      ],
+      [
+        "—",
+        "Allora può venire venerdì per un colloquio?"
+      ]
+    ],
+    "ask": "La persona telefona per…",
+    "opts": [
+      "prenotare un tavolo",
+      "un colloquio di lavoro",
+      "ordinare un caffè"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Scusi, a che ora parte il treno per Roma?"
+      ],
+      [
+        "—",
+        "Alle 10 e 15, dal binario 4."
+      ],
+      [
+        "—",
+        "È in orario?"
+      ],
+      [
+        "—",
+        "Sì, per ora è in orario."
+      ]
+    ],
+    "ask": "Il treno per Roma parte…",
+    "opts": [
+      "dal binario 4",
+      "alle 10 e 50",
+      "con ritardo"
+    ],
+    "a": 0
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Buongiorno, vorrei prenotare una visita con il dottor Bianchi."
+      ],
+      [
+        "—",
+        "Va bene martedì alle 16?"
+      ],
+      [
+        "—",
+        "Sì, perfetto."
+      ],
+      [
+        "—",
+        "Mi dia il suo nome, per favore."
+      ]
+    ],
+    "ask": "La donna vuole…",
+    "opts": [
+      "cambiare medico",
+      "prenotare una visita",
+      "comprare una medicina"
+    ],
+    "a": 1
+  },
+  {
+    "script": [
+      [
+        "—",
+        "Signora, le ricordo l’incontro scuola-famiglia di giovedì."
+      ],
+      [
+        "—",
+        "A che ora è?"
+      ],
+      [
+        "—",
+        "Alle 17, nell’aula di suo figlio."
+      ],
+      [
+        "—",
+        "Grazie, ci sarò."
+      ]
+    ],
+    "ask": "L’incontro è…",
+    "opts": [
+      "lunedì alle 15",
+      "giovedì alle 17",
+      "venerdì alle 17"
+    ],
+    "a": 1
+  }
+]

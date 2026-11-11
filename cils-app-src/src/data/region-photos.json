@@ -1,0 +1,34 @@
+{
+  "lombardia": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/lombardia.jpg",
+    "credit": "Léa V / Unsplash"
+  },
+  "veneto": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/veneto.jpg",
+    "credit": "Ricardo Gomez Angel / Unsplash"
+  },
+  "toscana": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/toscana.jpg",
+    "credit": "Sue Winston / Unsplash"
+  },
+  "lazio": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/lazio.jpg",
+    "credit": "David Köhler / Unsplash"
+  },
+  "campania": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/campania.jpg",
+    "credit": "Fabio Fistarol / Unsplash"
+  },
+  "sicilia": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/sicilia.jpg",
+    "credit": "Michael Getreu / Unsplash"
+  },
+  "piemonte": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/piemonte.jpg",
+    "credit": "Fabio Fistarol / Unsplash"
+  },
+  "emilia": {
+    "src": "/PM-Side-Projects/cils-app/img/regions/emilia.jpg",
+    "credit": "Petr Slováček / Unsplash"
+  }
+}

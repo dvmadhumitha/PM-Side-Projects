@@ -1,0 +1,56 @@
+[
+  {
+    "script": "I tuoi occhi sono importanti. Per questo motivo ti invitiamo a prenotare un controllo gratuito. Per prendere appuntamento chiama il numero verde 800882233.",
+    "st": "Scegli l'informazione presente nel testo.",
+    "opts": [
+      "A. Se chiami il numero verde, puoi prenotare una visita gratuita.",
+      "B. Se vai nel nuovo negozio di occhiali, puoi ricevere un regalo."
+    ],
+    "a": 0
+  },
+  {
+    "script": "Gentili signori, benvenuti a bordo del treno 10425 con destinazione Milano Porta Garibaldi. Il treno ferma a: Busto Arsizio, Rho Fiera e Milano Garibaldi. Vi auguriamo buon viaggio!",
+    "st": "Scegli l'informazione presente nel testo.",
+    "opts": [
+      "A. L'annuncio pubblicizza una fiera a Milano.",
+      "B. Puoi sentire questo annuncio su un treno."
+    ],
+    "a": 1
+  },
+  {
+    "script": "Non hai tempo di preparare la cena? Ordina i piatti di Nello e hai la cena a casa tua in un'ora o la trovi già pronta da Nello! Nello è a Siena in Via Piccolomini 76.",
+    "st": "Scegli l'informazione presente nel testo.",
+    "opts": [
+      "A. Nello è un cuoco famoso.",
+      "B. Nello ti porta la cena a casa."
+    ],
+    "a": 1
+  },
+  {
+    "script": "Grande paura questa mattina alle 9 all'uscita della Siena-Firenze Acquacalda in direzione Nord. Un'auto è uscita di strada e ha preso fuoco. L'autista è riuscito ad abbandonare l'auto. I Vigili del Fuoco hanno spento subito le fiamme.",
+    "st": "Scegli l'informazione presente nel testo.",
+    "opts": [
+      "A. Questa mattina un'automobile è bruciata.",
+      "B. L'autista si è fatto molto male."
+    ],
+    "a": 0
+  },
+  {
+    "script": "Vuoi lavorare in un hotel? L'Agenzia per il lavoro \"Articolo1\" cerca 80 posti per un grande albergo di Cefalù, in provincia di Palermo. L'Agenzia cerca 50 camerieri e 30 lavapiatti. I camerieri devono avere una buona conoscenza dell'inglese. Il contratto è a tempo determinato.",
+    "st": "Scegli l'informazione presente nel testo.",
+    "opts": [
+      "A. Per lavorare come cameriere devi parlare inglese.",
+      "B. Il lavoro prevede un periodo di prova."
+    ],
+    "a": 0
+  },
+  {
+    "script": "Risponde la segreteria telefonica della ditta termoidraulica \"Francini\". Le nostre linee sono momentaneamente occupate. Attendi in linea oppure lascia il tuo numero e ti richiamiamo appena possibile. Siamo aperti dal lunedì al venerdì dalle 8.30 alle 18.00. Sabato e festivi chiuso.",
+    "st": "Scegli l'informazione presente nel testo.",
+    "opts": [
+      "A. La ditta \"Francini\" ha cambiato indirizzo.",
+      "B. Puoi lasciare il tuo numero di telefono in segreteria."
+    ],
+    "a": 1
+  }
+]

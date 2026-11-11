@@ -1,0 +1,31 @@
+{
+  "bank": [
+    "parlano",
+    "aiutano",
+    "uffici",
+    "familiare",
+    "orario",
+    "trovi",
+    "gratuito",
+    "cerchi",
+    "producono",
+    "tempo"
+  ],
+  "parts": [
+    "Lo \"Sportello informativo sull'immigrazione\" è un servizio (0) gratuito per i cittadini stranieri che hanno bisogno di informazioni e chiarimenti. Allo Sportello lavorano i mediatori culturali iscritti al Registro Comunale. I mediatori (1) ",
+    " tante lingue: polacco, ucraino, rumeno, arabo, bulgaro, moldavo, albanese. I mediatori ti (2) ",
+    " a comprendere i documenti o a comunicare con gli (3) ",
+    " pubblici, a compilare i moduli per le richieste di ricongiungimento (4) ",
+    " e ti danno informazioni generali sui servizi del territorio. Allo \"Sportello informativo sull'immigrazione\" (5) ",
+    " anche persone che ti danno informazioni per l'assistenza sanitaria. I servizi dello sportello sono riservati ai cittadini stranieri residenti o lavoratori nel Comune di Latina e provincia. (6) ",
+    " di ricevimento: Lunedì 09:00–13:00 · Martedì e Giovedì 09:00–13:00 / 15:00–17:00"
+  ],
+  "ans": [
+    "parlano",
+    "aiutano",
+    "uffici",
+    "familiare",
+    "trovi",
+    "orario"
+  ]
+}

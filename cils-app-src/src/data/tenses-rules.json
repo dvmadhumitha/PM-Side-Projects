@@ -1,0 +1,84 @@
+[
+  {
+    "id": "foto-video",
+    "emoji": "📸🎬",
+    "title": "Passato prossimo o imperfetto?",
+    "hook": "PP = the PHOTO (one finished fact). Imperfetto = the VIDEO (background, habits, descriptions).",
+    "rows": [
+      {
+        "it": "Ieri ho mangiato una pizza.",
+        "en": "one finished event → passato prossimo 📸"
+      },
+      {
+        "it": "Da bambina mangiavo tanta pasta.",
+        "en": "repeated habit back then → imperfetto 🎬"
+      },
+      {
+        "it": "Mentre studiavo, ha squillato il telefono.",
+        "en": "video running (studiavo) + photo snap (ha squillato)"
+      }
+    ],
+    "watch": "Signal words — ieri, una volta, improvvisamente, la settimana scorsa → PP · mentre, ogni giorno, sempre, da bambino/a → imperfetto."
+  },
+  {
+    "id": "imp-descr",
+    "emoji": "🌤️",
+    "title": "Imperfetto = descriptions in the past",
+    "hook": "Weather, feelings, age, and how things WERE → imperfetto.",
+    "rows": [
+      {
+        "it": "Faceva caldo e c’era il sole.",
+        "en": "weather"
+      },
+      {
+        "it": "Ero stanca e avevo fame.",
+        "en": "feelings / states"
+      },
+      {
+        "it": "Avevo dieci anni.",
+        "en": "age in the past"
+      }
+    ]
+  },
+  {
+    "id": "futuro",
+    "emoji": "🔮",
+    "title": "Futuro semplice = plans & predictions",
+    "hook": "Endings: -erò, -erai, -erà, -eremo, -erete, -eranno.",
+    "rows": [
+      {
+        "it": "Domani lavorerò fino alle sei.",
+        "en": "a plan"
+      },
+      {
+        "it": "L’anno prossimo andremo in Italia.",
+        "en": "a bigger plan"
+      },
+      {
+        "it": "Secondo me pioverà.",
+        "en": "a prediction"
+      }
+    ],
+    "watch": "A2 shortcut: for near plans Italians often just use the present — “Domani vado dal medico” is perfectly correct!"
+  },
+  {
+    "id": "fut-irr",
+    "emoji": "🛠️",
+    "title": "The 5 irregular futures you need",
+    "hook": "essere→sarò · avere→avrò · andare→andrò · fare→farò · venire→verrò",
+    "rows": [
+      {
+        "it": "Sarò a casa alle otto.",
+        "en": "essere → sarò"
+      },
+      {
+        "it": "Avrò più tempo domenica.",
+        "en": "avere → avrò"
+      },
+      {
+        "it": "Andrò in vacanza ad agosto.",
+        "en": "andare → andrò"
+      }
+    ]
+  }
+]

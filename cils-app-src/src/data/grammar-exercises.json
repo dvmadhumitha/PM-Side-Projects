@@ -1,0 +1,1903 @@
+[
+  {
+    "id": "pres-1",
+    "topic": "Presente Indicativo",
+    "emoji": "🟢",
+    "type": "mcq",
+    "instruction": "Choose the correct form of the verb in brackets.",
+    "items": [
+      {
+        "q": "Io ___ (lavorare) in un ristorante.",
+        "opts": [
+          "lavori",
+          "lavora",
+          "lavoro",
+          "lavorano"
+        ],
+        "a": 2,
+        "explain": "With io, regular -are verbs end in -o: lavoro. \"lavora\" is for lui/lei, \"lavorano\" is for loro — not io. Es: lavorare → io lavoro."
+      },
+      {
+        "q": "Tu ___ (avere) un appuntamento domani?",
+        "opts": [
+          "ho",
+          "hai",
+          "ha",
+          "abbiamo"
+        ],
+        "a": 1,
+        "explain": "avere is irregular; with tu the form is hai, not the io form ho or the lui/lei form ha. Es: (Tu) hai un appuntamento?"
+      },
+      {
+        "q": "Maria ___ (essere) molto stanca oggi.",
+        "opts": [
+          "sono",
+          "sei",
+          "è",
+          "siamo"
+        ],
+        "a": 2,
+        "explain": "essere is irregular; with lui/lei (Maria) the form is è. \"sono\" is for io, \"sei\" is for tu — not for Maria. Es: Maria è stanca."
+      },
+      {
+        "q": "Noi ___ (andare) al mercato ogni sabato.",
+        "opts": [
+          "vado",
+          "vai",
+          "va",
+          "andiamo"
+        ],
+        "a": 3,
+        "explain": "andare is irregular; with noi the form is andiamo. \"vado\" is the io form, \"va\" is lui/lei. Es: Noi andiamo al mercato."
+      },
+      {
+        "q": "I bambini ___ (giocare) nel parco.",
+        "opts": [
+          "gioco",
+          "giochi",
+          "gioca",
+          "giocano"
+        ],
+        "a": 3,
+        "explain": "With loro (i bambini), -are verbs end in -ano: giocano. \"gioca\" is the singular lui/lei form — remember the plural ending. Es: I bambini giocano nel parco."
+      },
+      {
+        "q": "Voi ___ (capire) l'italiano?",
+        "opts": [
+          "capisce",
+          "capisce",
+          "capite",
+          "capiamo"
+        ],
+        "a": 2,
+        "explain": "With voi, -ire verbs end in -ite: capite. \"capisce\" is the lui/lei form, not voi. Es: Voi capite l'italiano?"
+      },
+      {
+        "q": "Lei ___ (volere) prenotare una visita.",
+        "opts": [
+          "voglio",
+          "vuoi",
+          "vuole",
+          "vogliamo"
+        ],
+        "a": 2,
+        "explain": "volere is irregular; with lei the form is vuole. \"voglio\" is io, \"vuoi\" is tu — not lei. Es: Lei vuole prenotare una visita."
+      },
+      {
+        "q": "Io non ___ (potere) venire domani.",
+        "opts": [
+          "puoi",
+          "posso",
+          "può",
+          "possiamo"
+        ],
+        "a": 1,
+        "explain": "potere is irregular; with io the form is posso. \"puoi\" is tu, \"può\" is lui/lei — not io. Es: Io non posso venire domani."
+      },
+      {
+        "q": "Loro ___ (fare) la spesa il venerdì.",
+        "opts": [
+          "faccio",
+          "fanno",
+          "fate",
+          "fa"
+        ],
+        "a": 1,
+        "explain": "fare is irregular; with loro the form is fanno. \"faccio\" is io, \"fa\" is lui/lei — not loro. Es: Loro fanno la spesa il venerdì."
+      },
+      {
+        "q": "Tu ___ (uscire) spesso la sera?",
+        "opts": [
+          "esco",
+          "esci",
+          "esce",
+          "usciamo"
+        ],
+        "a": 1,
+        "explain": "uscire is irregular; with tu the form is esci. \"esco\" is io, \"esce\" is lui/lei — not tu. Es: Tu esci spesso la sera?"
+      }
+    ]
+  },
+  {
+    "id": "pres-2",
+    "topic": "Presente Indicativo",
+    "emoji": "🟢",
+    "type": "cloze",
+    "instruction": "Fill in each gap with the correct present tense form. Choose from the word bank.",
+    "bank": [
+      "vengo",
+      "scegli",
+      "dobbiamo",
+      "sa",
+      "finisce",
+      "usciamo",
+      "preferite",
+      "vogliono"
+    ],
+    "text": [
+      "Ogni giorno io [vengo] a lavoro in autobus. Il corso di italiano [finisce] alle 20. Tu [scegli] sempre il posto vicino alla finestra. Noi [dobbiamo] compilare questo modulo prima di lunedì. Voi [preferite] il caffè o il tè? Loro [vogliono] informazioni sul permesso di soggiorno. La mia collega [sa] parlare tre lingue. Di solito [usciamo] dall'ufficio alle 17."
+    ],
+    "ans": [
+      "vengo",
+      "finisce",
+      "scegli",
+      "dobbiamo",
+      "preferite",
+      "vogliono",
+      "sa",
+      "usciamo"
+    ],
+    "explains": [
+      "venire is irregular; with io the form is vengo. Es: Io vengo a lavoro in autobus.",
+      "finire is an -isc- verb; with lui/lei (il corso) it becomes finisce, adding -isc- before the ending. Es: Il corso finisce alle 20.",
+      "scegliere is irregular; with tu the form is scegli. Es: Tu scegli sempre il posto vicino alla finestra.",
+      "dovere is irregular; with noi the form is dobbiamo. Es: Noi dobbiamo compilare il modulo.",
+      "With voi, regular -ire verbs end in -ite: preferite. Es: Voi preferite il caffè o il tè?",
+      "volere is irregular; with loro the form is vogliono. Es: Loro vogliono informazioni.",
+      "sapere is irregular; with lei (la collega) the form is sa. Es: La mia collega sa parlare tre lingue.",
+      "uscire is irregular; with noi the form is usciamo. Es: Usciamo dall'ufficio alle 17."
+    ],
+    "parts": [
+      "Ogni giorno io ",
+      " a lavoro in autobus. Il corso di italiano ",
+      " alle 20. Tu ",
+      " sempre il posto vicino alla finestra. Noi ",
+      " compilare questo modulo prima di lunedì. Voi ",
+      " il caffè o il tè? Loro ",
+      " informazioni sul permesso di soggiorno. La mia collega ",
+      " parlare tre lingue. Di solito ",
+      " dall'ufficio alle 17."
+    ]
+  },
+  {
+    "id": "pp-1",
+    "topic": "Passato Prossimo",
+    "emoji": "⏮️",
+    "type": "mcq",
+    "instruction": "Choose the correct passato prossimo form.",
+    "items": [
+      {
+        "q": "Ieri io ___ al supermercato.",
+        "opts": [
+          "sono andato",
+          "ho andato",
+          "sono ando",
+          "ho ando"
+        ],
+        "a": 0,
+        "explain": "andare shows movement, so it takes essere, not avere — \"ho andato\" is wrong: io sono andato/a."
+      },
+      {
+        "q": "Marco ___ una pizza per cena.",
+        "opts": [
+          "è mangiato",
+          "ha mangiato",
+          "è mangiata",
+          "ha mangiata"
+        ],
+        "a": 1,
+        "explain": "mangiare takes avere, and with avere the participle stays -o (no agreement with Marco): ha mangiato, not \"ha mangiata\"."
+      },
+      {
+        "q": "Noi ___ da Milano tre anni fa.",
+        "opts": [
+          "abbiamo venuto",
+          "siamo venuti",
+          "siamo venuto",
+          "abbiamo venuti"
+        ],
+        "a": 1,
+        "explain": "venire takes essere and agrees with noi (plural): siamo venuti — \"siamo venuto\" misses the agreement, \"abbiamo venuto\" uses the wrong auxiliary."
+      },
+      {
+        "q": "La signora Rossi ___ il contratto ieri.",
+        "opts": [
+          "è firmata",
+          "ha firmato",
+          "è firmato",
+          "ha firmata"
+        ],
+        "a": 1,
+        "explain": "firmare takes avere; with avere the participle does not agree with the subject, so it stays -o: ha firmato, not \"ha firmata\"."
+      },
+      {
+        "q": "I ragazzi ___ a casa tardi.",
+        "opts": [
+          "hanno tornati",
+          "sono tornati",
+          "hanno tornato",
+          "sono tornato"
+        ],
+        "a": 1,
+        "explain": "tornare takes essere and agrees with i ragazzi (masc. plural): sono tornati — \"sono tornato\" forgets the plural."
+      },
+      {
+        "q": "Tu ___ mai in Italia prima?",
+        "opts": [
+          "sei stato",
+          "hai stato",
+          "sei stati",
+          "hai stati"
+        ],
+        "a": 0,
+        "explain": "essere itself takes essere (participle stato); with tu it is sei stato — \"hai stato\" uses the wrong auxiliary."
+      },
+      {
+        "q": "Io ___ il permesso di soggiorno la settimana scorsa.",
+        "opts": [
+          "sono rinnovato",
+          "ho rinnovato",
+          "sono rinnovata",
+          "ha rinnovato"
+        ],
+        "a": 1,
+        "explain": "rinnovare takes avere: ho rinnovato — \"sono rinnovato\" picks the wrong auxiliary."
+      },
+      {
+        "q": "Loro ___ dall'aeroporto stamattina.",
+        "opts": [
+          "hanno partiti",
+          "sono partite",
+          "sono partiti",
+          "hanno partito"
+        ],
+        "a": 2,
+        "explain": "partire takes essere, and the participle agrees with loro (plural): sono partiti. \"hanno partito\" is wrong on both the auxiliary and the agreement."
+      }
+    ]
+  },
+  {
+    "id": "pp-2",
+    "topic": "Passato Prossimo",
+    "emoji": "⏮️",
+    "type": "transform",
+    "instruction": "Change the sentence from present to passato prossimo. Type your answer.",
+    "items": [
+      {
+        "q": "Vado al comune. → Ieri ___",
+        "a": "sono andato/a al comune",
+        "hint": "andare uses essere",
+        "explain": "andare is a movement verb, so the passato prossimo uses essere, and the participle agrees with the subject (-o for a man, -a for a woman). Es: Ieri sono andato al comune."
+      },
+      {
+        "q": "Mangio la pizza. → Ieri sera ___",
+        "a": "ho mangiato la pizza",
+        "hint": "mangiare uses avere",
+        "explain": "mangiare takes avere in the passato prossimo, and the participle stays -ato regardless of the subject. Es: Ieri sera ho mangiato la pizza."
+      },
+      {
+        "q": "Prendo l'autobus. → Stamattina ___",
+        "a": "ho preso l'autobus",
+        "hint": "prendere → preso (irregular)",
+        "explain": "prendere takes avere and has an irregular participle, preso (not \"prenduto\"). Es: Stamattina ho preso l'autobus."
+      },
+      {
+        "q": "Esco dall'ufficio alle 18. → Ieri ___",
+        "a": "sono uscito/a dall'ufficio alle 18",
+        "hint": "uscire uses essere",
+        "explain": "uscire is a movement verb, so it takes essere, and the participle agrees with the subject: uscito/uscita. Es: Ieri sono uscito dall'ufficio alle 18."
+      },
+      {
+        "q": "Leggo il giornale. → Questa mattina ___",
+        "a": "ho letto il giornale",
+        "hint": "leggere → letto (irregular)",
+        "explain": "leggere takes avere and has an irregular participle, letto (not \"leggiuto\"). Es: Questa mattina ho letto il giornale."
+      },
+      {
+        "q": "Scrivo una email. → Stamattina ___",
+        "a": "ho scritto una email",
+        "hint": "scrivere → scritto (irregular)",
+        "explain": "scrivere takes avere and has an irregular participle, scritto (not \"scrivuto\"). Es: Stamattina ho scritto una email."
+      },
+      {
+        "q": "Mi trasferisco in Italia. → Due anni fa ___",
+        "a": "mi sono trasferito/a in Italia",
+        "hint": "reflexive verbs use essere",
+        "explain": "Reflexive verbs like trasferirsi always take essere in the passato prossimo, and the participle agrees with the subject. Es: Due anni fa mi sono trasferito in Italia."
+      }
+    ]
+  },
+  {
+    "id": "imp-1",
+    "topic": "Imperfetto",
+    "emoji": "🔁",
+    "type": "mcq",
+    "instruction": "Choose the correct imperfetto form.",
+    "items": [
+      {
+        "q": "Da bambino, io ___ (giocare) sempre fuori.",
+        "opts": [
+          "giocavo",
+          "ho giocato",
+          "gioco",
+          "giocavo stato"
+        ],
+        "a": 0,
+        "explain": "The imperfetto describes a repeated past habit (\"sempre\"); -are verbs form it with -avo for io: giocavo. \"ho giocato\" is passato prossimo, used for a single completed action, not a habit. Es: Da bambino giocavo sempre fuori."
+      },
+      {
+        "q": "Quando abitavo a Roma, ___ (prendere) sempre la metro.",
+        "opts": [
+          "ho preso",
+          "prendevo",
+          "prendo",
+          "prendessi"
+        ],
+        "a": 1,
+        "explain": "A repeated past habit (\"sempre\") needs the imperfetto; -ere verbs take -evo for io: prendevo. \"ho preso\" is passato prossimo (one-time event), not a habit. Es: Prendevo sempre la metro."
+      },
+      {
+        "q": "Ieri ___ (fare) molto caldo.",
+        "opts": [
+          "fa",
+          "faceva",
+          "ha fatto",
+          "farà"
+        ],
+        "a": 1,
+        "explain": "Weather descriptions in the past use the imperfetto: faceva (from the irregular stem facev-). \"ha fatto\" would suggest one completed action rather than an ongoing condition. Es: Ieri faceva molto caldo."
+      },
+      {
+        "q": "___ (essere) le tre quando è arrivato.",
+        "opts": [
+          "Sono",
+          "Erano",
+          "Saranno",
+          "Siano"
+        ],
+        "a": 1,
+        "explain": "Telling the time in the past uses the imperfetto of essere: erano le tre (plural to match \"le tre\"). \"Sono\" is present, \"Saranno\" is future — neither fits a past moment. Es: Erano le tre quando è arrivato."
+      },
+      {
+        "q": "Ogni estate, la famiglia ___ (andare) al mare.",
+        "opts": [
+          "è andata",
+          "va",
+          "andava",
+          "andrà"
+        ],
+        "a": 2,
+        "explain": "\"Ogni estate\" signals a repeated past habit, so use the imperfetto: andava. \"è andata\" (passato prossimo) would describe one single, completed trip, not a yearly habit. Es: Ogni estate la famiglia andava al mare."
+      },
+      {
+        "q": "Loro ___ (dormire) quando ho suonato il campanello.",
+        "opts": [
+          "dormono",
+          "hanno dormito",
+          "dormiranno",
+          "dormivano"
+        ],
+        "a": 3,
+        "explain": "An action already in progress when something else happened uses the imperfetto: dormivano. \"hanno dormito\" would mean the sleeping was already finished, not interrupted. Es: Dormivano quando ho suonato il campanello."
+      }
+    ]
+  },
+  {
+    "id": "imp-2",
+    "topic": "Imperfetto vs Passato Prossimo",
+    "emoji": "🔁⏮️",
+    "type": "mcq",
+    "instruction": "Choose the correct tense — imperfetto or passato prossimo.",
+    "items": [
+      {
+        "q": "Mentre ___ (leggere) un libro, ha squillato il telefono.",
+        "opts": [
+          "ho letto",
+          "leggevo",
+          "leggo",
+          "lessi"
+        ],
+        "a": 1,
+        "explain": "\"Mentre\" (while) introduces a background action in progress, so use the imperfetto: leggevo. \"ho letto\" (passato prossimo) is for the completed interrupting event, not the ongoing one. Es: Mentre leggevo, ha squillato il telefono."
+      },
+      {
+        "q": "L'anno scorso ___ (trasferirsi) in questa città.",
+        "opts": [
+          "mi trasferivo",
+          "mi sono trasferito/a",
+          "mi trasferisco",
+          "trasferiva"
+        ],
+        "a": 1,
+        "explain": "\"L'anno scorso\" marks a completed one-time event, so use passato prossimo; trasferirsi is reflexive and takes essere: mi sono trasferito/a. \"mi trasferivo\" (imperfetto) would suggest an ongoing or repeated action instead. Es: L'anno scorso mi sono trasferita in questa città."
+      },
+      {
+        "q": "Da ragazzo, Mario ___ (abitare) in campagna.",
+        "opts": [
+          "ha abitato",
+          "abita",
+          "abitava",
+          "avrà abitato"
+        ],
+        "a": 2,
+        "explain": "\"Da ragazzo\" describes a lasting past state, so use the imperfetto: abitava. \"ha abitato\" (passato prossimo) would imply a finished, bounded stay rather than a lasting state. Es: Da ragazzo, Mario abitava in campagna."
+      },
+      {
+        "q": "Ieri ___ (andare) al medico perché stavo male.",
+        "opts": [
+          "andavo",
+          "sono andato/a",
+          "vado",
+          "andrò"
+        ],
+        "a": 1,
+        "explain": "\"Ieri\" marks a single completed action, so use passato prossimo; andare takes essere: sono andato/a. \"andavo\" (imperfetto) is for background or repeated actions, not a one-time event on a specific day. Es: Ieri sono andato al medico."
+      },
+      {
+        "q": "Quando ero piccola, ___ (avere) un cane.",
+        "opts": [
+          "ho avuto",
+          "avevo",
+          "avrò",
+          "abbia"
+        ],
+        "a": 1,
+        "explain": "A lasting childhood state (\"quando ero piccola\") takes the imperfetto: avevo. \"ho avuto\" (passato prossimo) would suggest a specific, completed moment of getting something, not an ongoing state. Es: Quando ero piccola, avevo un cane."
+      },
+      {
+        "q": "Stamattina ___ (bere) un caffè e poi ___ (uscire).",
+        "opts": [
+          "bevevo e uscivo",
+          "ho bevuto e sono uscita/o",
+          "bevo e esco",
+          "bevevo e sono uscita/o"
+        ],
+        "a": 1,
+        "explain": "\"Stamattina\" with two sequential completed actions needs passato prossimo for both: ho bevuto (avere) and sono uscita/o (essere, since uscire is a movement verb). \"bevevo e uscivo\" (imperfetto) would wrongly suggest ongoing or repeated actions. Es: Stamattina ho bevuto un caffè e sono uscito."
+      }
+    ]
+  },
+  {
+    "id": "art-1",
+    "topic": "Articoli — Sound Triggers",
+    "emoji": "📌",
+    "type": "mcq",
+    "instruction": "Pick the right article. Hint: look at the FIRST SOUND of the next word — consonant, vowel, or \"tricky\" (s+cons, z, gn)?",
+    "items": [
+      {
+        "q": "___ studente è arrivato tardi.",
+        "opts": [
+          "Il",
+          "Lo",
+          "La",
+          "L'"
+        ],
+        "a": 1,
+        "hint": "st = s+consonant → tricky → LO",
+        "explain": "Masculine nouns starting with s+consonant (like st-) take lo, not il: lo studente. \"Il\" is the default masculine article, but it can't be used before this tricky sound. Es: lo studente, lo stadio."
+      },
+      {
+        "q": "___ amici di Marco sono simpatici.",
+        "opts": [
+          "I",
+          "Gli",
+          "Le",
+          "Lo"
+        ],
+        "a": 1,
+        "hint": "amici starts with vowel → plural masc → GLI",
+        "explain": "Masculine plural nouns starting with a vowel take gli, not i: gli amici. \"I\" is used before a normal consonant (i libri), not a vowel. Es: gli amici, gli italiani."
+      },
+      {
+        "q": "___ zaino è pesante.",
+        "opts": [
+          "Il",
+          "Lo",
+          "La",
+          "L'"
+        ],
+        "a": 1,
+        "hint": "z = tricky consonant → LO",
+        "explain": "Masculine nouns starting with z take lo, not il: lo zaino. \"Il\" only works before a normal consonant sound. Es: lo zaino, lo zio."
+      },
+      {
+        "q": "___ amica di Carla è medico.",
+        "opts": [
+          "Il",
+          "Lo",
+          "L'",
+          "La"
+        ],
+        "a": 2,
+        "hint": "vowel, feminine → L'",
+        "explain": "Feminine singular nouns starting with a vowel take l' (elision), not la: l'amica. \"La\" is used before a consonant sound. Es: l'amica, l'isola."
+      },
+      {
+        "q": "___ gnocchi sono buoni.",
+        "opts": [
+          "Il",
+          "Lo",
+          "I",
+          "Gli"
+        ],
+        "a": 3,
+        "hint": "gn = tricky, plural masc → GLI",
+        "explain": "Masculine plural nouns starting with the tricky sound gn take gli, not i: gli gnocchi. \"I\" is for normal consonants, like i libri. Es: gli gnocchi, gli gnomi."
+      },
+      {
+        "q": "___ libro è sul tavolo.",
+        "opts": [
+          "Il",
+          "Lo",
+          "L'",
+          "La"
+        ],
+        "a": 0,
+        "hint": "l = normal consonant, masc → IL",
+        "explain": "Masculine nouns starting with a normal consonant take il: il libro. \"Lo\" is reserved for s+consonant, z, gn and similar tricky sounds. Es: il libro, il tavolo."
+      },
+      {
+        "q": "___ case sono care.",
+        "opts": [
+          "I",
+          "Gli",
+          "Le",
+          "La"
+        ],
+        "a": 2,
+        "hint": "feminine plural → LE",
+        "explain": "Feminine plural nouns take le, whatever their first sound: le case. \"Gli\" and \"I\" are masculine plural forms. Es: le case, le amiche."
+      },
+      {
+        "q": "Mi piace ___ musica italiana.",
+        "opts": [
+          "il",
+          "lo",
+          "la",
+          "le"
+        ],
+        "a": 2,
+        "hint": "musica = normal consonant, fem → LA",
+        "explain": "Feminine singular nouns starting with a normal consonant take la: la musica. \"Il\"/\"lo\" are masculine, \"le\" is feminine plural. Es: la musica, la scuola."
+      }
+    ]
+  },
+  {
+    "id": "art-2",
+    "topic": "Articoli — Definite vs Indefinite",
+    "emoji": "📌",
+    "type": "cloze",
+    "instruction": "Fill each gap with the correct article from the dropdown. Read the noun carefully — its gender and first sound decide the article.",
+    "text": "Oggi vado (1)___ medico perché ho (2)___ mal di testa. Ho preso (3)___ autobus numero 5. In sala d'attesa c'è (4)___ signora con (5)___ bambino. (6)___ dottore mi visita e mi dà (7)___ ricetta. Devo comprare (8)___ medicina in farmacia.",
+    "blanks": [
+      {
+        "opts": [
+          "dal",
+          "del",
+          "al",
+          "dall'"
+        ],
+        "a": 0,
+        "explain": "Going to see a professional like a doctor at their practice uses da + article: dal medico. \"al\" would suggest going to a place, not a person's practice. Es: Vado dal medico ogni mese."
+      },
+      {
+        "opts": [
+          "un",
+          "uno",
+          "una",
+          "un'"
+        ],
+        "a": 0,
+        "explain": "\"mal di testa\" is masculine and starts with a normal consonant, so use un: un mal di testa. \"uno\" is only for s+consonant or z words. Es: Ho un mal di testa."
+      },
+      {
+        "opts": [
+          "il",
+          "lo",
+          "l'",
+          "la"
+        ],
+        "a": 2,
+        "explain": "Masculine singular nouns starting with a vowel take l' (elision): l'autobus. \"il\" is for consonants and \"lo\" is for s+consonant/z words. Es: Prendo l'autobus numero 5."
+      },
+      {
+        "opts": [
+          "un",
+          "uno",
+          "una",
+          "un'"
+        ],
+        "a": 2,
+        "explain": "Feminine singular nouns starting with a consonant take una: una signora. \"un'\" (with apostrophe) is only used before a vowel sound. Es: C'è una signora in sala d'attesa."
+      },
+      {
+        "opts": [
+          "un",
+          "uno",
+          "una",
+          "un'"
+        ],
+        "a": 0,
+        "explain": "Masculine singular nouns starting with a normal consonant take un: un bambino. \"uno\" is reserved for s+consonant or z words. Es: Con un bambino piccolo."
+      },
+      {
+        "opts": [
+          "Il",
+          "Lo",
+          "L'",
+          "La"
+        ],
+        "a": 0,
+        "explain": "dottore starts with a consonant, so masculine singular takes il: il dottore. \"L'\" is only for vowel-start words. Es: Il dottore mi visita."
+      },
+      {
+        "opts": [
+          "una",
+          "un",
+          "un'",
+          "uno"
+        ],
+        "a": 0,
+        "explain": "ricetta is feminine and starts with a consonant, so use una: una ricetta. \"un'\" is only used before a vowel sound. Es: Mi dà una ricetta."
+      },
+      {
+        "opts": [
+          "la",
+          "una",
+          "l'",
+          "un"
+        ],
+        "a": 1,
+        "explain": "Feminine singular nouns starting with a consonant take una: una medicina. \"un'\" would only be right before a vowel. Es: Devo comprare una medicina."
+      }
+    ]
+  },
+  {
+    "id": "prep-1",
+    "topic": "Preposizioni — A vs IN vs DA",
+    "emoji": "🔗",
+    "type": "mcq",
+    "instruction": "These three cause the most confusion. For each gap, ask: city or country? duration or direction? going to a person or a place?",
+    "items": [
+      {
+        "q": "Vivo ___ Italia ma sono nata ___ Mumbai.",
+        "opts": [
+          "in / a",
+          "a / in",
+          "in / da",
+          "a / da"
+        ],
+        "a": 0,
+        "hint": "country → IN; city → A",
+        "explain": "Countries take in (in Italia) while cities take a, even for \"born in\" a city: sono nata a Mumbai. \"in Mumbai\" wrongly treats a city like a country. Es: Vivo in Italia ma sono nata a Mumbai."
+      },
+      {
+        "q": "Studio italiano ___ tre anni.",
+        "opts": [
+          "per",
+          "da",
+          "in",
+          "di"
+        ],
+        "a": 1,
+        "hint": "duration from past until now → DA",
+        "explain": "da marks a duration continuing from the past up to now: studio da tre anni. \"per\" suggests a limited/completed duration, and \"in\"/\"di\" don't express duration this way. Es: Studio italiano da tre anni."
+      },
+      {
+        "q": "Ho un appuntamento ___ dentista alle 15.",
+        "opts": [
+          "al",
+          "dal",
+          "del",
+          "nel"
+        ],
+        "a": 1,
+        "hint": "\"at the dentist's place\" → DAL",
+        "explain": "Going to see a professional like the dentist at their practice uses da: dal dentista. \"al\" would suggest a place rather than a person's practice. Es: Ho un appuntamento dal dentista."
+      },
+      {
+        "q": "Vado ___ Roma domani mattina.",
+        "opts": [
+          "in",
+          "a",
+          "da",
+          "per"
+        ],
+        "a": 1,
+        "hint": "city → A",
+        "explain": "Cities take a, not in (which is for countries/regions): vado a Roma. \"in Roma\" is a common mistake — remember cities use a. Es: Vado a Roma domani."
+      },
+      {
+        "q": "Vado ___ farmacia a comprare le medicine.",
+        "opts": [
+          "a",
+          "in",
+          "alla",
+          "nella"
+        ],
+        "a": 2,
+        "hint": "specific shop with article → ALLA",
+        "explain": "With a specific place named by its article, a + la = alla: vado alla farmacia. Plain \"a\" or \"in\" without the article don't fit here. Es: Vado alla farmacia vicino a casa."
+      },
+      {
+        "q": "Torno ___ ufficio tra un'ora.",
+        "opts": [
+          "a",
+          "in",
+          "dall'",
+          "all'"
+        ],
+        "a": 2,
+        "hint": "coming back FROM → DALL'",
+        "explain": "\"Tornare da\" means to come back FROM a place; da + l' (before the vowel in ufficio) = dall': torno dall'ufficio. \"all'\" would mean going TO the office, the opposite direction. Es: Torno dall'ufficio alle sei."
+      },
+      {
+        "q": "Il treno parte ___ binario 3.",
+        "opts": [
+          "al",
+          "dal",
+          "sul",
+          "nel"
+        ],
+        "a": 1,
+        "hint": "departing FROM → DAL",
+        "explain": "\"Partire da\" means to depart FROM a place; da + il = dal: il treno parte dal binario 3. \"al\" would mean arriving TO the platform, not leaving from it. Es: Il treno parte dal binario 3."
+      },
+      {
+        "q": "Questo corso è ___ i cittadini stranieri.",
+        "opts": [
+          "a",
+          "di",
+          "per",
+          "da"
+        ],
+        "a": 2,
+        "hint": "purpose → PER",
+        "explain": "per expresses purpose, \"intended for\": questo corso è per i cittadini stranieri. \"a\"/\"di\"/\"da\" don't convey \"intended for\" in this way. Es: Questo corso è per gli studenti principianti."
+      }
+    ]
+  },
+  {
+    "id": "prep-2",
+    "topic": "Preposizioni Articolate — cloze",
+    "emoji": "🔗",
+    "type": "cloze",
+    "instruction": "Fill with the correct combined form (e.g. al, dalla, negli…). Think: which preposition + which article?",
+    "text": "Ogni mattina vado (1)___ ufficio in autobus. Esco (2)___ casa alle 8. I documenti sono (3)___ tavolo. Parlo (4)___ direttore una volta a settimana. Vengo (5)___ riunione tra cinque minuti. (6)___ sera mangio spesso (7)___ ristorante vicino (8)___ stazione.",
+    "blanks": [
+      {
+        "opts": [
+          "all'",
+          "al",
+          "allo",
+          "alla"
+        ],
+        "a": 0,
+        "explain": "ufficio starts with a vowel, so a + l' = all': vado all'ufficio. \"al\" is for consonant-start masculine words. Es: Vado all'ufficio in autobus."
+      },
+      {
+        "opts": [
+          "dal",
+          "dalla",
+          "di",
+          "della"
+        ],
+        "a": 1,
+        "explain": "casa is feminine and starts with a consonant, so da + la = dalla: esco dalla casa. \"dal\" is the masculine form, not used with casa (feminine). Es: Esco dalla casa alle 8."
+      },
+      {
+        "opts": [
+          "nel",
+          "sul",
+          "del",
+          "nel"
+        ],
+        "a": 1,
+        "explain": "su + il = sul before a masculine consonant word: i documenti sono sul tavolo. \"nel\" would mean \"inside the table\", which doesn't fit documents lying on top. Es: I documenti sono sul tavolo."
+      },
+      {
+        "opts": [
+          "del",
+          "col",
+          "dal",
+          "al"
+        ],
+        "a": 3,
+        "explain": "\"parlare a qualcuno\" (to talk to someone) uses a; a + il = al before a masculine consonant word: parlo al direttore. \"dal\"/\"col\" would change the meaning. Es: Parlo al direttore ogni settimana."
+      },
+      {
+        "opts": [
+          "dalla",
+          "della",
+          "alla",
+          "nella"
+        ],
+        "a": 2,
+        "explain": "\"venire a\" (to come to) uses a; a + la = alla before a feminine consonant word: vengo alla riunione. \"nella\" would mean \"inside the meeting\", not \"to the meeting\". Es: Vengo alla riunione tra poco."
+      },
+      {
+        "opts": [
+          "Alla",
+          "Della",
+          "Nella",
+          "Dalla"
+        ],
+        "a": 0,
+        "explain": "\"alla sera\" describes a habitual time of day (in the evening); a + la = alla before sera (feminine). Es: Alla sera mangio spesso fuori."
+      },
+      {
+        "opts": [
+          "al",
+          "nel",
+          "dal",
+          "del"
+        ],
+        "a": 0,
+        "explain": "\"mangiare al ristorante\" (to eat at the restaurant) uses a; a + il = al before a masculine consonant word: al ristorante. Es: Mangio spesso al ristorante."
+      },
+      {
+        "opts": [
+          "alla",
+          "dalla",
+          "nella",
+          "della"
+        ],
+        "a": 0,
+        "explain": "\"vicino a\" (near) uses a; a + la = alla before a feminine consonant word: vicino alla stazione. Es: L'albergo è vicino alla stazione."
+      }
+    ]
+  },
+  {
+    "id": "prep-visual",
+    "topic": "Preposizioni — Immagini",
+    "emoji": "🖼️",
+    "type": "mcq",
+    "instruction": "Look at each picture and choose the correct preposition of place.",
+    "items": [
+      {
+        "visual": "<svg viewBox=\"0 0 160 110\" width=\"160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- floor --><rect x=\"10\" y=\"90\" width=\"140\" height=\"6\" rx=\"2\" fill=\"#c8a87a\"/>\n  <!-- chair legs --><rect x=\"35\" y=\"60\" width=\"7\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"108\" y=\"60\" width=\"7\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <!-- chair seat --><rect x=\"28\" y=\"55\" width=\"94\" height=\"12\" rx=\"4\" fill=\"#b59a7f\"/>\n  <!-- chair back --><rect x=\"28\" y=\"28\" width=\"94\" height=\"30\" rx=\"4\" fill=\"#b59a7f\"/>\n  <!-- ball ON seat --><circle cx=\"80\" cy=\"46\" r=\"12\" fill=\"#e74c3c\"/><circle cx=\"75\" cy=\"42\" r=\"3\" fill=\"#c0392b\" opacity=\".4\"/>\n</svg>",
+        "q": "La palla è ___ la sedia.",
+        "opts": [
+          "sotto",
+          "su",
+          "dietro",
+          "davanti a"
+        ],
+        "a": 1,
+        "hint": "sul = SU + la → on top of",
+        "explain": "\"su\" means \"on / on top of\" — the ball is resting on the seat's surface. \"sotto\" would mean underneath, the opposite position. Es: Il gatto dorme sul divano."
+      },
+      {
+        "visual": "<svg viewBox=\"0 0 160 110\" width=\"160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"90\" width=\"140\" height=\"6\" rx=\"2\" fill=\"#c8a87a\"/>\n  <rect x=\"35\" y=\"60\" width=\"7\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"108\" y=\"60\" width=\"7\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"28\" y=\"55\" width=\"94\" height=\"12\" rx=\"4\" fill=\"#b59a7f\"/>\n  <rect x=\"28\" y=\"28\" width=\"94\" height=\"30\" rx=\"4\" fill=\"#b59a7f\"/>\n  <!-- ball UNDER chair --><circle cx=\"80\" cy=\"82\" r=\"10\" fill=\"#3498db\"/><circle cx=\"76\" cy=\"78\" r=\"3\" fill=\"#2980b9\" opacity=\".4\"/>\n</svg>",
+        "q": "La palla è ___ la sedia.",
+        "opts": [
+          "su",
+          "accanto a",
+          "sotto",
+          "sopra"
+        ],
+        "a": 2,
+        "hint": "sotto = under / beneath",
+        "explain": "\"sotto\" means \"under / beneath\" — the ball is underneath the chair. \"sopra\" would mean above/on top, the opposite position. Es: Il gatto dorme sotto il letto."
+      },
+      {
+        "visual": "<svg viewBox=\"0 0 200 110\" width=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"90\" width=\"180\" height=\"6\" rx=\"2\" fill=\"#c8a87a\"/>\n  <!-- table --><rect x=\"50\" y=\"52\" width=\"100\" height=\"8\" rx=\"3\" fill=\"#8b6914\"/>\n  <rect x=\"58\" y=\"60\" width=\"8\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"134\" y=\"60\" width=\"8\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <!-- ball NEXT TO table --><circle cx=\"22\" cy=\"84\" r=\"11\" fill=\"#27ae60\"/><circle cx=\"18\" cy=\"80\" r=\"3\" fill=\"#1e8449\" opacity=\".4\"/>\n</svg>",
+        "q": "La palla è ___ il tavolo.",
+        "opts": [
+          "su",
+          "sotto",
+          "dentro",
+          "accanto a"
+        ],
+        "a": 3,
+        "hint": "accanto a = next to / beside",
+        "explain": "\"accanto a\" means \"next to / beside\" — the ball sits beside the table, not on or under it. \"su\" would mean on top of the table. Es: La sedia è accanto al tavolo."
+      },
+      {
+        "visual": "<svg viewBox=\"0 0 200 120\" width=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"100\" width=\"180\" height=\"6\" rx=\"2\" fill=\"#c8a87a\"/>\n  <!-- box/bag --><rect x=\"65\" y=\"55\" width=\"70\" height=\"50\" rx=\"6\" fill=\"#f39c12\"/>\n  <rect x=\"72\" y=\"45\" width=\"56\" height=\"15\" rx=\"4\" fill=\"#e67e22\"/>\n  <!-- ball INSIDE: just visible top --><circle cx=\"100\" cy=\"58\" r=\"14\" fill=\"#9b59b6\" opacity=\".85\"/><circle cx=\"95\" cy=\"53\" r=\"4\" fill=\"#7d3c98\" opacity=\".4\"/>\n  <!-- clip box over ball bottom --><rect x=\"65\" y=\"65\" width=\"70\" height=\"45\" rx=\"0\" fill=\"#f39c12\"/>\n</svg>",
+        "q": "La palla è ___ la borsa.",
+        "opts": [
+          "accanto a",
+          "sotto",
+          "dentro",
+          "davanti a"
+        ],
+        "a": 2,
+        "hint": "dentro = inside",
+        "explain": "\"dentro\" means \"inside\" — the ball is inside the bag. \"sotto\" would mean underneath the bag, not inside it. Es: Le chiavi sono dentro la borsa."
+      },
+      {
+        "visual": "<svg viewBox=\"0 0 220 110\" width=\"220\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"90\" width=\"200\" height=\"6\" rx=\"2\" fill=\"#c8a87a\"/>\n  <!-- chair --><rect x=\"80\" y=\"55\" width=\"7\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"133\" y=\"55\" width=\"7\" height=\"36\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"73\" y=\"50\" width=\"74\" height=\"11\" rx=\"4\" fill=\"#b59a7f\"/>\n  <rect x=\"73\" y=\"24\" width=\"74\" height=\"29\" rx=\"4\" fill=\"#b59a7f\"/>\n  <!-- ball IN FRONT OF chair --><circle cx=\"110\" cy=\"84\" r=\"11\" fill=\"#e74c3c\" opacity=\".9\"/>\n  <!-- second ball BEHIND --><circle cx=\"110\" cy=\"18\" r=\"11\" fill=\"#3498db\" opacity=\".75\"/>\n  <!-- labels --><text x=\"32\" y=\"88\" font-size=\"10\" fill=\"#e74c3c\" font-family=\"sans-serif\">davanti</text>\n  <text x=\"145\" y=\"22\" font-size=\"10\" fill=\"#3498db\" font-family=\"sans-serif\">dietro</text>\n</svg>",
+        "q": "La palla rossa è ___ la sedia; quella blu è ___ la sedia.",
+        "opts": [
+          "davanti a / dietro",
+          "dietro / davanti a",
+          "sotto / sopra",
+          "accanto / dentro"
+        ],
+        "a": 0,
+        "hint": "davanti a = in front of · dietro = behind",
+        "explain": "\"davanti a\" means \"in front of\" and \"dietro\" means \"behind\" — the red ball is in front, the blue one is behind. Swapping the order (dietro / davanti a) would describe the opposite scene. Es: Il cane è davanti alla porta; il gatto è dietro la porta."
+      },
+      {
+        "visual": "<svg viewBox=\"0 0 200 120\" width=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"100\" width=\"180\" height=\"6\" rx=\"2\" fill=\"#c8a87a\"/>\n  <!-- shelf/wall --><rect x=\"20\" y=\"40\" width=\"160\" height=\"10\" rx=\"3\" fill=\"#8b6914\"/>\n  <rect x=\"20\" y=\"40\" width=\"6\" height=\"66\" rx=\"2\" fill=\"#8b6914\"/>\n  <rect x=\"174\" y=\"40\" width=\"6\" height=\"66\" rx=\"2\" fill=\"#8b6914\"/>\n  <!-- book 1 --><rect x=\"32\" y=\"20\" width=\"18\" height=\"22\" rx=\"2\" fill=\"#e74c3c\"/>\n  <!-- book 2 --><rect x=\"52\" y=\"22\" width=\"16\" height=\"20\" rx=\"2\" fill=\"#3498db\"/>\n  <!-- book 3 --><rect x=\"70\" y=\"18\" width=\"20\" height=\"24\" rx=\"2\" fill=\"#27ae60\"/>\n  <!-- ball between books --><circle cx=\"100\" cy=\"30\" r=\"11\" fill=\"#f39c12\"/><circle cx=\"96\" cy=\"26\" r=\"3\" fill=\"#d68910\" opacity=\".4\"/>\n</svg>",
+        "q": "La palla è ___ i libri.",
+        "opts": [
+          "sopra",
+          "tra",
+          "sotto",
+          "dietro"
+        ],
+        "a": 1,
+        "hint": "tra = between (also fra)",
+        "explain": "\"tra\" (also \"fra\") means \"between\" — the ball sits between the books. \"sopra\" would mean on top, \"sotto\" underneath. Es: Il gatto dorme tra i cuscini."
+      }
+    ]
+  },
+  {
+    "id": "inter-1",
+    "topic": "Parole Interrogative",
+    "emoji": "❓",
+    "type": "mcq",
+    "instruction": "Choose the correct question word.",
+    "items": [
+      {
+        "q": "___ abiti? — Abito in Via Roma, numero 5.",
+        "opts": [
+          "Chi",
+          "Come",
+          "Dove",
+          "Quando"
+        ],
+        "a": 2,
+        "explain": "Dove asks \"where\", matching an address in the answer: Dove abiti? — Abito in Via Roma. \"Come\" asks \"how\", \"Chi\" asks \"who\" — neither fits a place. Es: Dove lavori?"
+      },
+      {
+        "q": "___ stai? — Bene, grazie!",
+        "opts": [
+          "Chi",
+          "Come",
+          "Dove",
+          "Quanto"
+        ],
+        "a": 1,
+        "explain": "Come asks \"how\", used to ask about wellbeing: Come stai? — Bene! \"Dove\" asks about place, \"Chi\" about a person — neither matches \"Bene, grazie\". Es: Come va?"
+      },
+      {
+        "q": "___ parte il treno? — Alle 10 e 15.",
+        "opts": [
+          "Dove",
+          "Perché",
+          "A che ora",
+          "Quanto"
+        ],
+        "a": 2,
+        "explain": "A che ora asks \"at what time\", matching the clock-time answer: A che ora parte il treno? — Alle 10 e 15. \"Dove\" asks about place, \"Perché\" about reason. Es: A che ora apri il negozio?"
+      },
+      {
+        "q": "___ costa l'abbonamento mensile?",
+        "opts": [
+          "Quanto",
+          "Come",
+          "Dove",
+          "Chi"
+        ],
+        "a": 0,
+        "explain": "Quanto asks \"how much\", the right word for asking a price: Quanto costa? \"Come\" asks \"how\", not an amount. Es: Quanto costa il biglietto?"
+      },
+      {
+        "q": "___ non sei venuto alla lezione? — Perché stavo male.",
+        "opts": [
+          "Cosa",
+          "Chi",
+          "Perché",
+          "Quale"
+        ],
+        "a": 2,
+        "explain": "Perché asks \"why\", matching the reason given in the answer (Perché stavo male). \"Cosa\" asks \"what\", \"Chi\" asks \"who\" — neither fits a reason. Es: Perché sei in ritardo?"
+      },
+      {
+        "q": "___ hai comprato al supermercato?",
+        "opts": [
+          "Chi",
+          "Che cosa",
+          "Dove",
+          "Quando"
+        ],
+        "a": 1,
+        "explain": "Che cosa asks \"what\" (the thing bought), not a person or place: Che cosa hai comprato? \"Chi\" asks \"who\", \"Dove\" asks \"where\" — neither fits an object. Es: Che cosa hai mangiato oggi?"
+      },
+      {
+        "q": "___ è il tuo medico di base?",
+        "opts": [
+          "Cosa",
+          "Quando",
+          "Chi",
+          "Come"
+        ],
+        "a": 2,
+        "explain": "Chi asks \"who\", the right word for asking about a person: Chi è il tuo medico di base? \"Cosa\" asks \"what\" — it doesn't fit a person. Es: Chi è il tuo insegnante?"
+      },
+      {
+        "q": "___ documenti servono per iscriversi?",
+        "opts": [
+          "Quale",
+          "Quali",
+          "Quanto",
+          "Chi"
+        ],
+        "a": 1,
+        "explain": "Quali is the plural of \"quale\" (which), needed here because \"documenti\" is plural: Quali documenti servono? \"Quale\" (singular) wouldn't agree with a plural noun. Es: Quali libri ti servono?"
+      }
+    ]
+  },
+  {
+    "id": "cloze-1",
+    "topic": "Cloze Test — Cittadinanza",
+    "emoji": "📝",
+    "type": "cloze",
+    "instruction": "Fill in the gaps using the words from the bank below. There are two extra words you will not need.",
+    "bank": [
+      "gratuiti",
+      "iscriversi",
+      "stranieri",
+      "documenti",
+      "orario",
+      "aperto",
+      "chiuso",
+      "sportello",
+      "richiedere"
+    ],
+    "parts": [
+      "Il Comune offre corsi di italiano completamente ",
+      " per i cittadini ",
+      ". Per ",
+      " al corso, bisogna portare i propri ",
+      " allo ",
+      " del Comune. Lo sportello è ",
+      " dal lunedì al venerdì, con ",
+      " 9–13. Per informazioni puoi anche ",
+      " il modulo online."
+    ],
+    "ans": [
+      "gratuiti",
+      "stranieri",
+      "iscriversi",
+      "documenti",
+      "sportello",
+      "aperto",
+      "orario",
+      "richiedere"
+    ],
+    "explains": [
+      "\"gratuiti\" is a plural adjective meaning \"free of charge\", agreeing with \"corsi\" (masculine plural). Es: I corsi sono gratuiti.",
+      "\"cittadini stranieri\" means \"foreign citizens\" — stranieri is the word for \"foreign/foreigners\" here. Es: Ci sono molti studenti stranieri.",
+      "\"iscriversi\" means \"to enrol/sign up\" — the reflexive infinitive fits after \"per\" (in order to). Es: Devo iscrivermi al corso.",
+      "\"documenti\" means \"documents/ID papers\", the things you bring with you. Es: Porto i miei documenti.",
+      "\"sportello\" means \"counter/window\" — the desk where you're served at an office. Es: Vado allo sportello del Comune.",
+      "\"aperto\" means \"open\", describing the counter's status (masculine singular, agreeing with \"sportello\"). Es: L'ufficio è aperto la mattina.",
+      "\"orario\" means \"opening hours/schedule\" — the word for the timetable given as \"9–13\". Es: Qual è l'orario dell'ufficio?",
+      "\"richiedere\" means \"to request\" — fits after \"puoi anche\" (you can also…). Es: Puoi richiedere il modulo online."
+    ]
+  },
+  {
+    "id": "cloze-2",
+    "topic": "Cloze Test — Salute",
+    "emoji": "📝",
+    "type": "cloze",
+    "instruction": "Fill in the gaps using the words from the bank. Two words are extra.",
+    "bank": [
+      "ricetta",
+      "prenotare",
+      "medico",
+      "farmacia",
+      "visita",
+      "pagare",
+      "scade",
+      "appuntamento",
+      "tessera"
+    ],
+    "parts": [
+      "Per andare dal ",
+      " di base, devi prima ",
+      " un ",
+      ". Il medico ti visita e, se necessario, ti dà una ",
+      " per i medicinali. Puoi comprare le medicine in ",
+      ". La ",
+      " sanitaria ti permette di avere le cure gratuitamente o a prezzi ridotti. Ricorda che la tessera ",
+      " ogni cinque anni: devi rinnovarla prima che sia troppo tardi."
+    ],
+    "ans": [
+      "medico",
+      "prenotare",
+      "appuntamento",
+      "ricetta",
+      "farmacia",
+      "tessera",
+      "scade"
+    ],
+    "explains": [
+      "\"il medico di base\" is your family doctor/GP — medico means \"doctor\". Es: Vado dal medico.",
+      "\"prenotare\" means \"to book\" — you book an appointment before seeing the doctor. Es: Devo prenotare una visita.",
+      "\"appuntamento\" means \"appointment\" — the thing you book with \"prenotare\". Es: Ho un appuntamento alle 15.",
+      "\"ricetta\" means \"prescription\" — what the doctor gives you for medicine. Es: Il medico mi dà una ricetta.",
+      "\"farmacia\" means \"pharmacy\" — where you buy medicine with a prescription. Es: Compro le medicine in farmacia.",
+      "\"tessera sanitaria\" is the health card that gives you access to reduced-cost or free care. Es: Ho dimenticato la tessera sanitaria.",
+      "\"scade\" (from scadere) means \"expires\" — the health card expires every five years and needs renewing. Es: Il mio documento scade a dicembre."
+    ]
+  },
+  {
+    "id": "cloze-3",
+    "topic": "Cloze Test — Lavoro",
+    "emoji": "📝",
+    "type": "cloze",
+    "instruction": "Fill in the gaps. Two words from the bank are not needed.",
+    "bank": [
+      "colloquio",
+      "curriculum",
+      "esperienza",
+      "annuncio",
+      "stipendio",
+      "contratto",
+      "assunto",
+      "tirocinio",
+      "turno"
+    ],
+    "parts": [
+      "Ho visto un ",
+      " di lavoro online e ho mandato il mio ",
+      " via email. L'azienda mi ha chiamato per un ",
+      ". Ho parlato della mia ",
+      " lavorativa e ho spiegato che ho già fatto un ",
+      " in un'altra azienda. Alla fine mi hanno ",
+      " con un ",
+      " a tempo determinato. Lo ",
+      " è di 1.400 euro al mese."
+    ],
+    "ans": [
+      "annuncio",
+      "curriculum",
+      "colloquio",
+      "esperienza",
+      "tirocinio",
+      "assunto",
+      "contratto",
+      "stipendio"
+    ],
+    "explains": [
+      "\"annuncio\" means \"advertisement/job posting\" — what you see online for a job opening. Es: Ho letto un annuncio di lavoro.",
+      "\"curriculum\" is your CV/resume, sent to apply for the job. Es: Ho inviato il mio curriculum.",
+      "\"colloquio\" means \"job interview\" — what the company calls you for after seeing your CV. Es: Ho un colloquio domani.",
+      "\"esperienza (lavorativa)\" means \"work experience\" — what you talk about in the interview. Es: Ho poca esperienza in questo settore.",
+      "\"tirocinio\" means \"internship/traineeship\" — a period of supervised work experience. Es: Ho fatto un tirocinio in banca.",
+      "\"assunto\" (from assumere) means \"hired\" — the participle describing being given the job. Es: Sono stato assunto la settimana scorsa.",
+      "\"contratto\" means \"contract\" — the agreement, here \"a tempo determinato\" (fixed-term). Es: Ho firmato un contratto.",
+      "\"stipendio\" means \"salary\" — the monthly pay mentioned (1.400 euro al mese). Es: Il mio stipendio è buono."
+    ]
+  },
+  {
+    "id": "order-1",
+    "topic": "Word Order",
+    "emoji": "🔀",
+    "type": "order",
+    "instruction": "Rearrange the words to make a correct Italian sentence. Tap words in the right order.",
+    "items": [
+      {
+        "words": [
+          "ogni",
+          "al",
+          "vado",
+          "lunedì",
+          "supermercato",
+          "io"
+        ],
+        "a": "Io vado al supermercato ogni lunedì.",
+        "hint": "Subject + verb + place + time",
+        "explain": "Standard Italian order is subject + verb + place + time: Io vado al supermercato ogni lunedì. Time expressions like \"ogni lunedì\" usually come at the end. Es: Io vado al supermercato ogni lunedì."
+      },
+      {
+        "words": [
+          "permesso",
+          "ho",
+          "il",
+          "rinnovato",
+          "di",
+          "soggiorno"
+        ],
+        "a": "Ho rinnovato il permesso di soggiorno.",
+        "hint": "Passato prossimo: avere + participio",
+        "explain": "The passato prossimo is built as avere + past participle, followed by the object: Ho rinnovato il permesso di soggiorno. The auxiliary avere always comes right before the participle. Es: Ho rinnovato il permesso di soggiorno."
+      },
+      {
+        "words": [
+          "stavo",
+          "perché",
+          "non",
+          "male",
+          "venuto",
+          "sono"
+        ],
+        "a": "Non sono venuto perché stavo male.",
+        "hint": "Non + essere + venuto + reason",
+        "explain": "\"Non\" goes directly before the verb to negate it, followed by essere + participle and then the reason: Non sono venuto perché stavo male. Es: Non sono venuto perché stavo male."
+      },
+      {
+        "words": [
+          "bambino",
+          "da",
+          "andavo",
+          "al",
+          "parco",
+          "ogni",
+          "giorno"
+        ],
+        "a": "Da bambino andavo al parco ogni giorno.",
+        "hint": "Da bambino + imperfetto",
+        "explain": "The time phrase \"Da bambino\" (as a child) opens the sentence, followed by the imperfetto for a repeated habit: Da bambino andavo al parco ogni giorno. Es: Da bambino andavo al parco ogni giorno."
+      },
+      {
+        "words": [
+          "vuole",
+          "prenotare",
+          "medico",
+          "visita",
+          "dal",
+          "una"
+        ],
+        "a": "Vuole prenotare una visita dal medico.",
+        "hint": "Volere + infinito",
+        "explain": "A modal verb like volere is followed directly by the infinitive of the main verb: Vuole prenotare una visita dal medico. Es: Vuole prenotare una visita dal medico."
+      },
+      {
+        "words": [
+          "tre",
+          "in",
+          "Italia",
+          "vivo",
+          "da",
+          "anni"
+        ],
+        "a": "Vivo in Italia da tre anni.",
+        "hint": "Presente + da + duration",
+        "explain": "To express an action still going on, use the present tense + da + duration: Vivo in Italia da tre anni. Es: Vivo in Italia da tre anni."
+      }
+    ]
+  },
+  {
+    "id": "match-1",
+    "topic": "Match — Sentence Halves",
+    "emoji": "🧩",
+    "type": "match",
+    "instruction": "Match each sentence beginning (left) with the correct ending (right).",
+    "pairs": [
+      [
+        "Per rinnovare il permesso di soggiorno, devi",
+        "andare alla questura con i documenti."
+      ],
+      [
+        "Il corso di italiano è gratuito",
+        "per i cittadini stranieri."
+      ],
+      [
+        "Se hai la febbre alta,",
+        "chiama il medico di base o la guardia medica."
+      ],
+      [
+        "Il treno per Roma parte alle 10:15",
+        "dal binario 4."
+      ],
+      [
+        "Non sono venuto a lezione",
+        "perché stavo male."
+      ],
+      [
+        "Ieri sera ho mangiato",
+        "la pizza con i miei amici."
+      ]
+    ],
+    "explains": [
+      "Renewing a residence permit requires going in person to the questura (police headquarters) with your documents — the logical next step after \"devi\". Es: Devi andare alla questura.",
+      "Free Italian courses (\"gratuito\") are typically offered specifically to foreign citizens, so this ending completes the sentence's meaning. Es: Il corso è gratuito per gli stranieri.",
+      "A high fever is the reason you'd call your doctor or the on-call medical service, so this ending logically follows \"Se hai la febbre alta\". Es: Se stai male, chiama il medico.",
+      "Italian trains depart from a numbered \"binario\" (platform), so \"dal binario 4\" naturally completes the sentence about departure. Es: Il treno parte dal binario 2.",
+      "\"Perché stavo male\" (because I felt unwell) gives the reason for not attending, completing the cause-effect logic of the sentence. Es: Non sono venuto perché stavo male.",
+      "\"la pizza con i miei amici\" names what and with whom you ate, completing the action started by \"Ieri sera ho mangiato\". Es: Ieri ho mangiato la pasta con la famiglia."
+    ]
+  },
+  {
+    "id": "match-2",
+    "topic": "Match — Questions & Answers",
+    "emoji": "🧩",
+    "type": "match",
+    "instruction": "Match each question with the correct answer.",
+    "pairs": [
+      [
+        "Dove abiti?",
+        "Abito in Via Garibaldi, al terzo piano."
+      ],
+      [
+        "Da quanto tempo studi italiano?",
+        "Da circa sei mesi."
+      ],
+      [
+        "A che ora apre lo sportello?",
+        "Apre alle 9 di mattina."
+      ],
+      [
+        "Perché hai preso la patente?",
+        "Perché lavoro fuori città."
+      ],
+      [
+        "Quanti anni hai?",
+        "Ho trentadue anni."
+      ],
+      [
+        "Qual è il tuo lavoro?",
+        "Faccio il cameriere in un ristorante."
+      ]
+    ],
+    "explains": [
+      "Dove asks \"where\", so the reply gives an address: Abito in Via Garibaldi. Es: Dove abiti? — Abito a Roma.",
+      "\"Da quanto tempo\" asks \"for how long\", so the reply gives a duration with da: Da circa sei mesi. Es: Da quanto tempo lavori qui? — Da un anno.",
+      "\"A che ora\" asks \"at what time\", so the reply gives a clock time: Apre alle 9. Es: A che ora chiudi? — Alle 18.",
+      "Perché asks \"why\", so the reply gives a reason introduced by perché: Perché lavoro fuori città. Es: Perché studi italiano? — Perché vivo in Italia.",
+      "\"Quanti anni hai\" asks your age, so the reply states it with avere: Ho trentadue anni (not \"sono trentadue anni\"). Es: Quanti anni hai? — Ho venti anni.",
+      "\"Qual è il tuo lavoro\" asks about your job, so the reply names the profession: Faccio il cameriere. Es: Qual è il tuo lavoro? — Faccio l'insegnante."
+    ]
+  },
+  {
+    "id": "error-1",
+    "topic": "Trova l'Errore",
+    "emoji": "🔍",
+    "type": "error",
+    "instruction": "Each sentence has ONE grammar mistake. Choose the corrected version.",
+    "items": [
+      {
+        "wrong": "Ieri sono mangiato la pizza con i miei amici.",
+        "opts": [
+          "Ieri ho mangiato la pizza con i miei amici.",
+          "Ieri sono mangiata la pizza con i miei amici.",
+          "Ieri ho mangiato la pizza con i miei amichi."
+        ],
+        "a": 0,
+        "why": "Mangiare takes AVERE, not essere.",
+        "explain": "mangiare is a regular action verb and takes avere in the passato prossimo, not essere: ho mangiato. \"sono mangiato\" wrongly treats it like a movement/reflexive verb. Es: Ieri ho mangiato la pizza."
+      },
+      {
+        "wrong": "Da bambina, io andavo sempre al il parco.",
+        "opts": [
+          "Da bambina, io andavo sempre al parco.",
+          "Da bambina, io andato sempre al parco.",
+          "Da bambina, io sono andata sempre al parco."
+        ],
+        "a": 0,
+        "why": "\"Al\" is already \"a + il\" — you can't write \"al il\".",
+        "explain": "\"al\" is already the fusion of a + il, so adding \"il\" again (\"al il\") duplicates the article. Just use al parco. Es: Vado al parco ogni giorno."
+      },
+      {
+        "wrong": "Vivo in Italia da tre anni fa.",
+        "opts": [
+          "Vivo in Italia da tre anni.",
+          "Ho vissuto in Italia da tre anni fa.",
+          "Vivevo in Italia da tre anni fa."
+        ],
+        "a": 0,
+        "why": "\"Da\" already expresses duration from the past — no \"fa\" needed.",
+        "explain": "\"da\" alone expresses a duration continuing up to now, so adding \"fa\" (ago) alongside it is redundant and incorrect. Just say da tre anni. Es: Vivo in Italia da tre anni."
+      },
+      {
+        "wrong": "Ho bisogno di uno informazione.",
+        "opts": [
+          "Ho bisogno di un'informazione.",
+          "Ho bisogno di una informazione.",
+          "Ho bisogno di un informazione."
+        ],
+        "a": 0,
+        "why": "\"Informazione\" starts with a vowel, so use \"un'\" (elision).",
+        "explain": "informazione is feminine and starts with a vowel, so the indefinite article elides to un': un'informazione. \"uno\" is only used before masculine s+consonant/z words. Es: Ho bisogno di un'informazione."
+      },
+      {
+        "wrong": "Mentre dormevo, il telefono ha squillato e mi sono svegliata.",
+        "opts": [
+          "Mentre dormivo, il telefono ha squillato e mi sono svegliata.",
+          "Mentre dormevo, il telefono squillava e mi sono svegliata.",
+          "Mentre dormevo, il telefono ha squillato e mi svegliava."
+        ],
+        "a": 0,
+        "why": "\"Dormevo\" is correct imperfetto (1st person: dormire → dormivo, not dormevo).",
+        "explain": "dormire is a regular -ire verb, and its imperfetto for io is dormivo, not dormevo (an -evo ending mistakenly borrowed from -ere verbs). Es: Mentre dormivo, ha squillato il telefono."
+      },
+      {
+        "wrong": "Lo sportello è chiusa il sabato.",
+        "opts": [
+          "Lo sportello è chiuso il sabato.",
+          "Lo sportello è chiuso la sabato.",
+          "Lo sportello è chiuso di sabato."
+        ],
+        "a": 0,
+        "why": "\"Sportello\" is masculine, so the adjective must be \"chiuso\".",
+        "explain": "sportello is masculine singular, so the adjective must match: chiuso, not the feminine chiusa. Es: Lo sportello è chiuso la domenica."
+      }
+    ]
+  },
+  {
+    "id": "modal-1",
+    "topic": "Verbi Modali",
+    "emoji": "🎛️",
+    "type": "mcq",
+    "instruction": "Choose the correct modal verb form.",
+    "items": [
+      {
+        "q": "___ aiutarmi con questo modulo, per favore?",
+        "opts": [
+          "Vuoi",
+          "Puoi",
+          "Devi",
+          "Sai"
+        ],
+        "a": 1,
+        "explain": "Puoi (from potere) politely asks if someone is able to help: Puoi aiutarmi? \"Vuoi\" asks about desire, \"Devi\" implies obligation — less natural for a polite request. Es: Puoi aiutarmi, per favore?"
+      },
+      {
+        "q": "Per ottenere la carta d'identità, ___ portare due foto.",
+        "opts": [
+          "volete",
+          "sapete",
+          "dovete",
+          "potete"
+        ],
+        "a": 2,
+        "explain": "Dovete (from dovere) expresses a requirement: dovete portare due foto. \"Potete\" would mean you're allowed to, not that it's required. Es: Dovete portare un documento."
+      },
+      {
+        "q": "Scusi, ___ prenotare una visita?",
+        "opts": [
+          "voglio",
+          "devo",
+          "vorrei",
+          "dovrei"
+        ],
+        "a": 2,
+        "explain": "Vorrei (conditional of volere) is the polite way to make a request: Vorrei prenotare una visita. \"Voglio\" (I want) sounds too direct for a polite request. Es: Vorrei un'informazione, per favore."
+      },
+      {
+        "q": "I bambini non ___ uscire da soli di notte.",
+        "opts": [
+          "possono",
+          "vogliono",
+          "devono",
+          "sanno"
+        ],
+        "a": 0,
+        "explain": "Possono (from potere) expresses what is/isn't permitted: non possono uscire da soli. \"Devono\" would express obligation, not permission. Es: I bambini non possono guidare."
+      },
+      {
+        "q": "Noi ___ studiare di più per l'esame.",
+        "opts": [
+          "possiamo",
+          "vogliamo",
+          "dobbiamo",
+          "sappiamo"
+        ],
+        "a": 2,
+        "explain": "Dobbiamo (from dovere) expresses necessity: dobbiamo studiare di più. \"Possiamo\" would mean we're able to, not that we need to. Es: Dobbiamo finire il lavoro oggi."
+      },
+      {
+        "q": "Lei ___ tre lingue: italiano, inglese e francese.",
+        "opts": [
+          "può",
+          "vuole",
+          "deve",
+          "sa"
+        ],
+        "a": 3,
+        "explain": "Sa (from sapere) expresses knowing how to do something, like speaking a language: sa tre lingue. \"Può\" would mean being physically/legally able, not having the knowledge. Es: Sa parlare bene l'italiano."
+      }
+    ]
+  },
+  {
+    "id": "neg-1",
+    "topic": "Negazione",
+    "emoji": "🚫",
+    "type": "mcq",
+    "instruction": "Choose the correct negative expression.",
+    "items": [
+      {
+        "q": "Non ho ___ mangiato questa mattina.",
+        "opts": [
+          "ancora",
+          "mai",
+          "niente",
+          "nessuno"
+        ],
+        "a": 0,
+        "explain": "Non... ancora means \"not yet\": non ho ancora mangiato. \"Mai\" means \"never\", which doesn't fit with \"questa mattina\" (this morning). Es: Non ho ancora finito."
+      },
+      {
+        "q": "Non capisco ___ quando parlano veloce.",
+        "opts": [
+          "ancora",
+          "più",
+          "niente",
+          "nessuno"
+        ],
+        "a": 2,
+        "explain": "Non... niente means \"nothing\": non capisco niente. \"Più\" would mean \"no longer\", which doesn't fit \"when they speak fast\". Es: Non capisco niente di questo libro."
+      },
+      {
+        "q": "Non abito ___ in quella città.",
+        "opts": [
+          "ancora",
+          "più",
+          "niente",
+          "mai"
+        ],
+        "a": 1,
+        "explain": "Non... più means \"no longer/not anymore\": non abito più in quella città. \"Ancora\" would mean \"not yet\", the opposite meaning. Es: Non lavoro più lì."
+      },
+      {
+        "q": "Non ho visto ___ allo sportello — era chiuso.",
+        "opts": [
+          "niente",
+          "nessuno",
+          "mai",
+          "più"
+        ],
+        "a": 1,
+        "explain": "Non... nessuno means \"nobody\": non ho visto nessuno. \"Niente\" means \"nothing\" (for things, not people). Es: Non ho visto nessuno in ufficio."
+      },
+      {
+        "q": "Non sono ___ andato in Francia.",
+        "opts": [
+          "ancora",
+          "più",
+          "mai",
+          "nessuno"
+        ],
+        "a": 2,
+        "explain": "Non... mai means \"never\": non sono mai andato in Francia. \"Ancora\" would mean \"not yet\", implying a future plan — a different nuance. Es: Non sono mai stato a Parigi."
+      },
+      {
+        "q": "Non bevo ___ caffè ___ tè.",
+        "opts": [
+          "né / né",
+          "non / non",
+          "mai / più",
+          "niente / niente"
+        ],
+        "a": 0,
+        "explain": "Né... né means \"neither... nor\": non bevo né caffè né tè. The other pairs don't form this \"neither/nor\" structure. Es: Non mangio né carne né pesce."
+      }
+    ]
+  },
+  {
+    "id": "pp-pres-mix",
+    "topic": "Passato Prossimo vs Presente",
+    "emoji": "⏳",
+    "type": "mcq",
+    "instruction": "Present or passato prossimo? Read the time expression, then choose the correct verb form.",
+    "items": [
+      {
+        "q": "Ieri ___ una visita dal parrucchiere per sabato.",
+        "opts": [
+          "ho prenotato",
+          "prenoto",
+          "sono prenotato",
+          "prenotavo"
+        ],
+        "a": 0,
+        "explain": "Ieri points to a finished past action, so use passato prossimo; prenotare takes avere: ho prenotato — \"prenoto\" is the present, \"sono prenotato\" uses the wrong auxiliary. Es: Ieri ho prenotato un tavolo."
+      },
+      {
+        "q": "Di solito il corriere ___ i pacchi la mattina.",
+        "opts": [
+          "ha consegnato",
+          "consegna",
+          "è consegnato",
+          "consegnano"
+        ],
+        "a": 1,
+        "explain": "Di solito signals a habit, so use the present; with lui (il corriere) an -are verb ends in -a: consegna — \"ha consegnato\" is past, \"consegnano\" is the loro (plural) form. Es: Il corriere consegna alle otto."
+      },
+      {
+        "q": "La settimana scorsa noi ___ in questura per il permesso.",
+        "opts": [
+          "abbiamo andato",
+          "siamo andato",
+          "siamo andati",
+          "andiamo"
+        ],
+        "a": 2,
+        "explain": "La settimana scorsa is past, and andare takes essere and agrees with noi (masc. plural): siamo andati — \"abbiamo andato\" uses the wrong auxiliary, \"siamo andato\" misses the plural agreement. Es: Siamo andati alla posta."
+      },
+      {
+        "q": "Ogni mese io ___ un appuntamento al salone.",
+        "opts": [
+          "ho preso",
+          "prende",
+          "sono preso",
+          "prendo"
+        ],
+        "a": 3,
+        "explain": "Ogni mese describes a routine, so use the present; with io, prendere ends in -o: prendo — \"ho preso\" is the past, \"prende\" is the lui/lei form. Es: Ogni mese prendo un appuntamento."
+      }
+    ]
+  },
+  {
+    "id": "pron-1",
+    "topic": "Pronomi Diretti",
+    "emoji": "🎯",
+    "type": "mcq",
+    "instruction": "Choose the correct direct-object pronoun (lo, la, li, le).",
+    "items": [
+      {
+        "q": "Hai visto Maria? — Sì, ___ ho vista ieri.",
+        "opts": [
+          "lo",
+          "la",
+          "li",
+          "le"
+        ],
+        "a": 1,
+        "explain": "Maria is feminine singular, so the direct-object pronoun is la and the past participle agrees: la ho vista → l'ho vista. \"lo\" is masculine, \"le\" is feminine plural. Es: Ho incontrato Anna → l'ho incontrata."
+      },
+      {
+        "q": "Dove sono le chiavi? Non ___ trovo.",
+        "opts": [
+          "lo",
+          "la",
+          "li",
+          "le"
+        ],
+        "a": 3,
+        "explain": "le chiavi is feminine plural, so the pronoun is le: non le trovo. \"li\" would be masculine plural, \"lo\"/\"la\" are singular. Es: Compro le mele e le mangio."
+      },
+      {
+        "q": "Hai preso i biglietti? — Sì, ___ ho presi.",
+        "opts": [
+          "li",
+          "le",
+          "lo",
+          "la"
+        ],
+        "a": 0,
+        "explain": "i biglietti is masculine plural, so the pronoun is li and the participle agrees: li ho presi. \"le\" is feminine plural, \"lo\" is singular. Es: Ho comprato i fiori → li ho comprati."
+      },
+      {
+        "q": "Quando vedi Paolo e Luca, ___ saluti da parte mia?",
+        "opts": [
+          "la",
+          "le",
+          "li",
+          "lo"
+        ],
+        "a": 2,
+        "explain": "Paolo e Luca are masculine plural, so the pronoun is li: li saluti. \"le\" is feminine plural, \"lo\" is singular. Es: Vedo i miei amici e li saluto."
+      },
+      {
+        "q": "Compri tu la frutta? — Sì, ___ compro al mercato.",
+        "opts": [
+          "lo",
+          "la",
+          "li",
+          "le"
+        ],
+        "a": 1,
+        "explain": "la frutta is feminine singular, so the pronoun is la: la compro. \"lo\" is masculine, \"li\"/\"le\" are plural. Es: Bevo la spremuta e la finisco subito."
+      }
+    ]
+  },
+  {
+    "id": "pron-2",
+    "topic": "Pronomi Indiretti",
+    "emoji": "🎁",
+    "type": "mcq",
+    "instruction": "Choose the correct indirect-object pronoun (mi, ti, gli, le, ci, vi).",
+    "items": [
+      {
+        "q": "___ scrivo una mail domani. (a Marco)",
+        "opts": [
+          "Lo",
+          "Gli",
+          "Le",
+          "Li"
+        ],
+        "a": 1,
+        "explain": "To Marco = to him → indirect gli, not direct lo: gli scrivo. \"le\" would be to her. Es: Gli telefono stasera."
+      },
+      {
+        "q": "Che cosa regali ___ tua mamma?",
+        "opts": [
+          "la",
+          "le",
+          "gli",
+          "lo"
+        ],
+        "a": 1,
+        "explain": "To your mum = to her → indirect le: le regalo un libro. \"la\" is the direct pronoun (her). Es: Le porto dei fiori."
+      },
+      {
+        "q": "Il cameriere ___ porta il conto. (a noi)",
+        "opts": [
+          "ci",
+          "vi",
+          "li",
+          "ce"
+        ],
+        "a": 0,
+        "explain": "To us → ci: ci porta il conto. \"vi\" is to you-plural. Es: Ci consiglia un piatto."
+      },
+      {
+        "q": "Signora, ___ posso fare una domanda?",
+        "opts": [
+          "la",
+          "le",
+          "ti",
+          "lo"
+        ],
+        "a": 1,
+        "explain": "Polite Lei takes the indirect le: Le posso fare una domanda? \"ti\" would be informal. Es: Le chiedo un'informazione."
+      },
+      {
+        "q": "I nonni? ___ telefoniamo ogni domenica.",
+        "opts": [
+          "Li",
+          "Gli",
+          "Le",
+          "Ci"
+        ],
+        "a": 1,
+        "explain": "telefonare A qualcuno takes the indirect pronoun: gli telefoniamo (to them). \"li\" is direct — wrong with telefonare. Es: Gli telefono domani."
+      },
+      {
+        "q": "Maria ___ ha dato le chiavi. (a me)",
+        "opts": [
+          "mi",
+          "me",
+          "ti",
+          "la"
+        ],
+        "a": 0,
+        "explain": "To me → mi before the verb: mi ha dato le chiavi. \"me\" is used after prepositions (a me, per me). Es: Mi ha prestato un libro."
+      }
+    ]
+  },
+  {
+    "id": "prepart-1",
+    "topic": "Preposizioni Articolate",
+    "emoji": "🔗",
+    "type": "mcq",
+    "instruction": "Choose the correct combined preposition + article.",
+    "items": [
+      {
+        "q": "Vado ___ supermercato a fare la spesa.",
+        "opts": [
+          "a il",
+          "al",
+          "allo",
+          "nel"
+        ],
+        "a": 1,
+        "explain": "a + il = al before a masculine word starting with a normal consonant: vado al supermercato. \"a il\" is never written separately, \"allo\" is only for s+consonant/z words. Es: Torno al lavoro."
+      },
+      {
+        "q": "Ho bisogno ___ modulo per la domanda.",
+        "opts": [
+          "del",
+          "dello",
+          "della",
+          "dei"
+        ],
+        "a": 0,
+        "explain": "di + il = del before a masculine consonant word: ho bisogno del modulo. \"dello\" is for s+consonant/z words, \"della\" is feminine. Es: Il colore del cielo."
+      },
+      {
+        "q": "Le chiavi sono ___ borsa.",
+        "opts": [
+          "nel",
+          "nello",
+          "nella",
+          "nei"
+        ],
+        "a": 2,
+        "explain": "in + la = nella before a feminine word: le chiavi sono nella borsa. \"nel\" is masculine, \"nello\" is for s+consonant/z. Es: Metto tutto nella valigia."
+      },
+      {
+        "q": "È arrivata una lettera ___ comune.",
+        "opts": [
+          "di il",
+          "del",
+          "dallo",
+          "dal"
+        ],
+        "a": 3,
+        "explain": "to say \"from the town hall\" use da + il = dal: una lettera dal comune. \"del\" means \"of the\", \"dallo\" is for s+consonant/z words. Es: Un regalo dal nonno."
+      },
+      {
+        "q": "Metto i documenti ___ tavolo.",
+        "opts": [
+          "su il",
+          "sul",
+          "sullo",
+          "sui"
+        ],
+        "a": 1,
+        "explain": "su + il = sul before a masculine consonant word: sul tavolo. \"su il\" is never separate, \"sullo\" is for s+consonant/z, \"sui\" is plural. Es: Il libro è sul letto."
+      }
+    ]
+  },
+  {
+    "id": "agg-1",
+    "topic": "Accordo dell'Aggettivo",
+    "emoji": "🎨",
+    "type": "mcq",
+    "instruction": "Choose the adjective form that agrees with the noun.",
+    "items": [
+      {
+        "q": "Ho comprato una macchina ___.",
+        "opts": [
+          "rosso",
+          "rossa",
+          "rossi",
+          "rosse"
+        ],
+        "a": 1,
+        "explain": "macchina is feminine singular, so the adjective is rossa: una macchina rossa. \"rosso\" is masculine, \"rosse\" is feminine plural. Es: una borsa nera."
+      },
+      {
+        "q": "I miei amici sono molto ___.",
+        "opts": [
+          "simpatico",
+          "simpatica",
+          "simpatici",
+          "simpatiche"
+        ],
+        "a": 2,
+        "explain": "amici is masculine plural, so the adjective is simpatici: amici simpatici. \"simpatico\" is singular, \"simpatiche\" is feminine plural. Es: I ragazzi sono alti."
+      },
+      {
+        "q": "Il pacco è troppo ___ per me.",
+        "opts": [
+          "pesante",
+          "pesanti",
+          "pesanto",
+          "pesanta"
+        ],
+        "a": 0,
+        "explain": "pacco is masculine singular and \"pesante\" ends in -e, whose singular is the same for both genders: il pacco è pesante. \"pesanti\" is plural; \"pesanto\"/\"pesanta\" do not exist. Es: La valigia è pesante."
+      },
+      {
+        "q": "Ho conosciuto due ragazze ___.",
+        "opts": [
+          "gentile",
+          "gentili",
+          "gentilo",
+          "gentila"
+        ],
+        "a": 1,
+        "explain": "ragazze is plural and \"gentile\" (an -e adjective) becomes gentili in the plural: ragazze gentili. \"gentile\" is singular; \"gentilo\"/\"gentila\" do not exist. Es: due vicini gentili."
+      },
+      {
+        "q": "Le mie scarpe sono ___.",
+        "opts": [
+          "nero",
+          "nera",
+          "neri",
+          "nere"
+        ],
+        "a": 3,
+        "explain": "scarpe is feminine plural, so the adjective is nere: scarpe nere. \"nero\" is masculine singular, \"neri\" is masculine plural. Es: le porte nere."
+      }
+    ]
+  }
+]

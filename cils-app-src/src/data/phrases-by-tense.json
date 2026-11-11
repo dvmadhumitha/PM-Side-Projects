@@ -1,0 +1,307 @@
+[
+  {
+    "id": "presente",
+    "label": "Presente Indicativo",
+    "emoji": "🟢",
+    "color": "#1b6b46",
+    "note": "Use for habits, facts, and things happening now. Also used with \"da\" for ongoing situations.",
+    "phrases": [
+      {
+        "it": "Abito in Italia da tre anni.",
+        "en": "I have been living in Italy for three years.",
+        "note": "da + presente = ongoing since past"
+      },
+      {
+        "it": "Ogni mattina prendo l'autobus alle 8.",
+        "en": "Every morning I take the bus at 8.",
+        "note": "habitual action"
+      },
+      {
+        "it": "Lavoro come cameriere in un bar in centro.",
+        "en": "I work as a waiter in a bar in the centre.",
+        "note": "stating your job"
+      },
+      {
+        "it": "Mi chiamo Priya e vengo dall'India.",
+        "en": "My name is Priya and I come from India.",
+        "note": "introducing yourself"
+      },
+      {
+        "it": "Parlo italiano, inglese e un po' di hindi.",
+        "en": "I speak Italian, English and a little Hindi.",
+        "note": "listing languages"
+      },
+      {
+        "it": "Studio italiano da sei mesi.",
+        "en": "I have been studying Italian for six months.",
+        "note": "da + duration"
+      },
+      {
+        "it": "Di solito faccio la spesa il venerdì sera.",
+        "en": "I usually do the shopping on Friday evenings.",
+        "note": "di solito + presente"
+      },
+      {
+        "it": "Non capisco quando parlano troppo veloce.",
+        "en": "I don't understand when they speak too fast.",
+        "note": "expressing difficulty"
+      },
+      {
+        "it": "Devo rinnovare il permesso di soggiorno.",
+        "en": "I need to renew my residence permit.",
+        "note": "dovere + infinito"
+      },
+      {
+        "it": "Voglio imparare a guidare.",
+        "en": "I want to learn to drive.",
+        "note": "volere + infinito"
+      },
+      {
+        "it": "Posso pagare con la carta?",
+        "en": "Can I pay by card?",
+        "note": "potere + infinito"
+      },
+      {
+        "it": "Quante volte a settimana va in palestra?",
+        "en": "How many times a week do you go to the gym?",
+        "note": "asking frequency"
+      }
+    ]
+  },
+  {
+    "id": "passato",
+    "label": "Passato Prossimo",
+    "emoji": "⏮️",
+    "color": "#2a5298",
+    "note": "Use for completed past actions — single events, specific moments, recent experiences.",
+    "phrases": [
+      {
+        "it": "Mi sono trasferito/a in Italia due anni fa.",
+        "en": "I moved to Italy two years ago.",
+        "note": "trasferirsi → essere"
+      },
+      {
+        "it": "Ieri sono andato/a al comune con i documenti.",
+        "en": "Yesterday I went to the town hall with my documents.",
+        "note": "andare → essere"
+      },
+      {
+        "it": "Ho trovato lavoro in una piccola azienda.",
+        "en": "I found work in a small company.",
+        "note": "trovare → avere"
+      },
+      {
+        "it": "Ho già compilato il modulo online.",
+        "en": "I have already filled in the form online.",
+        "note": "già = already"
+      },
+      {
+        "it": "Non ho ancora rinnovato il passaporto.",
+        "en": "I haven't renewed my passport yet.",
+        "note": "non … ancora = not yet"
+      },
+      {
+        "it": "Stamattina mi sono svegliato/a tardi.",
+        "en": "This morning I woke up late.",
+        "note": "reflexive → essere"
+      },
+      {
+        "it": "Ho lavorato per tre anni in un ristorante.",
+        "en": "I worked for three years in a restaurant.",
+        "note": "lavorare → avere"
+      },
+      {
+        "it": "Mia moglie è arrivata in Italia sei mesi dopo di me.",
+        "en": "My wife arrived in Italy six months after me.",
+        "note": "arrivare → essere"
+      },
+      {
+        "it": "Ho preso la patente il mese scorso.",
+        "en": "I got my driving licence last month.",
+        "note": "prendere → preso (irregular)"
+      },
+      {
+        "it": "Abbiamo aperto un conto in banca la settimana scorsa.",
+        "en": "We opened a bank account last week.",
+        "note": "aprire → aperto (irregular)"
+      },
+      {
+        "it": "Non sono mai stato/a a Roma.",
+        "en": "I have never been to Rome.",
+        "note": "non … mai = never"
+      },
+      {
+        "it": "Ho chiamato il medico perché stavo male.",
+        "en": "I called the doctor because I was feeling unwell.",
+        "note": "PP + imperfetto for reason"
+      }
+    ]
+  },
+  {
+    "id": "imperfetto",
+    "label": "Imperfetto",
+    "emoji": "🔁",
+    "color": "#6b4a2f",
+    "note": "Use for past habits, repeated actions, descriptions, and background states.",
+    "phrases": [
+      {
+        "it": "Da bambino/a vivevo in un piccolo paese.",
+        "en": "As a child I lived in a small village.",
+        "note": "da bambino + imperfetto"
+      },
+      {
+        "it": "Prima lavoravo in fabbrica, poi ho cambiato lavoro.",
+        "en": "Before I worked in a factory, then I changed jobs.",
+        "note": "contrast: imp. → PP"
+      },
+      {
+        "it": "Ogni giorno prendevo il treno delle 7.",
+        "en": "Every day I used to take the 7 o'clock train.",
+        "note": "every day → imperfetto"
+      },
+      {
+        "it": "Nel mio paese faceva sempre caldo.",
+        "en": "In my home country it was always hot.",
+        "note": "weather description"
+      },
+      {
+        "it": "Quando sono arrivato/a, non parlavo italiano.",
+        "en": "When I arrived, I didn't speak Italian.",
+        "note": "quando + PP, background = imp."
+      },
+      {
+        "it": "Dormivo quando ha suonato il telefono.",
+        "en": "I was sleeping when the phone rang.",
+        "note": "ongoing (imp.) + event (PP)"
+      },
+      {
+        "it": "La casa dove abitavo era molto grande.",
+        "en": "The house where I lived was very big.",
+        "note": "describing past home"
+      },
+      {
+        "it": "Mia nonna mi preparava sempre la pasta fatta in casa.",
+        "en": "My grandmother always used to make me homemade pasta.",
+        "note": "repeated past habit"
+      },
+      {
+        "it": "Erano le 10 quando sono arrivato/a in ufficio.",
+        "en": "It was 10 o'clock when I arrived at the office.",
+        "note": "clock time → imperfetto"
+      },
+      {
+        "it": "Non sapevo che il corso era gratuito.",
+        "en": "I didn't know that the course was free.",
+        "note": "mental state → imperfetto"
+      }
+    ]
+  },
+  {
+    "id": "condizionale",
+    "label": "Condizionale",
+    "emoji": "✨",
+    "color": "#7b1fa2",
+    "note": "Use for polite requests, wishes, and hypothetical situations. Very important for the oral exam!",
+    "phrases": [
+      {
+        "it": "Vorrei prenotare una visita, per favore.",
+        "en": "I would like to book an appointment, please.",
+        "note": "polite request — most common"
+      },
+      {
+        "it": "Potrebbe parlare più lentamente?",
+        "en": "Could you speak more slowly?",
+        "note": "potere condizionale = could you"
+      },
+      {
+        "it": "Avrei bisogno di alcune informazioni.",
+        "en": "I would need some information.",
+        "note": "avere bisogno condizionale"
+      },
+      {
+        "it": "Dovrei rinnovare il permesso — dove vado?",
+        "en": "I should renew my permit — where do I go?",
+        "note": "dovere condizionale = should"
+      },
+      {
+        "it": "Mi piacerebbe imparare a cucinare la pasta.",
+        "en": "I would like to learn to cook pasta.",
+        "note": "piacere condizionale"
+      },
+      {
+        "it": "Potrei avere il modulo da compilare?",
+        "en": "Could I have the form to fill in?",
+        "note": "making a polite request"
+      },
+      {
+        "it": "Preferirei un appuntamento al mattino.",
+        "en": "I would prefer a morning appointment.",
+        "note": "expressing preference"
+      },
+      {
+        "it": "Se potessi, studierei di più ogni giorno.",
+        "en": "If I could, I would study more every day.",
+        "note": "hypothetical: se + cond."
+      },
+      {
+        "it": "Vorrei sapere se c'è un corso gratuito.",
+        "en": "I would like to know if there is a free course.",
+        "note": "indirect question"
+      },
+      {
+        "it": "Sarebbe possibile avere una copia del documento?",
+        "en": "Would it be possible to have a copy of the document?",
+        "note": "very formal polite request"
+      }
+    ]
+  },
+  {
+    "id": "futuro",
+    "label": "Futuro (andare + inf.)",
+    "emoji": "➡️",
+    "color": "#e65100",
+    "note": "At A2 level, the future is usually expressed with \"stare per + infinito\" or \"andare + infinito\" or simply the present tense.",
+    "phrases": [
+      {
+        "it": "Il mese prossimo vado a trovare la mia famiglia.",
+        "en": "Next month I am going to visit my family.",
+        "note": "present for planned future"
+      },
+      {
+        "it": "Domani mattina vado al comune a ritirare i documenti.",
+        "en": "Tomorrow morning I am going to the town hall to pick up my documents.",
+        "note": "domani + presente"
+      },
+      {
+        "it": "La prossima settimana inizia il corso di italiano.",
+        "en": "Next week the Italian course starts.",
+        "note": "la prossima settimana + presente"
+      },
+      {
+        "it": "Sto per uscire — richiamo tra dieci minuti.",
+        "en": "I'm about to leave — I'll call back in ten minutes.",
+        "note": "stare per + infinito = about to"
+      },
+      {
+        "it": "L'anno prossimo voglio prendere la patente.",
+        "en": "Next year I want to get my driving licence.",
+        "note": "voglio + infinito for intentions"
+      },
+      {
+        "it": "Tra poco arriva il treno — sbrigati!",
+        "en": "The train is arriving soon — hurry up!",
+        "note": "tra poco = soon"
+      },
+      {
+        "it": "Quest'estate andremo al mare per due settimane.",
+        "en": "This summer we will go to the seaside for two weeks.",
+        "note": "andare future tense"
+      },
+      {
+        "it": "Quando avrò la patente, comprerò una macchina.",
+        "en": "When I have my licence, I will buy a car.",
+        "note": "future plans sequence"
+      }
+    ]
+  }
+]

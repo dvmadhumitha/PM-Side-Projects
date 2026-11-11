@@ -1,0 +1,70 @@
+{
+  "notices": [
+    [
+      "1",
+      "Corso di nuoto — La piscina comunale organizza corsi di nuoto per bambini."
+    ],
+    [
+      "2",
+      "Cercasi appartamento — Famiglia cerca un appartamento con due camere in affitto, in centro."
+    ],
+    [
+      "3",
+      "Mercato del sabato — Ogni sabato in Piazza Verdi c’è il mercato di frutta e verdura."
+    ],
+    [
+      "4",
+      "Farmacia di turno — Questa settimana la farmacia aperta di notte è la Farmacia Centrale."
+    ],
+    [
+      "5",
+      "Offerta telefonica — Con la nuova offerta hai 100 giga di internet a 10 euro al mese."
+    ],
+    [
+      "6",
+      "Avviso condominio — Lunedì i tecnici controllano gli ascensori del palazzo."
+    ]
+  ],
+  "options": [
+    [
+      "A",
+      "Le lezioni sono il lunedì e il mercoledì, dalle 17 alle 18."
+    ],
+    [
+      "B",
+      "Chi è interessato può chiamare il numero 333 45 67 89."
+    ],
+    [
+      "C",
+      "Puoi comprare prodotti freschi dalle 8 alle 13."
+    ],
+    [
+      "D",
+      "Si trova in Via Roma 5 ed è aperta fino alle 8 del mattino."
+    ],
+    [
+      "E",
+      "Per attivarla, vai sul sito oppure in un negozio."
+    ],
+    [
+      "F",
+      "Per circa due ore non sarà possibile usarli."
+    ],
+    [
+      "G",
+      "Il certificato si ritira allo sportello del Comune."
+    ],
+    [
+      "H",
+      "Il biglietto del cinema costa 7 euro."
+    ]
+  ],
+  "ans": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ]
+}

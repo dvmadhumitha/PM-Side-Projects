@@ -1,0 +1,773 @@
+[
+  {
+    "id": "l-treno",
+    "type": "annuncio",
+    "emoji": "🚉",
+    "title": "Annuncio alla stazione",
+    "context": "Sei alla stazione di Bologna. Ascolta l'annuncio.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Attenzione. Il treno regionale per Firenze delle ore dieci e trenta parte oggi dal binario cinque, e non dal binario sette. Ripeto: binario cinque. Il treno viaggia con dieci minuti di ritardo."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Da quale binario parte il treno?",
+        "opts": [
+          "Binario 5",
+          "Binario 7",
+          "Binario 10"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Il treno è in orario?",
+        "opts": [
+          "Sì, è in orario",
+          "No, è in ritardo di 10 minuti",
+          "No, è cancellato"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-bar",
+    "type": "dialogo",
+    "emoji": "☕",
+    "title": "Al bar",
+    "context": "Un cliente ordina la colazione al bar.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno! Un cappuccino e un cornetto, per favore."
+      },
+      {
+        "s": "B",
+        "it": "Il cornetto lo vuole semplice o alla marmellata?"
+      },
+      {
+        "s": "A",
+        "it": "Alla marmellata, grazie. Quant'è?"
+      },
+      {
+        "s": "B",
+        "it": "Sono due euro e cinquanta. Paga alla cassa, per favore."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che cosa ordina il cliente?",
+        "opts": [
+          "Un caffè e una brioche vuota",
+          "Un cappuccino e un cornetto alla marmellata",
+          "Un tè e un biscotto"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quanto paga?",
+        "opts": [
+          "2,00 euro",
+          "2,50 euro",
+          "3,50 euro"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-medico",
+    "type": "messaggio",
+    "emoji": "📞",
+    "title": "Messaggio dallo studio medico",
+    "context": "Hai un messaggio in segreteria dallo studio del dottore.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Buongiorno, chiamo dallo studio del dottor Bianchi. La informo che l'appuntamento di giovedì alle sedici è stato spostato a venerdì alla stessa ora. Se ci sono problemi, ci richiami al numero dello studio. Grazie e buona giornata."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Perché chiamano dallo studio?",
+        "opts": [
+          "Per spostare l'appuntamento",
+          "Per annullare la visita",
+          "Per dare i risultati"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Quando è il nuovo appuntamento?",
+        "opts": [
+          "Giovedì alle 16",
+          "Venerdì alle 16",
+          "Venerdì alle 17"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-super",
+    "type": "annuncio",
+    "emoji": "🛒",
+    "title": "Offerta al supermercato",
+    "context": "Sei al supermercato e senti un annuncio.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Cari clienti, buonasera. Solo per oggi, nel reparto frutta e verdura, le arance sono in offerta a un euro al chilo. Inoltre, il supermercato chiude alle venti. Vi ricordiamo di dirigervi alle casse. Grazie per la vostra visita."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che cosa è in offerta oggi?",
+        "opts": [
+          "Le mele",
+          "Le arance",
+          "Le banane"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A che ora chiude il supermercato?",
+        "opts": [
+          "Alle 19",
+          "Alle 20",
+          "Alle 21"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-amici",
+    "type": "dialogo",
+    "emoji": "🎬",
+    "title": "Fare programmi",
+    "context": "Due amici organizzano la serata.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Ciao Marco! Ti va di andare al cinema stasera?"
+      },
+      {
+        "s": "B",
+        "it": "Volentieri! A che ora inizia il film?"
+      },
+      {
+        "s": "A",
+        "it": "Alle nove. Possiamo mangiare una pizza prima, alle sette e mezza."
+      },
+      {
+        "s": "B",
+        "it": "Perfetto. Ci vediamo davanti alla pizzeria alle sette e venti."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Dove vanno i due amici stasera?",
+        "opts": [
+          "Al ristorante",
+          "Al cinema",
+          "A teatro"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A che ora si incontrano?",
+        "opts": [
+          "Alle 7:20",
+          "Alle 7:30",
+          "Alle 9:00"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "l-affitto",
+    "type": "messaggio",
+    "emoji": "🏠",
+    "title": "Messaggio del proprietario",
+    "context": "Il proprietario di casa ti lascia un messaggio.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Salve, sono il signor Rossi, il proprietario dell'appartamento in via Verdi. Possiamo vederci per la visita sabato mattina alle undici? L'appartamento ha due camere ed è al terzo piano con ascensore. Mi faccia sapere. Arrivederci."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Quando propone la visita il signor Rossi?",
+        "opts": [
+          "Sabato alle 11",
+          "Domenica alle 11",
+          "Sabato alle 10"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Com'è l'appartamento?",
+        "opts": [
+          "Una camera, senza ascensore",
+          "Due camere, al terzo piano con ascensore",
+          "Tre camere, al piano terra"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-negozio",
+    "type": "dialogo",
+    "emoji": "👕",
+    "title": "In un negozio di vestiti",
+    "context": "Una cliente cerca una maglietta.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno, cerco una maglietta blu, taglia media."
+      },
+      {
+        "s": "B",
+        "it": "Mi dispiace, la taglia media in blu è finita. Ho il verde o il rosso."
+      },
+      {
+        "s": "A",
+        "it": "Va bene il verde. Posso provarla?"
+      },
+      {
+        "s": "B",
+        "it": "Certo, il camerino è in fondo a destra."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Quale colore voleva la cliente all'inizio?",
+        "opts": [
+          "Verde",
+          "Blu",
+          "Rosso"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quale maglietta prova alla fine?",
+        "opts": [
+          "Quella blu",
+          "Quella verde",
+          "Quella rossa"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-comune",
+    "type": "annuncio",
+    "emoji": "🏛️",
+    "title": "Avviso al comune",
+    "context": "Sei all'ufficio anagrafe del comune.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Attenzione. Gli sportelli dell'anagrafe sono aperti dal lunedì al venerdì, dalle nove alle tredici. Il martedì anche il pomeriggio, dalle quindici alle diciassette. Per la residenza è necessario portare un documento e il permesso di soggiorno. Grazie."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Quando è aperto anche il pomeriggio?",
+        "opts": [
+          "Il lunedì",
+          "Il martedì",
+          "Il venerdì"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Che cosa serve per la residenza?",
+        "opts": [
+          "Solo un documento",
+          "Documento e permesso di soggiorno",
+          "Solo il permesso di soggiorno"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-lavoro",
+    "type": "dialogo",
+    "emoji": "💼",
+    "title": "Una telefonata di lavoro",
+    "context": "Un'azienda richiama una candidata.",
+    "lines": [
+      {
+        "s": "B",
+        "it": "Buongiorno, chiamo per il colloquio. È libera lunedì alle dieci?"
+      },
+      {
+        "s": "A",
+        "it": "Lunedì mattina lavoro. Possiamo fare il pomeriggio?"
+      },
+      {
+        "s": "B",
+        "it": "Va bene, alle sedici. Porti il curriculum, per favore."
+      },
+      {
+        "s": "A",
+        "it": "Perfetto, alle sedici. La ringrazio, a lunedì."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Perché l'azienda telefona?",
+        "opts": [
+          "Per un colloquio di lavoro",
+          "Per vendere un prodotto",
+          "Per un sondaggio"
+        ],
+        "a": 0
+      },
+      {
+        "q": "A che ora sarà il colloquio?",
+        "opts": [
+          "Lunedì alle 10",
+          "Lunedì alle 16",
+          "Martedì alle 16"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-meteo",
+    "type": "annuncio",
+    "emoji": "🌦️",
+    "title": "Le previsioni del tempo",
+    "context": "Ascolti il meteo alla radio.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "E ora il tempo. Domani al nord ci sarà pioggia per tutto il giorno. Al centro il cielo sarà nuvoloso, ma senza pioggia. Al sud invece bel tempo e sole, con temperature fino a venticinque gradi. Portate l'ombrello se siete al nord!"
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che tempo fa domani al nord?",
+        "opts": [
+          "Sole",
+          "Pioggia",
+          "Neve"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Dove fa bel tempo?",
+        "opts": [
+          "Al nord",
+          "Al centro",
+          "Al sud"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l-ristorante",
+    "type": "dialogo",
+    "emoji": "🍝",
+    "title": "Al ristorante",
+    "context": "Un cameriere prende l'ordine.",
+    "lines": [
+      {
+        "s": "B",
+        "it": "Buonasera, avete deciso?"
+      },
+      {
+        "s": "A",
+        "it": "Sì, per me spaghetti al pomodoro e acqua naturale."
+      },
+      {
+        "s": "B",
+        "it": "Vuole anche un secondo?"
+      },
+      {
+        "s": "A",
+        "it": "No, grazie, solo il primo. E il conto, per favore."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che cosa ordina il cliente?",
+        "opts": [
+          "Spaghetti al pomodoro e acqua",
+          "Pizza e vino",
+          "Solo un caffè"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Prende il secondo piatto?",
+        "opts": [
+          "Sì",
+          "No, solo il primo",
+          "Solo il dolce"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-farmacia",
+    "type": "dialogo",
+    "emoji": "💊",
+    "title": "In farmacia",
+    "context": "Un cliente chiede una medicina.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno, ho mal di gola. Cosa mi consiglia?"
+      },
+      {
+        "s": "B",
+        "it": "Queste pastiglie. Ne prenda una ogni quattro ore."
+      },
+      {
+        "s": "A",
+        "it": "Devo prenderle prima o dopo i pasti?"
+      },
+      {
+        "s": "B",
+        "it": "Non importa. Ma non più di quattro al giorno."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Qual è il problema del cliente?",
+        "opts": [
+          "Mal di testa",
+          "Mal di gola",
+          "Mal di stomaco"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Quante pastiglie al massimo al giorno?",
+        "opts": [
+          "Due",
+          "Quattro",
+          "Sei"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-parrucchiere",
+    "type": "dialogo",
+    "emoji": "💇",
+    "title": "Dal parrucchiere",
+    "context": "Una cliente va dal parrucchiere per un taglio.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno, ho un appuntamento alle dieci per un taglio."
+      },
+      {
+        "s": "B",
+        "it": "Certo, si accomodi. Vuole solo tagliare o anche lavare i capelli?"
+      },
+      {
+        "s": "A",
+        "it": "Taglio e lavaggio, grazie. Ma non troppo corti, per favore."
+      },
+      {
+        "s": "B",
+        "it": "Va bene. Sono venticinque euro in tutto. Paga alla cassa all'uscita."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Perché la cliente va dal parrucchiere?",
+        "opts": [
+          "Per un taglio",
+          "Per comprare un phon",
+          "Per un colore"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Quanto paga la cliente?",
+        "opts": [
+          "15 euro",
+          "25 euro",
+          "35 euro"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-corriere",
+    "type": "dialogo",
+    "emoji": "📦",
+    "title": "Il corriere alla porta",
+    "context": "Il corriere consegna un pacco a casa.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno, sono il corriere. Ho un pacco per la signora Rossi."
+      },
+      {
+        "s": "B",
+        "it": "Sono io. Grazie! Dove devo firmare?"
+      },
+      {
+        "s": "A",
+        "it": "Qui, per favore. Attenzione, è un po' pesante: dentro ci sono dei libri."
+      },
+      {
+        "s": "B",
+        "it": "Va bene, lo lascio vicino alla porta. Buona giornata!"
+      }
+    ],
+    "questions": [
+      {
+        "q": "Per chi è il pacco?",
+        "opts": [
+          "Per il signor Bianchi",
+          "Per la signora Rossi",
+          "Per la famiglia Verdi"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Che cosa c'è dentro il pacco?",
+        "opts": [
+          "Dei vestiti",
+          "Del cibo",
+          "Dei libri"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l-questura",
+    "type": "dialogo",
+    "emoji": "🚓",
+    "title": "In questura",
+    "context": "Un cittadino straniero va in questura per un documento perso.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno, ho perso il permesso di soggiorno e vorrei fare una denuncia."
+      },
+      {
+        "s": "B",
+        "it": "Va bene. Ha con sé un altro documento d'identità?"
+      },
+      {
+        "s": "A",
+        "it": "Sì, ho il passaporto. Che cosa devo fare adesso?"
+      },
+      {
+        "s": "B",
+        "it": "Deve compilare questo modulo. Poi, con la denuncia, può chiedere un nuovo permesso."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che cosa ha perso il signore?",
+        "opts": [
+          "Il passaporto",
+          "Il permesso di soggiorno",
+          "La patente"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Che cosa deve fare per prima cosa?",
+        "opts": [
+          "Compilare un modulo",
+          "Pagare una multa",
+          "Tornare domani"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "l-prenotazione",
+    "type": "dialogo",
+    "emoji": "🏨",
+    "title": "Prenotare una camera",
+    "context": "Un cliente telefona a un hotel per prenotare.",
+    "lines": [
+      {
+        "s": "A",
+        "it": "Buongiorno, vorrei prenotare una camera doppia per due notti."
+      },
+      {
+        "s": "B",
+        "it": "Certo. Per quali giorni, per favore?"
+      },
+      {
+        "s": "A",
+        "it": "Da venerdì a domenica. È inclusa la colazione?"
+      },
+      {
+        "s": "B",
+        "it": "Sì, la colazione è inclusa. Sono ottanta euro a notte."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che tipo di camera prenota il cliente?",
+        "opts": [
+          "Una camera singola",
+          "Una camera doppia",
+          "Un appartamento"
+        ],
+        "a": 1
+      },
+      {
+        "q": "La colazione è inclusa nel prezzo?",
+        "opts": [
+          "Sì, è inclusa",
+          "No, si paga a parte",
+          "Solo il sabato"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "l-luca",
+    "type": "messaggio",
+    "emoji": "🎙️",
+    "title": "Un messaggio di presentazione",
+    "context": "Ascolti un messaggio vocale in cui una persona si presenta.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Ciao! Mi chiamo Luca. Ho ventotto anni e lavoro in una banca."
+      },
+      {
+        "s": "V",
+        "it": "Abito a Firenze con mia moglie. Nel tempo libero mi piace andare in bicicletta e cucinare."
+      },
+      {
+        "s": "V",
+        "it": "Il sabato faccio la spesa e la domenica pranzo con la mia famiglia."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Quanti anni ha Luca?",
+        "opts": [
+          "Diciotto",
+          "Ventotto",
+          "Trentotto"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Dove lavora Luca?",
+        "opts": [
+          "In un negozio",
+          "In un ristorante",
+          "In una banca"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "l-milano-lavoro",
+    "type": "annuncio",
+    "emoji": "🚄",
+    "title": "Un viaggio di lavoro a Milano",
+    "context": "Ascolti un annuncio con il programma di domani della signora Bruni.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Domani la signora Bruni va a Milano per lavoro."
+      },
+      {
+        "s": "V",
+        "it": "Il treno parte alle otto e arriva alle dieci e trenta."
+      },
+      {
+        "s": "V",
+        "it": "Dopo la riunione, incontra un'amica per cena."
+      }
+    ],
+    "questions": [
+      {
+        "q": "A che ora parte il treno della signora Bruni?",
+        "opts": [
+          "Alle 8:00",
+          "Alle 9:00",
+          "Alle 10:30"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Che cosa fa la signora Bruni dopo la riunione?",
+        "opts": [
+          "Torna subito a casa",
+          "Incontra un'amica per cena",
+          "Va in albergo"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "l-marco-ristorante",
+    "type": "messaggio",
+    "emoji": "🍕",
+    "title": "Marco al ristorante",
+    "context": "Ascolti un messaggio che racconta la serata di Marco al ristorante.",
+    "lines": [
+      {
+        "s": "V",
+        "it": "Marco va al ristorante con due amici."
+      },
+      {
+        "s": "V",
+        "it": "Ordina una pizza, un'insalata e una bottiglia d'acqua."
+      },
+      {
+        "s": "V",
+        "it": "Dopo cena prende un caffè."
+      }
+    ],
+    "questions": [
+      {
+        "q": "Che cosa ordina Marco?",
+        "opts": [
+          "Un panino e un succo",
+          "Una pizza, un'insalata e una bottiglia d'acqua",
+          "Una pasta e un bicchiere di vino"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Che cosa prende Marco dopo cena?",
+        "opts": [
+          "Un gelato",
+          "Un caffè",
+          "Un tè"
+        ],
+        "a": 1
+      }
+    ]
+  }
+]

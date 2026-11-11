@@ -1,0 +1,162 @@
+[
+  {
+    "q": "I documenti sono ___ tavolo.",
+    "opts": [
+      "sul",
+      "sullo",
+      "sulla"
+    ],
+    "a": 0,
+    "explain": "tavolo takes il, so su + il = sul: sul tavolo. \"sullo\" is only for lo-words (s+consonant/z). Es: Sul tavolo c’è una penna."
+  },
+  {
+    "q": "Vado ___ medico giovedì.",
+    "opts": [
+      "dallo",
+      "dal",
+      "dalla"
+    ],
+    "a": 1,
+    "explain": "Going to a person (the doctor) uses da; medico takes il, so da + il = dal: dal medico. Es: Vado dal medico alle 10."
+  },
+  {
+    "q": "Il latte è ___ frigorifero.",
+    "opts": [
+      "nello",
+      "nella",
+      "nel"
+    ],
+    "a": 2,
+    "explain": "frigorifero takes il, so in + il = nel: nel frigorifero. \"nello\" would need a lo-word like zaino. Es: Il burro è nel frigo."
+  },
+  {
+    "q": "Le penne sono ___ zaino.",
+    "opts": [
+      "nello",
+      "nel",
+      "nella"
+    ],
+    "a": 0,
+    "explain": "zaino starts with z, so it takes lo → in + lo = nello: nello zaino. \"nel\" is for il-words. Es: Il libro è nello zaino."
+  },
+  {
+    "q": "Arrivo ___ ufficio alle nove.",
+    "opts": [
+      "al",
+      "allo",
+      "all'"
+    ],
+    "a": 2,
+    "explain": "ufficio starts with a vowel, so it takes l’ → a + l’ = all’: all’ufficio. \"al\" is for consonant-start il-words. Es: Arrivo all’ufficio presto."
+  },
+  {
+    "q": "La finestra ___ cucina è aperta.",
+    "opts": [
+      "del",
+      "della",
+      "dello"
+    ],
+    "a": 1,
+    "explain": "cucina is feminine (la), so di + la = della: della cucina. \"del\" is the masculine form. Es: La porta della camera è chiusa."
+  },
+  {
+    "q": "I libri sono ___ scaffali.",
+    "opts": [
+      "sui",
+      "sugli",
+      "sulle"
+    ],
+    "a": 1,
+    "explain": "scaffali starts with s+consonant, so plural takes gli → su + gli = sugli: sugli scaffali. \"sui\" is for i-words. Es: Le tazze sono sugli scaffali."
+  },
+  {
+    "q": "Stasera ceno ___ nonni.",
+    "opts": [
+      "dai",
+      "dagli",
+      "dalle"
+    ],
+    "a": 0,
+    "explain": "At someone’s home uses da; nonni takes i, so da + i = dai: dai nonni. \"dagli\" would need a gli-word (zii). Es: Domenica pranzo dai nonni."
+  },
+  {
+    "q": "Telefono ___ dottoressa.",
+    "opts": [
+      "al",
+      "alla",
+      "all'"
+    ],
+    "a": 1,
+    "explain": "dottoressa is feminine (la), so a + la = alla: alla dottoressa. Es: Telefono alla scuola domani."
+  },
+  {
+    "q": "___ città italiane c’è molto traffico.",
+    "opts": [
+      "Nelle",
+      "Nei",
+      "Negli"
+    ],
+    "a": 0,
+    "explain": "città (plural here) takes le, so in + le = nelle: nelle città. \"nei/negli\" are the masculine plurals. Es: Nelle strade c’è rumore."
+  },
+  {
+    "q": "Il prezzo ___ affitto è alto.",
+    "opts": [
+      "del",
+      "dell'",
+      "dello"
+    ],
+    "a": 1,
+    "explain": "affitto starts with a vowel, so it takes l’ → di + l’ = dell’: dell’affitto. Es: Il costo dell’acqua è basso."
+  },
+  {
+    "q": "Chiedo ___ amici un consiglio.",
+    "opts": [
+      "ai",
+      "agli",
+      "alle"
+    ],
+    "a": 1,
+    "explain": "amici starts with a vowel, so plural takes gli → a + gli = agli: agli amici. \"ai\" is for consonant-start plurals. Es: Scrivo agli amici."
+  },
+  {
+    "q": "Lavoro ___ nove alle cinque.",
+    "opts": [
+      "dalle",
+      "dalla",
+      "dagli"
+    ],
+    "a": 0,
+    "explain": "Times use le (le nove), so da + le = dalle: dalle nove. This is the everyday pattern for schedules. Es: Il negozio è aperto dalle 8 alle 20."
+  },
+  {
+    "q": "Il gatto dorme ___ divano.",
+    "opts": [
+      "sullo",
+      "sul",
+      "sulla"
+    ],
+    "a": 1,
+    "explain": "divano takes il, so su + il = sul: sul divano. Es: Il telefono è sul letto."
+  },
+  {
+    "q": "Esco ___ ufficio alle cinque.",
+    "opts": [
+      "dal",
+      "dallo",
+      "dall'"
+    ],
+    "a": 2,
+    "explain": "ufficio starts with a vowel → l’, so da + l’ = dall’: dall’ufficio. Es: Esco dall’aeroporto adesso."
+  },
+  {
+    "q": "Andiamo ___ stadio domenica.",
+    "opts": [
+      "allo",
+      "al",
+      "all'"
+    ],
+    "a": 0,
+    "explain": "stadio starts with s+consonant... careful: st- takes lo → a + lo = allo: allo stadio. \"al\" is for plain il-words. Es: Vado allo studio del dottore."
+  }
+]

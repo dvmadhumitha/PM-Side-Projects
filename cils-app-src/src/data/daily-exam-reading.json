@@ -1,0 +1,1034 @@
+[
+  {
+    "id": "r01",
+    "title": "Avviso: rinnovo permesso",
+    "text": "QUESTURA DI MILANO — AVVISO IMPORTANTE\nDal 1° marzo è possibile prenotare online l'appuntamento per il rinnovo del permesso di soggiorno sul sito della Questura. Portare obbligatoriamente: passaporto in originale, copia della pagina con foto, 2 foto formato tessera, marca da bollo da 16 euro, modulo compilato (scaricabile dal sito), documentazione che giustifica il tipo di permesso richiesto (contratto di lavoro, iscrizione universitaria, ecc.). Gli sportelli sono aperti dal lunedì al venerdì, ore 8:30-12:30. Non si ricevono senza appuntamento.",
+    "questions": [
+      {
+        "q": "Dove si prenota l'appuntamento dal 1° marzo?",
+        "opts": [
+          "Allo sportello",
+          "Per telefono",
+          "Online sul sito della Questura",
+          "Per email"
+        ],
+        "a": 2,
+        "exp": "The notice says: \"Dal 1° marzo è possibile prenotare online l'appuntamento... sul sito della Questura\" — online on the Questura website."
+      },
+      {
+        "q": "Quante foto formato tessera bisogna portare?",
+        "opts": [
+          "Una",
+          "Due",
+          "Tre",
+          "Quattro"
+        ],
+        "a": 1,
+        "exp": "The list of required documents says \"2 foto formato tessera\" — two passport-sized photos."
+      },
+      {
+        "q": "Fino a che ora sono aperti gli sportelli?",
+        "opts": [
+          "Fino alle 11:30",
+          "Fino alle 12:00",
+          "Fino alle 12:30",
+          "Fino alle 13:00"
+        ],
+        "a": 2,
+        "exp": "\"ore 8:30-12:30\" — the offices close at 12:30, not at noon or 13:00."
+      },
+      {
+        "q": "Si può andare senza appuntamento?",
+        "opts": [
+          "Sì, sempre",
+          "Sì, solo il venerdì",
+          "No, mai",
+          "Sì, per urgenze"
+        ],
+        "a": 2,
+        "exp": "\"Non si ricevono senza appuntamento\" — walk-ins are not accepted. You must book in advance."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "la questura",
+        "en": "police headquarters (handles permits)",
+        "opts": [
+          "town hall",
+          "tax office",
+          "police headquarters (handles permits)",
+          "hospital"
+        ],
+        "a": 2
+      },
+      {
+        "it": "prenotare (un appuntamento)",
+        "en": "to book / reserve (an appointment)",
+        "opts": [
+          "to cancel",
+          "to pay for",
+          "to book / reserve (an appointment)",
+          "to attend"
+        ],
+        "a": 2
+      },
+      {
+        "it": "obbligatoriamente",
+        "en": "compulsorily / you must bring",
+        "opts": [
+          "optionally",
+          "occasionally",
+          "compulsorily / you must bring",
+          "automatically"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "r02",
+    "title": "Lettera dalla scuola",
+    "text": "Gentili genitori,\nla informiamo che la scuola organizza una gita scolastica a Venezia il giorno 15 aprile. La partenza è alle ore 7:00 dalla scuola, il rientro è previsto per le 20:00. Il costo è di 25 euro per alunno, comprensivo di trasporto e biglietto d'ingresso al museo. I bambini devono portare il pranzo da casa. Compilare e consegnare il modulo di autorizzazione entro il 5 aprile. Per informazioni contattare la segreteria.",
+    "questions": [
+      {
+        "q": "Dove va la gita scolastica?",
+        "opts": [
+          "A Roma",
+          "A Firenze",
+          "A Venezia",
+          "A Milano"
+        ],
+        "a": 2,
+        "exp": "The letter says: \"la scuola organizza una gita scolastica a Venezia\" — the trip is to Venice."
+      },
+      {
+        "q": "A che ora parte il pullman?",
+        "opts": [
+          "Alle 6:30",
+          "Alle 7:00",
+          "Alle 7:30",
+          "Alle 8:00"
+        ],
+        "a": 1,
+        "exp": "\"La partenza è alle ore 7:00 dalla scuola\" — departure is at 7:00 am from the school."
+      },
+      {
+        "q": "Cosa è incluso nei 25 euro?",
+        "opts": [
+          "Solo il trasporto",
+          "Solo il museo",
+          "Trasporto e museo",
+          "Trasporto, museo e pranzo"
+        ],
+        "a": 2,
+        "exp": "\"comprensivo di trasporto e biglietto d'ingresso al museo\" — including transport and museum ticket. Lunch must be brought from home, so it is NOT included."
+      },
+      {
+        "q": "Entro quando va consegnato il modulo?",
+        "opts": [
+          "Entro il 1° aprile",
+          "Entro il 5 aprile",
+          "Entro il 10 aprile",
+          "Entro il 15 aprile"
+        ],
+        "a": 1,
+        "exp": "\"Compilare e consegnare il modulo di autorizzazione entro il 5 aprile\" — the permission form is due by 5 April."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "la gita scolastica",
+        "en": "school trip / field trip",
+        "opts": [
+          "school play",
+          "parent meeting",
+          "school trip / field trip",
+          "sports day"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il modulo di autorizzazione",
+        "en": "permission / consent form",
+        "opts": [
+          "payment form",
+          "application form",
+          "permission / consent form",
+          "registration form"
+        ],
+        "a": 2
+      },
+      {
+        "it": "comprensivo di",
+        "en": "inclusive of / including",
+        "opts": [
+          "exclusive of",
+          "instead of",
+          "with the exception of",
+          "inclusive of / including"
+        ],
+        "a": 3
+      }
+    ]
+  },
+  {
+    "id": "r03",
+    "title": "Annuncio di lavoro",
+    "text": "CERCASI ADDETTO/A ALLE PULIZIE\nAzienda di servizi cerca personale per pulizie di uffici e negozi nel centro di Torino. Requisiti: residenza a Torino o dintorni, disponibilità mattutina (ore 6:00-9:00), affidabilità. Non è richiesta esperienza precedente; si offre formazione. Contratto part-time, stipendio di 600 euro al mese. Possibilità di aumento ore dopo sei mesi. Inviare curriculum vitae con foto a: lavoro@pulizierapida.it. Non telefonare.",
+    "questions": [
+      {
+        "q": "Che lavoro offre l'annuncio?",
+        "opts": [
+          "Cameriere",
+          "Addetto alle pulizie",
+          "Receptionist",
+          "Magazziniere"
+        ],
+        "a": 1,
+        "exp": "The headline reads: \"CERCASI ADDETTO/A ALLE PULIZIE\" — seeking cleaning staff."
+      },
+      {
+        "q": "Quale orario si lavora?",
+        "opts": [
+          "Dalle 6 alle 9",
+          "Dalle 8 alle 12",
+          "Dalle 14 alle 18",
+          "Dalle 18 alle 21"
+        ],
+        "a": 0,
+        "exp": "\"disponibilità mattutina (ore 6:00-9:00)\" — morning availability from 6 to 9 am."
+      },
+      {
+        "q": "È richiesta esperienza?",
+        "opts": [
+          "Sì, almeno due anni",
+          "Sì, almeno un anno",
+          "No, si offre formazione",
+          "Solo per alcune mansioni"
+        ],
+        "a": 2,
+        "exp": "\"Non è richiesta esperienza precedente; si offre formazione\" — no prior experience needed; training is provided."
+      },
+      {
+        "q": "Come si manda la candidatura?",
+        "opts": [
+          "Per telefono",
+          "Di persona",
+          "Per email",
+          "Per posta"
+        ],
+        "a": 2,
+        "exp": "\"Inviare curriculum vitae con foto a: lavoro@pulizierapida.it. Non telefonare.\" — send by email only; calling is explicitly forbidden."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "l'addetto/a alle pulizie",
+        "en": "cleaner",
+        "opts": [
+          "security guard",
+          "receptionist",
+          "cleaner",
+          "kitchen helper"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il curriculum vitae",
+        "en": "CV / résumé",
+        "opts": [
+          "cover letter",
+          "CV / résumé",
+          "reference letter",
+          "job contract"
+        ],
+        "a": 1
+      },
+      {
+        "it": "part-time",
+        "en": "part-time work",
+        "opts": [
+          "full-time",
+          "overtime",
+          "part-time work",
+          "shift work"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "r04",
+    "title": "Informazioni sul medico di base",
+    "text": "IL MEDICO DI BASE — COME SCEGLIERLO\nOgni persona iscritta al Servizio Sanitario Nazionale ha diritto a un medico di base gratuito. Per sceglierlo devi andare alla ASL (Azienda Sanitaria Locale) del tuo comune con la tessera sanitaria e il permesso di soggiorno. Puoi scegliere qualsiasi medico della tua zona che accetti nuovi pazienti. Il medico di base fa visite, scrive ricette e ti manda da uno specialista se necessario. Puoi cambiare medico una volta all'anno.",
+    "questions": [
+      {
+        "q": "Il medico di base è gratuito per chi?",
+        "opts": [
+          "Solo per i cittadini italiani",
+          "Per tutti gli iscritti al SSN",
+          "Solo per i disoccupati",
+          "Solo per i bambini"
+        ],
+        "a": 1,
+        "exp": "\"Ogni persona iscritta al Servizio Sanitario Nazionale ha diritto a un medico di base gratuito\" — everyone enrolled in the SSN (National Health Service), not just Italian citizens."
+      },
+      {
+        "q": "Dove si va per scegliere il medico?",
+        "opts": [
+          "In ospedale",
+          "Alla ASL",
+          "In farmacia",
+          "Dal sindaco"
+        ],
+        "a": 1,
+        "exp": "\"devi andare alla ASL (Azienda Sanitaria Locale) del tuo comune\" — go to the local health authority for your municipality."
+      },
+      {
+        "q": "Quale documento serve, oltre alla tessera sanitaria?",
+        "opts": [
+          "Il passaporto",
+          "Il contratto di lavoro",
+          "Il permesso di soggiorno",
+          "Il codice fiscale"
+        ],
+        "a": 2,
+        "exp": "\"con la tessera sanitaria e il permesso di soggiorno\" — the health card AND the residence permit are both needed."
+      },
+      {
+        "q": "Quante volte all'anno puoi cambiare medico?",
+        "opts": [
+          "In qualsiasi momento",
+          "Due volte",
+          "Una volta",
+          "Mai"
+        ],
+        "a": 2,
+        "exp": "\"Puoi cambiare medico una volta all'anno\" — you can change your GP once a year."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il medico di base",
+        "en": "family doctor / GP",
+        "opts": [
+          "specialist",
+          "emergency doctor",
+          "family doctor / GP",
+          "pharmacist"
+        ],
+        "a": 2
+      },
+      {
+        "it": "la ASL (Azienda Sanitaria Locale)",
+        "en": "local health authority",
+        "opts": [
+          "hospital",
+          "local health authority",
+          "pharmacy",
+          "health ministry"
+        ],
+        "a": 1
+      },
+      {
+        "it": "la ricetta (medica)",
+        "en": "medical prescription",
+        "opts": [
+          "medical report",
+          "appointment card",
+          "medical prescription",
+          "test results"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "r05",
+    "title": "SMS dall'ospedale",
+    "text": "Gentile signora Alaoui,\nle ricordiamo che ha un appuntamento con il dottor Ferretti, specialista in ortopedia, presso l'ospedale San Giovanni, padiglione C, terzo piano, martedì 18 giugno alle ore 10:30. Si prega di arrivare almeno 15 minuti prima con la ricetta del medico di base, la tessera sanitaria e un documento di identità. In caso di impossibilità a presentarsi, disdire almeno 24 ore prima chiamando il numero 02 1234567. Grazie.",
+    "questions": [
+      {
+        "q": "Con quale specialista è l'appuntamento?",
+        "opts": [
+          "Cardiologo",
+          "Ortopedico",
+          "Oculista",
+          "Dermatologo"
+        ],
+        "a": 1,
+        "exp": "\"il dottor Ferretti, specialista in ortopedia\" — the doctor specialises in orthopaedics (bones and joints)."
+      },
+      {
+        "q": "A che ora è l'appuntamento?",
+        "opts": [
+          "Alle 10:00",
+          "Alle 10:30",
+          "Alle 11:00",
+          "Alle 11:30"
+        ],
+        "a": 1,
+        "exp": "\"alle ore 10:30\" — at 10:30. Note: you must arrive at least 15 minutes before, so by 10:15."
+      },
+      {
+        "q": "Cosa NON è necessario portare?",
+        "opts": [
+          "La ricetta del medico",
+          "La tessera sanitaria",
+          "Il documento di identità",
+          "Il referto dell'ultima visita"
+        ],
+        "a": 3,
+        "exp": "The message lists: ricetta del medico di base, tessera sanitaria, documento di identità — all three are required. A previous medical report (\"referto dell'ultima visita\") is NOT mentioned."
+      },
+      {
+        "q": "Con quante ore di anticipo si deve disdire?",
+        "opts": [
+          "6 ore prima",
+          "12 ore prima",
+          "24 ore prima",
+          "48 ore prima"
+        ],
+        "a": 2,
+        "exp": "\"disdire almeno 24 ore prima\" — cancel at least 24 hours in advance, not 12 or 48."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "l'ortopedico / l'ortopedia",
+        "en": "orthopaedic specialist / orthopaedics",
+        "opts": [
+          "cardiologist",
+          "dermatologist",
+          "orthopaedic specialist / orthopaedics",
+          "neurologist"
+        ],
+        "a": 2
+      },
+      {
+        "it": "disdire (un appuntamento)",
+        "en": "to cancel (an appointment)",
+        "opts": [
+          "to confirm",
+          "to postpone",
+          "to cancel (an appointment)",
+          "to reschedule"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il padiglione",
+        "en": "hospital wing / building",
+        "opts": [
+          "waiting room",
+          "corridor",
+          "hospital wing / building",
+          "pharmacy"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "r06",
+    "title": "Accordo di integrazione",
+    "text": "L'ACCORDO DI INTEGRAZIONE\nQualsiasi cittadino straniero che entra in Italia per la prima volta con un permesso di soggiorno di durata non inferiore a un anno deve firmare un Accordo di Integrazione. Con questo accordo, lo straniero si impegna a imparare la lingua italiana fino al livello A2, a conoscere i principi fondamentali della Costituzione italiana, le regole della vita civile e i servizi presenti sul territorio. Il sistema funziona a crediti: si parte con 16 crediti e se ne devono acquisire altri 30 entro due anni.",
+    "questions": [
+      {
+        "q": "Chi deve firmare l'Accordo di Integrazione?",
+        "opts": [
+          "Tutti i turisti",
+          "Chi entra con permesso di almeno un anno",
+          "Solo i rifugiati",
+          "Solo chi lavora in Italia"
+        ],
+        "a": 1,
+        "exp": "\"Qualsiasi cittadino straniero che entra in Italia... con un permesso di soggiorno di durata non inferiore a un anno\" — anyone with a permit of one year or more. Tourists do not need it."
+      },
+      {
+        "q": "Fino a quale livello bisogna imparare l'italiano?",
+        "opts": [
+          "A1",
+          "A2",
+          "B1",
+          "B2"
+        ],
+        "a": 1,
+        "exp": "\"imparare la lingua italiana fino al livello A2\" — this is exactly why you are studying for the CILS A2 exam!"
+      },
+      {
+        "q": "Con quanti crediti si inizia?",
+        "opts": [
+          "10 crediti",
+          "12 crediti",
+          "16 crediti",
+          "30 crediti"
+        ],
+        "a": 2,
+        "exp": "\"si parte con 16 crediti\" — you start with 16 credits. You then need to earn 30 more."
+      },
+      {
+        "q": "Entro quanto tempo si devono acquisire i 30 crediti?",
+        "opts": [
+          "Un anno",
+          "Due anni",
+          "Tre anni",
+          "Cinque anni"
+        ],
+        "a": 1,
+        "exp": "\"se ne devono acquisire altri 30 entro due anni\" — 30 more credits must be earned within two years."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "l'accordo di integrazione",
+        "en": "integration agreement",
+        "opts": [
+          "work agreement",
+          "housing contract",
+          "integration agreement",
+          "study permit"
+        ],
+        "a": 2
+      },
+      {
+        "it": "i crediti (del sistema)",
+        "en": "credits / points (in the system)",
+        "opts": [
+          "university credits",
+          "bank credits",
+          "credits / points (in the system)",
+          "tax credits"
+        ],
+        "a": 2
+      },
+      {
+        "it": "la Costituzione italiana",
+        "en": "the Italian Constitution",
+        "opts": [
+          "the Italian Parliament",
+          "the government",
+          "the Italian law code",
+          "the Italian Constitution"
+        ],
+        "a": 3
+      }
+    ]
+  },
+  {
+    "id": "r07",
+    "title": "Avviso: corsi di italiano gratuiti",
+    "text": "COMUNE DI BOLOGNA — ASSESSORATO ALL'INTEGRAZIONE\nCorsi di italiano gratuiti per stranieri — Anno 2026\nSono aperte le iscrizioni ai corsi di italiano per stranieri adulti. I corsi vanno dal livello principiante (A0) fino al livello A2. Le lezioni si svolgono in diversi centri civici della città. Per iscriversi portare il permesso di soggiorno e un documento di identità alla segreteria del centro civico più vicino a casa vostra. I posti sono limitati. Si consiglia di iscriversi il prima possibile. Per informazioni: integrazione@comune.bologna.it",
+    "questions": [
+      {
+        "q": "Fino a quale livello arrivano i corsi?",
+        "opts": [
+          "A1",
+          "A2",
+          "B1",
+          "B2"
+        ],
+        "a": 1,
+        "exp": "\"I corsi vanno dal livello principiante (A0) fino al livello A2\" — from beginner (A0) up to A2 level."
+      },
+      {
+        "q": "Dove si iscrivono le persone?",
+        "opts": [
+          "Online",
+          "In Comune",
+          "Al centro civico più vicino",
+          "Via email"
+        ],
+        "a": 2,
+        "exp": "\"portare... alla segreteria del centro civico più vicino a casa vostra\" — go to the nearest civic centre. You cannot enrol online or by email."
+      },
+      {
+        "q": "Cosa bisogna portare per iscriversi?",
+        "opts": [
+          "Solo un documento",
+          "Il permesso e un documento di identità",
+          "Solo il permesso",
+          "Il codice fiscale"
+        ],
+        "a": 1,
+        "exp": "\"portare il permesso di soggiorno e un documento di identità\" — both documents are required."
+      },
+      {
+        "q": "Perché conviene iscriversi presto?",
+        "opts": [
+          "Perché si paga meno",
+          "Perché i posti sono limitati",
+          "Perché le classi iniziano subito",
+          "Perché finiscono i materiali"
+        ],
+        "a": 1,
+        "exp": "\"I posti sono limitati. Si consiglia di iscriversi il prima possibile.\" — places are limited, so sign up as soon as possible."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il centro civico",
+        "en": "community / civic centre",
+        "opts": [
+          "town hall",
+          "community / civic centre",
+          "post office",
+          "library"
+        ],
+        "a": 1
+      },
+      {
+        "it": "i posti sono limitati",
+        "en": "places are limited",
+        "opts": [
+          "places are free",
+          "places are reserved",
+          "places are limited",
+          "places are guaranteed"
+        ],
+        "a": 2
+      },
+      {
+        "it": "l'assessorato all'integrazione",
+        "en": "council integration department",
+        "opts": [
+          "immigration office",
+          "council integration department",
+          "language school",
+          "social services"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "r08",
+    "title": "Testo: la vita nel nuovo paese",
+    "text": "Ahmed è arrivato in Italia tre anni fa dal Senegal. All'inizio non parlava italiano e aveva difficoltà a trovare lavoro. Ha frequentato un corso di italiano gratuito al Centro di Ascolto e ora parla bene la lingua. Lavora come cuoco in un ristorante e si è fatto molti amici italiani e stranieri. Il sabato aiuta altri immigrati neo-arrivati a orientarsi nella città come volontario. Ahmed dice che imparare la lingua è stata la cosa più importante che ha fatto.",
+    "questions": [
+      {
+        "q": "Da dove viene Ahmed?",
+        "opts": [
+          "Dal Marocco",
+          "Dal Senegal",
+          "dall'Algeria",
+          "dalla Tunisia"
+        ],
+        "a": 1,
+        "exp": "\"Ahmed è arrivato in Italia tre anni fa dal Senegal\" — he came from Senegal."
+      },
+      {
+        "q": "Da quanti anni è in Italia?",
+        "opts": [
+          "Due anni",
+          "Tre anni",
+          "Quattro anni",
+          "Cinque anni"
+        ],
+        "a": 1,
+        "exp": "\"Ahmed è arrivato in Italia tre anni fa\" — he arrived three years ago."
+      },
+      {
+        "q": "Che lavoro fa Ahmed adesso?",
+        "opts": [
+          "Meccanico",
+          "Cameriere",
+          "Cuoco",
+          "Insegnante"
+        ],
+        "a": 2,
+        "exp": "\"Lavora come cuoco in un ristorante\" — he works as a cook in a restaurant. He is not a waiter (cameriere)."
+      },
+      {
+        "q": "Cosa fa Ahmed il sabato?",
+        "opts": [
+          "Studia italiano",
+          "Aiuta altri immigrati come volontario",
+          "Lavora al ristorante",
+          "Va in chiesa"
+        ],
+        "a": 1,
+        "exp": "\"Il sabato aiuta altri immigrati neo-arrivati a orientarsi nella città come volontario\" — on Saturdays he volunteers to help newly-arrived immigrants find their way around."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il/la volontario/a",
+        "en": "volunteer",
+        "opts": [
+          "employee",
+          "intern",
+          "volunteer",
+          "trainee"
+        ],
+        "a": 2
+      },
+      {
+        "it": "neo-arrivato/a",
+        "en": "newly arrived",
+        "opts": [
+          "recently returned",
+          "well established",
+          "newly arrived",
+          "long-term resident"
+        ],
+        "a": 2
+      },
+      {
+        "it": "orientarsi (nella città)",
+        "en": "to find one's way around (the city)",
+        "opts": [
+          "to get lost",
+          "to travel around",
+          "to find one's way around (the city)",
+          "to settle in"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "r09",
+    "title": "Comunicazione: cambio orario uffici",
+    "text": "COMUNE DI ROMA — AVVISO AI CITTADINI\nSi informa che dal 1° luglio al 31 agosto gli uffici comunali osserveranno il seguente orario estivo: lunedì, mercoledì e venerdì ore 8:30-13:00; martedì e giovedì ore 8:30-13:00 e 15:00-17:00. Gli sportelli al pubblico sono chiusi il pomeriggio dal lunedì al venerdì, eccetto martedì e giovedì. Si consiglia di prenotare appuntamenti online per evitare attese. Per urgenze, contattare il numero verde 800 12345.",
+    "questions": [
+      {
+        "q": "Da quando cambia l'orario degli uffici?",
+        "opts": [
+          "Dal 1° giugno",
+          "Dal 1° luglio",
+          "Dal 1° agosto",
+          "Dal 15 luglio"
+        ],
+        "a": 1,
+        "exp": "\"dal 1° luglio al 31 agosto gli uffici comunali osserveranno il seguente orario estivo\" — the new hours start on 1 July."
+      },
+      {
+        "q": "Il martedì pomeriggio gli uffici sono...",
+        "opts": [
+          "Chiusi",
+          "Aperti dalle 14 alle 16",
+          "Aperti dalle 15 alle 17",
+          "Aperti dalle 14 alle 18"
+        ],
+        "a": 2,
+        "exp": "\"martedì e giovedì ore 8:30-13:00 e 15:00-17:00\" — on Tuesdays they are also open in the afternoon, from 15:00 to 17:00."
+      },
+      {
+        "q": "Come si evitano le attese secondo l'avviso?",
+        "opts": [
+          "Arrivando presto",
+          "Prenotando online",
+          "Andando il venerdì",
+          "Telefonando"
+        ],
+        "a": 1,
+        "exp": "\"Si consiglia di prenotare appuntamenti online per evitare attese\" — book appointments online to avoid waiting."
+      },
+      {
+        "q": "Qual è il numero per le urgenze?",
+        "opts": [
+          "800 54321",
+          "800 12345",
+          "080 12345",
+          "800 23456"
+        ],
+        "a": 1,
+        "exp": "\"contattare il numero verde 800 12345\" — the freephone number for emergencies is 800 12345."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il numero verde",
+        "en": "freephone / toll-free number",
+        "opts": [
+          "emergency number",
+          "fax number",
+          "freephone / toll-free number",
+          "mobile number"
+        ],
+        "a": 2
+      },
+      {
+        "it": "l'orario estivo",
+        "en": "summer opening hours",
+        "opts": [
+          "winter schedule",
+          "public holiday hours",
+          "summer opening hours",
+          "reduced hours"
+        ],
+        "a": 2
+      },
+      {
+        "it": "lo sportello al pubblico",
+        "en": "public service counter / desk",
+        "opts": [
+          "private window",
+          "ticket machine",
+          "information board",
+          "public service counter / desk"
+        ],
+        "a": 3
+      }
+    ]
+  },
+  {
+    "id": "r10",
+    "title": "Contratto di affitto",
+    "text": "INFORMAZIONI PER AFFITTARE CASA\nPer affittare un appartamento in Italia è necessario firmare un contratto di locazione. Il contratto più comune è il \"4+4\": dura quattro anni, rinnovabile per altri quattro automaticamente. Il locatore deve registrare il contratto all'Agenzia delle Entrate entro 30 giorni dalla firma. L'inquilino ha diritto a ricevere una copia registrata. In caso di problemi con il proprietario, è possibile rivolgersi allo Sportello del Cittadino o a un'associazione di tutela degli inquilini.",
+    "questions": [
+      {
+        "q": "Quanti anni dura il contratto \"4+4\"?",
+        "opts": [
+          "Quattro anni totali",
+          "Quattro anni + possibile rinnovo di altri quattro",
+          "Otto anni senza rinnovo",
+          "Due anni rinnovabili"
+        ],
+        "a": 1,
+        "exp": "\"dura quattro anni, rinnovabile per altri quattro automaticamente\" — it lasts 4 years, automatically renewable for another 4. Total possible = 8, but it is not 8 fixed."
+      },
+      {
+        "q": "Entro quando va registrato il contratto?",
+        "opts": [
+          "10 giorni",
+          "20 giorni",
+          "30 giorni",
+          "60 giorni"
+        ],
+        "a": 2,
+        "exp": "\"Il locatore deve registrare il contratto all'Agenzia delle Entrate entro 30 giorni dalla firma\" — within 30 days of signing."
+      },
+      {
+        "q": "Chi deve registrare il contratto?",
+        "opts": [
+          "L'inquilino",
+          "Il notaio",
+          "Il locatore (proprietario)",
+          "Il comune"
+        ],
+        "a": 2,
+        "exp": "\"Il locatore deve registrare\" — the landlord (locatore) is responsible for registering it, not the tenant (inquilino)."
+      },
+      {
+        "q": "Dove può rivolgersi l'inquilino in caso di problemi?",
+        "opts": [
+          "Alla questura",
+          "Allo Sportello del Cittadino",
+          "Al medico di base",
+          "Alla banca"
+        ],
+        "a": 1,
+        "exp": "\"è possibile rivolgersi allo Sportello del Cittadino o a un'associazione di tutela degli inquilini\" — the Citizens' Desk or a tenants' rights association."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "il contratto di locazione",
+        "en": "rental / tenancy contract",
+        "opts": [
+          "purchase contract",
+          "work contract",
+          "rental / tenancy contract",
+          "insurance policy"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il locatore",
+        "en": "landlord / property owner",
+        "opts": [
+          "tenant",
+          "estate agent",
+          "landlord / property owner",
+          "property manager"
+        ],
+        "a": 2
+      },
+      {
+        "it": "l'inquilino / l'inquilina",
+        "en": "tenant",
+        "opts": [
+          "landlord",
+          "tenant",
+          "estate agent",
+          "notary"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "r11",
+    "title": "Servizi per i bambini",
+    "text": "NIDO E SCUOLA DELL'INFANZIA\nIn Italia i bambini da 0 a 3 anni possono frequentare il nido. Dai 3 ai 6 anni c'è la scuola dell'infanzia (chiamata anche scuola materna). Entrambi i servizi sono offerti da comuni e da privati. I costi variano a seconda del reddito familiare: chi ha reddito basso paga meno o non paga. Per iscrivere il bambino al nido comunale bisogna presentare domanda entro i termini stabiliti dal comune. I posti sono limitati e vengono assegnati in base a una graduatoria.",
+    "questions": [
+      {
+        "q": "Fino a che età si va al nido?",
+        "opts": [
+          "Fino a 2 anni",
+          "Fino a 3 anni",
+          "Fino a 4 anni",
+          "Fino a 5 anni"
+        ],
+        "a": 1,
+        "exp": "\"i bambini da 0 a 3 anni possono frequentare il nido\" — the nursery is for children from 0 to 3 years old."
+      },
+      {
+        "q": "Come si chiama anche la scuola dell'infanzia?",
+        "opts": [
+          "Scuola elementare",
+          "Scuola media",
+          "Scuola materna",
+          "Asilo nido"
+        ],
+        "a": 2,
+        "exp": "\"la scuola dell'infanzia (chiamata anche scuola materna)\" — it is also called scuola materna. Asilo nido is the nursery for under-3s."
+      },
+      {
+        "q": "Il costo del nido dipende da cosa?",
+        "opts": [
+          "Dall'età del bambino",
+          "Dal reddito della famiglia",
+          "Dal quartiere",
+          "Dal numero di figli"
+        ],
+        "a": 1,
+        "exp": "\"I costi variano a seconda del reddito familiare\" — costs vary depending on family income. Lower income = lower fees."
+      },
+      {
+        "q": "Come vengono assegnati i posti al nido comunale?",
+        "opts": [
+          "Chi arriva prima",
+          "In base alla graduatoria",
+          "In ordine alfabetico",
+          "Per sorteggio"
+        ],
+        "a": 1,
+        "exp": "\"vengono assegnati in base a una graduatoria\" — places are assigned according to a priority ranking, not first-come-first-served."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "l'asilo nido",
+        "en": "nursery (for children 0–3 years)",
+        "opts": [
+          "nursery (for children 0–3 years)",
+          "kindergarten (3–6 years)",
+          "primary school",
+          "after-school club"
+        ],
+        "a": 0
+      },
+      {
+        "it": "la graduatoria",
+        "en": "waiting list / priority ranking",
+        "opts": [
+          "class register",
+          "school report",
+          "waiting list / priority ranking",
+          "enrolment form"
+        ],
+        "a": 2
+      },
+      {
+        "it": "il reddito familiare",
+        "en": "household / family income",
+        "opts": [
+          "household / family income",
+          "child benefit",
+          "tax return",
+          "annual bonus"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "r12",
+    "title": "Pagare le tasse in Italia",
+    "text": "IL MODELLO 730 E LA DICHIARAZIONE DEI REDDITI\nIn Italia chi lavora come dipendente deve fare la dichiarazione dei redditi ogni anno, generalmente entro il mese di settembre. Il modulo si chiama \"Modello 730\". Si può presentare tramite il proprio datore di lavoro, un CAF (Centro di Assistenza Fiscale) o il sito dell'Agenzia delle Entrate. Il CAF offre questo servizio gratuitamente per chi ha redditi semplici. Non fare la dichiarazione quando è obbligatoria può comportare una multa.",
+    "questions": [
+      {
+        "q": "Come si chiama il modulo per la dichiarazione?",
+        "opts": [
+          "Modello 770",
+          "Modello 730",
+          "Modello F24",
+          "Modello CUD"
+        ],
+        "a": 1,
+        "exp": "\"Il modulo si chiama 'Modello 730'\" — the form is called Modello 730. The others (770, F24, CUD) are different tax documents."
+      },
+      {
+        "q": "Entro quando si presenta di solito?",
+        "opts": [
+          "Giugno",
+          "Luglio",
+          "Agosto",
+          "Settembre"
+        ],
+        "a": 3,
+        "exp": "\"generalmente entro il mese di settembre\" — generally by September."
+      },
+      {
+        "q": "Cosa è il CAF?",
+        "opts": [
+          "Una banca",
+          "Un centro di assistenza fiscale",
+          "Un ufficio della questura",
+          "Un sindacato"
+        ],
+        "a": 1,
+        "exp": "\"CAF (Centro di Assistenza Fiscale)\" — the acronym is spelled out in the text: a tax assistance centre."
+      },
+      {
+        "q": "Cosa succede se non si fa la dichiarazione obbligatoria?",
+        "opts": [
+          "Niente",
+          "Si perde il lavoro",
+          "Si riceve una multa",
+          "Si perde il permesso"
+        ],
+        "a": 2,
+        "exp": "\"Non fare la dichiarazione quando è obbligatoria può comportare una multa\" — you risk receiving a fine."
+      }
+    ],
+    "vocab": [
+      {
+        "it": "la dichiarazione dei redditi",
+        "en": "income tax return",
+        "opts": [
+          "pay slip",
+          "income tax return",
+          "bank statement",
+          "invoice"
+        ],
+        "a": 1
+      },
+      {
+        "it": "il CAF (Centro di Assistenza Fiscale)",
+        "en": "free tax assistance centre",
+        "opts": [
+          "job centre",
+          "free tax assistance centre",
+          "social security office",
+          "citizens advice bureau"
+        ],
+        "a": 1
+      },
+      {
+        "it": "il datore di lavoro",
+        "en": "employer",
+        "opts": [
+          "employee",
+          "union representative",
+          "employer",
+          "HR manager"
+        ],
+        "a": 2
+      }
+    ]
+  }
+]

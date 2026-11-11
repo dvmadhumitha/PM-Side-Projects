@@ -5,7 +5,8 @@ The Android and iOS apps for ASCOLTO, the CILS A2 exam simulator. Both apps run 
 ## One app, three places
 
 ```
-cils-app/            the web app (what GitHub Pages serves)        <- the only place features live
+cils-app-src/        the web app's source                          <- the only place features live
+cils-app/            its build (what GitHub Pages serves)
 cils-mobile/
   src/native-bridge.js   what the phones need that a browser already has (speech, back button)
   scripts/               prepare-web, check-parity, make-icons
@@ -72,6 +73,6 @@ Putting it on a real iPhone or the App Store needs an Apple Developer account fo
 
 ## Known limits
 
-- `cils-app/` in this repository is the compiled build, not the original source. The apps wrap it faithfully, but changing the app itself needs the source project it was built from (a Vite project). Once that is in the repository, point `scripts/prepare-web.mjs` at its build output and everything else stays the same.
+- The web app's source is in `../cils-app-src/` (rebuilt from the compiled build in November 2026). Change the app there, run `npm run build` in that folder, then `npm run sync` here.
 - Android's speech recogniser stops at each pause and is restarted by the bridge, so long answers arrive in segments, sometimes with the system's start tone.
 - Italian voices come from the phone. If a phone has no Italian voice installed, the listening test says so, exactly as the web app does in a browser without one.

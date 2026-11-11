@@ -13566,240 +13566,46 @@ function Yo({ onGo: e }) {
     children: [(0, w.jsx)(Jo, { onGo: e }), (0, w.jsx)(Ra, { onGo: e }), (0, w.jsx)(ia, { onGo: e })],
   });
 }
-function Xo() {
-  let [e, t] = (0, S.useState)(() => !I() || fa()),
-    [n, r] = (0, S.useState)(() => {
-      let e = window.location.hash.slice(1);
-      return Go.has(e) ? `practice` : null;
-    }),
-    [i, a] = N(`pt_ans`, Lo),
-    [o, s] = N(`pt_graded`, !1),
-    [c, l] = No(`home`),
-    [u, d] = (0, S.useState)(he()),
-    f = (0, S.useRef)(null);
-  ((0, S.useEffect)(() => {
-    M();
-  }, [c]),
-    (0, S.useEffect)(() => {}, []));
-  let p = () => {
-      (M(), r(null));
-    },
-    m = () => r(`practice`),
-    h = () => {
-      (a(Lo()), s(!1), r(`exam`));
-    },
-    g = () => {
-      (s(!0), setTimeout(() => f.current && f.current.scrollIntoView({ behavior: `smooth` }), 80));
-    },
-    _ = (e) => {
-      (d(e), me(e));
-    };
-  return e
-    ? n === null
-      ? (0, w.jsx)(Ho, { onPractice: m, onExam: h })
-      : n === `exam`
-        ? (0, w.jsx)(Wo, { ans: i, setAns: a, onHome: p })
-        : (0, w.jsxs)(`div`, {
-            className: `wrap`,
-            children: [
-              (0, w.jsx)(Bo, { title: `Practice mode`, onHome: p }),
-              (0, w.jsxs)(`div`, {
-                className: `practice-shell`,
-                children: [
-                  (0, w.jsx)(`nav`, {
-                    className: `practice-sidebar`,
-                    children: [
-                      { label: ``, items: [{ id: `home`, label: `Home` }] },
-                      {
-                        label: `Le Prove`,
-                        items: [
-                          { id: `ascolto`, label: `Ascolto` },
-                          { id: `lettura`, label: `Lettura` },
-                          { id: `scrittura`, label: `Scrittura` },
-                          { id: `orale`, label: `Orale` },
-                        ],
-                      },
-                      {
-                        label: `Preparazione`,
-                        items: [
-                          { id: `grammatica`, label: `Grammatica` },
-                          { id: `vocabolario`, label: `Vocabolario` },
-                        ],
-                      },
-                      { label: `L'Esame`, items: [{ id: `esame`, label: `Esame Practice` }] },
-                      {
-                        label: `Strumenti`,
-                        items: [
-                          { id: `dict`, label: `Dictionary` },
-                          { id: `ref`, label: `Quick Ref` },
-                          { id: `explore`, label: `Italy Explorer` },
-                        ],
-                      },
-                    ].map((e) =>
-                      (0, w.jsxs)(
-                        `div`,
-                        {
-                          children: [
-                            e.label && (0, w.jsx)(`div`, { className: `nav-group-label`, children: e.label }),
-                            e.items.map((e) =>
-                              (0, w.jsxs)(
-                                `a`,
-                                {
-                                  href: `#` + e.id,
-                                  className: `pnav-btn` + (c === e.id ? ` on` : ``),
-                                  onClick: (t) => {
-                                    (t.preventDefault(), l(e.id));
-                                  },
-                                  children: [
-                                    (0, w.jsx)(`span`, { className: `pnav-icon`, children: Po[e.id] }),
-                                    (0, w.jsx)(`span`, { className: `pnav-label`, children: e.label }),
-                                  ],
-                                },
-                                e.id,
-                              ),
-                            ),
-                          ],
-                        },
-                        e.label || `top`,
-                      ),
-                    ),
-                  }),
-                  (0, w.jsxs)(`div`, {
-                    className: `practice-main`,
-                    children: [
-                      (c === `esame` || c === `ascolto`) &&
-                        (0, w.jsxs)(`div`, {
-                          className: `speed-toolbar`,
-                          children: [
-                            (0, w.jsx)(`span`, { className: `speed-toolbar-label`, children: `Velocità ascolto` }),
-                            (0, w.jsx)(`div`, {
-                              className: `segmented`,
-                              children: [
-                                { v: 0.75, l: `Lento` },
-                                { v: 0.92, l: `Normale` },
-                                { v: 1, l: `Esame` },
-                                { v: 1.15, l: `Veloce` },
-                              ].map((e) =>
-                                (0, w.jsx)(
-                                  `button`,
-                                  {
-                                    className: Math.abs(u - e.v) < 0.05 ? `active` : ``,
-                                    onClick: () => _(e.v),
-                                    children: e.l,
-                                  },
-                                  e.v,
-                                ),
-                              ),
-                            }),
-                            (0, w.jsxs)(`span`, { className: `speed-toolbar-val`, children: [u.toFixed(2), `×`] }),
-                          ],
-                        }),
-                      c === `home` && (0, w.jsx)(Yo, { onGo: l }),
-                      c === `ascolto` &&
-                        (0, w.jsx)(Ko, {
-                          id: `ascolto`,
-                          tabs: [
-                            { id: `pratica`, label: `🎧 Pratica`, render: () => (0, w.jsx)(so, {}) },
-                            { id: `dialoghi`, label: `💬 Dialoghi`, render: () => (0, w.jsx)(nr, {}) },
-                            { id: `shadowing`, label: `🎙️ Shadowing`, render: () => (0, w.jsx)(Vr, {}) },
-                            {
-                              id: `guida`,
-                              label: `ℹ️ Guida`,
-                              render: () => (0, w.jsx)(za, { skillId: `ascolto`, onGo: l }),
-                            },
-                          ],
-                          crossLink: (0, w.jsx)(qo, {
-                            text: `Anche l'Esaminatore AI allena l'ascolto`,
-                            onClick: () => l(`esaminatore`),
-                          }),
-                        }),
-                      c === `lettura` &&
-                        (0, w.jsx)(Ko, {
-                          id: `lettura`,
-                          tabs: [
-                            { id: `pratica`, label: `📖 Lettura`, render: () => (0, w.jsx)(cr, {}) },
-                            {
-                              id: `guida`,
-                              label: `ℹ️ Guida`,
-                              render: () => (0, w.jsx)(za, { skillId: `lettura`, onGo: l }),
-                            },
-                          ],
-                        }),
-                      c === `scrittura` &&
-                        (0, w.jsx)(Ko, {
-                          id: `scrittura`,
-                          tabs: [
-                            { id: `pratica`, label: `✍️ Scrittura`, render: () => (0, w.jsx)(Ki, {}) },
-                            {
-                              id: `guida`,
-                              label: `ℹ️ Guida`,
-                              render: () => (0, w.jsx)(za, { skillId: `scrittura`, onGo: l }),
-                            },
-                          ],
-                        }),
-                      c === `orale` &&
-                        (0, w.jsx)(Ko, {
-                          id: `orale`,
-                          tabs: [
-                            { id: `produzione`, label: `🎤 Produzione`, render: () => (0, w.jsx)(ta, {}) },
-                            { id: `esaminatore`, label: `💬 Esaminatore AI`, render: () => (0, w.jsx)(to, {}) },
-                            {
-                              id: `guida`,
-                              label: `ℹ️ Guida`,
-                              render: () => (0, w.jsx)(za, { skillId: `orale`, onGo: l }),
-                            },
-                          ],
-                        }),
-                      c === `grammatica` &&
-                        (0, w.jsx)(Ko, {
-                          id: `grammatica`,
-                          tabs: [
-                            { id: `esercizi`, label: `🧩 Esercizi`, render: () => (0, w.jsx)(yn, {}) },
-                            { id: `traduzione`, label: `🔁 Traduzione`, render: () => (0, w.jsx)(sa, {}) },
-                            { id: `regole`, label: `📖 Regole`, render: () => (0, w.jsx)(an, {}) },
-                          ],
-                        }),
-                      c === `vocabolario` &&
-                        (0, w.jsx)(Ko, {
-                          id: `vocabolario`,
-                          tabs: [
-                            { id: `flashcards`, label: `🃏 Flashcards`, render: () => (0, w.jsx)(nt, {}) },
-                            { id: `dizionario`, label: `🏠 Dizionario Visivo`, render: () => (0, w.jsx)(Ma, {}) },
-                            { id: `scopri`, label: `🖼️ Scopri le Parole`, render: () => (0, w.jsx)(Ta, {}) },
-                            { id: `frasi`, label: `💬 Frasi`, render: () => (0, w.jsx)(On, {}) },
-                          ],
-                        }),
-                      c === `esame` &&
-                        (0, w.jsx)(Ko, {
-                          id: `esame`,
-                          tabs: [
-                            { id: `serie`, label: `📋 Serie d'Esame`, render: () => (0, w.jsx)(la, { onGo: l }) },
-                            { id: `daily`, label: `📅 Daily Exam`, render: () => (0, w.jsx)(_i, {}) },
-                            {
-                              id: `test`,
-                              label: `📝 Practice Test`,
-                              render: () =>
-                                (0, w.jsx)(Io, {
-                                  graded: o,
-                                  setGraded: s,
-                                  ans: i,
-                                  setAns: a,
-                                  resultsRef: f,
-                                  checkPractice: g,
-                                  home: p,
-                                }),
-                            },
-                          ],
-                        }),
-                      c === `ref` && (0, w.jsx)(Qn, {}),
-                      c === `dict` && (0, w.jsx)(yr, {}),
-                      c === `explore` && (0, w.jsx)(Rr, {}),
-                    ],
-                  }),
-                ],
-              }),
-            ],
-          })
-    : (0, w.jsx)(_a, { onDone: () => t(!0) });
-}
-(0, C.createRoot)(document.getElementById(`root`)).render((0, w.jsx)(Xo, {}));
+
+/*
+ * Everything the shell (src/shell/) needs, under readable names.
+ * The old root component and its mount call lived here; the shell replaces them.
+ */
+export {
+  _a as WelcomeGate,
+  Wo as ExamSimulation,
+  Jo as CoachCard,
+  Ra as TodayPlan,
+  ia as ProgressReport,
+  Ht as getCoachSuggestions,
+  so as ListeningPractice,
+  nr as Dialogues,
+  Vr as Shadowing,
+  za as SkillGuide,
+  cr as Reading,
+  Ki as Writing,
+  ta as Speaking,
+  to as AiExaminer,
+  yn as GrammarExercises,
+  sa as Translation,
+  an as GrammarRules,
+  nt as Flashcards,
+  Ma as VisualDictionary,
+  Ta as PhotoExplorer,
+  On as Phrases,
+  la as ExamSeries,
+  _i as DailyExam,
+  Io as PracticeTest,
+  Qn as QuickReference,
+  yr as Dictionary,
+  Rr as ItalyExplorer,
+  N as usePersistentState,
+  No as useHashRoute,
+  Lo as emptyPracticeAnswers,
+  he as getSpeechRate,
+  me as setSpeechRate,
+  M as stopSpeech,
+  fa as hasVisitor,
+  I as gateEnabled,
+  da as getVisitor,
+};

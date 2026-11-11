@@ -4,9 +4,10 @@ The source of the CILS A2 exam simulator. It builds into `../cils-app/`, which G
 
 ```
 src/main.js        entry: loads the styles, then the app
-src/app.js         the app's own code
+src/shell/         the Immersione frame: tab bar, photo headers, the Oggi, Prove and Parole screens
+src/app.js         every other screen and all the logic (recovered code, see below)
 src/data/*.json    every content table: flashcards, exercises, dialogues, tests, regions
-src/styles/        stylesheets
+src/styles/        app.css (original styles) and immersione.css (the new look, loaded on top)
 ../cils-app/img    photos, and ../cils-app/italy-regions.geojson (kept there only, not copied)
 ```
 

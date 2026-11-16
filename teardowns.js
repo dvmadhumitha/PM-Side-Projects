@@ -355,13 +355,13 @@ if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("
   }
 
 
-  /* ── one stage, three tabs: the parts, how it runs, the system. Each gets the whole frame; the note sits beside the picture ── */
+  /* ── one stage, three tabs: how it works, the system, the stack. Each gets the whole frame; the note sits beside the picture ── */
   function Tabs(block){
     var frame = block.querySelector('.lab .frame'); if(!frame) return;
-    var flow = frame.querySelector(':scope > .flow'), sys = frame.querySelector(':scope > .sys');
-    if(!flow && !sys) return;
+    var flow = frame.querySelector(':scope > .flow'), sys = frame.querySelector(':scope > .sys'), stk = frame.querySelector(':scope > .stk');
+    if(!flow && !sys && !stk) return;
     var strip = document.createElement('div'); strip.className = 'ftabs'; strip.setAttribute('role', 'tablist');
-    var tabs = [['parts', 'How it works']]; if(sys) tabs.push(['sys', 'The system']);
+    var tabs = [['parts', 'How it works']]; if(sys) tabs.push(['sys', 'The system']); if(stk) tabs.push(['stk', 'The stack']);
     if(flow){ var bench = frame.querySelector(':scope > .bench'); if(bench){ bench.appendChild(flow); flow.classList.add('inbench'); var rp = flow.querySelector('.fhd .rp'); if(rp) rp.hidden = true; } }
     strip.innerHTML = tabs.map(function(t, i){ return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (i === 0) + '">' + t[1] + '</button>'; }).join('');
     frame.insertBefore(strip, frame.firstChild);
@@ -376,6 +376,8 @@ if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("
     });
     function show(id){
       frame.setAttribute('data-tab', id);
+      /* the stack fills in once, the first time its tab opens; a settle floor clears it */
+      if(id === 'stk' && stk && !CALM && !stk.getAttribute('data-played')){ stk.setAttribute('data-played', '1'); stk.classList.add('anim'); setTimeout(function(){ stk.classList.remove('anim'); }, 1800); }
       $$('button', strip).forEach(function(b){ b.setAttribute('aria-selected', String(b.getAttribute('data-tab') === id)); });
       try{ window.dispatchEvent(new Event('resize')); }catch(e){}
     }
@@ -447,6 +449,7 @@ if(/[?&]static=/.test(location.search)) document.documentElement.classList.add("
       Notes(f, $$('.ab dl > div', f), f.querySelector('.ab'), 'PM note', function(dv){ return 'The algorithm \u00b7 ' + txt(dv, 'dt'); });
       Notes(f, $$('.eg > li', f), f.querySelector('.eg'), 'PM note', function(li){ return 'Engagement \u00b7 ' + txt(li, 'small'); });
       Notes(f, $$('.sd > .side', f), f.querySelector('.sd'), 'PM note', function(sd){ return 'Their side \u00b7 ' + txt(sd, '.sn'); });
+      Notes(f, $$('.dn > li, .nx li', f), f.querySelector('.day .nx') || f.querySelector('.dn'), 'PM note', function(li){ return (li.closest('.nx') ? 'What comes next' : 'In a day') + ' \u00b7 ' + (txt(li, 'small') || own(li)); });
     });
   }
 

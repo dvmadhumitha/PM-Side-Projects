@@ -823,3 +823,65 @@ html.static .td .frame>.notes>.pmnote.in{animation:none}
 @media (max-width:600px){.rows a{grid-template-columns:76px minmax(0,1fr);gap:4px 14px;padding:12px 0}.rows .gl{width:76px;grid-row:1/span 3;align-self:start}.rows .tx,.rows .qq,.rows .tg{grid-column:2;grid-row:auto}.rows .tg{justify-content:flex-start;margin-top:4px}.rows .qq{font-size:14px;line-height:20px}.hubbar .seg button,.hubbar .mk{padding:9px 10px}.grp .gh p{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.rows li{animation:none}}
 html.static .rows li{animation:none}
+
+/* a day on the product: volumes by what people do, then what comes next */
+.pmf .day{margin-top:32px}
+.pmf .dn{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-top:1px solid rgba(24,33,44,.16);border-left:1px solid rgba(24,33,44,.16)}
+.pmf .dn>li{min-width:0;padding:14px 16px;border-right:1px solid rgba(24,33,44,.16);border-bottom:1px solid rgba(24,33,44,.16)}
+.pmf .dn b{display:block;font-family:var(--display);font-weight:600;font-size:26px;line-height:30px;letter-spacing:-.01em;color:var(--ink);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.pmf .dn>li:first-child b{color:var(--signal)}
+.pmf .dn small{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;line-height:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.pmf .nx{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 24px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(24,33,44,.14)}
+.pmf .nx .nk{font-family:var(--mono);font-size:11px;line-height:17px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.pmf .nx ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 24px}
+.pmf .nx li{min-width:0;font-size:14px;line-height:20px;color:var(--ink-2)}
+.pmf .nx li b{display:block;font-family:var(--display);font-weight:600;font-size:18px;line-height:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+.pmf .day>.nt{margin-top:10px;text-transform:none;letter-spacing:.02em;font-size:11px;line-height:16px}
+.pmf .dn>li.has,.pmf .nx li.has{cursor:pointer;transition:background .25s}
+.pmf .dn>li.has:hover,.pmf .dn>li.sel,.pmf .nx li.has:hover,.pmf .nx li.sel{background:var(--signal-tint)}
+.pmf .dn>li.has b::after,.pmf .nx li.has b::after{content:"";display:inline-block;width:6px;height:6px;margin-left:8px;vertical-align:middle;background:var(--signal);opacity:.75}
+.pmf .dn>li.has:focus-visible,.pmf .nx li.has:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+@media (max-width:600px){.pmf .dn{grid-template-columns:1fr 1fr}.pmf .dn b{font-size:22px;line-height:26px}.pmf .nx{grid-template-columns:1fr}}
+/* ═══ Fig. 4: the stack. The system design in a sentence, what it is built with, and where the data lives, store by store ═══ */
+.js .td .frame[data-tab]:not([data-tab="stk"])>.stk{display:none}
+.td .stk{grid-column:1/-1;border-top:1px solid var(--edge);padding:24px 32px 32px;display:flex;flex-direction:column;gap:22px;min-width:0}
+.js .td .frame[data-tab="stk"]>.stk{border-top:0}
+.td .stk .k{display:block;font-family:var(--mono);font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-3)}
+.td .sk-sd{display:grid;grid-template-columns:160px minmax(0,1fr);gap:14px 24px;align-items:baseline}
+.td .sk-dv{display:flex;flex-direction:column;gap:12px;min-width:0}
+.td .sk-dv p{font-size:16px;line-height:26px;color:var(--chalk);max-width:84ch}
+.td .sk-pat{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.td .sk-pat li{font-family:var(--mono);font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);border:1px solid var(--signal);padding:4px 9px}
+.td .sk-bw{font-size:15px;line-height:23px;color:var(--chalk-2)}
+.td .sk-zones{display:grid;grid-template-columns:var(--cols,1fr);gap:36px;border-top:1px solid var(--edge);padding-top:18px}
+.td .sk-zone{position:relative;display:flex;flex-direction:column;gap:12px;min-width:0}
+.td .sk-zone+.sk-zone::before{content:"→";position:absolute;left:-30px;top:50%;width:24px;margin-top:-12px;text-align:center;font-family:var(--mono);font-size:17px;line-height:24px;color:var(--chalk-3)}
+.td .sk-tiles{list-style:none;display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:16px;flex:1}
+.td .sk-tile{display:flex;flex-direction:column;gap:8px;min-width:0;padding:16px 16px 18px;border:1px solid var(--edge);background:rgba(24,33,44,.45)}
+.td .sk-tt{display:flex;align-items:center;gap:10px;min-width:0}
+.td .sk-tt .ic{flex:none;width:22px;height:22px}
+.td .sk-tt b{font-family:var(--display);font-weight:600;font-size:17px;line-height:23px;color:var(--chalk)}
+.td .sk-kind{font-family:var(--mono);font-size:10px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.td .sk-tile.np .sk-kind{color:var(--chalk-3)}
+.td .sk-tile .np{stroke-dasharray:2.5 2}
+.td .sk-hold{font-size:14px;line-height:21px;color:var(--chalk-2)}
+.td .sk-why{margin-top:auto;padding-top:10px;border-top:1px solid var(--edge);font-size:14px;line-height:21px;color:var(--chalk)}
+.td .stk .src{font-family:var(--mono);font-size:10px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-3)}
+.td .stk .src a{color:var(--chalk-2);text-decoration:none;border-bottom:1px solid var(--edge)}
+.td .stk .src a:hover{color:var(--signal)}
+@media (prefers-reduced-motion:no-preference){
+  .td .stk.anim .sk-dv,.td .stk.anim .sk-bw{animation:sysIn .5s var(--ease) both}
+  .td .stk.anim .sk-tile{animation:sysIn .5s var(--ease) both;animation-delay:calc(.15s + var(--i,0) * 90ms)}
+}
+html.static .td .stk.anim *{animation:none}
+@media (max-width:1180px){
+  .td .sk-zones{grid-template-columns:1fr;gap:30px}
+  .td .sk-zone+.sk-zone::before{content:"↓";left:50%;top:-27px;margin:0 0 0 -12px}
+}
+@media (max-width:860px){
+  .td .sk-tiles{grid-template-columns:1fr}
+  .td .sk-sd{grid-template-columns:1fr;gap:8px}
+}
+@media (max-width:600px){
+  .td .stk{padding:20px 16px 24px}
+}

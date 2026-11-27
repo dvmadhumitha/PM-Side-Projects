@@ -2,7 +2,7 @@
   "name": "ascolto-mobile",
   "version": "1.0.0",
   "private": true,
-  "description": "Android and iOS apps for ASCOLTO (CILS A2 exam simulator). Wraps the web build in ../cils-app so web, Android and iOS ship the same app.",
+  "description": "Android and iOS apps for Allora (CILS, CELI and PLIDA exam practice; first called ASCOLTO). Wraps the web build in ../cils-app so web, Android and iOS ship the same app.",
   "type": "module",
   "scripts": {
     "web:prepare": "node scripts/prepare-web.mjs",

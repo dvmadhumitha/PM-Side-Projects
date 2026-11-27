@@ -8,6 +8,7 @@ import './styles/screens-reading.css';
 import './styles/screens-writing-speaking.css';
 import './styles/screens-grammar-words.css';
 import './styles/legacy-polish.css';
+import './styles/screens-exams.css';
 import App from './shell/App.jsx';
 
 createRoot(document.getElementById('root')).render(createElement(App));

@@ -1,5 +1,5 @@
 /*
- * ASCOLTO native bridge.
+ * Allora native bridge.
  *
  * The web app in ../cils-app is written against browser APIs. Inside the
  * Android and iOS apps a few of those APIs are missing from the WebView, so

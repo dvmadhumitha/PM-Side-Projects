@@ -1,5 +1,5 @@
 /*
- * ASCOLTO: the app's own code, recovered from the compiled build in November 2026.
+ * Allora (first called ASCOLTO): the app's own code, recovered from the compiled build in November 2026.
  *
  * The original source was lost, so this file was rebuilt from the published
  * bundle: library code was replaced by normal imports, every content table was
@@ -10510,8 +10510,9 @@ function _a({ onDone: e }) {
         (0, w.jsxs)(`div`, {
           className: `gate-brand`,
           children: [
-            (0, w.jsx)(`h1`, { className: `gate-title`, children: `ASCOLTO` }),
-            (0, w.jsx)(`span`, { className: `gate-over`, children: `CILS A2 · Modulo Integrazione` }),
+            (0, w.jsx)(`img`, { className: `gate-logo`, src: `/PM-Side-Projects/cils-app/icons/favicon.svg`, alt: ``, width: 64, height: 64 }),
+            (0, w.jsx)(`h1`, { className: `gate-title`, children: `Allora` }),
+            (0, w.jsx)(`span`, { className: `gate-over`, children: `CILS · CELI · PLIDA · A1–B2` }),
           ],
         }),
       ],
@@ -10523,7 +10524,7 @@ function _a({ onDone: e }) {
       children: [
         (0, w.jsx)(`p`, {
           className: `gate-sub`,
-          children: `A full practice app for the CILS A2 Integrazione Italian exam: listening with real audio, an AI examiner for the oral, strict written marking, and a 3 day exam plan.`,
+          children: `A practice app for the Italian certification exams CILS, CELI and PLIDA, from A1 to B2: listening with audio, reading, writing and speaking tasks. CILS A2 adds an AI examiner for the oral, strict written marking, and a 3 day exam plan.`,
         }),
         (0, w.jsxs)(`label`, {
           className: `gate-label`,

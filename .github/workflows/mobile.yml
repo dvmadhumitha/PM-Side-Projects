@@ -1,8 +1,8 @@
-name: ASCOLTO mobile apps
+name: Allora mobile apps
 
 # Rebuilds the Android and iOS apps whenever the web app or the mobile wrapper
 # changes, so the three never drift apart. Download the results from the run's
-# "Artifacts" section.
+# "Artifacts" section; builds from main also publish the APK as a release.
 
 on:
   push:
@@ -29,6 +29,8 @@ jobs:
   android:
     name: Android (debug APK)
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # to publish the APK as a release from main
     defaults:
       run:
         working-directory: cils-mobile
@@ -53,9 +55,25 @@ jobs:
           ./gradlew assembleDebug --console=plain
       - uses: actions/upload-artifact@v4
         with:
-          name: ascolto-android-debug
+          name: allora-android-debug
           path: cils-mobile/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+      # Builds from main replace the "android-latest" release, so this link
+      # always downloads the newest APK, with no GitHub sign-in needed:
+      # https://github.com/dvmadhumitha/PM-Side-Projects/releases/latest/download/Allora.apk
+      - name: Publish the APK as the latest release (main only)
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk Allora.apk
+          gh release delete android-latest --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag || true
+          gh release create android-latest Allora.apk \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --latest \
+            --title "Allora for Android (test build)" \
+            --notes "Newest test build of Allora, made from main on $(date -u '+%d %b %Y'). On an Android phone, tap Allora.apk below to download it, then open the file to install."
 
   ios:
     name: iOS (simulator build)
@@ -88,9 +106,9 @@ jobs:
             build
       - name: Package the simulator app
         working-directory: cils-mobile/ios/App/build/Build/Products/Debug-iphonesimulator
-        run: zip -r "$GITHUB_WORKSPACE/ascolto-ios-simulator.zip" App.app
+        run: zip -r "$GITHUB_WORKSPACE/allora-ios-simulator.zip" App.app
       - uses: actions/upload-artifact@v4
         with:
-          name: ascolto-ios-simulator
-          path: ascolto-ios-simulator.zip
+          name: allora-ios-simulator
+          path: allora-ios-simulator.zip
           if-no-files-found: error

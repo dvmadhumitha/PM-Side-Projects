@@ -1,0 +1,642 @@
+{
+  "ascolto": [
+    {
+      "id": "b1-asc-colloquio",
+      "type": "Dialogo",
+      "title": "Un colloquio di lavoro",
+      "context": "La signora Rossi fa un colloquio in un’azienda.",
+      "photo": "ufficio",
+      "lines": [
+        {
+          "s": "A",
+          "it": "Buongiorno, signora Rossi. Si accomodi. Ho letto il suo curriculum: ha lavorato tre anni in un albergo, vero?"
+        },
+        {
+          "s": "B",
+          "it": "Sì, alla reception di un albergo a Rimini. Mi occupavo delle prenotazioni e accoglievo i clienti."
+        },
+        {
+          "s": "A",
+          "it": "Perché ha deciso di lasciare quel lavoro?"
+        },
+        {
+          "s": "B",
+          "it": "Perché era un lavoro stagionale, e io cerco qualcosa di stabile. Inoltre vorrei vivere più vicino alla mia famiglia."
+        },
+        {
+          "s": "A",
+          "it": "Capisco. Qui cerchiamo una persona per l’ufficio clienti. Bisogna rispondere al telefono e alle e-mail, anche in inglese."
+        },
+        {
+          "s": "B",
+          "it": "L’inglese lo parlo bene. Sto anche studiando lo spagnolo, ma sono ancora all’inizio."
+        },
+        {
+          "s": "A",
+          "it": "Bene. L’orario è dalle nove alle diciotto, e un sabato al mese si lavora la mattina."
+        },
+        {
+          "s": "B",
+          "it": "Per me non è un problema."
+        },
+        {
+          "s": "A",
+          "it": "Allora le faremo sapere entro venerdì."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Che lavoro faceva la signora Rossi?",
+          "opts": [
+            "La receptionist",
+            "La guida turistica",
+            "La cameriera"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Perché ha lasciato l’albergo?",
+          "opts": [
+            "Il lavoro era stagionale",
+            "Lo stipendio era basso",
+            "L’albergo ha chiuso"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Quale lingua sta ancora imparando?",
+          "opts": [
+            "L’inglese",
+            "Il francese",
+            "Lo spagnolo"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quando si lavora il sabato?",
+          "opts": [
+            "Un sabato al mese",
+            "Ogni sabato",
+            "Mai"
+          ],
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "b1-asc-radio",
+      "type": "Notizia alla radio",
+      "title": "Il centro senza auto",
+      "context": "Ascolta il notiziario locale.",
+      "photo": "strada",
+      "lines": [
+        {
+          "s": "V",
+          "it": "E ora le notizie locali. Da lunedì prossimo il centro storico sarà chiuso alle auto dalle otto alle venti, tutti i giorni tranne la domenica. Il Comune ha preso questa decisione per ridurre l’inquinamento e il rumore."
+        },
+        {
+          "s": "V",
+          "it": "I residenti potranno entrare con un permesso speciale, da richiedere online. Per chi viene da fuori ci saranno due nuovi parcheggi gratuiti vicino alla stazione, collegati al centro da un autobus ogni dieci minuti."
+        },
+        {
+          "s": "V",
+          "it": "I commercianti sono divisi: alcuni temono di perdere clienti, altri sperano in più turisti a piedi."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Quando sarà chiuso il centro alle auto?",
+          "opts": [
+            "Tutto il giorno, tutti i giorni",
+            "Dalle 8 alle 20, domenica esclusa",
+            "Solo la domenica"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Perché il Comune ha deciso così?",
+          "opts": [
+            "Per ridurre inquinamento e rumore",
+            "Per fare dei lavori",
+            "Per una festa"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Che cosa devono fare i residenti?",
+          "opts": [
+            "Chiedere un permesso online",
+            "Parcheggiare alla stazione",
+            "Pagare un biglietto"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Che cosa pensano i commercianti?",
+          "opts": [
+            "Sono tutti contrari",
+            "Hanno opinioni diverse",
+            "Sono tutti favorevoli"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "b1-asc-consegna",
+      "type": "Dialogo",
+      "title": "La lavatrice che non arriva",
+      "context": "Una cliente telefona al servizio clienti.",
+      "photo": "soggiorno",
+      "lines": [
+        {
+          "s": "A",
+          "it": "Servizio clienti, sono Davide. Come posso aiutarla?"
+        },
+        {
+          "s": "B",
+          "it": "Buongiorno. Ho ordinato una lavatrice sul vostro sito dieci giorni fa, ma non è ancora arrivata."
+        },
+        {
+          "s": "A",
+          "it": "Mi dispiace. Mi può dire il numero dell’ordine?"
+        },
+        {
+          "s": "B",
+          "it": "Sì, è quattro, sette, due, uno."
+        },
+        {
+          "s": "A",
+          "it": "Un momento. Ecco: c’è stato un errore nell’indirizzo. Manca il numero civico, quindi il corriere ha riportato il pacco in magazzino."
+        },
+        {
+          "s": "B",
+          "it": "Ma io l’avevo scritto! Abito in via Garibaldi quindici."
+        },
+        {
+          "s": "A",
+          "it": "Lo correggo subito. La consegna è prevista per dopodomani, tra le quattordici e le diciotto."
+        },
+        {
+          "s": "B",
+          "it": "Va bene, ma vorrei uno sconto per il ritardo."
+        },
+        {
+          "s": "A",
+          "it": "Posso offrirle la consegna gratuita: le restituiamo i venti euro di spedizione."
+        },
+        {
+          "s": "B",
+          "it": "D’accordo, grazie."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Qual è il problema?",
+          "opts": [
+            "Il prezzo è sbagliato",
+            "La lavatrice è rotta",
+            "La lavatrice non è arrivata"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Perché c’è stato il ritardo?",
+          "opts": [
+            "Mancava il numero civico",
+            "Il corriere era malato",
+            "Il magazzino era chiuso"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Quando arriverà la lavatrice?",
+          "opts": [
+            "Dopodomani pomeriggio",
+            "Tra dieci giorni",
+            "Domani mattina"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Che cosa ottiene la cliente?",
+          "opts": [
+            "Uno sconto sul prezzo",
+            "Un buono regalo",
+            "Il rimborso della spedizione"
+          ],
+          "a": 2
+        }
+      ]
+    }
+  ],
+  "lettura": [
+    {
+      "id": "b1-let-orti",
+      "type": "Articolo",
+      "title": "Orti in città",
+      "context": "Leggi l’articolo e rispondi.",
+      "photo": "parco",
+      "text": [
+        "Negli ultimi anni, in molte città italiane, sono nati gli orti urbani: piccoli pezzi di terra, spesso in periferia, che il Comune affida ai cittadini per coltivare frutta e verdura. All’inizio erano pensati soprattutto per i pensionati, ma oggi li chiedono anche famiglie giovani e studenti.",
+        "Chi ha un orto dice che i vantaggi sono tanti. Si mangiano prodotti freschi, si risparmia un po’ sulla spesa e si passa del tempo all’aria aperta. Molti raccontano però che la cosa più bella è un’altra: conoscere i vicini. Tra un pomodoro e un’insalata si scambiano consigli, semi e, qualche volta, inviti a cena.",
+        "Non mancano le difficoltà. Le richieste sono molte più dei terreni disponibili e in alcune città bisogna aspettare anche due anni. Inoltre un orto richiede costanza: chi non lo cura per alcuni mesi rischia di perderlo."
+      ],
+      "questions": [
+        {
+          "q": "Per chi erano pensati all’inizio gli orti urbani?",
+          "opts": [
+            "Per i pensionati",
+            "Per le scuole",
+            "Per gli studenti"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Secondo molti, qual è l’aspetto più bello?",
+          "opts": [
+            "Fare attività fisica",
+            "Risparmiare sulla spesa",
+            "Conoscere i vicini"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quale difficoltà viene descritta?",
+          "opts": [
+            "La terra costa molto",
+            "I terreni non bastano per tutti",
+            "I prodotti non sono buoni"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa rischia chi trascura l’orto?",
+          "opts": [
+            "Di aspettare due anni",
+            "Di perderlo",
+            "Di pagare una multa"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "b1-let-masseria",
+      "type": "E-mail",
+      "title": "Una vacanza diversa",
+      "context": "Leggi l’e-mail di Chiara a Elisa.",
+      "photo": "camera",
+      "text": [
+        "Cara Elisa, ti scrivo dalla Puglia, dove sto passando due settimane in una masseria, cioè una vecchia casa di campagna trasformata in albergo. Avevo prenotato per caso, perché gli alberghi sul mare erano tutti pieni, e adesso sono felice di quell’imprevisto.",
+        "La mattina aiuto i proprietari a raccogliere i fichi e a preparare la colazione per gli ospiti; in cambio pago metà prezzo. Non l’avevo mai fatto e pensavo di annoiarmi, invece ho imparato a fare il pane e ho conosciuto persone di tutta Europa.",
+        "Il mare è a venti minuti di bicicletta. Ci vado nel pomeriggio, quando fa meno caldo. L’unica cosa che mi manca è una buona connessione: per mandarti questa e-mail sono dovuta andare al bar del paese! Torno il 30. Ci vediamo a settembre? Un abbraccio, Chiara"
+      ],
+      "questions": [
+        {
+          "q": "Perché Chiara ha scelto la masseria?",
+          "opts": [
+            "Gliel’ha consigliata Elisa",
+            "Gli alberghi sul mare erano pieni",
+            "Costava meno di tutti"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Perché paga metà prezzo?",
+          "opts": [
+            "Resta due settimane",
+            "È una cliente abituale",
+            "Aiuta i proprietari"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quando va al mare?",
+          "opts": [
+            "Nel pomeriggio",
+            "La mattina presto",
+            "La sera"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Che cosa le manca?",
+          "opts": [
+            "Una buona connessione a internet",
+            "La compagnia",
+            "Il mare vicino"
+          ],
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "b1-let-bici",
+      "type": "Regolamento",
+      "title": "Biciclette in condivisione",
+      "context": "Leggi come funziona il servizio comunale.",
+      "photo": "strada",
+      "text": [
+        "Per usare le biciclette del servizio comunale bisogna registrarsi con l’applicazione e inserire una carta di pagamento. L’abbonamento annuale costa 30 euro; chi usa il servizio solo ogni tanto può scegliere la tariffa giornaliera di 2 euro.",
+        "I primi trenta minuti di ogni viaggio sono gratuiti. Dopo si paga un euro ogni mezz’ora. La bicicletta va riportata in una delle stazioni: se viene lasciata altrove, l’utente paga una penale di 15 euro.",
+        "In caso di guasto, bisogna segnalarlo con l’applicazione prima di prendere un’altra bicicletta. Il servizio è attivo dalle 6 alle 24. I minori di 16 anni non possono usarlo."
+      ],
+      "questions": [
+        {
+          "q": "Quanto costa la tariffa per un solo giorno?",
+          "opts": [
+            "15 euro",
+            "2 euro",
+            "30 euro"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Quanto si paga per un viaggio di venti minuti?",
+          "opts": [
+            "Niente",
+            "2 euro",
+            "1 euro"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Che cosa succede se lasci la bici fuori da una stazione?",
+          "opts": [
+            "Non succede niente",
+            "Paghi 15 euro",
+            "Perdi l’abbonamento"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Chi non può usare il servizio?",
+          "opts": [
+            "Chi non ha l’abbonamento annuale",
+            "Chi non abita in città",
+            "Chi ha meno di 16 anni"
+          ],
+          "a": 2
+        }
+      ]
+    }
+  ],
+  "strutture": [
+    {
+      "id": "b1-str-tempi",
+      "type": "Verbi",
+      "title": "Imperfetto o passato prossimo?",
+      "context": "Scegli il tempo giusto.",
+      "photo": "classe",
+      "questions": [
+        {
+          "q": "Quando ___ piccolo, andavo al mare ogni estate.",
+          "opts": [
+            "sono stato",
+            "ero",
+            "sarò"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Mentre cucinavo, ___ Marco.",
+          "opts": [
+            "è arrivato",
+            "arrivava",
+            "arriva"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Ieri non sono uscita perché ___ troppo freddo.",
+          "opts": [
+            "farà",
+            "fa",
+            "faceva"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Da bambini ___ sempre in cortile.",
+          "opts": [
+            "giocavamo",
+            "giochiamo",
+            "abbiamo giocato"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Stavo per uscire quando ___ a piovere.",
+          "opts": [
+            "comincia",
+            "cominciava",
+            "ha cominciato"
+          ],
+          "a": 2
+        },
+        {
+          "q": "L’anno scorso ___ a Napoli tre volte.",
+          "opts": [
+            "andavo",
+            "sono andata",
+            "vado"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "b1-str-pronomi",
+      "type": "Pronomi e modi",
+      "title": "Pronomi, futuro e condizionale",
+      "context": "Scegli la forma giusta.",
+      "photo": "biblioteca",
+      "questions": [
+        {
+          "q": "Paolo vuole il libro: ___ porto domani.",
+          "opts": [
+            "gli lo",
+            "lo gli",
+            "glielo"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quanti caffè bevi al giorno? ___ bevo due.",
+          "opts": [
+            "Ci",
+            "Li",
+            "Ne"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Sei mai stato a Venezia? Sì, ___ sono stato due volte.",
+          "opts": [
+            "ne",
+            "ci",
+            "la"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Se domani fa bel tempo, ___ una gita.",
+          "opts": [
+            "facevamo",
+            "abbiamo fatto",
+            "faremo"
+          ],
+          "a": 2
+        },
+        {
+          "q": "___ un caffè, per favore.",
+          "opts": [
+            "Vorrei",
+            "Vorrò",
+            "Voglia"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Scusi, mi ___ aiutare con questa valigia?",
+          "opts": [
+            "potuto",
+            "possa",
+            "potrebbe"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "b1-str-connettivi",
+      "type": "Connettivi",
+      "title": "Collegare le frasi",
+      "context": "Scegli la parola che collega bene le due parti.",
+      "photo": "ufficio",
+      "questions": [
+        {
+          "q": "Non sono venuto alla festa ___ avevo la febbre.",
+          "opts": [
+            "quindi",
+            "ma",
+            "perché"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Ho studiato molto, ___ ho superato l’esame.",
+          "opts": [
+            "perché",
+            "anche se",
+            "quindi"
+          ],
+          "a": 2
+        },
+        {
+          "q": "___ era stanco, ha continuato a lavorare.",
+          "opts": [
+            "Anche se",
+            "Quindi",
+            "Siccome"
+          ],
+          "a": 0
+        },
+        {
+          "q": "___ pioveva, siamo rimasti a casa.",
+          "opts": [
+            "Però",
+            "Oppure",
+            "Siccome"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Mi piace il mare; ___ preferisco la montagna.",
+          "opts": [
+            "perché",
+            "cioè",
+            "però"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Prendi l’ombrello, ___ ti bagni.",
+          "opts": [
+            "altrimenti",
+            "mentre",
+            "quindi"
+          ],
+          "a": 0
+        }
+      ]
+    }
+  ],
+  "scrittura": [
+    {
+      "id": "b1-scr-viaggio",
+      "kind": "Racconto",
+      "title": "Un viaggio da ricordare",
+      "photo": "stazione",
+      "words": [
+        100,
+        120
+      ],
+      "prompt": "Racconta un viaggio che ricordi con piacere.",
+      "points": [
+        "Dove sei andato e con chi",
+        "Che cosa è successo",
+        "Perché è stato speciale"
+      ],
+      "model": "Due anni fa sono andata in Sicilia con mia sorella. Siamo partite da Milano in treno e il viaggio è durato quasi venti ore, ma ne è valsa la pena. A Palermo abbiamo affittato una piccola macchina e abbiamo girato l’isola per dieci giorni. Abbiamo visitato templi antichi, mercati pieni di colori e spiagge quasi deserte. Il tempo era perfetto: sole e poco vento. Una sera abbiamo perso l’ultimo autobus e una signora del posto ci ha invitate a cena a casa sua: abbiamo mangiato la pasta più buona della mia vita. È stato un viaggio speciale perché ho scoperto un’Italia diversa e perché, dopo tanti anni, ho passato molto tempo con mia sorella."
+    },
+    {
+      "id": "b1-scr-sciarpa",
+      "kind": "Lettera informale",
+      "title": "La sciarpa dimenticata",
+      "photo": "soggiorno",
+      "words": [
+        50,
+        80
+      ],
+      "prompt": "Lo scorso fine settimana la tua amica Giulia è stata ospite a casa tua e ha dimenticato una sciarpa. Scrivile.",
+      "points": [
+        "Dille che l’hai trovata",
+        "Proponi come restituirla",
+        "Ricorda un momento bello del weekend"
+      ],
+      "model": "Cara Giulia, come stai? Ti scrivo perché ho trovato la tua sciarpa rossa sotto il divano! Se vuoi te la spedisco, oppure te la porto sabato prossimo, quando vengo in città per lavoro. Possiamo prendere un caffè insieme? Ripenso spesso alla nostra passeggiata sul lago al tramonto: è stato il momento più bello del fine settimana. Un abbraccio, Laura"
+    }
+  ],
+  "orale": [
+    {
+      "id": "b1-ora-gita",
+      "kind": "Dialogo",
+      "title": "Organizzare una gita",
+      "photo": "parco",
+      "prompt": "Con un amico (l’esaminatore) dovete organizzare una gita di un giorno per il vostro gruppo. Mettetevi d’accordo.",
+      "points": [
+        "Proponi una destinazione e spiega perché",
+        "Parla di trasporto e costi",
+        "Rispondi a un’obiezione",
+        "Decidete giorno e orario"
+      ],
+      "model": "Io proporrei di andare al lago di Como, perché è vicino e c’è molto da vedere. Potremmo prendere il treno: non costa molto e non dobbiamo cercare parcheggio. Capisco che qualcuno preferisca la macchina, ma in treno possiamo stare tutti insieme. Che ne dici di sabato? Se partiamo alle otto, arriviamo prima delle dieci."
+    },
+    {
+      "id": "b1-ora-citta",
+      "kind": "Monologo",
+      "title": "Città o campagna?",
+      "photo": "strada",
+      "prompt": "Preferisci vivere in città o in campagna? Spiega la tua opinione con esempi.",
+      "points": [
+        "Di’ che cosa preferisci",
+        "Dai due ragioni",
+        "Riconosci un vantaggio dell’altra scelta",
+        "Concludi"
+      ],
+      "model": "Personalmente preferisco vivere in città. Prima di tutto ci sono più possibilità di lavoro e di studio. Inoltre posso muovermi con i mezzi pubblici e la sera trovo sempre qualcosa da fare. È vero che in campagna l’aria è più pulita e la vita costa meno, però mi sentirei isolato. Forse cambierò idea quando avrò dei figli."
+    }
+  ]
+}

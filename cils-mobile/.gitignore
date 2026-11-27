@@ -6,6 +6,9 @@ www/
 
 # Signing material: never commit
 *.keystore
+# Except the shared test-build key: a debug key with the standard public
+# password, committed so every test build has the same signature.
+!android/app/allora-debug.keystore
 *.jks
 keystore.properties
 *.p12

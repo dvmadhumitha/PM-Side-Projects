@@ -4,6 +4,8 @@
  *   bottom tab bar     Oggi · Prove · Parole · Esplora · Progressi
  *   photo headers      one photo per area, title and back button on top of it
  *   Oggi and Prove     written here; every other screen's content comes from app.js
+ *   exam and level     chosen in src/exams/ExamPicker; CILS A2 keeps the original screens,
+ *                      every other choice is drawn from src/exams/catalog.js
  *
  * Routing is the same #hash routing the app has always had (see useHashRoute).
  */
@@ -41,6 +43,7 @@ import {
 import {
   IconArrow,
   IconBack,
+  IconChevron,
   IconClock,
   IconExplore,
   IconPlay,
@@ -49,8 +52,13 @@ import {
   IconToday,
   IconWords,
 } from './icons.jsx';
+import { exercisesFor } from '../exams/bank.js';
+import { choiceLabel, resolveChoice } from '../exams/catalog.js';
+import ExamPicker from '../exams/ExamPicker.jsx';
+import { useDone } from '../exams/progress.js';
 import Flashcards from '../screens/Flashcards.jsx';
 import GrammarExercises from '../screens/GrammarExercises.jsx';
+import LevelPractice from '../screens/LevelPractice.jsx';
 import ListeningPractice from '../screens/ListeningPractice.jsx';
 import Reading from '../screens/Reading.jsx';
 import Speaking from '../screens/Speaking.jsx';
@@ -111,11 +119,11 @@ function TabBar({ active, onGo }) {
 }
 
 // Big page title for the five tab screens.
-function PageTitle({ overline, title, aside }) {
+function PageTitle({ overline, title, aside, chip }) {
   return (
     <header className="im-pagetitle">
       <div>
-        <span className="im-overline">{overline}</span>
+        {chip || <span className="im-overline">{overline}</span>}
         <h1>{title}</h1>
       </div>
       {aside}
@@ -224,13 +232,139 @@ function SpeedControl({ rate, onChange }) {
 
 /* ---------- the tab screens written for the new design ---------- */
 
-function Oggi({ onGo }) {
+// The exam and level being prepared; pressing it opens the picker.
+function ExamChip({ label, onClick }) {
+  return (
+    <button type="button" className="im-examchip" onClick={onClick} aria-label={`${label}. Cambia esame o livello`}>
+      {label}
+      <IconChevron size={16} />
+    </button>
+  );
+}
+
+function PassCard({ text }) {
+  return (
+    <section className="im-passcard">
+      <span className="im-overline">Per passare</span>
+      <b>{text}</b>
+    </section>
+  );
+}
+
+// "Parte A · Lettura" is too long for a small tile: keep the last part.
+const shortTitle = (paper) => paper.title.split(' · ').pop();
+
+const paperRoute = (paper) => `p-${paper.id}`;
+
+/* ---------- Oggi, Prove and Progressi for an exam drawn from the catalog ---------- */
+
+function ExamOggi({ spec, level, chip, onGo }) {
+  const done = useDone();
+  // Start from the first paper that still has an exercise to do.
+  const next = spec.papers.find((p) => exercisesFor(level, p.skill).some((x) => !done[x.id])) || spec.papers[0];
+  return (
+    <div className="im-page">
+      <PageTitle chip={chip} title="Oggi" />
+      <button type="button" className="im-hero" onClick={() => onGo(paperRoute(next))} aria-label={`Continua da ${next.title}`}>
+        <img src={next.photo} alt="" />
+        <span className="im-scrim" aria-hidden="true" />
+        <span className="im-chip">Continua da qui</span>
+        <span className="im-hero-row">
+          <span className="im-hero-text">
+            <b>{next.title}</b>
+            <small>{next.detail}</small>
+          </span>
+          <span className="im-hero-play">
+            <IconPlay size={24} />
+          </span>
+        </span>
+      </button>
+
+      <h2 className="im-overline as-heading">{spec.heading}</h2>
+      <div className="im-tile-row">
+        {spec.papers.map((p) => (
+          <PhotoTile key={p.id} photo={p.photo} title={shortTitle(p)} sub={p.en} onClick={() => onGo(paperRoute(p))} />
+        ))}
+      </div>
+      <PassCard text={spec.pass} />
+    </div>
+  );
+}
+
+function ExamProve({ spec, level, chip, onGo }) {
+  const done = useDone();
+  return (
+    <div className="im-page">
+      <PageTitle chip={chip} title="Prove" />
+      <h2 className="im-overline as-heading first">{spec.heading}</h2>
+      <ul className="im-rows">
+        {spec.papers.map((p) => {
+          const items = exercisesFor(level, p.skill);
+          const finished = items.filter((x) => done[x.id]).length;
+          return (
+            <li key={p.id}>
+              <button type="button" className="im-row" onClick={() => onGo(paperRoute(p))}>
+                <img className="im-row-thumb" src={p.photo} alt="" />
+                <span className="im-row-text">
+                  <b>
+                    {p.title} <span className="im-row-en">{p.en}</span>
+                  </b>
+                  <small>{p.detail}</small>
+                  <small className="im-lv-progress">
+                    {finished} di {items.length} esercizi fatti
+                  </small>
+                </span>
+                <span className="im-row-go" aria-hidden="true">
+                  <IconChevron size={20} />
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <PassCard text={spec.pass} />
+    </div>
+  );
+}
+
+function ExamProgress({ spec, level }) {
+  const done = useDone();
+  return (
+    <ul className="im-lv-report">
+      {spec.papers.map((p) => {
+        const items = exercisesFor(level, p.skill);
+        const records = items.map((x) => done[x.id]).filter(Boolean);
+        const graded = items.some((x) => x.questions);
+        const right = records.reduce((sum, r) => sum + r.score, 0);
+        const asked = records.reduce((sum, r) => sum + r.max, 0);
+        return (
+          <li key={p.id}>
+            <div className="im-lv-report-head">
+              <b>{p.title}</b>
+              <span>
+                {records.length} di {items.length} esercizi
+              </span>
+            </div>
+            <progress value={records.length} max={items.length || 1} aria-label={`${p.title}: esercizi fatti`} />
+            {graded && asked > 0 && (
+              <small>
+                {right} risposte giuste su {asked}
+              </small>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function Oggi({ onGo, chip }) {
   const suggestion = getCoachSuggestions()[0];
   const sectionId = (suggestion && TARGET_SECTION[suggestion.target]) || 'ascolto';
   const section = PROVE_BY_ID[sectionId];
   return (
     <div className="im-page">
-      <PageTitle overline="CILS A2 · Integrazione" title="Oggi" />
+      <PageTitle overline="CILS A2 · Integrazione" chip={chip} title="Oggi" />
       <button
         type="button"
         className="im-hero"
@@ -265,10 +399,10 @@ function Oggi({ onGo }) {
   );
 }
 
-function Prove({ onGo, onExam }) {
+function Prove({ onGo, onExam, chip }) {
   return (
     <div className="im-page">
-      <PageTitle overline="CILS A2 · Integrazione" title="Prove" />
+      <PageTitle overline="CILS A2 · Integrazione" chip={chip} title="Prove" />
       <button type="button" className="im-hero short" onClick={onExam}>
         <img src={PHOTOS.classe} alt="" />
         <span className="im-scrim" aria-hidden="true" />
@@ -360,12 +494,15 @@ export default function App() {
   const [route, go] = useHashRoute('home');
   const [rate, setRate] = useState(getSpeechRate());
   const resultsRef = useRef(null);
+  // Which exam and level: null until the first choice is made.
+  const [choice, setChoice] = usePersistentState('exam_choice', null);
+  const [picking, setPicking] = useState(false);
 
   // Leaving a screen stops whatever was being read aloud, and starts the next one at the top.
   useEffect(() => {
     stopSpeech();
     window.scrollTo({ top: 0 });
-  }, [route, examOpen]);
+  }, [route, examOpen, picking]);
 
   if (!signedIn) {
     return (
@@ -374,6 +511,26 @@ export default function App() {
       </div>
     );
   }
+
+  if (!choice || picking) {
+    return (
+      <div className="im-app">
+        <ExamPicker
+          current={choice}
+          onPick={(picked) => {
+            setChoice(picked);
+            setPicking(false);
+            go('prove');
+          }}
+          onClose={choice ? () => setPicking(false) : undefined}
+        />
+      </div>
+    );
+  }
+
+  const current = resolveChoice(choice);
+  const legacy = Boolean(current.spec.legacy);
+  const chip = <ExamChip label={choiceLabel(current)} onClick={() => setPicking(true)} />;
 
   const closeExam = () => {
     stopSpeech();
@@ -448,11 +605,37 @@ export default function App() {
     ],
   };
 
+  // A paper of the chosen exam, when it is not the original CILS A2.
+  const paper = legacy ? null : current.spec.papers.find((p) => paperRoute(p) === route);
+  const home = legacy ? <Oggi onGo={go} chip={chip} /> : <ExamOggi spec={current.spec} level={current.level} chip={chip} onGo={go} />;
+
   let screen;
   if (route === 'home') {
-    screen = <Oggi onGo={go} />;
+    screen = home;
   } else if (route === 'prove') {
-    screen = <Prove onGo={go} onExam={startExam} />;
+    screen = legacy ? (
+      <Prove onGo={go} onExam={startExam} chip={chip} />
+    ) : (
+      <ExamProve spec={current.spec} level={current.level} chip={chip} onGo={go} />
+    );
+  } else if (paper) {
+    screen = (
+      <div className="im-page flush">
+        <PhotoHeader
+          photo={paper.photo}
+          overline={`${choiceLabel(current)} · ${paper.en}`}
+          title={paper.title}
+          blurb={paper.detail}
+          onBack={() => go('prove')}
+          backLabel="Torna alle prove"
+        />
+        <div className="im-section-body">
+          <div className="im-content">
+            <LevelPractice key={`${current.exam}-${current.level}-${paper.id}`} paper={paper} level={current.level} />
+          </div>
+        </div>
+      </div>
+    );
   } else if (sectionTabs[route]) {
     const section = PROVE_BY_ID[route];
     const hasAudio = route === 'ascolto' || route === 'esame';
@@ -492,15 +675,13 @@ export default function App() {
   } else if (route === 'progressi') {
     screen = (
       <div className="im-page">
-        <PageTitle overline="Il tuo andamento" title="Progressi" />
-        <div className="im-content">
-          <ProgressReport onGo={go} />
-        </div>
+        <PageTitle overline={legacy ? 'Il tuo andamento' : `Il tuo andamento · ${choiceLabel(current)}`} title="Progressi" />
+        <div className="im-content">{legacy ? <ProgressReport onGo={go} /> : <ExamProgress spec={current.spec} level={current.level} />}</div>
       </div>
     );
   } else {
     // An address the app does not know: show home rather than a blank page.
-    screen = <Oggi onGo={go} />;
+    screen = home;
   }
 
   return (

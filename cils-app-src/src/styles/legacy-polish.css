@@ -579,6 +579,17 @@
   gap: 6px;
 }
 
+/* The app icon above the name; overrides the full-bleed photo rule above. */
+.im-gate .gate-photo .gate-logo {
+  position: static;
+  inset: auto;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 6px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
 .im-gate .gate-title {
   margin: 0;
   font: 500 46px/1 var(--font-display);

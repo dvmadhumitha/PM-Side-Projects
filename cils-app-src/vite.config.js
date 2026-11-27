@@ -13,20 +13,20 @@ const WEB_OUT = path.resolve(here, '..', 'cils-app');
 const TYPES = { '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.geojson': 'application/geo+json', '.json': 'application/json' };
 
 /*
- * The photos and the map data live only in ../cils-app (img/ and
- * italy-regions.geojson), next to the built files, so nothing is stored twice.
+ * The photos, the icons and the map data live only in ../cils-app (img/, icons/
+ * and italy-regions.geojson), next to the built files, so nothing is stored twice.
  *   dev:   serve those files straight from ../cils-app
  *   build: write the new bundle into ../cils-app/assets, removing the old one
  */
 function webFolder() {
   return {
-    name: 'ascolto-web-folder',
+    name: 'allora-web-folder',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = decodeURIComponent((req.url || '').split('?')[0]);
         if (!url.startsWith(BASE)) return next();
         const rel = url.slice(BASE.length);
-        if (!rel.startsWith('img/') && rel !== 'italy-regions.geojson') return next();
+        if (!rel.startsWith('img/') && !rel.startsWith('icons/') && rel !== 'italy-regions.geojson') return next();
         const file = path.join(WEB_OUT, rel);
         if (!file.startsWith(WEB_OUT) || !existsSync(file) || !statSync(file).isFile()) return next();
         res.setHeader('Content-Type', TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream');

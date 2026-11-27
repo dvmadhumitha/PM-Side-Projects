@@ -1,0 +1,577 @@
+{
+  "ascolto": [
+    {
+      "id": "a2-asc-medico",
+      "type": "Dialogo",
+      "title": "Un appuntamento dal medico",
+      "context": "Un signore telefona allo studio medico.",
+      "photo": "medico",
+      "lines": [
+        {
+          "s": "A",
+          "it": "Studio medico, buongiorno."
+        },
+        {
+          "s": "B",
+          "it": "Buongiorno, vorrei prendere un appuntamento con la dottoressa Ferri."
+        },
+        {
+          "s": "A",
+          "it": "Per quale motivo?"
+        },
+        {
+          "s": "B",
+          "it": "Ho mal di schiena da una settimana."
+        },
+        {
+          "s": "A",
+          "it": "Va bene. Giovedì alle undici e un quarto?"
+        },
+        {
+          "s": "B",
+          "it": "Giovedì mattina lavoro. C’è un posto nel pomeriggio?"
+        },
+        {
+          "s": "A",
+          "it": "Sì, alle diciassette. Porti la tessera sanitaria."
+        },
+        {
+          "s": "B",
+          "it": "Perfetto, grazie. A giovedì."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Perché il signore telefona?",
+          "opts": [
+            "Per un appuntamento",
+            "Per un certificato",
+            "Per una ricetta"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Da quanto tempo sta male?",
+          "opts": [
+            "Da una settimana",
+            "Da un mese",
+            "Da un giorno"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Quando va dalla dottoressa?",
+          "opts": [
+            "Giovedì alle 11:15",
+            "Venerdì alle 17",
+            "Giovedì alle 17"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Che cosa deve portare?",
+          "opts": [
+            "Le medicine",
+            "Il passaporto",
+            "La tessera sanitaria"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a2-asc-treno",
+      "type": "Annuncio",
+      "title": "Treno cancellato",
+      "context": "Sei in stazione. Ascolta l’annuncio.",
+      "photo": "stazione",
+      "lines": [
+        {
+          "s": "V",
+          "it": "Informiamo i viaggiatori che il treno regionale per Verona delle ore quindici e dieci è stato cancellato per un guasto. I passeggeri possono prendere il treno successivo, in partenza alle quindici e quaranta dal binario tre. Il biglietto resta valido. Ci scusiamo per il disagio."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Che cosa è successo al treno delle 15:10?",
+          "opts": [
+            "È stato cancellato",
+            "È in ritardo",
+            "Cambia binario"
+          ],
+          "a": 0
+        },
+        {
+          "q": "A che ora parte il treno successivo?",
+          "opts": [
+            "Alle 16:10",
+            "Alle 15:50",
+            "Alle 15:40"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Serve un biglietto nuovo?",
+          "opts": [
+            "No",
+            "Sì",
+            "Solo in prima classe"
+          ],
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "a2-asc-vicina",
+      "type": "Messaggio",
+      "title": "Il messaggio della vicina",
+      "context": "Ascolta il messaggio in segreteria.",
+      "photo": "bagno",
+      "lines": [
+        {
+          "s": "V",
+          "it": "Buonasera signora Bianchi, sono Elena, la vicina del terzo piano. Domani mattina viene l’idraulico e deve chiudere l’acqua in tutto il palazzo dalle nove alle undici. Le consiglio di riempire qualche bottiglia stasera. Se ha bisogno, io sono a casa. Buona serata."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Chi lascia il messaggio?",
+          "opts": [
+            "L’idraulico",
+            "Una vicina",
+            "La padrona di casa"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa succede domani mattina?",
+          "opts": [
+            "Manca la luce",
+            "L’ascensore non funziona",
+            "Manca l’acqua"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Che cosa consiglia Elena?",
+          "opts": [
+            "Di chiamare l’idraulico",
+            "Di riempire delle bottiglie",
+            "Di uscire presto"
+          ],
+          "a": 1
+        }
+      ]
+    }
+  ],
+  "lettura": [
+    {
+      "id": "a2-let-corso",
+      "type": "Volantino",
+      "title": "Corso di cucina italiana",
+      "context": "Leggi il volantino del centro culturale.",
+      "photo": "pasta",
+      "text": [
+        "Il centro culturale «Il Ponte» organizza un corso di cucina per stranieri. Le lezioni sono il martedì e il giovedì, dalle 18:30 alle 20:30, per sei settimane.",
+        "Durante il corso prepariamo pasta fresca, risotti e dolci tradizionali. Alla fine di ogni lezione mangiamo insieme.",
+        "Il corso costa 90 euro e gli ingredienti sono compresi. I posti sono solo dodici: iscrivetevi in segreteria entro il 10 ottobre."
+      ],
+      "questions": [
+        {
+          "q": "Quante volte alla settimana c’è lezione?",
+          "opts": [
+            "Due",
+            "Tre",
+            "Una"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Quanto dura il corso?",
+          "opts": [
+            "Un anno",
+            "Tre mesi",
+            "Sei settimane"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Che cosa succede alla fine della lezione?",
+          "opts": [
+            "Si fa un esame",
+            "Si guarda un film",
+            "Si mangia insieme"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Chi paga gli ingredienti?",
+          "opts": [
+            "Ogni studente porta i suoi",
+            "Si pagano ogni volta",
+            "Sono compresi nel prezzo"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a2-let-lavoro",
+      "type": "E-mail",
+      "title": "Una bella notizia",
+      "context": "Leggi l’e-mail di Giulia a Sofia.",
+      "photo": "ufficio",
+      "text": [
+        "Cara Sofia, come stai? Ti scrivo per darti una bella notizia: ho trovato lavoro! Da lunedì lavoro in una libreria in centro. L’orario è comodo: dalle nove alle cinque, con un’ora di pausa per il pranzo.",
+        "I colleghi sono simpatici e mi hanno già invitata a mangiare una pizza venerdì. L’unico problema è il viaggio: ci metto quasi un’ora con l’autobus, quindi sto cercando una bicicletta usata.",
+        "E tu? Hai finito gli esami? Scrivimi presto. Un abbraccio, Giulia"
+      ],
+      "questions": [
+        {
+          "q": "Dove lavora Giulia?",
+          "opts": [
+            "In una pizzeria",
+            "In una biblioteca",
+            "In una libreria"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quanto dura la pausa pranzo?",
+          "opts": [
+            "Due ore",
+            "Un’ora",
+            "Mezz’ora"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Qual è il problema?",
+          "opts": [
+            "L’orario è scomodo",
+            "Il viaggio è lungo",
+            "I colleghi sono antipatici"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa sta cercando Giulia?",
+          "opts": [
+            "Una bicicletta usata",
+            "Un altro lavoro",
+            "Una casa in centro"
+          ],
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "a2-let-piscina",
+      "type": "Regolamento",
+      "title": "Le regole della piscina",
+      "context": "Leggi il regolamento della piscina comunale.",
+      "photo": "parco",
+      "text": [
+        "Prima di entrare in acqua è obbligatorio fare la doccia e mettere la cuffia.",
+        "I bambini con meno di dodici anni entrano solo con un adulto. È vietato correre e tuffarsi dal bordo.",
+        "Gli armadietti si chiudono con una moneta da un euro, che si riprende all’uscita.",
+        "La piscina è aperta tutti i giorni dalle 7 alle 21; il lunedì apre alle 12 per la pulizia."
+      ],
+      "questions": [
+        {
+          "q": "Che cosa bisogna fare prima di nuotare?",
+          "opts": [
+            "Una visita medica",
+            "La doccia",
+            "Gli esercizi"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Un bambino di dieci anni può entrare da solo?",
+          "opts": [
+            "Sì",
+            "Solo la mattina",
+            "No"
+          ],
+          "a": 2
+        },
+        {
+          "q": "L’armadietto costa un euro?",
+          "opts": [
+            "No, non serve la moneta",
+            "Sì, a ogni ingresso",
+            "No, la moneta si riprende"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Il lunedì la piscina apre…",
+          "opts": [
+            "alle 7",
+            "alle 12",
+            "alle 21"
+          ],
+          "a": 1
+        }
+      ]
+    }
+  ],
+  "strutture": [
+    {
+      "id": "a2-str-passato",
+      "type": "Verbi",
+      "title": "Il passato prossimo",
+      "context": "Scegli la forma giusta del verbo.",
+      "photo": "classe",
+      "questions": [
+        {
+          "q": "Ieri Marco ___ al cinema con gli amici.",
+          "opts": [
+            "è andata",
+            "è andato",
+            "ha andato"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Stamattina noi ___ colazione al bar.",
+          "opts": [
+            "abbiamo fatti",
+            "siamo fatti",
+            "abbiamo fatto"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Le ragazze ___ tardi.",
+          "opts": [
+            "sono arrivate",
+            "hanno arrivato",
+            "sono arrivati"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Hai ___ il messaggio di Paola?",
+          "opts": [
+            "letto",
+            "leggiuto",
+            "leggere"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Ieri sera Anna ___ una torta.",
+          "opts": [
+            "è preparata",
+            "ha preparata",
+            "ha preparato"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Che cosa ___ ieri a pranzo?",
+          "opts": [
+            "hai mangiare",
+            "sei mangiato",
+            "hai mangiato"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a2-str-pronomi",
+      "type": "Pronomi e preposizioni",
+      "title": "Pronomi e preposizioni articolate",
+      "context": "Scegli la parola giusta.",
+      "photo": "soggiorno",
+      "questions": [
+        {
+          "q": "Conosci Luisa? Sì, ___ conosco bene.",
+          "opts": [
+            "lo",
+            "la",
+            "le"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Compro i biglietti e ___ porto a casa tua.",
+          "opts": [
+            "lo",
+            "le",
+            "li"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Il gatto dorme ___ divano.",
+          "opts": [
+            "al",
+            "nel",
+            "sul"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Vado ___ dentista alle tre.",
+          "opts": [
+            "dal",
+            "del",
+            "al"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Le chiavi sono ___ borsa.",
+          "opts": [
+            "alla",
+            "nella",
+            "sulla"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Ti telefono ___ sei.",
+          "opts": [
+            "alle",
+            "dalle",
+            "nelle"
+          ],
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "a2-str-mare",
+      "type": "Testo da completare",
+      "title": "Una domenica al mare",
+      "context": "Completa il racconto.",
+      "photo": "strada",
+      "questions": [
+        {
+          "q": "Domenica scorsa Sara e Lucia ___ al mare.",
+          "opts": [
+            "hanno andato",
+            "sono andato",
+            "sono andate"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Il treno ___ alle otto.",
+          "opts": [
+            "è partito",
+            "è partita",
+            "ha partito"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Faceva caldo e ___ molta gente.",
+          "opts": [
+            "c’era",
+            "c’erano",
+            "ci sono"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Sara ha comprato un gelato ___ Lucia.",
+          "opts": [
+            "per",
+            "tra",
+            "da"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Hanno fatto il bagno ___ pranzo.",
+          "opts": [
+            "prima",
+            "prima che",
+            "prima di"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Sono tornate a casa stanche ___ contente.",
+          "opts": [
+            "o",
+            "perché",
+            "ma"
+          ],
+          "a": 2
+        }
+      ]
+    }
+  ],
+  "scrittura": [
+    {
+      "id": "a2-scr-quartiere",
+      "kind": "Descrizione",
+      "title": "Il mio quartiere",
+      "photo": "strada",
+      "words": [
+        40,
+        60
+      ],
+      "prompt": "Descrivi il quartiere dove abiti.",
+      "points": [
+        "Com’è",
+        "Che cosa c’è",
+        "Che cosa ti piace o non ti piace"
+      ],
+      "model": "Abito in un quartiere tranquillo, vicino al centro. Ci sono molti negozi, una farmacia, due bar e un grande parco dove vado a correre la domenica. Mi piace perché la gente è gentile e posso andare al lavoro a piedi. Non mi piace il traffico della mattina: ci sono troppe macchine."
+    },
+    {
+      "id": "a2-scr-ritardo",
+      "kind": "Messaggio",
+      "title": "Scusa, arrivo tardi",
+      "photo": "stazione",
+      "words": [
+        25,
+        40
+      ],
+      "prompt": "Hai un appuntamento con un’amica ma sei in ritardo. Scrivile un messaggio.",
+      "points": [
+        "Scusati",
+        "Spiega perché",
+        "Proponi un nuovo orario"
+      ],
+      "model": "Ciao Marta, scusami tanto! Ho perso l’autobus e il prossimo passa tra venti minuti. Possiamo vederci alle sei e mezza invece delle sei? Ti aspetto davanti al cinema. A dopo!"
+    }
+  ],
+  "orale": [
+    {
+      "id": "a2-ora-negozio",
+      "kind": "Dialogo",
+      "title": "In un negozio di abbigliamento",
+      "photo": "strada",
+      "prompt": "Hai comprato una maglia, ma è troppo piccola. Parla con il commesso (l’esaminatore).",
+      "points": [
+        "Spiega il problema",
+        "Chiedi di cambiare la taglia",
+        "Chiedi se puoi riavere i soldi",
+        "Ringrazia e saluta"
+      ],
+      "model": "Buongiorno. Ieri ho comprato questa maglia, ma è troppo piccola. Posso cambiarla con una taglia più grande? Ho ancora lo scontrino. Se non c’è la mia taglia, posso riavere i soldi? Grazie mille, arrivederci."
+    },
+    {
+      "id": "a2-ora-giornata",
+      "kind": "Monologo",
+      "title": "Una bella giornata",
+      "photo": "parco",
+      "prompt": "Racconta una bella giornata che hai passato di recente.",
+      "points": [
+        "Quando e dove",
+        "Con chi eri",
+        "Che cosa avete fatto",
+        "Perché ti è piaciuta"
+      ],
+      "model": "Due settimane fa sono andato al lago con tre amici. Siamo partiti presto in treno e abbiamo fatto una lunga passeggiata. A pranzo abbiamo mangiato pesce in un piccolo ristorante. Mi è piaciuta molto perché c’era il sole e abbiamo riso tutto il giorno."
+    }
+  ]
+}

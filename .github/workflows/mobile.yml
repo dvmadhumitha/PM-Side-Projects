@@ -1,4 +1,4 @@
-name: ASCOLTO mobile apps
+name: Allora mobile apps
 
 # Rebuilds the Android and iOS apps whenever the web app or the mobile wrapper
 # changes, so the three never drift apart. Download the results from the run's
@@ -53,7 +53,7 @@ jobs:
           ./gradlew assembleDebug --console=plain
       - uses: actions/upload-artifact@v4
         with:
-          name: ascolto-android-debug
+          name: allora-android-debug
           path: cils-mobile/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -88,9 +88,9 @@ jobs:
             build
       - name: Package the simulator app
         working-directory: cils-mobile/ios/App/build/Build/Products/Debug-iphonesimulator
-        run: zip -r "$GITHUB_WORKSPACE/ascolto-ios-simulator.zip" App.app
+        run: zip -r "$GITHUB_WORKSPACE/allora-ios-simulator.zip" App.app
       - uses: actions/upload-artifact@v4
         with:
-          name: ascolto-ios-simulator
-          path: ascolto-ios-simulator.zip
+          name: allora-ios-simulator
+          path: allora-ios-simulator.zip
           if-no-files-found: error

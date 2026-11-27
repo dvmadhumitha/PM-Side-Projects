@@ -1,0 +1,564 @@
+{
+  "ascolto": [
+    {
+      "id": "a1-asc-bar",
+      "type": "Dialogo",
+      "title": "Al bar",
+      "context": "Sei in un bar. Ascolta il cliente e il barista.",
+      "photo": "bar",
+      "lines": [
+        {
+          "s": "A",
+          "it": "Buongiorno! Che cosa prende?"
+        },
+        {
+          "s": "B",
+          "it": "Buongiorno. Un cappuccino e un cornetto, per favore."
+        },
+        {
+          "s": "A",
+          "it": "Il cornetto con la crema o con la marmellata?"
+        },
+        {
+          "s": "B",
+          "it": "Con la crema, grazie. Quanto costa?"
+        },
+        {
+          "s": "A",
+          "it": "Due euro e ottanta."
+        },
+        {
+          "s": "B",
+          "it": "Ecco tre euro."
+        },
+        {
+          "s": "A",
+          "it": "Grazie. Ecco il resto: venti centesimi."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Che cosa beve il cliente?",
+          "opts": [
+            "Un cappuccino",
+            "Un tè",
+            "Un succo"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Com’è il cornetto?",
+          "opts": [
+            "Con la marmellata",
+            "Senza niente",
+            "Con la crema"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quanto costa tutto?",
+          "opts": [
+            "20 centesimi",
+            "2,80 euro",
+            "3 euro"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "a1-asc-cinema",
+      "type": "Messaggio",
+      "title": "Un messaggio di Marta",
+      "context": "Ascolta il messaggio sulla segreteria telefonica.",
+      "photo": "soggiorno",
+      "lines": [
+        {
+          "s": "V",
+          "it": "Ciao Sara, sono Marta. Stasera non posso venire al cinema perché lavoro fino alle nove. Possiamo andare domani? Il film comincia alle otto e mezza. Chiamami quando puoi. Ciao!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Perché Marta non va al cinema stasera?",
+          "opts": [
+            "È malata",
+            "Non le piace il film",
+            "Lavora"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quando vuole andare al cinema?",
+          "opts": [
+            "Domani",
+            "Stasera più tardi",
+            "Sabato"
+          ],
+          "a": 0
+        },
+        {
+          "q": "A che ora comincia il film?",
+          "opts": [
+            "Alle 9:00",
+            "Alle 8:30",
+            "Alle 8:00"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "a1-asc-super",
+      "type": "Annuncio",
+      "title": "Al supermercato",
+      "context": "Sei al supermercato. Ascolta l’annuncio.",
+      "photo": "supermercato",
+      "lines": [
+        {
+          "s": "V",
+          "it": "Gentili clienti, oggi le mele costano un euro al chilo. Il pane fresco è vicino alla cassa numero due. Il supermercato chiude alle venti. Grazie e buona spesa."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Quanto costano le mele?",
+          "opts": [
+            "1 euro al chilo",
+            "1 euro l’una",
+            "2 euro al chilo"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Dov’è il pane fresco?",
+          "opts": [
+            "Vicino alla frutta",
+            "Vicino alla cassa 2",
+            "Vicino all’entrata"
+          ],
+          "a": 1
+        },
+        {
+          "q": "A che ora chiude il supermercato?",
+          "opts": [
+            "Alle 19",
+            "Alle 21",
+            "Alle 20"
+          ],
+          "a": 2
+        }
+      ]
+    }
+  ],
+  "lettura": [
+    {
+      "id": "a1-let-biblioteca",
+      "type": "Avviso",
+      "title": "La biblioteca comunale",
+      "context": "Leggi l’avviso all’ingresso.",
+      "photo": "biblioteca",
+      "text": [
+        "BIBLIOTECA COMUNALE",
+        "Orario: dal lunedì al venerdì, dalle 9 alle 18. Sabato dalle 9 alle 13. Domenica chiuso.",
+        "Per prendere un libro serve la tessera. La tessera è gratis.",
+        "In biblioteca non si può mangiare e non si può parlare al telefono."
+      ],
+      "questions": [
+        {
+          "q": "Quando è chiusa la biblioteca?",
+          "opts": [
+            "Il sabato",
+            "Il lunedì",
+            "La domenica"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quanto costa la tessera?",
+          "opts": [
+            "Niente",
+            "5 euro",
+            "10 euro"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Che cosa non si può fare?",
+          "opts": [
+            "Mangiare",
+            "Prendere un libro",
+            "Leggere"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Il sabato la biblioteca chiude…",
+          "opts": [
+            "alle 9",
+            "alle 18",
+            "alle 13"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a1-let-festa",
+      "type": "Messaggio",
+      "title": "La festa di Paolo",
+      "context": "Leggi il messaggio di Paolo ad Anna.",
+      "photo": "dolci",
+      "text": [
+        "Ciao Anna! Sabato è il mio compleanno. Faccio una festa a casa mia alle sette di sera.",
+        "Abito in via Roma 12, vicino alla stazione.",
+        "Porti una torta? Io preparo la pizza. A sabato! Paolo"
+      ],
+      "questions": [
+        {
+          "q": "Perché Paolo fa una festa?",
+          "opts": [
+            "Ha un lavoro nuovo",
+            "È il suo compleanno",
+            "Ha una casa nuova"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Dove abita Paolo?",
+          "opts": [
+            "Vicino alla scuola",
+            "Vicino alla stazione",
+            "Vicino al parco"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa porta Anna?",
+          "opts": [
+            "Una torta",
+            "La pizza",
+            "Le bibite"
+          ],
+          "a": 0
+        },
+        {
+          "q": "A che ora comincia la festa?",
+          "opts": [
+            "Alle 17",
+            "Alle 21",
+            "Alle 19"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a1-let-camera",
+      "type": "Annuncio",
+      "title": "Camera in affitto",
+      "context": "Leggi l’annuncio in bacheca.",
+      "photo": "camera",
+      "text": [
+        "CAMERA IN AFFITTO",
+        "Camera singola in un appartamento con due studentesse. La camera è grande e luminosa. Cucina e bagno in comune.",
+        "350 euro al mese, spese comprese. L’appartamento è a dieci minuti a piedi dall’università.",
+        "Telefonare a Lucia dopo le 18."
+      ],
+      "questions": [
+        {
+          "q": "Quante persone abitano già nell’appartamento?",
+          "opts": [
+            "Una",
+            "Tre",
+            "Due"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Com’è la camera?",
+          "opts": [
+            "Piccola",
+            "Senza finestra",
+            "Grande e luminosa"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Le spese sono nel prezzo?",
+          "opts": [
+            "No",
+            "Solo il gas",
+            "Sì"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quando si può telefonare a Lucia?",
+          "opts": [
+            "Solo la domenica",
+            "Dopo le 18",
+            "La mattina"
+          ],
+          "a": 1
+        }
+      ]
+    }
+  ],
+  "strutture": [
+    {
+      "id": "a1-str-presente",
+      "type": "Verbi e articoli",
+      "title": "Presente e articoli",
+      "context": "Scegli la parola giusta per ogni frase.",
+      "photo": "classe",
+      "questions": [
+        {
+          "q": "Io ___ italiano e inglese.",
+          "opts": [
+            "parlo",
+            "parla",
+            "parli"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Maria ___ ventidue anni.",
+          "opts": [
+            "fa",
+            "è",
+            "ha"
+          ],
+          "a": 2
+        },
+        {
+          "q": "___ studenti sono in classe.",
+          "opts": [
+            "Le",
+            "Gli",
+            "I"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Noi ___ a Milano.",
+          "opts": [
+            "abitiamo",
+            "abitano",
+            "abitate"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Questa è ___ amica di Luca.",
+          "opts": [
+            "un’",
+            "un",
+            "uno"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Loro ___ francesi.",
+          "opts": [
+            "siamo",
+            "siete",
+            "sono"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a1-str-prep",
+      "type": "Preposizioni",
+      "title": "Preposizioni semplici",
+      "context": "Scegli la preposizione giusta.",
+      "photo": "strada",
+      "questions": [
+        {
+          "q": "Vado ___ scuola in autobus.",
+          "opts": [
+            "a",
+            "di",
+            "su"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Abito ___ Italia da un anno.",
+          "opts": [
+            "di",
+            "in",
+            "a"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Sono ___ Madrid, ma vivo a Roma.",
+          "opts": [
+            "per",
+            "in",
+            "di"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Il libro è ___ Marco.",
+          "opts": [
+            "di",
+            "in",
+            "a"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Stasera vengo ___ te.",
+          "opts": [
+            "a",
+            "in",
+            "da"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Parto ___ Napoli domani mattina.",
+          "opts": [
+            "di",
+            "su",
+            "per"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "a1-str-messaggio",
+      "type": "Testo da completare",
+      "title": "Karim si presenta",
+      "context": "Completa il messaggio di Karim.",
+      "photo": "persona",
+      "questions": [
+        {
+          "q": "Ciao! Mi ___ Karim.",
+          "opts": [
+            "chiami",
+            "chiamo",
+            "chiama"
+          ],
+          "a": 1
+        },
+        {
+          "q": "___ di Tunisi, ma vivo a Torino.",
+          "opts": [
+            "Ho",
+            "Sto",
+            "Sono"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Ho due ___.",
+          "opts": [
+            "fratelli",
+            "fratello",
+            "fratella"
+          ],
+          "a": 0
+        },
+        {
+          "q": "La mattina ___ il caffè.",
+          "opts": [
+            "bevi",
+            "bevo",
+            "beve"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Mi ___ la musica.",
+          "opts": [
+            "piacciono",
+            "piace",
+            "piaccio"
+          ],
+          "a": 1
+        },
+        {
+          "q": "E tu, come ___?",
+          "opts": [
+            "sto",
+            "sta",
+            "stai"
+          ],
+          "a": 2
+        }
+      ]
+    }
+  ],
+  "scrittura": [
+    {
+      "id": "a1-scr-giornata",
+      "kind": "Descrizione",
+      "title": "La mia giornata",
+      "photo": "cucina",
+      "words": [
+        25,
+        40
+      ],
+      "prompt": "Descrivi la tua giornata.",
+      "points": [
+        "A che ora ti svegli",
+        "Che cosa fai la mattina",
+        "Che cosa fai la sera"
+      ],
+      "model": "Mi sveglio alle sette e faccio colazione con latte e biscotti. Poi vado a scuola in autobus e studio italiano. Il pomeriggio lavoro in un bar. La sera cucino, guardo la televisione e vado a letto alle undici."
+    },
+    {
+      "id": "a1-scr-invito",
+      "kind": "Messaggio",
+      "title": "Un caffè sabato?",
+      "photo": "parco",
+      "words": [
+        20,
+        30
+      ],
+      "prompt": "Scrivi un messaggio a un amico: invitalo a prendere un caffè sabato.",
+      "points": [
+        "Saluta",
+        "Di’ dove",
+        "Di’ a che ora"
+      ],
+      "model": "Ciao Luca! Come stai? Sabato sei libero? Prendiamo un caffè al bar vicino alla stazione, alle quattro del pomeriggio. Rispondi presto! A sabato, Amir"
+    }
+  ],
+  "orale": [
+    {
+      "id": "a1-ora-presentazione",
+      "kind": "Dialogo",
+      "title": "Ti presenti",
+      "photo": "persona",
+      "prompt": "L’esaminatore ti fa alcune domande su di te. Rispondi con frasi semplici.",
+      "points": [
+        "Come ti chiami e di dove sei?",
+        "Dove abiti e con chi?",
+        "Che lavoro fai o che cosa studi?",
+        "Che cosa fai nel tempo libero?"
+      ],
+      "model": "Mi chiamo Amir e sono egiziano. Abito a Milano con mio fratello. Lavoro in un ristorante e la sera studio italiano. Nel tempo libero gioco a calcio e ascolto musica."
+    },
+    {
+      "id": "a1-ora-casa",
+      "kind": "Monologo",
+      "title": "La tua casa",
+      "photo": "soggiorno",
+      "prompt": "Descrivi la tua casa.",
+      "points": [
+        "Dov’è",
+        "Quante stanze ha",
+        "Qual è la tua stanza preferita e perché"
+      ],
+      "model": "La mia casa è in periferia, vicino a un parco. È piccola: ha una cucina, un bagno e due camere. La mia stanza preferita è la cucina, perché mi piace cucinare con i miei amici."
+    }
+  ]
+}

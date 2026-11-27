@@ -1,6 +1,6 @@
-# ASCOLTO for Android and iOS
+# Allora for Android and iOS
 
-The Android and iOS apps for ASCOLTO, the CILS A2 exam simulator. Both apps run the same web app that is live at `/cils-app/`, inside a native shell built with [Capacitor](https://capacitorjs.com).
+The Android and iOS apps for Allora (first called ASCOLTO), the practice app for the Italian exams CILS, CELI and PLIDA, levels A1 to B2. Both apps run the same web app that is live at `/cils-app/`, inside a native shell built with [Capacitor](https://capacitorjs.com).
 
 ## One app, three places
 
@@ -39,7 +39,8 @@ npm run sync         after ANY change to cils-app/ or to the bridge
 npm run check        proves web, Android and iOS hold identical files
 npm run android:debug    builds android/app/build/outputs/apk/debug/app-debug.apk
 npm run android:open     opens the project in Android Studio
-npm run icons        redraws the icon and splash and cuts every size
+npm run icons        redraws the Allora icon and splash (scripts/allora-mark.mjs) for
+                     Android, iOS and the web, and cuts every size
 npm test             tests the native bridge against fake phone plugins (no phone needed)
 node scripts/android-eval.mjs "location.hash"
                      runs JavaScript inside the app on a connected phone or emulator (debug builds)
@@ -66,7 +67,7 @@ Putting it on a real iPhone or the App Store needs an Apple Developer account fo
 
 ## Publishing checklist
 
-- **App ID** `io.github.dvmadhumitha.ascolto` is set in `capacitor.config.json`, `android/app/build.gradle` and the Xcode project. It cannot change after the first store release, so settle it before then.
+- **App ID** `io.github.dvmadhumitha.ascolto` is set in `capacitor.config.json`, `android/app/build.gradle` and the Xcode project. It keeps the app's first name; changing it to `...allora` makes the phones treat it as a new app, and it cannot change after the first store release, so settle it before then.
 - **Android:** create an upload keystore, build a release bundle (`gradlew bundleRelease`), upload to Play Console. Never commit the keystore (`.gitignore` already blocks it).
 - **iOS:** set the team in Xcode, archive, upload through App Store Connect.
 - Both stores ask for a privacy policy. The app keeps the name, email and practice data on the device; translation lookups go to MyMemory and speech recognition goes through the phone's own service.

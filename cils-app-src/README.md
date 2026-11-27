@@ -1,12 +1,14 @@
-# ASCOLTO: source
+# Allora: source
 
-The source of the CILS A2 exam simulator. It builds into `../cils-app/`, which GitHub Pages serves, and which the Android and iOS apps in `../cils-mobile/` wrap.
+The source of the Italian exam simulator: CILS, CELI and PLIDA, levels A1 to B2. CILS A2 is the original app, with its own screens; every other exam and level is drawn from one table. It builds into `../cils-app/`, which GitHub Pages serves, and which the Android and iOS apps in `../cils-mobile/` wrap.
 
 ```
 src/main.js        entry: loads the styles, then the app
 src/shell/         the Immersione frame: tab bar, photo headers, the Oggi, Prove and Parole screens
 src/app.js         every other screen and all the logic (recovered code, see below)
+src/exams/         which exams and levels exist (catalog.js), the picker, and what has been done
 src/data/*.json    every content table: flashcards, exercises, dialogues, tests, regions
+src/data/level-*.json   the exercises for A1, A2, B1 and B2, shared by every exam at that level
 src/styles/        app.css (original styles) and immersione.css (the new look, loaded on top)
 ../cils-app/img    photos, and ../cils-app/italy-regions.geojson (kept there only, not copied)
 ```
@@ -21,6 +23,16 @@ npm run lint       catches names that do not exist
 ```
 
 After a build, run `npm run sync` in `../cils-mobile/` so the Android and iOS apps get the same change.
+
+## Exams and levels
+
+`src/exams/catalog.js` lists each exam, its levels, and for each level its papers and pass rule. The picker, the Prove tab and the practice screens are drawn from it, so a new exam or level is a new entry there and needs no new screen.
+
+A paper names the `skill` it draws from (`ascolto`, `lettura`, `strutture`, `scrittura`, `orale`). The exercises for that skill come from the level's bank, `src/data/level-<level>.json`, through `src/screens/LevelPractice.jsx`. To add an exercise, add an entry to the bank; `npm test` checks that every bank is complete. The texts are original, written to each exam's published format; do not copy past papers into them.
+
+Only state a number of tasks, a duration, a word count or a pass mark in the catalog when the exam body's own specification gives it.
+
+The choice is saved as `exam_choice`; finished exercises as `lv_done`. CILS A2 is marked `legacy: true` and keeps the original Oggi, Prove and Progressi screens and their storage.
 
 ## Writing a screen in the Immersione design
 

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>ASCOLTO</string>
+        <string>Allora</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,13 +23,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>ASCOLTO listens to your spoken Italian answers in the speaking practice.</string>
+	<string>Allora listens to your spoken Italian answers in the speaking practice.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>ASCOLTO turns your spoken Italian into text so you can review your answers.</string>
+	<string>Allora turns your spoken Italian into text so you can review your answers.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>ASCOLTO uses a photo you take to name the objects in it in Italian.</string>
+	<string>Allora uses a photo you take to name the objects in it in Italian.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>ASCOLTO uses a photo you choose to name the objects in it in Italian.</string>
+	<string>Allora uses a photo you choose to name the objects in it in Italian.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>UIApplicationSceneManifest</key>

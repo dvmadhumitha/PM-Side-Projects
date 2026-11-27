@@ -1,0 +1,626 @@
+{
+  "ascolto": [
+    {
+      "id": "b2-asc-distanza",
+      "type": "Intervista",
+      "title": "Lavorare da casa, oggi",
+      "context": "Ascolta l’intervista a una studiosa di organizzazione aziendale.",
+      "photo": "ufficio",
+      "lines": [
+        {
+          "s": "A",
+          "it": "Oggi parliamo di lavoro a distanza con Paola Riva, che studia l’organizzazione delle aziende. Professoressa, dopo l’entusiasmo iniziale molte imprese stanno richiamando i dipendenti in ufficio. Perché?"
+        },
+        {
+          "s": "B",
+          "it": "Direi che non si tratta di un ritorno al passato, ma di un aggiustamento. Le aziende si sono accorte che lavorare da casa funziona bene per le attività individuali, mentre la creatività e la formazione dei giovani ne risentono."
+        },
+        {
+          "s": "A",
+          "it": "Quindi il problema riguarda soprattutto chi è appena stato assunto?"
+        },
+        {
+          "s": "B",
+          "it": "Esattamente. Un neoassunto impara molto osservando i colleghi, e questo a distanza è quasi impossibile. Chi ha esperienza, invece, spesso è più produttivo a casa."
+        },
+        {
+          "s": "A",
+          "it": "E i lavoratori che cosa ne pensano?"
+        },
+        {
+          "s": "B",
+          "it": "La maggior parte non vuole rinunciare alla flessibilità. Molti sarebbero disposti perfino a cambiare azienda pur di conservare due o tre giorni a casa."
+        },
+        {
+          "s": "A",
+          "it": "Qual è, secondo lei, la soluzione?"
+        },
+        {
+          "s": "B",
+          "it": "Un modello misto, purché sia organizzato: non ha senso andare in ufficio per passare la giornata in videochiamata. I giorni in presenza vanno dedicati a ciò che richiede davvero di stare insieme."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Secondo la professoressa, che cosa stanno facendo le aziende?",
+          "opts": [
+            "Correggono il modello",
+            "Aboliscono il lavoro a distanza",
+            "Tornano al passato"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Chi è più penalizzato dal lavoro a distanza?",
+          "opts": [
+            "I dirigenti",
+            "I lavoratori esperti",
+            "I neoassunti"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Che cosa farebbero molti lavoratori per restare flessibili?",
+          "opts": [
+            "Accetterebbero uno stipendio più basso",
+            "Cambierebbero azienda",
+            "Lavorerebbero più ore"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Quando ha senso andare in ufficio?",
+          "opts": [
+            "Tutti i giorni",
+            "Per le attività da fare insieme",
+            "Per le videochiamate"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "b2-asc-palazzo",
+      "type": "Audioguida",
+      "title": "Il salone delle feste",
+      "context": "Stai visitando un palazzo storico. Ascolta l’audioguida.",
+      "photo": "biblioteca",
+      "lines": [
+        {
+          "s": "V",
+          "it": "Benvenuti a Palazzo Moretti. L’edificio fu costruito nel Cinquecento per una famiglia di mercanti di seta e, nei secoli, ha cambiato funzione più volte: è stato residenza privata, poi caserma e infine scuola, prima di diventare museo."
+        },
+        {
+          "s": "V",
+          "it": "La sala in cui vi trovate era in origine il salone delle feste. Osservate il soffitto: gli affreschi, rimasti nascosti sotto uno strato di intonaco per quasi due secoli, sono stati riscoperti per caso durante i lavori di restauro. Proprio grazie a quella copertura i colori si sono conservati così vivi."
+        },
+        {
+          "s": "V",
+          "it": "Vi ricordiamo che è consentito fotografare senza flash e che la visita prosegue al piano superiore, raggiungibile anche con l’ascensore accanto alla biglietteria."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Per chi fu costruito il palazzo?",
+          "opts": [
+            "Per il Comune",
+            "Per una famiglia di mercanti",
+            "Per l’esercito"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Come sono stati ritrovati gli affreschi?",
+          "opts": [
+            "Grazie a un antico documento",
+            "Per caso, durante un restauro",
+            "Dopo un incendio"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Perché i colori sono ben conservati?",
+          "opts": [
+            "Sono stati ridipinti",
+            "Erano protetti dall’intonaco",
+            "La sala era sempre al buio"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa è permesso ai visitatori?",
+          "opts": [
+            "Usare il flash",
+            "Toccare gli affreschi",
+            "Fotografare senza flash"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "b2-asc-telefoni",
+      "type": "Conversazione",
+      "title": "Telefoni a scuola",
+      "context": "Un genitore e un’amica discutono di una nuova regola scolastica.",
+      "photo": "classe",
+      "lines": [
+        {
+          "s": "A",
+          "it": "Hai sentito? Nella scuola di mio figlio vogliono vietare i telefoni anche durante l’intervallo."
+        },
+        {
+          "s": "B",
+          "it": "Era ora! I ragazzi non si parlano più: stanno tutti con la testa china sullo schermo."
+        },
+        {
+          "s": "A",
+          "it": "Sarà, ma a me un divieto totale sembra esagerato. Il telefono è anche uno strumento: ci fanno ricerche, traducono, organizzano il lavoro di gruppo."
+        },
+        {
+          "s": "B",
+          "it": "In teoria. In pratica, appena l’insegnante si gira, aprono i social. E poi è evidente che l’uso continuo del telefono fa calare l’attenzione."
+        },
+        {
+          "s": "A",
+          "it": "Su questo non discuto. Però vietare non insegna a usarlo bene. Preferirei che la scuola facesse educazione digitale, con regole chiare: in classe sì, quando lo dice l’insegnante; altrimenti nello zaino."
+        },
+        {
+          "s": "B",
+          "it": "E chi controlla? Gli insegnanti hanno già abbastanza da fare."
+        },
+        {
+          "s": "A",
+          "it": "Hai ragione, non è semplice. Ma tra qualche anno questi ragazzi lavoreranno con il telefono in mano: meglio che imparino adesso."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Che cosa vuole fare la scuola?",
+          "opts": [
+            "Dare un tablet agli studenti",
+            "Vietare i telefoni anche all’intervallo",
+            "Introdurre un corso di informatica"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa propone il genitore?",
+          "opts": [
+            "Nessuna regola",
+            "Un divieto totale",
+            "Regole chiare ed educazione digitale"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Su che cosa i due sono d’accordo?",
+          "opts": [
+            "Il telefono fa calare l’attenzione",
+            "Il divieto totale è giusto",
+            "I social sono utili a scuola"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Quale difficoltà fa notare l’amica?",
+          "opts": [
+            "I genitori sono contrari",
+            "È difficile controllare gli studenti",
+            "I telefoni costano troppo"
+          ],
+          "a": 1
+        }
+      ]
+    }
+  ],
+  "lettura": [
+    {
+      "id": "b2-let-treni",
+      "type": "Articolo",
+      "title": "Il ritorno dei treni notturni",
+      "context": "Leggi l’articolo e rispondi.",
+      "photo": "stazione",
+      "text": [
+        "Per decenni sono sembrati un ricordo del passato, destinati a scomparire di fronte ai voli a basso costo. Oggi, invece, i treni notturni stanno tornando sulle linee europee, e spesso i biglietti per i mesi estivi si esauriscono con largo anticipo.",
+        "Le ragioni di questo successo sono diverse. La più citata è ambientale: a parità di distanza, un viaggio in treno produce molte meno emissioni di un volo. Ma conta anche un diverso modo di intendere il viaggio. Salire a bordo la sera e svegliarsi in un’altra città permette di risparmiare una notte d’albergo e di arrivare direttamente in centro, senza trasferimenti da aeroporti lontani.",
+        "Restano, tuttavia, alcuni ostacoli. I vagoni letto costano molto e le compagnie faticano a procurarsene abbastanza per soddisfare la domanda. I prezzi, di conseguenza, non sono sempre competitivi: una cabina privata può costare più di un biglietto aereo. C’è infine chi fa notare che, senza una rete ben coordinata tra Paesi diversi, i ritardi alle frontiere rischiano di scoraggiare proprio i viaggiatori che il treno vorrebbe conquistare."
+      ],
+      "questions": [
+        {
+          "q": "Che cosa sta succedendo ai treni notturni?",
+          "opts": [
+            "Sono di nuovo molto richiesti",
+            "Stanno per essere aboliti",
+            "Viaggiano solo d’estate"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Oltre all’ambiente, quale vantaggio viene citato?",
+          "opts": [
+            "I biglietti costano sempre meno",
+            "Si viaggia più in fretta che in aereo",
+            "Si arriva in centro e si risparmia una notte d’albergo"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Perché i prezzi non sono sempre convenienti?",
+          "opts": [
+            "Le tasse sono alte",
+            "La domanda è bassa",
+            "I vagoni letto sono costosi e scarsi"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Quale rischio viene segnalato alla fine?",
+          "opts": [
+            "La mancanza di passeggeri",
+            "La chiusura delle stazioni",
+            "I ritardi dovuti allo scarso coordinamento tra Paesi"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "b2-let-recensione",
+      "type": "Recensione",
+      "title": "«La casa sul fiume»",
+      "context": "Leggi la recensione di un romanzo.",
+      "photo": "biblioteca",
+      "text": [
+        "Il nuovo romanzo racconta il ritorno di Irene, architetta quarantenne, nel paese della pianura dove è cresciuta. Deve vendere la casa dei nonni, ma ogni stanza le restituisce un pezzo di passato che credeva dimenticato.",
+        "La trama, a dire il vero, è esile: non aspettatevi colpi di scena. Il punto di forza del libro è la scrittura, precisa e mai compiaciuta, capace di rendere con poche parole la nebbia, gli odori della cucina, i silenzi tra una madre e una figlia. Meno riusciti sono i personaggi maschili, che restano sullo sfondo come figure appena abbozzate.",
+        "Nell’ultima parte il ritmo rallenta e qualche lettore potrebbe perdere la pazienza. Chi invece arriva alla fine verrà ripagato da un epilogo sobrio e commovente, che evita sia la retorica sia il lieto fine a tutti i costi. Un libro consigliato a chi ama le storie in cui, in apparenza, non succede niente."
+      ],
+      "questions": [
+        {
+          "q": "Perché Irene torna al paese?",
+          "opts": [
+            "Per assistere la madre",
+            "Per un nuovo lavoro",
+            "Per vendere la casa dei nonni"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Qual è, secondo il recensore, il pregio maggiore del libro?",
+          "opts": [
+            "La trama",
+            "Lo stile",
+            "I personaggi maschili"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Che cosa critica il recensore?",
+          "opts": [
+            "Le descrizioni troppo lunghe",
+            "Il finale troppo lieto",
+            "I personaggi maschili poco sviluppati"
+          ],
+          "a": 2
+        },
+        {
+          "q": "A chi è consigliato il libro?",
+          "opts": [
+            "A chi ama i romanzi storici",
+            "A chi cerca colpi di scena",
+            "A chi apprezza le storie con poca azione"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "b2-let-concentrazione",
+      "type": "Testo informativo",
+      "title": "Difendere la concentrazione",
+      "context": "Leggi i consigli e rispondi.",
+      "photo": "ufficio",
+      "text": [
+        "Messaggi, notifiche, colleghi che passano «solo per una domanda»: chi lavora in ufficio viene interrotto di continuo, e dopo ogni interruzione serve tempo per ritrovare il filo. Ecco alcune abitudini che aiutano a difendere la concentrazione.",
+        "Primo: raggruppate le attività simili. Rispondere alle e-mail in due o tre momenti fissi della giornata, anziché a ogni arrivo, riduce la sensazione di essere sempre in ritardo. Secondo: stabilite fasce orarie «protette» e comunicatele ai colleghi, così che sappiano quando è meglio non disturbarvi.",
+        "Terzo, e più difficile: tenete il telefono fuori dalla vista. Non basta metterlo in silenzioso, perché la sua semplice presenza sulla scrivania è una tentazione. Infine, non dimenticate le pause: lavorare senza interruzioni non significa lavorare senza fermarsi. Qualche minuto lontano dallo schermo, a intervalli regolari, rende più di un’ora passata a combattere la stanchezza."
+      ],
+      "questions": [
+        {
+          "q": "Qual è il problema descritto all’inizio?",
+          "opts": [
+            "La mancanza di colleghi",
+            "Il troppo lavoro",
+            "Le continue interruzioni"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Come si consiglia di gestire le e-mail?",
+          "opts": [
+            "In pochi momenti fissi",
+            "Solo a fine giornata",
+            "Appena arrivano"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Perché non basta il silenzioso?",
+          "opts": [
+            "Le notifiche arrivano lo stesso",
+            "I colleghi telefonano comunque",
+            "Il telefono in vista resta una tentazione"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Che cosa si dice delle pause?",
+          "opts": [
+            "Vanno fatte solo a fine giornata",
+            "Fanno perdere la concentrazione",
+            "Brevi e regolari, aiutano a rendere di più"
+          ],
+          "a": 2
+        }
+      ]
+    }
+  ],
+  "strutture": [
+    {
+      "id": "b2-str-congiuntivo",
+      "type": "Verbi",
+      "title": "Il congiuntivo",
+      "context": "Scegli la forma giusta del verbo.",
+      "photo": "classe",
+      "questions": [
+        {
+          "q": "Penso che Luca ___ ragione.",
+          "opts": [
+            "ha",
+            "abbia",
+            "avrà"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Sebbene ___ tardi, ha deciso di uscire.",
+          "opts": [
+            "fosse",
+            "era",
+            "sarebbe"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Vorrei che tu ___ con me.",
+          "opts": [
+            "verrai",
+            "vieni",
+            "venissi"
+          ],
+          "a": 2
+        },
+        {
+          "q": "È importante che tutti ___ puntuali.",
+          "opts": [
+            "sono",
+            "siano",
+            "saranno"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Credevo che il negozio ___ già chiuso.",
+          "opts": [
+            "fosse",
+            "è",
+            "sia"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Ti presto la macchina a patto che tu ___ piano.",
+          "opts": [
+            "guiderai",
+            "guidi",
+            "guidavi"
+          ],
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "b2-str-ipotesi",
+      "type": "Verbi",
+      "title": "Ipotesi e forma passiva",
+      "context": "Scegli la forma giusta.",
+      "photo": "biblioteca",
+      "questions": [
+        {
+          "q": "Se avessi più tempo, ___ un corso di teatro.",
+          "opts": [
+            "farei",
+            "facevo",
+            "farò"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Se me lo avessi detto prima, ti ___.",
+          "opts": [
+            "aiuterò",
+            "ho aiutato",
+            "avrei aiutato"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Il museo ___ inaugurato dal sindaco la settimana scorsa.",
+          "opts": [
+            "è stato",
+            "aveva",
+            "ha stato"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Le domande vanno ___ entro il 30 giugno.",
+          "opts": [
+            "presentare",
+            "presentando",
+            "presentate"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Se ___ meno, saremmo andati al mare.",
+          "opts": [
+            "pioverà",
+            "fosse piovuto",
+            "piove"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Qualora ___ problemi, contatti l’assistenza.",
+          "opts": [
+            "ci saranno",
+            "ci sono",
+            "ci fossero"
+          ],
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "b2-str-formale",
+      "type": "Testo da completare",
+      "title": "Una lettera di candidatura",
+      "context": "Completa la lettera con le espressioni adatte al registro formale.",
+      "photo": "ufficio",
+      "questions": [
+        {
+          "q": "Le scrivo ___ all’annuncio pubblicato sul vostro sito.",
+          "opts": [
+            "nonostante",
+            "in riferimento",
+            "a causa"
+          ],
+          "a": 1
+        },
+        {
+          "q": "Ho lavorato nel settore per cinque anni; ___, conosco bene i vostri prodotti.",
+          "opts": [
+            "pertanto",
+            "sebbene",
+            "tuttavia"
+          ],
+          "a": 0
+        },
+        {
+          "q": "___ non abbia una laurea specifica, ho seguito diversi corsi.",
+          "opts": [
+            "Poiché",
+            "Dunque",
+            "Benché"
+          ],
+          "a": 2
+        },
+        {
+          "q": "Sono disponibile a trasferirmi, ___ l’azienda lo ritenga necessario.",
+          "opts": [
+            "qualora",
+            "infatti",
+            "perciò"
+          ],
+          "a": 0
+        },
+        {
+          "q": "Resto ___ disposizione per un colloquio.",
+          "opts": [
+            "a",
+            "per",
+            "in"
+          ],
+          "a": 0
+        },
+        {
+          "q": "In ___ di una Sua risposta, porgo distinti saluti.",
+          "opts": [
+            "aspetto",
+            "attesa",
+            "ritardo"
+          ],
+          "a": 1
+        }
+      ]
+    }
+  ],
+  "scrittura": [
+    {
+      "id": "b2-scr-auto",
+      "kind": "Testo argomentativo",
+      "title": "Vivere senza automobile",
+      "photo": "strada",
+      "words": [
+        120,
+        140
+      ],
+      "prompt": "Sempre più persone in città scelgono di non avere un’automobile. Esprimi la tua opinione.",
+      "points": [
+        "Presenta il tema",
+        "Indica vantaggi e svantaggi",
+        "Concludi con la tua posizione"
+      ],
+      "model": "Negli ultimi anni molte persone che vivono in città hanno rinunciato all’automobile. Personalmente ritengo che sia una scelta ragionevole, anche se non adatta a tutti. I vantaggi sono evidenti: si risparmia su carburante, assicurazione e parcheggio, e si contribuisce a ridurre il traffico e l’inquinamento. Inoltre, spostarsi a piedi o in bicicletta fa bene alla salute. D’altra parte, bisogna ammettere che i mezzi pubblici non sono sempre affidabili, soprattutto la sera e nelle zone periferiche. Per una famiglia con bambini piccoli o per chi assiste un parente anziano, l’auto resta spesso indispensabile. In conclusione, credo che la soluzione migliore sia investire nel trasporto pubblico e nei servizi di auto condivisa: solo così rinunciare alla macchina diventerà davvero una libertà e non un sacrificio."
+    },
+    {
+      "id": "b2-scr-reclamo",
+      "kind": "Lettera formale",
+      "title": "Un reclamo",
+      "photo": "ufficio",
+      "words": [
+        80,
+        100
+      ],
+      "prompt": "Hai seguito un corso di lingua online, ma metà delle lezioni è stata annullata senza preavviso. Scrivi alla scuola.",
+      "points": [
+        "Presentati e descrivi il problema",
+        "Chiedi un rimborso parziale o il recupero",
+        "Chiudi in modo formale"
+      ],
+      "model": "Gentile Direzione, mi chiamo Ana Costa e a marzo mi sono iscritta al vostro corso online di italiano commerciale. Vi scrivo per segnalare un problema: delle venti lezioni previste, dieci sono state annullate, spesso senza alcun preavviso. In più occasioni mi sono collegata all’orario stabilito senza trovare l’insegnante. Poiché ho pagato l’intera quota in anticipo, chiedo il rimborso della metà della somma oppure il recupero delle lezioni perse entro l’estate. Resto in attesa di una vostra risposta e porgo distinti saluti. Ana Costa"
+    }
+  ],
+  "orale": [
+    {
+      "id": "b2-ora-scadenze",
+      "kind": "Dialogo",
+      "title": "Un problema nel gruppo",
+      "photo": "ufficio",
+      "prompt": "Nel tuo gruppo di lavoro le consegne arrivano spesso in ritardo. Parlane con il tuo responsabile (l’esaminatore) e proponi una soluzione.",
+      "points": [
+        "Presenta il problema con tatto",
+        "Spiega quale può essere la causa",
+        "Proponi una soluzione concreta",
+        "Offri la tua disponibilità"
+      ],
+      "model": "Vorrei parlarle di una difficoltà nel nostro gruppo. Nelle ultime settimane alcune consegne sono arrivate in ritardo, e questo ha rallentato il lavoro di tutti. Non credo che sia mancanza di impegno: penso piuttosto che i compiti non siano distribuiti in modo chiaro. Proporrei una breve riunione ogni lunedì per fissare le priorità. Se fosse d’accordo, potrei occuparmi io di organizzarla."
+    },
+    {
+      "id": "b2-ora-tecnologia",
+      "kind": "Monologo",
+      "title": "La tecnologia ci avvicina o ci isola?",
+      "photo": "soggiorno",
+      "prompt": "La tecnologia ci avvicina agli altri o ci isola? Sostieni la tua opinione con esempi.",
+      "points": [
+        "Introduci il tema",
+        "Porta un argomento a favore e uno contro",
+        "Fai un esempio personale",
+        "Concludi con la tua posizione"
+      ],
+      "model": "È una domanda a cui non si può rispondere con un sì o con un no. Da un lato, la tecnologia mi permette di sentire ogni giorno la mia famiglia, che vive lontano: senza le videochiamate mi sentirei molto più solo. Dall’altro, mi capita di vedere amici seduti allo stesso tavolo, ognuno con gli occhi sul proprio schermo. Secondo me il problema non è lo strumento, ma l’uso che se ne fa. Se servisse a organizzare più incontri di persona, anziché a sostituirli, ci avvicinerebbe davvero."
+    }
+  ]
+}
